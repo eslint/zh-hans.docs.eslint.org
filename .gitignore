@@ -102,3 +102,17 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Sync file
+.eleventy.js
+docs/
+src/*
+!developer-guide
+!library
+library.json
+!maintainer-guide
+!pages
+404.html
+pages.11tydata.json
+!rules
+!user-guide
