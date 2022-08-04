@@ -8,7 +8,8 @@
         "build:sass": "sass --style=compressed src/assets/scss:src/assets/css --no-source-map",
         "build:eleventy": "npx @11ty/eleventy",
         "start": "npm-run-all build:sass --parallel watch:*",
-        "build": "npm-run-all build:sass build:eleventy images"
+        "build": "npm-run-all sync build:sass build:eleventy images",
+        "sync": "node scripts/sync.js"
     },
     "devDependencies": {
         "@11ty/eleventy": "^1.0.1",
