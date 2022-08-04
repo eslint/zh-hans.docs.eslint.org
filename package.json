@@ -2,7 +2,6 @@
     "name": "zh-hans.docs.eslint.org",
     "private": true,
     "scripts": {
-        "postinstall": "node scripts/sync",
         "images": "imagemin '_site/assets/images' --out-dir='_site/assets/images'",
         "watch:sass": "sass --watch --poll src/assets/scss:src/assets/css",
         "watch:eleventy": "eleventy --serve --port=2023",
