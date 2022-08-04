@@ -1,5 +1,5 @@
 {
-    "name": "zh-hans.eslint.org",
+    "name": "zh-hans.docs.eslint.org",
     "private": true,
     "scripts": {
         "postinstall": "node scripts/sync",
