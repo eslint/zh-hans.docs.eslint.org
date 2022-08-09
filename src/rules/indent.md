@@ -1,7 +1,7 @@
 ---
 title: indent
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/rules/indent.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/indent.md
 rule_type: layout
 ---
 

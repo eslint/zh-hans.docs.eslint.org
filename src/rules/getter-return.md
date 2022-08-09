@@ -1,7 +1,7 @@
 ---
 title: getter-return
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/rules/getter-return.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/getter-return.md
 rule_type: problem
 further_reading:
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get

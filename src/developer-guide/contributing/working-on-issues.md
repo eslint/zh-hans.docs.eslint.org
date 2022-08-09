@@ -1,7 +1,7 @@
 ---
 title: Working on Issues
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/developer-guide/contributing/working-on-issues.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/developer-guide/contributing/working-on-issues.md
 
 ---
 

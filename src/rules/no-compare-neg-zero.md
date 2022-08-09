@@ -1,7 +1,7 @@
 ---
 title: no-compare-neg-zero
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/rules/no-compare-neg-zero.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-compare-neg-zero.md
 rule_type: problem
 ---
 

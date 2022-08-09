@@ -1,7 +1,7 @@
 ---
 title: no-ex-assign
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/rules/no-ex-assign.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-ex-assign.md
 rule_type: problem
 further_reading:
 - https://bocoup.com/blog/the-catch-with-try-catch

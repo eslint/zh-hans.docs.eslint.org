@@ -1,7 +1,7 @@
 ---
 title: space-before-function-parentheses
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/rules/space-before-function-parentheses.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/space-before-function-parentheses.md
 
 related_rules:
 - space-after-keywords

@@ -1,7 +1,7 @@
 ---
 title: no-unreachable-loop
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/rules/no-unreachable-loop.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-unreachable-loop.md
 rule_type: problem
 related_rules:
 - no-unreachable

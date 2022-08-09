@@ -1,7 +1,7 @@
 ---
 title: space-before-blocks
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/rules/space-before-blocks.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/space-before-blocks.md
 rule_type: layout
 related_rules:
 - keyword-spacing

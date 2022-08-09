@@ -1,7 +1,7 @@
 ---
 title: wrap-iife
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/rules/wrap-iife.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/wrap-iife.md
 rule_type: layout
 ---
 

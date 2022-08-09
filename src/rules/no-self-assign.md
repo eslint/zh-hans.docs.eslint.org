@@ -1,7 +1,7 @@
 ---
 title: no-self-assign
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/rules/no-self-assign.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-self-assign.md
 rule_type: problem
 ---
 

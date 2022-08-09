@@ -1,7 +1,7 @@
 ---
 title: no-extra-bind
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/rules/no-extra-bind.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-extra-bind.md
 rule_type: suggestion
 further_reading:
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind

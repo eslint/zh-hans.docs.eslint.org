@@ -1,7 +1,7 @@
 ---
 title: block-scoped-var
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/rules/block-scoped-var.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/block-scoped-var.md
 rule_type: suggestion
 further_reading:
 - https://www.adequatelygood.com/JavaScript-Scoping-and-Hoisting.html

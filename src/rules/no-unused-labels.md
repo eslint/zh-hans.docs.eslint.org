@@ -1,7 +1,7 @@
 ---
 title: no-unused-labels
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/rules/no-unused-labels.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-unused-labels.md
 rule_type: suggestion
 related_rules:
 - no-extra-label

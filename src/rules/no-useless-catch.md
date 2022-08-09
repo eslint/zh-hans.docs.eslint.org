@@ -1,7 +1,7 @@
 ---
 title: no-useless-catch
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/rules/no-useless-catch.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-useless-catch.md
 rule_type: suggestion
 ---
 

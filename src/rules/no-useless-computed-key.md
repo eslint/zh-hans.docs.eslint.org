@@ -1,7 +1,7 @@
 ---
 title: no-useless-computed-key
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/rules/no-useless-computed-key.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-useless-computed-key.md
 rule_type: suggestion
 ---
 

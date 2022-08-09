@@ -1,7 +1,7 @@
 ---
 title: no-return-await
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/rules/no-return-await.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-return-await.md
 rule_type: suggestion
 further_reading:
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function

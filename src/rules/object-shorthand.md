@@ -1,7 +1,7 @@
 ---
 title: object-shorthand
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/rules/object-shorthand.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/object-shorthand.md
 rule_type: suggestion
 related_rules:
 - no-useless-rename
