@@ -1,50 +1,50 @@
 ---
-title: Getting Started with ESLint
+title: ESLint 入门
 layout: doc
 edit_link: https://github.com/eslint/eslint/edit/main/docs/src/user-guide/getting-started.md
 eleventyNavigation:
     key: getting started 
     parent: user guide
-    title: Getting Started
+    title: 入门
     order: 1
 
 ---
 
-ESLint is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code, with the goal of making code more consistent and avoiding bugs. In many ways, it is similar to JSLint and JSHint with a few exceptions:
+ESLint 是一个根据方案识别并报告 ECMAScript/JavaScript 代码问题的工具，其目的是使代码风格更加一致并避免错误。在很多地方它都与 JSLint 和 JSHint 类似，除了：
 
-* ESLint uses [Espree](https://github.com/eslint/espree) for JavaScript parsing.
-* ESLint uses an AST to evaluate patterns in code.
-* ESLint is completely pluggable, every single rule is a plugin and you can add more at runtime.
+* ESLint 使用 [Espree](https://github.com/eslint/espree) 对 JavaScript 进行解析。
+* ESLint 在代码中使用 AST 评估方案。
+* ESLint 完全是插件式的，每个规则都是一个插件，你可以在运行时中添加更多插件。
 
-## Installation and Usage
+## 安装并使用
 
-Prerequisites: [Node.js](https://nodejs.org/en/) (`^12.22.0`, `^14.17.0`, or `>=16.0.0`) built with SSL support. (If you are using an official Node.js distribution, SSL is always built in.)
+前提条件：内置 SSL 支持的 [Node.js](https://nodejs.org/en/) 版本（`^12.22.0`、`^14.17.0` 或 `>=16.0.0`），如果你使用的是官方 Node.js 发行版，那么已经内置了 SSL 支持。
 
-You can install and configure ESLint using this command:
+你可以使用该命令安装并配置 ESLint：
 
 ```shell
 npm init @eslint/config
 ```
 
-**Note:** `npm init @eslint/config` assumes you have a `package.json` file already. If you don't, make sure to run `npm init` or `yarn init` beforehand.
+**注意**：使用 `npm init @eslint/config` 时，运行目录需要已经有 `package.json` 文件了。如果还没有该文件，请确保在此之前运行 `npm init` 或 `yarn init`。
 
-After that, you can run ESLint on any file or directory like this:
+在此之后，你可以像这样使用 ESLint 检查任一文件或目录：
 
 ```shell
 npx eslint yourfile.js
 
-# or
+# 或
 
 yarn run eslint yourfile.js
 ```
 
-It is also possible to install ESLint globally rather than locally (using `npm install eslint --global`). However, this is not recommended, and any plugins or shareable configs that you use must be installed locally in either case.
+也可以全局安装 ESLint 而不仅限于本地（使用 `npm install eslint --global`）。但并不推荐这样做，因为无论使用哪种安装方式，你都需要在本地安装插件和可共享配置。
 
-## Configuration
+## 配置
 
-**Note:** If you are coming from a version before 1.0.0 please see the [migration guide](migrating-to-1.0.0).
+**注意**：如果你正在使用 1.0.0 以前的版本，请阅读[迁移指南](migrating-to-1.0.0)。
 
-After running `npm init @eslint/config`, you'll have a `.eslintrc.{js,yml,json}` file in your directory. In it, you'll see some rules configured like this:
+在运行 `npm init @eslint/config` 后，你的目录下会有 `.eslintrc.{js,yml,json}` 文件。在里面你可以看到类似于这样的一些已经配置好了的规则：
 
 ```json
 {
@@ -55,15 +55,15 @@ After running `npm init @eslint/config`, you'll have a `.eslintrc.{js,yml,json}`
 }
 ```
 
-The names `"semi"` and `"quotes"` are the names of [rules](/docs/rules) in ESLint. The first value is the error level of the rule and can be one of these values:
+`"semi"` 和 `"quotes"` 是 ESLint [规则](/docs/rules)的名称。第一个值代表规则的错误级别，有以下几种可供选择：
 
-* `"off"` or `0` - turn the rule off
-* `"warn"` or `1` - turn the rule on as a warning (doesn't affect exit code)
-* `"error"` or `2` - turn the rule on as an error (exit code will be 1)
+* `"off"` 或 `0` - 关闭该规则
+* `"warn"` 或 `1` - 启用并警告（不影响现有代码）
+* `"error"` 或 `2` - 启用并报错（错误代码 1）
 
-The three error levels allow you fine-grained control over how ESLint applies rules (for more configuration options and details, see the [configuration docs](configuring/)).
+你可以调节这三档错误级别以精准控制 ESLint 规则实施方式（更多配置项和细节，参见[配置文档](configuring/)）。
 
-Your `.eslintrc.{js,yml,json}` configuration file will also include the line:
+你的 `.eslintrc.{js,yml,json}` 配置文件也会包括这一行：
 
 ```json
 {
@@ -71,14 +71,14 @@ Your `.eslintrc.{js,yml,json}` configuration file will also include the line:
 }
 ```
 
-Because of this line, all of the rules marked "(recommended)" on the [rules page](/docs/rules) will be turned on.  Alternatively, you can use configurations that others have created by searching for "eslint-config" on [npmjs.com](https://www.npmjs.com/search?q=eslint-config).  ESLint will not lint your code unless you extend from a shared configuration or explicitly turn rules on in your configuration.
+这一行将启用[所有标记为“推荐”的规则](/docs/rules)。另外，你也可以通过在 [npmjs.com](https://www.npmjs.com/search?q=eslint-config) 上搜索“eslint-config”并使用别人创建的配置。在没有扩展别人的可共享配置或在配置中明确启用规则时，ESLint 不会限制你的代码。
 
 ---
 
-## Next Steps
+## 下一步
 
-* Learn about [advanced configuration](configuring/) of ESLint.
-* Get familiar with the [command line options](command-line-interface).
-* Explore [ESLint integrations](integrations) into other tools like editors, build systems, and more.
-* Can't find just the right rule?  Make your own [custom rule](/docs/developer-guide/working-with-rules).
-* Make ESLint even better by [contributing](/docs/developer-guide/contributing/).
+* 了解 ESLint [可选配置](configuring/)。
+* 熟悉一下[命令行选项](command-line-interface)。
+* 将 [ESLint 集成](integrations)带到诸如编辑器、构建系统以及其他工具中。
+* 找不到合适的规则？创造属于自己的[自定义规则](/docs/developer-guide/working-with-rules)。
+* 通过[贡献](/docs/developer-guide/contributing/)让 ESLint 变得更棒。
