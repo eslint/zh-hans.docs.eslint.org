@@ -1,18 +1,18 @@
 ---
-title: Rule Deprecation
+title: 规则废弃
 layout: doc
 edit_link: https://github.com/eslint/eslint/edit/main/docs/src/user-guide/rule-deprecation.md
 
 ---
 
-Balancing the trade-offs of improving a tool and the frustration these changes can cause is a difficult task. One key area in which this affects our users is in the removal of rules.
+平衡改进和破坏是项艰巨的任务，破坏会让人受挫，删除规则会对用户造成重大影响。
 
-The ESLint team is committed to making upgrading as easy and painless as possible. To that end, the team has agreed upon the following set of guidelines for deprecating rules in the future. The goal of these guidelines is to allow for improvements and changes to be made without breaking existing configurations.
+ESLint 团队致力于使升级过程尽可能无痛且容易。为此，团队已经批准了以下一系列关于未来如何废弃规则的准则。这些准则的目的是允许在不破坏现有配置的情况下进行改进和改变。
 
-* Rules will never be removed from ESLint.
-* Rules will be deprecated as needed, and marked as such in all documentation.
-* After a rule has been deprecated, the team will no longer do any work on it. This includes bug fixes, enhancements, and updates to the rule's documentation. Issues and pull requests related to deprecated rule will not be accepted and will be closed.
+* ESLint 永远不会删除规则。
+* 根据需求废弃规则，并在文档中标明。
+* 当规则被废弃后，团队将不再对其进行任何工作，包括错误修复、增强，以及规则文档的更新。不接受任何与废弃规则有关的问题和拉动请求，并直接关闭。
 
-Since deprecated rules will never be removed, you can continue to use them indefinitely if they are working for you. However, keep in mind that deprecated rules will effectively be unmaintained.
+由于废弃的规则将永远不会被删除，如果它们对你有用，你可以继续无限期地使用它们。然而，请记住，被废弃的规则实际上将不被维护。
 
-We hope that by following these guidelines we will be able to continue improving and working to make ESLint the best tool it can be while causing as little disruption to our users as possible during the process.
+我们希望通过遵循这些准则，以便能够继续改进并努力使 ESLint 成为最好的工具，同时在此过程中尽可能地减少对用户的干扰。
