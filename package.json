@@ -1,6 +1,8 @@
 {
     "name": "zh-hans.docs.eslint.org",
     "private": true,
+    "version": "8.22.0",
+    "packageManager": "npm@8.16.0",
     "scripts": {
         "images": "imagemin '_site/assets/images' --out-dir='_site/assets/images'",
         "watch:sass": "sass --watch --poll src/assets/scss:src/assets/css",
