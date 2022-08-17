@@ -5,7 +5,7 @@ edit_link: https://github.com/eslint/eslint/edit/main/docs/src/user-guide/migrat
 
 ---
 
-ESLint v3.0.0 是第三个主要发行版。这个版本中有几个破坏性改变，不过我们认为这些改变很小，不需要 ESLint 用户进行大规模修改。本指南旨在引导你了解这些变化。
+ESLint v3.0.0 是第三个主要发行版。此版本有几个破坏性改变，不过问题不大，不需要 ESLint 用户进行大规模修改。而本指南旨在引导你了解这些变化。
 
 ## 放弃支持 Node.js < 4
 
@@ -15,7 +15,7 @@ ESLint v3.0.0 是第三个主要发行版。这个版本中有几个破坏性改
 
 ## 运行时需要配置
 
-ESLint v3.0.0 现在需要有一个配置才能运行。配置可以指以下任一一种：
+ESLint v3.0.0 现在需要有配置才能运行。以下几种都属于配置：
 
 1. 无论在项目或主目录的 `.eslintrc.js`、`.eslintrc.json`、`.eslintrc.yml`、`.eslintrc.yaml` 或 `.eslintrc` 文件。
 2. 在命令行中使用 `--rule` 传递配置选项（或使用 `rules` 传递给 CLIEngine）。
@@ -24,9 +24,9 @@ ESLint v3.0.0 现在需要有一个配置才能运行。配置可以指以下任
 
 如果 ESLint 找不到配置，那么它会抛出错误并要求提供配置。
 
-这个改变是为了帮助ESLint的新用户，他们经常感到困惑，ESLint除了报告分析器错误外，默认情况下什么都不做。我们预计这一变化对大多数老用户的影响最小，因为你更可能已经有了配置文件。
+此改变有助于缓解 ESLint 新用户的困惑，ESLint 除了报告分析器错误外，默认情况下什么都不做。我们预计这一变化对大多数老用户几乎没有影响，因为你很可能已经有了配置文件。
 
-**解决方案**：无论什么时候运行 ESLint，你都需要确认使用了配置。 然而，你仍然可以在没有配置的情况下运行 ESLint，方法是在命令行上传递 `--no-eslintrc` 选项或将 `CLIEngine` 的 `useEslintrc` 选项设置为 `false`。
+**解决方案**：无论什么时候运行 ESLint，你都需要确保用了配置。但你仍然可以在没有配置的情况下运行 ESLint，方法就是在命令行上传递 `--no-eslintrc` 选项或将 `CLIEngine` 的 `useEslintrc` 选项设置为 `false`。
 
 要创建新的配置，请运行 `eslint --init`。
 
