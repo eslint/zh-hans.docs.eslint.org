@@ -110,6 +110,7 @@ _site
 .eleventy.js
 docs/
 src/_data/*
+!zh-hans.yml
 !eslintVersion.js
 _includes
 assets
