@@ -1,75 +1,75 @@
 ---
-title: Migrating to v6.0.0
+title: 迁移至 v6.0.0
 layout: doc
 edit_link: https://github.com/eslint/eslint/edit/main/docs/src/user-guide/migrating-to-6.0.0.md
 
 ---
 
-ESLint v6.0.0 is a major release of ESLint. We have made a few breaking changes in this release. This guide is intended to walk you through the breaking changes.
+ESLint v6.0.0 是 ESLint 主要发行版。在此版本中有一些破坏性变更，而本指南旨在引导你了解这些变化。
 
-The lists below are ordered roughly by the number of users each change is expected to affect, where the first items are expected to affect the most users.
+下列内容大致按每项变化预计影响的用户数量排序，其中第一项为预计会影响最多的用户的变化。
 
-## Breaking changes for users
+## 面向用户的破坏性变更
 
-1. [Node.js 6 is no longer supported](#drop-node-6)
-1. [`eslint:recommended` has been updated](#eslint-recommended-changes)
-1. [Plugins and shareable configs are no longer affected by ESLint's location](#package-loading-simplification)
-1. [The default parser now validates options more strictly](#espree-validation)
-1. [Rule configuration are validated more strictly](#rule-config-validating)
-1. [The `no-redeclare` rule is now more strict by default](#no-redeclare-updates)
-1. [The `comma-dangle` rule is now more strict by default](#comma-dangle-updates)
-1. [The `no-confusing-arrow` rule is now more lenient by default](#no-confusing-arrow-updates)
-1. [Overrides in a config file can now match dotfiles](#overrides-dotfiles)
-1. [Overrides in an extended config file can now be overridden by a parent config file](#overrides-precedence)
-1. [Configuration values for globals are now validated](#globals-validation)
-1. [The deprecated `experimentalObjectRestSpread` option has been removed](#experimental-object-rest-spread)
-1. [User-provided regular expressions in rule options are parsed with the unicode flag](#unicode-regexes)
+1. [不再支持 Node.js 6](#drop-node-6)
+1. [更新 `eslint:recommended`](#eslint-recommended-changes)
+1. [插件和可共享配置不再受 ESLint 位置影响](#package-loading-simplification)
+1. [默认解析器将更严格地验证选项](#espree-validation)
+1. [规则配置验证更严格了](#rule-config-validating)
+1. [`no-redeclare` 规则的默认值更严格了](#no-redeclare-updates)
+1. [`comma-dangle` 规则的默认值更严格了](#comma-dangle-updates)
+1. [`no-confusing-arrow` 规则的默认值更宽松了](#no-confusing-arrow-updates)
+1. [配置文件中的 `overrides` 将匹配点文件](#overrides-dotfiles)
+1. [扩展配置文件中的 `overrides` 现在可以被父级配置文件所覆盖](#overrides-precedence)
+1. [现在验证配置的全局变量值](#globals-validation)
+1. [移除废弃的 `experimentalObjectRestSpread` 选项](#experimental-object-rest-spread)
+1. [规则选项中的正则表达式的 unicode 标志可以解析了](#unicode-regexes)
 
-## Breaking changes for plugin/custom rule developers
+## 面向插件/自定义规则开发者的破坏性变更
 
-1. [Plugin authors may need to update installation instructions](#plugin-documentation)
-1. [`RuleTester` now validates against invalid `default` keywords in rule schemas](#rule-tester-defaults)
-1. [`RuleTester` now requires an absolute path on `parser` option](#rule-tester-parser)
-1. [The `eslintExplicitGlobalComment` scope analysis property has been removed](#eslintExplicitGlobalComment)
+1. [插件作者可能需要更新安装指南](#plugin-documentation)
+1. [`RuleTester`  现在可以验证规则模式中无效的  `default` 关键字了](#rule-tester-defaults)
+1. [`RuleTester` 的 `parser` 选项需要是相对路径](#rule-tester-parser)
+1. [删除 `eslintExplicitGlobalComment` 范围分析属性](#eslintExplicitGlobalComment)
 
-## Breaking changes for integration developers
+## 面向集成开发者的破坏性变更
 
-1. [Plugins and shareable configs are no longer affected by ESLint's location](#package-loading-simplification)
-1. [`Linter` no longer tries to load missing parsers from the filesystem](#linter-parsers)
+1. [插件和可共享配置不再受 ESLint 位置影响](#package-loading-simplification)
+1. [`Linter` 不再尝试从文件系统中加载缺少的解析器了](#linter-parsers)
 
 ---
 
-## <a name="drop-node-6"></a> Node.js 6 is no longer supported
+## <a name="drop-node-6"></a> 不再支持 Node.js 6
 
-As of April 2019, Node.js 6 will be at EOL and will no longer be receiving security updates. As a result, we have decided to drop support for it in ESLint v6. We now support the following versions of Node.js:
+Node.js 6 在 2019 年 4 月到达了生命的终点，将不再获得安全更新。我们在 ESLint v6 中正式放弃了对它的支持。ESLint 现在支持以下版本 Node.js：
 
-* Node.js 8 (8.10.0 and above)
-* Node.js 10 (10.13.0 and above)
-* Anything above Node.js 11.10.1
+* Node.js 8（8.10.0 以上）
+* Node.js 10（10.13.0 以上）
+* Node.js 11.10.1 以上
 
-**To address:** Make sure you upgrade to at least Node.js 8 when using ESLint v6. If you are unable to upgrade, we recommend continuing to use ESLint v5.x until you are able to upgrade Node.js.
+**解决方案**：在使用 ESLint v6.0.0 前，请确保你至少升级到 Node.js 8。如果你无法升级，我们推荐在能够升级 Node.js 版本前，继续使用 ESLint v5.x。
 
-**Related issue(s):** [eslint/eslint#11546](https://github.com/eslint/eslint/issues/11456)
+**相关议题**：[eslint/eslint#11546](https://github.com/eslint/eslint/issues/11456)
 
-## <a name="eslint-recommended-changes"></a> `eslint:recommended` has been updated
+## <a name="eslint-recommended-changes"></a> 更新 `eslint:recommended`
 
-The following rules have been added to the [`eslint:recommended`](https://eslint.org/docs/user-guide/configuring#using-eslintrecommended) config:
+[`eslint:recommended`](https://eslint.org/docs/user-guide/configuring#using-eslintrecommended) 配置添加了下列规则：
 
-* [`no-async-promise-executor`](https://eslint.org/docs/rules/no-async-promise-executor) disallows using an `async` function as the argument to the `Promise` constructor, which is usually a bug.
-* [`no-misleading-character-class`](https://eslint.org/docs/rules/no-misleading-character-class) reports character classes in regular expressions that might not behave as expected.
-* [`no-prototype-builtins`](https://eslint.org/docs/rules/no-prototype-builtins) reports method calls like `foo.hasOwnProperty("bar")` (which are a frequent source of bugs), and suggests that they be replaced with `Object.prototype.hasOwnProperty.call(foo, "bar")` instead.
-* [`no-shadow-restricted-names`](https://eslint.org/docs/rules/no-shadow-restricted-names) disallows shadowing variables like `undefined` (e.g. with code like `let undefined = 5;`), since is likely to confuse readers.
-* [`no-useless-catch`](https://eslint.org/docs/rules/no-useless-catch) reports `catch` clauses that are redundant and can be removed from the code without changing its behavior.
-* [`no-with`](https://eslint.org/docs/rules/no-with) disallows use of the [`with` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/with), which can make code difficult to understand and cause compatibility problems.
-* [`require-atomic-updates`](https://eslint.org/docs/rules/require-atomic-updates) reports race condition bugs that can occur when reassigning variables in async functions.
+* [`no-async-promise-executor`](https://eslint.org/docs/rules/no-async-promise-executor) 不允许使用 `async` 函数作为 `Promise` 构造函数的参数，因为这通常是个漏洞。
+* [`no-misleading-character-class`](https://eslint.org/docs/rules/no-misleading-character-class) 将报告正则表达式中与预期不符的字符类，
+* [`no-prototype-builtins`](https://eslint.org/docs/rules/no-prototype-builtins) 将报告调用 `foo.hasOwnProperty("bar")` 等方法（它经常导致漏洞），并推荐使用 `Object.prototype.hasOwnProperty.call(foo, "bar")` 代替之。
+* [`no-shadow-restricted-names`](https://eslint.org/docs/rules/no-shadow-restricted-names) 不允许使用 `undefined` 这样的阴影变量（例如 `let undefined = 5;`），因为这可能会混淆读者。
+* [`no-useless-catch`](https://eslint.org/docs/rules/no-useless-catch) 报告多余的 `catch` 语句，可以从代码中删除而不改变其行为。
+* [`no-with`](https://eslint.org/docs/rules/no-with) 不允许使用 [`with` 语句](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/with)，这可能使代码难以理解并导致兼容性问题。
+* [`require-atomic-updates`](https://eslint.org/docs/rules/require-atomic-updates) 报告了在异步函数中重新分配变量时可能出现的竞争条件错误。
 
-Additionally, the following rule has been *removed* from `eslint:recommended`:
+此外，`eslint:recommended` 删除了下列规则：
 
-* [`no-console`](https://eslint.org/docs/rules/no-console) disallows calling functions like `console.log`. While this rule is useful in many cases (e.g. to avoid inadvertently leaving debugging statements in production code), it is not as broadly applicable as the other rules in `eslint:recommended`, and it was a source of false positives in cases where `console.log` is acceptable (e.g. in CLI applications).
+* [`no-console`](https://eslint.org/docs/rules/no-console) 不允许调用 `console.log` 等函数。虽然这条规则适用于基本情况（例如避免在生产代码中留下调试语句），但它不像 `eslint:recommended` 中的其他规则那样广泛适用，而且在一些情况下是需要使用 `console.log` 的（例如，在 CLI 应用程序中），这使得它错误地进行了报告。
 
-Finally, in ESLint v5 `eslint:recommended` would explicitly disable all core rules that were not considered "recommended". This could cause confusing behavior if `eslint:recommended` was loaded after another config, since `eslint:recommended` would have the effect of turning off some rules. In ESLint v6, `eslint:recommended` has no effect on non-recommended rules.
+最后，在 ESLint v5 中，`eslint:recommended` 会明确地禁用所有不被视为“推荐”的核心规则。如果 `eslint:recommended` 在另一个配置之后加载就会出现问题，因为 `eslint:recommended` 会关闭一些规则。而在 ESLint v6 中，`eslint:recommended` 对非推荐的规则没有影响。
 
-**To address:** To mimic the `eslint:recommended` behavior from 5.x, you can explicitly disable/enable rules in a config file as follows:
+**解决方法：**为了模仿 5.x 的 `eslint:recommended` 行为，你可以在配置文件中明确地禁用/启用规则，如下所示：
 
 ```json
 {
@@ -89,39 +89,39 @@ Finally, in ESLint v5 `eslint:recommended` would explicitly disable all core rul
 }
 ```
 
-In rare cases (if you were relying on the previous behavior where `eslint:recommended` disables core rules), you might need to disable additional rules to restore the previous behavior.
+在极少数情况下（如果你依赖以前的行为，即 `eslint:recommended` 会禁用核心规则），你可能需要禁用其他规则来恢复以前的行为。
 
-**Related issue(s):** [eslint/eslint#10768](https://github.com/eslint/eslint/issues/10768), [eslint/eslint#10873](https://github.com/eslint/eslint/issues/10873)
+**相关议题**：[eslint/eslint#10768](https://github.com/eslint/eslint/issues/10768)、[eslint/eslint#10873](https://github.com/eslint/eslint/issues/10873)
 
-## <a name="package-loading-simplification"></a> Plugins and shareable configs are no longer affected by ESLint's location
+## <a name="package-loading-simplification"></a> 插件和可共享配置不再受 ESLint 位置影响
 
-Previously, ESLint loaded plugins relative to the location of the ESLint package itself. As a result, we suggested that users with global ESLint installations should also install plugins globally, and users with local ESLint installations should install plugins locally. However, due to a design bug, this strategy caused ESLint to randomly fail to load plugins and shareable configs under certain circumstances, particularly when using package management tools like [`lerna`](https://github.com/lerna/lerna) and [Yarn Plug n' Play](https://yarnpkg.com/lang/en/docs/pnp/).
+以前 ESLint 基于相对于 ESLint 包本身的位置来加载插件的。因此，我们建议全局安装 ESLint 的用户也应该在全局安装插件，而安装了本地 ESLint 的用户应该在本地安装插件。然而，由于设计错误，这个策略导致 ESLint 在某些情况下随机地不能加载插件和可共享配置，特别是在使用像 [`lerna`](https://github.com/lerna/lerna) 和 [Yarn Plug n' Play](https://yarnpkg.com/lang/en/docs/pnp/) 这样的包管理器时。
 
-As a rule of thumb: With ESLint v6, plugins should always be installed locally, even if ESLint was installed globally. More precisely, ESLint v6 resolves plugins relative to the end user's project by default, and always resolves shareable configs and parsers relative to the location of the config file that imports them.
+经验之谈：在 ESLint v6 中，即使是全局 ESLint ，也应该在本地安装插件。更确切地说，ESLint v6 默认将基于用户项目进行解析插件，并且总是相对于配置文件进行解析可共享配置和解析器。
 
-**To address:** If you use a global installation of ESLint (e.g. installed with `npm install eslint --global`) along with plugins, you should install those plugins locally in the projects where you run ESLint. If your config file extends shareable configs and/or parsers, you should ensure that those packages are installed as dependencies of the project containing the config file.
+**解决方案**：如果你全局安装了 ESLint （如用 `npm install eslint --global` 安装）以及插件，你应该在运行 ESLint 的项目中安装这些插件。如果配置文件扩展了可共享的配置和解析器，你应该确保配置文件中包含了这些包依赖。
 
-If you use a config file located outside of a local project (with the `--config` flag), consider installing the plugins as dependencies of that config file, and setting the [`--resolve-plugins-relative-to`](./command-line-interface#--resolve-plugins-relative-to) flag to the location of the config file.
+如果你使用了位于非本地项目的配置文件（使用 `--config` 标志），可以考虑将插件作为该配置文件的依赖项来安装，并将 [`--resolve-plugins-relative-to`](./command-line-interface#--resolve-plugins-relative-to) 标志设为该配置文件的位置。
 
-**Related issue(s):** [eslint/eslint#10125](https://github.com/eslint/eslint/issues/10125), [eslint/rfcs#7](https://github.com/eslint/rfcs/pull/7)
+**相关议题**：[eslint/eslint#10125](https://github.com/eslint/eslint/issues/10125)、[eslint/rfcs#7](https://github.com/eslint/rfcs/pull/7)
 
-## <a name="espree-validation"></a> The default parser now validates options more strictly
+## <a name="espree-validation"></a> 默认解析器将更严格地验证选项
 
-`espree`, the default parser used by ESLint, will now raise an error in the following cases:
+ESLint 使用的默认解析器 `espree`，现在会因为以下情况下而引发错误：
 
-* The `ecmaVersion` parser option is set to something other than a number, such as the string `"2015"`. (Previously, a non-number option would simply be ignored.)
-* The `sourceType: "module"` parser option is set while `ecmaVersion` is set to `5` or left unspecified. (Previously, setting `sourceType: "module"` would implicitly cause `ecmaVersion` to be set to a minimum of 2015, which could be surprising.)
-* The `sourceType` is set to anything other than `"script"` or `"module"`.
+* `ecmaVersion` 解析器选项被设置为数字以外的东西，例如字符串 `"2015"`。（以前会忽略非数字的选项)
+* `sourceType: "module"` 解析器选项被设置，而 `ecmaVersion` 被设置为 `5` 或未被指定。（以前设置 `sourceType: "module"` 将隐性导致 `ecmaVersion` 设置为令人不知所以然的最小值 2015）。
+* `sourceType` 设置成了 `"script"` 或 `"module"` 以外的值。
 
-**To address:** If your config sets `ecmaVersion` to something other than a number, you can restore the previous behavior by removing `ecmaVersion`. (However, you may want to double-check that your config is actually working as expected.) If your config sets `parserOptions: { sourceType: "module" }` without also setting `parserOptions.ecmaVersion`, you should add `parserOptions: { ecmaVersion: 2015 }` to restore the previous behavior.
+**解决方案**：如果配置将 `ecmaVersion` 设置为非数字值，你可以删除 `ecmaVersion` 恢复以前的行为。（然而，你可能想仔细检查一下配置是否真的按预期工作）。如果你的配置设置了 `parserOptions: { sourceType: "module" }` 而没有设置 `parserOptions.ecmaVersion`，你应该添加 `parserOptions: { ecmaVersion: 2015 }` 以恢复以前的行为。
 
-**Related issue(s):** [eslint/eslint#9687](https://github.com/eslint/eslint/issues/9687), [eslint/espree#384](https://github.com/eslint/espree/issues/384)
+**相关议题**：[eslint/eslint#9687](https://github.com/eslint/eslint/issues/9687)、[eslint/espree#384](https://github.com/eslint/espree/issues/384)
 
-## <a name="rule-config-validating"></a> Rule configuration are validated more strictly
+## <a name="rule-config-validating"></a> 规则配置验证更严格了
 
-To catch config errors earlier, ESLint v6 will report a linting error if you are trying to configure a non-existent rule.
+为了更早地发现配置错误，如果你试图配置不存在的规则，ESLint v6 会报告检查错误。
 
-config | ESLint v5 | ESLint v6
+配置 | ESLint v5 | ESLint v6
 ------------- | ------------- | -------------
 `/*eslint-enable foo*/`  | no error | linting error
 `/*eslint-disable(-line) foo*/`  | no error | linting error
@@ -129,17 +129,17 @@ config | ESLint v5 | ESLint v6
 `{rules: {foo: 0}}` | no error | no error
 `{rules: {foo: 1}` | linting warning | linting error
 
-**To address:** You can remove the non-existent rule in your (inline) config.
+**解决方案**：你可以在（内联）配置中删除不存在的规则。
 
-**Related issue(s):** [eslint/eslint#9505](https://github.com/eslint/eslint/issues/9505)
+**相关议题**：[eslint/eslint#9505](https://github.com/eslint/eslint/issues/9505)
 
-## <a name="no-redeclare-updates"></a> The `no-redeclare` rule is now more strict by default
+## <a name="no-redeclare-updates"></a> `no-redeclare` 规则的默认值更严格了
 
-The default options for the [`no-redeclare`](https://eslint.org/docs/rules/no-redeclare) rule have changed from `{ builtinGlobals: false }` to `{ builtinGlobals: true }`. Additionally, the `no-redeclare` rule will now report an error for globals enabled by comments like `/* global foo */` if those globals were already enabled through configuration anyway.
+[`no-redeclare`](https://eslint.org/docs/rules/no-redeclare) 规则的默认选项已经从 `{ builtinGlobals: false }` 改为 `{ builtinGlobals: true }`。此外，对于通过注释启用的全局变量，如 `/* global foo */`，如果这些全局变量已经通过配置启用，那么 `no-redeclare` 规则现在将报告错误。
 
-**To address:**
+**解决方案**：
 
-To restore the previous options for the rule, you can configure it as follows:
+要恢复该规则以前的选项，你可以按以下方式进行配置：
 
 ```json
 {
@@ -149,15 +149,15 @@ To restore the previous options for the rule, you can configure it as follows:
 }
 ```
 
-Additionally, if you see new errors for `global` comments in your code, you should remove those comments.
+此外，如果你看到代码中的全局变量注释有新的错误，你应该删除这些注释。
 
-**Related issue(s):** [eslint/eslint#11370](https://github.com/eslint/eslint/issues/11370), [eslint/eslint#11405](https://github.com/eslint/eslint/issues/11405)
+**相关议题**：[eslint/eslint#11370](https://github.com/eslint/eslint/issues/11370)、[eslint/eslint#11405](https://github.com/eslint/eslint/issues/11405)
 
-## <a name="comma-dangle-updates"></a> The `comma-dangle` rule is now more strict by default
+## <a name="comma-dangle-updates"></a> `comma-dangle` 规则的默认值更严格了
 
-Previously, the [`comma-dangle`](https://eslint.org/docs/rules/comma-dangle) rule would ignore trailing function arguments and parameters, unless explicitly configured to check for function commas. In ESLint v6, function commas are treated the same way as other types of trailing commas.
+以前，[`comma-dangle`](https://eslint.org/docs/rules/comma-dangle) 规则会忽略尾部的函数参数，除非明确配置为检查函数逗号。在 ESLint v6 中，函数逗号的处理方式与其他类型的尾随逗号相同。
 
-**To address:** You can restore the previous default behavior of the rule with:
+**解决方案**：你可以用以下方法将规则恢复成和以前一样的默认行为：
 
 ```json
 {
@@ -173,15 +173,15 @@ Previously, the [`comma-dangle`](https://eslint.org/docs/rules/comma-dangle) rul
 }
 ```
 
-To restore the previous behavior of a string option like `"always-multiline"`, replace `"never"` with `"always-multiline"` in the example above.
+要恢复像 `always-multiline` 这样的字符串选项以前的行为，请将上面例子中的 `never` 替换为 `always-multiline`。
 
-**Related issue(s):** [eslint/eslint#11502](https://github.com/eslint/eslint/issues/11502)
+**相关议题**：[eslint/eslint#11502](https://github.com/eslint/eslint/issues/11502)
 
-## <a name="no-confusing-arrow-updates"></a> The `no-confusing-arrow` rule is now more lenient by default
+## <a name="no-confusing-arrow-updates"></a> `no-confusing-arrow` 规则的默认值更宽松了
 
 The default options for the [`no-confusing-arrow`](https://eslint.org/docs/rules/no-confusing-arrow) rule have changed from `{ allowParens: false }` to `{ allowParens: true }`.
 
-**To address:** You can restore the previous default behavior of the rule with:
+**解决方案**：你可以用以下方法将规则恢复成和以前一样的默认行为：
 
 ```json
 {
@@ -191,19 +191,19 @@ The default options for the [`no-confusing-arrow`](https://eslint.org/docs/rules
 }
 ```
 
-**Related issue(s):** [eslint/eslint#11503](https://github.com/eslint/eslint/issues/11503)
+**相关议题**：[eslint/eslint#11503](https://github.com/eslint/eslint/issues/11503)
 
-## <a name="overrides-dotfiles"></a> Overrides in a config file can now match dotfiles
+## <a name="overrides-dotfiles"></a> 配置文件中的 `overrides` 将匹配点文件
 
-Due to a bug, the glob patterns in a `files` list in an `overrides` section of a config file would never match dotfiles, making it impossible to have overrides apply to files starting with a dot. This bug has been fixed in ESLint v6.
+由于一个错误，在配置文件的 `overrides` 部分的 `files` 列表中的 glob 模式永远不会与 `dotfiles` 相匹配，这使得 overrides 无法应用于以点开始的文件。这个错误已经在 ESLint v6 中被修复。
 
-**To address:** If you don't want dotfiles to be matched by an override, consider adding something like `excludedFiles: [".*"]` to that `overrides` section. See the [documentation](https://eslint.org/docs/user-guide/configuring#configuration-based-on-glob-patterns) for more details.
+**解决方案**：如果你不希望 dotfiles 被覆盖匹配，可以考虑在 `overrides`部分添加类似 `excludedFiles: [".*"]` 的内容。更多细节见[文档](https://eslint.org/docs/user-guide/configuring#configuration-based-on-glob-patterns)。
 
-**Related issue(s):** [eslint/eslint#11201](https://github.com/eslint/eslint/issues/11201)
+**相关议题**：[eslint/eslint#11201](https://github.com/eslint/eslint/issues/11201)
 
-## <a name="overrides-precedence"></a> Overrides in an extended config file can now be overridden by a parent config file
+## <a name="overrides-precedence"></a> 扩展配置文件中的 `overrides` 现在可以被父级配置文件所覆盖
 
-Due to a bug, it was previously the case that an `overrides` block in a shareable config had precedence over the top level of a parent config. For example, with the following config setup, the `semi` rule would end up enabled even though it was explicitly disabled in the end user's config:
+由于错误，以前可共享配置中 `overrides` 块优先于父配置。例如在下面的配置设置中，`semi` 规则最终会被启用，尽管它在最终用户的配置中被明确禁用。
 
 ```js
 // .eslintrc.js
@@ -227,15 +227,15 @@ module.exports = {
 };
 ```
 
-In ESLint v6.0.0, a parent config always has precedence over extended configs, even with `overrides` blocks.
+在 ESLint v6.0.0 中，父级配置总是优先于扩展配置，即使有 `overrides` 块。
 
-**To address:** We expect the impact of this issue to be very low because most shareable configs don't use `overrides` blocks. However, if you use a shareable config with `overrides` blocks, you might encounter a change in behavior due to something that is explicitly specified in your config but was inactive until now. If you would rather inherit the behavior from the shareable config, simply remove the corresponding entry from your own config. (In the example above, the previous behavior could be restored by removing `semi: "off"` from `.eslintrc.js`.)
+**解决方案**：我们预计这个问题的影响非常小，因为大多数可共享配置不使用 `overrides` 块。然而，如果你使用带有 `overrides` 块的可共享配置，你可能会遇到由于配置中明确指定的内容而导致的行为变化，但直到现在还没有活动。如果你想继承可共享配置的行为，只需从你自己的配置中删除相应的条目（在上面的例子中，可以删除 `.eslintrc.js` 中的 `semi: "off"` 以恢复之前的行为）。
 
-**Related issue(s):** [eslint/eslint#11510](https://github.com/eslint/eslint/issues/11510)
+**相关议题**：[eslint/eslint#11510](https://github.com/eslint/eslint/issues/11510)
 
-## <a name="globals-validation"></a> Configuration values for globals are now validated
+## <a name="globals-validation"></a> 现在验证配置的全局变量值
 
-Previously, when configuring a set of global variables with an object, it was possible to use anything as the values of the object. An unknown value would be treated the same as `"writable"`.
+以前，当用对象配置一组全局变量时，有可能使用任何东西作为对象的值。未知的值将视作 `"writable"`。
 
 ```js
 // .eslintrc.js
@@ -248,13 +248,13 @@ module.exports = {
 };
 ```
 
-With this change, any unknown values in a `globals` object result in a config validation error.
+有了这个变化，`globals` 对象中的任何未知值都会导致配置验证错误。
 
-**To address:** If you see config validation errors related to globals after updating, ensure that all values configured for globals are either `readonly`, `writable`, or `off`. (ESLint also accepts some alternate spellings and variants for compatibility.)
+**解决方案**：如果你在更新后看到与全局变量有关的配置验证错误，请确保为 globals 配置的所有值都为 `readonly`、`writable` 或 `off`（ESLint 也支持替代性的拼写和变体，以保证兼容性）。
 
-## <a name="experimental-object-rest-spread"></a> The deprecated `experimentalObjectRestSpread` option has been removed
+## <a name="experimental-object-rest-spread"></a> 移除废弃的 `experimentalObjectRestSpread` 选项
 
-Previously, when using the default parser, a config could use the `experimentalObjectRestSpread` option to enable parsing support for object rest/spread properties:
+以前，使用默认的解析器时，配置可以使用 `experimentalObjectRestSpread` 选项来启用对对象剩余展开属性的解析支持。
 
 ```json
 {
@@ -266,9 +266,9 @@ Previously, when using the default parser, a config could use the `experimentalO
 }
 ```
 
-Since ESLint v5, `ecmaFeatures: { experimentalObjectRestSpread: true }` has been equivalent to `ecmaVersion: 2018`, and has also emitted a deprecation warning. In ESLint v6, the `experimentalObjectRestSpread` feature has been removed entirely and has no effect. If your config was relying on `experimentalObjectRestSpread` to enable ES2018 parsing, you might start seeing parsing errors for recent syntax.
+从 ESLint v5 开始，`ecmaFeatures: { experimentalObjectRestSpread: true }` 已经等同于 `ecmaVersion: 2018`，并且还发出了废弃警告。在 ESLint v6 中，已经完全无损地删除了`experimentalObjectRestSpread` 功能。如果你的配置是依靠 `experimentalObjectRestSpread` 来启用 ES2018 解析，你可能会开始看到最新的语法的解析错误。
 
-**To address:** If you use the `experimentalObjectRestSpread` option, you should change your config to contain this instead:
+**解决方案**：如果你使用 `experimentalObjectRestSpread` 选项，你应该修改配置来进行替换：
 
 ```json
 {
@@ -278,58 +278,58 @@ Since ESLint v5, `ecmaFeatures: { experimentalObjectRestSpread: true }` has been
 }
 ```
 
-If you're not sure which config file needs to be updated, it may be useful to run ESLint v5 and look at what config file is mentioned in the deprecation warning.
+如果你不确定哪个配置文件需要更新，可以尝试运行 ESLint v5 并查看废弃警告中提到的配置文件。
 
-**Related issue(s):** [eslint/eslint#9990](https://github.com/eslint/eslint/issues/9990)
+**相关议题**：[eslint/eslint#9990](https://github.com/eslint/eslint/issues/9990)
 
-## <a name="unicode-regexes"></a> User-provided regular expressions in rule options are parsed with the unicode flag
+## <a name="unicode-regexes"></a> 规则选项中的正则表达式的 unicode 标志可以解析了
 
-Rules like [`max-len`](/docs/rules/max-len) accept a string option which is interpreted as a regular expression. In ESLint v6.0.0, these regular expressions are interpreted with the [unicode flag](https://mathiasbynens.be/notes/es6-unicode-regex), which should exhibit more reasonable behavior when matching characters like astral symbols. Unicode regexes also validate escape sequences more strictly than non-unicode regexes.
+像 [`max-len`](/docs/rules/max-len) 这样的规则支持字符串选项，它被解释为正则表达式。在 ESLint v6.0.0 中，这些正则表达式被解释为 [unicode 标志](https://mathiasbynens.be/notes/es6-unicode-regex)，在匹配星形符号等字符时，应该表现出更合理的行为。Unicode 正则表达式也比非 unicode 正则表达式更严格地验证转义序列。
 
-**To address:** If you get rule option validation errors after upgrading, ensure that any regular expressions in your rule options have no invalid escape sequences.
+**解决方案**：如果你在升级后得到规则选项的验证错误，请确保你的规则选项中的任何正则表达式没有无效的转义序列。
 
-**Related issue(s):** [eslint/eslint#11423](https://github.com/eslint/eslint/issues/11423)
-
----
-
-## <a name="plugin-documentation"></a> Plugin authors may need to update installation instructions
-
-If you maintain a plugin and provide installation instructions, you should ensure that the installation instructions are up to date with the [user-facing changes to how plugins are loaded](#package-loading-simplification). In particular, if your plugin was generated with the [`generator-eslint`](https://github.com/eslint/generator-eslint) package, it likely contains outdated instructions for how to use the plugin with global ESLint installations.
-
-**Related issue(s):** [eslint/rfcs#7](https://github.com/eslint/rfcs/pull/7)
-
-## <a name="rule-tester-defaults"></a> `RuleTester` now validates against invalid `default` keywords in rule schemas
-
-In some cases, rule schemas can use the `default` keyword to automatically specify default values for rule options. However, the `default` keyword is only effective in certain schema locations, and is ignored elsewhere, which creates a risk of bugs if a rule incorrectly expects a default value to be provided as a rule option. In ESLint v6.0.0, `RuleTester` will raise an error if a rule has an invalid `default` keyword in its schema.
-
-**To address:** If `RuleTester` starts reporting an error about an invalid default, you can remove the `default` property at the indicated location in your rule schema, and the rule will behave the same way. (If this happens, you might also want to verify that the rule behaves correctly when no option value is provided in that location.)
-
-**Related issue(s):** [eslint/eslint#11473](https://github.com/eslint/eslint/issues/11473)
-
-## <a name="rule-tester-parser"></a> `RuleTester` now requires an absolute path on `parser` option
-
-To use custom parsers in tests, we could use `parser` property with a package name or file path. However, if a package name was given, it's unclear where the tester should load the parser package from because the tester doesn't know which files are running the tester. In ESLint v6.0.0, `RuleTester` disallows `parser` property with a package name.
-
-**To address:** If you use `parser` property with package names in test cases, update it with `require.resolve()` function to resolve the package name to the absolute path to the package.
-
-**Related issue(s):** [eslint/eslint#11728](https://github.com/eslint/eslint/issues/11728), [eslint/eslint#10125](https://github.com/eslint/eslint/issues/10125), [eslint/rfcs#7](https://github.com/eslint/rfcs/pull/7)
-
-## <a name="eslintExplicitGlobalComment"></a> The `eslintExplicitGlobalComment` scope analysis property has been removed
-
-Previously, ESLint would add an `eslintExplicitGlobalComment` property to `Variable` objects in scope analysis to indicate that a variable was introduced as a result of a `/* global */` comment. This property was undocumented, and the ESLint team was unable to find any usage of the property outside of ESLint core. The property has been removed in ESLint v6, and replaced with the `eslintExplicitGlobalComments` property, which can contain a list of all `/* global */` comments if a variable was declared with more than one of them.
-
-**To address:** If you maintain a rule that uses the `eslintExplicitGlobalComment` property, update it to use the `eslintExplicitGlobalComments` property as a list instead.
-
-**Related issue(s):** [eslint/rfcs#17](https://github.com/eslint/rfcs/pull/17)
+**相关议题**：[eslint/eslint#11423](https://github.com/eslint/eslint/issues/11423)
 
 ---
 
-## <a name="linter-parsers"></a> `Linter` no longer tries to load missing parsers from the filesystem
+## <a name="plugin-documentation"></a> 插件作者可能需要更新安装指南
 
-Previously, when linting code with a parser that had not been previously defined, the `Linter` API would attempt to load the parser from the filesystem. However, this behavior was confusing because `Linter` never access the filesystem in any other cases, and it was difficult to ensure that the correct parser would be found when loading the parser from the filesystem.
+如果你维护一个插件并提供安装说明，你应该确保安装说明是最新的[面向用户的插件加载方式的变化](#package-loading-simplification)。特别是，如果你的插件是用 [`generator-eslint`](https://github.com/eslint/generator-eslint) 包生成的，它很可能包含了过时的说明，即如何在全局 ESLint 安装中使用该插件。
 
-In ESLint v6, `Linter` will no longer perform any filesystem operations, including loading parsers.
+**相关议题**：[eslint/rfcs#7](https://github.com/eslint/rfcs/pull/7)
 
-**To address:** If you're using `Linter` with a custom parser, use [`Linter#defineParser`](https://eslint.org/docs/developer-guide/nodejs-api#linterdefineparser) to explicitly define the parser before linting any code.
+## <a name="rule-tester-defaults"></a> `RuleTester`  现在可以验证规则模式中无效的  `default` 关键字了
 
-**Related issue(s):** [eslint/rfcs#7](https://github.com/eslint/rfcs/pull/7)
+在某些情况下，规则模式可以使用 `default` 关键字来自动指定规则选项的默认值。然而，`default` 关键字只在特定的模式位置有效，而在其他地方被忽略，如果规则错误地期望提供默认值作为规则选项，就会由产生错误的风险。在 ESLint v6.0.0 中，如果规则模式中有无效的 `default` 关键字，`RuleTester` 将引发错误。
+
+**解决方案**：如果 `RuleTester` 开始报告关于无效默认值的错误，你可以在你的规则模式中删除指定位置的 `default` 属性，规则将以同样的方式行事（如果发生这种情况，你可能还想验证一下，当该位置没有提供选项值时，该规则的行为是否正确）。
+
+**相关议题**：[eslint/eslint#11473](https://github.com/eslint/eslint/issues/11473)
+
+## <a name="rule-tester-parser"></a> `RuleTester` 的 `parser` 选项需要是相对路径
+
+为了在测试中使用自定义解析器，我们可以使用 `parser` 属性，并给出包名或文件路径。然而，如果给了包名，测试区会搞不清楚应该从哪加载解析器包，因为测试器不知道哪些文件在运行测试器。在 ESLint v6.0.0 中，`RuleTester` 不允许 `parser` 属性带有包名。
+
+**解决方案**：如果你在测试用例中将 `parser` 属性指定为包名，请用 `require.resolve()` 函数更新它，将包名解析为包的绝对路径。
+
+**相关议题**：[eslint/eslint#11728](https://github.com/eslint/eslint/issues/11728)、[eslint/eslint#10125](https://github.com/eslint/eslint/issues/10125)、[eslint/rfcs#7](https://github.com/eslint/rfcs/pull/7)
+
+## <a name="eslintExplicitGlobalComment"></a> 删除 `eslintExplicitGlobalComment` 范围分析属性
+
+以前，ESLint 会在范围分析中为 `Variable`  对象添加 `eslintExplicitGlobalComment` 属性，以表明变量是由于 `/* global */` 注释而引入的。这个属性并没有任何记录，同时 ESLint 团队也无法在 ESLint 核心中找到这个属性的任何用法。该属性在 ESLint v6 中被删除，取而代之的是 `eslintExplicitGlobalComments` 属性，如果变量在声明时有多个注释，该属性可以列出所有 `/* global */` 注释。
+
+**解决方案**：如果你维护的规则使用了 `eslintExplicitGlobalComment` 属性，请使用 `eslintExplicitGlobalComments` 属性替换。
+
+**相关议题**：[eslint/rfcs#17](https://github.com/eslint/rfcs/pull/17)
+
+---
+
+## <a name="linter-parsers"></a> `Linter` 不再尝试从文件系统中加载缺少的解析器了
+
+以前，当用以前没有定义过的解析器检查代码时，`Linter` API 会尝试从文件系统加载分析器。然而，这种行为令人困惑，因为 `Linter` 在其他情况下都不会访问文件系统，而且很难确保从文件系统加载解析器时能找到正确的解析器。
+
+在 ESLint v6 中，`Linter` 将不再执行任何文件系统操作，包括加载解析器。
+
+**解决方案**：如果你使用了 `Linter` 和自定义解析器，请改用 [`Linter#defineParser`](https://eslint.org/docs/developer-guide/nodejs-api#linterdefineparser)，并在检查代码前明确定义解析器。
+
+**相关议题**：[eslint/rfcs#7](https://github.com/eslint/rfcs/pull/7)
