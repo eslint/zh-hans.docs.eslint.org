@@ -1,23 +1,23 @@
 ---
-title: alert 
+title: 提示 
 ---
 
-The alert message comes in three different types: a warning, a tip, and an important note.
+提示消息有三种不同的类型：警告、提示、重要提示。
 
-## Usage
+## 用法
 
-There is a shortcode for each type of alert. The shortcode expects you to provide the text and URL for the “Learn more” link.
+每个类型的提示都有简码，使用时需要提供“了解更多”的文本和链接。
 
 ```html
-{ % warning "This rule has been removed in version x.xx", "/link/to/learn/more" % }
+{ % warning "x.xx 版本移除了此规则", "/link/to/learn/more" % }
 
-{ % tip "Kind reminder to do something maybe", "/link/to/learn/more" % }
+{ % tip "善意提示，可以做点什么", "/link/to/learn/more" % }
 
-{ % important "This rule has been deprecated in version x.xx", "/link/to/learn/more" % }
+{ % important "x.xx 版本废弃了此规则", "/link/to/learn/more" % }
 ```
 
-## Examples
+## 示例
 
-{% warning "warning text", "/" %}
-{% tip "tip text", "/" %}
-{% important "text", "/" %}
+{% warning "警告文本", "/" %}
+{% tip "提示文本", "/" %}
+{% important "文本", "/" %}
