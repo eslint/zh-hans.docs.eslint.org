@@ -1,14 +1,14 @@
 ---
-title: Correct and incorrect code usage 
+title: 正确和错误的代码用例
 ---
 
-To indicate correct and incorrect code usage, some code blocks can have correct and incorrect icons added to them, respectively.
+为了表示正确和错误的代码用例，可以分别给代码块添加上正确和错误的图标。
 
-## Usage
+## 用大
 
-To indicate that a code block is correct or incorrect, wrap the code block in a container labeled either `correct` or `incorrect`.
+要表示一个代码块正确与否，需要将代码块包裹在标有 `correct` 或 `incorrect` 的容器中。
 
-Make sure to leave space above and below the markdown code block to ensure it is rendered correctly.
+请确保 markdown 代码块上下都有留空，这样才能正确渲染。
 
 ```text
 ::: correct
@@ -30,9 +30,9 @@ function() {
 :::
 ```
 
-## Examples
+## 示例
 
-Correct usage:
+正确用例：
 
 ::: correct
 
@@ -40,20 +40,20 @@ Correct usage:
 const { ESLint } = require("eslint");
 
 (async function main() {
-  // 1. Create an instance with the `fix` option.
+  // 1. 创建带有 `fix` 选项的实例
   const eslint = new ESLint({ fix: true });
 
-  // 2. Lint files. This doesn't modify target files.
+  // 2. 检查文件，但并不会对目标文件进行修改
   const results = await eslint.lintFiles(["lib/**/*.js"]);
 
-  // 3. Modify the files with the fixed code.
+  // 3. 用修复后的代码替换之
   await ESLint.outputFixes(results);
 
-  // 4. Format the results.
+  // 4. 格式化结果
   const formatter = await eslint.loadFormatter("stylish");
   const resultText = formatter.format(results);
 
-  // 5. Output it.
+  // 5. 输出结果
   console.log(resultText);
 })().catch((error) => {
   process.exitCode = 1;
@@ -63,7 +63,7 @@ const { ESLint } = require("eslint");
 
 :::
 
-Incorrect usage:
+错误用例：
 
 ::: incorrect
 
@@ -71,20 +71,20 @@ Incorrect usage:
 const { ESLint } = require("eslint");
 
 (async function main() {
-  // 1. Create an instance with the `fix` option.
+  // 1. 创建带有 `fix` 选项的实例
   const eslint = new ESLint({ fix: true });
 
-  // 2. Lint files. This doesn't modify target files.
+  // 2. 检查文件，但并不会对目标文件进行修改
   const results = await eslint.lintFiles(["lib/**/*.js"]);
 
-  // 3. Modify the files with the fixed code.
+  // 3. 用修复后的代码替换之
   await ESLint.outputFixes(results);
 
-  // 4. Format the results.
+  // 4. 格式化结果
   const formatter = await eslint.loadFormatter("stylish");
   const resultText = formatter.format(results);
 
-  // 5. Output it.
+  // 5. 输出结果
   console.log(resultText);
 })().catch((error) => {
   process.exitCode = 1;
