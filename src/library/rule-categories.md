@@ -1,10 +1,10 @@
 ---
-title: Rule categories
+title: 规则类型
 ---
 
-## Rule categories
+## 多个规则类型
 
-The rule categories—namely “recommended”, “fixable”, and “hasSuggestions”—are shown in the [rules page](/rules/). They are rendered using the `ruleCategories` macro (imported from `/components/rule-categories.macro.html`). There is also an individual macro for each category type.
+规则类型即规则页面中的“推荐（recommended）”、“可修复（fixable）”和“有建议（hasSuggestions）”。它们都使用 `ruleCategories` 宏进行渲染（从 `/components/rule-categories.macro.html` 中导入）。每种类型都有对应的独立宏。
 
 ```html
 { % from 'components/rule-categories.macro.html' import ruleCategories % }
@@ -16,7 +16,7 @@ The rule categories—namely “recommended”, “fixable”, and “hasSuggest
 }) } }
 ```
 
-### Example
+### 示例
 
 {% from 'components/rule-categories.macro.html' import ruleCategories, recommended, fixable, hasSuggestions %}
 
@@ -26,9 +26,9 @@ The rule categories—namely “recommended”, “fixable”, and “hasSuggest
         hasSuggestions: true
 }) }}
 
-## A rule category
+## 单个规则类型
 
-For every rule, you can render the category it belongs to using the corresponding category shortcode:
+对于每条规则，你可以使用对应的类型简码渲染其所属类别：。
 
 ```html
 { % recommended % }
@@ -36,7 +36,7 @@ For every rule, you can render the category it belongs to using the correspondin
 { % hasSuggestions % }
 ```
 
-## Examples
+## 示例
 
 {% recommended %}
 {% fixable %}
