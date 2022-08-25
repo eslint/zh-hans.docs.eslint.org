@@ -1,6 +1,6 @@
 ---
 layout: main.html
-title: Versions
+title: 版本
 permalink: /versions/
 hook: "versions-page"
 ---
@@ -8,8 +8,8 @@ hook: "versions-page"
 {%- from 'components/hero.macro.html' import hero %}
 
 {{ hero({
-    title: "ESLint Versions",
-    supporting_text: "Choose the documentation version"
+    title: "ESLint 版本",
+    supporting_text: "选择文档版本"
 }) }}
 
 <section class="versions-section section">
