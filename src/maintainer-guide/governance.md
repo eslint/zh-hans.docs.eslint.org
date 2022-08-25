@@ -1,206 +1,192 @@
 ---
-title: Governance
+title: 治理
 layout: doc
 edit_link: https://github.com/eslint/eslint/edit/main/docs/src/maintainer-guide/governance.md
 eleventyNavigation:
     key: governance
     parent: maintainer guide
-    title: Governance
+    title: 治理
     order: 4
 
 ---
 
-ESLint is an open source project that depends on contributions from the community. Anyone may contribute to the project at any time by submitting code, participating in discussions, making suggestions, or any other contribution they see fit. This document describes how various types of contributors work within the ESLint project.
+ESLint 是一个依赖于社区贡献者的开源项目。每个人都可以随时提交代码、参与讨论、提交建议或其他合适的贡献。本文档讲述了 ESLint 项目中几种类型的贡献者。
 
-## Roles and Responsibilities
+## 角色和能力
 
-### Users
+### 用户
 
-Users are community members who have a need for the project. Anyone can be a User; there are no special requirements. Common User contributions include evangelizing the project (e.g., display a link on a website and raise awareness through word-of-mouth), informing developers of strengths and weaknesses from a new user perspective, or providing moral support (a "thank you" goes a long way).
+用户是指对此项目有需求的社区成员。任何人都可以成为用户，没有特殊要求。常见的用户贡献包括宣传项目（例如，在网站上展示链接，口口相传提高知名度），从新用户的角度告知开发者优点和缺点，或是提供精神支持（一句“谢谢”足以）。
 
-Users who continue to engage with the project and its community will often become more and more involved. Such Users may find themselves becoming Contributors, as described in the next section.
+继续参与项目和社区的用户通常会越来越深度参与其中。比如用户可能会像下节所说一样成为贡献者。
 
-### Contributors
+### 贡献者
 
-Contributors are community members who contribute in concrete ways to the project, most often in the form of code and/or documentation. Anyone can become a Contributor, and contributions can take many forms. There is no expectation of commitment to the project, no specific skill requirements, and no selection process.
+贡献者是指以具体某种方式做出贡献的社区成员，最常见的方式是编写代码或文档。贡献有许多种方式，每个人都可以成为贡献者。无需对项目做出承诺，也没有技能要求，也没有挑选流程。
 
-Contributors have read-only access to source code and so submit changes via pull requests. Contributor pull requests have their contribution reviewed and merged by a TSC member. TSC members and Committers work with Contributors to review their code and prepare it for merging.
+贡献者对源代码有只读权限，因此通过拉取请求提交修改。贡献者的拉取请求由TSC成员审查和合并。TSC成员和提交人与贡献者一起工作，审查他们的代码并准备合并。
 
-As Contributors gain experience and familiarity with the project, their profile within, and commitment to, the community will increase. At some stage, they may find themselves being nominated as either a Website Team Member or Committer by an existing Website Team Member or Committer.
+随着贡献者获得经验和对项目的熟悉，他们在社区中的形象和对社区的承诺会增加。在某个阶段，他们可能会发现自己被现有的网站团队成员或提交者提名为网站团队成员或提交者。
 
-### Website Team Member
+### 网站团队成员
 
-Website Team Members are community members who have shown that they are committed to the continued maintenance of [eslint.org](https://eslint.org/) through ongoing engagement with the community. Website Team Members are given push access to the `eslint.org` GitHub repository and must abide by the project's [Contribution Guidelines](../developer-guide/contributing/).
+网站团队成员是社区成员，他们通过与社区的持续接触，表明他们致力于持续维护 [eslint.org](https://eslint.org/)。网站团队成员被赋予推送访问 GitHub `eslint.org` 仓库的权利，并且必须遵守项目的[贡献指南](.../developer-guide/contributing/)。
 
- Website Team Members:
+ 网站团队成员：
 
-* Are expected to work on public branches of the source repository and submit pull requests from that branch to the master branch.
-* Are expected to delete their public branches when they are no longer necessary.
-* Must submit pull requests for all changes.
-* Have their work reviewed by Reviewers and TSC members before acceptance into the repository.
-* May label and close website-related issues (see [Managing Issues](issues.html))
-* May merge some pull requests (see [Managing Pull Requests](pullrequests.html))
+* 在源码库的公开分支上工作，并从该分支向主分支提交拉取请求
+* 当不再需要时，应删除的公开分支
+* 必须为所有修改提交拉取请求。
+* 审查者和 TSC 成员会对他们的工作进行审查，然后才会接受到版本库中。
+* 可以标记和关闭与网站有关的议题（见[议题管理](issues.html)）。
+* 可以合并一些拉取请求（见[拉取请求管理](pullrequests.html)）。
 
-To become a  Website Team Member:
+要成为网站团队成员：
 
-* One must have shown a willingness and ability to participate in the maintenance of [eslint.org](https://eslint.org/) as a team player. Typically, a potential  Website Team Member will need to show that they have an understanding of the structure of the website and how it fits into the larger ESLint project's objectives and strategy.
-* Website Team Members are expected to be respectful of every community member and to work collaboratively in the spirit of inclusion.
-* Have submitted a minimum of 10 website-related pull requests. What's a website-related pull request? One that is made to the `eslint.org` repository or the `docs` directory in the `eslint` repository and requires little effort to accept because it's well documented and tested.
+* 必须表现出愿意并有能力作为团队成员参与 [eslint.org](https://eslint.org/) 的维护。通常情况下，潜在的网站团队成员需要表明他们对网站的结构有一定的了解，以及他要如何融入 ESLint 项目的目标和战略的。
+* 网站团队成员应尊重每一个社区成员，并本着包容的精神协作工作。
+* 提交了至少 10 个与网站有关的拉取请求。什么是网站相关的拉取请求？向 `eslint.org` 仓库或 `eslint` 仓库中的`docs` 目录提出的请求，因为它有很好的文档和测试，所以不需要太多努力就可以接受。
 
-New Website Team Members can be nominated by any existing Website Team Member or Committer. Once they have been nominated, there will be a vote by the TSC members.
+新的网站团队成员可以由任何现有的网站团队成员或提交者提名。一旦他们被提名，将由 TSC 成员进行投票。
 
-It is important to recognize that membership on the website team is a privilege, not a right. That privilege must be earned and once earned it can be removed by the TSC members by a standard TSC motion. However, under normal circumstances Website Team Members remain for as long as they wish to continue engaging with the project.
+重要的是要认识到，网站团队的成员是一种特权，而不是一种权利。这种特权必须获得，一旦获得，TSC 成员可以通过一个标准的 TSC 动议将其取消。然而，在正常情况下，只要网站团队成员愿意继续参与项目，他们就会一直留在这里。
 
-### Committers
+### 提交者
 
-Committers are community members who have shown that they are committed to the continued development of the project through ongoing engagement with the community. Committers are given push access to the project's GitHub repos and must abide by the project's [Contribution Guidelines](../developer-guide/contributing/).
+提交者是指那些通过持续参与社区活动，表明他们致力于项目的持续发展的社区成员。提交者被赋予推送访问项目的GitHub仓库的权限，并且必须遵守项目的[贡献指南](../developer-guide/contributing/)。
 
-Committers:
+提交者：
 
-* Are expected to work on public branches of the source repository and submit pull requests from that branch to the master branch.
-* Are expected to delete their public branches when they are no longer necessary.
-* Must submit pull requests for all changes.
-* Have their work reviewed by TSC members before acceptance into the repository.
-* May label and close issues (see [Managing Issues](issues.html))
-* May merge some pull requests (see [Managing Pull Requests](pullrequests.html))
+* 希望在源码库的公开分支上工作，并从该分支向主分支提交拉取请求。
+* 当他们不再需要时，应删除他们的公开分支
+* 必须为所有修改提交拉取请求
+* 在 TSC 成员审查他后，再合并仓库中
+* 可以标记和关闭议题（见[管理议题](issues.html)）
+* 可以合并一些拉取请求（见[管理拉取请求](pullrequests.html)）
 
-To become a Committer:
+要成为提交者：
 
-* One must have shown a willingness and ability to participate in the project as a team player. Typically, a potential Committer will need to show that they have an understanding of and alignment with the project, its objectives, and its strategy.
-* Committers are expected to be respectful of every community member and to work collaboratively in the spirit of inclusion.
-* Have submitted a minimum of 10 qualifying pull requests. What's a qualifying pull request? One that carries significant technical weight and requires little effort to accept because it's well documented and tested.
+* 一个人必须表现出作为团队成员参与项目的意愿和能力。通常情况下，一个潜在的提交者需要证明他们对项目、项目的目标和战略有一定的了解和认同。
+* 提交者应尊重每一位社区成员，并本着包容的精神进行合作。
+* 已经提交了至少 10 个合格的拉取请求。什么是合格的拉取请求？一个具有重要技术分量的请求，应该要有很好的文档和测试，无需花费太多精力进行审查。
 
-New Committers can be nominated by any existing Committer. Once they have been nominated, there will be a vote by the TSC members.
+新的提交者可以由任何现有的提交者提名。一旦他们被提名，TSC 成员将进行投票。
 
-It is important to recognize that committership is a privilege, not a right. That privilege must be earned and once earned it can be removed by the TSC members by a standard TSC motion. However, under normal circumstances committership exists for as long as the Committer wishes to continue engaging with the project.
+重要的是要认识到，提交者的身份是一种特权，而不是一种权利。这种特权必须由 TSC 成员通过标准的 TSC 动议将其取消。然而，在正常情况下，只要提交者希望继续参与该项目，提交者的身份就会一直保留。
 
-A Committer who shows an above-average level of contribution to the project, particularly with respect to its strategic direction and long-term health, may be nominated to become a reviewer, described below.
+提交者如果对项目有超过平均水平的贡献，特别是在项目的战略方向和长期健康方面，可以被提名成为审查者，如下所述。
 
-#### Process for Adding Committers
+#### 新增提交者流程
 
-1. Send email congratulating the new committer and confirming that they would like to accept. This should also outline the responsibilities of a committer with a link to the maintainer guide.
-1. Add the GitHub user to the "ESLint Team" team
-1. Add committer email to the ESLint team mailing list
-1. Invite to Discord team channel
-1. Tweet congratulations to the new committer from the ESLint Twitter account
+1. 发送电子邮件，祝贺新的提交者，并确认他们愿意接受。这封邮件还应该概述提交者的责任，并附上维护者指南的链接
+1. 将该 GitHub 用户加入 ESLint team
+1. 将提交者的电子邮件添加到 ESLint 团队的邮件列表中
+1. 邀请到 Discord 团队频道
+1. 用 ESLint Twitter 账户发推祝贺新的提交者
 
-### Reviewers
+### 审查者
 
-Reviewers are community members who have contributed a significant amount of time to the project through triaging of issues, fixing bugs, implementing enhancements/features, and are trusted community leaders.
+审查者是为项目贡献了大量时间的社区成员，他们通过分流议题、修复漏洞、实现增强功能/特性，并且是值得信赖的社区领袖。
 
-Reviewers may perform all of the duties of Committers, and also:
+审查者可以履行提交者的所有职责，而且还可以：
 
-* May merge external pull requests for accepted issues upon reviewing and approving the changes.
-* May merge their own pull requests once they have collected the feedback they deem necessary. (No pull request should be merged without at least one Committer/Reviewer/TSC member comment stating they've looked at the code.)
+* 在审查和批准修改后，可以合并已接受议题的外部拉取请求
+* 一旦他们收集了他们认为必要的反馈，可以合并他们自己的拉取请求（如果没一个来自提交者/审查者/TSC 成员的评论都没有，就不应该合并拉取请求）。
 
-To become a Reviewer:
+要成为审查者：
 
-* Work in a helpful and collaborative way with the community.
-* Have given good feedback on others' submissions and displayed an overall understanding of the code quality standards for the project.
-* Commit to being a part of the community for the long-term.
-* Have submitted a minimum of 50 qualifying pull requests.
+* 在社区中以有帮助和合作的方式工作
+* 对他人提交的代码给予良好的反馈，并显示出对项目代码质量标准的整体理解
+* 承诺长期成为社区的一员
+* 提交了至少 50 个合格的拉取请求
 
-A Committer is invited to become a Reviewer by existing Reviewers and TSC members. A nomination will result in discussion and then a decision by the TSC.
+提交者被现有的审查者和 TSC 成员邀请成为审查者。提名后将进行讨论，并交由 TSC 决定。
 
-#### Process for Adding Reviewers
+#### 新增审查者流程
 
-1. Add the GitHub user to the "ESLint Reviewers" GitHub team
-1. Tweet congratulations to the new Reviewer from the ESLint Twitter account
+1. 将 GitHub用户 添加到 GitHub ESLint Reviewers 团队中。
+1. 用 ESLint Twitter 账户发推祝贺新的审查者
 
-### Technical Steering Committee (TSC)
+### 技术指导委员会（TSC）
 
-The ESLint project is jointly governed by a Technical Steering Committee (TSC) which is responsible for high-level guidance of the project.
+ESLint项目由一个技术指导委员会（TSC）共同管理，该委员会负责项目的高层指导。
 
-The TSC has final authority over this project including:
+技术指导委员会对该项目拥有最终权力，包括：
 
-* Technical direction
-* Project governance and process (including this policy)
-* Contribution policy
-* GitHub repository hosting
+* 技术指导
+* 项目管理和程序（包括本政策）
+* 贡献政策
+* GitHub 存储库托管
 
-TSC seats are not time-limited. The size of the TSC can not be larger than five members. This size ensures adequate coverage of important areas of expertise balanced with the ability to make decisions efficiently.
+TSC 的席位没有时间限制。TSC 的规模不能超过五个成员。这一规模可以确保充分覆盖重要的专业领域，并兼顾高效决策的能力。
 
-The TSC may add additional members to the TSC by a standard TSC motion.
+TSC 可以通过一个标准的 TSC 动议来增加 TSC 的成员。
 
-A TSC member may be removed from the TSC by voluntary resignation, by a standard TSC motion, or by missing four consecutive TSC meetings. In all cases, the TSC member will revert to Reviewer status unless they prefer Alumni status.
+TSC 成员可以通过自愿辞职、TSC 标准动议或连续缺席四次 TSC 会议而被免职。在所有情况下，TSC 成员将恢复到审查者身份，除非他们喜欢校友身份。
 
-Changes to TSC membership should be posted in the agenda, and may be suggested as any other agenda item (see "TSC Meetings" below).
+TSC 成员的变更应在议程中公布，并可作为任何其他议程项目提出（见下文“TSC 会议”）。
 
-No more than 1/3 of the TSC members may be affiliated with the same employer. If removal or resignation of a TSC member, or a change of employment by a TSC member, creates a situation where more than 1/3 of the TSC membership shares an employer, then the situation must be immediately remedied by the resignation or removal of one or more TSC members affiliated with the over-represented employer(s).
+不能有超过 1/3 的 TSC 成员隶属于同一雇主。假设某 TSC 成员被免职或辞职，亦或某 TSC 成员的工作变动，造成超过 1/3 的 TSC 成员隶属同一雇主的情况，那么必须立即通过一个或多个隶属于超比例雇主的 TSC 成员的辞职或免职来纠正这种情况。
 
-TSC members have additional responsibilities over and above those of a Reviewer. These responsibilities ensure the smooth running of the project. TSC members are expected to review code contributions, approve changes to this document, manage the copyrights within the project outputs, and attend regular TSC meetings.
+TSC 成员除了审查者的责任外，还有其他责任。这些责任确保项目的顺利进行。TSC 成员应审查代码贡献，批准对本文件的修改，管理项目产出中的版权，并定期参加 TSC 会议。
 
-TSC members may perform all of the duties of Reviewers, and also:
+TSC 成员可以履行审查者的所有职责，并且还可以：
 
-* May release new versions of all ESLint projects.
-* May participate in TSC meetings.
-* May propose budget items.
-* May propose new ESLint projects.
+* 可以发布所有 ESLint 项目的新版本
+* 可以参加 TSC 的会议
+* 可以提出预算项目
+* 可以提出新的 ESLint 项目
 
-There is no specific set of requirements or qualifications for TSC members beyond those that are expected of Reviewers.
+除了对审查者的要求外，对 TSC 成员没有具体的要求或资格。
 
-A Reviewer is invited to become a TSC member by existing TSC members. A nomination will result in discussion and then a decision by the TSC.
+审查者由现有的 TSC 成员邀请成为 TSC 成员。提名将导致讨论，然后由 TSC 作出决定。
 
-#### Process for Adding TSC Members
+#### 新增 TSC 成员流程
 
-1. Add the GitHub user to the "ESLint TSC" GitHub team
-1. Set the GitHub user to be have the "Owner" role for the ESLint organization
-1. Send a welcome email with a link to the [maintainer guide](./) and instructions for npm 2FA.
-1. Invite to the Discord TSC channel
-1. Make the TSC member an admin on the ESLint team mailing list
-1. Add the TSC member to the recurring TSC meeting event on Google Calendar
-1. Add the TSC member as an admin to ESLint Twitter Account on Tweetdeck
-1. Add the TSC member to the ESLint TSC mailing list as an "Owner"
-1. Tweet congratulations to the new TSC member from the ESLint Twitter account
+1. 将 GitHub 用户添加到 GitHub ESLint TSC 团队中。
+1. 将 GitHub 用户设置为 ESLint 组织的“owner”角色
+1. 发送一封欢迎邮件，并附上[维护者指南](./)的链接和 npm 2FA 的说明。
+1. 邀请加入 Discord TSC 频道
+1. 让 TSC 成员成为 ESLint 团队邮件列表中的管理员
+1. 将 TSC 成员添加到谷歌日历上经常性的 TSC 会议事件中。
+1. 在 Tweetdeck 上将 TSC 成员添加为 ESLint Twitter 账户管理员
+1. 将 TSC 成员添加到 ESLint TSC 邮件列表中，作为“owner”
+1. 用 ESLint Twitter 账户发推向新的 TSC 成员表示祝贺
 
-#### TSC Meetings
+#### TSC 会议
 
-The TSC meets every other week in the TSC Meeting [Discord](https://eslint.org/chat) channel. The meeting is run by a designated moderator approved by the TSC.
+TSC 每隔一周在 [Discord](https://eslint.org/chat) TSC Meeting 频道开会。会议由 TSC 批准的指定主持人主持。
 
-Items are added to the TSC agenda which are considered contentious or
-are modifications of governance, contribution policy, TSC membership,
-or release process.
+TSC 议程包括讨论认为存在争议的项目、对管理或贡献政策进行修改、调整 TSC 成员或发布程序。
 
-The intention of the agenda is not to approve or review all patches.
-That should happen continuously on GitHub and be handled by the larger
-group of Committers.
+议程的目的不是为了批准或审查所有补丁。
+这应该在 GitHub 上持续进行，并由更大的
+提交者小组处理。
 
-Any community member, Committer, or Reviewer can ask that something be added to
-the next meeting's agenda by logging a GitHub Issue. Anyone can add the item to the agenda by adding
-the "tsc agenda" tag to the issue.
+任何社区成员、提交者或审查都可以要求将一些东西加入到
+要求将某项内容添加到下一次会议的议程中，方法是登录 GitHub 议题。任何人都可以通过在议程中添加“TSC议程”标签来添加到议程中。
 
-Prior to each TSC meeting, the moderator will share the Agenda with
-members of the TSC. TSC members can add any items they like to the
-agenda at the beginning of each meeting. The moderator and the TSC
-cannot veto or remove items.
+在每次 TSC 会议之前，主持人将与TSC成员分享议程。
+TSC 的成员。TSC成员可以在每次会议开始时将他们喜欢的任何项目添加到议程中。主持人和 TSC 不能否决或删除项目。
 
-No binding votes on TSC agenda items can take place without a quorum of
-TSC members present in the meeting. Quorum is achieved when more than
-half of the TSC members (minus non-attending members) are present.
+在没有达到法定人数的情况下，不能对 TSC 的议程项目进行有约束力的表决。
+TSC 成员出席会议时，不能对 TSC 议程项目进行有约束力的表决。当超过半数的 TSC 成员（减去未出席的成员）出席会议时，即达到法定人数。
 
-The TSC may invite persons or representatives from certain projects to
-participate in a non-voting capacity.
+TSC 可以邀请某些项目的人员或代表以无表决权的身份参加会议。
 
-The moderator is responsible for summarizing the discussion of each
-agenda item and sending it as a pull request after the meeting.
+主持人负责总结每个议程项目的讨论情况，并将其作为拉取文件发送。
 
-## Consensus Seeking Process
+## 寻求共识的流程
 
-The TSC follows a
-[Consensus Seeking](https://en.wikipedia.org/wiki/Consensus-seeking_decision-making)
-decision making model.
+TSC 遵循[寻求共识](https://en.wikipedia.org/wiki/Consensus-seeking_decision-making)的决策模式。
 
-When an agenda item has appeared to reach a consensus, the moderator
-will ask "Does anyone object?" as a final call for dissent from the
-consensus.
+当一个议程项目似乎达成了共识，主持人会问 "有人反对吗？向对共识持异议者进行最后的呼吁。
 
-If an agenda item cannot reach a consensus, a TSC member can call for
-either a closing vote or a vote to table the issue to the next
-meeting. The call for a vote must be approved by a majority of the TSC
-or else the discussion will continue. Simple majority wins.
+如果一个议程项目不能达成共识，TS C成员可以要求进行结束性投票或投票将该议题提交给下一次会议。
+投票要求必须得到 TSC 多数成员的同意，否则将继续讨论。
 
 ----
 
-This work is a derivative of [YUI Contributor Model](https://github.com/yui/yui3/wiki/Contributor-Model) and the [Node.js Project Governance Model](https://github.com/nodejs/node/blob/master/GOVERNANCE.md).
+本作品是 [YUI 贡献者模型](https://github.com/yui/yui3/wiki/Contributor-Model)和 [Node.js 项目治理模型](https://github.com/nodejs/node/blob/master/GOVERNANCE.md)的衍生品。
 
-This work is licensed under a [Creative Commons Attribution-ShareAlike 2.0 UK: England & Wales License](https://creativecommons.org/licenses/by-sa/2.0/uk/).
+本作品采用[知识共享署名-相同方式共享 2.0 英国：英格兰和威尔士许可证](https://creativecommons.org/licenses/by-sa/2.0/uk/)授权。
