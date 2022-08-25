@@ -1,17 +1,17 @@
 ---
-title: Related rules 
+title: 相关规则 
 ---
 
-The `related_rules` shortcode is used to add one or more related rules to a rule.
+可以使用 `related_rules` 简码添加一个或多个相关规则。
 
-## Usage
+## 用法
 
-The shortcode expects an array of rule names.
+使用该简码需要提供包含规则名称的数组。
 
 ```html
 { % related_rules ["no-extra-semi", "no-unexpected-multiline", "semi-spacing"] % }
 ```
 
-## Example
+## 示例
 
 {% related_rules ["no-extra-semi", "no-unexpected-multiline", "semi-spacing"] %}
