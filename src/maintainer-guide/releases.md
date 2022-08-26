@@ -1,69 +1,69 @@
 ---
-title: Managing Releases
+title: 版本管理
 layout: doc
 edit_link: https://github.com/eslint/eslint/edit/main/docs/src/maintainer-guide/releases.md
 eleventyNavigation:
     key: managing releases
     parent: maintainer guide 
-    title: Managing Releases
+    title: 版本管理
     order: 3
 
 ---
 
-Releases are when a project formally publishes a new version so the community can use it. There are two types of releases:
+发布是指项目向社区正式发布新版本，有两种类型的发布：
 
-* Regular releases that follow [semantic versioning](https://semver.org/) and are considered production-ready.
-* Prereleases that are not considered production-ready and are intended to give the community a preview of upcoming changes.
+* 遵循[语义化版本](https://semver.org/)的常规发布，可以直接投入生产。
+* 预发布，不适合直接投入生产环境，以便社区预览即将到来的变化。
 
-## Release Team
+## 发布团队
 
-A two-person release team is assigned to each scheduled release. This two-person team is responsible for:
+每个计划发布的版本都有一个由两个人组成的发布团队。这个两人小组负责：
 
-1. The scheduled release on Friday
-1. Monitoring issues over the weekend
-1. Determining if a patch release is necessary on Monday
-1. Publishing the patch release (if necessary)
+1. 在周五预定发布
+1. 在周末监测议题
+1. 确定是否有必要在周一发布补丁
+1. 发布补丁版本（如果需要）
 
-The two-person team should seek input from the whole team on the Monday following a release to double-check if a patch release is necessary.
+两人小组应该在发布后的周一征求整个团队的意见，以反复检查是否有必要发布补丁。
 
-At least one member of the release team needs to have access to eslint's two-factor authentication for npm in order to do a release.
+发布团队中至少有一名成员有权访问 eslint 的 npm 双因素认证，以便进行发布。
 
-## Release Communication
+## 发布沟通
 
-Each scheduled release should be associated with a release issue ([example](https://github.com/eslint/eslint/issues/8138)). The release issue is the source of information for the team about the status of a release. Be sure the release issue has the "release" label so that it's easy to find.
+每个预定的发布都应该与发布议题相关联（[例子](https://github.com/eslint/eslint/issues/8138)）。发布议题是团队关于发布状态的信息来源。要确保发布议题有“发布（release）”的标签，以便于找到它。
 
-## Process
+## 过程
 
-On the day of a scheduled release, the release team should follow these steps:
+在预定发布的当天，发布团队应遵循以下步骤。
 
-1. Review open pull requests to see if any should be merged. In general, you can merge pull requests that:
-    * Have been open at least two days and have been reviewed (these are just waiting for merge).
-    * Important pull requests (as determined by the team). You should stop and have people review before merging if they haven't been already.
-    * Documentation changes.
-    * Small bugfixes written by a team member.
-1. Log into Jenkins and schedule a build for the "ESLint Release" job.
-1. Watch the console output of the build on Jenkins. At some point, the build will pause and a link will be produced with an input field for a six-digit 2FA code.
-1. Enter the current six-digit 2FA code from your authenticator app.
-1. Continue the build and wait for it to finish.
-1. Update the release blog post with a "Highlights" section, including new rules and anything else that's important.
-1. Make a release announcement in the public chatroom.
-1. Make a release announcement on Twitter.
-1. Make a release announcement on the release issue. Document any problems that occurred during the release, and remind the team not to merge anything other than documentation changes and bugfixes. Leave the release issue open.
-1. Add the `patch release pending` label to the release issue. (When this label is present, `eslint-github-bot` will create a pending status check on non-semver-patch pull requests, to ensure that they aren't accidentally merged while a patch release is pending.)
+1. 审查开放的拉动请求，看是否有应该被合并的。一般来说，你可以合并以下拉动请求：
+    * 已经开放了至少两天并且已经被审查过的拉动请求（这些请求只是在等待合并）。
+    * 重要的拉动请求（由团队决定）。如果没有应该在合并前暂停并让人们审查。
+    * 文档修改
+    * 由团队成员发出的小型错误修复。
+2. 登录 Jenkins 安排“ESLint Release”构建工作。
+3. 在 Jenkins 上观察构建的控制台输出。有时候构建会暂停并输出链接，其中需要输入六位数 2FA 代码。
+4. 从你的认证器应用中输入当前的六位数 2FA 代码。
+5. 继续构建并等待完成。
+6. 在“亮点（Highlights）”部分更新博客发布文章，包括新规则和其他任何重要内容。
+7. 在公共聊天室中公开发布公告。
+8. 在 Twitter 上公开发布公告。
+9. 在发布议题上公开发布公告。记录发布过程中出现的任何议题，并提醒团队不要合并除文档修改和错误修复以外的任何东西，保持发布议题的开放。
+10. 在发布议题上添加“待发布补丁（patch release pending）”的标签（当存在此标签是 `eslint-github-bot` 会对非语义化版本补丁的拉动请求进行待定状态检查，以确保它们不会在补丁发布待定时被合并）。
 
-On the Monday following the scheduled release, the release team needs to determine if a patch release is necessary. A patch release is considered necessary if any of the following occurred since the scheduled release:
+在预定发布后的周一，发布团队需要确定是否有必要发布补丁。如果在计划发布后发生了以下情况，则认为有必要发布补丁：
 
-* A regression bug is causing people's lint builds to fail when it previously passed.
-* Any bug that is causing a lot of problems for users (frequently happens due to new functionality).
+* 回归漏洞导致人们的检查构建失败，在此之前没有问题。
+* 任何有用户大量反馈的漏洞（经常是新功能导致的）。
 
-The patch release decision should be made as early on Monday as possible. If a patch release is necessary, then follow the same steps as the scheduled release process.
+应该尽可能早地在周一决定是否发布补丁。如果有必要发布补丁，那么就按照预定发布程序的相同步骤进行。
 
-In rare cases, a second patch release might be necessary if the release is known to have a severe regression that hasn't been fixed by Monday. If this occurs, the release team should announce the situation on the release issue, and leave the issue open until all patch releases are complete. However, it's usually better to fix bugs for the next release cycle rather than doing a second patch release.
+在极少数情况下，如果已知该版本有严重的回归，并且在周一之前没有被修复，那么可能需要进行第二次补丁发布。如果发生这种情况，发布团队应该在发布议题上宣布这一情况，并在所有补丁发布完成之前保留这一议题。不过，通常情况下，为下一个发布周期修复漏洞比做第二个补丁发布要好。
 
-After the patch release has been published (or no patch release is necessary), close the release issue and inform the team that they can start merging in semver-minor changes again.
+在发布了补丁版本后（或者没有必要发布补丁版本），关闭发布议题，并通知团队可以再次开始合并次版本修改。
 
-## Emergency Releases
+## 紧急发布
 
-In general, we try not to do emergency releases (an emergency release is unplanned and isn't the regularly scheduled release or the anticipated patch release). Even if there is a regression, it's best to wait the weekend to see if any other problems arise so a patch release can fix as many issues as possible.
+一般来说，我们尽量避免进行紧急发布（紧急发布是指不在预期中、不得不进行的补丁发布）。即使有回归，最好也要等到周末，看看是否有其他议题出现，这样补丁发布才能尽可能多地修复问题。
 
-The only real exception is if ESLint is completely unusable by most of the current users. For instance, we once pushed a release that errored for everyone because it was missing some core files. In that case, an emergency release is appropriate.
+当大多数用户反馈此 ESLint 版本完全无法使用才适合进行紧急发布。就像我们曾经推送过一个版本，因为它缺少一些核心文件，导致每个人没法正常使用。
