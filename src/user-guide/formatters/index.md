@@ -1,19 +1,19 @@
 ---
-title: Formatters
+title: 格式化工具
 layout: doc
 eleventyNavigation:
     key: formatters
     parent: user guide
-    title: Formatters
+    title: 格式化工具
     order: 5
 edit_link: https://github.com/eslint/eslint/edit/main/templates/formatter-examples.md.ejs
 ---
 
-ESLint comes with several built-in formatters to control the appearance of the linting results, and supports third-party formatters as well.
+ESLint 有几个用来控制提示结果外观的内置格式化工具，同时也支持第三方格式化工具。
 
-You can specify a formatter using the `--format` or `-f` flag on the command line. For example, `--format json` uses the `json` formatter.
+你可以在命令行中使用 `--format` 或 `--f` 标志来指定格式化工具。例如，`--format json` 使用 `json` 格式化。
 
-The built-in formatter options are:
+内置的格式化选项有：
 
 * [checkstyle](#checkstyle)
 * [compact](#compact)
@@ -27,9 +27,9 @@ The built-in formatter options are:
 * [unix](#unix)
 * [visualstudio](#visualstudio)
 
-## Example Source
+## 源码示例
 
-Examples of each formatter were created from linting `fullOfProblems.js` using the `.eslintrc` configuration shown below.
+每个格式化示例都是用 `.eslintrc` 配置检查 `fullOfProblems.js` 得到的。
 
 ### `fullOfProblems.js`
 
@@ -58,7 +58,7 @@ function addOne(i) {
 }
 ```
 
-## Output Examples
+## 输出示例
 
 ### checkstyle
 
