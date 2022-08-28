@@ -13,7 +13,7 @@ eleventyNavigation:
 你可以根据你的情况定制 ESLint，它十分灵活且具可配置性。你可以关闭全部规则，只运行基本的语法验证，或者也可以根据项目需要，一起使用合适的捆绑规则与自定义规则。主要有两个配置 ESLint 的方法：
 
 1. **配置注释** - 在文件中使用 JavaScript 注释直接嵌入配置信息
-2. **配置文件** - 使用 JavaScript、JSON 或 YAML 文件指定整个目录及其所有子目录的配置信息。可以是 [`.eslintrc.*`](./configuration-files#配置文件格式) 文件，也可以是 [`package.json`](https://docs.npmjs.com/files/package.json) 文件中的 `eslintConfig` 字段，ESLint 都会自动寻找并读取这两处的配置，或者还可以用[命令行](./command-line-interface)上指定配置文件。
+2. **配置文件** - 使用 JavaScript、JSON 或 YAML 文件指定整个目录及其所有子目录的配置信息。可以是 [`.eslintrc.*`](./configuration-files#配置文件格式) 文件，也可以是 [`package.json`](https://docs.npmjs.com/files/package.json) 文件中的 `eslintConfig` 字段，ESLint 都会自动寻找并读取这两处的配置，或者还可以用[命令行](../command-line-interface)上指定配置文件。
 
 下面列出了一些 ESLint 中可配置的选项：
 
