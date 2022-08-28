@@ -1,22 +1,22 @@
 ---
-title: Configuration Files (New)
+title: 配置文件（新）
 layout: doc
 edit_link: https://github.com/eslint/eslint/edit/main/docs/src/user-guide/configuring/configuration-files-new.md
 eleventyNavigation:
     key: configuration files
     parent: configuring
-    title: Configuration Files (New)
+    title: 配置文件（新）
     order: 1
 
 ---
 
 ::: warning
-This is an experimental feature that is not enabled by default. You can use the configuration system described on this page by using the `FlatESLint` class, the `FlatRuleTester` class, or by setting `configType: "flat"` in the `Linter` class.
+这是实验性功能，默认情况禁用。但你可以在 `FlatESLint` 类、`FlatRuleTester` 类，或在 `Linter` 类中设置在 `configType: "flat"` 以使用本页所述的配置系统。
 :::
 
-## Configuration File
+## 配置文件
 
-The ESLint configuration file is named `eslint.config.js` and should be placed in the root directory of your project and export an array of configuration objects. Here's an example:
+ESLint 的配置文件叫做 `eslint.config.js` ，它应该放在项目根目录下，并导出包含配置对象的数组。这里有个例子：
 
 ```js
 export default [
@@ -29,35 +29,35 @@ export default [
 ]
 ```
 
-Here, the configuration array contains just one configuration object. The configuration object enables two rules: `semi` and `prefer-const`. These rules will be applied to all of the files ESLint processes using this config file.
+此处的配置数组只包含一个配置对象。而该配置对象启用了两条规则：`semi` 和 `prefer-const`。ESLint 会在所有使用此配置文件处理的文件中使用这两个规则。
 
-## Configuration Objects
+## 配置对象
 
-Each configuration object contains all of the information ESLint needs to execute on a set of files. Each configuration object is made up of these properties:
+每个配置对象都包括了 ESLint 检查一组文件所需的所有信息。配置对象由以下属性组成：
 
-* `files` - An array of glob patterns indicating the files that the configuration object should apply to. If not specified, the configuration object applies to all files.
-* `ignores` - An array of glob patterns indicating the files that the configuration object should not apply to. If not specified, the configuration object applies to all files matched by `files`.
-* `languageOptions` - An object containing settings related to how JavaScript is configured for linting.
-    * `ecmaVersion` - The version of ECMAScript to support. May be any year (i.e., `2022`) or version (i.e., `5`). Set to `"latest"` for the most recent supported version. (default: `"latest"`)
-    * `sourceType` - The type of JavaScript source code. Possible values are `"script"` for traditional script files, `"module"` for ECMAScript modules (ESM), and `"commonjs"` for CommonJS files. (default: `"module"` for `.js` and `.mjs` files; `"commonjs"` for `.cjs` files)
-    * `globals` - An object specifying additional objects that should be added to the global scope during linting.
-    * `parser` - Either an object containing a `parse()` method or a string indicating the name of a parser inside of a plugin (i.e., `"pluginName/parserName"`). (default: `"@/espree"`)
-    * `parserOptions` - An object specifying additional options that are passed directly to the `parser()` method on the parser. The available options are parser-dependent.
-* `linterOptions` - An object containing settings related to the linting process.
-    * `noInlineConfig` - A Boolean value indicating if inline configuration is allowed.
-    * `reportUnusedDisableDirectives` - A Boolean value indicating if unused disable directives should be tracked and reported.
-* `processor` - Either an object containing `preprocess()` and `postprocess()` methods or a string indicating the name of a processor inside of a plugin (i.e., `"pluginName/processorName"`).
-* `plugins` - An object containing a name-value mapping of plugin names to plugin objects. When `files` is specified, these plugins are only available to the matching files.
-* `rules` - An object containing the configured rules. When `files` or `ignores` are specified, these rule configurations are only available to the matching files.
-* `settings` - An object containing name-value pairs of information that should be available to all rules.
+* `files` - 用于表示配置适用的文件范围的 glob 模式数组。在没有指定的情况下，配置对象适用于所有文件。
+* `ignores` - 一个表示配置对象不应适用的文件的 glob 模式数组。如果没有指定，配置对象将适用于所有由 `files` 匹配的文件。
+* `languageOptions` - 一个对象，包含与如何为 linting 配置 JavaScript 有关的设置。
+    * `ecmaVersion` - 支持 ECMAScript 的版本。可以是任何年份（`2022`）或版本（`5`）。设置为 `"latest"` 则使用受支持的最新版本（默认为 `"latest"`）。
+    * `sourceType` - JavaScript 源码类型。传统脚本文件可以使用 `"script"`，ECMAScript 模块（ESM）可以用 `"module"` ，CommonJS 文件使用 `"commonjs`（默认情况下，用于 `.js` 和 `.mjs` 文件使用 `"module"`；`.cjs` 文件使用 `"commonjs"`）
+    * `globals` - 用于指定额外对象的对象，这些对象应该在 linting 期间被添加到全局范围。
+    * `parser` - 包含 `parse()`方法的对象，或者表示插件内解析器名称的字符串（如 `"pluginName/parserName"`，默认为 `"@/espree"`）
+    * `parserOptions` - 指定额外选项的对象，直接传递给解析器的 `parser()` 方法。可用选项基于解析器。
+* `linterOptions` - 对象，包含与提示过程有关的设置。
+    * `noInlineConfig` - 布尔值，表示是否允许内联配置。
+    * `reportUnusedDisableDirectives` - 一个布尔值，表示是否应该跟踪和报告未用的禁用指令。
+* `processor` - 包含 `preprocess()` 和 `postprocess()` 方法的对象，或者表示插件内处理器名称的字符串（如 `"pluginName/processorName"`）。
+* `plugins` - 包含插件名称与对应的插件对象的名值对对象。如果指定了 `files`，则只适用于与之匹配匹配的文件。
+* `rules` - 包含规则配置的对象。如果指定了 `files` 或 `ignores`，则规则配置只适用于与之匹配匹配的文用。
+* `settings` - 包括名值对的对象，这些信息应该对所有规则可用。
 
-### Specifying `files` and `ignores`
+### 指定 `files` 和 `ignores`
 
 ::: tip
-Patterns specified in `files` and `ignores` use [`minimatch`](https://www.npmjs.com/package/minimatch) syntax and are evaluated relative to the location of the `eslint.config.js` file.
+在 `files` 和 `ignores` 中的模式使用的是 [`minimatch`](https://www.npmjs.com/package/minimatch) 语法，并使用基于 `eslint.config.js` 文件位置的相对路径。
 :::
 
-You can use a combination of `files` and `ignores` to determine which files should apply the configuration object and which should not. By default, ESLint matches `**/*.js`, `**/*.cjs`, and `**/*.mjs`. Because config objects that don't specify `files` or `ignores` apply to all files that have been matched by any other configuration object, by default config objects will apply to any JavaScript files passed to ESLint. For example:
+你可以使用 `files` 和 `ignores` 的组合来决定配置对象的文件适用范围。默认情况下，ESLint 会匹配 `**/*.js`、`**/*.cjs` 和 `**/*.mjs`。如果配置对象没有指定 `files` 或 `ignores`，则会被用于所有与其他配置对象匹配的文件，默认情况下，配置对象通过 JavaScript 文件传递给 ESLint。比如：
 
 ```js
 export default [
@@ -69,11 +69,11 @@ export default [
 ];
 ```
 
-With this configuration, the `semi` rule is enabled for all files that match the default files in ESLint. So if you pass `example.js` to ESLint, the `semi` rule will be applied. If you pass a non-JavaScript file, like `example.txt`, the `semi` rule will not be applied because there are no other configuration objects that match that filename. (ESLint will output an error message letting you know that the file was ignored due to missing configuration.)
+在这种配置下 `semi` 规则就会用于所有与 ESLint 中的默认文件相匹配的文件。因此，如果用 ESLint 检查 `example.js` 则会使用 `semi` 规则。如果你传递了非 JavaScript 文件，比如 `example.txt`，就不会使用 `semi`规则，因为没有其他配置对象与该文件名匹配（同时 ESLint 将输出错误信息，让你知道由于缺少配置，忽略了该文件）。
 
-#### Excluding files with `ignores`
+#### 用 `ignores` 排除文件
 
-You can limit which files a configuration object applies to by specifying a combination of `files` and `ignores` patterns. For example, you may want certain rules to apply only to files in your `src` directory, like this:
+可以通过组合 `files` 和 `ignores` 模式来限制配置对象适用范围。例如，你可能希望某些规则只适用于 `src` 目录下的文件，像这样：
 
 ```js
 export default [
@@ -86,7 +86,7 @@ export default [
 ];
 ```
 
-Here, only the JavaScript files in the `src` directory will have the `semi` rule applied. If you run ESLint on files in another directory, this configuration object will be skipped. By adding `ignores`, you can also remove some of the files in `src` from this configuration object:
+此处的 `semi` 规则只用于 `src` 目录下的 JavaScript 文件。如果你在其他目录的文件上运行 ESLint，则忽略该配置对象。通过添加 `ignores`，你也可以让这个配置对象不用在  `src` 中的部分文件：
 
 ```js
 export default [
@@ -100,7 +100,7 @@ export default [
 ];
 ```
 
-This configuration object matches all JavaScript files in the `src` directory except those that end with `.config.js`. You can also use negation patterns in `ignores` to exclude files from the ignore patterns, such as:
+这个配置对会象匹配 `src` 目录下的所有 JavaScript 文件，除了以 `.config.js` 结尾的文件。你也可以在 `ignores` 中使用否定模式，将文件排除在忽略模式之外，例如：
 
 ```js
 export default [
@@ -114,9 +114,9 @@ export default [
 ];
 ```
 
-Here, the configuration object excludes files ending with `.config.js` except for `eslint.config.js`. That file will still have `semi` applied.
+这里，配置对象排除了以 `.config.js` 结尾的文件，除了 `eslint.config.js`。该文件仍将应用 `semi`。
 
-If `ignores` is used without `files` and any other setting, then the configuration object applies to all files except the ones specified in `ignores`, for example:
+如果 `ignores` 被使用而没有 `files` 和任何其他设置，那么配置对象适用于所有文件，除了`ignores` 中指定的文件，例如：
 
 ```js
 export default [
@@ -129,11 +129,11 @@ export default [
 ];
 ```
 
-This configuration object applies to all files except those ending with `.config.js`. Effectively, this is like having `files` set to `**/*`. In general, it's a good idea to always include `files` if you are specifying `ignores`.
+这个配置对象适用于所有文件，除了以 `.config.js` 结尾的文件。实际上这就像把 `files` 设置为 `**/*`。但一般来说，如果指定看 `"ignore"`，最好也要指定 `files`。
 
-#### Globally ignoring files with `ignores`
+#### 用 `ignores` 全局性地忽略文件
 
-If `ignores` is used without any other keys in the configuration object, then the patterns act as additional global ignores, similar to those found in `.eslintignore`. Here's an example:
+如果 `ignores` 在配置对象中没有任何其他键，那么这些模式将作为额外的全局忽略，类似于 `.eslintignore` 中的模式。下面是示例：
 
 ```js
 export default [
@@ -143,11 +143,11 @@ export default [
 ];
 ```
 
-This configuration specifies that all of the files in the `.config` directory should be ignored. This pattern is added after the patterns found in `.eslintignore`.
+这个配置指定了 `.config` 目录下的所有文件都应该被忽略。这个模式被添加到 `.eslintignore` 中的模式之后。
 
-#### Cascading configuration objects
+#### 级联配置对象
 
-When more than one configuration object matches a given filename, the configuration objects are merged with later objects overriding previous objects when there is a conflict. For example:
+当多个配置对象匹配一个给定的文件名时，配置对象会被合并，当有冲突时，后面的对象会优先于前面的对象。例如：
 
 ```js
 export default [
@@ -171,15 +171,15 @@ export default [
 ];
 ```
 
-Using this configuration, all JavaScript files define a custom global object defined called `MY_CUSTOM_GLOBAL` while those JavaScript files in the `tests` directory have `it` and `describe` defined as global objects in addition to `MY_CUSTOM_GLOBAL`. For any JavaScript file in the tests directory, both configuration objects are applied, so `languageOptions.globals` are merged to create a final result.
+使用这种配置，所有的 JavaScript 文件都定义了一个自定义的全局对象，称为 `MY_CUSTOM_GLOBAL`，而那些在 `tests` 目录下的 JavaScript 文件，除了 `MY_CUSTOM_GLOBAL`之外，还有 `it` 和 `describe` 定义为全局对象。对于 tests 目录下的任何 JavaScript 文件，这两个配置对象都会被应用，所以 `languageOptions.globals` 会被合并，形成最终结果。
 
-### Configuring linter options
+### 配置检查器选项
 
-Options specific to the linting process can be configured using the `linterOptions` object. These effect how linting proceeds and does not affect how the source code of the file is interpreted.
+可以用 `linterOptions` 对象来配置特定于检查过程的选项。这些选项会影响品评的进行，而不影响文件的源代码被解释的方式。
 
-#### Disabling inline configuration
+#### 禁用内联配置
 
-Inline configuration is implemented using an `/*eslint*/` comment, such as `/*eslint semi: error*/`. You can disallow inline configuration by setting `noInlineConfig` to `true`. When enabled, all inline configuration is ignored. Here's an example:
+内联配置是通过 `/*eslint*/` 注释实现的，例如 `/*eslint semi: error*/`。你可以通过设置 `noInlineConfig` 为 `true` 来禁用内联配置。启用后，将忽略所有内联配置。下面是示例：
 
 ```js
 export default [
@@ -192,9 +192,9 @@ export default [
 ];
 ```
 
-#### Reporting unused disable directives
+#### 报告未用的禁用指令
 
-Disable directives such as `/*eslint-disable*/` and `/*eslint-disable-next-line*/` are used to disable ESLint rules around certain portions of code. As code changes, it's possible for these directives to no longer be needed because the code has changed in such a way that the rule will no longer be triggered. You can enable reporting of these unused disable directives by setting the `reportUnusedDisableDirectives` option to `true`, as in this example:
+像 `/*eslint-disable*/` 和 `/*eslint-disable-next-line*/` 这样的禁用指令是用来禁用 ESLint 规则的，围绕代码的某些部分。随着代码的变化，这些指令有可能不再需要，因为代码的变化使规则不再被触发。你可以通过设置 `reportUnusedDisableDirectives` 选项为 `true` 来启用这些未用的禁用指令的报告，如本例：
 
 ```js
 export default [
@@ -207,15 +207,15 @@ export default [
 ];
 ```
 
-By default, unused disable directives are reported as warnings. You can change this setting using the `--report-unused-disable-directives` command line option.
+默认情况下，未用的禁用指令被报告为警告。你可以使用 `--report-unused-disable-directives` 命令行选项来改变这一设置。
 
-### Configuring language options
+### 配置语言选项
 
-Options specific to how ESLint evaluates your JavaScript code can be configured using the `languageOptions` object.
+可以使用 `languageOptions` 对象来配置 ESLint 如何评估你的 JavaScript 代码的特定选项。
 
-#### Configuring the JavaScript version
+#### 配置 JavaScript 版本
 
-To configure the version of JavaScript (ECMAScript) that ESLint uses to evaluate your JavaScript, use the `ecmaVersion` property. This property determines which global variables and syntax are valid in your code and can be set to the version number (such as `6`), the year number (such as `2022`), or `"latest"` (for the most recent version that ESLint supports). By default, `ecmaVersion` is set to `"latest"` and it's recommended to keep this default unless you need to ensure that your JavaScript code is evaluated as an older version. For example, some older runtimes might only allow ECMAScript 5, in which case you can configure ESLint like this:
+要配置 ESLint 用来评估你的 JavaScript（ECMAScript）的版本，请使用 `ecmaVersion` 属性。这个属性决定了哪些全局变量和语法在你的代码中是有效的，可以设置为版本号（`6`）、年份（`2022`）或 `"latest"`（使用 ESLint 支持的最新版本）。`ecmaVersion` 默认值为 `"latest"`，建议保持这个默认值，除非你需要确保你的 JavaScript 代码被评估为旧版本。例如，一些旧的运行时可能只能用 ECMAScript 5，在这种情况下，你把 ESLint 配置成这样：
 
 ```js
 export default [
@@ -228,15 +228,15 @@ export default [
 ];
 ```
 
-#### Configuring the JavaScript source type
+#### 配置 JavaScript 源类型
 
-ESLint can evaluate your code in one of three ways:
+ESLint 可以通过三种方式之一来检查代码：
 
-1. ECMAScript module (ESM) - Your code has a module scope and is run in strict mode.
-1. CommonJS - Your code has a top-level function scope and runs in nonstrict mode.
-1. Script - Your code has a shared global scope and runs in nonstrict mode.
+1. ECMAScript 模块（ESM） - 代码有模块作用域，并以严格模式运行。
+1. CommonJS - 代码有顶层函数作用域，并在非严格模式下运行。
+2. Script - 代码有共享的全局作用域，并在非严格模式下运行。
 
-You can specify which of these modes your code is intended to run in by specifying the `sourceType` property. This property can be set to `"module"`, `"commonjs"`, or `"script"`. By default, `sourceType` is set to `"module"` for `.js` and `.mjs` files and is set to `"commonjs"` for `.cjs` files. Here's an example:
+你可以通过指定 `sourceType` 属性来指定你的代码要在哪种模式下运行。这个属性可以被设置为 `"module"`、`"commonjs"` 或  `"script"`。默认情况下，`.js` 和 `.mjs` 文件的 `sourceType` 是 `"module"`，而 `.cjs` 文件则是 `"commonjs"`。下面是示例：
 
 ```js
 export default [
@@ -249,9 +249,9 @@ export default [
 ];
 ```
 
-#### Configuring a custom parser and its options
+#### 配置自定义解析器及其选项
 
-In many cases, you can use the default parser that ESLint ships with for parsing your JavaScript code. You can optionally override the default parser by using the `parser` property. The `parser` property can be either a string in the format `"pluginName/parserName"` (indicating to retrieve the parser from a plugin) or an object containing either a `parse()` method or a `parseForESLint()` method. For example, you can use the [`@babel/eslint-parser`](https://www.npmjs.com/package/@babel/eslint-parser) package to allow ESLint to parse experimental syntax:
+在许多情况下，你可以使用 ESLint 提供的默认解析器来解析你的 JavaScript 代码。你可以通过使用 `parser` 属性来覆盖默认的解析器。`parser` 属性可以是一个字符串，格式为 `"pluginName/parserName"`（表示从插件中检索解析器），或是包含 `parse()` 方法或 `parseForESLint()` 方法的对象。例如，你可以使用 [`@babel/eslint-parser`](https://www.npmjs.com/package/@babel/eslint-parser) 包来让 ESLint 解析实验性语法：
 
 ```js
 import babelParser from "@babel/eslint-parser";
@@ -266,9 +266,9 @@ export default [
 ];
 ```
 
-This configuration ensures that the Babel parser, rather than the default, will be used to parse all files ending with `.js` and `.mjs`.
+这种配置可以确保使用 Babel 解析器，而不是使用默认解析器，来解析所有以 `.js` 和 `.mjs` 结尾的文件。
 
-You can also pass options directly to the custom parser by using the `parserOptions` property. This property is an object whose name-value pairs are specific to the parser that you are using. For the Babel parser, you might pass in options like this:
+你也可以通过使用 `parserOptions` 属性直接向自定义解析器传递选项。这个属性是一个对象，其名-值对是特定于你所使用的解析器的。对于 Babel 解析器，你可以这样传入选项：
 
 ```js
 import babelParser from "@babel/eslint-parser";
@@ -292,9 +292,9 @@ export default [
 ];
 ```
 
-#### Configuring global variables
+#### 配置全局变量
 
-To configure global variables inside of a configuration object, set the `globals` configuration property to an object containing keys named for each of the global variables you want to use. For each global variable key, set the corresponding value equal to `"writable"` to allow the variable to be overwritten or `"readonly"` to disallow overwriting. For example:
+要在配置对象中配置全局变量，请将 `globals` 配置属性设置为一个对象，其中包含为你要使用的每个全局变量命名的键。对于每个全局变量的键，设置相应的值等于 `"writable"` 以允许变量被覆盖，或 `"readonly"` 不允许覆盖。例如：
 
 ```js
 export default [
@@ -310,9 +310,9 @@ export default [
 ];
 ```
 
-These examples allow `var1` to be overwritten in your code, but disallow it for `var2`.
+这些例子允许在代码中覆盖 `var1`，但不允许覆盖 `var2`。
 
-Globals can be disabled with the string `"off"`. For example, in an environment where most ES2015 globals are available but `Promise` is unavailable, you might use this config:
+可以用字符串 `"off"` 来禁用全局变量。例如，在一个环境中，可以使用大多数 ES2015 的全局变量，但不能用 `Promise` ，你就可以使用这个配置：
 
 ```js
 export default [
@@ -326,11 +326,11 @@ export default [
 ];
 ```
 
-For historical reasons, the boolean value `false` and the string value `"readable"` are equivalent to `"readonly"`. Similarly, the boolean value `true` and the string value `"writeable"` are equivalent to `"writable"`. However, the use of older values is deprecated.
+由于历史原因，布尔值 `false` 和字符串值 `"readable"` 等同于 `"readonly"`。同样地，布尔值`true`和字符串 `"writeable"` 等同于 `"writable"`。然而，旧值已经被废弃了。
 
-### Using plugins in your configuration
+### 在你的配置中使用插件
 
-Plugins are used to share rules, processors, configurations, parsers, and more across ESLint projects. Plugins are specified in a configuration object using the `plugins` key, which is an object where the name of the plugin is the property name and the value is the plugin object itself. Here's an example:
+插件用于在 ESLint 项目中共享规则、处理器、配置、解析器等等。插件在配置对象中使用 `plugins` 键来指定，这是个对象，其中插件的名称是属性名称，值是插件对象本身。下面是示例：
 
 ```js
 import jsdoc from "eslint-plugin-jsdoc";
@@ -349,9 +349,9 @@ export default [
 ];
 ```
 
-In this configuration, the JSDoc plugin is defined to have the name `jsdoc`. The prefix `jsdoc/` in each rule name indicates that the rule is coming from the plugin with that name rather than from ESLint itself.
+在这个配置中，JSDoc 插件被定义为 `jsdoc`。每个规则名称中的前缀 `jsdoc/` 表示该规则来自该名称的插件，而不是来自 ESLint 本身。
 
-Because the name of the plugin and the plugin object are both `jsdoc`, you can also shorten the configuration to this:
+因为插件的名字和插件对象都是 `jsdoc`，你也可以将配置缩短为这样：
 
 ```js
 import jsdoc from "eslint-plugin-jsdoc";
@@ -370,7 +370,7 @@ export default [
 ];
 ```
 
-While this is the most common convention, you don't need to use the same name that the plugin prescribes. You can specify any prefix that you'd like, such as:
+虽然这是最常见的惯例，但你不需要使用插件规定的相同名称。你可以指定任何你想要的前缀，例如：
 
 ```js
 import jsdoc from "eslint-plugin-jsdoc";
@@ -389,11 +389,11 @@ export default [
 ];
 ```
 
-This configuration object uses `jsd` as the prefix plugin instead of `jsdoc`.
+这时该配置对象就用 `jsd` 取代了原先的  `jsdoc` 插件前缀。
 
-### Using processors
+### 使用处理程序
 
-Processors allow ESLint to transform text into pieces of code that ESLint can lint. You can specify the processor to use for a given file type by defining a `processor` property that contains either the processor name in the format `"pluginName/processorName"` to reference a processor in a plugin or an object containing both a `preprocess()` and a `postprocess()` method. For example, to extract JavaScript code blocks from a Markdown file, you might add this to your configuration:
+处理器允许 ESLint 将文本转化为 ESLint 可以检查的代码片段。你可以通过定义一个 `processor` 属性来指定对某个文件类型使用的处理器，该属性包含格式为 `"pluginName/processorName"` 的处理器名称，以引用一个插件中的处理器，或者是一个包含 `preprocess()` 和 `postprocess()` 方法的对象。例如，为了从 Markdown 文件中提取 JavaScript 代码块，你可以在你的配置中加入这个：
 
 ```js
 import markdown from "eslint-plugin-markdown";
@@ -412,9 +412,9 @@ export default [
 ];
 ```
 
-This configuration object specifies that there is a processor called `"markdown"` contained in the plugin named `"markdown"` and will apply the processor to all files ending with `.md`.
+这个配置对象指定在名为 `markdown` 的插件中包含一个名为 `markdown` 的处理器，并将该处理器应用于所有以 `.md` 结尾的文件。
 
-Processors may make named code blocks that function as filenames in configuration objects, such as `0.js` and `1.js`. ESLint handles such a named code block as a child of the original file. You can specify additional configuration objects for named code blocks. For example, the following disables the `strict` rule for the named code blocks which end with `.js` in markdown files.
+处理器可以将命名代码块当作配置对象中的文件名，如 `0.js` 和 `1.js`。ESLint 将这样的命名代码块作为原始文件的一个子文件来处理。你可以为命名代码块指定额外的配置对象。例如，下面是对 markdown 文件中以 `.js` 结尾的命名代码块禁用 `strict` 规则。
 
 ```js
 import markdown from "eslint-plugin-markdown";
@@ -441,9 +441,9 @@ export default [
 ];
 ```
 
-### Configuring rules
+### 配置规则
 
-You can configure any number of rules in a configuration object by add a `rules` property containing an object with your rule configurations. The names in this object are the names of the rules and the values are the configurations for each of those rules. Here's an example:
+你可以在一个配置对象中配置任何数量的规则，方法是添加一个 `rules` 属性，其中包含一个带有你的规则配置的对象。这个对象中的名称是规则的名称，值是每个规则的配置。下面是示例：
 
 ```js
 export default [
@@ -455,7 +455,7 @@ export default [
 ];
 ```
 
-This configuration object specifies that the [`semi`](/docs/latest/rules/semi) rule should be enabled with a severity of `"error"`. You can also provide options to a rule by specifying an array where the first item is the severity and each item after that is an option for the rule. For example, you can switch the `semi` rule to disallow semicolons by passing `"never"` as an option:
+这个配置对象指定 [`semi`](/docs/latest/rules/semi) 规则应被启用，其严重程度为 `"error"`。你也可以通过指定一个数组来为规则提供选项，其中第一项是严重程度，之后的每一项都是规则的选项。例如，你可以将 `"semi"` 规则切换为不允许使用分号，将 `"never"` 作为一个选项。
 
 ```js
 export default [
@@ -467,19 +467,19 @@ export default [
 ];
 ```
 
-Each rule specifies its own options and can be any valid JSON data type. Please check the documentation for the rule you want to configure for more information about its available options.
+每个规则都指定自己的选项，可以是任何有效的 JSON 数据类型。请查看你要配置的规则的文档，以获得更多关于其可用选项的信息。
 
-#### Rule severities
+#### 规则的严重程度
 
-There are three possible severities you can specify for a rule
+你可以为一个规则指定三种可能的严重程度
 
-* `"error"` (or `2`) - the reported problem should be treated as an error. When using the ESLint CLI, errors cause the CLI to exit with a nonzero code.
-* `"warn"` (or `1`) - the reported problem should be treated as a warning. When using the ESLint CLI, warnings are reported but do not change the exit code. If only errors are reported, the exit code will be 0.
-* `"off"` (or `0`) - the rule should be turned off completely.
+* `"error"`（或 `2`） - 将问题视作错误。当使用 ESLint CLI 时，错误导致 CLI 以非零代码退出。
+* `"warn"`（或 `1`） - 将问题视作警告。当使用 ESLint CLI 时，警告被报告但不改变退出代码。如果只报告错误，将使用退出代码 0。
+* `"off"`（或 `0`） - 彻底关闭规则。
 
-#### Rule configuration cascade
+#### 规则配置级联
 
-When more than one configuration object specifies the same rule, the rule configuration is merged with the later object taking precedence over any previous objects. For example:
+当一个以上的配置对象指定相同的规则时，规则配置会被合并，后面的对象优先于之前的任何对象。例如：
 
 ```js
 export default [
@@ -496,7 +496,7 @@ export default [
 ];
 ```
 
-Using this configuration, the final rule configuration for `semi` is `["warn", "always"]` because it appears last in the array. The array indicates that the configuration is for the severity and any options. You can change just the severity by defining only a string or number, as in this example:
+使用这个配置，`semi` 的最终规则配置是 `["warn", "always"]`，因为它出现在数组的最后。数组表示配置的是严重程度和任何选项。你可以仅通过定义一个字符串或数字来改变严重程度，如本例：
 
 ```js
 export default [
@@ -513,11 +513,11 @@ export default [
 ];
 ```
 
-Here, the second configuration object only overrides the severity, so the final configuration for `semi` is `["warn", "never"]`.
+在这里，第二个配置对象只覆盖了严重性，所以 `semi` 的最终配置是 `["warn", "never"]`。
 
-### Configuring shared settings
+### 配置共享设置
 
-ESLint supports adding shared settings into configuration files. Plugins use `settings` to specify information that should be shared across all of its rules. You can add a `settings` object to a configuration object and it will be supplied to every rule being executed. This may be useful if you are adding custom rules and want them to have access to the same information. Here's an example:
+ESLint 支持在配置文件中添加共享设置。插件使用 `settings` 来指定应该在其所有规则中共享的信息。你可以在一个配置对象中添加 `settings` 对象，它将被提供给每个正在执行的规则。如果你正在添加自定义规则，并希望它们能够访问相同的信息，这可能是有用的。下面是示例：
 
 ```js
 export default [
@@ -529,14 +529,14 @@ export default [
 ];
 ```
 
-### Using predefined configurations
+### 使用预定义配置
 
-ESLint has two predefined configurations:
+ESLint 有两个预定义配置：
 
-* `eslint:recommended` - enables the rules that ESLint recommends everyone use to avoid potential errors
-* `eslint:all` - enables all of the rules shipped with ESLint
+* `eslint:recommended` - 启用 ESLint 推荐大家使用的规则，以避免潜在错误
+* `eslint:all` - 启用所有 ESLint 提供的规则
 
-To include these predefined configurations, you can insert the string values into the returned array and then make any modifications to other properties in subsequent configuration objects:
+为了包括这些预定义配置，你可以在返回的数组中插入字符串值，然后在随后的配置对象中对其他属性进行任何修改：
 
 ```js
 export default [
@@ -549,18 +549,18 @@ export default [
 ];
 ```
 
-Here, the `eslint:recommended` predefined configuration is applied first and then another configuration object adds the desired configuration for `semi`.
+这里，首先应用了 `eslint:recommended` 预定义配置，然后另一个配置对象为 `semi` 增加了所需的配置。
 
-## Configuration File Resolution
+## 配置文件解析
 
-When ESLint is run on the command line, it first checks the current working directory for `eslint.config.js`, and if not found, will look to the next parent directory for the file. This search continues until either the file is found or the root directory is reached.
+当 ESLint 在命令行上运行时，它首先检查当前工作目录中的 `eslint.config.js`，如果没有找到，将在下一个父目录中寻找该文件。这种搜索一直持续到找到该文件或到达根目录。
 
-You can prevent this search for `eslint.config.js` by using the `-c` or `--config--file` option on the command line to specify an alternate configuration file, such as:
+你可以通过在命令行中使用 `-c` 或 `-config--file` 选项来指定替代的配置文件，以避免检索 `eslint.config.js`。
 
 ```shell
 npx eslint -c some-other-file.js **/*.js
 ```
 
-In this case, ESLint will not search for `eslint.config.js` and will instead use `some-other-file.js`.
+在这种情况下，ESLint 将不会检索 `eslint.config.js`，而会直接使用 `some-other-file.js`。
 
-Each configuration file exports one or more configuration object. A configuration object
+每个配置文件导出一个或多个配置对象。
