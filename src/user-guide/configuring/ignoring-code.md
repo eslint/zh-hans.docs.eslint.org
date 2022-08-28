@@ -10,9 +10,9 @@ eleventyNavigation:
 
 ---
 
-## `ignorePatterns` in Config Files
+## 配置文件中的 `ignorePatterns`
 
-You can tell ESLint to ignore specific files and directories using `ignorePatterns` in your config files. `ignorePatterns` patterns follow the same rules as `.eslintignore`. Please see the [the `.eslintignore` file documentation](./ignoring-code#the-eslintignore-file) to learn more.
+你可以在你的配置文件中使用 `ignorePatterns` 来告诉 ESLint 忽略特定的文件和目录。`ignorePatterns` 模式遵循与 `.eslintignore` 相同的规则。参见[`.eslintignore` 文档](./ignoring-code#the-eslintignore-file)了解更多内容。
 
 ```json
 {
@@ -23,32 +23,32 @@ You can tell ESLint to ignore specific files and directories using `ignorePatter
 }
 ```
 
-* Glob patterns in `ignorePatterns` are relative to the directory that the config file is placed in.
-* You cannot write `ignorePatterns` property under `overrides` property.
-* Patterns defined in `.eslintignore` take precedence over the `ignorePatterns` property of config files.
+* `ignorePatterns` 中的 glob 模式是相对于配置文件所在的目录而言的。
+* 你不能在 `overrides` 属性中使用 `ignorePatterns` 属性。
+* 在 `.eslintignore` 中定义的模式优先于配置文件的 `ignorePatterns` 属性。
 
-If a glob pattern starts with `/`, the pattern is relative to the base directory of the config file. For example, `/foo.js` in `lib/.eslintrc.json` matches to `lib/foo.js` but not `lib/subdir/foo.js`.
+如果 glob 模式以 `/` 开头，该模式是相对于配置文件的基本目录而言的。例如，`lib/.eslintrc.json` 中的 `/foo.js` 会匹配 `lib/foo.js`，而不是匹配`lib/subdir/foo.js`。
 
-If a config is provided via the `--config` CLI option, the ignore patterns that start with `/` in the config are relative to the current working directory rather than the base directory of the given config. For example, if `--config configs/.eslintrc.json` is present, the ignore patterns in the config are relative to `.` rather than `./configs`.
+如果配置是通过 `--config` CLI 选项提供的，配置中以 `/` 开头的忽略模式是相对于当前工作目录的，而不是给定配置的基本目录。例如，如果使用 `--config configs/.eslintrc.json`，配置中的忽略模式是基于 `.` 而不是 `./configs`。
 
-## The `.eslintignore` File
+## `.eslintignore` 文件
 
-You can tell ESLint to ignore specific files and directories by creating an `.eslintignore` file in your project's root directory. The `.eslintignore` file is a plain text file where each line is a glob pattern indicating which paths should be omitted from linting. For example, the following will omit all JavaScript files:
+你可以通过在项目的根目录下创建 `.eslintignore` 文件来告诉 ESLint 要忽略哪些文件和目录。`.eslintignore` 文件是一个纯文本文件，其中每一行都是一个 glob 模式，表示哪些路径应该被省略掉。例如，下面的内容将忽略所有的 JavaScript 文件：
 
 ```text
 **/*.js
 ```
 
-When ESLint is run, it looks in the current working directory to find an `.eslintignore` file before determining which files to lint. If this file is found, then those preferences are applied when traversing directories. Only one `.eslintignore` file can be used at a time, so `.eslintignore` files other than the one in the current working directory will not be used.
+当运行 ESLint 时，在决定要检查的文件范围前，它会在当前工作目录中寻找 `.eslintignore` 文件。如果找到该文件，那么在遍历目录时就会应用这些偏好。每次只能使用一个 `.eslintignore` 文件，且仅会使用当前工作目录中的 `.eslintignore` 文件。
 
-Globs are matched using [node-ignore](https://github.com/kaelzhang/node-ignore), so a number of features are available:
+Glob 使用 [node-ignore](https://github.com/kaelzhang/node-ignore) 进行匹配，因此有许多特性：
 
-* Lines beginning with `#` are treated as comments and do not affect the ignore patterns.
-* Paths are relative to the current working directory. This is also true of paths passed in via the `--ignore-pattern` [command](../command-line-interface#--ignore-pattern).
-* Lines preceded by `!` are negated patterns that re-include a pattern that was ignored by an earlier pattern.
-* Ignore patterns behave according to the `.gitignore` [specification](https://git-scm.com/docs/gitignore).
+* 以 `#` 开头的行被视为注释，不影响忽略模式。
+* 路径是相对于当前工作目录的。这也适用于通过 `--ignore-pattern`[命令](../command-line-interface#--ignore-pattern)传递的路径。
+* 前面有 `!` 的行是否定模式，重新包括被先前模式忽略的模式。
+* 忽略模式的行为与 `.gitignore` [规范](https://git-scm.com/docs/gitignore)一致。
 
-Of particular note is that like `.gitignore` files, all paths used as patterns for both `.eslintignore` and `--ignore-pattern` must use forward slashes as their path separators.
+特别要注意的是，像 `.gitignore` 文件一样，所有用作 `.eslintignore` 和 `--ignore-pattern` 的模式的路径必须使用正斜杠作为路径分隔符。
 
 ```text
 # Valid
@@ -58,26 +58,26 @@ Of particular note is that like `.gitignore` files, all paths used as patterns f
 \root\src\*.js
 ```
 
-Please see [`.gitignore`](https://git-scm.com/docs/gitignore)'s specification for further examples of valid syntax.
+请参阅 [`.gitignore`](https://git-scm.com/docs/gitignore) 的规范，了解更多有效的语法实例。
 
-In addition to any patterns in the `.eslintignore` file, ESLint always follows a couple of implicit ignore rules even if the `--no-ignore` flag is passed. The implicit rules are as follows:
+除了 `.eslintignore` 文件中的任何模式外，ESLint 总是遵循一些隐含的忽略规则，即使通过了 `--no-ignore` 标志。这些隐含的规则如下：
 
-* `node_modules/` is ignored.
-* dot-files (except for `.eslintrc.*`), as well as dot-folders and their contents, are ignored.
+* 忽略 `node_modules/`
+* 忽略点文件（除了 `.eslintrc.*`），以及点文件夹和它们的内容
 
-There are also some exceptions to these rules:
+这些规则也有一些例外：
 
-* If the path to lint is a glob pattern or directory path and contains a dot-folder, all dot-files and dot-folders will be linted. This includes dot-files and dot-folders that are buried deeper in the directory structure.
+* 如果要检查的路径是一个 glob 模式或目录路径，并且是点文件夹，则检查所有点文件和点文件夹，包括目录结构深处的点文件和点文件夹。
 
-  For example, `eslint .config/` will lint all dot-folders and dot-files in the `.config` directory, including immediate children as well as children that are deeper in the directory structure.
+  例如，`eslint .config/` 将对 `.config` 目录下的所有点文件夹和点文件进行检查，包括一级子目录以及在目录结构中更深的子目录。
 
-* If the path to lint is a specific file path and the `--no-ignore` flag has been passed, ESLint will lint the file regardless of the implicit ignore rules.
+* 如果要检查的路径是一个特定的文件路径，并且通过了 `--no-ignore` 标志，ESLint 将检查该文件，而不考虑隐含的忽略规则。
 
-  For example, `eslint .config/my-config-file.js --no-ignore` will cause `my-config-file.js` to be linted. It should be noted that the same command without the `--no-ignore` line will not lint the `my-config-file.js` file.
+  例如，`eslint .config/my-config-file.js --no-ignore` 将检查 `my-config-file.js`。需要注意的是，同样的命令如果没有 `--no-ignore` 行，就不会对 `my-config-file.js`文件进行检测。
 
-* Allowlist and denylist rules specified via `--ignore-pattern` or `.eslintignore` are prioritized above implicit ignore rules.
+* 通过 `--ignore-pattern` 或 `.eslintignore` 指定的 Allowlist 和 denylist 规则会优先于隐含的忽略规则。
 
-  For example, in this scenario, `.build/test.js` is the desired file to allowlist. Because all dot-folders and their children are ignored by default, `.build` must first be allowlisted so that eslint becomes aware of its children. Then, `.build/test.js` must be explicitly allowlisted, while the rest of the content is denylisted. This is done with the following `.eslintignore` file:
+  例如，在这种情况下，`.build/test.js` 是允许列表的理想文件。因为默认忽略了所有点文件夹及其子文件，`.build` 必须首先要处于允许列表中，这样 eslint 才会知道它的子文件。然后，`.build/test.js` 必须被明确地列入允许列表，而其余的内容则被拒绝列表。这可以通过以下 `.eslintignore` 文件完成：
 
   ```text
   # Allowlist 'test.js' in the '.build' folder
@@ -87,15 +87,15 @@ There are also some exceptions to these rules:
   !.build/test.js
   ```
 
-  The following `--ignore-pattern` is also equivalent:
+  与下面的 `--ignore-pattern` 一样：
 
   ```shell
   eslint --ignore-pattern '!.build' --ignore-pattern '.build/*' --ignore-pattern '!.build/test.js' parent-folder/
   ```
 
-## Using an Alternate File
+## 使用替代文件
 
-If you'd prefer to use a different file than the `.eslintignore` in the current working directory, you can specify it on the command line using the `--ignore-path` option. For example, you can use `.jshintignore` file because it has the same format:
+如果你想使用一个不同于当前工作目录中的 `.eslintignore` 的文件，你可以在命令行中使用 `--ignore-path` 选项来指定它。比如你也可以使用 `.jshintignore` 文件，因为它们格式一样：
 
 ```shell
 eslint --ignore-path .jshintignore file.js
@@ -107,11 +107,11 @@ You can also use your `.gitignore` file:
 eslint --ignore-path .gitignore file.js
 ```
 
-Any file that follows the standard ignore file format can be used. Keep in mind that specifying `--ignore-path` means that any existing `.eslintignore` file will not be used. Note that globbing rules in `.eslintignore` follow those of `.gitignore`.
+任何遵循标准忽略文件格式的文件都可以被使用。请记住，指定 `--ignore-path` 意味着任何现有的 `.eslintignore` 文件将不会被使用。注意 `.eslintignore`中的 glob 规则遵循 `.gitignore` 中的规则。
 
-## Using eslintIgnore in package.json
+## package.json 中的 eslintIgnore
 
-If an `.eslintignore` file is not found and an alternate file is not specified, ESLint will look in package.json for an `eslintIgnore` key to check for files to ignore.
+如果没找到 `.eslintignore` 文件，也没有指定替代文件，ESLint 将在 package.json 中寻找 `eslintIgnore` 键获取要忽略检查的文件。
 
 ```json
 {
@@ -127,21 +127,21 @@ If an `.eslintignore` file is not found and an alternate file is not specified, 
 }
 ```
 
-## Ignored File Warnings
+## 忽略文件警告
 
-When you pass directories to ESLint, files and directories are silently ignored. If you pass a specific file to ESLint, then you will see a warning indicating that the file was skipped. For example, suppose you have an `.eslintignore` file that looks like this:
+当你把目录传给 ESLint 时，文件和目录都被默默地忽略了。如果你把一个特定的文件传给 ESLint，那么你会看到警告，表明该文件被跳过。比如假设你有一个 `.eslintignore` 文件，像是这样：
 
 ```text
 foo.js
 ```
 
-And then you run:
+然后你运行：
 
 ```shell
 eslint foo.js
 ```
 
-You'll see this warning:
+你就会看到此警告：
 
 ```text
 foo.js
@@ -150,15 +150,15 @@ foo.js
 ✖ 1 problem (0 errors, 1 warning)
 ```
 
-This message occurs because ESLint is unsure if you wanted to actually lint the file or not. As the message indicates, you can use `--no-ignore` to omit using the ignore rules.
+这条信息的出现是因为 ESLint 不确定你是否真的要对该文件进行忽略处理。正如该信息所示，你可以使用 `--no-ignore` 来省略忽略规则。
 
-Consider another scenario where you may want to run ESLint on a specific dot-file or dot-folder, but have forgotten to specifically allow those files in your `.eslintignore` file. You would run something like this:
+考虑另一种情况，你可能想在某个特定的点文件或点文件夹上运行 ESLint，但忘了在 `.eslintignore` 文件中特别允许这些文件。你想要运行：
 
 ```shell
 eslint .config/foo.js
 ```
 
-You would see this warning:
+你就会看到此警告：
 
 ```text
 .config/foo.js
@@ -167,4 +167,4 @@ You would see this warning:
 ✖ 1 problem (0 errors, 1 warning)
 ```
 
-This message occurs because, normally, this file would be ignored by ESLint's implicit ignore rules (as mentioned above). A negated ignore rule in your `.eslintignore` file would override the implicit rule and reinclude this file for linting. Additionally, in this specific case, `--no-ignore` could be used to lint the file as well.
+出现这个消息是因为在通常情况下，这个文件会被 ESLint 的隐式忽略规则所忽略（如上所述）。在 `.eslintignore` 文件中否定的忽略规则将覆盖隐含的规则，并重新包含这个文件进行检测。此外，在这个特定的案例中，`--no-ignore` 也可以用来对文件进行提示。
