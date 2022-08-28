@@ -1,25 +1,25 @@
 ---
-title: Plugins
+title: 插件
 layout: doc
 edit_link: https://github.com/eslint/eslint/edit/main/docs/src/user-guide/configuring/plugins.md
 eleventyNavigation:
     key: configuring plugins
     parent: configuring
-    title: Configuring Plugins
+    title: 插件配置
     order: 4
 
 ---
 
-## Specifying Parser
+## 指定解析器
 
-By default, ESLint uses [Espree](https://github.com/eslint/espree) as its parser. You can optionally specify that a different parser should be used in your configuration file so long as the parser meets the following requirements:
+默认情况下，ESLint 使用 [Espree](https://github.com/eslint/espree) 作为其解析器。你可以选择在你的配置文件中指定使用一个不同的解析器，只要该解析器满足以下要求。
 
-1. It must be a Node module loadable from the config file where the parser is used. Usually, this means you should install the parser package separately using npm.
-1. It must conform to the [parser interface](../../developer-guide/working-with-custom-parsers).
+1. 它必须是一个可以从使用解析器的配置文件中加载的 Node 模块。通常情况下，这意味着你应该使用 npm 单独安装解析器包。
+1. 它必须符合[解析器接口](../../developer-guide/working-with-custom-parsers)。
 
-Note that even with these compatibilities, there are no guarantees that an external parser will work correctly with ESLint and ESLint will not fix bugs related to incompatibilities with other parsers.
+请注意，即使有这些兼容性，也不能保证外部解析器能与 ESLint 正确工作，ESLint 也不会修复与其他解析器不兼容的漏洞。
 
-To indicate the npm module to use as your parser, specify it using the `parser` option in your `.eslintrc` file. For example, the following specifies to use Esprima instead of Espree:
+你可以在 `.eslintrc` 文件中使用 `parser` 选项指定 npm 模块作为解析器。例如，下面指定使用 Esprima 而不是 Espree：
 
 ```json
 {
@@ -30,19 +30,19 @@ To indicate the npm module to use as your parser, specify it using the `parser` 
 }
 ```
 
-The following parsers are compatible with ESLint:
+以下解析器与 ESLint 兼容：
 
 * [Esprima](https://www.npmjs.com/package/esprima)
-* [@babel/eslint-parser](https://www.npmjs.com/package/@babel/eslint-parser) - A wrapper around the [Babel](https://babeljs.io) parser that makes it compatible with ESLint.
-* [@typescript-eslint/parser](https://www.npmjs.com/package/@typescript-eslint/parser) - A parser that converts TypeScript into an ESTree-compatible form so it can be used in ESLint.
+* [@babel/eslint-parser](https://www.npmjs.com/package/@babel/eslint-parser) - 使 [Babel](https://babeljs.io) 解析器与 ESLint 兼容的的包装器。
+* [@typescript-eslint/parser](https://www.npmjs.com/package/@typescript-eslint/parser) - 一个将 TypeScript 转换为与 ESTree 兼容的形式的解析器，因此它可以在 ESLint 中使用。
 
-Note when using a custom parser, the `parserOptions` configuration property is still required for ESLint to work properly with features not in ECMAScript 5 by default. Parsers are all passed `parserOptions` and may or may not use them to determine which features to enable.
+注意当使用自定义的解析器时，仍然需要配置 `parserOptions` 属性，以便 ESLint 在默认情况下与 ECMAScript 5 中没有的功能正常工作。解析器都是用 `parserOptions` 来决定特性启用与否。
 
-## Specifying Processor
+## 指定处理器
 
-Plugins may provide processors. Processors can extract JavaScript code from other kinds of files, then let ESLint lint the JavaScript code or processors can convert JavaScript code in preprocessing for some purpose.
+插件可以提供处理器。处理器可以从其他类型的文件中提取 JavaScript 代码，然后让 ESLint 对 JavaScript 代码进行提示，或者处理器可以在预处理中转换 JavaScript 代码以达到某些目的。
 
-To specify processors in a configuration file, use the `processor` key with the concatenated string of a plugin name and a processor name by a slash. For example, the following enables the processor `a-processor` that the plugin `a-plugin` provided:
+在配置文件中使用 `processor` 键指定处理器，用斜线连接插件名称和处理器名称的字符串。例如，下面启用了插件 `a-plugin` 提供的处理器 `a-processor`：
 
 ```json
 {
@@ -51,7 +51,7 @@ To specify processors in a configuration file, use the `processor` key with the 
 }
 ```
 
-To specify processors for specific kinds of files, use the combination of the `overrides` key and the `processor` key. For example, the following uses the processor `a-plugin/markdown` for `*.md` files.
+要为特定类型文件指定处理器，可以一起使用 `overrides` 键和 `processor` 键。例如，下面使用处理器 `a-plugin/markdown` 来处理 `*.md` 文件。
 
 ```json
 {
@@ -65,7 +65,7 @@ To specify processors for specific kinds of files, use the combination of the `o
 }
 ```
 
-Processors may make named code blocks such as `0.js` and `1.js`. ESLint handles such a named code block as a child file of the original file. You can specify additional configurations for named code blocks in the `overrides` section of the config. For example, the following disables the `strict` rule for the named code blocks which end with `.js` in markdown files.
+处理器可以创建命名代码块，如 `0.js` 和 `1.js`。ESLint 将这种命名代码块作为原始文件的子文件来处理。你可以在配置的 `overrides` 部分为命名代码块指定额外的配置。例如，下面禁用 markdown 文件中以 `.js` 结尾的命名代码块的 `strict` 规则。
 
 ```json
 {
@@ -85,13 +85,13 @@ Processors may make named code blocks such as `0.js` and `1.js`. ESLint handles 
 }
 ```
 
-ESLint checks the file path of named code blocks then ignores those if any `overrides` entry didn't match the file path. Be sure to add an `overrides` entry if you want to lint named code blocks other than `*.js`.
+ESLint 检查命名代码块的文件路径，如果没有与 `overrides` 条目匹配的文件路径，则忽略这些文件。如果你想检查除 `*.js` 以外的指定代码块，记得要添加 `overrides` 条目。
 
-## Configuring Plugins
+## 配置插件
 
-ESLint supports the use of third-party plugins. Before using the plugin, you have to install it using npm.
+ESLint 支持使用第三方插件。在使用插件之前，你必须使用 npm 安装它。
 
-To configure plugins inside of a configuration file, use the `plugins` key, which contains a list of plugin names. The `eslint-plugin-` prefix can be omitted from the plugin name.
+要在配置文件内配置插件，请使用 `plugins` 键，它应该是由插件名称组成的列表。可以省略插件名称中的  `eslint-plugin-` 前缀。
 
 ```json
 {
@@ -102,7 +102,7 @@ To configure plugins inside of a configuration file, use the `plugins` key, whic
 }
 ```
 
-And in YAML:
+而在 YAML 中是：
 
 ```yaml
 ---
@@ -111,16 +111,16 @@ And in YAML:
     - eslint-plugin-plugin2
 ```
 
-**Notes:**
+**注意**：
 
-1. Plugins are resolved relative to the config file. In other words, ESLint will load the plugin as a user would obtain by running `require('eslint-plugin-pluginname')` in the config file.
-2. Plugins in the base configuration (loaded by `extends` setting) are relative to the derived config file. For example, if `./.eslintrc` has `extends: ["foo"]` and the `eslint-config-foo` has `plugins: ["bar"]`, ESLint finds the `eslint-plugin-bar` from `./node_modules/` (rather than `./node_modules/eslint-config-foo/node_modules/`) or ancestor directories. Thus every plugin in the config file and base configurations is resolved uniquely.
+1. 插件的解析是相对于配置文件的。换句话说，ESLint 将按照用户在配置文件中运行`require('eslint-plugin-pluginname')`获得的方式加载插件。
+2. 基本配置中的插件（通过`extends`设置加载）是相对于派生配置文件的。例如，如果 `./.eslintrc` 中有 `extends: ["foo"]`。而 `eslint-config-foo` 中有`plugins: ["bar"]`，ESLint 会从`./node_modules/`（而不是`./node_modules/eslint-config-foo/node_modules/`）或祖先目录找到 `eslint-plugin-bar`。因此，解析配置文件和基础配置中的每个插件都是独立的。
 
-### Naming convention
+### 命名规范
 
-#### Include a plugin
+#### 包括插件
 
-The `eslint-plugin-` prefix can be omitted for non-scoped packages
+可以在非范围包中省略 `eslint-plugin-` 前缀
 
 ```js
 {
@@ -132,7 +132,7 @@ The `eslint-plugin-` prefix can be omitted for non-scoped packages
 }
 ```
 
-The same rule does apply to scoped packages:
+也可以用范围包启用同一条规则：
 
 ```js
 {
@@ -145,15 +145,15 @@ The same rule does apply to scoped packages:
 }
 ```
 
-#### Use a plugin
+#### 使用插件
 
-When using rules, environments or configs defined by plugins, they must be referenced following the convention:
+当使用由插件定义的规则、环境或配置时，必须按照惯例来引用它们。
 
 * `eslint-plugin-foo` → `foo/a-rule`
 * `@foo/eslint-plugin` → `@foo/a-config`
 * `@foo/eslint-plugin-bar` → `@foo/bar/a-environment`
 
-For example:
+比如说：
 
 ```js
 {
