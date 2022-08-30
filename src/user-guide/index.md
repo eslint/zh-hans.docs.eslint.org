@@ -1,42 +1,42 @@
 ---
-title: User Guide
+title: 用户指南
 layout: doc
 edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/user-guide/index.md
 eleventyNavigation:
     key: user guide
-    title: User Guide
+    title: 用户指南
     order: 1
 ---
 
-This guide is intended for those who wish to use ESLint as an end-user. If you're looking for how to extend ESLint or work with the ESLint source code, please see the [Developer Guide](../developer-guide/).
+本指南针对想要使用 ESLint 的终端用户。如果你正在寻找扩展 ESLint 或使用 ESLint 源码的方式，请查看[开发指南](../developer-guide/)
 
-## [Getting Started](getting-started)
+## [入门](getting-started)
 
-Want to skip ahead and just start using ESLint? This section gives a high-level overview of installation, setup, and configuration options.
+想要跳过前期准备直接开始使用 ESLint？本章节对安装、设置和配置项进行了高水平概述。
 
-## [Rules](../rules/)
+## [规则](../rules/)
 
-ESLint has a lot of rules that you can configure to fine-tune it to your project. This section is an exhaustive list of every rule and link to each rule's documentation.
+ESLint 有许多可以根据项目需求进行配置并微调的规则。本章节详细列出了所有规则并指向每一规则的相关文档。
 
-## [Configuring](configuring/)
+## [配置](configuring/)
 
-Once you've got ESLint running, you'll probably want to adjust the configuration to better suit your project. This section explains all the different ways you can configure ESLint.
+当 ESLint 成功运行后，你可能会想要调整配置以更好地适应你的项目。本章节一一解释了所有不同的 ESLint 配置方式。
 
-## [Command Line Interface](command-line-interface)
+## [命令行](command-line-interface)
 
-There are a lot of command line flags for ESLint and this section explains what they do.
+ESLint 命令行有许多标志，本章节对它们的作用进行了解释。
 
-## [Integrations](integrations)
+## [基础](integrations)
 
-Wondering if ESLint will work with your favorite editor or build system? This section has a list of all known integrations (submitted by their authors).
+想知道自己所喜欢的编辑器或构建系统能否与 ESLint 一同使用？本章节列出了所有已知的集成（由其作者提交）。
 
-## [Rule Deprecation](rule-deprecation)
+## [规则废止](rule-deprecation)
 
-The ESLint team is committed to making upgrading as easy and painless as possible. This section outlines the guidelines the team has set in place for the deprecation of rules in future releases.
+ESLint 团队致力于使升级过程尽可能无痛且容易。本章节概述了团队针对在未来版本中废止规则所制定的方针。
 
-## Migrating
+## 迁移
 
-If you were using a prior version of ESLint, you can get help with the transition by reading:
+如果你正在使用旧版 ESLint，可以阅读以下内容获取迁移帮助：
 
 * [migrating-to-1.0.0](migrating-to-1.0.0)
 * [migrating-to-2.0.0](migrating-to-2.0.0)
