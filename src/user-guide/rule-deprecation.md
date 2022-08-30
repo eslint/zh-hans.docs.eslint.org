@@ -1,7 +1,7 @@
 ---
 title: Rule Deprecation
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/user-guide/rule-deprecation.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/user-guide/rule-deprecation.md
 
 ---
 

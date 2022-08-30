@@ -1,7 +1,7 @@
 ---
 title: object-curly-spacing
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/rules/object-curly-spacing.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/object-curly-spacing.md
 rule_type: layout
 related_rules:
 - array-bracket-spacing

@@ -1,7 +1,7 @@
 ---
 title: no-setter-return
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/rules/no-setter-return.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-setter-return.md
 rule_type: problem
 related_rules:
 - getter-return

@@ -1,7 +1,7 @@
 ---
 title: no-script-url
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/rules/no-script-url.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-script-url.md
 rule_type: suggestion
 further_reading:
 - https://stackoverflow.com/questions/13497971/what-is-the-matter-with-script-targeted-urls

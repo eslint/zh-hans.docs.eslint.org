@@ -1,7 +1,7 @@
 ---
 title: comma-dangle
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/rules/comma-dangle.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/comma-dangle.md
 rule_type: layout
 ---
 

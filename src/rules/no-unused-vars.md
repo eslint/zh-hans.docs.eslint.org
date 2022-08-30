@@ -1,7 +1,7 @@
 ---
 title: no-unused-vars
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/rules/no-unused-vars.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-unused-vars.md
 rule_type: problem
 ---
 

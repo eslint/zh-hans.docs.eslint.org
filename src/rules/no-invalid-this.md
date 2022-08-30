@@ -1,7 +1,7 @@
 ---
 title: no-invalid-this
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/rules/no-invalid-this.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-invalid-this.md
 rule_type: suggestion
 ---
 

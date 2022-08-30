@@ -1,7 +1,7 @@
 ---
 title: space-unary-ops
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/rules/space-unary-ops.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/space-unary-ops.md
 rule_type: layout
 ---
 

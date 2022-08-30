@@ -1,7 +1,7 @@
 ---
 title: template-tag-spacing
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/rules/template-tag-spacing.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/template-tag-spacing.md
 rule_type: layout
 further_reading:
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#Tagged_template_literals

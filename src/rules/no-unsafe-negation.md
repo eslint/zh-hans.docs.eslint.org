@@ -1,7 +1,7 @@
 ---
 title: no-unsafe-negation
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/rules/no-unsafe-negation.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-unsafe-negation.md
 rule_type: problem
 ---
 

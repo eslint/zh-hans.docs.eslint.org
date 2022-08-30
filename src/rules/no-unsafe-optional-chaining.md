@@ -1,7 +1,7 @@
 ---
 title: no-unsafe-optional-chaining
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/rules/no-unsafe-optional-chaining.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-unsafe-optional-chaining.md
 rule_type: problem
 ---
 

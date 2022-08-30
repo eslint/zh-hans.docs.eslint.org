@@ -1,7 +1,7 @@
 ---
 title: no-new-require
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/rules/no-new-require.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-new-require.md
 rule_type: suggestion
 ---
 

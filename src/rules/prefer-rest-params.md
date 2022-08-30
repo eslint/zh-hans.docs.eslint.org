@@ -1,7 +1,7 @@
 ---
 title: prefer-rest-params
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/rules/prefer-rest-params.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/prefer-rest-params.md
 rule_type: suggestion
 related_rules:
 - prefer-spread

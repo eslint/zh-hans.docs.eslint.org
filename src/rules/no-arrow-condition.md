@@ -1,7 +1,7 @@
 ---
 title: no-arrow-condition
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/rules/no-arrow-condition.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-arrow-condition.md
 
 related_rules:
 - arrow-parens

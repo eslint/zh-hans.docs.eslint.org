@@ -1,7 +1,7 @@
 ---
 title: no-spaced-func
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/rules/no-spaced-func.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-spaced-func.md
 rule_type: layout
 ---
 

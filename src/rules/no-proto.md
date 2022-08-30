@@ -1,7 +1,7 @@
 ---
 title: no-proto
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/rules/no-proto.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-proto.md
 rule_type: suggestion
 further_reading:
 - https://johnresig.com/blog/objectgetprototypeof/

@@ -1,7 +1,7 @@
 ---
 title: no-self-compare
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/rules/no-self-compare.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-self-compare.md
 rule_type: problem
 ---
 

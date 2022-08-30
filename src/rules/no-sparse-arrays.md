@@ -1,7 +1,7 @@
 ---
 title: no-sparse-arrays
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/rules/no-sparse-arrays.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-sparse-arrays.md
 rule_type: problem
 further_reading:
 - https://www.nczonline.net/blog/2007/09/09/inconsistent-array-literals/

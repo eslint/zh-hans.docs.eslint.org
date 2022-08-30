@@ -1,7 +1,7 @@
 ---
 title: generator-star-spacing
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/rules/generator-star-spacing.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/generator-star-spacing.md
 rule_type: layout
 further_reading:
 - https://leanpub.com/understandinges6/read/#leanpub-auto-generators

@@ -1,7 +1,7 @@
 ---
 title: no-octal-escape
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/rules/no-octal-escape.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-octal-escape.md
 rule_type: suggestion
 ---
 

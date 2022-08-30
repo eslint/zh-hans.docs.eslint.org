@@ -1,7 +1,7 @@
 ---
 title: prefer-object-has-own
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/rules/prefer-object-has-own.md
+edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/prefer-object-has-own.md
 rule_type: suggestion
 further_reading:
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwn
