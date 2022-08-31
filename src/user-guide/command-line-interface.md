@@ -1,44 +1,44 @@
 ---
-title: Command Line Interface
+title: 命令行
 layout: doc
 edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/user-guide/command-line-interface.md
 eleventyNavigation:
     key: command line interface
     parent: user guide
-    title: Command Line Interface
+    title: 命令行
     order: 3
 
 ---
 
-ESLint requires Node.js for installation. Follow the instructions in the [Getting Started Guide](getting-started) to install ESLint.
+你需要先安装 Node.js，然后方可根据[入门指南](getting-started)中的说明安装 ESLint。
 
-Most users use [`npx`](https://docs.npmjs.com/cli/v8/commands/npx) to run ESLint on the command line like this:
+用户大多会像这样在命令行中用 [`npx`](https://docs.npmjs.com/cli/v8/commands/npx) 运行 ESLint：
 
 ```shell
 npx eslint [options] [file|dir|glob]*
 ```
 
-Such as:
+比如：
 
 ```shell
-# Run on two files
+# 检查两个文件
 npx eslint file1.js file2.js
 
-# Run on multiple files
+# 检查多个文件
 npx eslint lib/**
 ```
 
-Please note that when passing a glob as a parameter, it will be expanded by your shell. The results of the expansion can vary depending on your shell, and its configuration. If you want to use node `glob` syntax, you have to quote your parameter (using double quotes if you need it to run in Windows), as follows:
+请注意 glob 是由 shell 进行展开的,所以匹配结果将因你的 shell 及其配置不同而有所不同。如果想使用 node 的 `glob` 语法，则必须按如下所示添加引号（如需用于 Windows，则应使用双引号）：
 
 ```shell
 npx eslint "lib/**"
 ```
 
-**Note:** You can also use alternative package managers such as [Yarn](https://yarnpkg.com/) or [pnpm](https://pnpm.io/) to run ESLint. Please refer to your package manager's documentation for the correct syntax.
+**注意**：你也可以使用其他包管理器运行 ESLint，如 [Yarn](https://yarnpkg.com/) 或 [pnpm](https://pnpm.io/)。但请参考各自的包管理器文档以了解正确语法。
 
-## Options
+## 选项
 
-The command line utility has several options. You can view the options by running `npx eslint -h`.
+此命令行工具提供了几个选项，可以运行 `npx eslint -h` 进行查看。
 
 ```text
 eslint [options] file.js [file.js] [dir]
@@ -102,9 +102,9 @@ Miscellaneous:
   --print-config path::String     Print the configuration for the given file
 ```
 
-Options that accept array values can be specified by repeating the option or with a comma-delimited list (other than `--ignore-pattern` which does not allow the second style).
+部分选项支持通过复用选项或指定逗号隔开的列表以传入数组（但 `--ignore-pattern` 除外，其无法使用二式）。
 
-Example:
+示例：
 
 ```shell
 npx eslint --ext .jsx --ext .js lib/
@@ -112,13 +112,13 @@ npx eslint --ext .jsx --ext .js lib/
 npx eslint --ext .jsx,.js lib/
 ```
 
-### Basic configuration
+### 基本配置
 
 #### `--no-eslintrc`
 
-Disables use of configuration from `.eslintrc.*` and `package.json` files.
+不使用 `.eslintrc.*` 和 `package.json` 文件中的配置。
 
-Example:
+示例：
 
 ```shell
 npx eslint --no-eslintrc file.js
@@ -126,23 +126,23 @@ npx eslint --no-eslintrc file.js
 
 #### `-c`, `--config`
 
-This option allows you to specify an additional configuration file for ESLint (see [Configuring ESLint](configuring/) for more).
+此项用于在原有的 ESLint 配置上额外新增配置（详见 [ESLint 配置](configuring/)）。
 
-Example:
+示例：
 
 ```shell
 npx eslint -c ~/my-eslint.json file.js
 ```
 
-This example uses the configuration file at `~/my-eslint.json`.
+该例中的配置文件位于 `~/my-eslint.json`。
 
-If `.eslintrc.*` and/or `package.json` files are also used for configuration (i.e., `--no-eslintrc` was not specified), the configurations will be merged. Options from this configuration file have precedence over the options from `.eslintrc.*` and `package.json` files.
+如果 `.eslintrc.*` 和 `package.json` 文件中也由配置内容（即没有指定 `--no-eslintrc`）则将其合并。其中此文件配置项优先级高于 `.eslintrc.*` 和 `package.json` 配置项。
 
 #### `--env`
 
-This option enables specific environments. Details about the global variables defined by each environment are available on the [Specifying Environments](configuring/language-options#specifying-environments) documentation. This option only enables environments; it does not disable environments set in other configuration files. To specify multiple environments, separate them using commas, or use the option multiple times.
+此项可用于启用特定的环境。关于各环境所定义的全局变量的细节可参见[指定环境](configuring/language-options#specifying-environments)文档。此项仅用于启用环境，它不能用于禁用其他配置文件中设置的环境。若要指定多个环境，请用逗号隔开或复用该项。
 
-Examples:
+示例：
 
 ```shell
 npx eslint --env browser,node file.js
@@ -151,31 +151,31 @@ npx eslint --env browser --env node file.js
 
 #### `--ext`
 
-This option allows you to specify which file extensions ESLint will use when searching for target files in the directories you specify.
-By default, ESLint lints `*.js` files and the files that match the `overrides` entries of your configuration.
+此项用于指定 ESLint 在目录中匹配目标文件所用扩展。
+默认情况下，ESLint 会搜索 `*.js` 文件及与配置中 `overrides` 条目所匹配的文件。
 
-Examples:
+示例：
 
 ```shell
-# Use only .ts extension
+# 仅 .ts 扩展
 npx eslint . --ext .ts
 
-# Use both .js and .ts
+# 同时使用 .js 和 .ts
 npx eslint . --ext .js --ext .ts
 
-# Also use both .js and .ts
+# 也是同时使用 .js 和 .ts
 npx eslint . --ext .js,.ts
 ```
 
-**Note:** `--ext` is only used when the arguments are directories. If you use glob patterns or file names, then `--ext` is ignored.
+**注意**：`--ext` 只适用于参数为目录的情况。若使用匹配模式或指定文件名，则忽略 `--ext`。
 
-For example, `npx eslint lib/* --ext .js` will match all files within the `lib/` directory, regardless of extension.
+如 `npx eslint lib/* --ext .js` 则将匹配 `lib/` 目录下的所有文件，无论其扩展名如何。
 
 #### `--global`
 
-This option defines global variables so that they will not be flagged as undefined by the `no-undef` rule. Any specified global variables are assumed to be read-only by default, but appending `:true` to a variable's name ensures that `no-undef` will also allow writes. To specify multiple global variables, separate them using commas, or use the option multiple times.
+此项定义了全局变量，这样 `no-undef` 规则就不会将其标记为 undefined。默认情况下任何指定的全局变量都为只读变量，但在变量名称后面加上 `:true` 就允许写入了。要指定多个全局变量，请用逗号隔开或者复用此项。
 
-Examples:
+示例：
 
 ```shell
 npx eslint --global require,exports:true file.js
@@ -184,35 +184,35 @@ npx eslint --global require --global exports:true
 
 #### `--parser`
 
-This option allows you to specify a parser to be used by ESLint. By default, `espree` will be used.
+此项用于指定 ESLint 所用解析器，默认使用 `espree`。
 
 #### `--parser-options`
 
-This option allows you to specify parser options to be used by ESLint. Note that the available parser options are determined by the parser being used.
+此项用于指定 ESLint 使用的解析器选项。注意解析器有哪些选项是由所用解析器决定的。
 
-Examples:
+示例：
 
 ```shell
-echo '3 ** 4' | npx eslint --stdin --parser-options=ecmaVersion:6 # will fail with a parsing error
-echo '3 ** 4' | npx eslint --stdin --parser-options=ecmaVersion:7 # succeeds, yay!
+echo '3 ** 4' | npx eslint --stdin --parser-options=ecmaVersion:6 # 解析错误，失败
+echo '3 ** 4' | npx eslint --stdin --parser-options=ecmaVersion:7 # 耶！成功
 ```
 
 #### `--resolve-plugins-relative-to`
 
-Changes the folder where plugins are resolved from. By default, plugins are resolved from the current working directory. This option should be used when plugins were installed by someone other than the end user. It should be set to the project directory of the project that has a dependency on the necessary plugins. For example:
+修改插件文件夹读取位置。默认情况下，插件基于当前工作目录解析。当插件是由非终端用户所安装，且必须项目与插件有强依赖性时，可使用此项。示例：
 
-* When using a config file that is located outside of the current project (with the `--config` flag), if the config uses plugins which are installed locally to itself, `--resolve-plugins-relative-to` should be set to the directory containing the config file.
-* If an integration has dependencies on ESLint and a set of plugins, and the tool invokes ESLint on behalf of the user with a preset configuration, the tool should set `--resolve-plugins-relative-to` to the top-level directory of the tool.
+* 当使用位于当前项目之外的配置文件时（使用 `--config` 标志），如果该配置使用的插件是在本地安装的，`--resolve-plugins-relative-to` 应该被设置为包含该配置文件的目录。
+* 若集成对 ESLint 和一组插件有依赖性，并且该工具代表用户用预设的配置调用 ESLint，该工具应将 `--resolve-plugins-relative-to` 设置为该工具的顶级目录。
 
-### Specifying rules and plugins
+### 指定规则与插件
 
 #### `--plugin`
 
-This option specifies a plugin to load. You can omit the prefix `eslint-plugin-` from the plugin name.
+此项指定要加载的插件。你可以省略插件名称中的前缀 `eslint-plugin-`。
 
-Before using the plugin, you have to install it using npm.
+在使用插件前，你必须先用 npm 安装它。
 
-Examples:
+示例：
 
 ```shell
 npx eslint --plugin jquery file.js
@@ -221,11 +221,11 @@ npx eslint --plugin eslint-plugin-mocha file.js
 
 #### `--rule`
 
-This option specifies rules to be used. These rules will be merged with any rules specified with configuration files. (You can use `--no-eslintrc` to change that behavior.) To define multiple rules, separate them using commas, or use the option multiple times. The [levn](https://github.com/gkz/levn#levn--) format is used for specifying the rules.
+此项指定了要使用的规则。这些规则将与配置文件中指定的规则合并（你可以使用 `--no-eslintrc` 来禁用这种行为）。要定义多个规则，用逗号隔开或者复用该项。也可以使用 [levn](https://github.com/gkz/levn#levn--) 格式指定规则。
 
-If the rule is defined within a plugin, you have to prefix the rule ID with the plugin name and a `/`.
+如果规则是由插件定义的，你必须在规则的 ID 前加上插件的名称和 `/`。
 
-Examples:
+示例：
 
 ```shell
 npx eslint --rule 'quotes: [error, double]'
@@ -235,57 +235,57 @@ npx eslint --rule 'jquery/dollar-sign: error'
 
 #### `--rulesdir`
 
-**Deprecated**: Use rules from plugins instead.
+**已废弃**：可使用插件中的规则代替。
 
-This option allows you to specify another directory from which to load rules files. This allows you to dynamically load new rules at run time. This is useful when you have custom rules that aren't suitable for being bundled with ESLint.
+此项用于指定另一个目录，从那里加载规则文件。你可以在运行时动态地加载新规则。适用于有不适合与 ESLint 捆绑的定制规则的情况。
 
-Example:
+示例：
 
 ```shell
 npx eslint --rulesdir my-rules/ file.js
 ```
 
-The rules in your custom rules directory must follow the same format as bundled rules to work properly. You can also specify multiple locations for custom rules by including multiple `--rulesdir` options:
+你的自定义规则目录中的规则必须遵循与捆绑规则相同的格式才能正常工作。你也可以通过包含多个 `--rulesdir` 选项为自定义规则指定多个位置。
 
 ```shell
 npx eslint --rulesdir my-rules/ --rulesdir my-other-rules/ file.js
 ```
 
-Note that, as with core rules and plugin rules, you still need to enable the rules in configuration or via the `--rule` CLI option in order to actually run those rules during linting. Specifying a rules directory with `--rulesdir` does not automatically enable the rules within that directory.
+请注意，与核心规则和插件规则一样，你仍然需要在配置中或通过 `--rule` 命令行选项启用规则，以便确实运行了这些规则。使用 `--rulesdir` 指定规则目录并不会自动启用该目录下的规则。
 
-### Fixing problems
+### 修复问题
 
 #### `--fix`
 
-This option instructs ESLint to try to fix as many issues as possible. The fixes are made to the actual files themselves and only the remaining unfixed issues are output. Not all problems are fixable using this option, and the option does not work in these situations:
+此项指示 ESLint 尝试修复尽可能多的问题。这些修复是对实际文件本身进行的，只有剩余的未修复的问题才会被输出。不是所有的问题都可以用此项来修复，在这些情况下，此项不起作用：
 
-1. This option throws an error when code is piped to ESLint.
-1. This option has no effect on code that uses a processor, unless the processor opts into allowing autofixes.
+1. 当代码通过 pipe 传递给 ESLint 时会抛出错误。
+2. 此项对使用处理器的代码没有影响，除非处理器选择了允许自动修复。
 
-If you want to fix code from `stdin` or otherwise want to get the fixes without actually writing them to the file, use the [`--fix-dry-run`](#--fix-dry-run) option.
+如果你想从 `stdin` 中修正代码，或者想在不实际写入文件的情况下进行修正，请使用 [`--fix-dry-run`](#--fix-dry-run) 项。
 
 #### `--fix-dry-run`
 
-This option has the same effect as `--fix` with one difference: the fixes are not saved to the file system. This makes it possible to fix code from `stdin` (when used with the `--stdin` flag).
+此项与 `--fix` 的效果相同，但有一点不同：修复后的代码不会保存在文件系统中。这使得从 `stdin` 中修复代码成为可能（当与 `--stdin` 标志一起使用时）。
 
-Because the default formatter does not output the fixed code, you'll have to use another one (e.g. `json`) to get the fixes. Here's an example of this pattern:
+因为默认的格式不输出固定的代码，你必须使用另一种格式（如 `json`）来获得固定的内容。这里有该模式的示例：
 
 ```shell
 getSomeText | npx eslint --stdin --fix-dry-run --format=json
 ```
 
-This flag can be useful for integrations (e.g. editor plugins) which need to autofix text from the command line without saving it to the filesystem.
+此标志适用于需要命令行进行自动修复却不保存到文件系统的集成（例如编辑器插件）。
 
 #### `--fix-type`
 
-This option allows you to specify the type of fixes to apply when using either `--fix` or `--fix-dry-run`. The four types of fixes are:
+此项用于在使用 `--fix` 或 `--fix-dry-run` 时指定应用的修复类型。四种修复类型有：
 
-1. `problem` - fix potential errors in the code
-1. `suggestion` - apply fixes to the code that improve it
-1. `layout` - apply fixes that do not change the program structure (AST)
-1. `directive` - apply fixes to inline directives such as `// eslint-disable`
+1. `problem` - 修复代码中的潜在错误
+2. `suggestion` - 改进代码
+3. `layout` - 修复不改变程序结构（AST）的问题
+4. `directive` - 修复内联指令，如 `// eslint-disable`。
 
-You can specify one or more fix type on the command line. Here are some examples:
+你可以在命令行上指定一个或多个修复类型。这里有一些示例：
 
 ```shell
 npx eslint --fix --fix-type suggestion .
@@ -293,15 +293,15 @@ npx eslint --fix --fix-type suggestion --fix-type problem .
 npx eslint --fix --fix-type suggestion,layout .
 ```
 
-This option is helpful if you are using another program to format your code but you would still like ESLint to apply other types of fixes.
+如果你使用另一个程序来格式化你的代码，但你仍然希望 ESLint 应用其他类型的修正，则可使用此项。
 
-### Ignoring files
+### 忽略文件
 
 #### `--ignore-path`
 
-This option allows you to specify the file to use as your `.eslintignore`. By default, ESLint looks in the current working directory for `.eslintignore`. You can override this behavior by providing a path to a different file.
+此项用于指定一个文件作为 `.eslintignore`。ESLint 默认在当前工作目录下寻找 `.eslintignore`。你可以通过指定其他文件的路径来覆盖取代默认地址。
 
-Example:
+示例：
 
 ```shell
 npx eslint --ignore-path tmp/.eslintignore file.js
@@ -310,9 +310,9 @@ npx eslint --ignore-path .gitignore file.js
 
 #### `--no-ignore`
 
-Disables excluding of files from `.eslintignore`, `--ignore-path`, `--ignore-pattern`, and `ignorePatterns` property in config files.
+禁止根据配置文件中的 `.eslintignore`、`--ignore-path`、`--ignore-pattern` 和 `ignorePatterns` 属性排除文件。
 
-Example:
+示例：
 
 ```shell
 npx eslint --no-ignore file.js
@@ -320,21 +320,21 @@ npx eslint --no-ignore file.js
 
 #### `--ignore-pattern`
 
-This option allows you to specify patterns of files to ignore (in addition to those in `.eslintignore`). You can repeat the option to provide multiple patterns. The supported syntax is the same as for `.eslintignore` [files](configuring/ignoring-code#the-eslintignore-file), which use the same patterns as the `.gitignore` [specification](https://git-scm.com/docs/gitignore). You should quote your patterns in order to avoid shell interpretation of glob patterns.
+此项用于指定要忽略文件的匹配模式（在 `.eslintignore` 的基础上）。你可以重复该项以提供多个匹配。支持的语法与 `.eslintignore` [文件](configuring/ignoring-code#the-eslintignore-file)相同，它使用的模式与 `.gitignore`[规范](https://git-scm.com/docs/gitignore)相同。你应该加上引号以避免 shell 对 glob 模式的解释。
 
-Example:
+示例：
 
 ```shell
 npx eslint --ignore-pattern '/lib/' --ignore-pattern '/src/vendor/*' .
 ```
 
-### Using stdin
+### 使用 stdin
 
 #### `--stdin`
 
-This option tells ESLint to read and lint source code from STDIN instead of from files. You can use this to pipe code to ESLint.
+此项告诉 ESLint 从 STDIN 而非文件中读取和检查源码。你可以用它来给 ESLint 传递代码。
 
-Example:
+示例：
 
 ```shell
 cat myfile.js | npx eslint --stdin
@@ -342,21 +342,21 @@ cat myfile.js | npx eslint --stdin
 
 #### `--stdin-filename`
 
-This option allows you to specify a filename to process STDIN as. This is useful when processing files from STDIN and you have rules which depend on the filename.
+此项用于指定文件来处理 STDIN。适用于需要处理来自 STDIN 的文件且有依赖于文件名的规则的情况。
 
-Example
+示例：
 
 ```shell
 cat myfile.js | npx eslint --stdin --stdin-filename=myfile.js
 ```
 
-### Handling warnings
+### 处理警告
 
 #### `--quiet`
 
-This option allows you to disable reporting on warnings. If you enable this option, only errors are reported by ESLint.
+此项用于关闭警告报告。若启用此项，则 ESLint 将只报告错误。
 
-Example:
+示例：
 
 ```shell
 npx eslint --quiet file.js
@@ -364,33 +364,33 @@ npx eslint --quiet file.js
 
 #### `--max-warnings`
 
-This option allows you to specify a warning threshold, which can be used to force ESLint to exit with an error status if there are too many warning-level rule violations in your project.
+此项用于指定警告阈值，若项目中有太多违反警告级别规则的情况，可以用它来强制 ESLint 以错误状态退出。
 
-Normally, if ESLint runs and finds no errors (only warnings), it will exit with a success exit status. However, if `--max-warnings` is specified and the total warning count is greater than the specified threshold, ESLint will exit with an error status. Specifying a threshold of `-1` or omitting this option will prevent this behavior.
+通常情况下，如果 ESLint 运行后没有发现错误（只有警告），它将以成功退出状态退出。然而若指定 `--max-warnings` 且总警告数大于给定阈值，则 ESLint 将以错误状态退出。指定阈值为 `-1` 或省略此项将阻止这种行为。
 
-Example:
+示例：
 
 ```shell
 npx eslint --max-warnings 10 file.js
 ```
 
-### Output
+### 输出
 
 #### `-o`, `--output-file`
 
-Enable report to be written to a file.
+将报告写入文件。
 
-Example:
+示例：
 
 ```shell
 npx eslint -o ./test/test.html
 ```
 
-When specified, the given format is output into the provided file name.
+将输出给定格式至指定文件内。
 
 #### `-f`, `--format`
 
-This option specifies the output format for the console. Possible formats are:
+该选项指定了控制台输出格式。可选格式有：
 
 * [checkstyle](formatters/#checkstyle)
 * [compact](formatters/#compact)
@@ -398,64 +398,64 @@ This option specifies the output format for the console. Possible formats are:
 * [jslint-xml](formatters/#jslint-xml)
 * [json](formatters/#json)
 * [junit](formatters/#junit)
-* [stylish](formatters/#stylish) (the default)
+* [stylish](formatters/#stylish)（默认值）
 * [tap](formatters/#tap)
 * [unix](formatters/#unix)
 * [visualstudio](formatters/#visualstudio)
 
-Example:
+示例：
 
 ```shell
 npx eslint -f compact file.js
 ```
 
-You can also use a custom formatter from the command line by specifying a path to the custom formatter file.
+你也可以在命令行中指定格式化程序文件的路径，以使用自定义格式化程序。
 
-Example:
+示例：
 
 ```shell
 npx eslint -f ./customformat.js file.js
 ```
 
-An npm-installed formatter is resolved with or without `eslint-formatter-` prefix.
+无论是否有 `eslint-formatter-` 前缀，都会解析通过 npm 安装的格式化程序。
 
-Example:
+示例：
 
 ```shell
 npm install eslint-formatter-pretty
 
 npx eslint -f pretty file.js
 
-// equivalent:
+// 等同于：
 npx eslint -f eslint-formatter-pretty file.js
 ```
 
-When specified, the given format is output to the console. If you'd like to save that output into a file, you can do so on the command line like so:
+将输出给定格式至控制台。如果你想把输出保存到文件中，你可以在命令行中这样做：
 
 ```shell
 npx eslint -f compact file.js > results.txt
 ```
 
-This saves the output into the `results.txt` file.
+输出结果将保存到 `results.txt` 文件中。
 
 #### `--color`, `--no-color`
 
-This option forces the enabling/disabling of colorized output. You can use this to override the default behavior, which is to enable colorized output unless no TTY is detected, such as when piping `eslint` through `cat` or `less`.
+此项强制启用/禁用颜色渲染。你可以用它来覆盖默认的行为，即启用颜色渲染，除非没有检测到 TTY，如当通过 `cat` 或 `less` 管道输送 `eslint` 时。
 
-Examples:
+示例：
 
 ```shell
 npx eslint --color file.js | cat
 npx eslint --no-color file.js
 ```
 
-### Inline configuration comments
+### 行内配置注释
 
 #### `--no-inline-config`
 
-This option prevents inline comments like `/*eslint-disable*/` or
-`/*global foo*/` from having any effect. This allows you to set an ESLint
-config without files modifying it. All inline config comments are ignored, e.g.:
+此项可以阻止像 `/*eslint-disable*/` 或
+ `/*global foo*/` 这样的内联注释产生任何影响。这允许你设置一个 ESLint
+配置，而不需要对它进行文件修改。所有内联的配置注释都会被忽略，如：
 
 * `/*eslint-disable*/`
 * `/*eslint-enable*/`
@@ -465,7 +465,7 @@ config without files modifying it. All inline config comments are ignored, e.g.:
 * `// eslint-disable-line`
 * `// eslint-disable-next-line`
 
-Example:
+示例：
 
 ```shell
 npx eslint --no-inline-config file.js
@@ -473,39 +473,39 @@ npx eslint --no-inline-config file.js
 
 #### `--report-unused-disable-directives`
 
-This option causes ESLint to report directive comments like `// eslint-disable-line` when no errors would have been reported on that line anyway. This can be useful to prevent future errors from unexpectedly being suppressed, by cleaning up old `eslint-disable` comments which are no longer applicable.
+此项会 ESLint 让报告使用像 `// eslint-disable-line` 这样的本来就没有报错的指令性注释。通过清理不再适用的 `eslint-disable` 注释，有助于避免未来的错误被抑制。
 
-**Warning**: When using this option, it is possible that new errors will start being reported whenever ESLint or custom rules are upgraded. For example, suppose a rule has a bug that causes it to report a false positive, and an `eslint-disable` comment is added to suppress the incorrect report. If the bug is then fixed in a patch release of ESLint, the `eslint-disable` comment will become unused since ESLint is no longer generating an incorrect report. This will result in a new reported error for the unused directive if the `report-unused-disable-directives` option is used.
+**警告**：当使用此项时，每当 ESLint 或自定义规则升级后，就可能会报告新的错误。例如，假设规则有问题，它报告了一个错误，然后人们添加 `eslint-disable` 注释来抑制错误报告。当规则错误在 ESLint 的补丁版本中被修复，`eslint-disable` 注释就失效了，因为 ESLint 不再报告假错误。若使用 `report-unused-disable-directives` 选项，这将会报告有未使用指令。
 
-Example:
+示例：
 
 ```shell
 npx eslint --report-unused-disable-directives file.js
 ```
 
-### Caching
+### 缓存
 
 #### `--cache`
 
-Store the info about processed files in order to only operate on the changed ones. The cache is stored in `.eslintcache` by default. Enabling this option can dramatically improve ESLint's running time by ensuring that only changed files are linted.
+存储已处理文件的信息，以便只操作发生更改的文件。缓存默认存储在 `.eslintcache` 中。启用此项可以保证只处理修改过的文件，从而极大地缩短 ESLint 的运行时间。
 
-**Note:** If you run ESLint with `--cache` and then run ESLint without `--cache`, the `.eslintcache` file will be deleted. This is necessary because the results of the lint might change and make `.eslintcache` invalid. If you want to control when the cache file is deleted, then use `--cache-location` to specify an alternate location for the cache file.
+**注意**：当你先用 `--cache` 运行 ESLint，然后在没有 `--cache` 的情况下运行 ESLint，`.eslintcache` 文件会被删除。这是因为检查的结果可能会改变，并导致 `.eslintcache` 失效。若想控制缓存文件被删除的时机，可以使用 `--cache-location` 为缓存文件指定备用位置。
 
-**Note:** Autofixed files are not placed in the cache. Subsequent linting that does not trigger an autofix will place it in the cache.
+**注意**：自动修复的文件不会存储于缓存中。在后续的检查如果没有再次触发自动修正，才会将它放在缓存里。
 
 #### `--cache-file`
 
-Path to the cache file. If none specified `.eslintcache` will be used. The file will be created in the directory where the `eslint` command is executed. **Deprecated**: Use `--cache-location` instead.
+缓存文件的路径。如果没有指定 `.eslintcache` 将被使用。该文件将在执行 `eslint` 命令的目录下创建。**已废弃**：使用 `--cache-location` 代替。
 
 #### `--cache-location`
 
-Path to the cache location. Can be a file or a directory. If no location is specified, `.eslintcache` will be used. In that case, the file will be created in the directory where the `eslint` command is executed.
+缓存位置的路径。可以是一个文件或一个目录。如果没有指定位置，则使用 `.eslintcache`。在这种情况下将在执行 `eslint` 命令的目录下创建文件。
 
-If a directory is specified, a cache file will be created inside the specified folder. The name of the file will be based on the hash of the current working directory (CWD). e.g.: `.cache_hashOfCWD`
+如果指定了一个目录，一个缓存文件将在指定的文件夹内创建。该文件的名称将基于当前工作目录（CWD）的哈希值。`.cache_hashOfCWD`。
 
-**Important note:** If the directory for the cache does not exist make sure you add a trailing `/` on \*nix systems or `\` in windows. Otherwise the path will be assumed to be a file.
+**重要提示**：如果缓存的目录不存在，请确保在 \*nix 系统中添加尾部的 `/`，在  Windows 中添加 `\`。否则路径将识别为文件。
 
-Example:
+示例：
 
 ```shell
 npx eslint "src/**/*.js" --cache --cache-location "/Users/user/.eslintcache/"
@@ -513,74 +513,74 @@ npx eslint "src/**/*.js" --cache --cache-location "/Users/user/.eslintcache/"
 
 #### `--cache-strategy`
 
-Strategy for the cache to use for detecting changed files. Can be either `metadata` or `content`. If no strategy is specified, `metadata` will be used.
+用于检测文件是否变更的缓存策略。可以是 `metadata` 或 `content`。如果没有指定策略，将使用 `metadata`。
 
-The `content` strategy can be useful in cases where the modification time of your files change even if their contents have not. For example, this can happen during git operations like git clone because git does not track file modification time.
+`content` 策略在文件的修改时间改变但内容没有改变的情况下很有用。例如，这可能发生在 git 操作中，如 git 克隆，因为 git 不跟踪文件的修改时间。
 
-Example:
+示例：
 
 ```shell
 npx eslint "src/**/*.js" --cache --cache-strategy content
 ```
 
-### Miscellaneous
+### 杂项
 
 #### `--init`
 
-This option will run `npm init @eslint/config` to start config initialization wizard. It's designed to help new users quickly create .eslintrc file by answering a few questions, choosing a popular style guide.
+此项将运行 `npm init @eslint/config` 来启动配置初始化向导。新用户回答几个问题就可快速创建 `.eslintrc` 文件，并选择一个流行的风格指南。
 
-The resulting configuration file will be created in the current directory.
+配置将创建于当前目录。
 
 #### `--env-info`
 
-This option outputs information about the execution environment, including the version of Node, npm, and local and global installations of ESLint. The ESLint team may ask for this information to help solve bugs.
+此项输出关于执行环境的信息，包括 Node、npm 的版本，以及 ESLint 的本地和全局安装。ESLint 团队可能会要求提供这些信息以帮助解决 bug。
 
 #### `--no-error-on-unmatched-pattern`
 
-This option prevents errors when a quoted glob pattern or `--ext` is unmatched. This will not prevent errors when your shell can't match a glob.
+此项可以防止在带引号的 glob 匹配或 `--ext` 未成功匹配时出现错误。当你的 shell 不能匹配 glob 时，此项无法阻止错误。
 
 #### `--exit-on-fatal-error`
 
-This option causes ESLint to exit with exit code 2 if one or more fatal parsing errors occur. Without this option, fatal parsing errors are reported as rule violations.
+此项使 ESLint 在发生一个或多个致命的解析错误时以退出代码 2 退出。如果没有此项，致命的解析错误会被报告为违反规则。
 
 #### `--debug`
 
-This option outputs debugging information to the console. This information is useful when you're seeing a problem and having a hard time pinpointing it. The ESLint team may ask for this debugging information to help solve bugs.
-Add this flag to an ESLint command line invocation in order to get extra debug information as the command is run (e.g. `npx eslint --debug test.js` and `npx eslint test.js --debug` are equivalent)
+该选项将调试信息输出到控制台。当你看到一个问题并很难找出它时，这个信息是很有用的。ESLint 团队可能会要求提供这些调试信息以帮助解决错误。
+在 ESLint 的命令行中加入这个标志，以便在命令运行时获得额外的调试信息（比如 `npx eslint --debug test.js` 就等同于 `npx eslint test.js --debug`）。
 
 #### `-h`, `--help`
 
-This option outputs the help menu, displaying all of the available options. All other options are ignored when this is present.
+输出帮助菜单并显示所有可用选项。若此项存在，则忽略其他选项。
 
 #### `-v`, `--version`
 
-This option outputs the current ESLint version onto the console. All other options are ignored when this is present.
+输出当前的 ESLint 版本至控制台。若此项存在，则忽略其他选项。
 
 #### `--print-config`
 
-This option outputs the configuration to be used for the file passed. When present, no linting is performed and only config-related options are valid.
+输出用于传递的文件的配置。若此项存在，则不进行提示，仅与配置相关的选项才有效。
 
-Example:
+示例：
 
 ```shell
 npx eslint --print-config file.js
 ```
 
-## Ignoring files from linting
+## 不限制某些文件
 
-ESLint supports `.eslintignore` files to exclude files from the linting process when ESLint operates on a directory. Files given as individual CLI arguments will be exempt from exclusion. The `.eslintignore` file is a plain text file containing one pattern per line. It can be located in any of the target directory's ancestors; it will affect files in its containing directory as well as all sub-directories. Here's a simple example of a `.eslintignore` file:
+ ESLint 支持 `.eslintignore` 文件，当 ESLint 对一个目录进行操作时，将文件排除在检查过程之外。作为个别命令行参数的文件将被排除在外。`.eslintignore` 文件是一个纯文本文件，每行包含一个模式。它可以位于目标目录的任何一个祖先目录中；它将影响其包含目录中的文件以及所有子目录。下面是一个 `.eslintignore` 文件的简单例子。
 
 ```text
 temp.js
 **/vendor/*.js
 ```
 
-A more detailed breakdown of supported patterns and directories ESLint ignores by default can be found in [Ignoring Code](configuring/ignoring-code).
+你可以在[忽略代码](configuring/ignoring-code)中找到更加详细的 ESLint 默认忽略的匹配模式和目录。
 
-## Exit codes
+## 退出码
 
-When linting files, ESLint will exit with one of the following exit codes:
+当对文件进行检查时，ESLint 将以下方任一代码退出：
 
-* `0`: Linting was successful and there are no linting errors. If the `--max-warnings` flag is set to `n`, the number of linting warnings is at most `n`.
-* `1`: Linting was successful and there is at least one linting error, or there are more linting warnings than allowed by the `--max-warnings` option.
-* `2`: Linting was unsuccessful due to a configuration problem or an internal error.
+* `0`: 检查通过，没有任何错误。若 `--max-warnings` 标志为 `n`，则最多允许有 `n` 个警告。
+* `1`: 着色成功，但至少有一个错误或有超过 `--max-warnings` 项的警告数。
+* `2`: 由于配置问题或内部错误，检查失败。
