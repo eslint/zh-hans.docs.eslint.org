@@ -1,48 +1,48 @@
 ---
-title: Rules
+title: 规则
 layout: doc
 edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/user-guide/configuring/rules.md
 eleventyNavigation:
     key: configuring rules
     parent: configuring
-    title: Configuring Rules
+    title: 规则配置
     order: 3
 
 ---
 
-## Configuring Rules
+## 规则配置
 
-ESLint comes with a large number of built-in rules and you can add more rules through plugins. You can modify which rules your project uses either using configuration comments or configuration files. To change a rule setting, you must set the rule ID equal to one of these values:
+ESLint 有大量的内置规则，你可以通过插件添加更多的规则。你也可以通过配置注释或配置文件来修改你的项目使用哪些规则。要改变一个规则的设置，你必须把规则的 ID 设置为这些值之一。
 
-* `"off"` or `0` - turn the rule off
-* `"warn"` or `1` - turn the rule on as a warning (doesn't affect exit code)
-* `"error"` or `2` - turn the rule on as an error (exit code is 1 when triggered)
+* `"off"` 或 `0` - 关闭规则
+* `"warn"` 或 `1` - 启用并视作警告（不影响退出）。
+* `"error"` 或 `2` - 启用并视作错误（触发时退出代码为 1）
 
-### Using configuration comments
+### 使用配置注释
 
-To configure rules inside of a file using configuration comments, use a comment in the following format:
+要使用配置注释在文件中配置规则，请使用以下格式的注释：
 
 ```js
 /* eslint eqeqeq: "off", curly: "error" */
 ```
 
-In this example, [`eqeqeq`](../../rules/eqeqeq) is turned off and [`curly`](../../rules/curly) is turned on as an error. You can also use the numeric equivalent for the rule severity:
+在这个例子中，关闭 [`eqeqeq`](../../rules/eqeqeq)，启用 [`curly`](../../rules/curly) 并视作错误。你也可以使用数字等价物来表示规则的严重程度。
 
 ```js
 /* eslint eqeqeq: 0, curly: 2 */
 ```
 
-This example is the same as the last example, only it uses the numeric codes instead of the string values. The `eqeqeq` rule is off and the `curly` rule is set to be an error.
+这个例子与上一个例子相同，只是它使用了数字代码而不是字符串值。关闭 `eqeqeq` 规则，`curly` 规则设置为错误。
 
-If a rule has additional options, you can specify them using array literal syntax, such as:
+如果一个规则有额外的选项，你可以使用数组字面的语法来指定它们，比如：
 
 ```js
 /* eslint quotes: ["error", "double"], curly: 2 */
 ```
 
-This comment specifies the "double" option for the [`quotes`](../../rules/quotes) rule. The first item in the array is always the rule severity (number or string).
+这个注释为 [`quotes`](../../rules/quotes) 规则指定了“双重”选项。数组中的第一项总是规则的严重程度（数字或字符串）。
 
-Configuration comments can include descriptions to explain why the comment is necessary. The description must occur after the configuration and is separated from the configuration by two or more consecutive `-` characters. For example:
+配置注释可以包括描述，以解释为什么注释是必要的。描述必须出现在配置之后，并以两个或多个连续的 `-` 字符与配置分开。比如。
 
 ```js
 /* eslint eqeqeq: "off", curly: "error" -- Here's a description about why this configuration is necessary. */
@@ -61,9 +61,9 @@ Configuration comments can include descriptions to explain why the comment is ne
  */
 ```
 
-### Using configuration files
+### 使用配置文件
 
-To configure rules inside of a configuration file, use the `rules` key along with an error level and any options you want to use. For example:
+要在配置文件中配置规则，请使用 `rules` 键和一个错误级别以及任何你想使用的选项。比如：
 
 ```json
 {
@@ -75,7 +75,7 @@ To configure rules inside of a configuration file, use the `rules` key along wit
 }
 ```
 
-And in YAML:
+而在 YAML 中则是：
 
 ```yaml
 ---
@@ -87,7 +87,7 @@ rules:
     - double
 ```
 
-To configure a rule which is defined within a plugin you have to prefix the rule ID with the plugin name and a `/`. For example:
+要配置一个定义在插件中的规则，你必须在规则的 ID 前加上插件的名称和 `/`。比如说。
 
 ```json
 {
@@ -103,7 +103,7 @@ To configure a rule which is defined within a plugin you have to prefix the rule
 }
 ```
 
-And in YAML:
+而在 YAML 中则是：
 
 ```yaml
 ---
@@ -118,19 +118,19 @@ rules:
   plugin1/rule1: error
 ```
 
-In these configuration files, the rule `plugin1/rule1` comes from the plugin named `plugin1`. You can also use this format with configuration comments, such as:
+在这些配置文件中，规则`plugin1/rule1`来自名为`plugin1`的插件。你也可以在配置注释中使用这种格式，比如：
 
 ```js
 /* eslint "plugin1/rule1": "error" */
 ```
 
-**Note:** When specifying rules from plugins, make sure to omit `eslint-plugin-`. ESLint uses only the unprefixed name internally to locate rules.
+**注意：**当从插件中指定规则时，确保省略`eslint-plugin-`。ESLint 只在内部使用无前缀的名字来定位规则。
 
-## Disabling Rules
+## 禁用规则
 
-### Using configuration comments
+### 使用配置注释
 
-To temporarily disable rule warnings in your file, use block comments in the following format:
+要在你的文件中暂时禁用规则警告，可以使用以下格式的块状注释：
 
 ```js
 /* eslint-disable */
@@ -140,7 +140,7 @@ alert('foo');
 /* eslint-enable */
 ```
 
-You can also disable or enable warnings for specific rules:
+你还可以禁用或启用特定规则的警告：
 
 ```js
 /* eslint-disable no-alert, no-console */
@@ -151,9 +151,9 @@ console.log('bar');
 /* eslint-enable no-alert, no-console */
 ```
 
-**Note:** `/* eslint-enable */` without any specific rules listed will cause all disabled rules to be re-enabled.
+**注意**：`/* eslint-enable */` 没有列出任何特定的规则将导致所有被禁用的规则被重新启用。
 
-To disable rule warnings in an entire file, put a `/* eslint-disable */` block comment at the top of the file:
+要禁用整个文件中的规则警告，在文件的顶部写入 `/* eslint-disable */` 块注释：
 
 ```js
 /* eslint-disable */
@@ -161,7 +161,7 @@ To disable rule warnings in an entire file, put a `/* eslint-disable */` block c
 alert('foo');
 ```
 
-You can also disable or enable specific rules for an entire file:
+你还可以在整个文件范围内禁用或启用特定规则：
 
 ```js
 /* eslint-disable no-alert */
@@ -169,7 +169,7 @@ You can also disable or enable specific rules for an entire file:
 alert('foo');
 ```
 
-To ensure that a rule is never applied (regardless of any future enable/disable lines):
+为了确保永远不会使用一个规则（无论未来是否会有任何启用/禁用行）：
 
 ```js
 /* eslint no-alert: "off" */
@@ -177,7 +177,7 @@ To ensure that a rule is never applied (regardless of any future enable/disable 
 alert('foo');
 ```
 
-To disable all rules on a specific line, use a line or block comment in one of the following formats:
+要禁用某一特定行的所有规则，请使用以下格式之一的行或块注释：
 
 ```js
 alert('foo'); // eslint-disable-line
@@ -191,7 +191,7 @@ alert('foo');
 alert('foo'); /* eslint-disable-line */
 ```
 
-To disable a specific rule on a specific line:
+要禁用某一特定行的特定规则：
 
 ```js
 alert('foo'); // eslint-disable-line no-alert
@@ -205,7 +205,7 @@ alert('foo'); /* eslint-disable-line no-alert */
 alert('foo');
 ```
 
-To disable multiple rules on a specific line:
+要禁用一个特定行的多个规则：
 
 ```js
 alert('foo'); // eslint-disable-line no-alert, quotes, semi
@@ -226,14 +226,14 @@ alert('foo');
 alert('foo');
 ```
 
-All of the above methods also work for plugin rules. For example, to disable `eslint-plugin-example`'s `rule-name` rule, combine the plugin's name (`example`) and the rule's name (`rule-name`) into `example/rule-name`:
+上述所有方法也适用于插件规则。比如，要禁用 `eslint-plugin-example` 的 `rule-name` 规则，将插件的名称（`example`）和规则的名称（`rule-name`）合并为 `example/rule-name`：
 
 ```js
 foo(); // eslint-disable-line example/rule-name
 foo(); /* eslint-disable-line example/rule-name */
 ```
 
-Configuration comments can include descriptions to explain why the comment is necessary. The description must come after the configuration and needs to be separated from the configuration by two or more consecutive `-` characters. For example:
+配置注释可以包括说明，以解释为什么注释是必要的。描述必须在配置之后，并且需要用两个或多个连续的 `-` 字符与配置分开。比如：
 
 ```js
 // eslint-disable-next-line no-console -- Here's a description about why this configuration is necessary.
@@ -246,11 +246,11 @@ console.log('hello');
 console.log('hello');
 ```
 
-**Note:** Comments that disable warnings for a portion of a file tell ESLint not to report rule violations for the disabled code. ESLint still parses the entire file, however, so disabled code still needs to be syntactically valid JavaScript.
+**注意**：禁用文件一部分的警告的注释告诉 ESLint 不要报告被禁用的代码违反规则。然而，ESLint 仍然解析整个文件，所以禁用的代码仍然需要是语法上有效的 JavaScript。
 
-### Using configuration files
+### 使用配置文件
 
-To disable rules inside of a configuration file for a group of files, use the `overrides` key along with a `files` key. For example:
+要在配置文件中禁用一组文件的规则，请使用 `overrides` 键和 `files` 键。比如：
 
 ```json
 {
@@ -266,9 +266,9 @@ To disable rules inside of a configuration file for a group of files, use the `o
 }
 ```
 
-### Disabling Inline Comments
+### 禁用内联注释
 
-To disable all inline config comments, use the `noInlineConfig` setting. For example:
+要禁用所有内联配置注释，请使用 `noInlineConfig` 设置。比如：
 
 ```json
 {
@@ -277,11 +277,11 @@ To disable all inline config comments, use the `noInlineConfig` setting. For exa
 }
 ```
 
-This setting is similar to [--no-inline-config](../command-line-interface#--no-inline-config) CLI option.
+这个设置类似于 [--no-inline-config](../command-line-interface#--no-inline-config) CLI 选项。
 
-#### Report unused `eslint-disable` comments
+#### 报告未用 `eslint-disable` 注释
 
-To report unused `eslint-disable` comments, use the `reportUnusedDisableDirectives` setting. For example:
+要报告未使用的 `eslint-disable` 注释，使用 `reportUnusedDisableDirectives` 设置。比如：
 
 ```json
 {
@@ -290,4 +290,4 @@ To report unused `eslint-disable` comments, use the `reportUnusedDisableDirectiv
 }
 ```
 
-This setting is similar to [--report-unused-disable-directives](../command-line-interface#--report-unused-disable-directives) CLI option, but doesn't fail linting (reports as `"warn"` severity).
+这个设置类似于 [--report-unused-disable-directives](../command-line-interface#--report-unused-disable-directives) CLI 选项，但不会使检查失败（严重程度为 `"warn"`）。
