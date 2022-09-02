@@ -1,27 +1,27 @@
 ---
-title: Working Groups
+title: 工作组
 layout: doc
 edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/maintainer-guide/working-groups.md
 
 ---
 
-The ESLint TSC may form working groups to focus on a specific area of the project.
+ESLint TSC 可以创建专注于项目的某个特定领域的工作组。
 
-## Creating a Working Group
+## 创建工作组
 
-Working groups are created by sending an email to the team mailing list. Each working group:
+工作小组需要通过向团队邮件列表发送电子邮件来创建的。每个工作组：
 
-1. Must have a GitHub team under the "ESLint Team" top-level GitHub team. (The GitHub team name should end with "WG" to distinguish it from other types of teams.)
-1. Must have at least one TSC member.
-1. May have any number of Committers and Reviewers.
-1. Must have at least two members.
+1. 必须位于 GitHub 顶级团队“ESLint team”下的一个 GitHub 团队（GitHub 团队名称应以“WG”结尾，以区别于其他类型的团队）。
+1. 必须有至少一名 TSC 成员。
+1. 可以有任何数量的提交者和审查者。
+1. 必须至少有两名成员。
 
-Active working groups are listed on the [team page](https://eslint.org/team).
+活跃的工作组在[团队页面](https://eslint.org/team)上列出。
 
-## How Working Groups Work
+## 工作小组如何工作
 
-Each working group is responsible for its own inner working. Working groups can decide how large or small they should be (so long as there is at least two members), when and who to add or remove from the working group, and how to accomplish their objectives.
+每个工作组负责自己的内部工作。工作组可以决定他们的规模大小（只要至少有两名成员），合适在工作组中增加或删除何人，以及如何完成他们的目标。
 
-Working groups may be temporary or permanent.
+工作组可以是临时性的或永久性的。
 
-If working groups intend to make a significant change to the ESLint project, the proposal must still be approved by the TSC.
+如果工作组打算对 ESLint 项目做出重大改变，该提议仍必须得到 TSC 批准。
