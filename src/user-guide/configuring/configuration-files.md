@@ -1,26 +1,26 @@
 ---
-title: Configuration Files
+title: 配置文件
 layout: doc
 edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/user-guide/configuring/configuration-files.md
 eleventyNavigation:
     key: configuration files
     parent: configuring
-    title: Configuration Files
+    title: 配置文件
     order: 1
 
 ---
 
-## Configuration File Formats
+## 配置文件格式
 
-ESLint supports configuration files in several formats:
+ESLint 支持几种格式的配置文件：
 
-* **JavaScript** - use `.eslintrc.js` and export an object containing your configuration.
-* **JavaScript (ESM)** - use `.eslintrc.cjs` when running ESLint in JavaScript packages that specify `"type":"module"` in their `package.json`. Note that ESLint does not support ESM configuration at this time.
-* **YAML** - use `.eslintrc.yaml` or `.eslintrc.yml` to define the configuration structure.
-* **JSON** - use `.eslintrc.json` to define the configuration structure. ESLint's JSON files also allow JavaScript-style comments.
-* **package.json** - create an `eslintConfig` property in your `package.json` file and define your configuration there.
+**JavaScript** - 使用 `.eslintrc.js` 并导出包括配置的对象。
+**JavaScript (ESM)** - 当在 JavaScript 包中运行 ESLint 时，且其 `package.json` 中指定 `"type":"module"` 时，使用 `.eslintrc.cjs`。请注意 ESLint 目前不支持 ESM 配置。
+**YAML** - 使用 `.eslintrc.yaml` 或 `.eslintrc.yml` 来定义配置结构。
+**JSON** - 使用 `.eslintrc.json` 来定义配置结构。ESLint JSON 文件中也可以使用 JavaScript 风格注释。
+**package.json** - 在 `package.json` 文件中创建 `eslintConfig` 属性并在那里定义你的配置。
 
-If there are multiple configuration files in the same directory, ESLint will only use one. The priority order is as follows:
+如果在同一目录下存在多个配置文件，ESLint 将按照以下优先顺序以此使用其一：
 
 1. `.eslintrc.js`
 1. `.eslintrc.cjs`
@@ -29,21 +29,21 @@ If there are multiple configuration files in the same directory, ESLint will onl
 1. `.eslintrc.json`
 1. `package.json`
 
-## Using Configuration Files
+## 使用配置文件
 
-There are two ways to use configuration files.
+有两种使用配置文件的方法。
 
-The first way to use configuration files is via `.eslintrc.*` and `package.json` files. ESLint will automatically look for them in the directory of the file to be linted, and in successive parent directories all the way up to the root directory of the filesystem (`/`), the home directory of the current user (`~/`), or when `root: true` is specified. See [Cascading and Hierarchy](#cascading-and-hierarchy) below for more details on this. Configuration files can be useful when you want different configurations for different parts of a project or when you want others to be able to use ESLint directly without needing to remember to pass in the configuration file.
+第一种使用配置文件的方式是使用 `.eslintrc.*` 和 `package.json` 文件。ESLint 会自动要检查文件的目录中寻找它们，并在其直系父目录中寻找，直到文件系统的根目录（`/`）、当前用户的主目录（`~/`）或指定 `root: true` 时停止。关于这方面的更多细节，请看下面的 [级联和层次结构](#级联和层次结构)。当你希望项目的不同部分有不同的配置时，或当你希望其他人能够直接使用 ESLint 而无需传入配置文件时，就可以选择使用配置文件。
 
-The second way to use configuration files is to save the file wherever you would like and pass its location to the CLI using the `--config` option, such as:
+使用配置文件的第二种方法是把文件保存在你想保存的地方，然后用 `--config` 选项把它的位置传给 CLI，例如：
 
 ```shell
 eslint -c myconfig.json myfiletotest.js
 ```
 
-If you are using one configuration file and want ESLint to ignore any `.eslintrc.*` files, make sure to use [`--no-eslintrc`](https://eslint.org/docs/user-guide/command-line-interface#--no-eslintrc) along with the [`-c`](https://eslint.org/docs/user-guide/command-line-interface#-c---config) flag.
+如果你使用了配置文件，并希望 ESLint 忽略所有 `.eslintrc.*` 文件，确保使用了 [`--no-eslintrc`](https://eslint.org/docs/user-guide/command-line-interface#--no-eslintrc) 的同时也使用了 [`-c`](https://eslint.org/docs/user-guide/command-line-interface#-c---config) 标志。
 
-Here's an example JSON configuration file that uses the `typescript-eslint` parser to support TypeScript syntax:
+下面是 JSON 配置文件示例，它使用了 `typescript-eslint` 解析器来支持 TypeScript 语法：
 
 ```json
 {
@@ -70,11 +70,11 @@ Here's an example JSON configuration file that uses the `typescript-eslint` pars
 }
 ```
 
-### Comments in configuration files
+### 配置文件中的注释
 
-Both the JSON and YAML configuration file formats support comments (package.json files should not include them). You can use JavaScript-style comments for JSON files and YAML-style comments for YAML files. ESLint safely ignores comments in configuration files. This allows your configuration files to be more human-friendly.
+JSON 和 YAML 配置文件格式都支持注释（package.json 文件中不能使用注释）。你可以在 JSON 文件使用 JavaScript 风格的注释，在 YAML 文件使用 YAML 风格的注释。ESLint 会安全地忽略了配置文件中的注释。这可以使你的配置文件更加人性化。
 
-For JavaScript-style comments:
+对于 JavaScript 风格的注释：
 
 ```js
 {
@@ -82,29 +82,29 @@ For JavaScript-style comments:
         "browser": true
     },
     "rules": {
-        // Override our default settings just for this directory
+        // 仅在此目录覆盖默认设置
         "eqeqeq": "warn",
         "strict": "off"
     }
 }
 ```
 
-For YAML-style comments:
+YAML 风格注释：
 
 ```yaml
 env:
     browser: true
 rules:
-    # Override default settings
+    # 覆盖默认配置
     eqeqeq: warn
     strict: off
 ```
 
-## Adding Shared Settings
+## 添加共享设置
 
-ESLint supports adding shared settings into configuration files. Plugins use `settings` to specify information that should be shared across all of its rules. You can add `settings` object to ESLint configuration file and it will be supplied to every rule being executed. This may be useful if you are adding custom rules and want them to have access to the same information and be easily configurable.
+ESLint 支持在配置文件中添加共享设置。插件使用 `settings` 来指定应该在其所有规则中共享的信息。你可以在 ESLint 配置文件中添加 `settings` 对象，它将被提供给每个正在执行的规则。如果你正在添加自定义规则，并希望它们能够访问相同的信息，并且易于配置，这可能是有用的。
 
-In JSON:
+在 JSON 中：
 
 ```json
 {
@@ -114,7 +114,7 @@ In JSON:
 }
 ```
 
-And in YAML:
+而在 YAML 中则是：
 
 ```yaml
 ---
@@ -122,9 +122,9 @@ And in YAML:
     sharedData: "Hello"
 ```
 
-## Cascading and Hierarchy
+## 级联和层次结构
 
-When using `.eslintrc.*` and `package.json` files for configuration, you can take advantage of configuration cascading. Suppose you have the following structure:
+当使用 `.eslintrc.*` 和 `package.json` 文件进行配置时，你可以利用配置级联的优势。假设你有以下的结构：
 
 ```text
 your-project
@@ -136,9 +136,9 @@ your-project
   └── test.js
 ```
 
-The configuration cascade works based on the location of the file being linted. If there is a `.eslintrc` file in the same directory as the file being linted, then that configuration takes precedence. ESLint then searches up the directory structure, merging any `.eslintrc` files it finds along the way until reaching either a `.eslintrc` file with `root: true` or the root directory.
+配置级联的工作是基于被提示的文件的位置。如果有一个 `.eslintrc` 文件与被提示的文件在同一目录下，那么该配置将被优先考虑。然后 ESLint 沿着目录结构向上搜索，合并沿途发现的任何 `.eslintrc` 文件，直到到达 `root: true` 的 `.eslintrc` 文件或根目录。
 
-In the same way, if there is a `package.json` file in the root directory with an `eslintConfig` field, the configuration it describes will apply to all subdirectories beneath it, but the configuration described by the `.eslintrc` file in the `tests/` directory will override it where there are conflicting specifications.
+同样，如果根目录下有 `package.json` 文件，而其中又有 `eslintConfig` 字段，它所描述的配置将适用于它下面的所有子目录，但 `tests/` 目录下的 `.eslintrc` 文件所描述的配置将在有冲突的规范时覆盖它。
 
 ```text
 your-project
@@ -150,9 +150,9 @@ your-project
   └── test.js
 ```
 
-If there is a `.eslintrc` and a `package.json` file found in the same directory, `.eslintrc` will take priority and `package.json` file will not be used.
+如果在同一目录下有 `.eslintrc` 和 `package.json` 文件，`.eslintrc` 将优先使用，`package.json` 文件将不被使用。
 
-By default, ESLint will look for configuration files in all parent folders up to the root directory. This can be useful if you want all of your projects to follow a certain convention, but can sometimes lead to unexpected results. To limit ESLint to a specific project, place `"root": true` inside the `.eslintrc.*` file or `eslintConfig` field of the `package.json` file or in the `.eslintrc.*` file at your project's root level. ESLint will stop looking in parent folders once it finds a configuration with `"root": true`.
+默认情况下，ESLint 将在所有父文件夹中寻找配置文件，直到根目录。如果你想让你的所有项目都遵循某个惯例，这可能很有用，但有时会导致意外的结果。要将 ESLint 限制在一个特定的项目中，在 `.eslintrc.*` 文件或 `package.json` 文件的 `eslintConfig` 字段内或在项目根层的 `.eslintrc.*` 文件中放置 `"root": true`。一旦 ESLint 找到 `"root": true` 的配置，它将停止在父文件夹中寻找。
 
 ```js
 {
@@ -160,14 +160,14 @@ By default, ESLint will look for configuration files in all parent folders up to
 }
 ```
 
-And in YAML:
+而在 YAML 中是：
 
 ```yaml
 ---
   root: true
 ```
 
-For example, consider `projectA` which has `"root": true` set in the `.eslintrc` file in the `lib/` directory.  In this case, while linting `main.js`, the configurations within `lib/` will be used, but the `.eslintrc` file in `projectA/` will not.
+例如，考虑到 `projectA` 在 `lib/` 目录下的 `.eslintrc` 文件中设置了 `"root": true`。 在这种情况下，当对 `main.js` 进行检查时，`lib/` 中的配置将被使用，但 `projectA/` 中的 `.eslintrc` 文件不会被使用。
 
 ```text
 home
@@ -179,66 +179,67 @@ home
             └── main.js
 ```
 
-The complete configuration hierarchy, from highest to lowest precedence, is as follows:
+完整的配置层次，从高到低的优先级，如下所示：
 
-1. Inline configuration
-    1. `/*eslint-disable*/` and `/*eslint-enable*/`
+1. 内联配置：
+    1. `/*eslint-disable*/` 和 `/*eslint-enable*/`
     1. `/*global*/`
     1. `/*eslint*/`
     1. `/*eslint-env*/`
-1. Command line options (or CLIEngine equivalents):
+2. 命令行选项（或 CLIEngine 等价物）：
     1. `--global`
     1. `--rule`
     1. `--env`
     1. `-c`, `--config`
-1. Project-level configuration:
-    1. `.eslintrc.*` or `package.json` file in the same directory as the linted file
-    1. Continue searching for `.eslintrc.*` and `package.json` files in ancestor directories up to and including the root directory or until a config with `"root": true` is found.
+3. 项目级配置：
+    1. `.eslintrc.*` 或 `package.json` 文件与 linted 文件在同一目录下
+    2. 继续搜索祖先目录中的 `.eslintrc.*` 和`package.json` 文件，直到包括根目录，或者找到`"root": true` 的配置。
 
-Please note that the [home directory of the current user on your preferred operating system](https://nodejs.org/api/os.html#os_os_homedir) (`~/`) is also considered a root directory in this context and searching for configuration files will stop there as well. And with the [removal of support for Personal Configuration Files](https://eslint.org/docs/user-guide/configuring/configuration-files#personal-configuration-files-deprecated) from the 8.0.0 release forward, configuration files present in that directory will be ignored.
+请注意，在这种情况下，[当前用户在你的首选操作系统上的主目录](https://nodejs.org/api/os.html#os_os_homedir)（`~/`）也被认为是根目录，搜索配置文件也会在那里停止。从 8.0.0 版本开始[取消对个人配置文件的支持](https://eslint.org/docs/user-guide/configuring/configuration-files#personal-configuration-files-deprecated)，该目录下的配置文件将被忽略。
 
-## Extending Configuration Files
+## 扩展配置文件
 
-A configuration file, once extended, can inherit all the traits of another configuration file (including rules, plugins, and language options) and modify all the options. As a result, there are three configurations, as defined below:
+配置文件使用扩展后，就可以继承另一个配置文件的所有特征（包括规则、插件和语言选项）并修改所有选项。它有三种配置，定义如下。
 
-* Base config: the configuration that is extended.
-* Derived config: the configuration that extends the base configuration.
-* Resulting actual config: the result of merging the derived configuration into the base configuration.
+* 基础配置：被扩展的配置。
+* 派生配置：扩展基础配置的配置。
+* 结果的实际配置：将派生配置合并到基础配置的结果。
 
-The `extends` property value is either:
+`extends` 属性值可以是：
 
-* a string that specifies a configuration (either a path to a config file, the name of a shareable config, `eslint:recommended`, or `eslint:all`)
-* an array of strings where each additional configuration extends the preceding configurations
+* 一个指定配置的字符串。
+* 一个指定配置的字符串（要么是配置文件的路径，要么是可共享配置的名称，要么是 `eslint:recommended`，要么是 `eslint:all`）。
+* 一个字符串数组，每个额外的配置都会扩展前面的配置。
 
-ESLint extends configurations recursively, so a base configuration can also have an `extends` property. Relative paths and shareable config names in an `extends` property are resolved from the location of the config file where they appear.
+ESLint 递归地扩展配置，所以基本配置也可以使用 `extends` 属性。`extends` 属性中的相对路径和可共享的配置名称从它们出现的配置文件的位置解析。
 
-The `eslint-config-` prefix can be omitted from the configuration name. For example, `airbnb` resolves as `eslint-config-airbnb`.
+可以省略配置名称中的 `eslint-config-` 前缀。如 `airbnb` 会被解析为 `eslint-config-airbnb`。
 
-The `rules` property can do any of the following to extend (or override) the set of rules:
+`rules` 属性可以做以下任何事情来扩展（或覆盖）规则集：
 
-* enable additional rules
-* change an inherited rule's severity without changing its options:
-    * Base config: `"eqeqeq": ["error", "allow-null"]`
-    * Derived config: `"eqeqeq": "warn"`
-    * Resulting actual config: `"eqeqeq": ["warn", "allow-null"]`
-* override options for rules from base configurations:
-    * Base config: `"quotes": ["error", "single", "avoid-escape"]`
-    * Derived config: `"quotes": ["error", "single"]`
-    * Resulting actual config: `"quotes": ["error", "single"]`
-* override options for rules given as object from base configurations:
-    * Base config: `"max-lines": ["error", { "max": 200, "skipBlankLines": true, "skipComments": true }]`
-    * Derived config: `"max-lines": ["error", { "max": 100 }]`
-    * Resulting actual config: `"max-lines": ["error", { "max": 100 }]` where `skipBlankLines` and `skipComments` default to `false`
+* 启用额外的规则：
+* 改变一个继承的规则的严重程度，而不改变其选项。
+    * 基本配置：`"eqeqeq": ["error", "allow-null"]`
+    * 派生配置：`"eqeqeq": "warn"`
+    * 产生的实际配置：`"eqeqeq": ["warn", "allow-null"]`
+* 覆盖基础配置中的规则选项：
+    * 基本配置：`"quotes": ["error", "single", "avoid-escape"]`
+    * 派生配置：`"quotes": ["error", "single"]`
+    * 产生的实际配置：`"quotes": ["error", "single"]`
+* 覆盖基础配置中作为对象给出的规则的选项：
+    * 基本配置：`"max-lines": ["error", { "max": 200, "skipBlankLines": true, "skipComments": true }]`
+    * 派生配置：`"max-lines": ["error", { "max": 100 }]`
+    * 产生的实际配置：`"max-lines": ["error", { "max": 100 }]` 其中 `skipBlankLines` 和 `skipComments` 默认为 `false`
 
-### Using a shareable configuration package
+### 使用可共享配置包
 
-A [sharable configuration](https://eslint.org/docs/developer-guide/shareable-configs) is an npm package that exports a configuration object. Make sure that you have installed the package in your project root directory, so that ESLint can require it.
+[可共享配置](https://eslint.org/docs/developer-guide/shareable-configs) 是导出配置对象的一个 npm 包。当你在项目根目录下安装了这个包后，ESLint 就可以使用它了。
 
-The `extends` property value can omit the `eslint-config-` prefix of the package name.
+`extends` 属性值可以省略包名的 `eslint-config-`前缀。
 
-The `npm init @eslint/config` command can create a configuration so you can extend a popular style guide (for example, `eslint-config-standard`).
+`npm init @eslint/config` 命令可以创建一个配置，这样你就可以扩展一个流行的风格指南（例如，`eslint-config-standard`）。
 
-Example of a configuration file in YAML format:
+YAML 格式的配置文件的例子：
 
 ```yaml
 extends: standard
@@ -249,19 +250,19 @@ rules:
   no-empty: warn
 ```
 
-### Using `eslint:recommended`
+### 使用 `eslint:recommended`
 
-Using `"eslint:recommended"` in the `extends` property enables a subset of core rules that report common problems (these rules are identified with a checkmark (recommended) on the [rules page](https://eslint.org/docs/rules/)).
+在 `extends` 属性中使用 `"eslint:recommended"` 可以启用报告常见问题的核心规则子集（这些规则在[规则页](https://eslint.org/docs/rules/) 上用复选标记“推荐（recommended）”来标识）。
 
-Here's an example of extending `eslint:recommended` and overriding some of the set configuration options:
+下面的示例中扩展 `eslint:recommended` 并覆盖了一些配置选项：
 
-Example of a configuration file in JavaScript format:
+JavaScript 格式的配置文件的示例：
 
 ```js
 module.exports = {
     "extends": "eslint:recommended",
     "rules": {
-        // enable additional rules
+        // 启用额外规则
         "indent": ["error", 4],
         "linebreak-style": ["error", "unix"],
         "quotes": ["error", "double"],
@@ -271,26 +272,26 @@ module.exports = {
         "no-empty": "warn",
         "no-cond-assign": ["error", "always"],
 
-        // disable rules from base configurations
+        // 禁用基础配置汇总的规则
          "for-direction": "off",
     }
 }
 ```
 
-### Using a configuration from a plugin
+### 使用插件配置
 
-A [plugin](https://eslint.org/docs/developer-guide/working-with-plugins) is an npm package that can add various extensions to ESLint. A plugin can perform numerous functions, including but not limited to adding new rules and exporting [shareable configurations](https://eslint.org/docs/developer-guide/working-with-plugins#configs-in-plugins). Make sure the package has been installed in a directory where ESLint can require it.
+[插件](https://eslint.org/docs/developer-guide/working-with-plugins)是一个可以为 ESLint 添加各种扩展功能的 npm 包。一个插件可以执行许多功能，包括但不限于添加新的规则和导出[可共享的配置](https://eslint.org/docs/developer-guide/working-with-plugins#configs-in-plugins)。请确保该包已经安装在 ESLint 能够需要它的目录中。
 
-The `plugins` [property value](./plugins#configuring-plugins) can omit the `eslint-plugin-` prefix of the package name.
+`plugins` [属性值](./plugins#configuring-plugins)可以省略包名中的 `eslint-plugin-` 前缀。
 
-The `extends` property value can consist of:
+`extends` 属性值由以下内容组成：
 
 * `plugin:`
-* the package name (from which you can omit the prefix, for example, `react` is short for `eslint-plugin-react`)
+* 包名（可以省略其前缀，如 `react` 是 `eslint-plugin-react` 的缩写）
 * `/`
-* the configuration name (for example, `recommended`)
+* 配置名称（如 `recommended`）
 
-Example of a configuration file in JSON format:
+JSON 格式的配置文件的示例：
 
 ```json
 {
@@ -307,11 +308,11 @@ Example of a configuration file in JSON format:
 }
 ```
 
-### Using a configuration file
+### 使用现有配置文件
 
-The `extends` property value can be an absolute or relative path to a base [configuration file](#using-configuration-files). ESLint resolves a relative path to a base configuration file relative to the configuration file that uses it.
+`extends` 属性值可以是基于[配置文件](#使用配置文件))的绝对或相对路径。ESLint 会解析相对于基础配置文件的相对路径中的配置文件。
 
-Example of a configuration file in JSON format:
+一个 JSON 格式的配置文件的例子：
 
 ```json
 {
@@ -326,31 +327,31 @@ Example of a configuration file in JSON format:
 }
 ```
 
-### Using `"eslint:all"`
+### 使用 `"eslint:all"`
 
-The `extends` property value can be `"eslint:all"` to enable all core rules in the currently installed version of ESLint. The set of core rules can change at any minor or major version of ESLint.
+`extends` 属性值可以使用 `"eslint:all"` 来启用当前安装的 ESLint 版本中的所有核心规则。核心规则的集合会因 ESLint 的任何次要或主要版本改变而改变。
 
-**Important:** This configuration is **not recommended for production use** because it changes with every minor and major version of ESLint. Use it at your own risk.
+**重要的是**：此配置**不建议用于生产**，因为它随着 ESLint 的每个次要和主要版本的变化而变化，使用时风险自担。
 
-You might enable all core rules as a shortcut to explore rules and options while you decide on the configuration for a project, especially if you rarely override options or disable rules. The default options for rules are not endorsements by ESLint (for example, the default option for the [`quotes`](https://eslint.org/docs/rules/quotes) rule does not mean double quotes are better than single quotes).
+在你决定项目配置时，你可以启用所有的核心规则以便快速开始探索规则和选项，特别是如果你很少覆盖选项或禁用规则。规则的默认选项不是 ESLint 的认可（如 [`quotes`](https://eslint.org/docs/rules/quotes) 规则的默认选项并不意味着双引号比单引号好）。
 
-If your configuration extends `eslint:all`, after you upgrade to a newer major or minor version of ESLint, review the reported problems before you use the `--fix` option on the [command line](https://eslint.org/docs/user-guide/command-line-interface#--fix), so you know if a new fixable rule will make changes to the code.
+如果你的配置扩展了 `eslint:all`，在你升级到 ESLint 较新的主要或次要版本后，在你使用[命令行](https://eslint.org/docs/user-guide/command-line-interface#--fix)上的 `--fix` 选项前，查看报告的问题，这样你就知道一个新的可修复规则是否会对代码进行修改。
 
-Example of a configuration file in JavaScript format:
+JavaScript 格式的配置文件的示例：
 
 ```js
 module.exports = {
     "extends": "eslint:all",
     "rules": {
-        // override default options
+        // 覆盖默认选项
         "comma-dangle": ["error", "always"],
         "indent": ["error", 2],
         "no-cond-assign": ["error", "always"],
 
-        // disable now, but enable in the future
+        // 当前禁用，但未来可能会启用
         "one-var": "off", // ["error", "never"]
 
-        // disable
+        // 禁用
         "init-declarations": "off",
         "no-console": "off",
         "no-inline-comments": "off",
@@ -358,17 +359,17 @@ module.exports = {
 }
 ```
 
-## Configuration Based on Glob Patterns
+## 基于 glob 模式的配置
 
-<b>v4.1.0+.</b> Sometimes a more fine-controlled configuration is necessary, for example, if the configuration for files within the same directory has to be different. Therefore you can provide configurations under the `overrides` key that will only apply to files that match specific glob patterns, using the same format you would pass on the command line (e.g., `app/**/*.test.js`).
+<b>v4.1.0+.</b> 有时，更精细的配置是必要的，比如同一目录下的文件的配置不同。因此，你可以在 `overrides` 键下提供配置，这些配置只会用于符合特定 glob 模式的文件，且使用与你在命令行中传递的相同格式（如 `app/**/*.test.js`）。
 
-Glob patterns in overrides use [minimatch syntax](https://github.com/isaacs/minimatch).
+overrides 中的 glob 模式使用 [minimatch 语法](https://github.com/isaacs/minimatch)。
 
-### How do overrides work?
+### 覆盖是如何工作的？
 
-It is possible to override settings based on file glob patterns in your configuration by using the `overrides` key. An example of using the `overrides` key is as follows:
+通过使用 `overrides` 键，可以覆盖配置中基于文件 glob 模式的设置。使用 `overrides` 键的示例：
 
-In your `.eslintrc.json`:
+在你的 `.eslintrc.json` 中：
 
 ```json
 {
@@ -388,17 +389,17 @@ In your `.eslintrc.json`:
 }
 ```
 
-Here is how overrides work in a configuration file:
+以下是重写在配置文件中的工作方式：
 
-* The patterns are applied against the file path relative to the directory of the config file. For example, if your config file has the path `/Users/john/workspace/any-project/.eslintrc.js` and the file you want to lint has the path `/Users/john/workspace/any-project/lib/util.js`, then the pattern provided in `.eslintrc.js` will be executed against the relative path `lib/util.js`.
-* Glob pattern overrides have higher precedence than the regular configuration in the same config file. Multiple overrides within the same config are applied in order. That is, the last override block in a config file always has the highest precedence.
-* A glob specific configuration works almost the same as any other ESLint config. Override blocks can contain any configuration options that are valid in a regular config, with the exception of `root` and `ignorePatterns`.
-    * A glob specific configuration can have an `extends` setting, but the `root` property in the extended configs is ignored. The `ignorePatterns` property in the extended configs is used only for the files the glob specific configuration matched.
-    * Nested `overrides` setting will be applied only if the glob patterns of both of the parent config and the child config matched. This is the same when the extended configs have an `overrides` setting.
-* Multiple glob patterns can be provided within a single override block. A file must match at least one of the supplied patterns for the configuration to apply.
-* Override blocks can also specify patterns to exclude from matches. If a file matches any of the excluded patterns, the configuration won't apply.
+* 模式是针对相对于配置文件目录的文件路径而应用的。例如，如果你的配置文件的路径是 `/Users/john/workspace/any-project/.eslintrc.js` ，而你要覆盖的文件的路径是 `/Users/john/workspace/any-project/lib/util.js`，那么 `.eslintrc.js` 中提供的模式将针对相对路径 `lib/util.js` 执行。
+* 在同一配置文件中，glob 模式覆盖的优先级高于常规配置。同一个配置文件中的多个覆盖会按顺序应用。也就是说，配置文件中的最后一个覆盖块总是具有最高的优先权。
+* 针对 glob 的配置与其他 ESLint 配置的工作原理几乎相同。覆盖块可以包含任何在常规配置中有效的配置选项，但 `root` 和 `ignorePatterns` 除外。
+    * 一个 glob 特定的配置可以有一个 `extends` 设置，但扩展配置中的 `root` 属性会被忽略。扩展配置中的 `ignorePatterns` 属性只用于 glob 特定配置所匹配的文件。
+    * 嵌套的 `overrides` 设置只有在父配置和子配置的 glob 模式都匹配时才会被应用。当扩展的配置设置了`overrides` 时也是这样子。
+* 在覆盖块中可以提供多个 glob 模式。一个文件必须至少与所提供的模式之一相匹配，才能使用该配置。
+* 覆盖块也可以指定排除在匹配之外的模式。如果一个文件与任何一个被排除的模式相匹配，则不会使用该配置。
 
-### Relative glob patterns
+### 相对的 glob 模式
 
 ```txt
 project-root
@@ -416,32 +417,32 @@ project-root
 ├── .eslintrc.json
 ```
 
-The config in `app/.eslintrc.json` defines the glob pattern `**/*Spec.js`. This pattern is relative to the base directory of `app/.eslintrc.json`. So, this pattern would match `app/lib/fooSpec.js` and `app/components/barSpec.js` but **NOT** `server/serverSpec.js`. If you defined the same pattern in the `.eslintrc.json` file within in the `project-root` folder, it would match all three of the `*Spec` files.
+`app/.eslintrc.json` 中的配置定义了 glob 模式 `**/*Spec.js`，该模式就基于 `app/.eslintrc.json` 目录。因此，这个模式会匹配 `app/lib/fooSpec.js` 和 `app/components/barSpec.js` ，但**不匹配** `server/serverSpec.js`。如果你在 `project-root` 文件夹下的 `.eslintrc.json` 文件中定义了相同的模式，它会匹配所有三个 `*Spec` 文件。
 
-If a config is provided via the `--config` CLI option, the glob patterns in the config are relative to the current working directory rather than the base directory of the given config. For example, if `--config configs/.eslintrc.json` is present, the glob patterns in the config are relative to `.` rather than `./configs`.
+如果配置是通过 `--config` CLI 选项提供的，配置中的 glob 模式是相对于当前工作目录的，而不是给定配置的基本目录。例如，如果 `--config configs/.eslintrc.json` 出现，那么配置中的 glob 模式是相对于 `.` 而不是 `./configs`。
 
-### Specifying target files to lint
+### 指定目标文件来进行检查
 
-If you specified directories with CLI (e.g., `eslint lib`), ESLint searches target files in the directory to lint. The target files are `*.js` or the files that match any of `overrides` entries (but exclude entries that are any of `files` end with `*`).
+如果你用 CLI 指定了目录（例如，`eslint lib`），ESLint 会在目录中搜索目标文件来进行检查。目标文件包括 `*.js` 或与任何 `overrides` 条目相匹配的文件（但不包括任何以 `*` 结尾的 `files` 条目）。
 
-If you specified the [`--ext`](https://eslint.org/docs/user-guide/command-line-interface#ext) command line option along with directories, the target files are only the files that have specified file extensions regardless of `overrides` entries.
+如果你指定了 [`--ext`](https://eslint.org/docs/user-guide/command-line-interface#ext) 命令行选项和目录，那么目标文件就只有是指定文件扩展名的文件，而不会考虑 `overrides` 条目。
 
-## Personal Configuration Files (deprecated)
+## 个人配置文件（已废弃）
 
-⚠️ **This feature has been deprecated**. This feature will be removed in the 8.0.0 release. If you want to continue to use personal configuration files, please use the [`--config` CLI option](https://eslint.org/docs/user-guide/command-line-interface#-c---config). For more information regarding this decision, please see [RFC 28](https://github.com/eslint/rfcs/pull/28) and [RFC 32](https://github.com/eslint/rfcs/pull/32).
+⚠️ **此功能已弃用**。这个功能将在 8.0.0 版本中被删除。如果你想继续使用个人配置文件，请使用 [`--config` CLI 选项](https://eslint.org/docs/user-guide/command-line-interface#-c---config)。关于这一决定的更多信息，请参见 [RFC 28](https://github.com/eslint/rfcs/pull/28) 和 [RFC 32](https://github.com/eslint/rfcs/pull/32)。
 
-`~/` refers to [the home directory of the current user on your preferred operating system](https://nodejs.org/api/os.html#os_os_homedir). The personal configuration file being referred to here is `~/.eslintrc.*` file, which is currently handled differently than other configuration files.
+`~/` 指的是[当前用户在你喜欢的操作系统上的主目录](https://nodejs.org/api/os.html#os_os_homedir)。这里所指的个人配置文件是 `~/.eslintrc.*` 文件，目前它的处理方式与其他配置文件不同。
 
-### How does ESLint find personal configuration files?
+### ESLint 是如何找到个人配置文件的？
 
-If `eslint` could not find any configuration file in the project, `eslint` loads `~/.eslintrc.*` file.
+如果 `eslint` 在项目中找不到任何配置文件，`eslint` 则加载 `~/.eslintrc.*` 文件。
 
-If `eslint` could find configuration files in the project, `eslint` ignores `~/.eslintrc.*` file even if it's in an ancestor directory of the project directory.
+如果 `eslint` 能在项目中找到配置文件，`eslint` 则忽略 `~/.eslintrc.*` 文件，即使它在项目目录的祖先目录下。
 
-### How do personal configuration files behave?
+### 个人配置文件的表现如何？
 
-`~/.eslintrc.*` files behave similarly to regular configuration files, with some exceptions:
+`~/.eslintrc.*` 文件的行为与普通配置文件类似，但有一些例外。
 
-`~/.eslintrc.*` files load shareable configs and custom parsers from `~/node_modules/` – similarly to `require()` – in the user's home directory. Please note that it doesn't load global-installed packages.
+`~/.eslintrc.*` 文件从 `~/node_modules/` 中加载可共享的配置和自定义解析器 - 类似于 `require()` - 在用户的主目录中。请注意，它不会加载全局安装的包。
 
-`~/.eslintrc.*` files load plugins from `$CWD/node_modules` by default in order to identify plugins uniquely. If you want to use plugins with `~/.eslintrc.*` files, plugins must be installed locally per project. Alternatively, you can use the [`--resolve-plugins-relative-to` CLI option](https://eslint.org/docs/user-guide/command-line-interface#--resolve-plugins-relative-to) to change the location from which ESLint loads plugins.
+`~/.eslintrc.*` 文件默认从 `$CWD/node_modules` 中加载插件，以便唯一地识别插件。如果你想用 `~/.eslintrc.*` 文件使用插件，插件必须在每个项目的本地安装。另外，你可以使用 [`--resolve-plugins-relative-to` CLI 选项](https://eslint.org/docs/user-guide/command-line-interface#--resolve-plugins-relative-to)来修改 ESLint 加载插件的位置。
