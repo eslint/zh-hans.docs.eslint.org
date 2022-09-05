@@ -1,160 +1,160 @@
 ---
-title: Managing Issues
+title: 议题管理
 layout: doc
 edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/maintainer-guide/issues.md
 eleventyNavigation:
     key: managing issues
     parent: maintainer guide 
-    title: Managing Issues
+    title: 议题管理
     order: 1
 
 ---
 
-New issues are filed frequently, and how we respond to those issues directly affects the success of the project. Being part of the project team means helping to triage and address issues as they come in so the project can continue to run smoothly.
+新的议题经常被提交，我们如何应对这些议题直接影响到项目的成功。作为项目组的一员，意味着要帮助分流和解决所出现的议题，以便项目能够继续顺利运行。
 
-## Things to Keep in Mind
+## 要记住的事情
 
-1. **Be nice.** Even if the people are being rude or aggressive on an issue, as a project team member you must be the mature one in the conversation. Do your best to work with everyone no matter their style. Remember, poor wording choice can also be a sign of someone who doesn't know English very well, so be sure to consider that when trying to determine the tone of someone's message. Being rude, even when someone is being rude to you, reflects poorly on the team and the project as a whole.
-1. **Be inquisitive.** Ask questions on the issue whenever something isn't clear. Don't assume you understand what's being reported if there are details missing. Whenever you are unsure, it's best to ask for more information.
-1. **Not all requests are equal.** It's unlikely we'll be able to accommodate every request, so don't be afraid to say that something doesn't fit into the scope of the project or isn't practical. It's better to give such feedback if that's the case.
-1. **Close when appropriate.** Don't be afraid to close issues that you don't think will be done, or when it's become clear from the conversation that there's no further work to do. Issues can always be reopened if they are closed incorrectly, so feel free to close issues when appropriate. Just be sure to leave a comment explaining why the issue is being closed (if not closed by a commit).
+1. **态度要好**。即使人们在某个议题上表现得很粗鲁或咄咄逼人，作为项目组成员，你必须是对话中的成熟者。无论他们的风格如何，都要尽力与大家合作。记住，糟糕的措辞选择也可能是一个不太懂英语的人的标志，所以在试图确定某人信息的语气时一定要考虑这一点。无礼，即使有人对你无礼，也会对团队和整个项目产生不良影响。
+1. **要有好奇心**。只要有不清楚的地方就提出议题。如果有细节遗漏，不要认为你了解报告的内容。每当你不确定时，最好询问更多信息。
+1. **不是所有的请求都是一样的**。我们不太可能满足每一个请求，所以不要害怕说某些东西不符合项目的范围或不实用。如果是这样的话，最好能给出这样的反馈。
+1. **在适当的时候关闭**。不要害怕关闭你认为不会完成的议题，或者当谈话中已经明确没有进一步的工作要做时。如果议题被错误地关闭，总是可以被重新打开，所以请在适当的时候自由关闭议题。请务必留下评论，解释为什么要关闭这个议题（如果不是通过提交来关闭）。
 
-## Types of Issues
+## 议题的类型
 
-There are four primary issue categories:
+有四个主要的议题类别。
 
-1. **Bug** - something isn't working the way it's expected to work.
-1. **Enhancement** - a change to something that already exists. For instance, adding a new option to an existing rule or a bug in a rule where fixing it will result in the rule reporting more problems (in this case, use both "Bug" and "Enhancement").
-1. **Feature** - adding something that doesn't already exist. For example, adding a new rule, new formatter, or new command line flag.
-1. **Question** - an inquiry about how something works that won't result in a code change. We'd prefer if people use the mailing list or chatroom for questions, but sometimes they'll open an issue.
+1. **漏洞（Bug）** - 某些东西没有按照预期的方式工作。
+2. **增强（Enhancement）**--对已经存在的东西的改变。例如，在现有的规则中增加一个新的选项，或者在一个规则中存在漏洞，修复它将导致该规则报告更多的议题（在这种情况下，同时使用“漏洞（Bug）”和“增强（Enhancement）”）。
+3. **功能（Feature）** - 增加一些不存在的东西。例如，添加一个新的规则，新的格式化，或新的命令行标志。
+4. **问题（Question）** - 关于某些东西如何工作的询问，不会导致代码的改变。我们希望人们使用邮件列表或聊天室来提问，但有时他们也会打开一个议题。
 
-The first goal when evaluating an issue is to determine which category the issue falls into.
+当评估一个议题时，第一个目标是确定该议题属于哪个类别。
 
-## Triaging Process
+## 分流过程
 
-All of ESLint's issues, across all GitHub repositories, are managed on our [Triage Project](https://github.com/orgs/eslint/projects/2). Please use the Triage project instead of the issues list when reviewing issues to determine what to work on. The Triage project has several columns:
+所有 ESLint 的议题，包括所有 GitHub 仓库，都在我们的[Triage Project](https://github.com/orgs/eslint/projects/2)上管理。在审查议题时，请使用 Triage 项目，而不是议题列表，以确定要处理的议题。Triage 项目有几个栏目。
 
-* **Needs Triage** - issues that have not yet been reviewed by anyone
-* **Triaging** - issues that someone has reviewed but has not been able to fully triage yet
-* **Ready for Dev Team** - issues that have been triaged and have all of the information necessary for the dev team to take a look
-* **Evaluating** - the dev team is evaluating these issues to determine whether to move forward or not
-* **Feedback Needed** - a team member is requesting more input from the rest of the team before proceeding
-* **Waiting for RFC** - the next step in the process is for an RFC to be written
-* **RFC Opened** - an RFC is opened to address these issues
-* **Blocked** - the issue can't move forward due to some dependency
-* **Ready to Implement** - these issues have all of the details necessary to start implementation
-* **PR Opened** - there is an open pull request for each of these issues
-* **Completed** - the issue has been closed (either via pull request merge or by the team manually closing the issue)
+**需要分流** - 尚未被任何人审查的议题
+**分流（Triaging）** - 有人审查过但尚未完全分流的议题
+**准备好交付开发团队（Ready for Dev Team）** - 已被分流的议题，并具有开发团队查看的所有必要信息
+**正在评估（Evaluating）** - 开发团队正在评估这些议题，以确定是否要继续前进。
+**需要反馈（Feedback Needed）** - 一个团队成员在继续工作之前要求团队其他成员提供更多的意见。
+**等待 RFC（Waiting for RFC）** - 该过程的下一步是编写RFC。
+**已开 RFC（RFC Opened）** - 一个 RFC 被打开以解决这些议题
+**已阻止（Blocked）** - 由于某些依赖性，该议题不能向前推进
+**准备实施（Ready to Implement）** - 这些议题有开始实施所需的所有细节
+**已开 PR（PR Opened）** - 这些议题都有一个开放的拉动请求
+**完成（Completed）** - 该议题已被关闭（通过拉动请求合并或由团队手动关闭该议题）。
 
-We make every attempt to automate movement between as many columns as we can, but sometimes moving issues needs to be done manually.
+我们尽一切努力在尽可能多的栏目之间自动移动，但有时移动议题需要手动完成。
 
-### When an Issue is Opened
+### 当有新议题时
 
-When an issue is opened, it is automatically added to the "Needs Triage" column in the Triage project. These issues need to be evaluated to determine next steps. Anyone on the support team or dev team can follow these steps to properly triage issues.
+当有新议题时，它会被自动添加到分流项目中的“需要分流（Needs Triage）”栏。这些议题需要被评估，以确定下一步行动。支持团队或开发团队的任何人都可以按照这些步骤来正确分流议题。
 
-**Note:** If an issue is in the "Triaging" column, that means someone is already triaging it and you should let them finish. There's no need to comment on issues in the "Triaging" column unless someone asks for help.
+**注意**：如果议题位于“分流（Triaging）”栏中，这意味着有人已经在分流它，你应该让他们完成。除非有人请求帮助，否则没有必要对“分流（Triaging）”栏中的议题进行评论。
 
-The steps for triaging an issue are:
+分流议题的步骤是：
 
-1. Move the issue from "Needs Triage" to "Triaging" in the Triage project
-1. Check: Has all of the information in the issue template been provided?
-    * **No:** If information is missing from the issue template, or you can't tell what is being requested, please ask the author to provide the missing information:
-        * Add the "needs info" label to the issue so we know that this issue is stalled due to lack of information.
-        * Don't move on to other steps until the necessary information has been provided.
-        * If the issue author hasn't provided the necessary information after 7 days, please close the issue. The bot will add a comment stating that the issue was closed because there was information missing.
-    * **Yes:**
-        * If the issue is actually a question (rather than something the dev team needs to change), please [convert it to a discussion](https://docs.github.com/en/free-pro-team@latest/discussions/managing-discussions-for-your-community/moderating-discussions#converting-an-issue-to-a-discussion). You can continue the conversation as a discussion.
-        * If the issue is reporting a bug, try to reproduce the issue following the instructions in the issue. If you can reproduce the bug, please add the "repro:yes" label. (The bot will automatically remove the "repro:needed" label.) If you can't reproduce the bug, ask the author for more information about their environment or to clarify reproduction steps.
-        * If the issue is reporting something that works as intended, please add the "works as intended" label and close the issue.
-        * For all issues, please add labels describing the part of ESLint affected:
-            * "3rd party plugin" - related to third-party functionality (plugins, parsers, rules, etc.)
-            * "build" - related to commands run during a build (testing, linting, release scripts, etc.)
-            * "cli" - related to command line input or output, or to `CLIEngine`
-            * "core" - related to internal APIs
-            * "documentation" - related to content on eslint.org
-            * "infrastructure" - related to resources needed for builds or deployment (VMs, CI tools, bots, etc.)
-            * "rule" - related to core rules
-        * If you can't properly triage the issue, move the issue back to the "Needs Triage" column in the Triage project so someone else can triage it
-        * If you have triaged the issue, move the issue to the "Ready for Dev Team" column in the Triage project
+1. 将议题从“需要分流（Needs Triage）”移到分流项目中的“分流（Triaging）”。
+1. 检查：是否已经提供了议题模板中的所有信息？
+    * **否**：如果议题模板中缺少信息，或者你无法判断请求的内容，请要求作者提供缺少的信息。
+        * 在议题上添加“需要信息（needs info）”的标签，以便我们知道这个议题由于缺乏信息而被搁置。
+        * 在必要的信息被提供之前，不要继续进行其他步骤。
+        * 如果议题作者在 7 天后还没有提供必要的信息，请关闭该议题。机器人会添加一个评论，说明该议题被关闭是因为缺少信息。
+    * **是**：
+        * 如果该议题实际上是一个议题（而不是开发团队需要改变的东西），请[将其转换为讨论](https://docs.github.com/en/free-pro-team@latest/discussions/managing-discussions-for-your-community/moderating-discussions#converting-an-issue-to-a-discussion)。你可以将对话作为一个讨论继续进行。
+        * 如果该议题是报告一个错误，请尝试按照议题中的指示重现该议题。如果你能重现这个议题，请添加“repro:yes”标签）机器人会自动删除“repro:need”标签）。如果你不能重现该议题，请向作者询问更多关于他们环境的信息或澄清重现步骤。
+        * 如果该议题报告的是如期工作，请添加“如期工作（works as intended）”标签并关闭该议题。
+        * 对于所有议题，请添加标签，描述ESLint受影响的部分。
+            * 第三方插件（3rd party plugin）- 与第三方功能（插件、分析器、规则等）有关。
+            * 构建（build）- 与在构建过程中运行的命令有关（测试、检查、发布脚本等）。
+            * 命令行（cli）- 与命令行输入或输出有关，或与 `CLIEngine` 有关
+            * 核心（core）- 与内部 API 有关
+            * 文档（documentation）- 与 eslint.org 上的内容有关
+            * 基础设施（infrastructure）- 与构建或部署所需的资源有关（虚拟机、CI 工具、机器人等）
+            * 规则（rule）- 与核心规则有关
+        * 如果你不能正确地分流该议题，请将该议题移回分流项目中的“需要分流（Needs Triage）”栏，以便其他人能够分流它
+        * 如果你已经分流了议题，把议题移到分流项目中的“准备好交付开发团队（Ready for Dev Team）”一栏中
 
-## Evaluation Process
+## 评估过程
 
-When an issue has been moved to the "Ready for Dev Team" column, any dev team member can pick up the issue to start evaluating it.
+当一个议题被移到“准备好交付开发团队（Ready for Dev Team）”一栏时，任何开发团队成员都可以拿起这个议题开始评估它。
 
-1. Move the issue into the "Evaluating" column.
-1. Next steps:
-    * **Bugs:** if you can verify the bug, add the "accepted" label and ask if they would like to submit a pull request.
-    * **New Rules:** if you are willing to champion the rule (meaning you believe it should be included in ESLint core and you will take ownership of the process for including it), add a comment saying you will champion the issue, assign the issue to yourself, and follow the [guidelines](#championing-issues) below.
-    * **Rule Changes:** if you are willing to champion the change and it would not be a breaking change (requiring a major version increment), add a comment saying that you will champion the issue, assign the issue to yourself, and follow the [guidelines](#championing-issues) below.
-    * **Breaking Changes:** if you suspect or can verify that a change would be breaking, label it as "Breaking".
-    * **Duplicates:** if you can verify the issue is a duplicate, add a comment mentioning the duplicate issue (such as, "Duplicate of #1234") and close the issue.
-1. Regardless of the above, always leave a comment. Don't just add labels, engage with the person who opened the issue by asking a question (request more information if necessary) or stating your opinion of the issue. If it's a verified bug, ask if the user would like to submit a pull request.
-1. If the issue can't be implemented because it needs an external dependency to be updated or needs to wait for another issue to be resolved, move the issue to the "Blocked" column.
-1. If the issue has been accepted and an RFC is required as the next step, move the issue to the "Waiting for RFC" column and comment on the issue that an RFC is needed.
+1. 将议题移到“正在评估（Evaluating）”栏中。
+1. 接下来的步骤。
+    **漏洞**：如果你能验证该漏洞，添加“已接受（accepted）”标签，并询问他们是否愿意提交拉动请求。
+    **新规则**：如果你愿意拥护该规则（意味着你认为它应该被纳入 ESLint 核心，并且你将主导纳入该规则的过程），添加评论说你将拥护该议题，将该议题分配给自己，并遵循下面的[指南](#倡导议题)。
+    **规则变化**：如果你愿意支持这个变化，并且它不会是一个破坏性的变化（需要一个主要的版本增量），添加一个评论说你将支持这个议题，把这个议题分配给你自己，并遵循下面的[指南](#倡导议题)。
+    **破坏性改变**：如果你怀疑或可以证实某项改变是破坏性的，请将其标记为“破坏性（Breaking）”。
+    **重复议题**：如果你能证实该议题是重复的，请添加评论提及重复的议题（例如，“#1234的 副本”）并关闭该议题。
+1. 无论上述情况如何，都要留下评论。不要只是添加标签，通过提问（必要时要求提供更多信息）或说明你对该议题的看法，与打开该议题的人互动。如果这是一个经过验证的错误，询问用户是否愿意提交一个拉动请求。
+1. 如果这个议题无法实施，因为它需要更新外部依赖关系，或者需要等待另一个议题的解决，那么就把这个议题移到“已阻止（Blocked）”栏。
+1. 如果该议题已被接受，且下一步需要RFC，则将该议题移至“等待 RFC（Waiting for RFC）”栏，并在该议题上注释需要 RFC。
 
-**Note:** "Good first issue" issues are intended to help new contributors feel welcome and empowered to make a contribution to ESLint. To ensure that new contributors are given a chance to work on these issues, issues labeled "good first issue" must be open for 30 days *from the day the issue was labeled* before a team member is permitted to work on them.
+**注意**：“适合入手（good first issue）”议题是为了帮助新的贡献者感到受欢迎，并有能力对 ESLint 做出贡献。为了确保新的贡献者有机会在这些议题上工作，被标记为“适合入手（good first issue）”的议题必须开放 30 天（**从议题被标记的那天起**）才允许团队成员在这些议题上工作。
 
-## Accepting Issues
+## 接受议题
 
-Issues may be labeled as "accepted" when the issue is:
+当议题是以下情况时，议题可以被标记为“已接受（accepted）”：
 
-* A bug that you've been able to reproduce and verify (i.e. you're sure it's a bug)
-* A new rule or rule change that you're championing and [consensus](#consensus) has been reached for its inclusion in the project
+* 你已经重现并验证的错误（即你确定它是一个错误）。
+* 你正在倡导的新规则或规则变化，并且在项目中已经达成了[共识](#共识)。
 
-The "accepted" label will be added to other issues by a TSC member if it's appropriate for the roadmap.
+如果“已接受（accepted）”的标签对路线图来说是合适的，将由 TSC 成员添加到其他议题上。
 
-When an issue is accepted and implementation can begin, it should be moved to the "Ready to Implement" column.
+当议题被接受并且可以开始实施时，它应该被移到“准备实施（Ready to Implement）”栏中。
 
-## Championing Issues
+## 倡导议题
 
-New rules and rule changes require a champion. As champion, it's your job to:
+新的规则和规则变化需要倡议。倡议者需要：
 
-* Gain [consensus](#consensus) from the ESLint team on inclusion
-* Guide the rule creation process until it's complete (so only champion a rule that you have time to implement or help another contributor implement)
+* 从 ESLint 团队中获得关于包容性的[共识](#共识)。
+* 引导规则的创建过程，直到它完成（所以只有在你有时间实施或帮助其他贡献者实施的情况下，你才能成为规则的支持者）
 
-Once consensus has been reached on inclusion, add the "accepted" and, optionally, "help wanted" and "good first issue" labels, as necessary.
+一旦就议题达成共识，则可在必要时添加“已接受（accepted）”以及“需要帮助（help wanted）”和“适合入手（good first issue）”的标签。
 
-## Consensus
+## 共识
 
-Consensus is reached on issues when there are at least three team members who believe the change is a good idea and no one who believes the change is a bad idea. In order to indicate your support for an issue, leave a +1 reaction (thumbs up) on the original issue description in addition to any comments you might have.
+当至少有三个团队成员认为这个变化是个好主意，并且没有人认为这个变化是个坏主意时，就会在议题上达成共识。为了表示你对某一议题的支持，除了你可能有的任何评论外，在原始议题描述上留下 +1 反应（大拇指）。
 
-## When to Send to TSC
+## 何时提交给 TSC
 
-If consensus cannot be reached on an issue, or an issue's progress has been stalled and it's not clear if the issue should be closed, then you can refer the issue to the TSC for resolution. To do so, add the "tsc agenda" label to the issue and add a comment including the following information:
+如果不能就某一议题达成共识，或某一议题的进展停滞不前，不清楚是否应该关闭该议题，那么你可以将该议题提交给 TSC 解决。要做到这一点，请为该议题添加“TSC 议程（tsc agenda）”标签，并添加包括以下信息的评论：
 
-1. A one-paragraph summary of the discussion to this point.
-2. The question you would like the TSC to answer.
+1. 对到目前为止的讨论进行一段总结。
+2. 你希望 TSC 回答的议题。
 
-The issue will be discussed at the next TSC meeting and the resolution will be posted back to the issue.
+该议题将在下一次 TSC 会议上讨论，决议将被贴回该议题。
 
-## Evaluating Core Features and Enhancements (TSC members only)
+## 评估核心功能和增强功能（仅 TSC 成员）
 
-In addition to the above, changes to the core (including CLI changes) that would result in a minor or major version release must be approved by the TSC by standard TSC motion. Add the label "tsc agenda" to the issue and it will be discussed at the next TSC meeting. In general, requests should meet the following criteria to be considered:
+除上述内容外，对核心的修改（包括 CLI 的修改），如果会导致小版本或大版本的发布，必须由 TSC 通过标准的TSC动议批准。在该议题上添加“TSC 议程（tsc agenda）”的标签，它将在下一次 TSC 会议上讨论。一般来说，仅考虑满足以下标准的请求：
 
-1. The feature or enhancement is in scope for the project and should be added to the roadmap
-1. Someone is committed to including the change within the next year
-1. There is reasonable certainty about who will do the work
+1. 该功能或改进在项目的范围内，应该被添加到路线图中。
+2. 有人承诺在未来一年内加入该变化
+3. 对谁来做这项工作有合理的确定性。
 
-When a suggestion is too ambitious or would take too much time to complete, it's better not to accept the proposal. Stick to small, incremental changes and lay out a roadmap of where you'd like the project to go eventually. Don't let the project get bogged down in big features that will take a long time to complete.
+当一个建议步子迈的太大或需要太多的时间来完成时，最好不要接受这个建议。坚持小的、渐进式的修改，并为你希望项目最终走向何方制定一个路线图。不要让项目被那些需要很长时间才能完成的大功能所拖累。
 
-**Breaking Changes:** Be on the lookout for changes that would be breaking. Issues that represent breaking changes should be labeled as "breaking".
+**破坏性变化（Breaking Changes）**：要注意那些会破坏的变化。代表破坏性变化的议题应该被标记为“破坏性（breaking）”。
 
-## When to Close an Issue
+## 何时关闭议题
 
-All team members are allowed to close issues depending on how the issue has been resolved.
+所有团队成员都可以根据议题的解决情况来关闭议题。
 
-Team members may close an issue **immediately** if:
+团队成员可以在以下情况下**立即**关闭议题：
 
-1. The issue is a duplicate of an existing issue.
-1. The issue is just a question and has been answered.
+1. 该议题是现有议题的副本。
+1. 该议题只是个问题，并已被回答。
 
-Team members may close an issue where the consensus is to not accept the issue after a waiting period (to ensure that other team members have a chance to review the issue before it is closed):
+团队成员可以关闭议题，如果共识是在等待期后不接受该议题（以确保其他团队成员有机会在关闭前审查该议题）。
 
-* Wait **2 days** if the issue was opened Monday through Friday.
-* Wait **3 days** if the issue was opened on Saturday or Sunday.
+* 如果议题是在周一至周五打开的，则等待**2 天**。
+* 如果议题是在周六或周日打开的，则等待**3 天**。
 
-In an effort to keep the issues backlog manageable, team members may also close an issue if the following conditions are met:
+为了保持议题的可管理性，如果满足以下条件，团队成员也可以关闭议题：
 
-* **Unaccepted**: Close after it has been open for 21 days, as these issues do not have enough support to move forward.
-* **Accepted**: Close after 90 days if no one from the team or the community is willing to step forward and own the work to complete to it.
-* **Help wanted:** Close after 90 days if it has not been completed.
+**未接受（Unaccepted）**：在开放 21 天后关闭，因为这些议题没有足够的支持来推进。
+**已接受（Accepted）**：如果团队或社区中没有人愿意站出来并承担完成该议题的工作，则在 90 天后关闭。
+**需要帮助（Help wanted）**：在 90 天后关闭，如果它没有完成。
