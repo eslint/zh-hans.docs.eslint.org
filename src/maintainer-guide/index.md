@@ -1,32 +1,34 @@
 ---
-title: Maintainer Guide
+title: 维护者指南
 layout: doc
 edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/maintainer-guide/index.md
 eleventyNavigation:
     key: maintainer guide 
-    title: Maintainer Guide 
+    title: 维护者指南 
     order: 3
 
 ---
 
-This guide is intended for those who work as part of the ESLint project team.
+本指南面向 ESLint项目组成员。
 
-## [Managing Issues](issues)
+## [议题管理](issues)
 
-Describes how to deal with issues when they're opened, when interacting with users, and how to close them effectively.
+讲述了在有新议题时，该如何与用户互动，以及如何有效地处理议题。
 
-## [Reviewing Pull Requests](pullrequests)
+## [拉取请求审查](pullrequests)
 
-Describes how to review incoming pull requests.
+讲述了如何审查收到的拉取请求。
 
-## [Managing Releases](releases)
+## [版本管理](releases)
 
-Describes how to do an ESLint project release.
+讲述了如何发布 ESLint 项目。
 
-## [Governance](governance)
+## [治理](governance)
 
-Describes the governance policy for ESLint, including the rights and privileges of individuals inside the project.
+讲述了 ESLint 治理策略，包括了项目内部个人的权利和特权。
 
-## [Working Groups](working-groups)
+## [工作组](working-groups)
 
-Describes how working groups are created and how they function within the ESLint project.
+Describes how working groups are created and how they function within the ESLint project
+
+讲述了如何创建工作组以及其如何在 ESLint 项目中发挥作用。
