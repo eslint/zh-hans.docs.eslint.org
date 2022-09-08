@@ -1,36 +1,36 @@
 ---
-title: Migrating to v3.0.0
+title: 迁移至 v3.0.0
 layout: doc
 edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/user-guide/migrating-to-3.0.0.md
 
 ---
 
-ESLint v3.0.0 is the third major version release. We have made several breaking changes in this release, however, we believe the changes to be small enough that they should not require significant changes for ESLint users. This guide is intended to walk you through the changes.
+ESLint v3.0.0 是第三个主要发行版。此版本有几个破坏性改变，不过问题不大，不需要 ESLint 用户进行大规模修改。而本指南旨在引导你了解这些变化。
 
-## Dropping Support for Node.js < 4
+## 放弃支持 Node.js < 4
 
-With ESLint v3.0.0, we are dropping support for Node.js versions prior to 4. Node.js 0.10 and 0.12 are in [maintenance mode](https://github.com/nodejs/Release) and Node.js 4 is the current LTS version. If you are using an older version of Node.js, we recommend upgrading to at least Node.js 4 as soon as possible. If you are unable to upgrade to Node.js 4 or higher, then we recommend continuing to use ESLint v2.x until you are ready to upgrade Node.js.
+随着 ESLint v3.0.0 的发布，我们放弃了对 Node.js 4 之前版本的支持。Node.js 0.10 和 0.12 处于[维护模式](https://github.com/nodejs/Release)，而 Node.js 4 则是当前的长期支持（LTS）版。如果老版的 Node.js，我们建议你尽可能升级到至少得是 Node.js 4。如果你无法升级到 Node.js 4 或更高版本，那我们建议你在准备好升级 Node.js 前继续使用 ESLint v2.x。
 
-**Important:** We will not be updating the ESLint v2.x versions going forward. All bug fixes and enhancements will land in ESLint v3.x.
+**重要**：我们将不再更新ESLint v2.x版本。所有的错误修复和功能都将仅限于 ESLint v3.x 版本。
 
-## Requiring Configuration to Run
+## 运行时需要配置
 
-ESLint v3.0.0 now requires that you use a configuration to run. A configuration can be any of the following:
+ESLint v3.0.0 现在需要有配置才能运行。以下几种都属于配置：
 
-1. A `.eslintrc.js`, `.eslintrc.json`, `.eslintrc.yml`, `.eslintrc.yaml`, or `.eslintrc` file either in your project or home directory.
-2. Configuration options passed on the command line using `--rule` (or to CLIEngine using `rules`).
-3. A configuration file passed on the command line using `-c` (or to CLIEngine using `configFile`).
-4. A base configuration is provided to CLIEngine using the `baseConfig` option.
+1. 无论在项目或主目录的 `.eslintrc.js`、`.eslintrc.json`、`.eslintrc.yml`、`.eslintrc.yaml` 或 `.eslintrc` 文件。
+2. 在命令行中使用 `--rule` 传递配置选项（或使用 `rules` 传递给 CLIEngine）。
+3. 在命令行中使用 `-c` 传递配置文件（或使用 `configFile` 传递给 CLIEngine）。
+4. 使用 `baseConfig` 选项为 CLIEngine 提供一个基本配置。
 
-If ESLint can't find a configuration, then it will throw an error and ask you to provide one.
+如果 ESLint 找不到配置，那么它会抛出错误并要求提供配置。
 
-This change was made to help new ESLint users who are frequently confused that ESLint does nothing by default besides reporting parser errors. We anticipate this change will have minimal impact on most established users because you're more likely to have configuration files already.
+此改变有助于缓解 ESLint 新用户的困惑，ESLint 除了报告分析器错误外，默认情况下什么都不做。我们预计这一变化对大多数老用户几乎没有影响，因为你很可能已经有了配置文件。
 
-**To Address:** You should be sure to use a configuration whenever you run ESLint. However, you can still run ESLint without a configuration by passing the `--no-eslintrc` option on the command line or setting the `useEslintrc` option to `false` for `CLIEngine`.
+**解决方案**：无论什么时候运行 ESLint，你都需要确保用了配置。但你仍然可以在没有配置的情况下运行 ESLint，方法就是在命令行上传递 `--no-eslintrc` 选项或将 `CLIEngine` 的 `useEslintrc` 选项设置为 `false`。
 
-To create a new configuration, use `eslint --init`.
+要创建新的配置，请运行 `eslint --init`。
 
-## Changes to `"eslint:recommended"`
+## `"eslint:recommended"` 变更
 
 ```json
 {
@@ -38,21 +38,21 @@ To create a new configuration, use `eslint --init`.
 }
 ```
 
-In 3.0.0, the following rules were added to `"eslint:recommended"`:
+在 3.0.0 中，`"eslint:recommended"` 新增了下列规则：
 
-* [`no-unsafe-finally`](https://eslint.org/docs/rules/no-unsafe-finally) helps catch `finally` clauses that may not behave as you think.
-* [`no-native-reassign`](https://eslint.org/docs/rules/no-native-reassign) was previously part of `no-undef`, but was split out because it didn't make sense as part of another rule. The `no-native-reassign` rule warns whenever you try to overwrite a read-only global variable.
-* [`require-yield`](https://eslint.org/docs/rules/require-yield) helps to identify generator functions that do not have the `yield` keyword.
+* [`no-unsafe-finally`](https://eslint.org/docs/rules/no-unsafe-finally)帮助捕获与预期不一致的 `finally` 子句。
+* [`no-native-reassign`](https://eslint.org/docs/rules/no-native-reassign)以前是 `no-undef` 的一部分，但由于作为另一条规则的一部分没有意义而独立处理。`no-native-reassign` 规则会在你试图覆盖只读的全局变量时发出警告。
+* [`require-yield`](https://eslint.org/docs/rules/require-yield) 帮助识别没有 `yield` 关键字的生成器函数。
 
-The following rules were removed from `"eslint:recommended"`:
+`"eslint:recommended"` 移除了下列规则：
 
-* [`comma-dangle`](https://eslint.org/docs/rules/comma-dangle) used to be recommended because Internet Explorer 8 and earlier threw a syntax error when it found a dangling comma on object literal properties. However, [Internet Explorer 8 was end-of-lifed](https://www.microsoft.com/en-us/WindowsForBusiness/End-of-IE-support) in January 2016 and all other active browsers allow dangling commas. As such, we consider dangling commas to now be a stylistic issue instead of a possible error.
+* [`comma-dangle`](https://eslint.org/docs/rules/comma-dangle) 曾经被推荐使用，因为 Internet Explorer 8 和更早的版本在发现对象字面属性上的尾随逗号时会报语法错误。然而，[Internet Explorer 8 在 2016 年 1 月结束了声明](https://www.microsoft.com/en-us/WindowsForBusiness/End-of-IE-support)，同时所有其他积极更新的浏览器都允许尾随逗号。因此，我们认为尾随逗号现在是风格问题，而不是错误。
 
-The following rules were modified:
+以下规则进行了修改：
 
-* [`complexity`](https://eslint.org/docs/rules/complexity) used to have a hardcoded default of 11 in `eslint:recommended` that would be used if you turned the rule on without specifying a maximum. The default is now 20. The rule actually always had a default of 20, but `eslint:recommended` was overriding it by mistake.
+* [`complexity`](https://eslint.org/docs/rules/complexity) 在 `eslint:recommended` 中曾经被硬编码将默认值改为 11，如果你打开规则而没有指定最大值则使用默认值。现在的默认值是 20。实际上，该规则的默认值就应该是 20，只不过 `eslint:recommended` 错误地覆盖了它。
 
-**To address:** If you want to mimic how `eslint:recommended` worked in v2.x, you can use the following:
+**解决方案**：如果你想与 `eslint:recommended` 在 v2.x 中的工作方式类似，你可以使用以下方法：
 
 ```json
 {
@@ -67,20 +67,20 @@ The following rules were modified:
 }
 ```
 
-## Changes to `CLIEngine#executeOnText()`
+## `CLIEngine#executeOnText()` 变更
 
-The `CLIEngine#executeOnText()` method has changed to work more like `CLIEngine#executeOnFiles()`. In v2.x, `CLIEngine#executeOnText()` warned about ignored files by default and didn't have a way to opt-out of those warnings whereas `CLIEngine#executeOnFiles()` did not warn about ignored files by default and allowed you to opt-in to warning about them. The `CLIEngine#executeOnText()` method now also does not warn about ignored files by default and allows you to opt-in with a new, third argument (a boolean, `true` to warn about ignored files and `false` to not warn).
+`CLIEngine#executeOnText()` 方式修改得更像 `CLIEngine#executeOnFiles()`。在 v2.x 中，`CLIEngine#executeOnText()` 默认对被忽略的文件发出警告，且没有办法选择禁用这些警告，而 `CLIEngine#executeOnFiles()` 默认不对被忽略的文件发出警告，并且允许你选择加入对它们的警告。 `CLIEngine#executeOnText()` 方法现在也默认不对被忽略的文件发出警告，并允许你用一个新的第三个参数（布尔值，`true` 表示对被忽略的文件发出警告， `false` 表示不发出警告）选择加入。
 
-**To address:** If you are currently using `CLIEngine#executeOnText()` in your project like this:
+**解决方案**：如果你正在项目中像这样使用 `CLIEngine#executeOnText()`：
 
 ```js
 var result = engine.executeOnText(text, filename);
 ```
 
-You can get the equivalent behavior using this:
+改用这个能获得一致的行为：
 
 ```js
 var result = engine.executeOnText(text, filename, true);
 ```
 
-If you do not want ignored file warnings output to the console, you can omit the third argument or pass `false`.
+如果你不想要在控制台中输出忽略文件警告，你可以省略第三个参数或传递 `false`。
