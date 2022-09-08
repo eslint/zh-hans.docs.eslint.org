@@ -1,48 +1,48 @@
 ---
-title: Migrating to v4.0.0
+title: 迁移至 v4.0.0
 layout: doc
 edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/user-guide/migrating-to-4.0.0.md
 
 ---
 
-ESLint v4.0.0 is the fourth major version release. We have made several breaking changes in this release; however, we expect that most of the changes will only affect a very small percentage of users. This guide is intended to walk you through the changes.
+ESLint v4.0.0 是第四个主要发行版。此版本有几个破坏性改变，不过问题不大，不需要 ESLint 用户进行大规模修改。而本指南旨在引导你了解这些变化。
 
-The lists below are ordered roughly by the number of users each change is expected to affect, where the first items are expected to affect the most users.
+下列内容大致按每项变化预计影响的用户数量排序，其中第一项为预计会影响最多的用户的变化。
 
-## Breaking changes for users
+## 面向用户的破坏性变更
 
-1. [New rules have been added to `eslint:recommended`](#eslint-recommended-changes)
-1. [The `indent` rule is more strict](#indent-rewrite)
-1. [Unrecognized properties in config files now cause a fatal error](#config-validation)
-1. [.eslintignore patterns are now resolved from the location of the file](#eslintignore-patterns)
-1. [The `padded-blocks` rule is more strict by default](#padded-blocks-defaults)
-1. [The `space-before-function-paren` rule is more strict by default](#space-before-function-paren-defaults)
-1. [The `no-multi-spaces` rule is more strict by default](#no-multi-spaces-eol-comments)
-1. [References to scoped plugins in config files are now required to include the scope](#scoped-plugin-resolution)
+1. [`eslint:recommended` 添加了新的规则](#eslint-recommended-changes)
+2. [`indent` 规则更加严格了](#indent-rewrite)
+3. [配置文件中存在未识别属性现在将导致致命错误](#config-validation)
+4. [.eslintignore 模式限制基于文件位置解析](#eslintignore-patterns)
+5. [默认情况下 `padded-blocks` 规则更加严格了](#padded-blocks-defaults)
+6. [默认情况下 `space-before-function-paren` 规则更加严格了](#space-before-function-paren-defaults)
+7. [默认情况下 `no-multi-spaces` 规则更加严格了](#no-multi-spaces-eol-comments)
+8. [在配置文件的范围内引用插件现在需要包含范围](#scoped-plugin-resolution)
 
-## Breaking changes for plugin/custom rule developers
+## 面向插件/自定义规则开发者的破坏性变更
 
-1. [`RuleTester` now validates properties of test cases](#rule-tester-validation)
-1. [AST nodes no longer have comment properties](#comment-attachment)
-1. [`LineComment` and `BlockComment` events will no longer be emitted during AST traversal](#event-comments)
-1. [Shebangs are now returned from comment APIs](#shebangs)
+1. [`RuleTester` 现在可以验证测试案例的属性了](#rule-tester-validation)
+2. [AST 节点不再包含注释属性](#comment-attachment)
+3. [AST 遍历过程将不再传递 `LineComment` 和 `BlockComment` 事件](#event-comments)
+4. [现在注释 API 可以返回 Shebangs 了](#shebangs)
 
-## Breaking changes for integration developers
+## 面向集成开发者的破坏性变更
 
-1. [The `global` property in the `linter.verify()` API is no longer supported](#global-property)
-1. [More report messages now have full location ranges](#report-locations)
-1. [Some exposed APIs are now ES2015 classes](#exposed-es2015-classes)
+1. [不再支持 `linter.verify()` API 中的 `global` 属性](#global-property)
+2. [现在报告信息有更加完整的位置范围](#report-locations)
+3. [部分暴露的 API 使用了 ES2015 类](#exposed-es2015-classes)
 
 ---
 
-## <a name="eslint-recommended-changes"></a> `eslint:recommended` changes
+## <a name="eslint-recommended-changes"></a> `eslint:recommended` 更改
 
-Two new rules have been added to the [`eslint:recommended`](https://eslint.org/docs/user-guide/configuring#using-eslintrecommended) config:
+[`eslint:recommended`](https://eslint.org/docs/user-guide/configuring#using-eslintrecommended) 配置新增了两个规则：
 
-* [`no-compare-neg-zero`](/docs/rules/no-compare-neg-zero) disallows comparisons to `-0`
-* [`no-useless-escape`](/docs/rules/no-useless-escape) disallows uselessly-escaped characters in strings and regular expressions
+* [`no-compare-neg-zero`](/docs/rules/no-compare-neg-zero) 不允许与 `-0` 比较
+* [`no-useless-escape`](/docs/rules/no-useless-escape) 不允许字符串和正则表达式中出现无用的转义字符
 
-**To address:** To mimic the `eslint:recommended` behavior from 3.x, you can disable these rules in a config file:
+**解决方案**：要想维持类似 3.x 的 `eslint:recommended` 行为，你可以在配置文件中禁用这些规则：
 
 ```json
 {
@@ -55,48 +55,48 @@ Two new rules have been added to the [`eslint:recommended`](https://eslint.org/d
 }
 ```
 
-## <a name="indent-rewrite"></a> The `indent` rule is more strict
+## <a name="indent-rewrite"></a> 更加严格的 `indent` 规则
 
-Previously, the [`indent`](/docs/rules/indent) rule was fairly lenient about checking indentation; there were many code patterns where indentation was not validated by the rule. This caused confusion for users, because they were accidentally writing code with incorrect indentation, and they expected ESLint to catch the issues.
+之起 [`indent`](/docs/rules/indent) 规则相当于宽松地检查缩进，许多代码模式中的缩进都无法识别。这造成了用户的混乱，他们不小心用了错误的缩进，他们使用 ESLint 自然是希望 ESLint 能够发现这些问题：
 
-In 4.0.0, the `indent` rule has been rewritten. The new version of the rule will report some indentation errors that the old version of the rule did not catch. Additionally, the indentation of `MemberExpression` nodes, function parameters, and function arguments will now be checked by default (it was previously ignored by default for backwards compatibility).
+在 4.0 中重写 `indent` 规则。新版规则将报告旧版所没有发现的一些缩进错误。另外将默认检查 `MemberExpression` 节点、函数属性和函数参数的缩进（此前为了向后兼容默认忽略。）。
 
-To make the upgrade process easier, we've introduced the [`indent-legacy`](/docs/rules/indent-legacy) rule as a snapshot of the `indent` rule from 3.x. If you run into issues from the `indent` rule when you upgrade, you should be able to use the `indent-legacy` rule to replicate the 3.x behavior. However, the `indent-legacy` rule is deprecated and will not receive bugfixes or improvements in the future, so you should eventually switch back to the `indent` rule.
+为了让升级过程更加任意，我们引入了 [`indent-legacy`](/docs/rules/indent-legacy) 规则作为 `indent` 3.x 版本规则的快照。如果在你升级 `indent` 规则后出现了问题，你能够使用`indent-legacy` 规则回到 3.x 的行为模式。不过 `indent-legacy` 规则已废弃，所以以后不会再接受漏洞修复和功能改进，最终你还是应该要切换回 `indent` 规则。
 
-**To address:** We recommend upgrading without changing your `indent` configuration, and fixing any new indentation errors that appear in your codebase. However, if you want to mimic how the `indent` rule worked in 3.x, you can update your configuration:
+**解决方案**：我们建议升级过程中不对 `indent` 配置进行修改，并修复出现在代码库中新出现的缩进错误。不过如果你坚持想要类似 3.x 的 `indent` 规则，你可以更新配置：
 
 ```js
 {
   rules: {
     indent: "off",
-    "indent-legacy": "error" // replace this with your previous `indent` configuration
+    "indent-legacy": "error" // 替代之前的 `indent` 配置
   }
 }
 ```
 
-## <a name="config-validation"></a> Unrecognized properties in config files now cause a fatal error
+## <a name="config-validation"></a> 配置文件中存在未识别属性现在将导致致命错误
 
-When creating a config, users sometimes make typos or misunderstand how the config is supposed to be structured. Previously, ESLint did not validate the properties of a config file, so a typo in a config could be very tedious to debug. Starting in 4.0.0, ESLint will raise an error if a property in a config file is unrecognized or has the wrong type.
+创建配置时，用户不可避免地会打错字或搞错配置结构。以前 ESLint 并不会验证配置文件的属性，所以要排查配置中的错别字需要非常繁琐的调试。从 4.0.0 起，如果配置文件由未能识别的属性或类型错误，将引发 ESLint 错误。
 
-**To address:** If you see a config validation error after upgrading, verify that your config doesn't contain any typos. If you are using an unrecognized property, you should be able to remove it from your config to restore the previous behavior.
+**解决方案**：如果你在升级后看到配置验证错误，请验证你的配置不包含任何错字。如果你正在使用一个不被承认的属性，你应该能够从你的配置中删除它以恢复以前的行为。
 
-## <a name="eslintignore-patterns"></a> .eslintignore patterns are now resolved from the location of the file
+## <a name="eslintignore-patterns"></a> .eslintignore 模式限制基于文件位置解析
 
-Due to a bug, glob patterns in an `.eslintignore` file were previously resolved from the current working directory of the process, rather than the location of the `.eslintignore` file. Starting in 4.0, patterns in an `.eslintignore` file will be resolved from the `.eslintignore` file's location.
+由于一个错误，以前 `.eslintignore` 文件中的 glob 模式是从进程的当前工作目录，而不是`.eslintignore`文件的位置来解析的。4.0 起，`.eslintignore` 文件中的模式将从 `.eslintignore` 文件的位置进行解析。
 
-**To address:** If you use an `.eslintignore` file and you frequently run ESLint from somewhere other than the project root, it's possible that the patterns will be matched differently. You should update the patterns in the `.eslintignore` file to ensure they are relative to the file, not to the working directory.
+**解决方案**：如果你使用 `.eslintignore` 文件，并且你经常从项目根目录以外的地方运 行ESLint，有可能模式会被不同的匹配。你应该更新 `.eslintignore` 文件中的模式，确保它们是相对于文件的，而不是工作目录的。
 
-## <a name="padded-blocks-defaults"></a> The `padded-blocks` rule is more strict by default
+## <a name="padded-blocks-defaults"></a> 默认情况下 `padded-blocks` 规则更加严格了
 
-By default, the [`padded-blocks`](/docs/rules/padded-blocks) rule will now enforce padding in class bodies and switch statements. Previously, the rule would ignore these cases unless the user opted into enforcing them.
+默认情况下 [`padded-blocks`](/docs/rules/padded-blocks) 规则现在将在类体和开关语句中强制执行填充。之起规则将忽略这些情况，除非用户选择执行它们。
 
-**To address:** If this change results in more linting errors in your codebase, you should fix them or reconfigure the rule.
+**解决方案**：如果这个变化导致你的代码库中出现更多的提示性错误，你应该修复它们或重新配置规则。
 
-## <a name="space-before-function-paren-defaults"></a> The `space-before-function-paren` rule is more strict by default
+## <a name="space-before-function-paren-defaults"></a> 默认情况下 `space-before-function-paren` 规则更加严格了
 
-By default, the [`space-before-function-paren`](/docs/rules/space-before-function-paren) rule will now enforce spacing for async arrow functions. Previously, the rule would ignore these cases unless the user opted into enforcing them.
+默认情况下 [`space-before-function-paren`](/docs/rules/space-before-function-paren) 规则现在将强制执行异步箭头函数的间距。之起规则将忽略这些情况，除非用户选择强制执行它们。
 
-**To address:** To mimic the default config from 3.x, you can use:
+**解决方案**：要想维持类似 3.x 的样子，你可以使用：
 
 ```json
 {
@@ -110,11 +110,11 @@ By default, the [`space-before-function-paren`](/docs/rules/space-before-functio
 }
 ```
 
-## <a name="no-multi-spaces-eol-comments"></a> The `no-multi-spaces` rule is more strict by default
+## <a name="no-multi-spaces-eol-comments"></a> 默认情况下 `no-multi-spaces` 规则更加严格了
 
-By default, the [`no-multi-spaces`](/docs/rules/no-multi-spaces) rule will now disallow multiple spaces before comments at the end of a line. Previously, the rule did not check this case.
+现在在默认情况下 [`no-multi-spaces`](/docs/rules/no-multi-spaces) 规则不允许在行尾的注释前有多个空格。之前规则没有检查这种情况。
 
-**To address:** To mimic the default config from 3.x, you can use:
+**解决方案**：要想保持类似 3.x 的样子，你可以使用：
 
 ```json
 {
@@ -124,9 +124,9 @@ By default, the [`no-multi-spaces`](/docs/rules/no-multi-spaces) rule will now d
 }
 ```
 
-## <a name="scoped-plugin-resolution"></a> References to scoped plugins in config files are now required to include the scope
+## <a name="scoped-plugin-resolution"></a> 在配置文件的范围内引用插件现在需要包含范围
 
-In 3.x, there was a bug where references to scoped NPM packages as plugins in config files could omit the scope. For example, in 3.x the following config was legal:
+3.x 中有个问题，即在配置文件中引用 NPM 范围包作为插件时，规则可以省略范围。例如，在 3.x 中，以下配置是合法的：
 
 ```json
 {
@@ -139,9 +139,9 @@ In 3.x, there was a bug where references to scoped NPM packages as plugins in co
 }
 ```
 
-In other words, it was possible to reference a rule from a scoped plugin (such as `foo/some-rule`) without explicitly stating the `@my-organization` scope. This was a bug because it could lead to ambiguous rule references if there was also an unscoped plugin called `eslint-plugin-foo` loaded at the same time.
+换句话说，从一个范围内的插件（如 `foo/some-rule`）引用一个规则，而没有明确说明 `@my-organization` 的范围。这是一个错误，因为如果同时加载了名为 `eslint-plugin-foo` 的非范围包插件，这可能会导致所引用的规则不明确。
 
-To avoid this ambiguity, in 4.0 references to scoped plugins must include the scope. The config from above should be fixed to:
+为了消除歧义，在 4.0 中，对范围内插件的引用必须包括范围。上面的配置应该被改为：
 
 ```json
 {
@@ -154,55 +154,55 @@ To avoid this ambiguity, in 4.0 references to scoped plugins must include the sc
 }
 ```
 
-**To address:** If you reference a scoped NPM package as a plugin in a config file, be sure to include the scope wherever you reference it.
+**解决方案**：如果你在配置文件中将 NPM 范围包作为一个插件来引用，请确保在你引用它的地方包括范围。
 
 ---
 
-## <a name="rule-tester-validation"></a> `RuleTester` now validates properties of test cases
+## <a name="rule-tester-validation"></a> `RuleTester` 现在可以验证测试案例的属性了
 
-Starting in 4.0, the `RuleTester` utility will validate properties of test case objects, and an error will be thrown if an unknown property is encountered. This change was added because we found that it was relatively common for developers to make typos in rule tests, often invalidating the assertions that the test cases were trying to make.
+4.0 起 `RuleTester` 工具将验证测试用例对象的属性，如果遇到未知的属性，将抛出一个错误。添加这一变化是因为我们发现，开发人员在规则测试中出现错别字是比较常见的，这往往会使测试用例试图做出的断言无效。
 
-**To address:** If your tests for custom rules have extra properties, you should remove those properties.
+**解决方案**：如果你对自定义规则的测试有额外的属性，你应该删除这些属性。
 
-## <a name="comment-attachment"></a> AST Nodes no longer have comment properties
+## <a name="comment-attachment"></a> AST 节点不再包含注释属性
 
-Prior to 4.0, ESLint required parsers to implement comment attachment, a process where AST nodes would gain additional properties corresponding to their leading and trailing comments in the source file. This made it difficult for users to develop custom parsers, because they would have to replicate the confusing comment attachment semantics required by ESLint.
+4.0 前，ESLint 要求解析器实现注释附件，在这个过程中，AST 节点将获得与它们在源文件中的前导和后导注释相对应的额外属性。这使得用户很难开发自定义解析器，因为他们必须复制 ESLint 所要求的混乱的注释附着语义。
 
-In 4.0, we have moved away from the concept of comment attachment and have moved all comment handling logic into ESLint itself. This should make it easier to develop custom parsers, but it also means that AST nodes will no longer have `leadingComments` and `trailingComments` properties. Conceptually, rule authors can now think of comments in the context of tokens rather than AST nodes.
+4.0 中，我们摒弃了注释附件的概念，将所有的注释处理逻辑移入 ESLint 本身。这应该使开发自定义解析器更加容易，但这也意味着 AST 节点将不再有 `leadingComments` 和 `trailingComments` 属性。从概念上讲，规则作者现在可以在标记的背景下考虑注释，而不是 AST 节点。
 
-**To address:** If you have a custom rule that depends on the `leadingComments` or `trailingComments` properties of an AST node, you can now use `sourceCode.getCommentsBefore()` and `sourceCode.getCommentsAfter()` instead, respectively.
+**解决方案**：如果你有一个依赖 AST 节点的 `leadingComments` 或 `trailingComments` 属性的自定义规则，你可以分别用 `sourceCode.getCommentsBefore()` 和 `sourceCode.getCommentsAfter()` 代替它们。
 
-Additionally, the `sourceCode` object now also has `sourceCode.getCommentsInside()` (which returns all the comments inside a node), `sourceCode.getAllComments()` (which returns all the comments in the file), and allows comments to be accessed through various other token iterator methods (such as `getTokenBefore()` and `getTokenAfter()`) with the `{ includeComments: true }` option.
+此外，`sourceCode` 对象现在还有 `sourceCode.getCommentsInside()`（返回节点内的所有注释）、`sourceCode.getAllComments()`（返回文件中的所有注释）方法，并允许通过其他各种标记迭代器方法（如`getTokenBefore()` 和 `getTokenAfter()`）搭配 `{ includeComments: true }` 选项访问注释。
 
-For rule authors concerned about supporting ESLint v3.0 in addition to v4.0, the now deprecated `sourceCode.getComments()` is still available and will work for both versions.
+对于关注支持 ESLint v3.0 和 v4.0 的规则作者来说，现在两个版本都还可以使用已废弃的 `sourceCode.getComments()`。
 
-Finally, please note that the following `SourceCode` methods have been deprecated and will be removed in a future version of ESLint:
+最后，请注意以下 `SourceCode` 方法已废弃，并将在未来版本中被删除：
 
-* `getComments()` - replaced by `getCommentsBefore()`, `getCommentsAfter()`, and `getCommentsInside()`
-* `getTokenOrCommentBefore()` - replaced by `getTokenBefore()` with the `{ includeComments: true }` option
-* `getTokenOrCommentAfter()` - replaced by `getTokenAfter()` with the `{ includeComments: true }` option
+* `getComments()` - 被 `getCommentsBefore()`、`getCommentsAfter()` 和 `getCommentsInside()` 所代替
+* `getTokenOrCommentBefore()` - 被 `getTokenBefore()` 搭配 `{ includeComments: true }` 选项所代替
+* `getTokenOrCommentAfter()` - 被 `getTokenAfter()` 搭配 `{ includeComments: true }` 选项所代替
 
-## <a name="event-comments"></a> `LineComment` and `BlockComment` events will no longer be emitted during AST traversal
+## <a name="event-comments"></a> AST 遍历过程将不再传递 `LineComment` 和 `BlockComment` 事件
 
-Starting in 4.0, `LineComment` and `BlockComments` events will not be emitted during AST traversal. There are two reasons for this:
+4.0 起 AST 遍历过程中将不再传递 `LineComment` 和 `BlockComments` 事件。这有两个原因：
 
-* This behavior was relying on comment attachment happening at the parser level, which does not happen anymore, to ensure that all comments would be accounted for
-* Thinking of comments in the context of tokens is more predictable and easier to reason about than thinking about comment tokens in the context of AST nodes
+* 该行为依赖于在分析器层面上发生的注释附件，为确保考虑了所有注释，将禁止这种情况再次发生。
+* 根据 token 上下文中考虑注释相较于根据 AST 节点上下文中考虑注释 token 而已更容易预测和推理
 
-**To address:** Instead of relying on `LineComment` and `BlockComment`, rules can now use `sourceCode.getAllComments()` to get all comments in a file. To check all comments of a specific type, rules can use the following pattern:
+**解决方案**：改用 `sourceCode.getAllComments()` 规则来获取文件中的所有注释，而不是依赖 `LineComment` 和 `BlockComment`。要检查某一特定类型的所有注释，规则可以使用以下模式。
 
 ```js
 sourceCode.getAllComments().filter(comment => comment.type === "Line");
 sourceCode.getAllComments().filter(comment => comment.type === "Block");
 ```
 
-## <a name="shebangs"></a> Shebangs are now returned from comment APIs
+## <a name="shebangs"></a> 现在注释 API 可以返回 Shebangs 了
 
-Prior to 4.0, shebang comments in a source file would not appear in the output of `sourceCode.getAllComments()` or `sourceCode.getComments()`, but they would appear in the output of `sourceCode.getTokenOrCommentBefore` as line comments. This inconsistency led to some confusion for rule developers.
+4.0 前 `sourceCode.getAllComments()` 和 `sourceCode.getComments()` 输出中不会出现 shebang 注释，但它们会作为行注释出现在 `sourceCode.getTokenOrCommentBefore` 的输出中。不一致的行为造成了规则开发者的困惑。
 
-In 4.0, shebang comments are treated as comment tokens of type `Shebang` and will be returned by any `SourceCode` method that returns comments. The goal of this change is to make working with shebang comments more consistent with how other tokens are handled.
+4.0 中，shebang 注释被视为 `Shebang` 类型的注释 token，并将以 `SourceCode` 方法返回注释。这一变化的目的是使处理 shebang 注释的方式与处理其他标记的方式更加一致。
 
-**To address:** If you have a custom rule that performs operations on comments, some additional logic might be required to ensure that shebang comments are correctly handled or filtered out:
+**解决方案**：如果你的自定义规则对注释进行了操作，可能需要一些额外的逻辑来确保正确处理或过滤掉 shebang 注释：
 
 ```js
 sourceCode.getAllComments().filter(comment => comment.type !== "Shebang");
@@ -210,22 +210,22 @@ sourceCode.getAllComments().filter(comment => comment.type !== "Shebang");
 
 ---
 
-## <a name="global-property"></a> The `global` property in the `linter.verify()` API is no longer supported
+## <a name="global-property"></a> 不再支持 `linter.verify()` API 中的 `global` 属性
 
-Previously, the `linter.verify()` API accepted a `global` config option, which was a synonym for the documented `globals` property. The `global` option was never documented or officially supported, and did not work in config files. It has been removed in 4.0.
+之前 `linter.verify()` API 支持作为  `globals` 别名的 `global` 配置选项。但实际上 `global` 选项从未被记录在案，也不被官方支持，在配置文件中也不起作用。它已经在 4.0 中被移除。
 
-**To address:** If you were using the `global` property, please use the `globals` property instead, which does the same thing.
+**解决方案**：如果你正在使用 `global` 属性，请使用功能一致的 `globals` 属性。
 
-## <a name="report-locations"></a> More report messages now have full location ranges
+## <a name="report-locations"></a> 现在报告信息有更加完整的位置范围
 
-Starting in 3.1.0, rules have been able to specify the *end* location of a reported problem, in addition to the start location, by explicitly specifying an end location in the `report` call. This is useful for tools like editor integrations, which can use the range to precisely display where a reported problem occurs. Starting in 4.0, if a *node* is reported rather than a location, the end location of the range will automatically be inferred from the end location of the node. As a result, many more reported problems will have end locations.
+3.1.0 起，规则可以通过在 `report` 调用中明确指定结束位置，除了开始位置外，还可以指定报告问题的**结束**位置。这对于像编辑器集成这样的工具很有用，它可以使用范围来精确显示报告问题发生的位置。4.0 起，如果报告的是**节点**，而不是位置，那么范围的结束位置将根据节点的结束位置自动推断。因此，更多的报告问题将有终点位置。
 
-This is not expected to cause breakage. However, it will likely result in larger report locations than before. For example, if a rule reports the root node of the AST, the reported problem's range will be the entire program. In some integrations, this could result in a poor user experience (e.g. if the entire program is highlighted to indicate an error).
+它应该不会破坏什么。然而，它可能会导致报告的位置比以前更大。例如，如果一个规则报告 AST 的根节点，报告问题的范围将是整个程序。在某些集成中，这可能导致用户体验不佳（例如，如果整个程序被高亮显示为错误）。
 
-**To address:** If you have an integration that deals with the ranges of reported problems, make sure you handle large report ranges in a user-friendly way.
+**解决方案**：如果你有一个处理报告问题范围的集成，确保你以一种用户友好的方式处理大的报告范围。
 
-## <a name="exposed-es2015-classes"></a> Some exposed APIs are now ES2015 classes
+## <a name="exposed-es2015-classes"></a> 部分暴露的 API 使用了 ES2015 类
 
-The `CLIEngine`, `SourceCode`, and `RuleTester` modules from ESLint's Node.js API are now ES2015 classes. This will not break any documented behavior, but it does have some observable effects (for example, the methods on `CLIEngine.prototype` are now non-enumerable).
+ESLint 的 Node.js API 中的 `CLIEngine`、`SourceCode` 和 `RuleTester` 模块现在是 ES2015 类。这不会破坏任何以往行为，但确实会有能见的影响（例如，现在 `CLIEngine.prototype` 上的方法不可枚举）。
 
-**To address:** If you rely on enumerating the methods of ESLint's Node.js APIs, use a function that can also access non-enumerable properties such as `Object.getOwnPropertyNames`.
+**解决方案**：如果你依赖枚举 ESLint 的 Node.js API 的方法，也可以使用能访问非枚举属性的函数，如`Object.getOwnPropertyNames`。
