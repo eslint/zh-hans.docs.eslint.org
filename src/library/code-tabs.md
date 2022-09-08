@@ -1,9 +1,9 @@
 ---
-title: Code block tabs
+title: 代码块标签
 ---
 
-This component is a partial found in `/components/code-tabs.html`. To use this component, copy the code for the tabs from the partial and replace the code blocks with the ones you want to render.
+该组件是 `/components/code-tabs.html` 组件的一部分。要使用该组件，请选择性复制代码块标签并将代码块部分替换为要呈现的代码块。
 
-## Example
+## 示例
 
 {% include 'components/code-tabs.html' %}
