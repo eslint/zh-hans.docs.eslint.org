@@ -1,60 +1,60 @@
 ---
-title: Migrating to v7.0.0
+title: 迁移至 v7.0.0
 layout: doc
 edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/user-guide/migrating-to-7.0.0.md
 
 ---
 
-ESLint v7.0.0 is a major release of ESLint. We have made a few breaking changes in this release. This guide is intended to walk you through the breaking changes.
+ESLint v7.0.0 是 ESLint 主要发行版。在此版本中有一些破坏性变更，而本指南旨在引导你了解这些变化。
 
-The lists below are ordered roughly by the number of users each change is expected to affect, where the first items are expected to affect the most users.
+下列内容大致按每项变化预计影响的用户数量排序，其中第一项为预计会影响最多的用户的变化。
 
-## Table of Content
+## 目录
 
-### Breaking changes for users
+### 面向用户的破坏性变更
 
-* [Node.js 8 is no longer supported](#drop-node-8)
-* [Lint files matched by `overrides[].files` by default](#additional-lint-targets)
-* [The base path of `overrides` and `ignorePatterns` is changed if the config file is given by the `--config`/`--ignore-path` options](#base-path-change)
-* [The place where ESLint loads plugins from is changed](#plugin-loading-change)
-* [Runtime deprecation warnings for `~/.eslintrc.*` config files](#runtime-deprecation-on-personal-config-files)
-* [Default ignore patterns have changed](#default-ignore-patterns)
-* [Description in directive comments](#description-in-directive-comments)
-* [Node.js/CommonJS rules are deprecated](#deprecate-node-rules)
-* [Several rules have been updated to cover more cases](#rules-strict)
-* [`eslint:recommended` has been updated](#eslint-recommended)
+* [不再支持 Node.js 8](#drop-node-8)
+* [默认检查与 `overrides[].files` 匹配的文件](#additional-lint-targets)
+* [修改由 `--config`/`--ignore-path` 选项提供的配置文件的 `overrides` 和 `ignorePatterns` 的基本路径](#base-path-change)
+* [更新 ESLint 加载插件的位置](#plugin-loading-change)
+* [给 `~/.eslintrc.*` 配置文件添加运行时废弃警告](#runtime-deprecation-on-personal-config-files)
+* [修改默认忽略模式](#default-ignore-patterns)
+* [指令注释描述](#description-in-directive-comments)
+* [废弃 Node.js/CommonJS 规则](#deprecate-node-rules)
+* [更新几个规则以覆盖更多的情况](#rules-strict)
+* [更新 `eslint:recommended`](#eslint-recommended)
 
-### Breaking changes for plugin developers
+### 面向插件开发者的破坏性变更
 
-* [Node.js 8 is no longer supported](#drop-node-8)
-* [Lint files matched by `overrides[].files` by default](#additional-lint-targets)
-* [Plugin resolution has been updated](#plugin-loading-change)
-* [Additional validation added to the `RuleTester` class](#rule-tester-strict)
+* [不再支持 Node.js 8](#drop-node-8)
+* [默认检查与 `overrides[].files` 匹配的文件](#additional-lint-targets)
+* [更新插件解决方案](#plugin-loading-change)
+* [给 `RuleTester` 类添加额外的验证](#rule-tester-strict)
 
-### Breaking changes for integration developers
+### 面向集成开发者的破坏性变更
 
-* [Node.js 8 is no longer supported](#drop-node-8)
-* [Plugin resolution has been updated](#plugin-loading-change)
-* [The `CLIEngine` class has been deprecated](#deprecate-cliengine)
+* [不再支持 Node.js 8](#drop-node-8)
+* [更新插件解决方案](#plugin-loading-change)
+* [废弃 `CLIEngine` 类](#deprecate-cliengine)
 
 ---
 
-## <a name="drop-node-8"></a> Node.js 8 is no longer supported
+## <a name="drop-node-8"></a> 不再支持 Node.js 8
 
-Node.js 8 reached EOL in December 2019, and we are officially dropping support for it in this release. ESLint now supports the following versions of Node.js:
+Node.js 8 在 2019 年 12 月到达了生命的终点，我们在此版本中正式放弃了对它的支持。ESLint 现在支持以下版本 Node.js：
 
-* Node.js 10 (`10.12.0` and above)
-* Node.js 12 and above
+* Node.js 10 (`10.12.0` 以上）
+* Node.js 12 以上
 
-**To address:** Make sure you upgrade to at least Node.js `10.12.0` when using ESLint v7.0.0. One important thing to double check is the Node.js version supported by your editor when using ESLint via editor integrations. If you are unable to upgrade, we recommend continuing to use ESLint 6 until you are able to upgrade Node.js.
+**解决方案**：在使用 ESLint v7.0.0 前，请确保你至少升级到 Node.js `10.12.0`。如果你使用 ESLint 编辑扩展那么要复查所用编辑器所支持的 Node.js 版本。我们推荐在能够升级 Node.js 版本前，继续使用 ESLint 6。
 
-**Related issue(s):** [RFC44](https://github.com/eslint/rfcs/blob/master/designs/2019-drop-node8/README.md), [#12700](https://github.com/eslint/eslint/pull/12700)
+**相关议题**：[RFC44](https://github.com/eslint/rfcs/blob/master/designs/2019-drop-node8/README.md)、[#12700](https://github.com/eslint/eslint/pull/12700)
 
-## <a name="additional-lint-targets"></a> Lint files matched by `overrides[].files` by default
+## <a name="additional-lint-targets"></a> 默认检查与 `overrides[].files` 匹配的文件
 
-Previously to v7.0.0, ESLint would only lint files with a `.js` extension by default if you give directories like `eslint src`.
+在 7.0.0 前，如果你指定了像 `eslint src` 这样的目录，ESLint 默认只检查扩展名为 `.js` 的文件。
 
-ESLint v7.0.0 will now additionally lint files with other extensions (`.ts`, `.vue`, etc.) if the extension is explicitly matched by an `overrides[].files` entry. This will allow for users to lint files that don't end with `*.js` to be linted without having to use the `--ext` command line flag, as well as allow shared configuration authors to enable linting of these files without additional overhead for the end user. Please note that patterns that end with `*` are exempt from this behavior and will behave as they did previously. For example, if the following config file is present,
+而再 ESLint v7.0.0 中将额外检查其他扩展名的文件（`.ts`、`.vue` 等），如果该扩展名与 `overrides[].files` 条目明确匹配。用户将可以检查非 `*.js` 扩展的文件，而无需使用 `--ext` 命令行标志，也允许共享配置作者启用这些文件的提示，且不给最终用户带来额外的开销。请注意，以 `*` 结尾的模式不受此行为影响，其行为与之前一样。例如，如果有以下的配置文件：
 
 ```yml
 # .eslintrc.yml
@@ -64,94 +64,94 @@ overrides:
     extends: my-config-ts
 ```
 
-then running `eslint src` would check both `*.js` and `*.ts` files in the `src` directory.
+那么运行 `eslint src` 将检查 `src` 目录下的 `*.js` 和 `*.ts` 文件。
 
-**To address:** Using the `--ext` CLI option will override this new behavior. Run ESLint with `--ext .js`  if you are using `overrides` but only want to lint files that have a `.js` extension.
+**解决方案**：使用 `--ext` CLI 选项将覆盖这个新行为。比如你使用 `--ext .js` 运行 ESLint，就只对有 `.js` 扩展名的文件进行检测。
 
-If you maintain plugins that check files with extensions other than `.js`, this feature will allow you to check these files by default by configuring an `overrides` setting in your `recommended` preset.
+如果你维护的插件检查的文件扩展名不是 `.js`，这个功能将允许你通过在你的 `recommended` 预设中配置 `overrides` 设置来默认检查这些文件。
 
-**Related issue(s):** [RFC20](https://github.com/eslint/rfcs/blob/master/designs/2019-additional-lint-targets/README.md), [#12677](https://github.com/eslint/eslint/pull/12677)
+**相关议题**：[RFC20](https://github.com/eslint/rfcs/blob/master/designs/2019-additional-lint-targets/README.md)、[#12677](https://github.com/eslint/eslint/pull/12677)
 
-## <a name="base-path-change"></a> The base path of `overrides` and `ignorePatterns` has changed when using the `--config`/`--ignore-path` options
+## <a name="base-path-change"></a> 修改由 `--config`/`--ignore-path` 选项提供的配置文件的 `overrides` 和 `ignorePatterns` 的基本路径
 
-Up until now, ESLint has resolved the following paths relative to the directory path of the _entry_ configuration file:
+到目前为止，ESLint 会解析以下几种相对于配置文件的路径：
 
-* Configuration files (`.eslintrc.*`)
-    * relative paths in the `overrides[].files` setting
-    * relative paths in the `overrides[].excludedFiles` setting
-    * paths which start with `/` in the `ignorePatterns` setting
-* Ignore files (`.eslintignore`)
-    * paths which start with `/`
+* 配置文件（`.eslintrc.*`）。
+    * `overrides[].files` 设置中的相对路径
+    * `overrides[].excludedFiles` 设置中的相对路径
+    * 在 `ignorePatterns` 中设置的以 `/` 开头的路径
+* 忽略的文件（`.eslintignore`）。
+    * 以 `/` 开头的路径
 
-Starting in ESLint v7.0.0, configuration files and ignore files passed to ESLint using the `--config path/to/a-config` and `--ignore-path path/to/a-ignore` CLI flags, respectively, will resolve from the current working directory rather than the file location. This allows for users to utilize shared plugins without having to install them directly in their project.
+从 ESLint v7.0.0 起，如果通过 `--config path/to/a-config` 和 `--ignore-path path/to/a-ignore` CLI 标志给 ESLint 传递配置文件和忽略文件，它将基于当前工作目录而非文件位置解析。这使得用户可以共享插件，而无需直接在项目中直接安装这些插件。
 
-**To address:** Update the affected paths if you are using a configuration or ignore file via the `--config` or `--ignore-path` CLI options.
+**解决方案**：如果你通过 `--config` 或 `--ignore-path` CLI 选项传递配置文件或忽略文件，请更新受影响的路径。
 
-**Related issue(s):** [RFC37](https://github.com/eslint/rfcs/blob/master/designs/2019-changing-base-path-in-config-files-that-cli-options-specify/README.md), [#12887](https://github.com/eslint/eslint/pull/12887)
+**相关议题**：[RFC37](https://github.com/eslint/rfcs/blob/master/designs/2019-changing-base-path-in-config-files-that-cli-options-specify/README.md)、[#12887](https://github.com/eslint/eslint/pull/12887)
 
-## <a name="plugin-loading-change"></a> Plugin resolution has been updated
+## <a name="plugin-loading-change"></a> 更新插件解决方案
 
-In previous versions, ESLint resolved all plugins from the current working directory by default.
+在以前的版本中，ESLint 默认基于当前工作目录解析所有插件。
 
-Starting in ESLint v7.0.0, `plugins` are resolved relative to the directory path of the _entry_ configuration file.
+从 ESLint v7.0.0 起，`plugins` 将相对于配置文件的目录路径进行解析。
 
-This will not change anything in most cases. If a configuration file in a subdirectory has `plugins` defined, the plugins will be loaded from the subdirectory (or ancestor directories that include the current working directory if not found).
+这在大多数情况下不会有任何改变。如果子目录下的配置文件定义了 `plugins`，那么插件将从子目录（或者包括当前工作目录在内的祖先目录，如果找不到的话）加载。
 
-This means that if you are using a config file from a shared location via `--config` option, the plugins that the config file declare will be loaded from the shared config file location.
+这意味着，如果你使用 `--config` 选项使用共享位置的配置文件，配置文件声明的插件将从共享配置文件位置加载。
 
-**To address:** Ensure that plugins are installed in a place that can be resolved relative to your configuration file or use `--resolve-plugins-relative-to .` to override this change.
+**解决方案**：确保插件安装在相对于配置文件解析的地方，或使用 `--resolve-plugins-relative-to .` 来覆盖这一变化。
 
-**Related issue(s):** [RFC47](https://github.com/eslint/rfcs/blob/master/designs/2019-plugin-loading-improvement/README.md), [#12922](https://github.com/eslint/eslint/pull/12922)
+**相关议题**：[RFC47](https://github.com/eslint/rfcs/blob/master/designs/2019-plugin-loading-improvement/README.md)、[#12922](https://github.com/eslint/eslint/pull/12922)
 
-## <a name="runtime-deprecation-on-personal-config-files"></a> Runtime deprecation warnings for `~/.eslintrc.*` config files
+## <a name="runtime-deprecation-on-personal-config-files"></a> 给 `~/.eslintrc.*` 配置文件添加运行时废弃警告
 
-Personal config files have been deprecated since [v6.7.0](https://eslint.org/blog/2019/11/eslint-v6.7.0-released). ESLint v7.0.0 will start printing runtime deprecation warnings. It will print a warning for the following situations:
+[v6.7.0](https://eslint.org/blog/2019/11/eslint-v6.7.0-released) 起废弃了个人配置文件。而从 ESLint v7.0.0 起会在运行时输出废弃警告。以下几种情况会输出警告：
 
-1. When a project does not have a configuration file present and ESLint loads configuration from `~/.eslintrc.*`.
-1. When a project has a configuration file and ESLint ignored a `~/.eslintrc.*` configuration file. This occurs when the `$HOME` directory is an ancestor directory of the project and the project's configuration files doesn't contain `root:true`.
+1. 当项目中没有配置文件时，ESLint 会加载 `~/.eslintrc.*` 配置。
+2. 当项目中有配置文件时，而 ESLint 会忽略 `~/.eslintrc.*` 配置文件。当 `$HOME` 目录是项目的祖先目录，且项目的配置文件不包含 `root:true` 时，会出现这种情况。
 
-**To address:** Remove `~/.eslintrc.*` configuration files and add a `.eslintrc.*` configuration file to your project. Alternatively, use the `--config` option to use shared config files.
+**解决方案**：删除 `~/.eslintrc.*` 配置文件，并在项目中加入 `.eslintrc.*` 配置文件。或使用 `--config` 选项来使用共享配置文件。
 
-**Related issue(s):** [RFC32](https://github.com/eslint/rfcs/tree/master/designs/2019-deprecating-personal-config/README.md), [#12678](https://github.com/eslint/eslint/pull/12678)
+**相关议题**：[RFC32](https://github.com/eslint/rfcs/tree/master/designs/2019-deprecating-personal-config/README.md)、[#12678](https://github.com/eslint/eslint/pull/12678)
 
-## <a name="default-ignore-patterns"></a> Default ignore patterns have changed
+## <a name="default-ignore-patterns"></a> 修改默认忽略模式
 
-Up until now, ESLint has ignored the following files by default:
+截止到目前，ESLint 默认忽略了以下文件：
 
-* Dotfiles (`.*`)
-* `node_modules` in the current working directory (`/node_modules/*`)
-* `bower_components` in the current working directory (`/bower_components/*`)
+* 点文件（`.*`）
+* 当前工作目录下的 `node_modules`（`/node_modules/*`）
+* 当前工作目录下的 `bower_components`（`/bower_components/*`）
 
-ESLint v7.0.0 ignores `node_modules/*` of subdirectories as well, but no longer ignores `bower_components/*` and `.eslintrc.js`. Therefore, the new default ignore patterns are:
+ESLint v7.0.0 也会忽略子目录的 `node_modules/*`，但不再忽略 `bower_components/*` 和 `.eslintrc.js`。因此新的默认忽略模式是：
 
-* Dotfiles except `.eslintrc.*` (`.*` but not `.eslintrc.*`)
+* 除了 `.eslintrc.*` 以外的点文件（除 `.eslintrc.*` 外的 `.*`）。
 * `node_modules` (`/**/node_modules/*`)
 
-**To address:** Modify your `.eslintignore` or the `ignorePatterns` property of your config file if you don't want to lint `bower_components/*` and `.eslintrc.js`.
+**解决方案**：如果你不想检查 `bower_components/*` 和 `.eslintrc.js`，请修改 `.eslintignore` 或配置文件的 `ignorePatterns` 属性。
 
-**Related issue(s):** [RFC51](https://github.com/eslint/rfcs/blob/master/designs/2019-update-default-ignore-patterns/README.md), [#12888](https://github.com/eslint/eslint/pull/12888)
+**相关议题**：[RFC51](https://github.com/eslint/rfcs/blob/master/designs/2019-update-default-ignore-patterns/README.md)、[#12888](https://github.com/eslint/eslint/pull/12888)
 
-## <a name="description-in-directive-comments"></a> Descriptions in directive comments
+## <a name="description-in-directive-comments"></a> 指令注释描述
 
-In older version of ESLint, there was no convenient way to indicate why a directive comment – such as `/*eslint-disable*/` – was necessary.
+在旧版本的 ESLint 中，没有方便的方法来说明为什么要使用这个指令注释，比如要用 `/*eslint-disable*/`。
 
-To allow for the colocation of comments that provide context with the directive, ESLint v7.0.0 adds the ability to append arbitrary text in directive comments by ignoring text following `--` surrounded by whitespace. For example:
+为了让注释和指令内容能放在一起，ESLint v7.0.0 中的指令注释可以附加任意文本，即忽略 `--` 后由空格包裹的文本。比如：
 
 ```js
 // eslint-disable-next-line a-rule, another-rule -- those are buggy!!
 ```
 
-**To address:** If you have `--` surrounded by whitespace in directive comments, consider moving it into your configuration file.
+**解决方案**：如果指令注释中的 `--` 周围有空白，请考虑把它移动到配置文件中。
 
-**Related issue(s):** [RFC33](https://github.com/eslint/rfcs/blob/master/designs/2019-description-in-directive-comments/README.md), [#12699](https://github.com/eslint/eslint/pull/12699)
+**相关议题**：[RFC33](https://github.com/eslint/rfcs/blob/master/designs/2019-description-in-directive-comments/README.md)、[#12699](https://github.com/eslint/eslint/pull/12699)
 
-## <a name="deprecate-node-rules"></a> Node.js/CommonJS rules have been deprecated
+## <a name="deprecate-node-rules"></a> 废弃 Node.js/CommonJS 规则
 
-The ten Node.js/CommonJS rules in core have been deprecated and moved to the [eslint-plugin-node](https://github.com/mysticatea/eslint-plugin-node) plugin.
+废弃了核心中的十个 Node.js/CommonJS 规则，并移动到 [eslint-plugin-node](https://github.com/mysticatea/eslint-plugin-node) 插件中。
 
-**To address:** As per [our deprecation policy](https://eslint.org/docs/user-guide/rule-deprecation), the deprecated rules will remain in core for the foreseeable future and are still available for use. However, we will no longer be updating or fixing any bugs in those rules. To use a supported version of the rules, we recommend using the corresponding rules in the plugin instead.
+**解决方案**：根据[我们的废弃策略](https://eslint.org/docs/user-guide/rule-deprecation)，在可见的未来，这些废弃的规则仍将保留在核心中，并且仍就可用。但我们将不再更新或修复这些规则的错误。建议使用插件中获支持的相应规则来代替。
 
-| Deprecated Rules                                                             | Replacement                                                                                                                     |
+| 废弃规则                                                             | 替代品                                                                                                                     |
 | :--------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------ |
 | [callback-return](https://eslint.org/docs/rules/callback-return)             | [node/callback-return](https://github.com/mysticatea/eslint-plugin-node/blob/v11.1.0/docs/rules/callback-return.md)             |
 | [global-require](https://eslint.org/docs/rules/global-require)               | [node/global-require](https://github.com/mysticatea/eslint-plugin-node/blob/v11.1.0/docs/rules/global-require.md)               |
@@ -164,58 +164,58 @@ The ten Node.js/CommonJS rules in core have been deprecated and moved to the [es
 | [no-restricted-modules](https://eslint.org/docs/rules/no-restricted-modules) | [node/no-restricted-require](https://github.com/mysticatea/eslint-plugin-node/blob/v11.1.0/docs/rules/no-restricted-require.md) |
 | [no-sync](https://eslint.org/docs/rules/no-sync)                             | [node/no-sync](https://github.com/mysticatea/eslint-plugin-node/blob/v11.1.0/docs/rules/no-sync.md)                             |
 
-**Related issue(s):** [#12898](https://github.com/eslint/eslint/pull/12898)
+**相关议题**：[#12898](https://github.com/eslint/eslint/pull/12898)
 
-## <a name="rules-strict"></a> Several rules have been updated to cover more cases
+## <a name="rules-strict"></a> 更新几个规则以覆盖更多的情况
 
-Several rules have been enhanced and now report additional errors:
+一些规则得到了加强，现在可以报告更多的错误。
 
-* [accessor-pairs](https://eslint.org/docs/rules/accessor-pairs) rule now recognizes class members by default.
-* [array-callback-return](https://eslint.org/docs/rules/array-callback-return) rule now recognizes `flatMap` method.
-* [computed-property-spacing](https://eslint.org/docs/rules/computed-property-spacing) rule now recognizes class members by default.
-* [func-names](https://eslint.org/docs/rules/func-names) rule now recognizes function declarations in default exports.
-* [no-extra-parens](https://eslint.org/docs/rules/no-extra-parens) rule now recognizes parentheses in assignment targets.
-* [no-dupe-class-members](https://eslint.org/docs/rules/no-dupe-class-members) rule now recognizes computed keys for static class members.
-* [no-magic-numbers](https://eslint.org/docs/rules/no-magic-numbers) rule now recognizes bigint literals.
-* [radix](https://eslint.org/docs/rules/radix) rule now recognizes invalid numbers for the second parameter of `parseInt()`.
-* [use-isnan](https://eslint.org/docs/rules/use-isnan) rule now recognizes class members by default.
-* [yoda](https://eslint.org/docs/rules/yoda) rule now recognizes bigint literals.
+* [accessor-pairs](https://eslint.org/docs/rules/accessor-pairs) 规则现在可以默认识别类成员了。
+* [array-callback-return](https://eslint.org/docs/rules/array-callback-return) 规则现在可以识别 `flatMap` 方法。
+* [computed-property-spacing](https://eslint.org/docs/rules/computed-property-spacing) 规则现在可以默认识别类的成员。
+* [func-names](https://eslint.org/docs/rules/func-names) 规则现在可以识别默认导出中的函数声明了。
+* [no-extra-parens](https://eslint.org/docs/rules/no-extra-parens) 规则现在可以识别赋值目标中的括号了。
+* [no-dupe-class-members](https://eslint.org/docs/rules/no-dupe-class-members) 规则现在可以识别静态类成员的计算键。
+* [no-magic-numbers](https://eslint.org/docs/rules/no-magic-numbers) 规则现在可以识别大数字了。
+* [radix](https://eslint.org/docs/rules/radix) 规则现在可以识别 `parseInt()` 的第二个参数的无效数字。
+* [use-isnan](https://eslint.org/docs/rules/use-isnan) 规则现在可以默认识别类成员了。
+* [yoda](https://eslint.org/docs/rules/yoda) 规则现在可以识别大数字了。
 
-**To address:** Fix errors or disable these rules.
+**解决方案**：修正错误或禁用这些规则。
 
-**Related issue(s):** [#12490](https://github.com/eslint/eslint/pull/12490), [#12608](https://github.com/eslint/eslint/pull/12608), [#12670](https://github.com/eslint/eslint/pull/12670), [#12701](https://github.com/eslint/eslint/pull/12701), [#12765](https://github.com/eslint/eslint/pull/12765), [#12837](https://github.com/eslint/eslint/pull/12837), [#12913](https://github.com/eslint/eslint/pull/12913), [#12915](https://github.com/eslint/eslint/pull/12915), [#12919](https://github.com/eslint/eslint/pull/12919)
+**相关议题**：[#12490](https://github.com/eslint/eslint/pull/12490)、[#12608](https://github.com/eslint/eslint/pull/12608)、[#12670](https://github.com/eslint/eslint/pull/12670)、[#12701](https://github.com/eslint/eslint/pull/12701)、[#12765](https://github.com/eslint/eslint/pull/12765)、[#12837](https://github.com/eslint/eslint/pull/12837)、[#12913](https://github.com/eslint/eslint/pull/12913)、[#12915](https://github.com/eslint/eslint/pull/12915)、[#12919](https://github.com/eslint/eslint/pull/12919)
 
-## <a name="eslint-recommended"></a> `eslint:recommended` has been updated
+## <a name="eslint-recommended"></a> 更新 `eslint:recommended`
 
-Three new rules have been enabled in the `eslint:recommended` preset.
+`eslint:recommended` 预设启用了三个新规则：
 
 * [no-dupe-else-if](https://eslint.org/docs/rules/no-dupe-else-if)
 * [no-import-assign](https://eslint.org/docs/rules/no-import-assign)
 * [no-setter-return](https://eslint.org/docs/rules/no-setter-return)
 
-**To address:** Fix errors or disable these rules.
+**解决方案**：修正错误或禁用这些规则。
 
-**Related issue(s):** [#12920](https://github.com/eslint/eslint/pull/12920)
+**相关议题**：[#12920](https://github.com/eslint/eslint/pull/12920)
 
-## <a name="rule-tester-strict"></a> Additional validation added to the `RuleTester` class
+## <a name="rule-tester-strict"></a> 给 `RuleTester` 类添加额外的验证
 
-The `RuleTester` now validates the following:
+`RuleTester` 现在验证以下内容：
 
-* It fails test cases if the rule under test uses the non-standard `node.start` or `node.end` properties. Rules should use `node.range` instead.
-* It fails test cases if the rule under test provides an autofix but a test case doesn't have an `output` property. Add an `output` property to test cases to test the rule's autofix functionality.
-* It fails test cases if any unknown properties are found in the objects in the `errors` property.
+* 如果测试的规则使用非标准的 `node.start` 或 `node.end` 属性会测试失败。规则应该使用 `node.range` 代替它们。
+* 如果测试的规则提供了自动修复，但测试用例没有 `output` 属性就会测试失败。在测试用例中添加 `output` 属性，以测试规则的自动修复功能。
+* 如果在 `errors` 属性的对象中发现任何未知的属性，会导致测试失败。
 
-**To address:** Modify your rule or test case if existing test cases fail.
+**解决方案**：如果现有的测试失败了，可以修改规则或测试用例。
 
-**Related issue(s):** [RFC25](https://github.com/eslint/rfcs/blob/master/designs/2019-rule-tester-improvements/README.md), [#12096](https://github.com/eslint/eslint/pull/12096), [#12955](https://github.com/eslint/eslint/pull/12955)
+**相关议题**：[RFC25](https://github.com/eslint/rfcs/blob/master/designs/2019-rule-tester-improvements/README.md), [#12096](https://github.com/eslint/eslint/pull/12096), [#12955](https://github.com/eslint/eslint/pull/12955)
 
-## <a name="deprecate-cliengine"></a> The `CLIEngine` class has been deprecated
+## <a name="deprecate-cliengine"></a> 废弃 `CLIEngine` 类
 
-The [`CLIEngine` class](https://eslint.org/docs/developer-guide/nodejs-api#cliengine) has been deprecated and replaced by the new [`ESLint` class](https://eslint.org/docs/developer-guide/nodejs-api#eslint-class).
+废弃 [`CLIEngine` 类](https://eslint.org/docs/developer-guide/nodejs-api#cliengine)，并用 [`ESLint` 类](https://eslint.org/docs/developer-guide/nodejs-api#eslint-class) 取代。
 
-The `CLIEngine` class provides a synchronous API that is blocking the implementation of features such as parallel linting, supporting ES modules in shareable configs/parsers/plugins/formatters, and adding the ability to visually display the progress of linting runs. The new `ESLint` class provides an asynchronous API that ESLint core will now using going forward. `CLIEngine` will remain in core for the foreseeable future but may be removed in a future major version.
+`CLIEngine` 类提供了同步 API，它阻碍了一些功能的实现，如并行刷新，在可共享的配置/解析器/插件/格式化工具中支持 ES 模块，并增加了可视化显示刷新运行进度的能力。新的 `ESLint` 类提供了一个异步的 API，ESLint 核心将继续使用。`CLIEngine` 在可预见的未来将保留在核心中，但在未来的主要版本中可能会被删除。
 
-**To address:** Update your code to use the new `ESLint` class if you are currently using `CLIEngine`. The following table maps the existing `CLIEngine` methods to their `ESLint` counterparts:
+**解决方案**：果你正在使用 `CLIEngine`，更新代码以使用新的 `ESLint` 类。下表列出了 `CLIEngine` 方法对应的 `ESLint` 方法：
 
 | `CLIEngine`                                  | `ESLint`                           |
 | :------------------------------------------- | :--------------------------------- |
@@ -226,12 +226,12 @@ The `CLIEngine` class provides a synchronous API that is blocking the implementa
 | `isPathIgnored(filePath)`                    | `isPathIgnored(filePath)`          |
 | `static outputFixes(results)`                | `static outputFixes(results)`      |
 | `static getErrorResults(results)`            | `static getErrorResults(results)`  |
-| `static getFormatter(name)`                  | (removed ※1)                       |
-| `addPlugin(pluginId, definition)`            | the `plugins` constructor option   |
-| `getRules()`                                 | (not implemented yet)              |
-| `resolveFileGlobPatterns()`                  | (removed ※2)                       |
+| `static getFormatter(name)`                  | (移除※1)                           |
+| `addPlugin(pluginId, definition)`            | `plugins` 构造函数选项              |
+| `getRules()`                                 | (移除※2)                           |
+| `resolveFileGlobPatterns()`                  | (移除※3)                           |
 
-* ※1 The `engine.getFormatter()` method currently returns the object of loaded packages as-is, which made it difficult to add new features to formatters for backward compatibility reasons. The new `eslint.loadFormatter()` method returns an adapter object that wraps the object of loaded packages, to ease the process of adding new features. Additionally, the adapter object has access to the `ESLint` instance to calculate default data (using loaded plugin rules to make `rulesMeta`, for example). As a result, the `ESLint` class only implements an instance version of the `loadFormatter()` method.
-* ※2 Since ESLint 6, ESLint uses different logic from the `resolveFileGlobPatterns()` method to iterate files, making this method obsolete.
+* ※1 `engine.getFormatter()` 方法目前按原样返回加载的包的对象，由于向后兼容的原因，这使得很难向格式化工具添加新功能。新的 `eslint.loadFormatter()` 方法返回适配器对象，该对象包装了加载的包的对象，以简化添加新特性的过程。此外，适配器对象可以访问 `ESLint` 实例来计算默认数据（例如，使用加载的插件规则来制作 `rulesMeta`）。因此，`ESLint` 类只实现了 `loadFormatter()` 方法的实例版本。
+* ※2 从 ESLint v6.0.0 起，ESLint 就使用 `resolveFileGlobPatterns()` 方法的不同逻辑来迭代文件，这个方法已经过时了。
 
-**Related issue(s):** [RFC40](https://github.com/eslint/rfcs/blob/master/designs/2019-move-to-async-api/README.md), [#12939](https://github.com/eslint/eslint/pull/12939)
+**相关议题**：[RFC40](https://github.com/eslint/rfcs/blob/master/designs/2019-move-to-async-api/README.md)、[#12939](https://github.com/eslint/eslint/pull/12939)
