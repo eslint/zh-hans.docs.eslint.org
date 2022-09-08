@@ -1,43 +1,43 @@
 ---
-title: About
+title: 关于
 layout: doc
 edit_link: https://github.com/eslint/eslint/edit/main/docs/src/about/index.md
 
 ---
 
-ESLint is an open source JavaScript linting utility originally created by Nicholas C. Zakas in June 2013. Code [linting][] is a type of static analysis that is frequently used to find problematic patterns or code that doesn't adhere to certain style guidelines. There are code linters for most programming languages, and compilers sometimes incorporate linting into the compilation process.
+ESLint 是由 Nicholas C. Zakas 在 2013 年 6 月创建的 JavaScript 检查工具。代码[检查][]是静态分析的一种，经常用于发现有问题的模式或不遵守某些风格准则的代码。大多数编程语言都有代码提示器，编译器有时也会将提示器纳入编译过程。
 
-JavaScript, being a dynamic and loosely-typed language, is especially prone to developer error. Without the benefit of a compilation process, JavaScript code is typically executed in order to find syntax or other errors. Linting tools like ESLint allow developers to discover problems with their JavaScript code without executing it.
+JavaScript 是一门动态弱类型语言，这使得开发人员特别容易出现错误。在没有编译过程的情况下，为了找到语法或其他错误，通常要运行 JavaScript 代码。使用像 ESLint 这样的提示工具，开发者就可以在不执行代码的情况下发现所写 JavaScript 代码的问题。
 
-The primary reason ESLint was created was to allow developers to create their own linting rules. ESLint is designed to have all rules completely pluggable. The default rules are written just like any plugin rules would be. They can all follow the same pattern, both for the rules themselves as well as tests. While ESLint will ship with some built-in rules to make it useful from the start, you'll be able to dynamically load rules at any point in time.
+创建 ESLint 的主要原因开发者可以创建他们自己的提示规则。ESLint 设计得让所有的规则都可插拔。而默认规则的编写就像任何插件规则一样，无论是规则本身还是测试，它们都遵循相同的模式。虽然为了可以立即获得较好的体验，ESLint 内置了一些规则，但你随时可以动态加载规则。
 
-ESLint is written using Node.js to provide a fast runtime environment and easy installation via [npm][].
+ESLint 使用 Node.js 编写的，以提供一个快速的运行环境，并通过 [npm][] 轻松安装。
 
-[linting]: https://en.wikipedia.org/wiki/Lint_(software)
+[检查]: https://en.wikipedia.org/wiki/Lint_(software)
 [npm]: https://npmjs.org/
 
-## Philosophy
+## 理念
 
-Everything is pluggable:
+一切都是插件式的：
 
-* Rule API is used both by bundled and custom rules
-* Formatter API is used both by bundled and custom formatters
-* Additional rules and formatters can be specified at runtime
-* Rules and formatters don't have to be bundled to be used
+* 规则 API 既可用于捆绑规则也可用于自定义规则
+* 捆绑的格式化工具和自定义格式化工具都可以使用格式化工具 API
+* 运行时无论是额外规则和格式器可以指定
+* 规则和格式化器不一定非得捆绑在一起才能使用
 
-Every rule:
+每条规则都：
 
-* Is standalone
-* Can be turned off or on (nothing can be deemed "too important to turn off")
-* Can be set to a warning or error individually
+* 是独立的
+* 可以关闭或打开（没有什么可以被认为是“太重要而不能关闭的”）。
+* 可以单独设置为警告或错误
 
-Additionally:
+补充：
 
-* Rules are "agenda free" - ESLint does not promote any particular coding style
-* Any bundled rules are generalizable
+* “无需讨论”规则——ESLint 不提倡任何特定的编码风格
+* 无论在哪里无论声明捆绑规则都可以使用
 
-The project:
+此项目：
 
-* Values documentation and clear communication
-* Is as transparent as possible
-* Believes in the importance of testing
+* 重视文档和清晰的沟通
+* 尽可能地透明
+* 相信测试的重要性
