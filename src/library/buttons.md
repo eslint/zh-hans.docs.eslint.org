@@ -1,36 +1,36 @@
 ---
-title: Buttons 
+title: 按钮 
 ---
 
 {% from 'components/button.macro.html' import button %}
 
-There are three types of buttons: primary, secondary, and "ghost". The button styles can be applied to buttons and/or links that look like buttons.
+有三种类型的按钮：主要、次要和透明。可以使用按钮样式使按钮或链接看起来像按钮。
 
-To render the proper semantic element, provide the kind of behavior that is expected: `action` or `link` value. If the button performs an action, it is rendered as a `button`. If the button links somewhere, it renders as a `<a>`.
+为了应用合适的语义元素，需要提供预期行为：`action` 或 `link` 值。如果按钮执行动作，则会被渲染为“按钮”。如果按钮链接到别的地方，则会渲染为 `<a>`。
 
-The button macro will default to `link`, which will render an <code>&lt;a&gt;</code> tag that looks like a button. If you provide `action` as a value for `behavior`, it indicates that it is a button _that performs an action_ and is therefore rendered as a `<button type="button">`.
+按钮宏默认为 `link`，它会渲染成看起来像按钮的 <code>&lt;a&gt;</code> 标记。如果将 `behavior` 的值设为 `action`，则表明它是执行操作的按钮，因此呈现为 `<button type="button">`。
 
-## Usage
+## 用法
 
 ```html
 
-<!-- import the macro in the page(s) you want to render the button(s) in -->
+<!-- 在想要渲染按钮的页面导入宏 -->
 {% from 'components/button.macro.html' import button %}
 
-<!-- use the macro -->
+<!-- 使用宏 -->
 
-{ { button({ behavior: "action", type: "primary", text: "Do Something" }) } }
+{ { button({ behavior: "action", type: "primary", text: "做点什么" }) } }
 
-<!-- defaults to behavior: link -->
-{ { button({ type: "primary", text: "Go somewhere", url: "/url/to/somewhere/" }) } }
+<!-- 默认行为：link -->
+{ { button({ type: "primary", text: "去别的地方", url: "/url/to/somewhere/" }) } }
 ```
 
-## Examples
+## 示例
 
-{{ button({ behavior: "action", type: "primary" }) }}
-{{ button({ behavior: "action", text: "I perform an action", type: "secondary" }) }}
-{{ button({ behavior: "action", text: "I perform an action", type: "ghost" }) }}
+{{ button({ behavior: "action", type: "主要" }) }}
+{{ button({ behavior: "action", text: "我要执行操作", type: "secondary" }) }}
+{{ button({ behavior: "action", text: "我要执行操作", type: "ghost" }) }}
 
-{{ button({ type: "primary", text: "I link somewhere", url: "#" }) }}
-{{ button({ type: "secondary", text: "Secondary Button", url:"#" }) }}
-{{ button({ type: "ghost", text: "Ghost Button", url:"#" }) }}
+{{ button({ type: "primary", text: "我要链接到别的地方", url: "#" }) }}
+{{ button({ type: "secondary", text: "次级按钮", url:"#" }) }}
+{{ button({ type: "ghost", text: "透明按钮", url:"#" }) }}
