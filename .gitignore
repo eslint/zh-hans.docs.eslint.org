@@ -109,10 +109,9 @@ _site
 # Sync file
 .eleventy.js
 docs/
-src/_data/*
+src/_data
 !sites
 en.yml
-!eslintVersion.js
 _includes
 assets
 library.json
@@ -120,3 +119,5 @@ library.json
 pages.11tydata.json
 static
 src.json
+/package.json
+/package-lock.json

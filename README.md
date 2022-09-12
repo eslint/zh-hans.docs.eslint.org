@@ -2,9 +2,15 @@
 
 > Simplified Chinese website
 
-The synchronization frequency is the same as the ESLint release frequency (the last sync was [dcf178e](https://github.com/eslint/eslint/commit/dcf178e3c41e7777ee76ae9582387be85118118b))
+The synchronization frequency is the same as the ESLint release frequency (the last sync was [d75d3c6](https://github.com/eslint/eslint/commit/d75d3c68ad8c98828aaa522b87ec267ab2dcb002))
 
 ## Contribute
+
+Go to `scripts` directory
+
+```sh
+cd scripts
+```
 
 Install dependencies
 
@@ -21,12 +27,18 @@ npm run sync
 View site preview (optional)
 
 ```sh
-npm run start
+cd .. && npm i && npm run start
 ```
 
 Then just start to translate files you want
 
 ## 贡献
+
+前往 `scripts` 目录
+
+```sh
+cd scripts
+```
 
 安装依赖
 
@@ -43,7 +55,7 @@ npm run sync
 预览网站（可选）
 
 ```sh
-npm run start
+cd .. && npm i && npm run start
 ```
 
 然后就可以直接开始翻译了
