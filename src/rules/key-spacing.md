@@ -1,7 +1,6 @@
 ---
 title: key-spacing
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/key-spacing.md
 rule_type: layout
 ---
 

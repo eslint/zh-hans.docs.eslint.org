@@ -1,7 +1,6 @@
 ---
 title: 插件
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/user-guide/configuring/plugins.md
 eleventyNavigation:
     key: configuring plugins
     parent: configuring

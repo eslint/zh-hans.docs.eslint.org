@@ -1,7 +1,6 @@
 ---
 title: no-throw-literal
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-throw-literal.md
 rule_type: suggestion
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: Shareable Configs
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/developer-guide/shareable-configs.md
 eleventyNavigation:
     key: shareable configs
     parent: developer guide

@@ -1,7 +1,6 @@
 ---
 title: 迁移自 JSCS
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/user-guide/migrating-from-jscs.md
 
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: ScopeManager
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/developer-guide/scope-manager-interface.md
 
 ---
 

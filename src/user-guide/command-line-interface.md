@@ -1,7 +1,6 @@
 ---
 title: 命令行
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/user-guide/command-line-interface.md
 eleventyNavigation:
     key: command line interface
     parent: user guide

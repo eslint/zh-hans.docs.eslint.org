@@ -1,7 +1,6 @@
 ---
 title: 用户指南
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/user-guide/index.md
 eleventyNavigation:
     key: user guide
     title: 用户指南

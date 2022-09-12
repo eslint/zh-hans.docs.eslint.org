@@ -1,7 +1,6 @@
 ---
 title: id-denylist
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/id-denylist.md
 rule_type: suggestion
 ---
 

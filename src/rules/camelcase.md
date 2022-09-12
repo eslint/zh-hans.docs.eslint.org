@@ -1,7 +1,6 @@
 ---
 title: camelcase
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/camelcase.md
 rule_type: suggestion
 ---
 

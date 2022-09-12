@@ -1,7 +1,6 @@
 ---
 title: spaced-line-comment
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/spaced-line-comment.md
 
 related_rules:
 - spaced-comment

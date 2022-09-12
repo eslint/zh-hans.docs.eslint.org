@@ -1,7 +1,6 @@
 ---
 title: no-div-regex
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-div-regex.md
 rule_type: suggestion
 related_rules:
 - no-control-regex

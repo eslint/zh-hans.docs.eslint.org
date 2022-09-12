@@ -1,7 +1,6 @@
 ---
 title: require-atomic-updates
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/require-atomic-updates.md
 rule_type: problem
 ---
 

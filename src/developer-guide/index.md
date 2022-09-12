@@ -1,7 +1,6 @@
 ---
 title: Developer Guide
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/developer-guide/index.md
 eleventyNavigation:
     key: developer guide 
     title: Developer Guide 

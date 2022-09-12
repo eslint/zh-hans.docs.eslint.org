@@ -1,7 +1,6 @@
 ---
 title: operator-linebreak
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/operator-linebreak.md
 rule_type: layout
 related_rules:
 - comma-style

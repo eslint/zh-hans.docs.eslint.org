@@ -1,7 +1,6 @@
 ---
 title: one-var-declaration-per-line
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/one-var-declaration-per-line.md
 rule_type: suggestion
 related_rules:
 - one-var

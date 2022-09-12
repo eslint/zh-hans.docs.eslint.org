@@ -1,7 +1,6 @@
 ---
 title: jsx-quotes
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/jsx-quotes.md
 rule_type: layout
 related_rules:
 - quotes

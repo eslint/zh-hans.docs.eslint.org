@@ -1,7 +1,6 @@
 ---
 title: no-label-var
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-label-var.md
 rule_type: suggestion
 related_rules:
 - no-extra-label

@@ -1,7 +1,6 @@
 ---
 title: no-nonoctal-decimal-escape
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-nonoctal-decimal-escape.md
 rule_type: suggestion
 related_rules:
 - no-octal-escape

@@ -1,7 +1,6 @@
 ---
 title: array-callback-return
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/array-callback-return.md
 rule_type: problem
 ---
 

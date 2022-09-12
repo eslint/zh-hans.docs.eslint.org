@@ -1,7 +1,6 @@
 ---
 title: capitalized-comments
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/capitalized-comments.md
 rule_type: suggestion
 ---
 

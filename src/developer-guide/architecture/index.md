@@ -1,7 +1,6 @@
 ---
 title: Architecture
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/developer-guide/architecture/index.md
 eleventyNavigation:
     key: architecture
     parent: developer guide

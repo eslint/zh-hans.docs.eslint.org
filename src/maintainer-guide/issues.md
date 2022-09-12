@@ -1,7 +1,6 @@
 ---
 title: 议题管理
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/maintainer-guide/issues.md
 eleventyNavigation:
     key: managing issues
     parent: maintainer guide 

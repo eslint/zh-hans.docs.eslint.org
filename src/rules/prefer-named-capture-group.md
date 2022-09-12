@@ -1,7 +1,6 @@
 ---
 title: prefer-named-capture-group
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/prefer-named-capture-group.md
 rule_type: suggestion
 related_rules:
 - no-invalid-regexp

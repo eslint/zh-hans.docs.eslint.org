@@ -1,7 +1,6 @@
 ---
 title: space-return-throw-case
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/space-return-throw-case.md
 
 ---
 

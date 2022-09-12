@@ -1,7 +1,6 @@
 ---
 title: no-trailing-spaces
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-trailing-spaces.md
 rule_type: layout
 ---
 

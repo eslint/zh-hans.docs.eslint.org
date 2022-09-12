@@ -1,7 +1,6 @@
 ---
 title: padded-blocks
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/padded-blocks.md
 rule_type: layout
 related_rules:
 - lines-between-class-members

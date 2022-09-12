@@ -1,7 +1,6 @@
 ---
 title: no-whitespace-before-property
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-whitespace-before-property.md
 rule_type: layout
 ---
 

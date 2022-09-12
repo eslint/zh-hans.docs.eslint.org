@@ -1,7 +1,6 @@
 ---
 title: no-empty
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-empty.md
 rule_type: suggestion
 related_rules:
 - no-empty-function

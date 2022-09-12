@@ -1,7 +1,6 @@
 ---
 title: consistent-return
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/consistent-return.md
 rule_type: suggestion
 ---
 

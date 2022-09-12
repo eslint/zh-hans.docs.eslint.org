@@ -1,7 +1,6 @@
 ---
 title: array-bracket-newline
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/array-bracket-newline.md
 rule_type: layout
 related_rules:
 - array-bracket-spacing

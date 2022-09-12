@@ -1,7 +1,6 @@
 ---
 title: no-else-return
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-else-return.md
 rule_type: suggestion
 ---
 

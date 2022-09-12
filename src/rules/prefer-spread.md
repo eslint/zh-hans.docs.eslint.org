@@ -1,7 +1,6 @@
 ---
 title: prefer-spread
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/prefer-spread.md
 rule_type: suggestion
 related_rules:
 - no-useless-call

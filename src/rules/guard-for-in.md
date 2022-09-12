@@ -1,7 +1,6 @@
 ---
 title: guard-for-in
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/guard-for-in.md
 rule_type: suggestion
 related_rules:
 - no-prototype-builtins

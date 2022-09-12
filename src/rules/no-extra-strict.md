@@ -1,7 +1,6 @@
 ---
 title: no-extra-strict
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-extra-strict.md
 
 further_reading:
 - https://es5.github.io/#C

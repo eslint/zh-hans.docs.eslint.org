@@ -1,7 +1,6 @@
 ---
 title: prefer-numeric-literals
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/prefer-numeric-literals.md
 rule_type: suggestion
 ---
 

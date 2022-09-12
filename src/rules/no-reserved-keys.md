@@ -1,7 +1,6 @@
 ---
 title: no-reserved-keys
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-reserved-keys.md
 
 further_reading:
 - https://kangax.github.io/compat-table/es5/#Reserved_words_as_property_names

@@ -1,7 +1,6 @@
 ---
 title: generator-star
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/generator-star.md
 further_reading:
 - https://leanpub.com/understandinges6/read/#leanpub-auto-generators
 ---

@@ -1,7 +1,6 @@
 ---
 title: arrow-parens
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/arrow-parens.md
 rule_type: layout
 further_reading:
 - https://github.com/airbnb/javascript#arrows--one-arg-parens

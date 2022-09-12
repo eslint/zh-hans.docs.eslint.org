@@ -6,7 +6,6 @@ eleventyNavigation:
     parent: user guide
     title: 格式化工具
     order: 5
-edit_link: https://github.com/eslint/eslint/edit/main/templates/formatter-examples.md.ejs
 ---
 
 ESLint 有几个用来控制提示结果外观的内置格式化工具，同时也支持第三方格式化工具。

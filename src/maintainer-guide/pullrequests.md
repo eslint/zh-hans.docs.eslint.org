@@ -1,7 +1,6 @@
 ---
 title: 拉取请求审查
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/maintainer-guide/pullrequests.md
 eleventyNavigation:
     key: reviewing pull requests
     parent: maintainer guide 

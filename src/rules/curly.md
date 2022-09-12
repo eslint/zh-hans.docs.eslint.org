@@ -1,7 +1,6 @@
 ---
 title: curly
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/curly.md
 rule_type: suggestion
 ---
 

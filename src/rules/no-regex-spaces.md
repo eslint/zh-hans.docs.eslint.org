@@ -1,7 +1,6 @@
 ---
 title: no-regex-spaces
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-regex-spaces.md
 rule_type: suggestion
 related_rules:
 - no-div-regex

@@ -1,7 +1,6 @@
 ---
 title: Contributing
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/developer-guide/contributing/index.md
 eleventyNavigation:
     key: contributing
     parent: developer guide

@@ -1,7 +1,6 @@
 ---
 title: nonblock-statement-body-position
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/nonblock-statement-body-position.md
 rule_type: layout
 further_reading:
 - https://jscs-dev.github.io/rule/requireNewlineBeforeSingleStatementsInIf
