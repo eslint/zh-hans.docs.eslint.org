@@ -6,56 +6,32 @@ The synchronization frequency is the same as the ESLint release frequency (the l
 
 ## Contribute
 
-Go to `scripts` directory
-
-```sh
-cd scripts
-```
-
 Install dependencies
 
 ```sh
-npm i
-```
-
-Run the command to sync files not related to i18n
-
-```sh
-npm run sync
+node scripts/install.js
 ```
 
 View site preview (optional)
 
 ```sh
-cd .. && npm i && npm run start
+npm run start
 ```
 
 Then just start to translate files you want
 
 ## 贡献
 
-前往 `scripts` 目录
-
-```sh
-cd scripts
-```
-
 安装依赖
 
 ```sh
-npm i
-```
-
-同步与 i18n 无关的文件
-
-```sh
-npm run sync
+node scripts/install.js
 ```
 
 预览网站（可选）
 
 ```sh
-cd .. && npm i && npm run start
+npm run start
 ```
 
 然后就可以直接开始翻译了
