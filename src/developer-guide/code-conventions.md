@@ -1,14 +1,10 @@
 ---
-title: Code Conventions
+title: 代码约定
 layout: doc
 edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/developer-guide/code-conventions.md
 
 ---
 
-Code conventions for ESLint are determined by
-[eslint-config-eslint](https://www.npmjs.com/package/eslint-config-eslint).
+[eslint-config-eslint](https://www.npmjs.com/package/eslint-config-eslint) 定义了 ESLint 的代码约定。
 
-The rationales for the specific rules in use can be found by looking to the
-project documentation for any given rule. If the rule is one of our own, see
-our own [rule documentation](https://eslint.org/docs/rules/) and otherwise, see
-the documentation of the plugin in which the rule can be found.
+可以通过查看任何给定规则的项目文档，找到使用特定规则的基本原理。如果是我们定义的规则，请参阅我们自己的[规则文档](https://eslint.org/docs/rules/)，否则，请参阅该规则的插件文档。
