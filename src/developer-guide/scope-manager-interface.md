@@ -38,9 +38,9 @@ edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/developer-
 #### getDeclaredVariables(node)
 
 * **参数**：
-    * `node` (`ASTNode`) ... 用于获取它们的变量的 AST节点.
+    * `node` (`ASTNode`) ... 用于获取它们的变量的 AST 节点.
 * **返回类型**：`Variable[]`
-* **描述**：获取给定的 AST 节点所定义的变量。得到的变量的 `def[].node`/`def[].parent` 属性是节点。如果该节点没有定义任何变量，这将返回一个空数组。
+* **描述**：获取给定的 AST 节点所定义的变量。得到的变量的 `def[].node`/`def[].parent` 属性是节点。如果该节点没有定义任何变量，将返回空数组。
 
 ### 废弃成员
 
@@ -50,19 +50,19 @@ ESLint 中定义了这些成员，但没有使用它们。
 
 * **参数**：
 * **返回类型**：`boolean`
-* **描述**：如果该程序是模块则为 `true` .
+* **描述**：如果该程序是模块则为 `true`。
 
 #### isImpliedStrict()
 
 * **参数**：
 * **返回类型**：`boolean`
-* **描述**：如果这个程序是隐含的严格模式，即 `options.impliedStrict === true`，则为 `true` 。
+* **描述**：如果这个程序是隐含的严格模式，即 `options.impliedStrict === true`，则为 `true`。
 
 #### isStrictModeSupported()
 
 * **参数**：
 * **返回类型**：`boolean`
-* **描述**：`true`如果这个程序支持严格模式。即：`options.ecmaVersion >= 5`。
+* **描述**：`true` 如果这个程序支持严格模式。即：`options.ecmaVersion >= 5`。
 
 #### acquireAll(node)
 
@@ -82,7 +82,7 @@ ESLint 中定义了这些成员，但没有使用它们。
 #### type
 
 * **类型**：`string`
-* **描述**：这个作用域的类型。这是 `"block"`、`"catch"`、`"class"`、`"class-field-initializer"`、`"class-static-block"`、`"for"`、`"function"`、`"function-expression-name"`、`"global"`、`"module"`、`"switch"` 或 `"with"` 其中之一。
+* **描述**：此作用域的类型。可以是 `"block"`、`"catch"`、`"class"`、`"class-field-initializer"`、`"class-static-block"`、`"for"`、`"function"`、`"function-expression-name"`、`"global"`、`"module"`、`"switch"` 或 `"with"` 其中之一。
 
 #### isStrict
 
@@ -114,7 +114,7 @@ ESLint 中定义了这些成员，但没有使用它们。
 #### variables
 
 * **类型**：`Variable[]`
-* **描述**：在这个作用域上定义的所有变量的数组。这不包括在子作用域中定义的变量。
+* **描述**：此作用域上定义的所有变量的数组。这不包括在子作用域中定义的变量。
 
 #### set
 
@@ -126,7 +126,7 @@ ESLint 中定义了这些成员，但没有使用它们。
 #### references
 
 * **类型**：`Reference[]`
-* **描述**：这个作用域上的所有引用的数组。这不包括子作用域中的引用。
+* **描述**：此作用域上的所有引用的数组。这不包括子作用域中的引用。
 
 #### through
 
@@ -136,7 +136,7 @@ ESLint 中定义了这些成员，但没有使用它们。
 #### functionExpressionScope
 
 * **类型**：`boolean`
-* **描述**：`true` if this scope is `"function-expression-name"` scope.
+* **描述**：若此作用域为 `"function-expression-name"`，则为 `true`。
 
 > 我希望废除 `functionExpressionScope` 字段，并用 `scope.type === "function-expression-name"` 代替。
 
@@ -147,22 +147,22 @@ ESLint 中定义了这些成员，但没有使用它们。
 #### taints
 
 * **类型**：`Map<string, boolean>`
-* **描述**：变量名与 `tainted`  标志的映射。
+* **描述**：变量名与 `tainted` 标志的映射。
 
 #### dynamic
 
 * **类型**：`boolean`
-* **描述**：如果是动态作用域，则为 `true`。也就是说，这个作用域的类型是 `"global"` 或 `"with"`。
+* **描述**：若为动态作用域，则为 `true`。也就是说，这个作用域的类型是 `"global"` 或 `"with"`。
 
 #### directCallToEvalScope
 
 * **类型**：`boolean`
-* **描述**：如果此作用域调用了 `eval()`，则为 `true`。
+* **描述**：若此作用域调用了 `eval()`，则为 `true`。
 
 #### thisFound
 
 * **类型**：`boolean`
-* **描述**：如果这个作用域包含 `this`，则为 `true`。
+* **描述**：若此作用域包含 `this`，则为 `true`。
 
 #### resolve(node)
 
@@ -181,7 +181,7 @@ ESLint 中定义了这些成员，但没有使用它们。
 
 * **参数**：
 * **返回类型**：`boolean`
-* **描述**：如果是在 `arguments` 变量中的使用的 `"function"` 作用域，则为`true`。
+* **描述**：如果是在 `arguments` 变量中的使用的 `"function"` 作用域，则为 `true`。
 
 #### isThisMaterialized()
 
@@ -194,7 +194,7 @@ ESLint 中定义了这些成员，但没有使用它们。
 * **参数**：
     * `name` (`string`) ... 要检查的名字。
 * **返回类型**：`boolean`
-* **描述**：如果在变量名或引用名中使用给定的名称，则为`true`。
+* **描述**：如果在变量名或引用名中使用给定的名称，则为 `true`。
 
 ----
 
@@ -247,9 +247,9 @@ ESLint 中定义了这些成员，但没有使用它们。
 
 ----
 
-## Reference 借口
+## Reference 接口
 
-`Reference`  对象是参考的信息。
+`Reference` 对象是参考的信息。
 
 ### Fields
 
@@ -266,7 +266,7 @@ ESLint 中定义了这些成员，但没有使用它们。
 #### resolved
 
 * **类型**：`Variable | null`
-* **描述**：该引用指向 `Variable` 对象。如果没有定义这样的变量，则为 `null`。
+* **描述**：该引用指向 `Variable` 对象。如果没有定义此变量，则为 `null`。
 
 #### writeExpr
 
@@ -337,7 +337,7 @@ ESLint 中定义了这些成员，但没有使用它们。
 
 ----
 
-## Definition interface
+## Definition 接口
 
 `Definition` 对象是变量定义的信息。
 
@@ -346,7 +346,7 @@ ESLint 中定义了这些成员，但没有使用它们。
 #### type
 
 * **类型**：`string`
-* **描述**：该定义的类型是 `"CatchClause"`、`"ClassName"`、`"FunctionName"`、`"ImplicitGlobalVariable"`、`"ImportBinding"`, `"Parameter"` 和 `"Variable"` 之一。
+* **描述**：该定义的类型是 `"CatchClause"`、`"ClassName"`、`"FunctionName"`、`"ImplicitGlobalVariable"`、`"ImportBinding"`、`"Parameter"` 和 `"Variable"` 之一。
 
 #### name
 
