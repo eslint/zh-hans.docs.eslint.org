@@ -10,14 +10,14 @@ eleventyNavigation:
 
 ---
 
-如果你想使用你自己的解析器并为你的规则提供额外的能力，你可以指定你自己的自定义解析器。如果解析器上暴露了一个 `parseForESLint` 方法，这个方法将被用来解析代码。否则，将使用 `parse` 方法。这两个方法都应该接受源代码作为第一个参数，以及一个可选的配置对象作为第二个参数（在配置文件中作为 `parserOptions` 提供）。`parse` 方法应该简单地返回 AST。`parseForESLint` 方法应该返回一个对象，其中包含必需的属性 `ast` 和可选的属性 `services`、`scopeManager`和`visitorKeys`。
+如果你想使用自己的解析器以便为自己的规则提供额外的功能，你可以指定使用自定义解析器。这就可以使用解析器暴露的 `parseForESLint` 方法来解析代码，或者也可以使用 `parse` 方法。这两个方法都应该将源码作为第一个参数，并将可选的配置对象作为第二个参数（在配置文件中作为 `parserOptions` 提供）。`parse` 方法应该简单地返回 AST。`parseForESLint` 方法应该返回包含必需属性 `ast` 和可选属性 `services`、`scopeManager` 和 `visitorKeys` 的对象。
 
 * `ast` 应该包含 AST。
 * `services` 可以包含任何依赖于解析器的服务（例如节点的类型检查器）。`services` 属性的值可以作为 `context.parserServices` 传递给规则。默认为空对象。
-* `scopeManager` 可以是 [ScopeManager](./scope-manager-interface) 对象。自定义解析器可以为实验性/增强性语法提供自定义范围分析。默认是使用 [eslint-scope](https://github.com/eslint/eslint-scope) 创建的`ScopeManager` 对象。
-    * 对 `scopeManager` 的支持是在 ESLint v4.14.0 中加入的。支持 `scopeManager` 的 ESLint 版本将在`parserOptions` 中提供 `eslintScopeManager: true` 属性，可用于特征检测。
-* `visitorKeys`可以是一个自定义 AST 遍历的对象。该对象的键是 AST 节点的类型。每个值是一个应该被遍历的属性名称的数组。默认为 [`eslint-visitor-keys` 的键](https://github.com/eslint/eslint-visitor-keys#evkkeys)。
-    * 在 ESLint v4.14.0 中加入对 `visitorKeys` 对支持。支持 `visitorKeys` 的 ESLint 版本将在`parserOptions` 中提供 `eslintVisitorKeys: true` 属性，它可以用作特征检测。
+* `scopeManager` 可以是 [ScopeManager](./scope-manager-interface) 对象。自定义解析器可以为实验性/增强性语法提供自定义范围分析。默认使用 [eslint-scope](https://github.com/eslint/eslint-scope) 创建的`ScopeManager` 对象。
+    * 在 ESLint v4.14.0 中加入了对 `scopeManager` 的支持。支持 `scopeManager` 的 ESLint 版本将在`parserOptions` 中提供 `eslintScopeManager: true` 属性，可用于特征检测。
+* `visitorKeys` 可以是自定义 AST 遍历的对象。该对象的键是 AST 节点的类型。每个值是一个应该被遍历的属性名称的数组。默认为 [`eslint-visitor-keys` 的键](https://github.com/eslint/eslint-visitor-keys#evkkeys)。
+    * 在 ESLint v4.14.0 中加入了对 `visitorKeys` 的支持。支持 `visitorKeys` 的 ESLint 版本将在 `parserOptions` 中提供 `eslintVisitorKeys: true` 属性，它可以用作特征检测。
 
 你可以[在这](https://github.com/typescript-eslint/typescript-eslint)找到 ESLint 解析器项目。
 
@@ -47,7 +47,7 @@ exports.parseForESLint = function(code, options) {
 
 ## AST 规范
 
-自定义解析器创建的 AST 要基于 [ESTree](https://github.com/estree/estree)。AST 需要包括一些关于源码细节信息的额外属性。
+自定义解析器创建的 AST 需要基于 [ESTree](https://github.com/estree/estree)。AST 还需要包括一些关于源码细节信息的额外属性。
 
 ### 所有节点
 
@@ -71,7 +71,7 @@ interface Token {
 }
 ```
 
-* `tokens`（`Token[]`）是影响程序行为的令牌阵列。令牌之间可能存在任意的空间，所以规则检查`Token#range`以检测令牌之间的空间。这必须按`Token#range[0]`进行排序。
+* `tokens`（`Token[]`）是影响程序行为的令牌阵列。令牌之间可能存在任意的空间，所以规则会检查 `Token#range` 以检测令牌之间的空间。这必须按 `Token#range[0]` 进行排序。
 * `comments`（`Token[]`）是评论标记的阵列。这必须按 `Token#range[0]` 排序。
 
 所有标记和评论的范围索引必须不与其他标记和评论的范围重叠。
