@@ -112,7 +112,7 @@ npm link eslint-config-myconfig
 }
 ```
 
-你可以直接在 `.eslintrcq 文件中加入可共享配置的设置，从而覆盖这些设置。
+你可以直接在 `.eslintrc` 文件中加入可共享配置的设置，从而覆盖这些设置。
 
 ## 共享多个配置
 
