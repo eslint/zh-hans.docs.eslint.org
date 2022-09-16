@@ -32,20 +32,20 @@ bar();
 `CodePath` 有以下属性：
 
 * `id`（`string`） - 一个唯一的字符串。各自的规则可以使用 `id` 来保存每个代码链路额外信息。
-* `origin`（`string`） - 代码链路开始的原因。可以是 `"program"`、"function"`、`"class-field-initializer"` 或 `"class-static-block"`.
-* `initialSegment`（`CodePathSegment`） - 代码链路初始段。
-* `finalSegments`（`CodePathSegment[]`） - 包括返回和抛出的最终段。
-* `returnedSegments`（`CodePathSegment[]`） - 只包括返回的最终段。
-* `thrownSegments`（`CodePathSegment[]`） - 最后只包括抛出的片段。
-* `currentSegments`（`CodePathSegment[]`） - 当前位置的片段。
-* `upper`（`CodePath|null`） - 上层函数/全局范围的代码链路。
-* `childCodePaths`）`CodePath[]`） - 包括函数代码链路的代码链路。
+* `origin`（`string`） - 代码链路开始的原因。可以是 `"program"`、`"function"`、`"class-field-initializer"` 或 `"class-static-block"`.
+* `initialSegment`（`CodePathSegment`）- 代码链路初始段。
+* `finalSegments`（`CodePathSegment[]`）- 包括返回和抛出的最终段。
+* `returnedSegments`（`CodePathSegment[]`）- 只包括返回的最终段。
+* `thrownSegments`（`CodePathSegment[]`）- 最后只包括抛出的片段。
+* `currentSegments`（`CodePathSegment[]`）- 当前位置的片段。
+* `upper`（`CodePath|null`）- 上层函数/全局范围的代码链路。
+* `childCodePaths`（`CodePath[]`）- 包括函数代码链路的代码链路。
 
-### `CodePathSegment` - `CodePathSegment`的代码链路
+### `CodePathSegment`
 
 `CodePathSegment` 是代码链路一个部分。
 一个代码链路可以用多个 `CodePathSegment` 对象表示，它类似于双链表。
-与双链表不同的是，它有分叉和合并（下一个/前一个是复数）。
+与双链表不同的是，它可以分叉和合并（下一个/前一个是复数）。
 
 `CodePathSegment` 有以下属性：
 
@@ -75,7 +75,7 @@ module.exports = function(context) {
 
         /**
          * 这是在分析代码链路结束时调用的。
-         *在这个时候，代码链路对象已经完成。
+         * 在这个时候，代码链路对象已经完成。
          *
          * @param {CodePath} codePath - 完成的代码路径
          * @param {ASTNode} node - 当前节点
@@ -129,7 +129,7 @@ module.exports = function(context) {
 };
 ```
 
-### About `onCodePathSegmentLoop`
+### 关于 `onCodePathSegmentLoop`
 
 这个事件会在存在下一个片段时触发。
 这个时间点主要是指循环的结束。
@@ -233,7 +233,7 @@ module.exports = function(context) {
 [no-fallthrough](https://github.com/eslint/eslint/blob/HEAD/lib/rules/no-fallthrough.js),
 [consistent-return](https://github.com/eslint/eslint/blob/HEAD/lib/rules/consistent-return.js)
 
-### 要检查代码链路状态
+### 要想检查代码链路状态
 
 此示例检查每个链路中是否调用了 `cb` 参数。
 `CodePath` 和 `CodePathSegment` 的实例被共享给每个规则。
