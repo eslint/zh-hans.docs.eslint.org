@@ -10,11 +10,11 @@ eleventyNavigation:
 
 ---
 
-`.eslintrc` 文件中的配置是你项目的一个重要部分，因此，你可能想与其他项目或人分享它。可共享的配置允许你在 [npm](https://www.npmjs.com/) 上发布你的配置设置，让其他人下载并在他们的 ESLint 项目中使用它。
+`.eslintrc` 文件中的配置是项目的重要组成部分，因此，你可能想与其他项目或人分享它。可共享配置允许你在 [npm](https://www.npmjs.com/) 上发布你的配置设置，让其他人下载并在他们的 ESLint 项目中使用它。
 
-## 创建可共享的配置
+## 创建可共享配置
 
-可共享的配置只是导出配置对象的 npm 包。要开始，像你平时那样[创建 Node.js 模块](https://docs.npmjs.com/getting-started/creating-node-modules)。确保模块名称以 `eslint-config-` 开头，像是 `eslint-config-myconfig`。
+可共享配置时一个只导出配置对象的 npm 包，就像你平时那样[创建 Node.js 模块](https://docs.npmjs.com/getting-started/creating-node-modules)那样。确保模块名称以 `eslint-config-` 开头，像是 `eslint-config-myconfig`。
 
 也支持 npm [范围模块](https://docs.npmjs.com/misc/scope)，只需将模块以 `@scope/eslint-config` 前缀命名即可，如 `@scope/eslint-config` 和 `@scope/eslint-config-myconfig`。
 
@@ -38,9 +38,9 @@ module.exports = {
 
 ## 发布可共享配置
 
-在准备好可共享配置准备后，你就可以[发布到 npm](https://docs.npmjs.com/getting-started/publishing-npm-packages)并与他人共享来。我们建议使用 `eslint` 和 `eslintconfig` 这两个关键词，这样别人就可以很容易地找到你的模块。
+在准备好可共享配置准备后，你就可以[发布到 npm](https://docs.npmjs.com/getting-started/publishing-npm-packages)并与他人共享来。我们建议使用 `eslint` 和 `eslintconfig` 这两个关键词，这样别人很容易就能找到你的模块。
 
-你应该在 `package.json` 中使用 [peerDependencies](https://docs.npmjs.com/files/package.json#peerdependencies) 字段声明对 ESLint 的依赖。为了确保未来的兼容性，推荐使用 ">=" 范围语法来声明依赖关系和所需要的最低 ESLint 版本。比如：
+你应该在 `package.json` 中使用 [peerDependencies](https://docs.npmjs.com/files/package.json#peerdependencies) 字段声明对 ESLint 的依赖。为了确保未来的兼容性，推荐使用 `>=` 范围语法来声明依赖关系和所需要的最低 ESLint 版本。比如：
 
 ```json
 {
@@ -128,7 +128,7 @@ module.exports = {
 };
 ```
 
-然后，假设你使用的是 `eslint-config-myconfig`这 个包，你可以通过以下方式访问额外的配置：
+然后，假设你使用的是 `eslint-config-myconfig` 这个包，你可以通过以下方式访问额外的配置：
 
 ```json
 {
@@ -146,13 +146,13 @@ module.exports = {
 
 注意，你可以省去文件名中的 `.js`。通过这种方式，你可以在你的包中添加你想要的额外配置。
 
-**重要**：我们强烈建议总是为你的插件包括一个默认的配置，以避免错误。
+**重要**：我们强烈建议为你的插件设置默认配置，以避免错误。
 
 ## 本地配置文件解析
 
 如果你需要制作多个可以相互扩展并生活在不同目录下的配置，你可以创建一个可共享的配置来处理这种情况。
 
-以下示例，我们假设你使用的包名是`eslint-config-myconfig`，你的包看起来像这样：
+以下示例，我们假设你使用的包名是 `eslint-config-myconfig`，你的包会看起来像这样：
 
 ```text
 myconfig
@@ -183,13 +183,13 @@ module.exports = {
 };
 ```
 
-在你的`/lib/ci.js`中，你有
+在你的`/lib/ci.js`中，你有：
 
 ```js
 module.exports = require('./ci/backend');
 ```
 
-在你的 `/lib/ci/common.js`内
+在你的 `/lib/ci/common.js`内：
 
 ```js
 module.exports = {
@@ -202,7 +202,7 @@ module.exports = {
 
 尽管是在一个完全不同的目录下，所有 `extends` 都必须使用想扩展的配置文件的完整包路径。
 
-现在在你的 `/lib/ci/backend.js` 中
+现在在你的 `/lib/ci/backend.js` 中：
 
 ```js
 module.exports = {
