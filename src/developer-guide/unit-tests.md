@@ -1,57 +1,57 @@
 ---
-title: Unit Tests
+title: 单元测试
 layout: doc
 eleventyNavigation:
     key: run the tests
     parent: developer guide
-    title: Run the Tests
+    title: 运行测试
     order: 3
 
 ---
 
-Most parts of ESLint have unit tests associated with them. Unit tests are written using [Mocha](https://mochajs.org/) and are required when making contributions to ESLint. You'll find all of the unit tests in the `tests` directory.
+ESLint 大多数部分都有与之相关的单元测试。单元测试是用 [Mocha](https://mochajs.org/) 编写的，你在为 ESLint 做贡献时需要用到。可以在 `tests` 目录下找到所有的单元测试。
 
-When you first get the source code, you need to run `npm install` once initially to set ESLint for development. Once you've done that, you can run the tests via:
+在第一次获得源码时，你需要运行一次 `npm install` 来设置 ESLint 的开发环境。完成后你就可以通过以下方式运行测试：
 
 ```shell
 npm test
 ```
 
-This automatically starts Mocha and runs all tests in the `tests` directory. You need only add yours and it will automatically be picked up when running tests.
+它自动启动 Mocha 并运行 `tests` 目录下的所有测试。你只需要添加你的测试，运行测试时会自动选取。
 
-## Running Individual Tests
+## 运行单个测试
 
-If you want to quickly run just one test file, you can do so by running Mocha directly and passing in the filename. For example:
+如果你想快速运行一个测试文件，你可以通过直接运行 Mocha 并传入文件名来实现。例如：
 
 ```shell
 npm run test:cli tests/lib/rules/no-undef.js
 ```
 
-If you want to run just one or a subset of `RuleTester` test cases, add `only: true` to each test case or wrap the test case in `RuleTester.only(...)` to add it automatically:
+如果你想只运行一个或一个子集的 `RuleTester` 测试用例，可以在每个测试用例中添加 `only: true`，如果用 `RuleTester.only(...)` 包裹测试用例则会自动添加：
 
 ```js
 ruleTester.run("my-rule", myRule, {
     valid: [
         RuleTester.only("const valid = 42;"),
-        // Other valid cases
+        // 其他有效情况
     ],
     invalid: [
         {
             code: "const invalid = 42;",
             only: true,
         },
-        // Other invalid cases
+        // 其他无效的情况
     ]
 })
 ```
 
-Running individual tests is useful when you're working on a specific bug and iterating on the solution. You should be sure to run `npm test` before submitting a pull request. `npm test` uses Mocha's `--forbid-only` option to prevent `only` tests from passing full test runs.
+当你在处理一个特定的漏洞并迭代解决方案时，就需要运行单个测试。在提交拉动请求前，你需要运行 `npm test`。`npm test` 会使用 Mocha 的 `--forbid-only` 选项来防止 `only` 测试通过完整的测试运行。
 
-## More Control on Unit Testing
+## 对单元测试的更多控制
 
-`npm run test:cli` is an alias of the Mocha cli in `./node_modules/.bin/mocha`. [Options](https://mochajs.org/#command-line-usage) are available to be provided to help to better control the test to run.
+`npm run test:cli` 是 `./node_modules/.bin/mocha` 中的 Mocha cli 对别名。可以提供[选项](https://mochajs.org/#command-line-usage)以帮助更好地控制测试的运行。
 
-The default timeout for tests in `npm test` is 10000ms. You may change the timeout by providing `ESLINT_MOCHA_TIMEOUT` environment variable, for example:
+`npm test` 中测试的默认超时时长为 10000ms。你可以传递 `ESLINT_MOCHA_TIMEOUT` 环境变量来改变超时时长，例如：
 
 ```shell
 ESLINT_MOCHA_TIMEOUT=20000 npm test

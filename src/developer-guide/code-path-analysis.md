@@ -1,12 +1,12 @@
 ---
-title: Code Path Analysis Details
+title: 代码链路分析详情
 layout: doc
 
 ---
 
-ESLint's rules can use code paths.
-The code path is execution routes of programs.
-It forks/joins at such as `if` statements.
+ESLint 规则可以使用代码链路。
+代码链路是指程序的执行顺序。
+比如在 `if` 语句中分叉/连接。
 
 ```js
 if (a && b) {
@@ -15,125 +15,125 @@ if (a && b) {
 bar();
 ```
 
-![Code Path Example](../assets/images/code-path-analysis/helo.svg)
+![代码链路示例](../assets/images/code-path-analysis/helo.svg)
 
-## Objects
+## 对象
 
-Program is expressed with several code paths.
-A code path is expressed with objects of two kinds: `CodePath` and `CodePathSegment`.
+程序可以用几个代码链路来表达。
+一个代码链路用两种对象表示：`CodePath` 和 `CodePathSegment`。
 
 ### `CodePath`
 
-`CodePath` expresses whole of one code path.
-This object exists for each function and the global.
-This has references of both the initial segment and the final segments of a code path.
+`CodePath` 表达了一个代码链路整体。
+这个对象存在于每个函数和全局中。
+它对代码链路初始段和最终段都有引用。
 
-`CodePath` has the following properties:
+`CodePath` 有以下属性：
 
-* `id` (`string`) - A unique string. Respective rules can use `id` to save additional information for each code path.
-* `origin` (`string`) - The reason that the code path was started. May be `"program"`, `"function"`, `"class-field-initializer"`, or `"class-static-block"`.
-* `initialSegment` (`CodePathSegment`) - The initial segment of this code path.
-* `finalSegments` (`CodePathSegment[]`) - The final segments which includes both returned and thrown.
-* `returnedSegments` (`CodePathSegment[]`) - The final segments which includes only returned.
-* `thrownSegments` (`CodePathSegment[]`) - The final segments which includes only thrown.
-* `currentSegments` (`CodePathSegment[]`) - Segments of the current position.
-* `upper` (`CodePath|null`) - The code path of the upper function/global scope.
-* `childCodePaths` (`CodePath[]`) - Code paths of functions this code path contains.
+* `id`（`string`） - 一个唯一的字符串。各自的规则可以使用 `id` 来保存每个代码链路额外信息。
+* `origin`（`string`） - 代码链路开始的原因。可以是 `"program"`、`"function"`、`"class-field-initializer"` 或 `"class-static-block"`.
+* `initialSegment`（`CodePathSegment`）- 代码链路初始段。
+* `finalSegments`（`CodePathSegment[]`）- 包括返回和抛出的最终段。
+* `returnedSegments`（`CodePathSegment[]`）- 只包括返回的最终段。
+* `thrownSegments`（`CodePathSegment[]`）- 最后只包括抛出的片段。
+* `currentSegments`（`CodePathSegment[]`）- 当前位置的片段。
+* `upper`（`CodePath|null`）- 上层函数/全局范围的代码链路。
+* `childCodePaths`（`CodePath[]`）- 包括函数代码链路的代码链路。
 
 ### `CodePathSegment`
 
-`CodePathSegment` is a part of a code path.
-A code path is expressed with plural `CodePathSegment` objects, it's similar to doubly linked list.
-Difference from doubly linked list is what there are forking and merging (the next/prev are plural).
+`CodePathSegment` 是代码链路一个部分。
+一个代码链路可以用多个 `CodePathSegment` 对象表示，它类似于双链表。
+与双链表不同的是，它可以分叉和合并（下一个/前一个是复数）。
 
-`CodePathSegment` has the following properties:
+`CodePathSegment` 有以下属性：
 
-* `id` (`string`) - A unique string. Respective rules can use `id` to save additional information for each segment.
-* `nextSegments` (`CodePathSegment[]`) - The next segments. If forking, there are two or more. If final, there is nothing.
-* `prevSegments` (`CodePathSegment[]`) - The previous segments. If merging, there are two or more. If initial, there is nothing.
-* `reachable` (`boolean`) - A flag which shows whether or not it's reachable. This becomes `false` when preceded by `return`, `throw`, `break`, or `continue`.
+* `id`（`string`） - 唯一的字符串。各自的规则可以使用 `id` 来保存每个段的额外信息。
+* `nextSegments`（`CodePathSegment[]`） - 下一个分段。如果分叉，有两个或更多。如果是最终的，则没有。
+* `prevSegments`（`CodePathSegment[]`） - 前一个片段。如果合并则有两个或更多。如果是初始则没有。
+* `reachable`（`boolean`） - 显示它是否可以到达的标志。当前面有 `return`、`throw`、`break` 或 `continue` 时，这将变成 `false`。
 
-## Events
+## 活动
 
-There are five events related to code paths, and you can define event handlers in rules.
+有五个与代码链路有关的事件，你可以在规则中定义事件处理程序。
 
 ```js
 module.exports = function(context) {
     return {
         /**
-         * This is called at the start of analyzing a code path.
-         * In this time, the code path object has only the initial segment.
+         * 这在分析代码链路的开始阶段被调用。
+         * 此时代码链路对象只有初始段。
          *
-         * @param {CodePath} codePath - The new code path.
-         * @param {ASTNode} node - The current node.
+         * @param {CodePath} codePath - 新的代码链路
+         * @param {ASTNode} node - 当前节点
          * @returns {void}
          */
         "onCodePathStart": function(codePath, node) {
-            // do something with codePath
+            // 对 codePath 做点什么
         },
 
         /**
-         * This is called at the end of analyzing a code path.
-         * In this time, the code path object is complete.
+         * 这是在分析代码链路结束时调用的。
+         * 在这个时候，代码链路对象已经完成。
          *
-         * @param {CodePath} codePath - The completed code path.
-         * @param {ASTNode} node - The current node.
+         * @param {CodePath} codePath - 完成的代码路径
+         * @param {ASTNode} node - 当前节点
          * @returns {void}
          */
         "onCodePathEnd": function(codePath, node) {
-            // do something with codePath
+            // 对 codePath 做点什么
         },
 
         /**
-         * This is called when a code path segment was created.
-         * It meant the code path is forked or merged.
-         * In this time, the segment has the previous segments and has been
-         * judged reachable or not.
+         * 当创建代码链路段时，会调用它。
+         * 这意味着代码链路被分叉或合并了。
+         * 在这个时候，该段有以前的段，并且已经被
+         * 判断为可达或不可达。
          *
-         * @param {CodePathSegment} segment - The new code path segment.
-         * @param {ASTNode} node - The current node.
+         * @param {CodePathSegment} segment - 新的代码链路段
+         * @param {ASTNode} node - 当前节点
          * @returns {void}
          */
         "onCodePathSegmentStart": function(segment, node) {
-            // do something with segment
+            // 做点什么
         },
 
         /**
-         * This is called when a code path segment was left.
-         * In this time, the segment does not have the next segments yet.
+         *当一个代码链路段被留下时，这被调用。
+         *在这个时候，该段还没有下一个段。
          *
-         * @param {CodePathSegment} segment - The left code path segment.
-         * @param {ASTNode} node - The current node.
+         * @param {CodePathSegment} segment - 左边的代码链路段
+         * @param {ASTNode} node - 当前节点
          * @returns {void}
          */
         "onCodePathSegmentEnd": function(segment, node) {
-            // do something with segment
+            // 做点什么
         },
 
         /**
-         * This is called when a code path segment was looped.
-         * Usually segments have each previous segments when created,
-         * but when looped, a segment is added as a new previous segment into a
-         * existing segment.
+         * 当代码链路段被循环使用时，会调用它。
+         * 通常情况下，段在创建时有每一个前段。
+         * 但当循环时，一个段被作为一个新的前段添加到一个
+         * 现有的段。
          *
-         * @param {CodePathSegment} fromSegment - A code path segment of source.
-         * @param {CodePathSegment} toSegment - A code path segment of destination.
-         * @param {ASTNode} node - The current node.
+         * @param {CodePathSegment} fromSegment - 代码链路段的源码
+         * @param {CodePathSegment} toSegment - 目标代码链路段
+         * @param {ASTNode} node - 当前节点
          * @returns {void}
          */
         "onCodePathSegmentLoop": function(fromSegment, toSegment, node) {
-            // do something with segment
+            // 做点什么
         }
     };
 };
 ```
 
-### About `onCodePathSegmentLoop`
+### 关于 `onCodePathSegmentLoop`
 
-This event is always fired when the next segment has existed already.
-That timing is the end of loops mainly.
+这个事件会在存在下一个片段时触发。
+这个时间点主要是指循环的结束。
 
-For Example 1:
+示例 1：
 
 ```js
 while (a) {
@@ -142,21 +142,21 @@ while (a) {
 bar();
 ```
 
-1. First, the analysis advances to the end of loop.
+1. 首先，分析推进到循环的终点。
 
-   ![Loop Event's Example 1](../assets/images/code-path-analysis/loop-event-example-while-1.svg)
+   ![循环事件示例 1](./assets/images/code-path-analysis/loop-event-example-while-1.svg)
 
-2. Second, it creates the looping path.
-   At this time, the next segment has existed already, so the `onCodePathSegmentStart` event is not fired.
-   It fires `onCodePathSegmentLoop` instead.
+2. 其次，它创建了循环链路。
+   这时，已经存在下一个片段，所以不会触发 `onCodePathSegmentStart` 事件。
+   而是触发 `onCodePathSegmentLoop`。
 
-   ![Loop Event's Example 2](../assets/images/code-path-analysis/loop-event-example-while-2.svg)
+   ![循环事件示例 2](../assets/images/code-path-analysis/loop-event-example-while-2.svg)
 
-3. Last, it advances to the end.
+3. 最后，它达到终点。
 
-   ![Loop Event's Example 3](../assets/images/code-path-analysis/loop-event-example-while-3.svg)
+   ![循环事件示例 3](../assets/images/code-path-analysis/loop-event-example-while-3.svg)
 
-For example 2:
+示例 2：
 
 ```js
 for (let i = 0; i < 10; ++i) {
@@ -165,37 +165,37 @@ for (let i = 0; i < 10; ++i) {
 bar();
 ```
 
-1. `for` statements are more complex.
-   First, the analysis advances to `ForStatement.update`.
-   The `update` segment is hovered at first.
+1. `for` 语句更加复杂。
+   首先，分析推进到 `ForStatement.update`。
+   `update` 段先会停留。
 
-   ![Loop Event's Example 1](../assets/images/code-path-analysis/loop-event-example-for-1.svg)
+   ![循环事件示例 1](../assets/images/code-path-analysis/loop-event-example-for-1.svg)
 
-2. Second, it advances to `ForStatement.body`.
-   Of course the `body` segment is preceded by the `test` segment.
-   It keeps the `update` segment hovering.
+2. 第二，它推进到 `ForStatement.body`。
+   当然，在 `body` 段之前有 `test` 段。
+   它会停留在 `update` 段。
 
-   ![Loop Event's Example 2](../assets/images/code-path-analysis/loop-event-example-for-2.svg)
+   ![循环事件示例 2](../assets/images/code-path-analysis/loop-event-example-for-2.svg)
 
-3. Third, it creates the looping path from `body` segment to `update` segment.
-   At this time, the next segment has existed already, so the `onCodePathSegmentStart` event is not fired.
-   It fires `onCodePathSegmentLoop` instead.
+3. 第三，它创建了从 `body` 段到 `update` 段的循环路径。
+   此时存在下一个，所以不会触发 `onCodePathSegmentStart` 事件。
+   而是触发 `onCodePathSegmentLoop`。
 
-   ![Loop Event's Example 3](../assets/images/code-path-analysis/loop-event-example-for-3.svg)
+   ![循环事件示例 3](../assets/images/code-path-analysis/loop-event-example-for-3.svg)
 
-4. Fourth, also it creates the looping path from `update` segment to `test` segment.
-   At this time, the next segment has existed already, so the `onCodePathSegmentStart` event is not fired.
-   It fires `onCodePathSegmentLoop` instead.
+4. 第四，它还创建了从 `update` 段到 `test` 段的循环路径。
+   此时存在下一个段，所以不会触发 `onCodePathSegmentStart` 事件。
+   而是触发 `onCodePathSegmentLoop`。
 
-   ![Loop Event's Example 4](../assets/images/code-path-analysis/loop-event-example-for-4.svg)
+   ![循环事件示例 4](../assets/images/code-path-analysis/loop-event-example-for-4.svg)
 
-5. Last, it advances to the end.
+5. 最后，到达终点。
 
-   ![Loop Event's Example 5](../assets/images/code-path-analysis/loop-event-example-for-5.svg)
+   ![循环事件示例 5](../assets/images/code-path-analysis/loop-event-example-for-5.svg)
 
-## Usage Examples
+## 使用示例
 
-### To check whether or not this is reachable
+### 检查能否执行
 
 ```js
 function isReachable(segment) {
@@ -206,7 +206,7 @@ module.exports = function(context) {
     var codePathStack = [];
 
     return {
-        // Stores CodePath objects.
+        // 存储 CodePath 对象
         "onCodePathStart": function(codePath) {
             codePathStack.push(codePath);
         },
@@ -214,11 +214,11 @@ module.exports = function(context) {
             codePathStack.pop();
         },
 
-        // Checks reachable or not.
+        // 检查能否执行
         "ExpressionStatement": function(node) {
             var codePath = codePathStack[codePathStack.length - 1];
 
-            // Checks the current code path segments.
+            // 检查当前的代码链路段
             if (!codePath.currentSegments.some(isReachable)) {
                 context.report({message: "Unreachable!", node: node});
             }
@@ -227,17 +227,17 @@ module.exports = function(context) {
 };
 ```
 
-See Also:
+参见：
 [no-unreachable](https://github.com/eslint/eslint/blob/HEAD/lib/rules/no-unreachable.js),
 [no-fallthrough](https://github.com/eslint/eslint/blob/HEAD/lib/rules/no-fallthrough.js),
 [consistent-return](https://github.com/eslint/eslint/blob/HEAD/lib/rules/consistent-return.js)
 
-### To check state of a code path
+### 要想检查代码链路状态
 
-This example is checking whether or not the parameter `cb` is called in every path.
-Instances of `CodePath` and `CodePathSegment` are shared to every rule.
-So a rule must not modify those instances.
-Please use a map of information instead.
+此示例检查每个链路中是否调用了 `cb` 参数。
+`CodePath` 和 `CodePathSegment` 的实例被共享给每个规则。
+所以规则不能也不应该修改这些实例。
+请使用信息来代替。
 
 ```js
 function hasCb(node, context) {
@@ -258,7 +258,7 @@ module.exports = function(context) {
     var segmentInfoMap = Object.create(null);
 
     return {
-        // Checks `cb`.
+        // 检查 `cb`.
         "onCodePathStart": function(codePath, node) {
             funcInfoStack.push({
                 codePath: codePath,
@@ -268,7 +268,7 @@ module.exports = function(context) {
         "onCodePathEnd": function(codePath, node) {
             funcInfoStack.pop();
 
-            // Checks `cb` was called in every paths.
+            // 检查每个链路是否调用了 `cb`
             var cbCalled = codePath.finalSegments.every(function(segment) {
                 var info = segmentInfoMap[segment.id];
                 return info.cbCalled;
@@ -282,37 +282,37 @@ module.exports = function(context) {
             }
         },
 
-        // Manages state of code paths.
+        // 管理代码链路状态
         "onCodePathSegmentStart": function(segment) {
             var funcInfo = funcInfoStack[funcInfoStack.length - 1];
 
-            // Ignores if `cb` doesn't exist.
+            // 如果不存在 `cb`，则忽略。
             if (!funcInfo.hasCb) {
                 return;
             }
 
-            // Initialize state of this path.
+            // 初始化这个链路的状态。
             var info = segmentInfoMap[segment.id] = {
                 cbCalled: false
             };
 
-            // If there are the previous paths, merges state.
-            // Checks `cb` was called in every previous path.
+            // 如果有以前的链路，则合并状态
+            // 检查每个此前的链路是否调用了 `cb`
             if (segment.prevSegments.length > 0) {
                 info.cbCalled = segment.prevSegments.every(isCbCalled);
             }
         },
 
-        // Checks reachable or not.
+        // 检查是否可达
         "CallExpression": function(node) {
             var funcInfo = funcInfoStack[funcInfoStack.length - 1];
 
-            // Ignores if `cb` doesn't exist.
+            // 如果不存在 `cb`，则忽略
             if (!funcInfo.hasCb) {
                 return;
             }
 
-            // Sets marks that `cb` was called.
+            // 设置调用 `cb` 的标记。
             var callee = node.callee;
             if (callee.type === "Identifier" && callee.name === "cb") {
                 funcInfo.codePath.currentSegments.forEach(function(segment) {
@@ -325,11 +325,11 @@ module.exports = function(context) {
 };
 ```
 
-See Also:
+参见：
 [constructor-super](https://github.com/eslint/eslint/blob/HEAD/lib/rules/constructor-super.js),
 [no-this-before-super](https://github.com/eslint/eslint/blob/HEAD/lib/rules/no-this-before-super.js)
 
-## Code Path Examples
+## 代码链路示例
 
 ### Hello World
 
@@ -351,7 +351,7 @@ if (a) {
 
 ![`IfStatement`](../assets/images/code-path-analysis/example-ifstatement.svg)
 
-### `IfStatement` (chain)
+### `IfStatement`（链）
 
 ```js
 if (a) {
@@ -363,7 +363,7 @@ if (a) {
 }
 ```
 
-![`IfStatement` (chain)](../assets/images/code-path-analysis/example-ifstatement-chain.svg)
+![`IfStatement`（链）](../assets/images/code-path-analysis/example-ifstatement-chain.svg)
 
 ### `SwitchStatement`
 
@@ -386,7 +386,7 @@ switch (a) {
 
 ![`SwitchStatement`](../assets/images/code-path-analysis/example-switchstatement.svg)
 
-### `SwitchStatement` (has `default`)
+### `SwitchStatement`（有 `default` 值）
 
 ```js
 switch (a) {
@@ -409,7 +409,7 @@ switch (a) {
 }
 ```
 
-![`SwitchStatement` (has `default`)](../assets/images/code-path-analysis/example-switchstatement-has-default.svg)
+![`SwitchStatement`（有 `default` 值）](../assets/images/code-path-analysis/example-switchstatement-has-default.svg)
 
 ### `TryStatement` (try-catch)
 
@@ -426,11 +426,11 @@ try {
 last();
 ```
 
-It creates the paths from `try` block to `catch` block at:
+它会在以下地方创建了从 `try` 块到 `catch` 块的路径：
 
-* `throw` statements.
-* The first throwable node (e.g. a function call) in the `try` block.
-* The end of the `try` block.
+* `throw` 语句。
+* `try` 块中的第一个可抛节点（如调用函数）。
+* `try` 块的结束。
 
 ![`TryStatement` (try-catch)](../assets/images/code-path-analysis/example-trystatement-try-catch.svg)
 
@@ -446,9 +446,9 @@ try {
 last();
 ```
 
-If there is not `catch` block, `finally` block has two current segments.
-At this time, `CodePath.currentSegments.length` is `2`.
-One is the normal path, and another is the leaving path (`throw` or `return`).
+如果没有 `catch`、`finally` 块有两个当前段。
+这时，`CodePath.currentSegments.length` 是 `2`。
+一个是正常路径，另一个是返回路径（`throw` 或 `return`）。
 
 ![`TryStatement` (try-finally)](../assets/images/code-path-analysis/example-trystatement-try-finally.svg)
 
@@ -507,7 +507,7 @@ for (let i = 0; i < 10; ++i) {
 
 ![`ForStatement`](../assets/images/code-path-analysis/example-forstatement.svg)
 
-### `ForStatement` (for ever)
+### `ForStatement`（永远）
 
 ```js
 for (;;) {
@@ -516,7 +516,7 @@ for (;;) {
 bar();
 ```
 
-![`ForStatement` (for ever)](../assets/images/code-path-analysis/example-forstatement-for-ever.svg)
+![`ForStatement`（永远）](../assets/images/code-path-analysis/example-forstatement-for-ever.svg)
 
 ### `ForInStatement`
 
@@ -528,7 +528,7 @@ for (let key in obj) {
 
 ![`ForInStatement`](../assets/images/code-path-analysis/example-forinstatement.svg)
 
-### When there is a function
+### 当有函数时
 
 ```js
 function foo(a) {
@@ -541,12 +541,12 @@ function foo(a) {
 foo(false);
 ```
 
-It creates two code paths.
+它创建了两个代码链路：
 
-* The global's
+* 全局：
 
-  ![When there is a function](../assets/images/code-path-analysis/example-when-there-is-a-function-g.svg)
+  ![当有函数时](../assets/images/code-path-analysis/example-when-there-is-a-function-g.svg)
 
-* The function's
+* 仅该函数：
 
-  ![When there is a function](../assets/images/code-path-analysis/example-when-there-is-a-function-f.svg)
+  ![当有函数时](../assets/images/code-path-analysis/example-when-there-is-a-function-f.svg)
