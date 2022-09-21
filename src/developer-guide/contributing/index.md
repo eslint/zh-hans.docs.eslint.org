@@ -10,42 +10,42 @@ eleventyNavigation:
 
 ---
 
-One of the great things about open source projects is that anyone can contribute in any number of meaningful ways. ESLint couldn't exist without the help of the many contributors it's had since the project began, and we want you to feel like you can contribute and make a difference as well.
+开源项目的一个伟大之处在于任何人都可以以任何有意义的方式作出贡献。ESLint 的存在离不开自项目开始以来众多贡献者的帮助，我们希望你能感觉到你也能做出贡献并有所作为。
 
-This guide is intended for anyone who wants to contribute to an ESLint project. Please read it carefully as it answers a lot of the questions many newcomers have when first working with our projects.
+本指南是为任何想为 ESLint 项目作出贡献的人准备的。请仔细阅读，因为它回答了许多新人在第一次与我们的项目合作时遇到的很多问题。
 
-## Read the [Code of Conduct](https://eslint.org/conduct)
+## 阅读[行为准则](https://eslint.org/conduct)
 
-ESLint welcomes contributions from everyone and adheres to the [OpenJS Foundation Code of Conduct](https://eslint.org/conduct). We kindly request that you read over our code of conduct before contributing.
+ESLint 欢迎每个人的贡献，并遵守 [OpenJS 基金会的行为准则](https://eslint.org/conduct)。我们恳请您在投稿前仔细阅读我们的行为准则。
 
-## [Bug Reporting](reporting-bugs)
+## [错误报告](reporting-bugs)
 
-Think you found a problem? We'd love to hear about it. This section explains how to submit a bug, the type of information we need to properly verify it, and the overall process.
+你认为你发现了一个问题？我们很乐意听到这个问题。本节解释了如何提交一个 bug，我们需要什么样的信息来正确验证它，以及整个过程。
 
-## Proposing a [New Rule](new-rules)
+## 提议[新规则](new-rules)
 
-We get a lot of proposals for new rules in ESLint. This section explains how we determine which rules are accepted and what information you should provide to help us evaluate your proposal.
+我们在 ESLint 中收到很多关于新规则的提议。本节解释了我们如何确定哪些规则被接受，以及你应该提供哪些信息来帮助我们评估你的建议。
 
-## Proposing a [Rule Change](rule-changes)
+## 提议[规则修改](rule-changes)
 
-Want to make a change to an existing rule? This section explains the process and how we evaluate such proposals.
+想对现有的规则进行修改？本节解释了这一过程以及我们如何评估此类提案。
 
-## Requesting a [Change](changes)
+## 请求[修改](changes)
 
-If you'd like to request a change other than a bug fix or new rule, this section explains that process.
+如果你想请求一个除错误修复或新规则之外的变化，本节将解释这一过程。
 
-## Reporting a security vulnerability
+## 报告安全漏洞
 
-To report a security vulnerability in ESLint, please use our [HackerOne program](https://hackerone.com/eslint).
+要报告 ESLint 的安全漏洞，请使用我们的 [HackerOne 程序](https://hackerone.com/eslint)。
 
-## [Working on Issues](working-on-issues)
+## [专注议题](working-on-issues)
 
-Have some extra time and want to contribute? This section talks about the process of working on issues.
+有一些额外的时间并想做出贡献？本节讲述了在议题上工作的过程。
 
-## Submitting a [Pull Request](pull-requests)
+## 提交[拉取请求](pull-requests)
 
-We're always looking for contributions from the community. This section explains the requirements for pull requests and the process of contributing code.
+我们一直在寻找来自社区的贡献。本节解释了拉动请求的要求和贡献代码的过程。
 
-## Signing the CLA
+## 签署 CLA
 
-In order to submit code or documentation to an ESLint project, you will need to electronically sign our Contributor License Agreement. The CLA is the commonly used Apache-style template, and is you giving us permission to use your contribution. You only need to sign the CLA once for any OpenJS Foundation projects that use EasyCLA. You will be asked to sign the CLA in the first pull request you open.
+为了向 ESLint 项目提交代码或文档，你需要以电子方式签署我们的贡献者许可协议。CLA 是常用的 Apache 风格的模板，它是你给我们使用你的贡献的许可。对于任何使用 EasyCLA 的 OpenJS 基金会项目，你只需要签署一次 CLA。在您打开的第一个拉动请求中，您将被要求签署 CLA。

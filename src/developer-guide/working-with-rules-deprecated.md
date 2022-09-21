@@ -1,20 +1,20 @@
 ---
-title: Working with Rules (Deprecated)
+title: 创建规则（废弃）
 layout: doc
 edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/developer-guide/working-with-rules-deprecated.md
 
 ---
 
-**Note:** This page covers the deprecated rule format for ESLint <= 2.13.1. [This is the most recent rule format](./working-with-rules).
+**注意**：本页面涵盖了 ESLint <= 2.13.1 中的已被废弃的规则格式。[这是最新的规则格式](./working-with-rules)。
 
-Each rule in ESLint has two files named with its identifier (for example, `no-extra-semi`).
+ESLint 中的每个规则都有两个以其标识符命名的文件（例如，`no-extra-semi`）。
 
-* in the `lib/rules` directory: a source file (for example, `no-extra-semi.js`)
-* in the `tests/lib/rules` directory: a test file (for example, `no-extra-semi.js`)
+* 在 `lib/rules` 目录下：源文件（如 `no-extra-semi.js`）
+* 在 `tests/lib/rules` 目录下：测试文件（如 `no-extra-semi.js`)
 
-**Important:** If you submit a **core** rule to the ESLint repository, you **must** follow some conventions explained below.
+**重点**：如果你向 ESLint 仓库提交**核心**规则，则必须**遵循下面解释的一些约定。
 
-Here is the basic format of the source file for a rule:
+以下是一个规则的源文件的基本格式：
 
 ```js
 /**
@@ -25,31 +25,31 @@ Here is the basic format of the source file for a rule:
 "use strict";
 
 //------------------------------------------------------------------------------
-// Rule Definition
+// 规则定义
 //------------------------------------------------------------------------------
 
 module.exports = function(context) {
     return {
-        // callback functions
+        // 回调函数
     };
 };
 
-module.exports.schema = []; // no options
+module.exports.schema = []; // 无选项
 ```
 
-## Rule Basics
+## 规则基础
 
-`schema` (array) specifies the [options](#options-schemas) so ESLint can prevent invalid [rule configurations](../user-guide/configuring/rules#configuring-rules)
+`schema`（数组）指定[选项](#options-schemas)，这样 ESLint 可以防止无效的[规则配置](../user-guide/configuring/rules#configuring-rules)
 
-`create` (function) returns an object with methods that ESLint calls to "visit" nodes while traversing the abstract syntax tree (AST as defined by [ESTree](https://github.com/estree/estree)) of JavaScript code:
+`create`（函数）返回对象，该对象包含 ESLint 调用的方法，在遍历 JavaScript 代码的抽象语法树 (AST，由 [ESTree](https://github.com/estree/estree) 定义）时 "访问 "节点。
 
-* if a key is a node type, ESLint calls that **visitor** function while going **down** the tree
-* if a key is a node type plus `:exit`, ESLint calls that **visitor** function while going **up** the tree
-* if a key is an event name, ESLint calls that **handler** function for [code path analysis](./code-path-analysis)
+* 如果键是节点类型，ESLint 在 **down tree** 时会调用该 **visitor** 函数
+* 如果键是节点类型加 `:exit`，ESLint 在 **up tree** 时会调用该 **visitor** 函数。
+* 如果键是一个事件名称，ESLint 调用该**处理程序**函数进行 [代码链路分析](./code-path-analysis)
 
-A rule can use the current node and its surrounding tree to report or fix problems.
+一个规则可以使用当前节点和它周围的树来报告或修复问题：
 
-Here are methods for the [array-callback-return](../rules/array-callback-return) rule:
+下面是 [array-callback-return](./rules/array-callback-return) 规则的方法：
 
 ```js
 function checkLastSegment (node) {
@@ -75,62 +75,62 @@ module.exports = function(context) {
 };
 ```
 
-## The Context Object
+## Context 对象
 
-The `context` object contains additional functionality that is helpful for rules to do their jobs. As the name implies, the `context` object contains information that is relevant to the context of the rule. The `context` object has the following properties:
+`context` 对象包含额外的功能，有助于规则完成其工作。顾名思义，`context` 对象包含与规则的上下文相关的信息。`context` 对象有以下属性。
 
-* `parserOptions` - the parser options configured for this run (more details [here](../user-guide/configuring/language-options#specifying-parser-options)).
-* `id` - the rule ID.
-* `options` - an array of rule options.
-* `settings` - the `settings` from configuration.
-* `parserPath` - the full path to the `parser` from configuration.
+* `parserOptions` - 为本次运行配置的分析器选项（[查看更多细节](../user-guide/configuring/language-options#specifying-parser-options)）。
+* `id` - 规则 ID。
+* `options` - 规则选项的数组。
+* `settings` - 配置中的 `settings`。
+* `parserPath` - 配置中的 `parser` 的完整路径。
 
-Additionally, the `context` object has the following methods:
+此外，`context` 对象有以下方法：
 
-* `getAncestors()` - returns an array of ancestor nodes based on the current traversal.
-* `getDeclaredVariables(node)` - returns the declared variables on the given node.
-* `getFilename()` - returns the filename associated with the source.
-* `getScope()` - returns the current scope.
-* `getSourceCode()` - returns a `SourceCode` object that you can use to work with the source that was passed to ESLint
-* `markVariableAsUsed(name)` - marks the named variable in scope as used. This affects the [no-unused-vars](../rules/no-unused-vars) rule.
-* `report(descriptor)` - reports a problem in the code.
+* `getAncestors()` - 返回基于当前遍历的祖先节点的数组。
+* `getDeclaredVariables(node)` - 返回给定节点上的声明变量。
+* `getFilename()` - 返回与源代码相关的文件名。
+* `getScope()` - 返回当前的范围。
+* `getSourceCode()` - 返回一个`SourceCode`对象，你可以用它来处理传递给 ESLint 的源。
+* `markVariableAsUsed(name)` - 将作用域中的变量标记为已使用。这会影响 [no-unused-vars](../rules/no-unused-vars) 规则。
+* `report(descriptor)` - 报告代码问题。
 
-**Deprecated:** The following methods on the `context` object are deprecated. Please use the corresponding methods on `SourceCode` instead:
+**废弃**：`context` 对象上的下列方法已经废弃。请使用 `SourceCode` 上的相应方法代替。
 
-* `getAllComments()` - returns an array of all comments in the source. Use `sourceCode.getAllComments()` instead.
-* `getComments(node)` - returns the leading and trailing comments arrays for the given node. Use `sourceCode.getComments(node)` instead.
-* `getFirstToken(node)` - returns the first token representing the given node. Use `sourceCode.getFirstToken(node)` instead.
-* `getFirstTokens(node, count)` - returns the first `count` tokens representing the given node. Use `sourceCode.getFirstTokens(node, count)` instead.
-* `getJSDocComment(node)` - returns the JSDoc comment for a given node or `null` if there is none. Use `sourceCode.getJSDocComment(node)` instead.
-* `getLastToken(node)` - returns the last token representing the given node.  Use `sourceCode.getLastToken(node)` instead.
-* `getLastTokens(node, count)` - returns the last `count` tokens representing the given node. Use `sourceCode.getLastTokens(node, count)` instead.
-* `getNodeByRangeIndex(index)` - returns the deepest node in the AST containing the given source index. Use `sourceCode.getNodeByRangeIndex(index)` instead.
-* `getSource(node)` - returns the source code for the given node. Omit `node` to get the whole source. Use `sourceCode.getText(node)` instead.
-* `getSourceLines()` - returns the entire source code split into an array of string lines. Use `sourceCode.lines` instead.
-* `getTokenAfter(nodeOrToken)` - returns the first token after the given node or token. Use `sourceCode.getTokenAfter(nodeOrToken)` instead.
-* `getTokenBefore(nodeOrToken)` - returns the first token before the given node or token. Use `sourceCode.getTokenBefore(nodeOrToken)` instead.
-* `getTokenByRangeStart(index)` - returns the token whose range starts at the given index in the source. Use `sourceCode.getTokenByRangeStart(index)` instead.
-* `getTokens(node)` - returns all tokens for the given node. Use `sourceCode.getTokens(node)` instead.
-* `getTokensAfter(nodeOrToken, count)` - returns `count` tokens after the given node or token. Use `sourceCode.getTokensAfter(nodeOrToken, count)` instead.
-* `getTokensBefore(nodeOrToken, count)` - returns `count` tokens before the given node or token. Use `sourceCode.getTokensBefore(nodeOrToken, count)` instead.
-* `getTokensBetween(node1, node2)` - returns the tokens between two nodes. Use `sourceCode.getTokensBetween(node1, node2)` instead.
-* `report(node, [location], message)` - reports a problem in the code.
+* `getAllComments()` - 返回源码中所有注释的一个数组。请使用 `sourceCode.getAllComments()` 代替。
+* `getComments(node)` - 返回指定节点的前导和后导评论数组。使用 `sourceCode.getComments(node)` 代替。
+* `getFirstToken(node)` - 返回代表给定节点的第一个标记。使用 `sourceCode.getFirstToken(node)` 代替。
+* `getFirstTokens(node, count)` - 返回代表给定节点的第一个 `count` 标记。使用 `sourceCode.getFirstTokens(node, count)` 代替。
+* `getJSDocComment(node)` - 返回给定节点的 JSDoc 注释，如果没有则为 `null`。使用 `sourceCode.getJSDocComment(node)` 代替。
+* `getLastToken(node)` - 返回代表给定节点的最后一个令牌。使用 `sourceCode.getLastToken(node)` 代替。
+* `getLastTokens(node, count)` - 返回代表给定节点的最后`count` 标记。使用 `sourceCode.getLastTokens(node, count)` 代替。
+* `getNodeByRangeIndex(index)` - 返回 AST 中包含给定源索引的最深节点。使用 `sourceCode.getNodeByRangeIndex(index)` 代替。
+* `getSource(node)` - 返回指定节点的源代码。省略 `node` 以获得整个源代码。使用 `sourceCode.getText(node)` 代替。
+* `getSourceLines()` - 返回整个源代码，分成一个字符串行数组。使用 `sourceCode.lines` 代替。
+* `getTokenAfter(nodeOrToken)` - 返回指定节点或标记后的第一个标记。使用 `sourceCode.getTokenAfter(nodeOrToken)` 代替。
+* `getTokenBefore(nodeOrToken)` - 返回给定节点或令牌之前的第一个令牌。使用 `sourceCode.getTokenBefore(nodeOrToken)` 代替。
+* `getTokenByRangeStart(index)` - 返回范围从源码中给定索引开始的令牌。使用 `sourceCode.getTokenByRangeStart(index)` 代替。
+* `getTokens(node)` - 返回指定节点的所有令牌。使用`sourceCode.getTokens(node)` 代替。
+* `getTokensAfter(nodeOrToken, count)` - 返回给定节点或标记后的 `count` 标记。使用 `sourceCode.getTokensAfter(nodeOrToken, count)` 代替。
+* `getTokensBefore(nodeOrToken, count)` - 返回指定节点或标记之前的`count`标记。使用 `sourceCode.getTokensBefore(nodeOrToken, count)` 代替。
+* `getTokensBetween(node1, node2)` - 返回两个节点之间的令牌。使用 `sourceCode.getTokensBetween(node1, node2)` 来代替。
+* `report(node, [location], message)` - 报告代码中的一个问题。
 
 ### context.report()
 
-The main method you'll use is `context.report()`, which publishes a warning or error (depending on the configuration being used). This method accepts a single argument, which is an object containing the following properties:
+你将使用的主要方法是 `context.report()`，它发布一个警告或错误（取决于正在使用的配置）。这个方法接受一个参数，是一个包含以下属性的对象：
 
-* `message` - the problem message.
-* `node` - (optional)  the AST node related to the problem. If present and `loc` is not specified, then the starting location of the node is used as the location of the problem.
-* `loc` - (optional) an object specifying the location of the problem. If both `loc` and `node` are specified, then the location is used from `loc` instead of `node`.
-    * `line` - the 1-based line number at which the problem occurred.
-    * `column` - the 0-based column number at which the problem occurred.
-* `data` - (optional) placeholder data for `message`.
-* `fix` - (optional) a function that applies a fix to resolve the problem.
+* `message` - 问题信息。
+* `node` - （可选）与问题有关的 AST 节点。如果存在并且没有指定`loc`，那么该节点的起始位置将作为问题的位置。
+* `loc` - （可选）一个指定问题位置的对象。如果同时指定了`loc`和`node`，那么将使用 `loc` 而不是 `node` 的位置。
+    * `line` - 从 1 开始计算的发生问题的行号。
+    * `column` - 从 0 开始计算的发生问题的列号。
+* `data` - （可选） `message` 的占位数据。
+* `fix` - （可选）一个应用修复的函数，以解决这个问题。
 
-Note that at least one of `node` or `loc` is required.
+注意，至少需要 `node` 或 `loc` 中的一个。
 
-The simplest example is to use just `node` and `message`:
+最简单的例子是只使用 `node` 和 `message`：
 
 ```js
 context.report({
@@ -139,9 +139,9 @@ context.report({
 });
 ```
 
-The node contains all of the information necessary to figure out the line and column number of the offending text as well the source text representing the node.
+该节点包含所有必要的信息，以计算出违规文本的行数和列数，以及代表该节点的源文本。
 
-You can also use placeholders in the message and provide `data`:
+你也可以在信息中使用占位符，并提供 `data`：
 
 ```js
 {% raw %}
@@ -155,13 +155,13 @@ context.report({
 {% endraw %}
 ```
 
-Note that leading and trailing whitespace is optional in message parameters.
+请注意，消息参数中的前导和尾部的空白是可选的。
 
-The node contains all of the information necessary to figure out the line and column number of the offending text as well the source text representing the node.
+该节点包含所有必要的信息，以计算出违规文本的行数和列数，以及代表该节点的源文本。
 
-### Applying Fixes
+### 应用修复
 
-If you'd like ESLint to attempt to fix the problem you're reporting, you can do so by specifying the `fix` function when using `context.report()`. The `fix` function receives a single argument, a `fixer` object, that you can use to apply a fix. For example:
+如果你想让 ESLint 尝试修复你报告的问题，你可以在使用 `context.report()` 时指定 `fix` 函数来实现。`fix` 函数接收一个参数，即 `fixer` 对象，你可以用它来应用修复。比如说：
 
 ```js
 context.report({
@@ -173,28 +173,28 @@ context.report({
 });
 ```
 
-Here, the `fix()` function is used to insert a semicolon after the node. Note that the fix is not immediately applied and may not be applied at all if there are conflicts with other fixes. If the fix cannot be applied, then the problem message is reported as usual; if the fix can be applied, then the problem message is not reported.
+这里，`fix()` 函数被用来在节点后面插入一个分号。请注意，该修复并不是立即应用的，如果与其他修复有冲突，可能根本就不会应用。如果不能应用修复，那么问题信息会照常报告；如果可以应用修复，那么问题信息就不会报告。
 
-The `fixer` object has the following methods:
+`fixer` 对象有以下方法：
 
-* `insertTextAfter(nodeOrToken, text)` - inserts text after the given node or token
-* `insertTextAfterRange(range, text)` - inserts text after the given range
-* `insertTextBefore(nodeOrToken, text)` - inserts text before the given node or token
-* `insertTextBeforeRange(range, text)` - inserts text before the given range
-* `remove(nodeOrToken)` - removes the given node or token
-* `removeRange(range)` - removes text in the given range
-* `replaceText(nodeOrToken, text)` - replaces the text in the given node or token
-* `replaceTextRange(range, text)` - replaces the text in the given range
+* `insertTextAfter(nodeOrToken, text)` - 在给定的节点或标记后插入文本
+* `insertTextAfterRange(range, text)` - 在给定的范围后插入文本。
+* `insertTextBefore(nodeOrToken, text)` - 在给定的节点或标记之前插入文本。
+* `insertTextBeforeRange(range, text)` - 在给定范围之前插入文本。
+* `remove(nodeOrToken)` - 删除指定的节点或标记。
+* `removeRange(range)` - 移除给定范围内的文本。
+* `replaceText(nodeOrToken, text)` - 替换给定节点或标记中的文本
+* `replaceTextRange(range, text)` - 替换给定范围内的文本。
 
-Best practices for fixes:
+修复的最佳实践：
 
-1. Make fixes that are as small as possible. Anything more than a single character is risky and could prevent other, simpler fixes from being made.
-1. Only make one fix per message. This is enforced because you must return the result of the fixer operation from `fix()`.
-1. Fixes should not introduce clashes with other rules. You can accidentally introduce a new problem that won't be reported until ESLint is run again. Another good reason to make as small a fix as possible.
+1. 1. 尽可能小地进行修复。任何超过一个字符的修正都是有风险的，可能会妨碍其他更简单的修正。
+1. 每条信息只做一个修复。这是强制执行的，因为你必须从 `fix()` 返回修复器操作的结果。
+1. 修复不应该引入与其他规则的冲突。你可能会不小心引入一个新的问题，直到 ESLint 再次运行才会被报告。另一个很好的理由是尽可能做一个小的修复。
 
 ### context.options
 
-Some rules require options in order to function correctly. These options appear in configuration (`.eslintrc`, command line, or in comments). For example:
+一些规则需要选项才能正常运行。这些选项出现在配置（`.eslintrc`、命令行或注释中）。例如：
 
 ```json
 {
@@ -202,7 +202,7 @@ Some rules require options in order to function correctly. These options appear 
 }
 ```
 
-The `quotes` rule in this example has one option, `"double"` (the `2` is the error level). You can retrieve the options for a rule by using `context.options`, which is an array containing every configured option for the rule. In this case, `context.options[0]` would contain `"double"`:
+本例中的 `quotes` 规则有一个选项，`"double"`（`2` 是错误级别）。你可以通过使用 `context.options` 来检索一个规则的选项，它是一个包含该规则所有配置选项的数组。在这个例子中， `context.options[0]` 将包含 `"double"`：
 
 ```js
 module.exports = function(context) {
@@ -213,13 +213,13 @@ module.exports = function(context) {
 }
 ```
 
-Since `context.options` is just an array, you can use it to determine how many options have been passed as well as retrieving the actual options themselves. Keep in mind that the error level is not part of `context.options`, as the error level cannot be known or modified from inside a rule.
+由于 `context.options` 只是一个数组，你可以用它来确定有多少选项被传递，以及检索实际选项本身。请记住，错误级别不是 `context.options` 的一部分，因为错误级别不能从规则内部知道或修改。
 
-When using options, make sure that your rule has some logic defaults in case the options are not provided.
+当使用选项时，确保你的规则有一些逻辑上的默认值，以防选项没有被提供。
 
 ### context.getSourceCode()
 
-The `SourceCode` object is the main object for getting more information about the source code being linted. You can retrieve the `SourceCode` object at any time by using the `getSourceCode()` method:
+`SourceCode` 对象是获得更多关于被提示的源代码信息的主要对象。你可以在任何时候通过使用 `getSourceCode()` 方法来检索 `SourceCode` 对象。
 
 ```js
 module.exports = function(context) {
@@ -230,42 +230,42 @@ module.exports = function(context) {
 }
 ```
 
-Once you have an instance of `SourceCode`, you can use the methods on it to work with the code:
+一旦你有 `SourceCode` 实例，你可以使用它的方法来处理代码：
 
-* `getAllComments()` - returns an array of all comments in the source.
-* `getComments(node)` - returns the leading and trailing comments arrays for the given node.
-* `getFirstToken(node)` - returns the first token representing the given node.
-* `getFirstTokens(node, count)` - returns the first `count` tokens representing the given node.
-* `getJSDocComment(node)` - returns the JSDoc comment for a given node or `null` if there is none.
-* `getLastToken(node)` - returns the last token representing the given node.
-* `getLastTokens(node, count)` - returns the last `count` tokens representing the given node.
-* `getNodeByRangeIndex(index)` - returns the deepest node in the AST containing the given source index.
-* `isSpaceBetweenTokens(first, second)` - returns true if there is a whitespace character between the two tokens.
-* `getText(node)` - returns the source code for the given node. Omit `node` to get the whole source.
-* `getTokenAfter(nodeOrToken)` - returns the first token after the given node or token.
-* `getTokenBefore(nodeOrToken)` - returns the first token before the given node or token.
-* `getTokenByRangeStart(index)` - returns the token whose range starts at the given index in the source.
-* `getTokens(node)` - returns all tokens for the given node.
-* `getTokensAfter(nodeOrToken, count)` - returns `count` tokens after the given node or token.
-* `getTokensBefore(nodeOrToken, count)` - returns `count` tokens before the given node or token.
-* `getTokensBetween(node1, node2)` - returns the tokens between two nodes.
+* `getAllComments()` - 返回源码中所有评论的一个数组。
+* `getComments(node)` - 返回给定节点的前导和后导注释数组。
+* `getFirstToken(node)` - 返回代表给定节点的第一个令牌。
+* `getFirstTokens(node, count)` - 返回代表给定节点的第一个 `count` 令牌。
+* `getJSDocComment(node)` - 返回给定节点的 JSDoc 注释，如果没有则为空。
+* `getLastToken(node)` - 返回代表给定节点的最后一个令牌。
+* `getLastTokens(node, count)` - 返回代表给定节点的最后 `count` 标记。
+* `getNodeByRangeIndex(index)` - 返回 AST 中包含给定源索引的最深节点。
+* `isSpaceBetweenTokens(first, second)` - 如果两个标记之间有一个空白字符，则返回 true。
+* `getText(node)` - 返回指定节点的源代码。省略`node`以获得整个源代码。
+* `getTokenAfter(nodeOrToken)` - 返回给定节点或标记后的第一个标记。
+* `getTokenBefore(nodeOrToken)` - 返回给定节点或令牌之前的第一个令牌。
+* `getTokenByRangeStart(index)` - 返回范围从源中给定索引开始的令牌。
+* `getTokens(node)` - 返回给定节点的所有令牌。
+* `getTokensAfter(nodeOrToken, count)` - 返回给定节点或标记后的`count`标记。
+* `getTokensBefore(nodeOrToken, count)` - 返回给定节点或标记之前的`count`标记。
+* `getTokensBetween(node1, node2)` - 返回两个节点之间的令牌。
 
-There are also some properties you can access:
+还有一些你可以访问的属性：
 
-* `hasBOM` - the flag to indicate whether or not the source code has Unicode BOM.
-* `text` - the full text of the code being linted. Unicode BOM has been stripped from this text.
-* `ast` - the `Program` node of the AST for the code being linted.
-* `lines` - an array of lines, split according to the specification's definition of line breaks.
+* `hasBOM` - 表示源代码是否有 Unicode BOM 的标志。
+* `text` - 被提示的代码的全文。Unicode BOM 已经从这个文本中被剥离。
+* `ast` - 被提示的代码的 AST 的 `Program` 节点。
+* `lines` - 行数组，根据规范中的换行定义进行分割。
 
-You should use a `SourceCode` object whenever you need to get more information about the code being linted.
+当你需要获得更多关于被提示的代码的信息时，你应该使用 `SourceCode` 对象。
 
-### Options Schemas
+### 选项模式
 
-Rules may export a `schema` property, which is a [JSON schema](http://json-schema.org/) format description of a rule's options which will be used by ESLint to validate configuration options and prevent invalid or unexpected inputs before they are passed to the rule in `context.options`.
+规则可以导出 `schema` 属性，这是规则选项的 [JSON schema](http://json-schema.org/) 格式描述，ESLint 将使用它来验证配置选项，并在它们被传递到规则的 `context.options` 之前防止无效或意外输入。
 
-There are two formats for a rule's exported `schema`. The first is a full JSON Schema object describing all possible options the rule accepts, including the rule's error level as the first argument and any optional arguments thereafter.
+规则导出的 `schema` 有两种格式。第一种是一个完整的 JSON 模式对象，描述规则接受的所有可能的选项，包括作为第一个参数的规则错误级别和其后的任何可选参数。
 
-However, to simplify schema creation, rules may also export an array of schemas for each optional positional argument, and ESLint will automatically validate the required error level first. For example, the `yoda` rule accepts a primary mode argument, as well as an extra options object with named properties.
+然而，为了简化模式的创建，规则也可以为每个可选的位置参数导出一个模式数组，ESLint 将自动首先验证所需的错误级别。例如， `yoda` 规则接受一个主要的模式参数，以及一个带有命名属性的额外选项对象。
 
 ```js
 // "yoda": [2, "never", { "exceptRange": true }]
@@ -285,13 +285,13 @@ module.exports.schema = [
 ];
 ```
 
-In the preceding example, the error level is assumed to be the first argument. It is followed by the first optional argument, a string which may be either `"always"` or `"never"`. The final optional argument is an object, which may have a Boolean property named `exceptRange`.
+在前面的例子中，错误级别被认为是第一个参数。它的后面是第一个可选参数，一个字符串，可以是 `"always"` 或 `"never"`。最后一个可选参数是一个对象，它可能有一个名为 `exceptRange` 的布尔属性。
 
-To learn more about JSON Schema, we recommend looking at some [examples](http://json-schema.org/examples.html) to start, and also reading [Understanding JSON Schema](http://spacetelescope.github.io/understanding-json-schema/) (a free ebook).
+要了解更多关于 JSON Schema 的信息，我们建议从一些[例子](http://json-schema.org/examples.html) 开始，也可以阅读[了解 JSON Schema](http://spacetelescope.github.io/understanding-json-schema/)（免费电子书）。
 
-### Getting the Source
+### 获取源代码
 
-If your rule needs to get the actual JavaScript source to work with, then use the `sourceCode.getText()` method. This method works as follows:
+如果你的规则需要获得实际的 JavaScript 源代码来工作，那么就使用`sourceCode.getText()`方法。这个方法的工作原理如下：
 
 ```js
 
@@ -308,9 +308,9 @@ var nodeSourceWithPrev = sourceCode.getText(node, 2);
 var nodeSourceWithFollowing = sourceCode.getText(node, 0, 2);
 ```
 
-In this way, you can look for patterns in the JavaScript text itself when the AST isn't providing the appropriate data (such as location of commas, semicolons, parentheses, etc.).
+通过这种方式，当 AST 没有提供相应的数据时，你可以在 JavaScript 文本本身中寻找模式（比如逗号、分号、括号的位置等）。
 
-### Accessing comments
+### 访问注释
 
 If you need to access comments for a specific node you can use `sourceCode.getComments(node)`:
 
@@ -320,27 +320,27 @@ If you need to access comments for a specific node you can use `sourceCode.getCo
 var comments = sourceCode.getComments(node);
 ```
 
-Keep in mind that comments are technically not a part of the AST and are only attached to it on demand, i.e. when you call `getComments()`.
+请记住，注释在技术上不是 AST 的一部分，只是在需要时才附加到 AST 上，即当你调用 `getComments()` 时。
 
-**Note:** One of the libraries adds AST node properties for comments - do not use these properties. Always use `sourceCode.getComments()` as this is the only guaranteed API for accessing comments (we will likely change how comments are handled later).
+**注意**：其中一个库为注释添加了 AST 节点属性--不要使用这些属性。总是使用 `sourceCode.getComments()`，因为这是访问注释的唯一保证的 API（我们以后可能会改变注释的处理方式）。
 
-### Accessing Code Paths
+### 访问代码链路
 
-ESLint analyzes code paths while traversing AST.
-You can access that code path objects with five events related to code paths.
+ESLint 在遍历 AST 时分析了代码链路。
+你可以通过五个与代码路径有关的事件来访问该代码路径对象.
 
 [details here](./code-path-analysis)
 
-## Rule Unit Tests
+## 规则单元测试
 
-Each rule must have a set of unit tests submitted with it to be accepted. The test file is named the same as the source file but lives in `tests/lib/`. For example, if your rule source file is `lib/rules/foo.js` then your test file should be `tests/lib/rules/foo.js`.
+每条规则必须有一组单元测试与之一起提交才能被接受。测试文件的名称与源文件相同，但住在 `tests/lib/` 中。例如，如果你的规则源文件是 `lib/rules/foo.js`，那么你的测试文件应该是 `tests/lib/rules/foo.js`。
 
-For your rule, be sure to test:
+对于你的规则，一定要测试：
 
-1. All instances that should be flagged as warnings.
-1. At least one pattern that should **not** be flagged as a warning.
+1. 所有应该被标记为警告的实例。
+1. 至少有一个**不应该**被标记为警告的模式。
 
-The basic pattern for a rule unit test file is:
+规则单元测试文件的基本模式是：
 
 ```js
 /**
@@ -375,11 +375,11 @@ ruleTester.run("no-with", rule, {
 });
 ```
 
-Be sure to replace the value of `"no-with"` with your rule's ID. There are plenty of examples in the `tests/lib/rules/` directory.
+请确保将 `"no-with"` 的值替换为你的规则的 ID。在 `tests/lib/rules/` 目录下有很多例子。
 
-### Valid Code
+### 有效代码
 
-Each valid case can be either a string or an object. The object form is used when you need to specify additional global variables or arguments for the rule. For example, the following defines `window` as a global variable for code that should not trigger the rule being tested:
+每个有效的案例可以是一个字符串或一个对象。当你需要为规则指定额外的全局变量或参数时，可以使用对象形式。例如，下面定义了 `window` 作为全局变量，用于不应该触发被测试规则的代码：
 
 ```js
 valid: [
@@ -390,7 +390,7 @@ valid: [
 ]
 ```
 
-You can also pass options to the rule (if it accepts them). These arguments are equivalent to how people can configure rules in their `.eslintrc` file. For example:
+你也可以向规则传递选项（如果它接受这些选项的话）。这些参数等同于人们在 `.eslintrc` 文件中配置规则的方式。比如说
 
 ```js
 valid: [
@@ -401,11 +401,11 @@ valid: [
 ]
 ```
 
-The `options` property must be an array of options. This gets passed through to `context.options` in the rule.
+`options` 属性必须是一个选项数组。这将被传递给规则中的 `context.options`。
 
-### Invalid Code
+### 无效代码
 
-Each invalid case must be an object containing the code to test and at least one message that is produced by the rule. The `errors` key specifies an array of objects, each containing a message (your rule may trigger multiple messages for the same code). You should also specify the type of AST node you expect to receive back using the `type` key. The AST node should represent the actual spot in the code where there is a problem. For example:
+每个无效的案例必须是一个对象，包含要测试的代码和至少一个由规则产生的消息。`errors` 键指定一个对象数组，每个对象包含一个消息（你的规则可能对同一代码触发多个消息）。你还应该使用 `type` 键指定你期望收到的 AST 节点的类型。AST 节点应该代表代码中存在问题的实际位置。比如说：
 
 ```js
 invalid: [
@@ -418,9 +418,9 @@ invalid: [
 ]
 ```
 
-In this case, the message is specific to the variable being used and the AST node type is `Identifier`.
+在这种情况下，信息是特定于正在使用的变量，AST 节点类型是`Identifier`。
 
-Similar to the valid cases, you can also specify `options` to be passed to the rule:
+与有效情况类似，你也可以指定 `options` 传递给规则：
 
 ```js
 invalid: [
@@ -434,7 +434,7 @@ invalid: [
 ]
 ```
 
-For simpler cases where the only thing that really matters is the error message, you can also specify any `errors` as strings. You can also have some strings and some objects, if you like.
+对于比较简单的情况，真正重要的是错误信息，你也可以把任何 `errors` 指定为字符串。如果你愿意，你也可以有一些字符串和一些对象。
 
 ```js
 invalid: [
@@ -446,11 +446,11 @@ invalid: [
 ]
 ```
 
-### Specifying Parser Options
+### 指定解析器选项
 
-Some tests require that a certain parser configuration must be used. This can be specified in test specifications via the `parserOptions` setting.
+一些测试要求必须使用某种分析器配置。这可以通过 `parserOptions` 设置在测试规范中指定。
 
-For example, to set `ecmaVersion` to 6 (in order to use constructs like `for ... of`):
+例如，将 `ecmaVersion` 设置为 6（以便使用像 `for ... of` 这样的结构）。
 
 ```js
 valid: [
@@ -461,7 +461,7 @@ valid: [
 ]
 ```
 
-If you are working with ES6 modules:
+如果你正在使用 ES6 模块：
 
 ```js
 valid: [
@@ -472,7 +472,7 @@ valid: [
 ]
 ```
 
-For non-version specific features such as JSX:
+对于非版本特定的功能，如 JSX:
 
 ```js
 valid: [
@@ -483,19 +483,19 @@ valid: [
 ]
 ```
 
-The options available and the expected syntax for `parserOptions` is the same as those used in [configuration](../user-guide/configuring/language-options#specifying-parser-options).
+`parserOptions` 的可用选项和预期语法与[配置](../user-guide/configuring/language-options#specifying-parser-options)中使用的相同。
 
-### Write Several Tests
+### 编写测试
 
-Provide as many unit tests as possible. Your pull request will never be turned down for having too many tests submitted with it!
+提供尽可能多的单元测试。你的拉动请求永远不会因为提交了太多的测试而被拒绝！
 
-## Performance Testing
+## 性能测试
 
-To keep the linting process efficient and unobtrusive, it is useful to verify the performance impact of new rules or modifications to existing rules.
+为了保持刷新过程的高效性和无干扰性，验证新规则或对现有规则的修改对性能的影响是很有用的。
 
-### Overall Performance
+### 整体性能
 
-The `npm run perf` command gives a high-level overview of ESLint running time with default rules (`eslint:recommended`) enabled.
+`npm run perf` 命令给出了默认规则（`eslint:recommended`）启用后 ESLint 运行时的高级概览。
 
 ```bash
 $ git checkout main
@@ -523,9 +523,9 @@ Performance Run #5:  1457.455283ms
 Performance budget ok:  1443.736547ms (limit: 3409.090909090909ms)
 ```
 
-### Per-rule Performance
+### 每个规则的性能
 
-ESLint has a built-in method to track performance of individual rules. Setting the `TIMING` environment variable will trigger the display, upon linting completion, of the ten longest-running rules, along with their individual running time and relative performance impact as a percentage of total rule processing time.
+ESLint 有一个内置的方法来跟踪单个规则的性能。设置 `TIMING` 环境变量将触发显示，在检查完成后，显示运行时间最长的 10 条规则，以及它们各自的运行时间和相对性能影响占总规则处理时间的百分比。
 
 ```bash
 $ TIMING=1 eslint lib
@@ -543,7 +543,7 @@ no-empty-class          |    21.976 |     2.6%
 semi                    |    19.359 |     2.3%
 ```
 
-To test one rule explicitly, combine the `--no-eslintrc`, and `--rule` options:
+要明确测试一个规则，请同时使用 `--no-eslintrc` 和 `--rule` 选项。
 
 ```bash
 $ TIMING=1 eslint --no-eslintrc --rule "quotes: [2, 'double']" lib
@@ -552,31 +552,31 @@ Rule   | Time (ms) | Relative
 quotes |    18.066 |   100.0%
 ```
 
-## Rule Naming Conventions
+## 规则命名惯例
 
-The rule naming conventions for ESLint are fairly simple:
+ESLint 的规则命名约定是相当简单的。
 
-* If your rule is disallowing something, prefix it with `no-` such as `no-eval` for disallowing `eval()` and `no-debugger` for disallowing `debugger`.
-* If your rule is enforcing the inclusion of something, use a short name without a special prefix.
-* Keep your rule names as short as possible, use abbreviations where appropriate, and no more than four words.
-* Use dashes between words.
+* 如果你的规则不允许某些东西，就用 `no-`作 为前缀，比如  `no-eval` 表示不允许 `eval()`，`no-debugger` 表示不允许 `debugger`。
+* 如果你的规则是强制包含某些东西，使用一个没有特殊前缀的短名称。
+* 尽量保持你的规则名称简短，适当时使用缩写，不超过四个字。
+* 在单词之间使用破折号。
 
-## Rule Acceptance Criteria
+## 规则接受标准
 
-Because rules are highly personal (and therefore very contentious), accepted rules should:
+由于规则是高度个人化的（因此也是非常有争议的），被接受的规则应该是。
 
-* Not be library-specific.
-* Demonstrate a possible issue that can be resolved by rewriting the code.
-* Be general enough so as to apply for a large number of developers.
-* Not be the opposite of an existing rule.
-* Not overlap with an existing rule.
+* 不是针对某一库的。
+* 展示一个可以通过重写代码解决的可能问题。
+* 足够普遍，以便适用于大量的开发者。
+* 不要与现有的规则相反。
+* 不与现有的规则重叠。
 
-## Runtime Rules
+## 运行时规则
 
-The thing that makes ESLint different from other linters is the ability to define custom rules at runtime. This is perfect for rules that are specific to your project or company and wouldn't make sense for ESLint to ship with. With runtime rules, you don't have to wait for the next version of ESLint or be disappointed that your rule isn't general enough to apply to the larger JavaScript community, just write your rules and include them at runtime.
+使得 ESLint 与其他检查器不同的是，它能够在运行时定义自定义规则。这对于那些针对你的项目或公司的规则是完美的，而且 ESLint 在发货时没有意义。有了运行时规则，你不必等待 ESLint 的下一个版本，也不必为你的规则不够通用而失望，只需编写你的规则并在运行时包含它们。
 
-Runtime rules are written in the same format as all other rules. Create your rule as you would any other and then follow these steps:
+运行时规则的编写格式与所有其他规则相同。像其他规则一样创建你的规则，然后按照以下步骤进行。
 
-1. Place all of your runtime rules in the same directory (i.e., `eslint_rules`).
-2. Create a [configuration file](../user-guide/configuring/) and specify your rule ID error level under the `rules` key. Your rule will not run unless it has a value of `1` or `2` in the configuration file.
-3. Run the [command line interface](../user-guide/command-line-interface) using the `--rulesdir` option to specify the location of your runtime rules.
+1. 把你所有的运行时规则放在同一个目录下（即`eslint_rules`）。
+2. 创建[配置文件](../user-guide/configuring/) 并在 `rules` 键下指定你的规则 ID 错误等级。你的规则将不会运行，除非它在配置文件中的值为 `1` 或 `2`。
+3. 运行[命令行界面](../user-guide/command-line-interface)，使用 `--rulesdir` 选项来指定你的运行规则的位置。
