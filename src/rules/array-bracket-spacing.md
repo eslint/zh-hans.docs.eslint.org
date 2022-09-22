@@ -9,10 +9,7 @@ related_rules:
 - computed-property-spacing
 ---
 
-
-
-A number of style guides require or disallow spaces between array brackets and other tokens. This rule
-applies to both array literals and destructuring assignments (ECMAScript 6).
+一些风格指南要求或不允许在数组括号和其他标记之间有空格。这条规适用于数组字面量和解构赋值（ECMAScript 6）。
 
 ```js
 /*eslint-env es6*/
@@ -24,37 +21,37 @@ var arr = ['foo', 'bar'];
 var [x,y] = z;
 ```
 
-## Rule Details
+## 规则细节
 
-This rule enforces consistent spacing inside array brackets.
+这条规则使数组括号内的间距一致。
 
-## Options
+## 选项
 
-This rule has a string option:
+此规则有个值为字符串的选项：
 
-* `"never"` (default) disallows spaces inside array brackets
-* `"always"` requires one or more spaces or newlines inside array brackets
+* `"never"`（默认值）禁止数组括号内的空格
+* `"always"` 数组括号内需要一个或多个空格或换行
 
-This rule has an object option for exceptions to the `"never"` option:
+此规则有一个用于处理例外情况的 `"never"` 选项：
 
-* `"singleValue": true` requires one or more spaces or newlines inside brackets of array literals that contain a single element
-* `"objectsInArrays": true` requires one or more spaces or newlines between brackets of array literals and braces of their object literal elements `[ {` or `} ]`
-* `"arraysInArrays": true` requires one or more spaces or newlines between brackets of array literals and brackets of their array literal elements `[ [` or `] ]`
+* `"singleValue": true` 单一元素的数组字面量的括号内要有一个或多个空格或换行
+* `"objectsInArrays": true` 数组字面量的括号和它们的对象字面元素的括号 `[ {` 或 `} ]` 间要有一个或多个空格或换行。
+* `"arraysInArrays": true` 数组字面量的大括号和其数组字面量元素的大括号 `[ [` 或 `] ]` 间要有一个或多个空格或换行 。
 
-This rule has an object option for exceptions to the `"always"` option:
+此规则有一个用于处理例外情况的 `"always"` 选项：
 
-* `"singleValue": false` disallows spaces inside brackets of array literals that contain a single element
-* `"objectsInArrays": false` disallows spaces between brackets of array literals and braces of their object literal elements `[{` or `}]`
-* `"arraysInArrays": false` disallows spaces between brackets of array literals and brackets of their array literal elements `[[` or `]]`
+* `"singleValue": false` 禁止包含单一元素的数组字面量的括号内的空格
+* `"objectsInArrays": false` 禁止数组字面量的括号和其对象字面元素的括号 `[{` 或 `}]` 间的空格。
+* `"arraysInArrays": false` 禁止数组字面量和其数组字面量元素的括号 `[[`或``]]` 间的空格。
 
-This rule has built-in exceptions:
+这个规则有内置的例外。
 
-* `"never"` (and also the exceptions to the `"always"` option) allows newlines inside array brackets, because this is a common pattern
-* `"always"` does not require spaces or newlines in empty array literals `[]`
+* `"never"`（以及 `"always"` 选项的例外）允许在数组括号内换行，因为这是一个常见的模式。
+* `"always"` 不要求空格或换行在空的数组字面量 `[]`。
 
 ### never
 
-Examples of **incorrect** code for this rule with the default `"never"` option:
+使用此规则与默认 `"never"` 选项的**错误**示例：
 
 :::incorrect
 
@@ -77,7 +74,7 @@ var [ ,,x, ] = z;
 
 :::
 
-Examples of **correct** code for this rule with the default `"never"` option:
+使用此规则与默认 `"never"` 选项的**正确**示例：
 
 :::correct
 
@@ -110,7 +107,7 @@ var [,,x,] = z;
 
 ### always
 
-Examples of **incorrect** code for this rule with the `"always"` option:
+使用此规则与 `"always"` 选项的**错误**示例：
 
 :::incorrect
 
@@ -136,7 +133,7 @@ var [,,x,] = z;
 
 :::
 
-Examples of **correct** code for this rule with the `"always"` option:
+使用此规则与 `"always"` 选项的**正确**示例：
 
 :::correct
 
@@ -169,7 +166,7 @@ var [ ,,x, ] = z;
 
 ### singleValue
 
-Examples of **incorrect** code for this rule with the `"always", { "singleValue": false }` options:
+使用此规则与 `"always", { "singleValue": false }` 选项的**错误**示例：
 
 :::incorrect
 
@@ -188,7 +185,7 @@ var foo = [ { 'foo': 'bar' } ];
 
 :::
 
-Examples of **correct** code for this rule with the `"always", { "singleValue": false }` options:
+使用此规则与 `"always", { "singleValue": false }` 选项的**正确**示例：
 
 :::correct
 
@@ -205,7 +202,7 @@ var foo = [{ 'foo': 'bar' }];
 
 ### objectsInArrays
 
-Examples of **incorrect** code for this rule with the `"always", { "objectsInArrays": false }` options:
+使用此规则与 `"always", { "objectsInArrays": false }` 选项的**错误**示例：
 
 :::incorrect
 
@@ -220,7 +217,7 @@ var arr = [ {
 
 :::
 
-Examples of **correct** code for this rule with the `"always", { "objectsInArrays": false }` options:
+使用此规则与 `"always", { "objectsInArrays": false }` 选项的**正确**示例：
 
 :::correct
 
@@ -237,7 +234,7 @@ var arr = [{
 
 ### arraysInArrays
 
-Examples of **incorrect** code for this rule with the `"always", { "arraysInArrays": false }` options:
+使用此规则与 `"always", { "arraysInArrays": false }` 选项的**错误**示例：
 
 :::incorrect
 
@@ -250,7 +247,7 @@ var arr = [ [ 1, 2 ], 2, [ 3, 4 ] ];
 
 :::
 
-Examples of **correct** code for this rule with the `"always", { "arraysInArrays": false }` options:
+使用此规则与 `"always", { "arraysInArrays": false }` 选项的**正确**示例：
 
 :::correct
 
@@ -263,6 +260,6 @@ var arr = [[ 1, 2 ], 2, [ 3, 4 ]];
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-You can turn this rule off if you are not concerned with the consistency of spacing between array brackets.
+如果你不关心数组括号之间间距的一致性，你可以关闭这个规则。

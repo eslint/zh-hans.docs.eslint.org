@@ -5,21 +5,21 @@ edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/arro
 rule_type: suggestion
 ---
 
-Arrow functions have two syntactic forms for their function bodies.  They may be defined with a *block* body (denoted by curly braces) `() => { ... }` or with a single expression `() => ...`, whose value is implicitly returned.
+箭头函数的函数体有两种语法形式。 它们可以用 *block* （用大括号表示）`() => { ... }` 或者用一个单一的表达式 `() => ...`，其值被隐含地返回。
 
-## Rule Details
+## 规则细节
 
-This rule can enforce or disallow the use of braces around arrow function body.
+这个规则可以强制或不允许在箭头函数体周围使用大括号。
 
-## Options
+## 选项
 
-The rule takes one or two options. The first is a string, which can be:
+该规则有一个或两个选项。第一个是字符串，它可以是:
 
-* `"always"` enforces braces around the function body
-* `"as-needed"` enforces no braces where they can be omitted (default)
-* `"never"` enforces no braces around the function body (constrains arrow functions to the role of returning an expression)
+* `"always"` 在函数体周围执行大括号。
+* `"as-need"` 在可以省略的地方不使用大括号（缺省）。
+* `"never"` 在函数主体周围不使用大括号（将箭头函数限制在返回表达式的角色）。
 
-The second one is an object for more fine-grained configuration when the first option is `"as-needed"`. Currently, the only available option is `requireReturnForObjectLiteral`, a boolean property. It's `false` by default. If set to `true`, it requires braces and an explicit return for object literals.
+当第一个选项是 `"as-needed"` 时，第二个是对象，用于更精细的配置。目前，唯一可用的选项是 `requireReturnForObjectLiteral`，布尔值。它默认为 `false`。如果设置为 `true`，返回需要大括号和一个明确的对象字面量。
 
 ```json
 "arrow-body-style": ["error", "always"]
@@ -27,7 +27,7 @@ The second one is an object for more fine-grained configuration when the first o
 
 ### always
 
-Examples of **incorrect** code for this rule with the `"always"` option:
+使用此规则与 `"always"` 选项的**错误**示例：
 
 :::incorrect
 
@@ -39,7 +39,7 @@ let foo = () => 0;
 
 :::
 
-Examples of **correct** code for this rule with the `"always"` option:
+使用此规则与 `"always"` 选项的**正确**示例：
 
 :::correct
 
@@ -57,7 +57,7 @@ let foo = (retv, name) => {
 
 ### as-needed
 
-Examples of **incorrect** code for this rule with the default `"as-needed"` option:
+使用此规则与默认 `"as-needed"` 选项的**错误**示例：
 
 :::incorrect
 
@@ -80,7 +80,7 @@ let foo = () => {
 
 :::
 
-Examples of **correct** code for this rule with the default `"as-needed"` option:
+使用此规则与默认 `"as-needed"` 选项的**正确**示例：
 
 :::correct
 
@@ -112,9 +112,9 @@ let foo = () => ({ bar: 0 });
 
 #### requireReturnForObjectLiteral
 
-> This option is only applicable when used in conjunction with the `"as-needed"` option.
+> 该选项只在与 "按需 "选项一起使用时适用。
 
-Examples of **incorrect** code for this rule with the `{ "requireReturnForObjectLiteral": true }` option:
+使用此规则与 `{ "requireReturnForObjectLiteral": true }` 选项的**错误**示例：
 
 :::incorrect
 
@@ -127,7 +127,7 @@ let foo = () => ({ bar: 0 });
 
 :::
 
-Examples of **correct** code for this rule with the `{ "requireReturnForObjectLiteral": true }` option:
+使用此规则与 `{ "requireReturnForObjectLiteral": true }` 选项的**正确**示例：
 
 :::correct
 
@@ -143,7 +143,7 @@ let foo = () => { return { bar: 0 }; };
 
 ### never
 
-Examples of **incorrect** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**错误**示例：
 
 :::incorrect
 
@@ -162,7 +162,7 @@ let foo = (retv, name) => {
 
 :::
 
-Examples of **correct** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**正确**示例：
 
 :::correct
 

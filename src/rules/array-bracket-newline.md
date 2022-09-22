@@ -7,30 +7,28 @@ related_rules:
 - array-bracket-spacing
 ---
 
+一些风格指南要求或不允许在数组括号内换行。
 
+## 规则细节
 
-A number of style guides require or disallow line breaks inside of array brackets.
+这条规则在数组括号的开头和结尾之前都会执行换行。
 
-## Rule Details
+## 选项
 
-This rule enforces line breaks after opening and before closing array brackets.
+这条规则有一个字符串选项：
 
-## Options
+* `"always"` 需要括号内的换行符
+* `"never"` 不允许在括号内换行。
+* `"consistent"` 需要对每一对方括号一致使用换行符。如果一对括号中的一个括号内有换行符，而另一个括号内没有，则报错。
 
-This rule has either a string option:
+或一个对象选项（如果满足任何属性，则需要换行。否则，不允许换行）。
 
-* `"always"` requires line breaks inside brackets
-* `"never"` disallows line breaks inside brackets
-* `"consistent"` requires consistent usage of linebreaks for each pair of brackets. It reports an error if one bracket in the pair has a linebreak inside it and the other bracket does not.
-
-Or an object option (Requires line breaks if any of properties is satisfied. Otherwise, disallows line breaks):
-
-* `"multiline": true` (default) requires line breaks if there are line breaks inside elements or between elements. If this is false, this condition is disabled.
-* `"minItems": null` (default) requires line breaks if the number of elements is at least the given integer. If this is 0, this condition will act the same as the option `"always"`. If this is `null` (the default), this condition is disabled.
+* `"multiline": true`（默认值）如果元素内部或元素之间有换行，则需要换行。如果是假的，这个条件就被禁用。
+* `"minItems": null`（默认值）如果元素的数量至少是给定的整数，则需要换行。如果是 0，这个条件与选项 `"always"`的作用相同。如果是 `null`（默认），这个条件将被禁用。
 
 ### always
 
-Examples of **incorrect** code for this rule with the `"always"` option:
+使用此规则与 `"always"` 选项的**错误**示例：
 
 :::incorrect
 
@@ -49,7 +47,7 @@ var e = [function foo() {
 
 :::
 
-Examples of **correct** code for this rule with the `"always"` option:
+使用此规则与 `"always"` 选项的**正确**示例：
 
 :::correct
 
@@ -79,7 +77,7 @@ var e = [
 
 ### never
 
-Examples of **incorrect** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**错误**示例：
 
 :::incorrect
 
@@ -107,7 +105,7 @@ var e = [
 
 :::
 
-Examples of **correct** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**正确**示例：
 
 :::correct
 
@@ -128,7 +126,7 @@ var e = [function foo() {
 
 ### consistent
 
-Examples of **incorrect** code for this rule with the `"consistent"` option:
+使用此规则与 `"consistent"` 选项的**错误**示例：
 
 :::incorrect
 
@@ -151,7 +149,7 @@ var d = [
 
 :::
 
-Examples of **correct** code for this rule with the `"consistent"` option:
+使用此规则与 `"consistent"` 选项的**正确**示例：
 
 :::correct
 
@@ -179,7 +177,7 @@ var f = [
 
 ### multiline
 
-Examples of **incorrect** code for this rule with the default `{ "multiline": true }` option:
+使用此规则与默认 `{ "multiline": true }` 选项的**错误**示例：
 
 :::incorrect
 
@@ -203,7 +201,7 @@ var e = [function foo() {
 
 :::
 
-Examples of **correct** code for this rule with the default `{ "multiline": true }` option:
+使用此规则与默认 `{ "multiline": true }` 选项的**正确**示例：
 
 :::correct
 
@@ -228,7 +226,7 @@ var e = [
 
 ### minItems
 
-Examples of **incorrect** code for this rule with the `{ "minItems": 2 }` option:
+使用此规则与 `{ "minItems": 2 }` 选项的**错误**示例：
 
 :::incorrect
 
@@ -252,7 +250,7 @@ var e = [
 
 :::
 
-Examples of **correct** code for this rule with the `{ "minItems": 2 }` option:
+使用此规则与 `{ "minItems": 2 }` 选项的**正确**示例：
 
 :::correct
 
@@ -277,7 +275,7 @@ var e = [function foo() {
 
 ### multiline and minItems
 
-Examples of **incorrect** code for this rule with the `{ "multiline": true, "minItems": 2 }` options:
+使用此规则与 `{ "multiline": true, "minItems": 2 }` 选项的**错误**示例：
 
 :::incorrect
 
@@ -299,7 +297,7 @@ var e = [function foo() {
 
 :::
 
-Examples of **correct** code for this rule with the `{ "multiline": true, "minItems": 2 }` options:
+使用此规则与 `{ "multiline": true, "minItems": 2 }` 选项的**正确**示例：
 
 :::correct
 
@@ -324,10 +322,10 @@ var e = [
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't want to enforce line breaks after opening and before closing array brackets, don't enable this rule.
+如果你不想在打开数组括号后和关闭数组括号前执行换行，就不要启用这个规则。
 
-## Compatibility
+## 兼容
 
-* **JSCS:** [validateNewlineAfterArrayElements](https://jscs-dev.github.io/rule/validateNewlineAfterArrayElements)
+* **JSCS**：[validateNewlineAfterArrayElements](https://jscs-dev.github.io/rule/validateNewlineAfterArrayElements)
