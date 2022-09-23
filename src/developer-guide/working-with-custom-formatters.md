@@ -1,16 +1,16 @@
 ---
-title: 使用自定义格式化工具
+title: 创建自定义格式化工具
 layout: doc
 edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/developer-guide/working-with-custom-formatters.md
 eleventyNavigation:
     key: working with custom formatters
     parent: developer guide
-    title: 使用自定义格式化工具
+    title: 创建自定义格式化工具
     order: 6
 
 ---
 
-虽然 ESLint 有一些内置的格式化工具可用于格式化品管结果，但也有可能创建和发布你自己的自定义格式化工具。你可以在你的项目中直接包含自定义格式化工具，或者创建 npm 包来单独分发它们。
+虽然 ESLint 有一些内置的格式化工具可用于格式化检测结果，但也有可能创建和发布你自己的自定义格式化工具。你可以在你的项目中直接包含自定义格式化工具，或者创建 npm 包来单独分发它们。
 
 每个格式化工具都只是一个函数，接收 `results` 对象和 `context` 并返回字符串。例如，下面是`json`内置格式化工具的实现方式。
 

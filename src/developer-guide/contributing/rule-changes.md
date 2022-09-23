@@ -5,22 +5,22 @@ edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/developer-
 
 ---
 
-Occasionally, a core ESLint rule needs to be changed. This is not necessarily a bug, but rather, an enhancement that makes a rule more configurable. In those situations, we will consider making changes to rules.
+有时需要修改 ESLint 核心规则。这不一定是一个错误，而是一个使规则更加可配置的增强。在这些情况下，我们会考虑对规则进行修改。
 
-## Proposing a Rule Change
+## 提出一个规则的改变
 
-To propose a change to an existing rule, [create a pull request](/docs/developer-guide/contributing/pull-requests) or [new issue](https://github.com/eslint/eslint/issues/new/choose) and fill out the template.
+要提议对现有规则进行修改，请[创建拉取请求](/docs/developer-guide/contributing/pull-requests)或[新议题](https://github.com/eslint/eslint/issues/new/choose)并填写模板。
 
-We need all of this information in order to determine whether or not the change is a good candidate for inclusion.
+我们需要所有这些信息，以确定该变化是否是一个很好的纳入候选者。
 
-## Accepting a Rule Change
+## 接受规则变更
 
-In order for a rule change to be accepted into ESLint, it must:
+为了使规则变更被 ESLint 接受，它必须：
 
-1. Adhere to the [Core Rule Guidelines](new-rules#core-rule-guidelines)
-1. Have an ESLint team member champion the change
-1. Be important enough that rule is deemed incomplete without this change
+1. 遵守 [核心规则指南](new-rules#core-rule-guidelines)
+1. 有一名 ESLint 团队成员支持该更改。
+1. 足够重要，如果没有这个变化，规则被认为是不完整的。
 
-## Implementation is Your Responsibility
+## 实施是你的责任
 
-The ESLint team doesn't implement rule changes that are suggested by users because we have a limited number of people and need to focus on the overall roadmap. Once a rule change is accepted, you are responsible for implementing and documenting it. You may, alternately, recruit another person to help you. The ESLint team member who championed the rule is your resource to help guide you through the rest of this process.
+ESLint 团队不实施用户建议的规则变化，因为我们的人数有限，需要关注整体路线图。一旦一个规则的改变被接受，你将负责实施并记录它。你也可以招募另一个人帮助你。倡导该规则的 ESLint 团队成员是你的资源，可以帮助指导你完成这个过程的其余部分。

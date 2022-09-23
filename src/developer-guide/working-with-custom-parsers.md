@@ -1,11 +1,11 @@
 ---
-title: 使用自定义解析器
+title: 创建自定义解析器
 layout: doc
 edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/developer-guide/working-with-custom-parsers.md
 eleventyNavigation:
     key: working with custom parsers
     parent: developer guide
-    title: 自定义解析器
+    title: 创建自定义解析器
     order: 7
 
 ---
