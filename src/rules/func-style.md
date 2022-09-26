@@ -7,8 +7,7 @@ further_reading:
 - https://www.adequatelygood.com/JavaScript-Scoping-and-Hoisting.html
 ---
 
-
-There are two ways of defining functions in JavaScript: `function` declarations and `function` expressions. Declarations contain the `function` keyword first, followed by a name and then its arguments and the function body, for example:
+在 JavaScript 中，有两种定义函数的方法。`function` 声明和 `function` 表达式。声明中首先包含 `function` 关键字，然后是名称，接着是其参数和函数体，例如：
 
 ```js
 function doSomething() {
@@ -16,7 +15,7 @@ function doSomething() {
 }
 ```
 
-Equivalent function expressions begin with the `var` keyword, followed by a name and then the function itself, such as:
+相等的函数表达式以 `var` 关键字开始，后面是名称，然后是函数本身，如：
 
 ```js
 var doSomething = function() {
@@ -24,7 +23,7 @@ var doSomething = function() {
 };
 ```
 
-The primary difference between `function` declarations and `function expressions` is that declarations are *hoisted* to the top of the scope in which they are defined, which allows you to write code that uses the function before its declaration. For example:
+`function` 声明和 `function expressions` 之间的主要区别是，声明被*&提升**到定义它们的作用域的顶部，这允许你在声明之前编写使用该函数的代码。比如说：
 
 ```js
 doSomething();
@@ -34,9 +33,9 @@ function doSomething() {
 }
 ```
 
-Although this code might seem like an error, it actually works fine because JavaScript engines hoist the `function` declarations to the top of the scope. That means this code is treated as if the declaration came before the invocation.
+虽然这段代码看起来像个错误，但实际上它工作得很好，因为 JavaScript 引擎将 `function` 声明提升到了作用域的顶端。这意味着这段代码被当作是在调用之前的声明。
 
-For `function` expressions, you must define the function before it is used, otherwise it causes an error. Example:
+对于 `function` 表达式，你必须在使用前定义函数，否则会导致错误。比如：
 
 ```js
 doSomething();  // error!
@@ -46,28 +45,28 @@ var doSomething = function() {
 };
 ```
 
-In this case, `doSomething()` is undefined at the time of invocation and so causes a runtime error.
+在这种情况下，`doSomething()` 在调用时是未定义的，所以会引起运行时错误。
 
-Due to these different behaviors, it is common to have guidelines as to which style of function should be used. There is really no correct or incorrect choice here, it is just a preference.
+由于这些不同的行为，通常会有指导原则，说明应该使用哪种风格的函数。这里真的没有正确或不正确的选择，这只是一种偏好。
 
-## Rule Details
+## 规则细节
 
-This rule enforces a particular type of `function` style throughout a JavaScript file, either declarations or expressions. You can specify which you prefer in the configuration.
+这个规则在整个 JavaScript 文件中强制执行一种特定类型的 `function` 风格，要么是声明，要么是表达式。你可以在配置中指定你喜欢哪一种。
 
-## Options
+## 选项
 
-This rule has a string option:
+此规则选项为字符串：
 
-* `"expression"` (default) requires the use of function expressions instead of function declarations
-* `"declaration"` requires the use of function declarations instead of function expressions
+* `"表达式"`（默认值）要求使用函数表达式而不是函数声明。
+* `"声明"`要求使用函数声明而不是函数表达式。
 
-This rule has an object option for an exception:
+此规则有用于例外情况的对象选项：
 
-* `"allowArrowFunctions"`: `true` (default `false`) allows the use of arrow functions. This option applies only when the string option is set to `"declaration"` (arrow functions are always allowed when the string option is set to `"expression"`, regardless of this option)
+* `"allowArrowFunctions"`：`true`（默认为 `false`）允许使用箭头函数。这个选项只适用于字符串选项被设置为 `"declaration"` 时（当字符串选项被设置为 `"expression"` 时，总是允许箭头函数，与这个选项无关）。
 
 ### expression
 
-Examples of **incorrect** code for this rule with the default `"expression"` option:
+使用此规则与默认的 `"expression"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -81,7 +80,7 @@ function foo() {
 
 :::
 
-Examples of **correct** code for this rule with the default `"expression"` option:
+使用此规则与默认的 `"expression"` 选项的**正确**示例：
 
 ::: correct
 
@@ -101,7 +100,7 @@ var foo = () => {};
 
 ### declaration
 
-Examples of **incorrect** code for this rule with the `"declaration"` option:
+使用此规则与 `"declaration"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -117,7 +116,7 @@ var foo = () => {};
 
 :::
 
-Examples of **correct** code for this rule with the `"declaration"` option:
+使用此规则与 `"declaration"` 选项的**正确**示例：
 
 ::: correct
 
@@ -138,7 +137,7 @@ SomeObject.foo = function() {
 
 ### allowArrowFunctions
 
-Examples of additional **correct** code for this rule with the `"declaration", { "allowArrowFunctions": true }` options:
+使用此规则与额外的 ` "declaration", { "allowArrowFunctions": true }` 选项的**正确**示例:
 
 ::: correct
 
@@ -150,6 +149,6 @@ var foo = () => {};
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you want to allow developers to each decide how they want to write functions on their own, then you can disable this rule.
+如果你想让开发人员各自决定自己如何编写函数，那么你可以禁用这一规则。

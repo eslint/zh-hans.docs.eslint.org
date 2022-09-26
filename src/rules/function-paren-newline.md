@@ -5,26 +5,24 @@ edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/func
 rule_type: layout
 ---
 
+许多风格指南要求或不允许在函数括号内使用换行符。
 
+## 规则细节
 
-Many style guides require or disallow newlines inside of function parentheses.
+这条规则使函数参数或参数的括号内的换行符一致。
 
-## Rule Details
+### 选项
 
-This rule enforces consistent line breaks inside parentheses of function parameters or arguments.
+这条规则有一个选项，可以是一个字符串，也可以是一个对象。
 
-### Options
+* `"always"` 要求在所有函数的括号内换行。
+* `"never"` 不允许在所有函数括号内换行。
+* `"multiline"`（默认值）要求在函数括号内换行，如果任何参数之间有换行。否则，它不允许使用换行符。
+* `"multiline-arguments"` 与 `multiline` 的工作方式相同，但如果只有一个参数，则允许在函数括号内划线。
+* `"consistent"` 要求每对小括号一致使用换行符。如果一对小括号中的一个小括号内有换行符，而另一个小括号没有，则报告错误。
+* `{ "minItems": value }` 如果参数/参数的数量至少为 `value`，则要求在函数小括号内使用换行符。否则，它不允许使用换行符。
 
-This rule has a single option, which can either be a string or an object.
-
-* `"always"` requires line breaks inside all function parentheses.
-* `"never"` disallows line breaks inside all function parentheses.
-* `"multiline"` (default) requires linebreaks inside function parentheses if any of the parameters/arguments have a line break between them. Otherwise, it disallows linebreaks.
-* `"multiline-arguments"` works like `multiline` but allows linebreaks inside function parentheses if there is only one parameter/argument.
-* `"consistent"` requires consistent usage of linebreaks for each pair of parentheses. It reports an error if one parenthesis in the pair has a linebreak inside it and the other parenthesis does not.
-* `{ "minItems": value }` requires linebreaks inside function parentheses if the number of parameters/arguments is at least `value`. Otherwise, it disallows linebreaks.
-
-Example configurations:
+配置示例：
 
 ```json
 {
@@ -42,7 +40,7 @@ Example configurations:
 }
 ```
 
-Examples of **incorrect** code for this rule with the `"always"` option:
+使用此规则与 `"always"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -60,7 +58,7 @@ foo(bar, baz);
 
 :::
 
-Examples of **correct** code for this rule with the `"always"` option:
+使用此规则与 `"always"` 选项的**正确**示例：
 
 ::: correct
 
@@ -89,7 +87,7 @@ foo(
 
 :::
 
-Examples of **incorrect** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -118,7 +116,7 @@ foo(
 
 :::
 
-Examples of **correct** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**正确**示例：
 
 ::: correct
 
@@ -142,7 +140,7 @@ foo(bar,
 
 :::
 
-Examples of **incorrect** code for this rule with the default `"multiline"` option:
+使用此规则与默认的 `"multiline"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -173,7 +171,7 @@ foo(
 
 :::
 
-Examples of **correct** code for this rule with the default `"multiline"` option:
+使用此规则与默认的 `"multiline"` 选项的**正确**示例：
 
 ::: correct
 
@@ -204,7 +202,7 @@ foo(function() {
 
 :::
 
-Examples of **incorrect** code for this rule with the `"consistent"` option:
+使用此规则与 `"consistent"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -235,7 +233,7 @@ foo(
 
 :::
 
-Examples of **correct** code for this rule with the `"consistent"` option:
+使用此规则与 `"consistent"` 选项的**正确**示例：
 
 ::: correct
 
@@ -265,7 +263,7 @@ foo(
 
 :::
 
-Examples of **incorrect** code for this rule with the `"multiline-arguments"` option:
+使用此规则与 `"multiline-arguments"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -296,7 +294,7 @@ foo(
 
 :::
 
-Examples of **correct** code for this rule with the consistent `"multiline-arguments"` option:
+使用此规则与 consistent `"multiline-arguments"` 选项的**正确**示例：
 
 ::: correct
 
@@ -323,7 +321,7 @@ foo(
 
 :::
 
-Examples of **incorrect** code for this rule with the `{ "minItems": 3 }` option:
+使用此规则与 `{ "minItems": 3 }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -350,7 +348,7 @@ foo(bar,
 
 :::
 
-Examples of **correct** code for this rule with the `{ "minItems": 3 }` option:
+使用此规则与 `{ "minItems": 3 }` 选项的**正确**示例：
 
 ::: correct
 
@@ -378,6 +376,6 @@ foo(
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If don't want to enforce consistent linebreaks inside function parentheses, do not turn on this rule.
+如果不想在函数括号内使用风格一致的换行符，就不要开启这个规则。

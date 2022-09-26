@@ -6,14 +6,14 @@ further_reading:
 - https://leanpub.com/understandinges6/read/#leanpub-auto-generators
 ---
 
-Enforces consistent spacing around the asterisk in generator functions.
+在生成器函数中强制执行星号周围的一致间距。
 
-(removed) This rule was **removed** in ESLint v1.0 and **replaced** by the [generator-star-spacing](generator-star-spacing) rule.
+（已移除）此规则在 ESLint v1.0 中移除并被 [generator-star-spacing](generator-star-spacing) 所取代。
 
-Generators are a new type of function in ECMAScript 6 that can return multiple values over time.
-These special functions are indicated by placing an `*` after the `function` keyword.
+生成器是 ECMAScript 6 中一种新的函数类型，可以同时返回多个值。
+这些特殊的函数是通过在 `function` 关键字后面加上 `"*` 来表示的。
 
-Here is an example of a generator function:
+下面是生成器函数的示例：
 
 ```js
 /*eslint-env es6*/
@@ -24,7 +24,7 @@ function* generator() {
 }
 ```
 
-This is also valid:
+这也可以：
 
 ```js
 /*eslint-env es6*/
@@ -35,7 +35,7 @@ function *generator() {
 }
 ```
 
-This is valid as well:
+这还是可以：
 
 ```js
 /*eslint-env es6*/
@@ -46,21 +46,19 @@ function * generator() {
 }
 ```
 
-To keep a sense of consistency when using generators this rule enforces a single position for the `*`.
+为了在使用生成器时保持一致性，本规则为 `*`强 制执行单一位置。
 
-## Rule Details
+## 规则细节
 
-This rule enforces that the `*` is either placed next to the `function` keyword or the name of the function. The single
-option for this rule is a string specifying the placement of the asterisk. For this option you may pass
-`"start"`, `"middle"` or `"end"`. The default is `"end"`.
+这条规则规定，`*` 要么放在 `function` 关键字旁边，要么放在函数名称旁边。这个规则的单一 选项是一个指定星号位置的字符串。对于这个选项，你可以通过 `"start"`，`"middle"` 或`"end"`。默认是 `"end"`。
 
-You can set the style in configuration like this:
+你可以像这样在配置中设置样式：
 
 ```json
 "generator-star": ["error", "start"]
 ```
 
-When using `"start"` this placement will be enforced:
+当使用 `"start"`时，这个位置将被强制执行。
 
 ```js
 /*eslint-env es6*/
@@ -69,7 +67,7 @@ function* generator() {
 }
 ```
 
-When using `"middle"` this placement will be enforced:
+当使用 "中间 "时，这个位置将被强制执行。
 
 ```js
 /*eslint-env es6*/
@@ -78,7 +76,7 @@ function * generator() {
 }
 ```
 
-When using `"end"` this placement will be enforced:
+当使用 "结束 "时，这个位置将被强制执行。
 
 ```js
 /*eslint-env es6*/
@@ -87,7 +85,7 @@ function *generator() {
 }
 ```
 
-When using the expression syntax `"start"` will be enforced here:
+当使用表达式语法时，""开始""将在这里被强制执行。
 
 ```js
 /*eslint-env es6*/
@@ -96,7 +94,7 @@ var generator = function* () {
 }
 ```
 
-When using the expression syntax `"middle"` will be enforced here:
+当使用表达式语法时，""中间""将在这里被强制执行。
 
 ```js
 /*eslint-env es6*/
@@ -105,7 +103,7 @@ var generator = function * () {
 }
 ```
 
-When using the expression syntax `"end"` will be enforced here:
+当使用表达式语法时，将强制执行 `"end"`：
 
 ```js
 /*eslint-env es6*/
@@ -114,7 +112,7 @@ var generator = function *() {
 }
 ```
 
-When using the expression syntax this is valid for both `"start"` and `"end"`:
+当使用表达式语法时，这对 ``"start"` 和 `"end"` 都有效：
 
 ```js
 /*eslint-env es6*/
@@ -123,8 +121,8 @@ var generator = function*() {
 }
 ```
 
-The shortened object literal syntax for generators is not affected by this rule.
+生成器的缩短的对象字面语法不受此规则影响。
 
-## When Not To Use It
+## 何时不用
 
-If your project will not be using generators you do not need this rule.
+如果你的项目将不使用生成器，你就不需要这个规则。

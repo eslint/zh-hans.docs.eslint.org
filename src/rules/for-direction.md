@@ -5,13 +5,11 @@ edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/for-
 rule_type: problem
 ---
 
+## 规则细节
 
+一个有停止条件的 `for` 循环永远不会达到，比如一个向错误方向移动的计数器，将无限地运行。虽然在某些情况下会出现无限循环，但惯例是将这种循环构造为 `while` 循环。更典型的是，无限 for 循环是一个错误。
 
-## Rule Details
-
-A `for` loop with a stop condition that can never be reached, such as one with a counter that moves in the wrong direction, will run infinitely. While there are occasions when an infinite loop is intended, the convention is to construct such loops as `while` loops. More typically, an infinite for loop is a bug.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 :::incorrect
 
@@ -29,7 +27,7 @@ for (var i = 0; i > 10; i++) {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 :::correct
 

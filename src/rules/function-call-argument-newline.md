@@ -10,25 +10,23 @@ related_rules:
 - array-element-newline
 ---
 
+一些风格指南要求或不允许在函数调用的参数之间换行。
 
+## 规则细节
 
-A number of style guides require or disallow line breaks between arguments of a function call.
+这条规则强制要求在函数调用的参数之间进行换行。
 
-## Rule Details
+## 选项
 
-This rule enforces line breaks between arguments of a function call.
+此规则选项为字符串：
 
-## Options
-
-This rule has a string option:
-
-* `"always"` (default) requires line breaks between arguments
-* `"never"` disallows line breaks between arguments
-* `"consistent"` requires consistent usage of line breaks between arguments
+* `"always"`（默认值）要求参数之间有换行符
+* `"never"` 不允许参数之间有换行符
+* `"consistent"` 要求参数之间一致使用换行符
 
 ### always
 
-Examples of **incorrect** code for this rule with the default `"always"` option:
+使用此规则与默认的 `"always"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -49,7 +47,7 @@ baz("one", "two", (x) => {
 
 :::
 
-Examples of **correct** code for this rule with the default `"always"` option:
+使用此规则与默认的 `"always"` 选项的**正确**示例：
 
 ::: correct
 
@@ -67,7 +65,7 @@ bar(
     "two",
     { one: 1, two: 2 }
 );
-// or
+// 或
 bar(
     "one",
     "two",
@@ -90,7 +88,7 @@ baz(
 
 ### never
 
-Examples of **incorrect** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -120,7 +118,7 @@ baz(
 
 :::
 
-Examples of **correct** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**正确**示例：
 
 ::: correct
 
@@ -128,13 +126,13 @@ Examples of **correct** code for this rule with the `"never"` option:
 /*eslint function-call-argument-newline: ["error", "never"]*/
 
 foo("one", "two", "three");
-// or
+// 或
 foo(
     "one", "two", "three"
 );
 
 bar("one", "two", { one: 1, two: 2 });
-// or
+// 或
 bar("one", "two", {
     one: 1,
     two: 2
@@ -149,7 +147,7 @@ baz("one", "two", (x) => {
 
 ### consistent
 
-Examples of **incorrect** code for this rule with the `"consistent"` option:
+使用此规则与 `"consistent"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -173,7 +171,7 @@ baz("one", "two",
 
 :::
 
-Examples of **correct** code for this rule with the `"consistent"` option:
+使用此规则与 `"consistent"` 选项的**正确**示例：
 
 ::: correct
 
@@ -181,7 +179,7 @@ Examples of **correct** code for this rule with the `"consistent"` option:
 /*eslint function-call-argument-newline: ["error", "consistent"]*/
 
 foo("one", "two", "three");
-// or
+// 或
 foo(
     "one",
     "two",
@@ -192,13 +190,13 @@ bar("one", "two", {
     one: 1,
     two: 2
 });
-// or
+// 或
 bar(
     "one",
     "two",
     { one: 1, two: 2 }
 );
-// or
+// 或
 bar(
     "one",
     "two",
@@ -211,7 +209,7 @@ bar(
 baz("one", "two", (x) => {
     console.log(x);
 });
-// or
+// 或
 baz(
     "one",
     "two",
@@ -223,6 +221,6 @@ baz(
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't want to enforce line breaks between arguments, don't enable this rule.
+如果你不想在参数之间实行换行，就不要启用这条规则。

@@ -8,41 +8,40 @@ further_reading:
 - https://2ality.com/2015/09/function-names-es6.html
 ---
 
-
-A pattern that's becoming more common is to give function expressions names to aid in debugging. For example:
+一个越来越常见的模式是给函数表达式命名，以帮助调试。比如说：
 
 ```js
 Foo.prototype.bar = function bar() {};
 ```
 
-Adding the second `bar` in the above example is optional.  If you leave off the function name then when the function throws an exception you are likely to get something similar to `anonymous function` in the stack trace.  If you provide the optional name for a function expression then you will get the name of the function expression in the stack trace.
+在上面的例子中，添加第二个 `bar` 是可选的。如果你不写函数名，那么当函数抛出异常时，你可能会在堆栈跟踪中得到类似于 `anonymous function` 的东西。如果你为一个函数表达式提供了选项名称，那么你将在堆栈跟踪中得到函数表达式的名称。
 
-## Rule Details
+## 规则细节
 
-This rule can enforce or disallow the use of named function expressions.
+这个规则可以强制或不允许使用命名的函数表达式。
 
-## Options
+## 选项
 
-This rule has a string option:
+此规则选项为字符串：
 
-* `"always"` (default) requires function expressions to have a name
-* `"as-needed"` requires function expressions to have a name, if the name isn't assigned automatically per the ECMAScript specification.
-* `"never"` disallows named function expressions, except in recursive functions, where a name is needed
+* `"always"`（默认值）要求函数表达式有一个名字。
+* `"as-needed"`要求函数表达式有一个名字，如果名字没有按照 ECMAScript 规范自动分配的话。
+* `"never"` 不允许命名的函数表达式，除非在递归函数中，需要一个名字。
 
-This rule has an object option:
+此规则选项为对象：
 
 * `"generators": "always" | "as-needed" | "never"`
-    * `"always"` require named generators
-    * `"as-needed"` require named generators if the name isn't assigned automatically per the ECMAScript specification.
-    * `"never"` disallow named generators where possible.
+    * `"always"` 要求命名的生成器
+    * `"as-needed"` 如果名字没有按照 ECMAScript 规范自动分配，则需要命名的生成器。
+    * `"never"` 在可能的情况下不允许命名生成器。
 
-When a value for `generators` is not provided the behavior for generator functions falls back to the base option.
+当没有提供 `generators` 值时，生成器函数的行为就会回到基本选项。
 
-Please note that `"always"` and `"as-needed"` require function expressions and function declarations in `export default` declarations to have a name.
+请注意，`"always"` 和 `"as-needed"` 要求函数表达式和  `export default` 声明中的函数声明必须有名字。
 
 ### always
 
-Examples of **incorrect** code for this rule with the default `"always"` option:
+使用此规则与默认的 `"always"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -64,7 +63,7 @@ export default function() {}
 
 :::
 
-Examples of **correct** code for this rule with the default `"always"` option:
+使用此规则与默认的 `"always"` 选项的**正确**示例：
 
 ::: correct
 
@@ -88,9 +87,9 @@ export default function foo() {}
 
 ### as-needed
 
-ECMAScript 6 introduced a `name` property on all functions. The value of `name` is determined by evaluating the code around the function to see if a name can be inferred. For example, a function assigned to a variable will automatically have a `name` property equal to the name of the variable. The value of `name` is then used in stack traces for easier debugging.
+ECMAScript 6 在所有函数上引入了 `name` 属性。`name` 的值是通过评估函数周围的代码来确定的，看是否可以推断出一个名字。例如，分配给一个变量的函数将自动拥有一个等于该变量名称的 `name` 属性。然后，`name` 的值被用于堆栈跟踪，以方便调试。
 
-Examples of **incorrect** code for this rule with the `"as-needed"` option:
+使用此规则与 `"as-needed"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -108,7 +107,7 @@ export default function() {}
 
 :::
 
-Examples of **correct** code for this rule with the `"as-needed"` option:
+使用此规则与 `"as-needed"` 选项的**正确**示例：
 
 ::: correct
 
@@ -139,7 +138,7 @@ export default function foo() {}
 
 ### never
 
-Examples of **incorrect** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -155,7 +154,7 @@ Foo.prototype.bar = function bar() {};
 
 :::
 
-Examples of **correct** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**正确**示例：
 
 ::: correct
 
@@ -173,7 +172,7 @@ Foo.prototype.bar = function() {};
 
 ### generators
 
-Examples of **incorrect** code for this rule with the `"always", { "generators": "as-needed" }` options:
+使用此规则与 `"always", { "generators": "as-needed" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -187,7 +186,7 @@ Examples of **incorrect** code for this rule with the `"always", { "generators":
 
 :::
 
-Examples of **correct** code for this rule with the `"always", { "generators": "as-needed" }` options:
+使用此规则与 `"always", { "generators": "as-needed" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -199,7 +198,7 @@ var foo = function*() {};
 
 :::
 
-Examples of **incorrect** code for this rule with the `"always", { "generators": "never" }` options:
+使用此规则与 `"always", { "generators": "never" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -211,7 +210,7 @@ var foo = bar(function *baz() {});
 
 :::
 
-Examples of **correct** code for this rule with the `"always", { "generators": "never" }` options:
+使用此规则与 `"always", { "generators": "never" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -223,7 +222,7 @@ var foo = bar(function *() {});
 
 :::
 
-Examples of **incorrect** code for this rule with the `"as-needed", { "generators": "never" }` options:
+使用此规则与 `"as-needed", { "generators": "never" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -235,7 +234,7 @@ var foo = bar(function *baz() {});
 
 :::
 
-Examples of **correct** code for this rule with the `"as-needed", { "generators": "never" }` options:
+使用此规则与 `"as-needed", { "generators": "never" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -247,7 +246,7 @@ var foo = bar(function *() {});
 
 :::
 
-Examples of **incorrect** code for this rule with the `"never", { "generators": "always" }` options:
+使用此规则与 `"never", { "generators": "always" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -259,7 +258,7 @@ var foo = bar(function *() {});
 
 :::
 
-Examples of **correct** code for this rule with the `"never", { "generators": "always" }` options:
+使用此规则与 `"never", { "generators": "always" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -271,7 +270,7 @@ var foo = bar(function *baz() {});
 
 :::
 
-## Compatibility
+## 兼容
 
-* **JSCS**: [requireAnonymousFunctions](https://jscs-dev.github.io/rule/requireAnonymousFunctions)
-* **JSCS**: [disallowAnonymousFunctions](https://jscs-dev.github.io/rule/disallowAnonymousFunctions)
+* **JSCS**：[requireAnonymousFunctions](https://jscs-dev.github.io/rule/requireAnonymousFunctions)
+* **JSCS**：[disallowAnonymousFunctions](https://jscs-dev.github.io/rule/disallowAnonymousFunctions)
