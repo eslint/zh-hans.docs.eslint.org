@@ -8,14 +8,13 @@ further_reading:
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var#var_hoisting
 ---
 
+当变量在其定义的块之外被使用时，`block-scoped-var` 规则会产生警告。这模拟了 C 语言的块范围。
 
-The `block-scoped-var` rule generates warnings when variables are used outside of the block in which they were defined. This emulates C-style block scope.
+## 规则细节
 
-## Rule Details
+这条规则的目的是减少变量在其绑定上下文之外的使用，并模仿其他语言的传统块范围。这是为了帮助语言的新手们避免因变量提升而产生的地狱。
 
-This rule aims to reduce the usage of variables outside of their binding context and emulate traditional block scope from other languages. This is to help newcomers to the language avoid difficult bugs with variable hoisting.
-
-Examples of **incorrect** code for this rule:
+此规则的**错误**示例：
 
 :::incorrect
 
@@ -65,7 +64,7 @@ class C {
 
 :::
 
-Examples of **correct** code for this rule:
+此规则的**正确**示例：
 
 :::correct
 

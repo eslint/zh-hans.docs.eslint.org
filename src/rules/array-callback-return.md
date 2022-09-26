@@ -5,23 +5,22 @@ edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/arra
 rule_type: problem
 ---
 
-
-`Array` has several methods for filtering, mapping, and folding.
-If we forget to write `return` statement in a callback of those, it's probably a mistake. If you don't want to use a return or don't need the returned results, consider using [.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) instead.
+`Array` 有几种过滤、映射和折叠的方法。
+如果我们忘记在这些回调中写上 `return` 语句，那可能是个错误。如果你不想使用返回，或者不需要返回的结果，可以考虑使用 [.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) 代替。
 
 ```js
-// example: convert ['a', 'b', 'c'] --> {a: 0, b: 1, c: 2}
+// 示例：convert ['a', 'b', 'c'] --> {a: 0, b: 1, c: 2}
 var indexMap = myArray.reduce(function(memo, item, index) {
   memo[item] = index;
 }, {}); // Error: cannot set property 'b' of undefined
 ```
 
-## Rule Details
+## 规则细节
 
-This rule enforces usage of `return` statement in callbacks of array's methods.
-Additionally, it may also enforce the `forEach` array method callback to **not** return a value by using the `checkForEach` option.
+本规则强制要求在数组方法的回调中使用 `return` 语句。
+此外，它也可以通过使用 `checkForEach` 选项来强制 `forEach` 数组方法回调**没有**返回值。
 
-This rule finds callback functions of the following methods, then checks usage of `return` statement.
+本规则找到以下方法的回调函数，然后检查 `return` 语句的用法。
 
 * [`Array.from`](https://www.ecma-international.org/ecma-262/6.0/#sec-array.from)
 * [`Array.prototype.every`](https://www.ecma-international.org/ecma-262/6.0/#sec-array.prototype.every)
@@ -37,7 +36,7 @@ This rule finds callback functions of the following methods, then checks usage o
 * [`Array.prototype.sort`](https://www.ecma-international.org/ecma-262/6.0/#sec-array.prototype.sort)
 * And above of typed arrays.
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**示例：
 
 :::incorrect
 
@@ -65,7 +64,7 @@ var bar = foo.filter(function(x) {
 
 :::
 
-Examples of **correct** code for this rule:
+此规则的**正确**示例：
 
 :::correct
 
@@ -89,16 +88,16 @@ var bar = foo.map(node => node.getAttribute("id"));
 
 :::
 
-## Options
+## 选项
 
-This rule accepts a configuration object with two options:
+该规则接受一个有两个选项的配置对象：
 
-* `"allowImplicit": false` (default) When set to `true`, allows callbacks of methods that require a return value to implicitly return `undefined` with a `return` statement containing no expression.
-* `"checkForEach": false` (default) When set to `true`, rule will also report `forEach` callbacks that return a value.
+* 当将 `"allowImplicit": false`（默认值）设置为 `true` 是, 允许需要返回值的方法的回调隐含地返回 `undefined`，其 `return` 语句不包含表达式。
+* 当将 `"checkForEach": false`（默认值）设置为 `true` 时, 规则也将报告返回一个值的 `forEach` 回调。
 
 ### allowImplicit
 
-Examples of **correct** code for the `{ "allowImplicit": true }` option:
+使用 `{ "allowImplicit": true }` 选项的**正确**示例：
 
 :::correct
 
@@ -113,7 +112,7 @@ var undefAllTheThings = myArray.map(function(item) {
 
 ### checkForEach
 
-Examples of **incorrect** code for the `{ "checkForEach": true }` option:
+使用 `{ "checkForEach": true }` 选项的**错误**示例：
 
 :::incorrect
 
@@ -140,7 +139,7 @@ myArray.forEach(item => {
 
 :::
 
-Examples of **correct** code for the `{ "checkForEach": true }` option:
+使用 `{ "checkForEach": true }` 选项的**正确**示例：
 
 :::correct
 
@@ -170,10 +169,10 @@ myArray.forEach(item => {
 
 :::
 
-## Known Limitations
+## 已知限制
 
-This rule checks callback functions of methods with the given names, *even if* the object which has the method is *not* an array.
+这条规则检查给定名称的方法的回调函数，**即使**拥有该方法的对象**不是**数组。
 
-## When Not To Use It
+## 何时不用
 
-If you don't want to warn about usage of `return` statement in callbacks of array's methods, then it's safe to disable this rule.
+如果你不想 警告在数组方法的回调中使用 `return` 语句。，禁用此规则毫无风险。

@@ -14,28 +14,26 @@ related_rules:
 - brace-style
 ---
 
+一些风格指南要求或不允许在数组元素之间换行。
 
+## 规则细节
 
-A number of style guides require or disallow line breaks between array elements.
+这条规则在数组元素之间实行换行。
 
-## Rule Details
+## 选项
 
-This rule enforces line breaks between array elements.
+该规则有一个字符串选项：
 
-## Options
+* `"always"`（默认值）要求在数组元素之间换行
+* `"never"` 不允许在数组元素之间换行
+* `"consistent"` 要求在数组元素之间一致使用换行符
 
-This rule has either a string option:
+或者一个对象选项（如果满足其中任何一个属性，则需要换行。否则，不允许换行）。
 
-* `"always"` (default) requires line breaks between array elements
-* `"never"` disallows line breaks between array elements
-* `"consistent"` requires consistent usage of linebreaks between array elements
+* `"multiline": <boolean>` 如果元素内部有换行符，需要换行。如果是假的，这个条件被禁用。
+* `"minItems": <number>` 如果元素的数量至少是给定的整数，则需要换行。如果是 0，这个条件的作用与选项 `"always"` 相同。如果是 `null`（默认），这个条件将被禁用。
 
-Or an object option (Requires line breaks if any of properties is satisfied. Otherwise, disallows line breaks):
-
-* `"multiline": <boolean>` requires line breaks if there are line breaks inside elements. If this is false, this condition is disabled.
-* `"minItems": <number>` requires line breaks if the number of elements is at least the given integer. If this is 0, this condition will act the same as the option `"always"`. If this is `null` (the default), this condition is disabled.
-
-Alternatively, different configurations can be specified for array expressions and array patterns:
+另外，可以为数组表达式和数组模式指定不同的配置。
 
 ```json
 {
@@ -46,12 +44,12 @@ Alternatively, different configurations can be specified for array expressions a
 }
 ```
 
-* `"ArrayExpression"` configuration for array expressions (if unspecified, this rule will not apply to array expressions)
-* `"ArrayPattern"` configuration for array patterns of destructuring assignments (if unspecified, this rule will not apply to array patterns)
+* `"ArrayExpression"` 配置为数组表达式（如果没有指定，本规则将不适用于数组表达式）。
+* `"ArrayPattern"` 配置用于解构赋值的数组模式（如果没有指定，本规则将不适用于数组模式）。
 
 ### always
 
-Examples of **incorrect** code for this rule with the default `"always"` option:
+使用此规则与默认 `"always"` 选项的**错误**示例：
 
 :::incorrect
 
@@ -76,7 +74,7 @@ var g = [
 
 :::
 
-Examples of **correct** code for this rule with the default `"always"` option:
+使用此规则与默认 `"always"` 选项的**正确**示例：
 
 :::correct
 
@@ -109,7 +107,7 @@ var e = [
 
 ### never
 
-Examples of **incorrect** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**错误**示例：
 
 :::incorrect
 
@@ -137,7 +135,7 @@ var e = [
 
 :::
 
-Examples of **correct** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**正确**示例：
 
 :::correct
 
@@ -166,7 +164,7 @@ var g = [
 
 ### consistent
 
-Examples of **incorrect** code for this rule with the `"consistent"` option:
+使用此规则与 `"consistent"` 选项的**错误**示例：
 
 :::incorrect
 
@@ -191,7 +189,7 @@ var b = [
 
 :::
 
-Examples of **correct** code for this rule with the `"consistent"` option:
+使用此规则与 `"consistent"` 选项的**正确**示例：
 
 :::correct
 
@@ -237,7 +235,7 @@ var h = [
 
 ### multiline
 
-Examples of **incorrect** code for this rule with the `{ "multiline": true }` option:
+使用此规则与 `{ "multiline": true }` 选项的**错误**示例：
 
 :::incorrect
 
@@ -257,7 +255,7 @@ var e = [
 
 :::
 
-Examples of **correct** code for this rule with the `{ "multiline": true }` option:
+使用此规则与 `{ "multiline": true }` 选项的**正确**示例：
 
 :::correct
 
@@ -282,7 +280,7 @@ var e = [
 
 ### minItems
 
-Examples of **incorrect** code for this rule with the `{ "minItems": 3 }` option:
+使用此规则与 `{ "minItems": 3 }` 选项的**错误**示例：
 
 :::incorrect
 
@@ -304,7 +302,7 @@ var e = [
 
 :::
 
-Examples of **correct** code for this rule with the `{ "minItems": 3 }` option:
+使用此规则与 `{ "minItems": 3 }` 选项的**正确**示例：
 
 :::correct
 
@@ -330,7 +328,7 @@ var e = [
 
 ### multiline and minItems
 
-Examples of **incorrect** code for this rule with the `{ "multiline": true, "minItems": 3 }` options:
+使用此规则与 `{ "multiline": true, "minItems": 3 }` 选项的**错误**示例：
 
 :::incorrect
 
@@ -351,7 +349,7 @@ var e = [
 
 :::
 
-Examples of **correct** code for this rule with the `{ "multiline": true, "minItems": 3 }` options:
+使用此规则与 `{ "multiline": true, "minItems": 3 }` 选项的**正确**示例：
 
 :::correct
 
@@ -376,9 +374,9 @@ var e = [
 
 :::
 
-### ArrayExpression and ArrayPattern
+### ArrayExpression 和 ArrayPattern
 
-Examples of **incorrect** code for this rule with the `{ "ArrayExpression": "always", "ArrayPattern": "never" }` options:
+使用此规则与 `{ "ArrayExpression": "always", "ArrayPattern": "never" }` 选项的**错误**示例：
 
 :::incorrect
 
@@ -410,7 +408,7 @@ j = function bar() {
 
 :::
 
-Examples of **correct** code for this rule with the `{ "ArrayExpression": "always", "ArrayPattern": "never" }` options:
+使用此规则与 `{ "ArrayExpression": "always", "ArrayPattern": "never" }` 选项的**正确**示例：
 
 :::correct
 
@@ -442,10 +440,10 @@ var [i = function foo() {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't want to enforce linebreaks between array elements, don't enable this rule.
+如果你不想在数组元素之间执行换行，就不要启用这个规则。
 
-## Compatibility
+## 兼容
 
-* **JSCS:** [validateNewlineAfterArrayElements](https://jscs-dev.github.io/rule/validateNewlineAfterArrayElements)
+* **JSCS**：[validateNewlineAfterArrayElements](https://jscs-dev.github.io/rule/validateNewlineAfterArrayElements)
