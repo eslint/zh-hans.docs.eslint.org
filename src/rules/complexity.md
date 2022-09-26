@@ -19,8 +19,7 @@ further_reading:
 - https://github.com/eslint/eslint/issues/4808#issuecomment-167795140
 ---
 
-
-Cyclomatic complexity measures the number of linearly independent paths through a program's source code. This rule allows setting a cyclomatic complexity threshold.
+循环复杂度衡量的是通过程序源代码的线性独立路径的数量。这条规则允许设置一个循环复杂度阈值。
 
 ```js
 function a(x) {
@@ -34,11 +33,11 @@ function a(x) {
 }
 ```
 
-## Rule Details
+## 规则细节
 
-This rule is aimed at reducing code complexity by capping the amount of cyclomatic complexity allowed in a program. As such, it will warn when the cyclomatic complexity crosses the configured threshold (default is `20`).
+这条规则旨在通过限制程序中允许的循环复杂性来减少代码的复杂性。因此，当循环复杂度超过配置的阈值（默认为 `20`）时，它将发出警告。
 
-Examples of **incorrect** code for a maximum of 2:
+最大值为 2 的**错误**示例：
 
 ::: incorrect
 
@@ -63,7 +62,7 @@ function b() {
 
 :::
 
-Examples of **correct** code for a maximum of 2:
+最大值为 2 的**正确**示例：
 
 ::: correct
 
@@ -85,9 +84,9 @@ function b() {
 
 :::
 
-Class field initializers and class static blocks are implicit functions. Therefore, their complexity is calculated separately for each initializer and each static block, and it doesn't contribute to the complexity of the enclosing code.
+类的字段初始化器和类的静态块是隐式函数。因此，它们的复杂性是针对每个初始化器和每个静态块单独计算的，而且它不对包围代码的复杂性做出贡献。
 
-Examples of additional **incorrect** code for a maximum of 2:
+最大值为 2 的额外**错误**示例：
 
 ::: incorrect
 
@@ -109,7 +108,7 @@ class D { // this static block has complexity = 3
 
 :::
 
-Examples of additional **correct** code for a maximum of 2:
+最大值为 2 的额外**正确**示例：
 
 ::: correct
 
@@ -140,22 +139,22 @@ function foo() { // this function has complexity = 1
 
 :::
 
-## Options
+## 选项
 
-Optionally, you may specify a `max` object property:
+你可以选择指定 `max` 对象属性：
 
 ```json
 "complexity": ["error", 2]
 ```
 
-is equivalent to
+相当于
 
 ```json
 "complexity": ["error", { "max": 2 }]
 ```
 
-**Deprecated:** the object property `maximum` is deprecated. Please use the property `max` instead.
+**废弃**：对象属性 `maximum` 已被废弃。请使用属性 `max` 代替。
 
-## When Not To Use It
+## 何时不用
 
-If you can't determine an appropriate complexity limit for your code, then it's best to disable this rule.
+如果你不确定代码的复杂性，那么最好是禁用这个规则。
