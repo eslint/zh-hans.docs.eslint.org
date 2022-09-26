@@ -5,15 +5,13 @@ edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/curl
 rule_type: suggestion
 ---
 
-
-
-JavaScript allows the omission of curly braces when a block contains only one statement. However, it is considered by many to be best practice to _never_ omit curly braces around blocks, even when they are optional, because it can lead to bugs and reduces code clarity. So the following:
+当一个块只包含一个语句时，JavaScript 允许省略大括号。然而，许多人认为，最好的做法是永远不要在块周围省略大括号，即使它们是可选的，因为这可能导致错误并降低代码的清晰度。因此，下面的例子：
 
 ```js
 if (foo) foo++;
 ```
 
-Can be rewritten as:
+也可以写作：
 
 ```js
 if (foo) {
@@ -21,17 +19,17 @@ if (foo) {
 }
 ```
 
-There are, however, some who prefer to only use braces when there is more than one statement to be executed.
+然而，有些人喜欢只在有一个以上的语句要执行时使用大括号。
 
-## Rule Details
+## 规则细节
 
-This rule is aimed at preventing bugs and increasing code clarity by ensuring that block statements are wrapped in curly braces. It will warn when it encounters blocks that omit curly braces.
+这条规则的目的是通过确保块语句被大括号包裹来防止错误和提高代码的清晰度。当它遇到省略大括号的块时，会发出警告。
 
-## Options
+## 选项
 
 ### all
 
-Examples of **incorrect** code for the default `"all"` option:
+使用默认的 `"all"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -50,7 +48,7 @@ if (foo) {
 
 :::
 
-Examples of **correct** code for the default `"all"` option:
+使用默认的 `"all"` 选项的**正确**示例：
 
 ::: correct
 
@@ -76,9 +74,9 @@ if (foo) {
 
 ### multi
 
-By default, this rule warns whenever `if`, `else`, `for`, `while`, or `do` are used without block statements as their body. However, you can specify that block statements should be used only when there are multiple statements in the block and warn when there is only one statement in the block.
+默认情况下，只要使用 `if`、`else`、`for`、`while` 或 `do` 而没有使用块语句作为主体，该规则就会发出警告。然而，你可以指定只有在块中有多个语句时才使用块语句，而当块中只有一个语句时就会警告。
 
-Examples of **incorrect** code for the `"multi"` option:
+使用 `"multi"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -105,7 +103,7 @@ for (var i=0; i < items.length; i++) {
 
 :::
 
-Examples of **correct** code for the `"multi"` option:
+使用 `"multi"` 选项的**正确**示例：
 
 ::: correct
 
@@ -126,9 +124,9 @@ while (true) {
 
 ### multi-line
 
-Alternatively, you can relax the rule to allow brace-less single-line `if`, `else if`, `else`, `for`, `while`, or `do`, while still enforcing the use of curly braces for other instances.
+另外，你可以放宽规则，允许无大括号的单行 `if`、`else if`、`else`、`for`、`while` 或 `do`，而在其他情况下仍然强制使用大括号。
 
-Examples of **incorrect** code for the `"multi-line"` option:
+使用 `"multi-line"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -147,7 +145,7 @@ if (foo) foo(
 
 :::
 
-Examples of **correct** code for the `"multi-line"` option:
+使用 `"multi-line"` 选项的**正确**示例：
 
 ::: correct
 
@@ -182,9 +180,9 @@ while (true) {
 
 ### multi-or-nest
 
-You can use another configuration that forces brace-less `if`, `else if`, `else`, `for`, `while`, or `do` if their body contains only one single-line statement. And forces braces in all other cases.
+你可以使用另一种配置，如果主体只包含一个单行语句，则强制使用无括号的`if`、`else if`、`else`、`for`、`while`或`do`。而在所有其他情况下强制使用大括号。
 
-Examples of **incorrect** code for the `"multi-or-nest"` option:
+使用 `"multi-or-nest"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -218,7 +216,7 @@ for (var i = 0; foo; i++) {
 
 :::
 
-Examples of **correct** code for the `"multi-or-nest"` option:
+使用 `"multi-or-nest"` 选项的**正确**示例：
 
 ::: correct
 
@@ -251,9 +249,9 @@ for (var i = 0; foo; i++)
 
 :::
 
-For single-line statements preceded by a comment, braces are allowed but not required.
+对于前面有注释的单行语句，允许使用大括号，但不是必须的。
 
-Examples of additional **correct** code for the `"multi-or-nest"` option:
+使用 `"multi-or-nest"` 选项的又一**正确**示例：
 
 ::: correct
 
@@ -261,11 +259,11 @@ Examples of additional **correct** code for the `"multi-or-nest"` option:
 /*eslint curly: ["error", "multi-or-nest"]*/
 
 if (foo)
-    // some comment
+    // 一些注释
     bar();
 
 if (foo) {
-    // some comment
+    // 一些注释
     bar();
 }
 ```
@@ -274,10 +272,9 @@ if (foo) {
 
 ### consistent
 
-When using any of the `multi*` options, you can add an option to enforce all bodies of a `if`,
-`else if` and `else` chain to be with or without braces.
+当使用任何一个 `multi*` 选项时，你可以添加一个选项来强制执行 `if` 的所有主体。`else if` 和 `else`链的所有主体都要有或没有大括号。
 
-Examples of **incorrect** code for the `"multi", "consistent"` options:
+使用 `"multi", "consistent"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -312,7 +309,7 @@ if (foo) {
 
 :::
 
-Examples of **correct** code for the `"multi", "consistent"` options:
+使用 `"multi", "consistent"` 选项的**正确**示例：
 
 ::: correct
 
@@ -347,6 +344,6 @@ if (foo)
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you have no strict conventions about when to use block statements and when not to, you can safely disable this rule.
+如果你对什么时候使用块语句和什么时候不使用没有严格的约定，你可以安全地禁用这一规则。

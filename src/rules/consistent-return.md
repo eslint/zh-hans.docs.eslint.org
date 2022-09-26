@@ -5,21 +5,20 @@ edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/cons
 rule_type: suggestion
 ---
 
+与静态类型语言不同的是，静态类型语言强制要求一个函数返回指定类型的值，而 JavaScript 允许一个函数中的不同代码路径返回不同类型的值。
 
-Unlike statically-typed languages which enforce that a function returns a specified type of value, JavaScript allows different code paths in a function to return different types of values.
+JavaScript 又一个令人困惑的地方，如果以下情况中的任何一项为真，函数就会返回 `undefined`。
 
-A confusing aspect of JavaScript is that a function returns `undefined` if any of the following are true:
+* 它在退出前没有执行 `return` 语句
+* 它执行的 `return` 没有明确指定一个值
+* 它执行了 `return undefined` 语句
+* 执行 `return void`，后面有一个表达式（例如，一个函数调用）。
+* 执行 `return`，后面跟着任何其他的表达式，这些表达式的值是 `undefined`
 
-* it does not execute a `return` statement before it exits
-* it executes `return` which does not specify a value explicitly
-* it executes `return undefined`
-* it executes `return void` followed by an expression (for example, a function call)
-* it executes `return` followed by any other expression which evaluates to `undefined`
+如果一个函数中的任何代码路径都明确地返回一个值，但有些代码路径却没有明确地返回一个值，这可能是一个打字错误，特别是在一个大型函数中。在下面的例子中。
 
-If any code paths in a function return a value explicitly but some code path do not return a value explicitly, it might be a typing mistake, especially in a large function. In the following example:
-
-* a code path through the function returns a Boolean value `true`
-* another code path does not return a value explicitly, therefore returns `undefined` implicitly
+* 通过函数的一个代码路径返回一个布尔值 `true`。
+* 另一个代码路径没有明确地返回一个值，因此隐含地返回 `undefined`。
 
 ```js
 function doSomething(condition) {
@@ -31,11 +30,11 @@ function doSomething(condition) {
 }
 ```
 
-## Rule Details
+## 规则细节
 
-This rule requires `return` statements to either always or never specify values. This rule ignores function definitions where the name begins with an uppercase letter, because constructors (when invoked with the `new` operator) return the instantiated object implicitly if they do not return another object explicitly.
+这条规则要求 `return` 语句总是或从不指定数值。这条规则忽略了名称以大写字母开头的函数定义，因为构造函数（当用 `new` 操作符调用时）如果不明确返回另一个对象，就会隐式返回实例化的对象。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -59,7 +58,7 @@ function doSomething(condition) {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -85,16 +84,16 @@ function Foo() {
 
 :::
 
-## Options
+## 选项
 
-This rule has an object option:
+此规则选项为对象：
 
-* `"treatUndefinedAsUnspecified": false` (default) always either specify values or return `undefined` implicitly only.
-* `"treatUndefinedAsUnspecified": true` always either specify values or return `undefined` explicitly or implicitly.
+* `"treatUndefinedAsUnspecified": false`（默认值）总是要么指定值，要么只隐式返回 `undefined`。
+* `"treatUndefinedAsUnspecified": true` 总是要么指定值，要么显式或隐式返回 `undefined`。
 
 ### treatUndefinedAsUnspecified
 
-Examples of **incorrect** code for this rule with the default `{ "treatUndefinedAsUnspecified": false }` option:
+使用此规则与默认的 `{ "treatUndefinedAsUnspecified": false }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -105,20 +104,20 @@ function foo(callback) {
     if (callback) {
         return void callback();
     }
-    // no return statement
+    // 没有返回语句
 }
 
 function bar(condition) {
     if (condition) {
         return undefined;
     }
-    // no return statement
+    // 没有返回语句
 }
 ```
 
 :::
 
-Examples of **incorrect** code for this rule with the `{ "treatUndefinedAsUnspecified": true }` option:
+使用此规则与 `{ "treatUndefinedAsUnspecified": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -142,7 +141,7 @@ function bar(condition) {
 
 :::
 
-Examples of **correct** code for this rule with the `{ "treatUndefinedAsUnspecified": true }` option:
+使用此规则与 `{ "treatUndefinedAsUnspecified": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -153,19 +152,19 @@ function foo(callback) {
     if (callback) {
         return void callback();
     }
-    // no return statement
+    // 没有返回语句
 }
 
 function bar(condition) {
     if (condition) {
         return undefined;
     }
-    // no return statement
+    // 没有返回语句
 }
 ```
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you want to allow functions to have different `return` behavior depending on code branching, then it is safe to disable this rule.
+如果你想允许函数根据代码分支有不同的 `return` 行为，那么禁用此规则是安全的。

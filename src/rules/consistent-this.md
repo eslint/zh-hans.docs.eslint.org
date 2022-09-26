@@ -5,8 +5,7 @@ edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/cons
 rule_type: suggestion
 ---
 
-
-It is often necessary to capture the current execution context in order to make it available subsequently. A prominent example of this are jQuery callbacks:
+通常有必要捕获当前的执行环境，以使其随后可用。这方面一个突出的例子是 jQuery 的回调。
 
 ```js
 var that = this;
@@ -16,22 +15,22 @@ jQuery('li').click(function (event) {
 });
 ```
 
-There are many commonly used aliases for `this` such as `that`, `self` or `me`. It is desirable to ensure that whichever alias the team agrees upon is used consistently throughout the application.
+`this` 有许多常用别名，如 `that`、`self` 或 `me`。最好是确保团队同意的别名在整个应用中使用一致。
 
-## Rule Details
+## 规则细节
 
-This rule enforces two things about variables with the designated alias names for `this`:
+这条规则对具有指定别名的 `this` 的变量强制执行了两件事。
 
-* If a variable with a designated name is declared, it *must* be either initialized (in the declaration) or assigned (in the same scope as the declaration) the value `this`.
-* If a variable is initialized or assigned the value `this`, the name of the variable *must* be a designated alias.
+* 如果一个有指定名字的变量被声明，它**必须**初始化（在声明中）或被赋值（在与声明相同的范围内）为 `this`。
+* 如果一个变量被初始化或被赋值为 `this`，那么该变量的名称*必须*是一个指定的别名。
 
-## Options
+## 选项
 
-This rule has one or more string options:
+这个规则有一个或多个字符串选项。
 
-* designated alias names for `this` (default `"that"`)
+* 为 `this` 指定别名（默认为 `"that"`）
 
-Examples of **incorrect** code for this rule with the default `"that"` option:
+使用此规则与默认的 `"that"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -49,7 +48,7 @@ self = this;
 
 :::
 
-Examples of **correct** code for this rule with the default `"that"` option:
+使用此规则与默认的 `"that"` 选项的**正确**示例：
 
 ::: correct
 
@@ -69,7 +68,7 @@ foo.bar = this;
 
 :::
 
-Examples of **incorrect** code for this rule with the default `"that"` option, if the variable is not initialized:
+如果变量没有被初始化，该规则的**错误的**代码的例子，默认为 "that "选项。
 
 ::: incorrect
 
@@ -84,7 +83,7 @@ function f() {
 
 :::
 
-Examples of **correct** code for this rule with the default `"that"` option, if the variable is not initialized:
+如果变量没有被初始化，该规则的**正确的**代码的例子，有默认的 "that "选项。
 
 ::: correct
 
@@ -101,6 +100,6 @@ that = this;
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you need to capture nested context, `consistent-this` is going to be problematic. Code of that nature is usually difficult to read and maintain and you should consider refactoring it.
+如果你需要捕捉嵌套的上下文，`consistent-this` 就会有问题。这种性质的代码通常难以阅读和维护，你应该考虑重构它。

@@ -7,8 +7,7 @@ related_rules:
 - no-fallthrough
 ---
 
-
-Some code conventions require that all `switch` statements have a `default` case, even if the default case is empty, such as:
+一些代码惯例要求所有的 `switch` 语句都有一个 `default` case，即使默认 case 是空的，例如：
 
 ```js
 switch (foo) {
@@ -21,13 +20,13 @@ switch (foo) {
         break;
 
     default:
-    // do nothing
+   // 什么也不做
 }
 ```
 
-The thinking is that it's better to always explicitly state what the default behavior should be so that it's clear whether or not the developer forgot to include the default behavior by mistake.
+我们的想法是，最好总是明确地说明默认行为应该是什么，这样就可以清楚地知道开发者是否错误地忘记了包括默认行为。
 
-Other code conventions allow you to skip the `default` case so long as there is a comment indicating the omission is intentional, such as:
+其他的代码惯例允许你跳过 `default` 的情况，只要有一个注释表明这个省略是有意为之，例如：
 
 ```js
 switch (foo) {
@@ -43,13 +42,13 @@ switch (foo) {
 }
 ```
 
-Once again, the intent here is to show that the developer intended for there to be no default behavior.
+再一次，这里的意图是表明开发者打算不存在默认行为。
 
-## Rule Details
+## 规则细节
 
-This rule aims to require `default` case in `switch` statements. You may optionally include a `// no default` after the last `case` if there is no `default` case. The comment may be in any desired case, such as `// No Default`.
+这条规则的目的是要求在 `switch` 语句中使用 `default` 大小写。如果没有 `default` 的情况，可以选择在最后一个 `case` 后加上 `// no default`。注释可以是任何想要的大小写，例如 `// No Default`。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -66,7 +65,7 @@ switch (a) {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -75,17 +74,17 @@ Examples of **correct** code for this rule:
 
 switch (a) {
     case 1:
-        /* code */
+        /* 代码 */
         break;
 
     default:
-        /* code */
+        /* 代码 */
         break;
 }
 
 switch (a) {
     case 1:
-        /* code */
+        /* 代码 */
         break;
 
     // no default
@@ -93,7 +92,7 @@ switch (a) {
 
 switch (a) {
     case 1:
-        /* code */
+        /* 代码 */
         break;
 
     // No Default
@@ -102,15 +101,15 @@ switch (a) {
 
 :::
 
-## Options
+## 选项
 
-This rule accepts a single options argument:
+这个规则接受一个选项参数。
 
-* Set the `commentPattern` option to a regular expression string to change the default `/^no default$/i` comment test pattern
+* 将`commentPattern`选项设置为一个正则表达式字符串，以改变默认的`/^no default$/i`注释测试模式
 
 ### commentPattern
 
-Examples of **correct** code for the `{ "commentPattern": "^skip\\sdefault" }` option:
+使用 `{ "commentPattern": "^skip\\sdefault" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -122,7 +121,7 @@ switch(a) {
         /* code */
         break;
 
-    // skip default
+    // 跳过 default
 }
 
 switch(a) {
@@ -130,12 +129,12 @@ switch(a) {
         /* code */
         break;
 
-    // skip default case
+    // 跳过 default case
 }
 ```
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't want to enforce a `default` case for `switch` statements, you can safely disable this rule.
+如果不想控制 `switch` 语句中的 `default` 执行情况，你可以安全地禁用这个规则。

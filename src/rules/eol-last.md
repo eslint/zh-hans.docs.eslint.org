@@ -5,23 +5,16 @@ edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/eol-
 rule_type: layout
 ---
 
+在非空文件中拖动换行是一个常见的 UNIX 习惯做法。拖动新行的好处是 的好处包括能够连接或追加到文件以及 以及在不影响 shell 提示的情况下向终端输出文件。
 
+## 规则细节
 
-Trailing newlines in non-empty files are a common UNIX idiom. Benefits of
-trailing newlines include the ability to concatenate or append to files as well
-as output files to the terminal without interfering with shell prompts.
+这条规则要求在非空文件的末尾至少有一个换行（或没有换行）。
+的末尾至少有一个换行。
 
-## Rule Details
+在 v0.16.0 之前，这条规则还强制要求在文件末尾只有一行 文件的结尾只有一行。如果你仍然想要这种行为，可以考虑启用 [no-multiple-empty-lines](no-multiple-empty-lines) 搭配 `maxEOF` 选项和 [no-trailing-spaces](no-trailing-spaces)。
 
-This rule enforces at least one newline (or absence thereof) at the end
-of non-empty files.
-
-Prior to v0.16.0 this rule also enforced that there was only a single line at
-the end of the file. If you still want this behavior, consider enabling
-[no-multiple-empty-lines](no-multiple-empty-lines) with `maxEOF` and/or
-[no-trailing-spaces](no-trailing-spaces).
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -35,7 +28,7 @@ function doSomething() {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -49,13 +42,13 @@ function doSomething() {
 
 :::
 
-## Options
+## 选项
 
-This rule has a string option:
+此规则选项为字符串：
 
-* `"always"` (default) enforces that files end with a newline (LF)
-* `"never"` enforces that files do not end with a newline
-* `"unix"` (deprecated) is identical to "always"
-* `"windows"` (deprecated) is identical to "always", but will use a CRLF character when autofixing
+* `"always"`（默认值）强制要求文件以换行结束（LF）。
+* `"never"` 强制要求文件不以换行结尾。
+* `"unix"`（已废弃）与 `"always"` 相同。
+* `"windows"`（已废弃）与 `"always"` 相同，但在自动修复时将使用 CRLF 字符。
 
-**Deprecated:** The options `"unix"` and `"windows"` are deprecated. If you need to enforce a specific linebreak style, use this rule in conjunction with `linebreak-style`.
+**废弃**：选项 `"unix"` 和 `"windows"` 已被废弃。如果你需要强制执行特定的换行符样式，请将此规则与 `linebreak-style` 一起使用。

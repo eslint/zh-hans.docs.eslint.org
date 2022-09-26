@@ -5,17 +5,17 @@ edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/cons
 rule_type: problem
 ---
 
-Constructors of derived classes must call `super()`.
-Constructors of non derived classes must not call `super()`.
-If this is not observed, the JavaScript engine will raise a runtime error.
+派生类的构造者必须调用 `super()`。
+非派生类的构造器不得调用` super()`。
+如果不遵守这一点，JavaScript 引擎将引发一个运行时错误。
 
-This rule checks whether or not there is a valid `super()` call.
+这条规则检查是否有一个有效的`super()`调用。
 
-## Rule Details
+## 规则细节
 
-This rule is aimed to flag invalid/missing `super()` calls.
+这条规则旨在标记无效的/缺失的`super()`调用。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 :::incorrect
 
@@ -47,7 +47,7 @@ class A extends null {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 :::correct
 
@@ -68,6 +68,6 @@ class A extends B {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't want to be notified about invalid/missing `super()` callings in constructors, you can safely disable this rule.
+如果你不想被通知构造函数中无效/缺失的 `super()` 调用，你可以安全地禁用这一规则。
