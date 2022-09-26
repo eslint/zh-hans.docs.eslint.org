@@ -18,7 +18,7 @@ var indexMap = myArray.reduce(function(memo, item, index) {
 ## 规则细节
 
 本规则强制要求在数组方法的回调中使用 `return` 语句。
-此外，它也可以通过使用 `checkForEach` 选项来强制 `forEach` 数组方法回调**不**返回值。
+此外，它也可以通过使用 `checkForEach` 选项来强制 `forEach` 数组方法回调**没有**返回值。
 
 本规则找到以下方法的回调函数，然后检查 `return` 语句的用法。
 

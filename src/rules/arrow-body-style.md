@@ -16,7 +16,7 @@ rule_type: suggestion
 该规则有一个或两个选项。第一个是字符串，它可以是:
 
 * `"always"` 在函数体周围执行大括号。
-* `"as-need"` 在可以省略的地方不使用大括号（缺省）。
+* `"as-needed"` 在可以省略的地方不使用大括号（缺省）。
 * `"never"` 在函数主体周围不使用大括号（将箭头函数限制在返回表达式的角色）。
 
 当第一个选项是 `"as-needed"` 时，第二个是对象，用于更精细的配置。目前，唯一可用的选项是 `requireReturnForObjectLiteral`，布尔值。它默认为 `false`。如果设置为 `true`，返回需要大括号和一个明确的对象字面量。
@@ -103,7 +103,7 @@ let foo = () => { bar(); };
 let foo = () => {};
 let foo = () => { /* do nothing */ };
 let foo = () => {
-    // do nothing.
+    // 什么也不做
 };
 let foo = () => ({ bar: 0 });
 ```
