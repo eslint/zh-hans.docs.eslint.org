@@ -5,23 +5,22 @@ edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/id-m
 rule_type: suggestion
 ---
 
+> “计算机科学中只有两件难事：缓存失效和命名事物。” - 菲尔-卡尔顿
 
-> "There are only two hard things in Computer Science: cache invalidation and naming things." — Phil Karlton
+在一个项目中对事物进行统一命名是一个经常被低估的代码创建方面。
+如果做得正确，它可以为你的团队节省不必要的挠头和误导的时间。
+这个规则允许你精确地定义和执行你的团队应该使用的变量和函数名称。
+不再局限于 camelCase, snake_case, PascalCase 或 oHungarianNotation。Id-match 可以满足你所有的需求！
 
-Naming things consistently in a project is an often underestimated aspect of code creation.
-When done correctly, it can save your team hours of unnecessary head scratching and misdirections.
-This rule allows you to precisely define and enforce the variables and function names on your team should use.
-No more limiting yourself to camelCase, snake_case, PascalCase or oHungarianNotation. Id-match has all your needs covered!
+## 规则细节
 
-## Rule Details
+这条规则要求赋值和 `function` 定义中的标识符与指定的正则表达式匹配。
 
-This rule requires identifiers in assignments and `function` definitions to match a specified regular expression.
+## 选项
 
-## Options
+这个规则有一个字符串选项，用于指定正则表达式。
 
-This rule has a string option for the specified regular expression.
-
-For example, to enforce a camelcase naming convention:
+例如，要强制执行骆驼大写的命名惯例：
 
 ```json
 {
@@ -29,7 +28,7 @@ For example, to enforce a camelcase naming convention:
 }
 ```
 
-Examples of **incorrect** code for this rule with the `"^[a-z]+([A-Z][a-z]+)*$"` option:
+使用此规则与 `"^[a-z]+([A-Z][a-z]+)*$"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -61,7 +60,7 @@ class myClass {
 
 :::
 
-Examples of **correct** code for this rule with the `"^[a-z]+([A-Z][a-z]+)*$"` option:
+使用此规则与 `"^[a-z]+([A-Z][a-z]+)*$"` 选项的**正确**示例：
 
 ::: correct
 
@@ -89,20 +88,20 @@ class myClass {
 
 :::
 
-This rule has an object option:
+此规则选项为对象：
 
-* `"properties": false` (default) does not check object properties
-* `"properties": true` requires object literal properties and member expression assignment properties to match the specified regular expression
-* `"classFields": false` (default) does not class field names
-* `"classFields": true` requires class field names to match the specified regular expression
-* `"onlyDeclarations": false` (default) requires all variable names to match the specified regular expression
-* `"onlyDeclarations": true` requires only `var`, `function`, and `class` declarations to match the specified regular expression
-* `"ignoreDestructuring": false` (default) enforces `id-match` for destructured identifiers
-* `"ignoreDestructuring": true` does not check destructured identifiers
+* `"properties": false`（默认值）不检查对象属性
+* `"properties": true` 要求对象字面属性和成员表达式赋值属性与指定的正则表达式匹配
+* `"classFields": false`（默认值）不对字段名进行分类。
+* `"classFields": true` 要求类字段名与指定的正则表达式匹配
+* `"onlyDeclarations": false`（默认值）要求所有变量名称与指定的正则表达式相匹配
+* `"onlyDeclarations": true` 要求只有 `var`、`function` 和 `class` 的声明与指定的正则表达式匹配
+* `"ignoreDestructuring": false`（默认值）对非结构化的标识符执行`id-match`
+* `"ignoreDestructuring": true`不 检查非结构化的标识符
 
 ### properties
 
-Examples of **incorrect** code for this rule with the `"^[a-z]+([A-Z][a-z]+)*$", { "properties": true }` options:
+使用此规则与 `"^[a-z]+([A-Z][a-z]+)*$", { "properties": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -118,7 +117,7 @@ var obj = {
 
 ### classFields
 
-Examples of **incorrect** code for this rule with the `"^[a-z]+([A-Z][a-z]+)*$", { "classFields": true }` options:
+使用此规则与 `"^[a-z]+([A-Z][a-z]+)*$", { "classFields": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -138,7 +137,7 @@ class myClass {
 
 ### onlyDeclarations
 
-Examples of **correct** code for this rule with the `"^[a-z]+([A-Z][a-z]+)*$", { "onlyDeclarations": true }` options:
+使用此规则与 `"^[a-z]+([A-Z][a-z]+)*$", { "onlyDeclarations": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -152,7 +151,7 @@ do_something(__dirname);
 
 ### ignoreDestructuring: false
 
-Examples of **incorrect** code for this rule with the default `"^[^_]+$", { "ignoreDestructuring": false }` option:
+使用此规则与默认的 `"^[^_]+$", { "ignoreDestructuring": false }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -174,7 +173,7 @@ var { category_id: categoryId, ...other_props } = query;
 
 ### ignoreDestructuring: true
 
-Examples of **incorrect** code for this rule with the `"^[^_]+$", { "ignoreDestructuring": true }` option:
+使用此规则与 `"^[^_]+$", { "ignoreDestructuring": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -188,7 +187,7 @@ var { category_id, ...other_props } = query;
 
 :::
 
-Examples of **correct** code for this rule with the `"^[^_]+$", { "ignoreDestructuring": true }` option:
+使用此规则与 `"^[^_]+$", { "ignoreDestructuring": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -204,6 +203,6 @@ var { category_id: category_id } = query;
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't want to enforce any particular naming convention for all identifiers, or your naming convention is too complex to be enforced by configuring this rule, then you should not enable this rule.
+如果你不想对所有标识符执行任何特定的命名规则，或者你的命名规则太复杂，无法通过配置这个规则来执行，那么你就不应该启用这个规则。

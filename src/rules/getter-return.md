@@ -8,9 +8,7 @@ further_reading:
 - https://leanpub.com/understandinges6/read/#leanpub-auto-accessor-properties
 ---
 
-
-
-The get syntax binds an object property to a function that will be called when that property is looked up. It was first introduced in ECMAScript 5:
+get 语法将一个对象属性绑定到一个函数上，当该属性被查询时将会被调用。它在 ECMAScript 5 中首次引入。
 
 ```js
 var p = {
@@ -26,13 +24,13 @@ Object.defineProperty(p, "age", {
 });
 ```
 
-Note that every `getter` is expected to return a value.
+请注意，每个 `getter` 都应该返回值。
 
-## Rule Details
+## 规则细节
 
-This rule enforces that a return statement is present in property getters.
+这条规则强制要求属性获取器中要有返回语句。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -60,7 +58,7 @@ class P{
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -88,13 +86,13 @@ class P{
 
 :::
 
-## Options
+## 选项
 
-This rule has an object option:
+此规则选项为对象：
 
-* `"allowImplicit": false` (default) disallows implicitly returning `undefined` with a `return` statement.
+* `"allowImplicit": false`（默认值）不允许用 `return` 语句隐式返回 `undefined`。
 
-Examples of **correct** code for the `{ "allowImplicit": true }` option:
+使用 `{ "allowImplicit": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -109,6 +107,6 @@ p = {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If your project will not be using ES5 property getters you do not need this rule.
+如果你的项目不使用 ES5 属性获取器，你就不需要这个规则。
