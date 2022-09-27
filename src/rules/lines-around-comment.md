@@ -8,37 +8,34 @@ related_rules:
 - spaced-comment
 ---
 
+许多风格指南要求在注释之前或之后有空行。这些规则的主要目的 这些规则的主要目的是使注释更容易阅读，提高代码的可读性。
 
+## 规则细节
 
-Many style guides require empty lines before or after comments. The primary goal
-of these rules is to make the comments easier to read and improve readability of the code.
+这个规则要求在注释之前和/或之后有空行。它可以启用块（`/*`）和行（`//`）注释支持。该规则不适用于与代码出现在同一行的注释，也不要求在文件的开头或结尾有空行。
 
-## Rule Details
+## 选项
 
-This rule requires empty lines before and/or after comments. It can be enabled separately for both block (`/*`) and line (`//`) comments. This rule does not apply to comments that appear on the same line as code and does not require empty lines at the beginning or end of a file.
+此规则选项为对象：
 
-## Options
-
-This rule has an object option:
-
-* `"beforeBlockComment": true` (default) requires an empty line before block comments
-* `"afterBlockComment": true` requires an empty line after block comments
-* `"beforeLineComment": true` requires an empty line before line comments
-* `"afterLineComment": true` requires an empty line after line comments
-* `"allowBlockStart": true` allows comments to appear at the start of block statements, function bodies, classes, switch statements, and class static blocks
-* `"allowBlockEnd": true` allows comments to appear at the end of block statements, function bodies, classes, switch statements, and class static blocks
-* `"allowObjectStart": true` allows comments to appear at the start of object literals
-* `"allowObjectEnd": true` allows comments to appear at the end of object literals
-* `"allowArrayStart": true` allows comments to appear at the start of array literals
-* `"allowArrayEnd": true` allows comments to appear at the end of array literals
-* `"allowClassStart": true` allows comments to appear at the start of classes
-* `"allowClassEnd": true` allows comments to appear at the end of classes
-* `"applyDefaultIgnorePatterns"` enables or disables the default comment patterns to be ignored by the rule
-* `"ignorePattern"` custom patterns to be ignored by the rule
+* `"beforeBlockComment": true`（默认值）要求在块状注释之前有一个空行
+* `"afterBlockComment": true` 要求在块状注释之后有一个空行
+* `"beforeLineComment": true` 要求在行注释之前有一个空行
+* `"afterLineComment": true` 要求在行注释后有一个空行
+* `"allowBlockStart": true` 允许注释出现在块语句、函数体、类、开关语句和类静态块的开头
+* `"allowBlockEnd": true` 允许注释出现在块语句、函数体、类、开关语句和类静态块的末尾
+* `"allowObjectStart": true` 允许注释出现在对象字面的开头
+* `"allowObjectEnd": true` 允许注释出现在对象字词的末尾
+* `"allowArrayStart": true` 允许注释出现在数组字词的开始处
+* `"allowArrayEnd": true` 允许注释出现在数组文字的末尾
+* `"allowClassStart": true` 允许注释出现在类的开始部分
+* `"allowClassEnd": true` 允许注释出现在类的末尾
+* `"applyDefaultIgnorePatterns"` 启用或禁用规则所忽略的默认注释模式
+* `"ignorePattern"`自定义模式将被规则忽略
 
 ### beforeBlockComment
 
-Examples of **incorrect** code for this rule with the default `{ "beforeBlockComment": true }` option:
+使用此规则与默认的 `{ "beforeBlockComment": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -52,7 +49,7 @@ var day = "great"
 
 :::
 
-Examples of **correct** code for this rule with the default `{ "beforeBlockComment": true }` option:
+使用此规则与默认的 `{ "beforeBlockComment": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -69,7 +66,7 @@ var day = "great"
 
 ### afterBlockComment
 
-Examples of **incorrect** code for this rule with the `{ "afterBlockComment": true }` option:
+使用此规则与 `{ "afterBlockComment": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -84,7 +81,7 @@ var day = "great"
 
 :::
 
-Examples of **correct** code for this rule with the `{ "afterBlockComment": true }` option:
+使用此规则与 `{ "afterBlockComment": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -102,7 +99,7 @@ var day = "great"
 
 ### beforeLineComment
 
-Examples of **incorrect** code for this rule with the `{ "beforeLineComment": true }` option:
+使用此规则与 `{ "beforeLineComment": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -116,7 +113,7 @@ var day = "great"
 
 :::
 
-Examples of **correct** code for this rule with the `{ "beforeLineComment": true }` option:
+使用此规则与 `{ "beforeLineComment": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -133,7 +130,7 @@ var day = "great"
 
 ### afterLineComment
 
-Examples of **incorrect** code for this rule with the `{ "afterLineComment": true }` option:
+使用此规则与 `{ "afterLineComment": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -147,7 +144,7 @@ var day = "great"
 
 :::
 
-Examples of **correct** code for this rule with the `{ "afterLineComment": true }` option:
+使用此规则与 `{ "afterLineComment": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -164,7 +161,7 @@ var day = "great"
 
 ### allowBlockStart
 
-Examples of **correct** code for this rule with the `{ "beforeLineComment": true, "allowBlockStart": true }` options:
+使用此规则与 `{ "beforeLineComment": true, "allowBlockStart": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -199,7 +196,7 @@ class C {
 
 :::
 
-Examples of **correct** code for this rule with the `{ "beforeBlockComment": true, "allowBlockStart": true }` options:
+使用此规则与 `{ "beforeBlockComment": true, "allowBlockStart": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -244,7 +241,7 @@ switch (foo) {
 
 ### allowBlockEnd
 
-Examples of **correct** code for this rule with the `{ "afterLineComment": true, "allowBlockEnd": true }` option:
+使用此规则与 `{ "afterLineComment": true, "allowBlockEnd": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -280,7 +277,7 @@ class C {
 
 :::
 
-Examples of **correct** code for this rule with the `{ "afterBlockComment": true, "allowBlockEnd": true }` option:
+使用此规则与 `{ "afterBlockComment": true, "allowBlockEnd": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -330,7 +327,7 @@ switch (foo) {
 
 ### allowClassStart
 
-Examples of **incorrect** code for this rule with the `{ "beforeLineComment": true, "allowClassStart": false }` option:
+使用此规则与 `{ "beforeLineComment": true, "allowClassStart": false }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -345,7 +342,7 @@ class foo {
 
 :::
 
-Examples of **correct** code for this rule with the `{ "beforeLineComment": true, "allowClassStart": false }` option:
+使用此规则与 `{ "beforeLineComment": true, "allowClassStart": false }` 选项的**正确**示例：
 
 ::: correct
 
@@ -361,7 +358,7 @@ class foo {
 
 :::
 
-Examples of **correct** code for this rule with the `{ "beforeLineComment": true, "allowClassStart": true }` option:
+使用此规则与 `{ "beforeLineComment": true, "allowClassStart": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -376,7 +373,7 @@ class foo {
 
 :::
 
-Examples of **incorrect** code for this rule with the `{ "beforeBlockComment": true, "allowClassStart": false }` option:
+使用此规则与 `{ "beforeBlockComment": true, "allowClassStart": false }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -391,7 +388,7 @@ class foo {
 
 :::
 
-Examples of **correct** code for this rule with the `{ "beforeBlockComment": true, "allowClassStart": false }` option:
+使用此规则与 `{ "beforeBlockComment": true, "allowClassStart": false }` 选项的**正确**示例：
 
 ::: correct
 
@@ -407,7 +404,7 @@ class foo {
 
 :::
 
-Examples of **correct** code for this rule with the `{ "beforeBlockComment": true, "allowClassStart": true }` option:
+使用此规则与 `{ "beforeBlockComment": true, "allowClassStart": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -424,7 +421,7 @@ class foo {
 
 ### allowClassEnd
 
-Examples of **correct** code for this rule with the `{ "afterLineComment": true, "allowClassEnd": true }` option:
+使用此规则与 `{ "afterLineComment": true, "allowClassEnd": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -439,7 +436,7 @@ class foo {
 
 :::
 
-Examples of **correct** code for this rule with the `{ "afterBlockComment": true, "allowClassEnd": true }` option:
+使用此规则与 `{ "afterBlockComment": true, "allowClassEnd": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -457,7 +454,7 @@ class foo {
 
 ### allowObjectStart
 
-Examples of **correct** code for this rule with the `{ "beforeLineComment": true, "allowObjectStart": true }` option:
+使用此规则与 `{ "beforeLineComment": true, "allowObjectStart": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -482,7 +479,7 @@ const {
 
 :::
 
-Examples of **correct** code for this rule with the `{ "beforeBlockComment": true, "allowObjectStart": true }` option:
+使用此规则与 `{ "beforeBlockComment": true, "allowObjectStart": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -509,7 +506,7 @@ const {
 
 ### allowObjectEnd
 
-Examples of **correct** code for this rule with the `{ "afterLineComment": true, "allowObjectEnd": true }` option:
+使用此规则与 `{ "afterLineComment": true, "allowObjectEnd": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -534,7 +531,7 @@ const {
 
 :::
 
-Examples of **correct** code for this rule with the `{ "afterBlockComment": true, "allowObjectEnd": true }` option:
+使用此规则与 `{ "afterBlockComment": true, "allowObjectEnd": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -564,7 +561,7 @@ const {
 
 ### allowArrayStart
 
-Examples of **correct** code for this rule with the `{ "beforeLineComment": true, "allowArrayStart": true }` option:
+使用此规则与 `{ "beforeLineComment": true, "allowArrayStart": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -585,7 +582,7 @@ const [
 
 :::
 
-Examples of **correct** code for this rule with the `{ "beforeBlockComment": true, "allowArrayStart": true }` option:
+使用此规则与 `{ "beforeBlockComment": true, "allowArrayStart": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -608,7 +605,7 @@ const [
 
 ### allowArrayEnd
 
-Examples of **correct** code for this rule with the `{ "afterLineComment": true, "allowArrayEnd": true }` option:
+使用此规则与 `{ "afterLineComment": true, "allowArrayEnd": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -629,7 +626,7 @@ const [
 
 :::
 
-Examples of **correct** code for this rule with the `{ "afterBlockComment": true, "allowArrayEnd": true }` option:
+使用此规则与 `{ "afterBlockComment": true, "allowArrayEnd": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -654,9 +651,9 @@ const [
 
 ### ignorePattern
 
-By default this rule ignores comments starting with the following words: `eslint`, `jshint`, `jslint`, `istanbul`, `global`, `exported`, `jscs`. To ignore more comments in addition to the defaults, set the `ignorePattern` option to a string pattern that will be passed to the [`RegExp` constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/RegExp).
+默认情况下，这个规则会忽略以下列词语开头的注释。`eslint`, `jshint`, `jslint`, `istanbul`, `global`, `exported`, `jscs`. 要想在默认值之外忽略更多的注释，请将`ignorePattern`选项设置为一个字符串模式，该模式将被传递给 [`RegExp`构造函数](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/RegExp)。
 
-Examples of **correct** code for the `ignorePattern` option:
+使用 `ignorePattern` 选项的**正确**示例：
 
 ::: correct
 
@@ -675,7 +672,7 @@ foo();
 
 :::
 
-Examples of **incorrect** code for the `ignorePattern` option:
+使用 `ignorePattern` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -690,9 +687,9 @@ Examples of **incorrect** code for the `ignorePattern` option:
 
 ### applyDefaultIgnorePatterns
 
-Default ignore patterns are applied even when `ignorePattern` is provided. If you want to omit default patterns, set this option to `false`.
+即使提供了`ignorePattern`，也会应用默认的忽略模式。如果你想省略默认模式，将此选项设置为`false'。
 
-Examples of **correct** code for the `{ "applyDefaultIgnorePatterns": false }` option:
+使用 `{ "applyDefaultIgnorePatterns": false }` 选项的**正确**示例：
 
 ::: correct
 
@@ -705,7 +702,7 @@ foo();
 
 :::
 
-Examples of **incorrect** code for the `{ "applyDefaultIgnorePatterns": false }` option:
+使用 `{ "applyDefaultIgnorePatterns": false }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -719,6 +716,6 @@ foo();
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-Many people enjoy a terser code style and don't mind comments bumping up against code. If you fall into that category this rule is not for you.
+许多人喜欢更简洁的代码风格，不介意注释与代码连在一起。如果你属于这一类，这条规则就不适合你。

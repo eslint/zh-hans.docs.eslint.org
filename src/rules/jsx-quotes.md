@@ -7,37 +7,35 @@ related_rules:
 - quotes
 ---
 
-
-
-JSX attribute values can contain string literals, which are delimited with single or double quotes.
+JSX 属性值可以包含字符串字面，用单引号或双引号划定。
 
 ```xml
 <a b='c' />
 <a b="c" />
 ```
 
-Unlike string literals in JavaScript, string literals within JSX attributes can’t contain escaped quotes.
-If you want to have e.g. a double quote within a JSX attribute value, you have to use single quotes as string delimiter.
+与 JavaScript 中的字符串字元不同，JSX 属性中的字符串字元不能包含转义引号。
+如果你想在 JSX 属性值中有一个双引号，你必须使用单引号作为字符串分隔符。
 
 ```xml
 <a b="'" />
 <a b='"' />
 ```
 
-## Rule Details
+## 规则细节
 
-This rule enforces the consistent use of either double or single quotes in JSX attributes.
+这条规则强制要求在 JSX 属性中统一使用双引号或单引号。
 
-## Options
+## 选项
 
-This rule has a string option:
+此规则选项为字符串：
 
-* `"prefer-double"` (default) enforces the use of double quotes for all JSX attribute values that don't contain a double quote.
-* `"prefer-single"` enforces the use of single quotes for all JSX attribute values that don’t contain a single quote.
+* `"prefer-double"`（默认值）对于所有不包含双引号的 JSX 属性值，强制使用双引号。
+* `"prefer-single"`对所有不包含单引号的 JSX 属性值强制使用单引号。
 
 ### prefer-double
 
-Examples of **incorrect** code for this rule with the default `"prefer-double"` option:
+使用此规则与默认的 `"prefer-double"` 选项的**错误**示例：
 
 :::incorrect
 
@@ -49,7 +47,7 @@ Examples of **incorrect** code for this rule with the default `"prefer-double"` 
 
 :::
 
-Examples of **correct** code for this rule with the default `"prefer-double"` option:
+使用此规则与默认的 `"prefer-double"` 选项的**正确**示例：
 
 :::correct
 
@@ -64,7 +62,7 @@ Examples of **correct** code for this rule with the default `"prefer-double"` op
 
 ### prefer-single
 
-Examples of **incorrect** code for this rule with the `"prefer-single"` option:
+使用此规则与 `"prefer-single"` 选项的**错误**示例：
 
 :::incorrect
 
@@ -76,7 +74,7 @@ Examples of **incorrect** code for this rule with the `"prefer-single"` option:
 
 :::
 
-Examples of **correct** code for this rule with the `"prefer-single"` option:
+使用此规则与 `"prefer-single"` 选项的**正确**示例：
 
 :::correct
 
@@ -89,6 +87,6 @@ Examples of **correct** code for this rule with the `"prefer-single"` option:
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-You can turn this rule off if you don’t use JSX or if you aren’t concerned with a consistent usage of quotes within JSX attributes.
+如果你不使用 JSX，或者你不关心 JSX 属性中引号的一致用法，你可以关闭这个规则。

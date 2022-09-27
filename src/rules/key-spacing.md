@@ -5,39 +5,37 @@ edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/key-
 rule_type: layout
 ---
 
+这个规则强制执行对象字面属性中的冒号周围的间距。它可以单独验证每个属性，也可以确保一个对象字面中相邻属性的水平对齐。
 
+## 规则细节
 
-This rule enforces spacing around the colon in object literal properties. It can verify each property individually, or it can ensure horizontal alignment of adjacent properties in an object literal.
+这条规则使对象字面属性中的键和值之间的间距一致。在长行的情况下，在允许空白的地方添加一个新行是可以接受的。
 
-## Rule Details
+## 选项
 
-This rule enforces consistent spacing between keys and values in object literal properties. In the case of long lines, it is acceptable to add a new line wherever whitespace is allowed.
-
-## Options
-
-This rule has an object option:
+此规则选项为对象：
 
 * `"beforeColon": false (default) | true`
-    * `false`: disallows spaces between the key and the colon in object literals.
-    * `true`: requires at least one space between the key and the colon in object literals.
-* `"afterColon": true (default) | false`
-    * `true`: requires at least one space between the colon and the value in object literals.
-    * `false`: disallows spaces between the colon and the value in object literals.
+    * `false`: 不允许在对象字面中的键和冒号之间有空格。
+    * `true`: 要求在对象字面中的键和冒号之间至少有一个空格。
+* "afterColon": true（默认） | false
+    * `true`: 要求在对象字面中的冒号和值之间至少有一个空格。
+    * `false`: 不允许在对象字面上的冒号和数值之间有空格。
 * `"mode": "strict" (default) | "minimum"`
-    * `"strict"`: enforces exactly one space before or after colons in object literals.
-    * `"minimum"`: enforces one or more spaces before or after colons in object literals.
-* `"align": "value" | "colon"`
-    * `"value"`: enforces horizontal alignment of values in object literals.
-    * `"colon"` enforces horizontal alignment of both colons and values in object literals.
-* `"align"` with an object value allows for fine-grained spacing when values are being aligned in object literals.
-* `"singleLine"` specifies a spacing style for single-line object literals.
-* `"multiLine"` specifies a spacing style for multi-line object literals.
+    * `"strict"`: 在对象字面的冒号前后强制执行一个空格。
+    * `"minimum"`: 在对象字面的冒号之前或之后强制执行一个或多个空格。
+* `"align": "value" | "colon"`：强制执行对象字词中冒号前后的一个或多个空格。
+    * `"value"`: 在对象字面中强制执行水平对齐的值。
+    * `"colon"`：在对象字面中对冒号和值都执行水平对齐。
+* `"align"` 和一个对象值一起，允许在对象字面中的值被对齐时有细微的间距。
+* `"singleLine"` 为单行对象字词指定一种间距样式。
+* `"multiLine"` 为多行对象字词指定一种间距样式。
 
-Please note that you can either use the top-level options or the grouped options (`singleLine` and `multiLine`) but not both.
+请注意，你可以使用顶层选项或分组选项（`singleLine` 和 `multiLine`），但不能同时使用。
 
 ### beforeColon
 
-Examples of **incorrect** code for this rule with the default `{ "beforeColon": false }` option:
+使用此规则与默认的 `{ "beforeColon": false }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -49,7 +47,7 @@ var obj = { "foo" : 42 };
 
 :::
 
-Examples of **correct** code for this rule with the default `{ "beforeColon": false }` option:
+使用此规则与默认的 `{ "beforeColon": false }` 选项的**正确**示例：
 
 ::: correct
 
@@ -61,7 +59,7 @@ var obj = { "foo": 42 };
 
 :::
 
-Examples of **incorrect** code for this rule with the `{ "beforeColon": true }` option:
+使用此规则与 `{ "beforeColon": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -73,7 +71,7 @@ var obj = { "foo": 42 };
 
 :::
 
-Examples of **correct** code for this rule with the `{ "beforeColon": true }` option:
+使用此规则与 `{ "beforeColon": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -87,7 +85,7 @@ var obj = { "foo" : 42 };
 
 ### afterColon
 
-Examples of **incorrect** code for this rule with the default `{ "afterColon": true }` option:
+使用此规则与默认的 `{ "afterColon": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -99,7 +97,7 @@ var obj = { "foo":42 };
 
 :::
 
-Examples of **correct** code for this rule with the default `{ "afterColon": true }` option:
+使用此规则与默认的 `{ "afterColon": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -111,7 +109,7 @@ var obj = { "foo": 42 };
 
 :::
 
-Examples of **incorrect** code for this rule with the `{ "afterColon": false }` option:
+使用此规则与 `{ "afterColon": false }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -123,7 +121,7 @@ var obj = { "foo": 42 };
 
 :::
 
-Examples of **correct** code for this rule with the `{ "afterColon": false }` option:
+使用此规则与 `{ "afterColon": false }` 选项的**正确**示例：
 
 ::: correct
 
@@ -137,7 +135,7 @@ var obj = { "foo":42 };
 
 ### mode
 
-Examples of **incorrect** code for this rule with the default `{ "mode": "strict" }` option:
+使用此规则与默认的 `{ "mode": "strict" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -152,7 +150,7 @@ call({
 
 :::
 
-Examples of **correct** code for this rule with the default `{ "mode": "strict" }` option:
+使用此规则与默认的 `{ "mode": "strict" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -167,7 +165,7 @@ call({
 
 :::
 
-Examples of **correct** code for this rule with the `{ "mode": "minimum" }` option:
+使用此规则与 `{ "mode": "minimum" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -184,7 +182,7 @@ call({
 
 ### align
 
-Examples of **incorrect** code for this rule with the `{ "align": "value" }` option:
+使用此规则与 `{ "align": "value" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -200,7 +198,7 @@ var obj = {
 
 :::
 
-Examples of **correct** code for this rule with the `{ "align": "value" }` option:
+使用此规则与 `{ "align": "value" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -223,7 +221,7 @@ var obj = { a: "foo", longPropertyName: "bar" };
 
 :::
 
-Examples of **incorrect** code for this rule with the `{ "align": "colon" }` option:
+使用此规则与 `{ "align": "colon" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -238,7 +236,7 @@ call({
 
 :::
 
-Examples of **correct** code for this rule with the `{ "align": "colon" }` option:
+使用此规则与 `{ "align": "colon" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -255,9 +253,9 @@ call({
 
 ### align
 
-The `align` option can take additional configuration through the `beforeColon`, `afterColon`, `mode`, and `on` options.
+`align` 选项可以通过 `beforeColon`, `afterColon`, `mode` 和 `on` 选项进行额外配置。
 
-If `align` is defined as an object, but not all of the parameters are provided, undefined parameters will default to the following:
+如果 `align` 被定义为对象，且没有提供所有的参数，则未定义的参数将默认为以下内容：
 
 ```js
 // Defaults
@@ -269,7 +267,7 @@ align: {
 }
 ```
 
-Examples of **correct** code for this rule with sample `{ "align": { } }` options:
+使用此规则与演示的 `{ "align": { } }` 选项的**正确**示例：
 
 ::: correct
 
@@ -311,9 +309,9 @@ var obj = {
 
 ### align and multiLine
 
-The `multiLine` and `align` options can differ, which allows for fine-tuned control over the `key-spacing` of your files.  `align` will **not** inherit from `multiLine` if `align` is configured as an object.
+`multiLine`和`align`选项可以不同，这允许对你的文件的`key-spacing'进行微调控制。如果`align`被配置为一个对象，`align`将不会**继承`multiLine`。
 
-`multiLine` is used any time  an object literal spans multiple lines.  The `align` configuration is used when there is a group of properties in the same object. For example:
+`multiLine`在任何一个对象字头跨越多行的时候都会被使用。`align`配置在同一对象中有一组属性时使用。比如说：
 
 ```javascript
 var myObj = {
@@ -327,7 +325,7 @@ var myObj = {
 
 ```
 
-Examples of **incorrect** code for this rule with sample `{ "align": { }, "multiLine": { } }` options:
+使用此规则与演示的 `{ "align": { }, "multiLine": { } }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -355,7 +353,7 @@ var obj = {
 
 :::
 
-Examples of **correct** code for this rule with sample `{ "align": { }, "multiLine": { } }` options:
+使用此规则与演示的 `{ "align": { }, "multiLine": { } }` 选项的**正确**示例：
 
 ::: correct
 
@@ -387,7 +385,7 @@ var obj = {
 
 ### singleLine and multiLine
 
-Examples of **correct** code for this rule with sample `{ "singleLine": { }, "multiLine": { } }` options:
+使用此规则与演示的 `{ "singleLine": { }, "multiLine": { } }` 选项的**正确**示例：
 
 ::: correct
 
@@ -412,6 +410,6 @@ var obj2 = {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you have another convention for property spacing that might not be consistent with the available options, or if you want to permit multiple styles concurrently you can safely disable this rule.
+如果你有另一种属性间距的约定，可能与可用的选项不一致，或者你想允许多种样式同时存在，你可以安全地禁用这一规则。
