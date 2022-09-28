@@ -10,20 +10,19 @@ related_rules:
 - camelcase
 ---
 
-
-Very short identifier names like `e`, `x`, `_t` or very long ones like `hashGeneratorResultOutputContainerObject` can make code harder to read and potentially less maintainable. To prevent this, one may enforce a minimum and/or maximum identifier length.
+像 `e`, `x`, `_t` 这样非常短的标识符名称或像  `hashGeneratorResultOutputContainerObject` 这样非常长的标识符名称会使代码更难读，并可能降低可维护性。为了防止这种情况，我们可以强制执行一个最小和/或最大的标识符长度。
 
 ```js
 var x = 5; // too short; difficult to understand its purpose without context
 ```
 
-## Rule Details
+## 规则细节
 
-This rule enforces a minimum and/or maximum identifier length convention.
+这条规则强制执行最小和/或最大标识符长度公约。
 
-## Options
+## 选项
 
-Examples of **incorrect** code for this rule with the default options:
+使用此规则与默认选项的**错误**示例：
 
 ::: incorrect
 
@@ -58,7 +57,7 @@ var { prop: a} = {};
 
 :::
 
-Examples of **correct** code for this rule with the default options:
+使用此规则与默认选项的**正确**示例：
 
 ::: correct
 
@@ -100,18 +99,18 @@ data["y"] = 3;  // excused because of calculated property access
 
 :::
 
-This rule has an object option:
+此规则选项为对象：
 
-* `"min"` (default: 2) enforces a minimum identifier length
-* `"max"` (default: Infinity) enforces a maximum identifier length
-* `"properties": always` (default) enforces identifier length convention for property names
-* `"properties": never` ignores identifier length convention for property names
-* `"exceptions"` allows an array of specified identifier names
-* `"exceptionPatterns"` array of strings representing regular expression patterns, allows identifiers that match any of the patterns.
+* `"min"` （默认值：2) 执行最小标识符长度
+* `"max"`（默认值：无穷大）执行最大标识符长度
+* `"properties": always`（默认值）执行属性名称的标识符长度约定
+* `"properties": never` 忽略属性名的标识符长度约定
+* `"exceptions"` 允许一个指定标识符名称的数组
+* `"exceptionPatterns"` 代表正则表达式模式的字符串数组，允许匹配任何模式的标识符
 
 ### min
 
-Examples of **incorrect** code for this rule with the `{ "min": 4 }` option:
+使用此规则与 `{ "min": 4 }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -141,7 +140,7 @@ var { prop: [x]} = {};
 
 :::
 
-Examples of **correct** code for this rule with the `{ "min": 4 }` option:
+使用此规则与 `{ "min": 4 }` 选项的**正确**示例：
 
 ::: correct
 
@@ -177,7 +176,7 @@ data["y"] = 3;  // excused because of calculated property access
 
 ### max
 
-Examples of **incorrect** code for this rule with the `{ "max": 10 }` option:
+使用此规则与 `{ "max": 10 }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -200,7 +199,7 @@ var [reallyLongFirstElementName] = arr;
 
 :::
 
-Examples of **correct** code for this rule with the `{ "max": 10 }` option:
+使用此规则与 `{ "max": 10 }` 选项的**正确**示例：
 
 ::: correct
 
@@ -225,7 +224,7 @@ var [first] = arr;
 
 ### properties
 
-Examples of **correct** code for this rule with the `{ "properties": "never" }` option:
+使用此规则与 `{ "properties": "never" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -242,7 +241,7 @@ var myObj = { a: 1 };
 
 ### exceptions
 
-Examples of additional **correct** code for this rule with the `{ "exceptions": ["x"] }` option:
+适宜此规则与额外的`{ "exceptions": ["x"] }` 选项的**正确**示例：
 
 ::: correct
 
@@ -269,7 +268,7 @@ const { a: x } = foo;
 
 ### exceptionPatterns
 
-Examples of additional **correct** code for this rule with the `{ "exceptionPatterns": ["E|S", "[x-z]"] }` option:
+使用此规则与额外的 `{ "exceptionPatterns": ["E|S", "[x-z]"] }` 选项的**正确**示例：
 
 ::: correct
 

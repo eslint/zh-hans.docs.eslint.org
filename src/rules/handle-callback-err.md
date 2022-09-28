@@ -8,12 +8,11 @@ further_reading:
 - https://web.archive.org/web/20171224042620/https://docs.nodejitsu.com/articles/errors/what-are-the-error-conventions/
 ---
 
+此规则于 ESLint v7.0.0 中废弃，请使用 [`eslint-plugin-node`](https://github.com/mysticatea/eslint-plugin-node) 中的对应规则代替。
 
-This rule was **deprecated** in ESLint v7.0.0. Please use the corresponding rule in [`eslint-plugin-node`](https://github.com/mysticatea/eslint-plugin-node).
-
-In Node.js, a common pattern for dealing with asynchronous behavior is called the callback pattern.
-This pattern expects an `Error` object or `null` as the first argument of the callback.
-Forgetting to handle these errors can lead to some really strange behavior in your application.
+在 Node.js 中，处理异步行为的一个常见模式被称为回调模式。
+这种模式期望一个 `Error` 对象或 `null` 作为回调的第一个参数。
+忘记处理这些错误会导致你的应用程序中出现一些非常奇怪的行为。
 
 ```js
 function loadData (err, data) {
@@ -21,15 +20,15 @@ function loadData (err, data) {
 }
 ```
 
-## Rule Details
+## 规则细节
 
-This rule expects that when you're using the callback pattern in Node.js you'll handle the error.
+这条规则期望当你在 Node.js 中使用回调模式时，你会处理这个错误。
 
-## Options
+## 选项
 
-The rule takes a single string option: the name of the error parameter. The default is `"err"`.
+该规则采用一个字符串选项：错误参数的名称。默认是 `"err"`。
 
-Examples of **incorrect** code for this rule with the default `"err"` parameter name:
+此规则的**错误**代码的例子，默认为 `"err"`参数名。
 
 ::: incorrect
 
@@ -44,7 +43,7 @@ function loadData (err, data) {
 
 :::
 
-Examples of **correct** code for this rule with the default `"err"` parameter name:
+此规则的**正确**代码的例子，默认的 `"err"` 参数名称。
 
 ::: correct
 
@@ -65,7 +64,7 @@ function generateError (err) {
 
 :::
 
-Examples of **correct** code for this rule with a sample `"error"` parameter name:
+使用此规则与 `"error"` 参数名的**正确**示例：
 
 ::: correct
 
@@ -84,16 +83,15 @@ function loadData (error, data) {
 
 ### regular expression
 
-Sometimes (especially in big projects) the name of the error variable is not consistent across the project,
-so you need a more flexible configuration to ensure that the rule reports all unhandled errors.
+有时（特别是在大项目中）错误变量的名称在整个项目中不一致。
+所以你需要一个更灵活的配置来确保规则报告所有未处理的错误。
 
-If the configured name of the error variable begins with a `^` it is considered to be a regexp pattern.
+如果配置的错误变量名称以 `^` 开头，则被认为是一个 regexp 模式。
 
-* If the option is `"^(err|error|anySpecificError)$"`, the rule reports unhandled errors where the parameter name can be `err`, `error` or `anySpecificError`.
-* If the option is `"^.+Error$"`, the rule reports unhandled errors where the parameter name ends with `Error` (for example, `connectionError` or `validationError` will match).
-* If the option is `"^.*(e|E)rr"`, the rule reports unhandled errors where the parameter name matches any string that contains `err` or `Err` (for example, `err`, `error`, `anyError`, `some_err` will match).
+* 如果选项是 `"^(err|error|anySpecificError)$"`，规则报告未处理的错误，其中参数名称可以是 `err`、`error` 或 `anySpecificError`。
+* 如果选项是`"^.+Error$"`，该规则报告参数名称以`Error`结尾的未处理错误（例如，`connectionError`或`validationError`将匹配）。
+* 如果选项是 `"^.*(e|E)rr"`，该规则报告参数名称与任何包含 `err` 或 `Err` 的字符串相匹配的未处理错误（如匹配 `err`、`error`、`anyError`、`some_err`）。
 
-## When Not To Use It
+## 何时不用
 
-There are cases where it may be safe for your application to ignore errors, however only ignore errors if you are
-confident that some other form of monitoring will help you catch the problem.
+在有些情况下，对你的应用程序来说，忽略错误是安全的，但是只有在你确信其他形式的监控可以帮助你发现问题的情况下，才能忽略错误。相信其他形式的监控会帮助你发现问题。

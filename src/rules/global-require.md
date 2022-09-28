@@ -5,16 +5,15 @@ edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/glob
 rule_type: suggestion
 ---
 
+此规则于 ESLint v7.0.0 中废弃，请使用 [`eslint-plugin-node`](https://github.com/mysticatea/eslint-plugin-node) 中的对应规则代替。
 
-This rule was **deprecated** in ESLint v7.0.0. Please use the corresponding rule in [`eslint-plugin-node`](https://github.com/mysticatea/eslint-plugin-node).
-
-In Node.js, module dependencies are included using the `require()` function, such as:
+在 Node.js 中，模块的依赖性是使用 `require()` 函数包含的，例如：
 
 ```js
 var fs = require("fs");
 ```
 
-While `require()` may be called anywhere in code, some style guides prescribe that it should be called only in the top level of a module to make it easier to identify dependencies. For instance, it's arguably harder to identify dependencies when they are deeply nested inside of functions and other statements:
+虽然 `require()` 可以在代码的任何地方调用，但一些风格指南规定，它应该只在模块的顶层调用，以使其更容易识别依赖关系。例如，当依赖关系被深深地嵌套在函数和其他语句中时，可以说很难识别它们。
 
 ```js
 function foo() {
@@ -24,15 +23,15 @@ function foo() {
 }
 ```
 
-Since `require()` does a synchronous load, it can cause performance problems when used in other locations.
+由于 `require()` 做的是同步加载，所以在其他地方使用时可能会导致性能问题。
 
-Further, ES6 modules mandate that `import` and `export` statements can only occur in the top level of the module's body.
+此外，ES6 模块规定 `import` 和 `export` 语句只能出现在模块主体的顶层。
 
-## Rule Details
+## 规则细节
 
-This rule requires all calls to `require()` to be at the top level of the module, similar to ES6 `import` and `export` statements, which also can occur only at the top level.
+这个规则要求所有对 `require()` 的调用都在模块的顶层，类似于 ES6 的 `import` 和 `export` 语句，也只能在顶层出现。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -76,7 +75,7 @@ try {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -107,6 +106,6 @@ var x = require("x"),
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you have a module that must be initialized with information that comes from the file-system or if a module is only used in very rare situations and will cause significant overhead to load it may make sense to disable the rule. If you need to `require()` an optional dependency inside of a `try`/`catch`, you can disable this rule for just that dependency using the `// eslint-disable-line global-require` comment.
+如果你有一个模块必须用来自文件系统的信息进行初始化，或者一个模块只在非常罕见的情况下使用，并且会导致大量的加载开销，那么禁用这个规则可能是有意义的。如果你需要在 `try`/`catch` 中  `require()` 依赖，你可以使用 `// eslint-disable-line global-require` 注释为该依赖关系禁用这个规则。
