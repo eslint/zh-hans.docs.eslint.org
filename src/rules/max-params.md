@@ -13,8 +13,7 @@ related_rules:
 - max-statements
 ---
 
-
-Functions that take numerous parameters can be difficult to read and write because it requires the memorization of what each parameter is, its type, and the order they should appear in. As a result, many coders adhere to a convention that caps the number of parameters a function can take.
+带众多参数的函数可能难以阅读和编写，因为它需要记住每个参数是什么，它的类型，以及它们应该出现的顺序。因此，许多程序员坚持一个惯例，即对一个函数可以接受的参数数量设置上限。
 
 ```js
 function foo (bar, baz, qux, qxx) { // four parameters, may be too many
@@ -22,21 +21,21 @@ function foo (bar, baz, qux, qxx) { // four parameters, may be too many
 }
 ```
 
-## Rule Details
+## 规则细节
 
-This rule enforces a maximum number of parameters allowed in function definitions.
+这条规则强制规定了函数定义中允许的最大参数数。
 
-## Options
+## 选项
 
-This rule has a number or object option:
+这个规则有一个数字或对象选项：
 
-* `"max"` (default `3`) enforces a maximum number of parameters in function definitions
+* `"max"`（默认为 `3`）在函数定义中执行最大的参数数。
 
-**Deprecated:** The object property `maximum` is deprecated; please use the object property `max` instead.
+**废弃**：对象属性 `maximum` 已废弃，请使用对象属性 `max` 代替。
 
 ### max
 
-Examples of **incorrect** code for this rule with the default `{ "max": 3 }` option:
+使用此规则与默认的 `{ "max": 3 }` 选项的**错误**示例：
 
 :::incorrect
 
@@ -55,7 +54,7 @@ let foo = (bar, baz, qux, qxx) => {
 
 :::
 
-Examples of **correct** code for this rule with the default `{ "max": 3 }` option:
+使用此规则与默认的 `{ "max": 3 }` 选项的**正确**示例：
 
 :::correct
 

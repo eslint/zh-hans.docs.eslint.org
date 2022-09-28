@@ -17,8 +17,7 @@ further_reading:
 - https://web.archive.org/web/20220127215850/https://howtonode.org/control-flow-part-ii
 ---
 
-
-Many JavaScript libraries use the callback pattern to manage asynchronous operations. A program of any complexity will most likely need to manage several asynchronous operations at various levels of concurrency. A common pitfall that is easy to fall into is nesting callbacks, which makes code more difficult to read the deeper the callbacks are nested.
+许多 JavaScript 库使用回调模式来管理异步操作。任何复杂的程序都很可能需要在不同的并发程度上管理几个异步操作。一个容易陷入的陷阱是嵌套回调，回调嵌套得越深，代码就越难读。
 
 ```js
 foo(function () {
@@ -32,21 +31,21 @@ foo(function () {
 });
 ```
 
-## Rule Details
+## 规则细节
 
-This rule enforces a maximum depth that callbacks can be nested to increase code clarity.
+这条规则强制规定了回调可以嵌套的最大深度，以提高代码的清晰度。
 
-## Options
+## 选项
 
-This rule has a number or object option:
+这条规则有一个数字或对象选项：
 
-* `"max"` (default `10`) enforces a maximum depth that callbacks can be nested
+* `"max"`（默认为 `10`）加强了回调可以被嵌套的最大深度。
 
-**Deprecated:** The object property `maximum` is deprecated; please use the object property `max` instead.
+**废弃**：对象属性 `maximum` 已废弃，请使用对象属性 `max` 代替。
 
 ### max
 
-Examples of **incorrect** code for this rule with the `{ "max": 3 }` option:
+使用此规则与 `{ "max": 3 }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -66,7 +65,7 @@ foo1(function() {
 
 :::
 
-Examples of **correct** code for this rule with the `{ "max": 3 }` option:
+使用此规则与 `{ "max": 3 }` 选项的**正确**示例：
 
 ::: correct
 

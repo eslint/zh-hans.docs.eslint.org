@@ -13,16 +13,15 @@ related_rules:
 - max-statements-per-line
 ---
 
+有些人认为大型函数是一种代码风格。大型函数往往会做很多事情，而且会让人很难理解正在发生的事情。许多编码风格指南规定了一个函数所能包含的行数限制。这条规则可以帮助强制执行这种风格。
 
-Some people consider large functions a code smell. Large functions tend to do a lot of things and can make it hard following what's going on. Many coding style guides dictate a limit of the number of lines that a function can comprise of. This rule can help enforce that style.
+## 规则细节
 
-## Rule Details
+这条规则强制规定了每个函数的最大行数，以帮助维护和降低复杂性。
 
-This rule enforces a maximum number of lines per function, in order to aid in maintainability and reduce complexity.
+### 为什么不使用 `max-statements` 或其他复杂性测量规则来代替？
 
-### Why not use `max-statements` or other complexity measurement rules instead?
-
-Nested long method chains like the below example are often broken onto separate lines for readability:
+像下面的例子一样，嵌套的长方法链通常被分割成不同的行，以便阅读：
 
 ```js
 function() {
@@ -43,30 +42,30 @@ function() {
 }
 ```
 
-* `max-statements` will only report this as 1 statement, despite being 16 lines of code.
-* `complexity` will only report a complexity of 1
-* `max-nested-callbacks` will only report 1
-* `max-depth` will report a depth of 0
+* `max-statements` 将只报告为 1 条语句，尽管是 16 行代码。
+* `complexity` 将只报告复杂度为 1
+* `max-nested-callbacks` 将只报告 1 个
+* `max-depth` 将报告深度为 0
 
-## Options
+## 选项
 
-This rule has the following options that can be specified using an object:
+这个规则有以下几个选项，可以指定为任一对象：
 
-* `"max"` (default `50`) enforces a maximum number of lines in a function.
+* `"max"`（默认为 `50`）执行一个函数中的最大行数。
 
-* `"skipBlankLines"` (default `false`) ignore lines made up purely of whitespace.
+* `"skipBlankLines"`（默认为 `false`）忽略纯粹由空白构成的行。
 
-* `"skipComments"` (default `false`) ignore lines containing just comments.
+* `"skipComments"`（默认为 `false`）忽略只包含注释的行。
 
-* `"IIFEs"` (default `false`) include any code included in IIFEs.
+* `"IIFEs"`（默认为 `false`）包括任何包含在 IIFEs 中的代码。
 
-Alternatively, you may specify a single integer for the `max` option:
+另外，你可以为 `max` 选项指定一个整数。
 
 ```json
 "max-lines-per-function": ["error", 20]
 ```
 
-is equivalent to
+相当于
 
 ```json
 "max-lines-per-function": ["error", { "max": 20 }]
@@ -74,7 +73,7 @@ is equivalent to
 
 ### code
 
-Examples of **incorrect** code for this rule with a max value of `2`:
+使用此规则与最大值 `2` 的**错误**示例：
 
 ::: incorrect
 
@@ -112,7 +111,7 @@ function foo() {
 
 :::
 
-Examples of **correct** code for this rule with a max value of `3`:
+使用此规则与最大值 `3` 的**正确**代码示例：
 
 ::: correct
 
@@ -152,7 +151,7 @@ function foo() {
 
 ### skipBlankLines
 
-Examples of **incorrect** code for this rule with the `{ "skipBlankLines": true }` option:
+使用此规则与 `{ "skipBlankLines": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -166,7 +165,7 @@ function foo() {
 
 :::
 
-Examples of **correct** code for this rule with the `{ "skipBlankLines": true }` option:
+使用此规则与 `{ "skipBlankLines": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -182,7 +181,7 @@ function foo() {
 
 ### skipComments
 
-Examples of **incorrect** code for this rule with the `{ "skipComments": true }` option:
+使用此规则与 `{ "skipComments": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -196,7 +195,7 @@ function foo() {
 
 :::
 
-Examples of **correct** code for this rule with the `{ "skipComments": true }` option:
+使用此规则与 `{ "skipComments": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -212,7 +211,7 @@ function foo() {
 
 ### IIFEs
 
-Examples of **incorrect** code for this rule with the `{ "IIFEs": true }` option:
+使用此规则与 `{ "IIFEs": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -229,7 +228,7 @@ Examples of **incorrect** code for this rule with the `{ "IIFEs": true }` option
 
 :::
 
-Examples of **correct** code for this rule with the `{ "IIFEs": true }` option:
+使用此规则与 `{ "IIFEs": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -246,6 +245,6 @@ Examples of **correct** code for this rule with the `{ "IIFEs": true }` option:
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-You can turn this rule off if you are not concerned with the number of lines in your functions.
+如果你不关心你的函数中的行数，你可以关闭这个规则。

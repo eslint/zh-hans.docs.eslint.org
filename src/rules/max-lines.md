@@ -14,28 +14,27 @@ further_reading:
 - https://web.archive.org/web/20160725154648/http://www.mind2b.com/component/content/article/24-software-module-size-and-file-size
 ---
 
+有些人认为大文件是一种代码风格。大文件往往会做很多事情，而且会让人很难了解正在发生的事情。虽然在一个文件中没有一个客观的可接受的最大行数，但大多数人都会同意它不应该是成千上万的。建议通常在 100 到 500 行之间。
 
-Some people consider large files a code smell. Large files tend to do a lot of things and can make it hard following what's going. While there is not an objective maximum number of lines considered acceptable in a file, most people would agree it should not be in the thousands. Recommendations usually range from 100 to 500 lines.
+## 规则细节
 
-## Rule Details
+这条规则规定了每个文件的最大行数，以帮助维护和减少复杂性。
 
-This rule enforces a maximum number of lines per file, in order to aid in maintainability and reduce complexity.
+请注意，如果文件以换行方式结束，大多数编辑器会在最后显示一个额外的空行。这条规则不计算这个额外的行。
 
-Please note that most editors show an additional empty line at the end if the file ends with a line break. This rule does not count that extra line.
+## 选项
 
-## Options
+这个规则有一个数字或对象选项：
 
-This rule has a number or object option:
+* `"max"`（默认为 `300`）执行一个文件的最大行数
 
-* `"max"` (default `300`) enforces a maximum number of lines in a file
+* `"skipBlankLines": true` 忽略纯粹由空白构成的行
 
-* `"skipBlankLines": true` ignore lines made up purely of whitespace.
-
-* `"skipComments": true` ignore lines containing just comments
+* `"skipComments": true` 忽略只包含注释的行
 
 ### max
 
-Examples of **incorrect** code for this rule with a max value of `2`:
+使用此规则与最大值 `2` 的**错误**示例：
 
 ::: incorrect
 
@@ -70,7 +69,7 @@ var a,
 
 :::
 
-Examples of **correct** code for this rule with a max value of `2`:
+使用此规则与最大值 `2` 的**正确**示例：
 
 ::: correct
 
@@ -104,7 +103,7 @@ var a, b, c;
 
 ### skipBlankLines
 
-Examples of **incorrect** code for this rule with the `{ "skipBlankLines": true }` option:
+使用此规则与 `{ "skipBlankLines": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -118,7 +117,7 @@ var a,
 
 :::
 
-Examples of **correct** code for this rule with the `{ "skipBlankLines": true }` option:
+使用此规则与 `{ "skipBlankLines": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -133,7 +132,7 @@ var a,
 
 ### skipComments
 
-Examples of **incorrect** code for this rule with the `{ "skipComments": true }` option:
+使用此规则与 `{ "skipComments": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -147,7 +146,7 @@ var a,
 
 :::
 
-Examples of **correct** code for this rule with the `{ "skipComments": true }` option:
+使用此规则与 `{ "skipComments": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -160,10 +159,10 @@ var a,
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-You can turn this rule off if you are not concerned with the number of lines in your files.
+如果你不关心你的文件行数，你可以把这个规则关掉。
 
-## Compatibility
+## 兼容
 
-* **JSCS**: [maximumNumberOfLines](https://jscs-dev.github.io/rule/maximumNumberOfLines)
+* **JSCS**：[maximumNumberOfLines](https://jscs-dev.github.io/rule/maximumNumberOfLines)
