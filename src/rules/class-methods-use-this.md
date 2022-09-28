@@ -8,10 +8,9 @@ further_reading:
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/static
 ---
 
+如果一个类的方法没有使用 `this`，它有时可以被做成一个静态函数。如果你真的将该方法转化为静态函数，那么调用该方法的类的实例也必须转化为静态调用（`MyClass.callStaticMethod()`)
 
-If a class method does not use `this`, it can *sometimes* be made into a static function. If you do convert the method into a static function, instances of the class that call that particular method have to be converted to a static call as well (`MyClass.callStaticMethod()`)
-
-It's possible to have a class method which doesn't use `this`, such as:
+有可能出现不使用 `this` 的类方法，比如说：
 
 ```js
 class A {
@@ -32,7 +31,7 @@ let a = new A();
 a.sayHi(); // => "hi"
 ```
 
-In the example above, the `sayHi` method doesn't use `this`, so we can make it a static method:
+在上面的例子中，`sayHi` 方法没有使用 `this`，所以我们可以把它改成静态方法。
 
 ```js
 class A {
@@ -52,13 +51,13 @@ class A {
 A.sayHi(); // => "hi"
 ```
 
-Also note in the above examples that if you switch a method to a static method, *instances* of the class that call the static method (`let a = new A(); a.sayHi();`) have to be updated to being a static call (`A.sayHi();`) instead of having the instance of the *class* call the method
+在上面的例子中还要注意，如果你把一个方法换成静态方法，那么调用静态方法的类的**实例**（`let a = new A(); a.sayHi();`）必须更新为静态调用（`A.sayHi();`），而不是让类的实例调用这个方法
 
-## Rule Details
+## 规则细节
 
-This rule is aimed to flag class methods that do not use `this`.
+这条规则旨在标记不使用 `this` 的类方法。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -75,7 +74,7 @@ class A {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -107,12 +106,12 @@ class A {
 
 :::
 
-## Options
+## 选项
 
-This rule has two options:
+这个规则有两个选项：
 
-* `"exceptMethods"` allows specified method names to be ignored with this rule.
-* `"enforceForClassFields"` enforces that functions used as instance field initializers utilize `this`. (default: `true`)
+* `"exceptMethods"` 允许指定的方法名被本规则忽略。
+* `"enforceForClassFields"` 强制要求作为实例字段初始化器的函数使用 `this`（默认为 `true`）。
 
 ### exceptMethods
 
@@ -120,9 +119,9 @@ This rule has two options:
 "class-methods-use-this": [<enabled>, { "exceptMethods": [<...exceptions>] }]
 ```
 
-The `exceptMethods` option allows you to pass an array of method names for which you would like to ignore warnings. For example, you might have a spec from an external library that requires you to overwrite a method as a regular function (and not as a static method) and does not use `this` inside the function body. In this case, you can add that method to ignore in the warnings.
+`exceptMethods` 选项允许你传递一个数组的方法名称，你希望忽略这些方法的警告。例如，你可能有一个来自外部库的规范，要求你把一个方法作为普通函数（而不是静态方法）覆盖，并且在函数体中不使用 `this`。在这种情况下，你可以在警告中添加该方法来忽略。
 
-Examples of **incorrect** code for this rule when used without exceptMethods:
+在不使用 exceptMethods 的情况下，此规则的**不正确的**代码示例。
 
 ::: incorrect
 
@@ -137,7 +136,7 @@ class A {
 
 :::
 
-Examples of **correct** code for this rule when used with exceptMethods:
+当与 exceptMethods 一起使用时，此规则的**正确代码的例子：
 
 ::: correct
 
@@ -160,9 +159,9 @@ class A {
 "class-methods-use-this": [<enabled>, { "enforceForClassFields": true | false }]
 ```
 
-The `enforceForClassFields` option enforces that arrow functions and function expressions used as instance field initializers utilize `this`. (default: `true`)
+`enforceForClassFields` 选项强制要求作为实例字段初始化器的箭头函数和函数表达式使用 `this`（默认为 `true`)。
 
-Examples of **incorrect** code for this rule with the `{ "enforceForClassFields": true }` option (default):
+使用此规则与默认的 `{ "enforceForClassFields": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -176,7 +175,7 @@ class A {
 
 :::
 
-Examples of **correct** code for this rule with the `{ "enforceForClassFields": true }` option (default):
+使用此规则与默认的 `{ "enforceForClassFields": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -190,7 +189,7 @@ class A {
 
 :::
 
-Examples of **correct** code for this rule with the `{ "enforceForClassFields": false }` option:
+使用此规则与 `{ "enforceForClassFields": false }` 选项的**正确**示例：
 
 ::: correct
 

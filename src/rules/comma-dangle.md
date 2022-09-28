@@ -5,9 +5,7 @@ edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/comm
 rule_type: layout
 ---
 
-
-
-Trailing commas in object literals are valid according to the ECMAScript 5 (and ECMAScript 3!) spec. However, IE8 (when not in IE8 document mode) and below will throw an error when it encounters trailing commas in JavaScript.
+根据 ECMAScript 5（和 ECMAScript 3！）的规范，对象字面上的尾随逗号是有效的。然而，IE8（当不在 IE8 文档模式下）及以下版本在遇到 JavaScript 中的尾随逗号时将会出现错误。
 
 ```js
 var foo = {
@@ -16,10 +14,10 @@ var foo = {
 };
 ```
 
-Trailing commas simplify adding and removing items to objects and arrays, since only the lines you are modifying must be touched.
-Another argument in favor of trailing commas is that it improves the clarity of diffs when an item is added or removed from an object or array:
+尾随逗号简化了向对象和数组添加和删除项目的过程，因为只会提及你要修改的那一行。
+赞成使用尾随逗号的另一个理由是，当从对象或数组中添加或删除一个项目时，它可以提高差异的清晰度：
 
-Less clear:
+不太清晰：
 
 ```diff
  var foo = {
@@ -29,7 +27,7 @@ Less clear:
  };
 ```
 
-More clear:
+更清晰：
 
 ```diff
  var foo = {
@@ -38,18 +36,18 @@ More clear:
  };
 ```
 
-## Rule Details
+## 规则细节
 
-This rule enforces consistent use of trailing commas in object and array literals.
+这条规则强制要求在对象和数组字面上统一使用尾随逗号。
 
-## Options
+## 选项
 
-This rule has a string option or an object option:
+该规则有一个字符串选项或对象选项：
 
 ```json
 {
     "comma-dangle": ["error", "never"],
-    // or
+    // 或
     "comma-dangle": ["error", {
         "arrays": "never",
         "objects": "never",
@@ -60,25 +58,25 @@ This rule has a string option or an object option:
 }
 ```
 
-* `"never"` (default) disallows trailing commas
-* `"always"` requires trailing commas
-* `"always-multiline"` requires trailing commas when the last element or property is in a *different* line than the closing `]` or `}` and disallows trailing commas when the last element or property is on the *same* line as the closing `]` or `}`
-* `"only-multiline"` allows (but does not require) trailing commas when the last element or property is in a *different* line than the closing `]` or `}` and disallows trailing commas when the last element or property is on the *same* line as the closing `]` or `}`
+* `"never"`（默认值）不允许使用尾随逗号
+* `"always"` 需要尾随逗号
+* `"always-multiline"` 当最后一个元素或属性在与结尾的 `]` 或 `}` **不同行**时，要求使用尾随逗号；当最后一个元素或属性与结尾的`]`或`}`在**同一行**时，不允许使用尾随逗号
+* `"only-multiline"` 当最后一个元素或属性在与结尾的 `]` 或 `}` **不同行**时，允许（但不要求）尾随逗号，当最后一个元素或属性与结尾的 `]` 或 `}` 在**相同行**时，不允许尾随逗号
 
-You can also use an object option to configure this rule for each type of syntax.
-Each of the following options can be set to `"never"`, `"always"`, `"always-multiline"`, `"only-multiline"`, or `"ignore"`.
-The default for each option is `"never"` unless otherwise specified.
+你也可以使用一个对象选项来为每种类型的语法配置这个规则。
+以下每个选项都可以设置为 `"never"`, `"always"`, `"always-multiline"`, `"only-multiline"` 或 `"ignore"`。
+除非另有规定，每个选项的默认值都是 `"never"`。
 
-* `arrays` is for array literals and array patterns of destructuring. (e.g. `let [a,] = [1,];`)
-* `objects` is for object literals and object patterns of destructuring. (e.g. `let {a,} = {a: 1};`)
-* `imports` is for import declarations of ES Modules. (e.g. `import {a,} from "foo";`)
-* `exports` is for export declarations of ES Modules. (e.g. `export {a,};`)
-* `functions` is for function declarations and function calls. (e.g. `(function(a,){ })(b,);`)
-    * `functions` should only be enabled when linting ECMAScript 2017 or higher.
+* `arrays` 是用于数组字面和数组模式的解构（如 `let [a,] = [1,];`）。
+* `objects` 用于对象字面和对象结构模式（如 `let {a,} = {a: 1};`）。
+* `imports` 是用于 ES 模块的导入声明（如 `import {a,} from "foo";`）。
+* `exports` 是 ES 模块的导出声明（例如：`export {a,};`)。
+* `functions`是用于函数声明和函数调用（如 `(function(a,){ })(b,);`）。
+    * `functions` 应该只在对 ECMAScript 2017 或更高版本进行检查时启用。
 
 ### never
 
-Examples of **incorrect** code for this rule with the default `"never"` option:
+使用此规则与默认的 `"never"` 选项的**错误**示例：
 
 :::incorrect
 
@@ -100,7 +98,7 @@ foo({
 
 :::
 
-Examples of **correct** code for this rule with the default `"never"` option:
+使用此规则与默认的 `"never"` 选项的**正确**示例：
 
 :::correct
 
@@ -124,7 +122,7 @@ foo({
 
 ### always
 
-Examples of **incorrect** code for this rule with the `"always"` option:
+使用此规则与 `"always"` 选项的**错误**示例：
 
 :::incorrect
 
@@ -146,7 +144,7 @@ foo({
 
 :::
 
-Examples of **correct** code for this rule with the `"always"` option:
+使用此规则与 `"always"` 选项的**正确**示例：
 
 :::correct
 
@@ -170,7 +168,7 @@ foo({
 
 ### always-multiline
 
-Examples of **incorrect** code for this rule with the `"always-multiline"` option:
+使用此规则与 `"always-multiline"` 选项的**错误**示例：
 
 :::incorrect
 
@@ -202,7 +200,7 @@ foo({
 
 :::
 
-Examples of **correct** code for this rule with the `"always-multiline"` option:
+使用此规则与 `"always-multiline"` 选项的**正确**示例：
 
 :::correct
 
@@ -235,7 +233,7 @@ foo({
 
 ### only-multiline
 
-Examples of **incorrect** code for this rule with the `"only-multiline"` option:
+使用此规则与 `"only-multiline"` 选项的**错误**示例：
 
 :::incorrect
 
@@ -253,7 +251,7 @@ var arr = [1,
 
 :::
 
-Examples of **correct** code for this rule with the `"only-multiline"` option:
+使用此规则与 `"only-multiline"` 选项的**正确**示例：
 
 :::correct
 
@@ -301,7 +299,7 @@ foo({
 
 ### functions
 
-Examples of **incorrect** code for this rule with the `{"functions": "never"}` option:
+使用此规则与 `{"functions": "never"}` 选项的**错误**示例：
 
 :::incorrect
 
@@ -317,7 +315,7 @@ new foo(a, b,);
 
 :::
 
-Examples of **correct** code for this rule with the `{"functions": "never"}` option:
+使用此规则与 `{"functions": "never"}` 选项的**正确**示例：
 
 :::correct
 
@@ -333,7 +331,7 @@ new foo(a, b);
 
 :::
 
-Examples of **incorrect** code for this rule with the `{"functions": "always"}` option:
+使用此规则与 `{"functions": "always"}` 选项的**错误**示例：
 
 :::incorrect
 
@@ -349,7 +347,7 @@ new foo(a, b);
 
 :::
 
-Examples of **correct** code for this rule with the `{"functions": "always"}` option:
+使用此规则与 `{"functions": "always"}` 选项的**正确**示例：
 
 :::correct
 
@@ -365,6 +363,6 @@ new foo(a, b,);
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-You can turn this rule off if you are not concerned with dangling commas.
+如果你不关心尾随逗号，你可以把这个规则关掉。
