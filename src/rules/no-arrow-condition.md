@@ -9,13 +9,13 @@ related_rules:
 - no-constant-condition
 ---
 
-Disallows arrow functions where test conditions are expected.
+不允许在期望测试条件的地方使用箭头函数。
 
-(removed) This rule was **removed** in ESLint v2.0 and **replaced** by a combination of the [no-confusing-arrow](no-confusing-arrow) and [no-constant-condition](no-constant-condition) rules.
+（已移除）这条规则在 ESLint v2.0 中**移除**，并被 [no-confusing-arrow](no-confusing-arrow) 和 [no-constant-condition](no-constant-condition) 规则组合所取代。
 
-Arrow functions (`=>`) are similar in syntax to some comparison operators (`>`, `<`, `<=`, and `>=`). This rule warns against using the arrow function syntax in places where a condition is expected. Even if the arguments of the arrow function are wrapped with parens, this rule still warns about it.
+箭头函数（`=>`）在语法上与一些比较运算符（`>`、`<`、`<=` 和 `>=`）相似。这条规则警告说，不要在预期有条件的地方使用箭头函数的语法。即使箭头函数的参数是用圆括号包装的，这条规则仍然警告它。
 
-Here's an example where the usage of `=>` is most likely a typo:
+这里有一个例子，使用 `=>` 很有可能是手抖：
 
 ```js
 // This is probably a typo
@@ -24,20 +24,20 @@ if (a => 1) {}
 if (a >= 1) {}
 ```
 
-There are also cases where the usage of `=>` can be ambiguous and should be rewritten to more clearly show the author's intent:
+还有一些情况下，`=>` 的用法可能会有歧义，应该改写以更清楚地表明作者的意图。
 
 ```js
 // The intent is not clear
 var x = a => 1 ? 2 : 3
 // Did the author mean this
 var x = function (a) { return a >= 1 ? 2 : 3 }
-// Or this
+// 或 this
 var x = a <= 1 ? 2 : 3
 ```
 
-## Rule Details
+## 规则细节
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 :::incorrect
 

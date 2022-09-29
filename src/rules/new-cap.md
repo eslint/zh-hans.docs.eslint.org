@@ -5,16 +5,15 @@ edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/new-
 rule_type: suggestion
 ---
 
-
-The `new` operator in JavaScript creates a new instance of a particular type of object. That type of object is represented by a constructor function. Since constructor functions are just regular functions, the only defining characteristic is that `new` is being used as part of the call. Native JavaScript functions begin with an uppercase letter to distinguish those functions that are to be used as constructors from functions that are not. Many style guides recommend following this pattern to more easily determine which functions are to be used as constructors.
+JavaScript 中的 `new` 操作符可以创建一个特定类型对象的新实例。该类型的对象由一个构造函数表示。由于构造函数只是普通的函数，唯一的定义特征是 `new` 被作为调用的一部分。原生的 JavaScript 函数以大写字母开始，以区分那些作为构造函数的函数和非构造函数。许多风格指南都建议遵循这种模式，以便更容易地确定哪些函数是作为构造函数使用的。
 
 ```js
 var friend = new Person();
 ```
 
-## Rule Details
+## 规则细节
 
-This rule requires constructor names to begin with a capital letter. Certain built-in identifiers are exempt from this rule. These identifiers are:
+这条规则要求构造函数名称以大写字母开头。某些内置标识符不受此规则约束。这些标识符是：。
 
 * `Array`
 * `Boolean`
@@ -27,7 +26,7 @@ This rule requires constructor names to begin with a capital letter. Certain bui
 * `String`
 * `Symbol`
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -41,24 +40,24 @@ function foo(arg) {
 
 :::
 
-## Options
+## 选项
 
-This rule has an object option:
+此规则选项为对象：
 
-* `"newIsCap": true` (default) requires all `new` operators to be called with uppercase-started functions.
-* `"newIsCap": false` allows `new` operators to be called with lowercase-started or uppercase-started functions.
-* `"capIsNew": true` (default) requires all uppercase-started functions to be called with `new` operators.
-* `"capIsNew": false` allows uppercase-started functions to be called without `new` operators.
-* `"newIsCapExceptions"` allows specified lowercase-started function names to be called with the `new` operator.
-* `"newIsCapExceptionPattern"` allows any lowercase-started function names that match the specified regex pattern to be called with the `new` operator.
-* `"capIsNewExceptions"` allows specified uppercase-started function names to be called without the `new` operator.
-* `"capIsNewExceptionPattern"` allows any uppercase-started function names that match the specified regex pattern to be called without the `new` operator.
-* `"properties": true` (default) enables checks on object properties
-* `"properties": false` disables checks on object properties
+* `"newIsCap": true`（默认值）要求使用 `new` 运算符调用大写字母开始的函数。
+* `"newIsCap": false` 允许使用 `new` 运算符调用小写字母开始的函数或大写字母开始的函数。
+* `"capIsNew": true`（默认值）要求使用 `new` 操作符调用所有大写字母开始的函数。
+* `"capIsNew": false` 允许在没有 `new` 操作符的情况下调用大写字母启动的函数。
+* `"newIsCapExceptions"` 允许使用 `new` 操作符调用指定的小写启动的函数名称。
+* `"newIsCapExceptionPattern"` 允许使用 `new` 操作符调用任何符合指定的 regex 模式的小写字母开始的函数名称。
+* `"capIsNewExceptions"` 允许在没有 `new` 操作符的情况下调用指定的大写字母开始的函数名。
+* `"capIsNewExceptionPattern"` 允许在没有 `new` 操作符的情况下，调用任何符合指定的 regex 模式的大写字母开始的函数名称。
+* `"properties": true`（默认值）允许检查对象的属性。
+* `"properties": false` 禁用对对象属性的检查。
 
 ### newIsCap
 
-Examples of **incorrect** code for this rule with the default `{ "newIsCap": true }` option:
+使用此规则与默认的 `{ "newIsCap": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -70,7 +69,7 @@ var friend = new person();
 
 :::
 
-Examples of **correct** code for this rule with the default `{ "newIsCap": true }` option:
+使用此规则与默认的 `{ "newIsCap": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -82,7 +81,7 @@ var friend = new Person();
 
 :::
 
-Examples of **correct** code for this rule with the `{ "newIsCap": false }` option:
+使用此规则与 `{ "newIsCap": false }` 选项的**正确**示例：
 
 ::: correct
 
@@ -96,7 +95,7 @@ var friend = new person();
 
 ### capIsNew
 
-Examples of **incorrect** code for this rule with the default `{ "capIsNew": true }` option:
+使用此规则与默认的 `{ "capIsNew": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -108,7 +107,7 @@ var colleague = Person();
 
 :::
 
-Examples of **correct** code for this rule with the default `{ "capIsNew": true }` option:
+使用此规则与默认的 `{ "capIsNew": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -120,7 +119,7 @@ var colleague = new Person();
 
 :::
 
-Examples of **correct** code for this rule with the `{ "capIsNew": false }` option:
+使用此规则与 `{ "capIsNew": false }` 选项的**正确**示例：
 
 ::: correct
 
@@ -134,7 +133,7 @@ var colleague = Person();
 
 ### newIsCapExceptions
 
-Examples of additional **correct** code for this rule with the `{ "newIsCapExceptions": ["events"] }` option:
+使用此规则与额外的 `{ "newIsCapExceptions": ["events"] }`  选项的**正确**示例：
 
 ::: correct
 
@@ -150,7 +149,7 @@ var emitter = new events();
 
 ### newIsCapExceptionPattern
 
-Examples of additional **correct** code for this rule with the `{ "newIsCapExceptionPattern": "^person\\.." }` option:
+使用此规则与额外的 `{ "newIsCapExceptionPattern": "^person\\." }` 选项的**正确**示例：
 
 ::: correct
 
@@ -164,7 +163,7 @@ var bestFriend = new person.friend();
 
 :::
 
-Examples of additional **correct** code for this rule with the `{ "newIsCapExceptionPattern": "\\.bar$" }` option:
+使用此规则与额外的 `{ "newIsCapExceptionPattern": "\\.bar$" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -178,7 +177,7 @@ var friend = new person.bar();
 
 ### capIsNewExceptions
 
-Examples of additional **correct** code for this rule with the `{ "capIsNewExceptions": ["Person"] }` option:
+使用此规则与额外的 `{ "capIsNewExceptions": ["Person"] }` 选项的**正确**示例：
 
 ::: correct
 
@@ -194,7 +193,7 @@ function foo(arg) {
 
 ### capIsNewExceptionPattern
 
-Examples of additional **correct** code for this rule with the `{ "capIsNewExceptionPattern": "^person\\.." }` option:
+使用此规则与额外的 `{ "capIsNewExceptionPattern": "^person\\." }` 选项的**正确**示例：
 
 ::: correct
 
@@ -207,7 +206,7 @@ var bestFriend = person.Friend();
 
 :::
 
-Examples of additional **correct** code for this rule with the `{ "capIsNewExceptionPattern": "\\.Bar$" }` option:
+使用此规则与额外的 `{ "capIsNewExceptionPattern": "\\.Bar$" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -219,7 +218,7 @@ foo.Bar();
 
 :::
 
-Examples of additional **correct** code for this rule with the `{ "capIsNewExceptionPattern": "^Foo" }` option:
+使用此规则与额外的 `{ "capIsNewExceptionPattern": "^Foo" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -237,7 +236,7 @@ var z = Foo.Bar(42);
 
 ### properties
 
-Examples of **incorrect** code for this rule with the default `{ "properties": true }` option:
+使用此规则与默认的 `{ "properties": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -249,7 +248,7 @@ var friend = new person.acquaintance();
 
 :::
 
-Examples of **correct** code for this rule with the default `{ "properties": true }` option:
+使用此规则与默认的 `{ "properties": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -261,7 +260,7 @@ var friend = new person.Acquaintance();
 
 :::
 
-Examples of **correct** code for this rule with the `{ "properties": false }` option:
+使用此规则与 `{ "properties": false }` 选项的**正确**示例：
 
 ::: correct
 
@@ -273,6 +272,6 @@ var friend = new person.acquaintance();
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you have conventions that don't require an uppercase letter for constructors, or don't require capitalized functions be only used as constructors, turn this rule off.
+如果你的习惯不要求构造函数使用大写字母，或者不要求大写的函数只能作为构造函数使用，请关闭此规则。

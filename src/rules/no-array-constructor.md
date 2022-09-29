@@ -8,18 +8,13 @@ related_rules:
 - no-new-wrappers
 ---
 
+一般不鼓励使用 `Array` 构造函数来构造新数组，而是使用数组字面符号，因为存在单参数的隐患，而且 `Array` 全局变量可能会被重新定义。除非当 Array 构造函数被用来创建指定大小的稀疏数组时，只需给构造函数一个数字参数。
 
-Use of the `Array` constructor to construct a new array is generally
-discouraged in favor of array literal notation because of the single-argument
-pitfall and because the `Array` global may be redefined. The exception is when
-the Array constructor is used to intentionally create sparse arrays of a
-specified size by giving the constructor a single numeric argument.
+## 规则细节
 
-## Rule Details
+此规则不允许 `Array` 构造函数。
 
-This rule disallows `Array` constructors.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 :::incorrect
 
@@ -33,7 +28,7 @@ new Array(0, 1, 2)
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 :::correct
 
@@ -49,7 +44,6 @@ new Array(someOtherArray.length)
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-This rule enforces a nearly universal stylistic concern. That being said, this
-rule may be disabled if the constructor style is preferred.
+此规则执行了近乎普遍的风格偏好。这就是说，如果更喜欢构造函数风格，可以被禁用此规则。
