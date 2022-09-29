@@ -17,39 +17,37 @@ further_reading:
 - https://dojotoolkit.org/reference-guide/1.9/developer/styleguide.html
 ---
 
-
-
-Spacing around commas improves readability of a list of items. Although most of the style guidelines for languages prescribe adding a space after a comma and not before it, it is subjective to the preferences of a project.
+逗号周围的间距可以提高项目列表的可读性。尽管大多数语言的风格指南都规定在逗号后而不是在逗号前添加空格，但这是由项目的偏好所决定的。
 
 ```js
 var foo = 1, bar = 2;
 var foo = 1 ,bar = 2;
 ```
 
-## Rule Details
+## 规则细节
 
-This rule enforces consistent spacing before and after commas in variable declarations, array literals, object literals, function parameters, and sequences.
+这条规则使变量声明、数组字面、对象字面、函数参数和序列中逗号前后的间距一致。
 
-This rule does not apply in either of the following cases:
+此规则不适用于以下情况：
 
-* between two commas
-* between opening bracket `[` and comma, to avoid conflicts with the [`array-bracket-spacing`](array-bracket-spacing) rule
-* between comma and closing bracket `]`, to avoid conflicts with the [`array-bracket-spacing`](array-bracket-spacing) rule
-* between comma and closing brace `}`, to avoid conflicts with the [`object-curly-spacing`](object-curly-spacing) rule
-* between comma and closing parentheses `)`, to avoid conflicts with the [`space-in-parens`](space-in-parens) rule
+* 在两个逗号之间
+* 开头括号和逗号的 `[` 之间，以避免与 [`array-bracket-spacing`](array-bracket-spacing)规则冲突
+* 逗号和结尾括号的 `]` 之间，以避免与 [`array-bracket-spacing`](array-bracket-spacing) 规则相冲突
+* 在逗号和结尾大括号的 `}` 之间，以避免与 [`object-curly-spacing`](object-curly-spacing) 规则相冲突
+* 逗号和括号的 `)` 之间，以避免与 [`space-in-parens`](space-in-parens) 规则相冲突
 
-## Options
+## 选项
 
-This rule has an object option:
+此规则选项为对象：
 
-* `"before": false` (default) disallows spaces before commas
-* `"before": true` requires one or more spaces before commas
-* `"after": true` (default) requires one or more spaces after commas
-* `"after": false` disallows spaces after commas
+* `"before": false`（默认值）不允许在逗号前有空格
+* `"before": true` 要求在逗号前有一个或多个空格
+* `"after": true`（默认值）要求在逗号后有一个或多个空格
+* `"after": false`不允许在逗号后有空格
 
 ### after
 
-Examples of **incorrect** code for this rule with the default `{ "before": false, "after": true }` options:
+使用此规则与默认的 `{ "before": false, "after": true }` 选项的**错误**示例：
 
 :::incorrect
 
@@ -67,7 +65,7 @@ a ,b
 
 :::
 
-Examples of **correct** code for this rule with the default `{ "before": false, "after": true }` options:
+使用此规则与默认的 `{ "before": false, "after": true }` 选项的**正确**示例：
 
 :::correct
 
@@ -87,7 +85,7 @@ a, b
 
 :::
 
-Additional examples of **correct** code for this rule with the default `{ "before": false, "after": true }` options:
+Additional 使用此规则与默认的 `{ "before": false, "after": true }` 选项的**正确**示例：
 
 :::correct
 
@@ -121,7 +119,7 @@ foo(a, b,)
 
 ### before
 
-Examples of **incorrect** code for this rule with the `{ "before": true, "after": false }` options:
+使用此规则与 `{ "before": true, "after": false }` 选项的**错误**示例：
 
 :::incorrect
 
@@ -138,7 +136,7 @@ a, b
 
 :::
 
-Examples of **correct** code for this rule with the `{ "before": true, "after": false }` options:
+使用此规则与 `{ "before": true, "after": false }` 选项的**正确**示例：
 
 :::correct
 
@@ -158,6 +156,6 @@ a ,b
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If your project will not be following a consistent comma-spacing pattern, turn this rule off.
+如果你的项目将不遵循一致的逗号间距模式，请关闭此规则。

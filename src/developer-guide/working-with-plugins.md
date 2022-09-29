@@ -1,41 +1,41 @@
 ---
-title: Working with Plugins
+title: 创建插件
 layout: doc
 eleventyNavigation:
     key: working with plugings
     parent: developer guide
-    title: Working with Plugins
+    title: 创建插件
     order: 5
 
 ---
 
-Each plugin is an npm module with a name in the format of `eslint-plugin-<plugin-name>`, such as `eslint-plugin-jquery`. You can also use scoped packages in the format of `@<scope>/eslint-plugin-<plugin-name>` such as `@jquery/eslint-plugin-jquery` or even `@<scope>/eslint-plugin` such as `@jquery/eslint-plugin`.
+每个插件都是以 `eslint-plugin-<plugin-name>` 为名的 npm 模块，例如 `eslint-plugin-jquery`。你也可以使用 `@<scope>/eslint-plugin-<plugin-name>` 格式的范围包，如 `@jquery/eslint-plugin-jquery`以及 `@<scope>/eslint-plugin`，如 `@jquery/eslint-plugin`。
 
-## Create a Plugin
+## 创建插件
 
-The easiest way to start creating a plugin is to use the [Yeoman generator](https://www.npmjs.com/package/generator-eslint). The generator will guide you through setting up the skeleton of a plugin.
+要想创建一个插件的最简单方法是使用 [Yeoman 生成器](https://www.npmjs.com/package/generator-eslint)。该生成器将引导你创建插件骨架。
 
-### Rules in Plugins
+### 插件中的规则
 
-Plugins can expose additional rules for use in ESLint. To do so, the plugin must export a `rules` object containing a key-value mapping of rule ID to rule. The rule ID does not have to follow any naming convention (so it can just be `dollar-sign`, for instance).
+插件可以为 ESLint 提供额外的规则。要做到这一点，插件必须输出 `rules` 对象，其中包含一个规则 ID 到规则的键值映射。规则 ID 不需要遵循任何命名惯例（例如，它可以只是 `dollar-sign`）。
 
 ```js
 module.exports = {
     rules: {
         "dollar-sign": {
             create: function (context) {
-                // rule implementation ...
+                // 规则实现……
             }
         }
     }
 };
 ```
 
-To use the rule in ESLint, you would use the unprefixed plugin name, followed by a slash, followed by the rule name. So if this plugin were named `eslint-plugin-myplugin`, then in your configuration you'd refer to the rule by the name `myplugin/dollar-sign`. Example: `"rules": {"myplugin/dollar-sign": 2}`.
+要在 ESLint 中使用这个规则，你需要使用没有前缀的插件名称，后面是一个斜线，然后是规则名称。因此，如果这个插件被命名为 `eslint-plugin-myplugin`，那么在你的配置中，你就可以使用 `myplugin/dollar-sign` 来引用这个规则。例如：`"rules": {"myplugin/dollar-sign": 2}`。
 
-### Environments in Plugins
+### 插件中的环境
 
-Plugins can expose additional environments for use in ESLint. To do so, the plugin must export an `environments` object. The keys of the `environments` object are the names of the different environments provided and the values are the environment settings. For example:
+插件可以暴露额外的环境，以便在 ESLint 中使用。要做到这一点，插件必须输出一个 `environments` 对象。`environments` 对象的键是所提供的不同环境的名称，其值是环境设置。比如说：
 
 ```js
 module.exports = {
@@ -49,16 +49,16 @@ module.exports = {
 };
 ```
 
-There's a `jquery` environment defined in this plugin. To use the environment in ESLint, you would use the unprefixed plugin name, followed by a slash, followed by the environment name. So if this plugin were named `eslint-plugin-myplugin`, then you would set the environment in your configuration to be `"myplugin/jquery"`.
+这个插件中定义了 `jquery` 环境。要在 ESLint 中使用这个环境，你需要使用没有前缀的插件名称，后面是一个斜线，然后是环境名称。因此，如果这个插件被命名为 `eslint-plugin-myplugin`，那么你将在配置中设置环境为 `"myplugin/jquery"`。
 
-Plugin environments can define the following objects:
+插件环境可以定义以下对象：
 
-1. `globals` - acts the same `globals` in a configuration file. The keys are the names of the globals and the values are `true` to allow the global to be overwritten and `false` to disallow.
-1. `parserOptions` - acts the same as `parserOptions` in a configuration file.
+1. `globals` - 在配置文件中扮演同样的 `globals`。键是 globals 的名字，值是 `true`，允许覆盖 global，`false`，不允许覆盖。
+1. `parserOptions` - 与配置文件中的 `parserOptions` 作用相同。
 
-### Processors in Plugins
+### 插件中的处理器
 
-You can also create plugins that would tell ESLint how to process files other than JavaScript. In order to create a processor, the object that is exported from your module has to conform to the following interface:
+你也可以创建插件，告诉 ESLint 如何处理 JavaScript 以外的文件。为了创建一个处理器，从你的模块导出的对象必须符合以下接口。
 
 ```js
 module.exports = {
@@ -91,15 +91,15 @@ module.exports = {
 };
 ```
 
-**The `preprocess` method** takes the file contents and filename as arguments, and returns an array of code blocks to lint. The code blocks will be linted separately but still be registered to the filename.
+**`preprocess` 方法**将文件内容和文件名作为参数，并返回一个代码块的数组，以进行提示。这些代码块将被单独标记，但仍被注册到文件名上。
 
-A code block has two properties `text` and `filename`; the `text` property is the content of the block and the `filename` property is the name of the block. Name of the block can be anything, but should include the file extension, that would tell the linter how to process the current block. The linter will check [`--ext` CLI option](../user-guide/command-line-interface#--ext) to see if the current block should be linted, and resolve `overrides` configs to check how to process the current block.
+一个代码块有两个属性 `text` 和 `filename`；`text` 属性是代码块的内容，`filename` 属性是代码块的名称。块的名称可以是任何东西，但应包括文件扩展名，这将告诉检查器如何处理当前块。检查器将检查 [`--ext` CLI 选项](../user-guide/command-line-interface#--ext)，看当前块是否应该被检查，并解决 `overrides`配置，检查如何处理当前块。
 
-It's up to the plugin to decide if it needs to return just one part, or multiple pieces. For example in the case of processing `.html` files, you might want to return just one item in the array by combining all scripts, but for `.md` file where each JavaScript block might be independent, you can return multiple items.
+由插件决定它是否需要只返回一个部分，或多个部分。例如在处理 `.html` 文件的情况下，你可能想通过合并所有的脚本只返回数组中的一个项目，但对于 `.md` 文件，每个 JavaScript 块可能是独立的，你可以返回多个项目。
 
-**The `postprocess` method** takes a two-dimensional array of arrays of lint messages and the filename. Each item in the input array corresponds to the part that was returned from the `preprocess` method. The `postprocess` method must adjust the locations of all errors to correspond to locations in the original, unprocessed code, and aggregate them into a single flat array and return it.
+**`postprocess`方法**接收一个二维数组，该数组包括检查器消息和文件名。输入数组中的每一项都对应于从 `preprocess` 方法返回的部分。`postprocess` 方法必须调整所有错误的位置，使其与原始的、未处理的代码中的位置相对应，并将其汇总为一个平面数组并返回。
 
-Reported problems have the following location information:
+报告的问题有以下位置信息：
 
 ```typescript
 {
@@ -111,9 +111,9 @@ Reported problems have the following location information:
 }
 ```
 
-By default, ESLint will not perform autofixes when a processor is used, even when the `--fix` flag is enabled on the command line. To allow ESLint to autofix code when using your processor, you should take the following additional steps:
+默认情况下，ESLint 在使用处理器时不会进行自动修正，即使在命令行上启用了 `--fix` 标志。为了让 ESLint 在使用你的处理器时自动修正代码，你应该采取以下额外步骤。
 
-1. Update the `postprocess` method to additionally transform the `fix` property of reported problems. All autofixable problems will have a `fix` property, which is an object with the following schema:
+1. 更新 `postprocess` 方法，以额外转换报告问题的`fix`属性。所有可自动修复的问题都将有 `fix` 属性，它是符合以下模式的对象：
 
     ```js
     {
@@ -122,20 +122,20 @@ By default, ESLint will not perform autofixes when a processor is used, even whe
     }
     ```
 
-    The `range` property contains two indexes in the code, referring to the start and end location of a contiguous section of text that will be replaced. The `text` property refers to the text that will replace the given range.
+    `range` 属性包含代码中的两个索引，指的是将被替换的连续文本部分的开始和结束位置。`text` 属性指的是将替换给定范围的文本。
 
-    In the initial list of problems, the `fix` property will refer to a fix in the processed JavaScript. The `postprocess` method should transform the object to refer to a fix in the original, unprocessed file.
+    在最初的问题列表中，`fix` 属性将指代被处理的 JavaScript 中的修复。`postprocess` 方法应该将该对象转换为指原始的、未处理的文件中的一个修正。
 
-2. Add a `supportsAutofix: true` property to the processor.
+2. 给处理器添加 `supportsAutofix: true` 属性。
 
-You can have both rules and processors in a single plugin. You can also have multiple processors in one plugin.
-To support multiple extensions, add each one to the `processors` element and point them to the same object.
+你可以在一个插件中同时拥有规则和处理程序。你也可以在一个插件中拥有多个处理程序。
+要支持多个扩展，将每个扩展添加到 `processors` 元素中，并将它们指向同一个对象。
 
-#### Specifying Processor in Config Files
+#### 在配置文件中指定处理器
 
-To use a processor, add its ID to a `processor` section in the config file. Processor ID is a concatenated string of plugin name and processor name with a slash as a separator. This can also be added to a `overrides` section of the config, to specify which processors should handle which files.
+要使用一个处理器，将其 ID 添加到配置文件中的 `processor` 部分。处理器 ID 是一个插件名称和处理器名称的连接字符串，用斜线作为分隔符。这也可以被添加到配置文件的 `overrides` 部分，以指定哪个处理器应该处理哪些文件。
 
-For example:
+例如：
 
 ```yml
 plugins:
@@ -145,13 +145,13 @@ overrides:
     processor: a-plugin/markdown
 ```
 
-See [Specifying Processor](../user-guide/configuring/plugins#specifying-processor) for details.
+参见[指定处理器](../user-guide/configuring/plugins#specifying-processor)获取详情。
 
-#### File Extension-named Processor
+#### 文件扩展名处理器
 
-If a processor name starts with `.`, ESLint handles the processor as a **file extension-named processor** especially and applies the processor to the kind of files automatically. People don't need to specify the file extension-named processors in their config files.
+如果一个处理器的名字以 `.` 开头，ESLint 就会把这个处理器作为**文件扩展名处理器**来处理，指定自动将这个处理器应用于哪种文件。人们不需要在他们的配置文件中指定文件扩展名的处理器。
 
-For example:
+示例：
 
 ```js
 module.exports = {
@@ -166,9 +166,9 @@ module.exports = {
 }
 ```
 
-### Configs in Plugins
+### 插件中的配置
 
-You can bundle configurations inside a plugin by specifying them under the `configs` key. This can be useful when you want to provide not just code style, but also some custom rules to support it. Multiple configurations are supported per plugin. Note that it is not possible to specify a default configuration for a given plugin and that users must specify in their configuration file when they want to use one.
+你可以通过在 `configs` 键下指定配置，将其捆绑在一个插件内。当你想提供的不仅仅是代码风格，还有一些自定义的规则来支持它时，这可能很有用。每个插件支持多个配置。请注意，不可能为一个给定的插件指定一个默认的配置，用户必须在他们的配置文件中指定，当他们想使用一个配置。
 
 ```js
 // eslint-plugin-myPlugin
@@ -197,7 +197,7 @@ module.exports = {
 };
 ```
 
-If the example plugin above were called `eslint-plugin-myPlugin`, the `myConfig` and `myOtherConfig` configurations would then be usable by extending off of `"plugin:myPlugin/myConfig"` and `"plugin:myPlugin/myOtherConfig"`, respectively.
+如果上面的示例插件名为 `eslint-plugin-myPlugin`，那么就可以分别通过 `"plugin:myPlugin/myConfig"` 和 `"plugin:myPlugin/myOtherConfig"` 使用 `myConfig` 和 `myOtherConfig` 配置。
 
 ```json
 {
@@ -206,12 +206,12 @@ If the example plugin above were called `eslint-plugin-myPlugin`, the `myConfig`
 
 ```
 
-**Note:** Please note that configuration will not enable any of the plugin's rules by default, and instead should be treated as a standalone config. This means that you must specify your plugin name in the `plugins` array as well as any rules you want to enable that are part of the plugin. Any plugin rules must be prefixed with the short or long plugin name. See [Configuring Plugins](../user-guide/configuring/plugins#configuring-plugins) for more information.
+**注意**：请注意，配置将不会默认启用插件的任何规则，而应被视为一个独立的配置。这意味着你必须在 `plugins` 数组中指定你的插件名称，以及你想启用的属于该插件的任何规则。任何插件规则必须以短或长的插件名称为前缀。参见[配置插件](../user-guide/configuring/plugins#configuring-plugins)获取更多信息。
 
-### Peer Dependency
+### 对等依赖
 
-To make clear that the plugin requires ESLint to work correctly you have to declare ESLint as a `peerDependency` in your `package.json`.
-The plugin support was introduced in ESLint version `0.8.0`. Ensure the `peerDependency` points to ESLint `0.8.0` or later.
+为了明确该插件需要 ESLint 才能正常工作，你必须在你的 `package.json` 中将 ESLint 声明为 `peerDependency`。
+该插件的支持是在 ESLint `0.8.0`版本中引入的。确保 `peerDependency` 指向 ESLint `0.8.0` 或更高版本。
 
 ```json
 {
@@ -221,29 +221,29 @@ The plugin support was introduced in ESLint version `0.8.0`. Ensure the `peerDep
 }
 ```
 
-### Testing
+### 测试
 
-ESLint provides the [`RuleTester`](/docs/developer-guide/nodejs-api#ruletester) utility to make it easy to test the rules of your plugin.
+ESLint 提供了 [`RuleTester`](/docs/developer-guide/nodejs-api#ruletester) 工具，以便测试插件规则。
 
-### Linting
+### 筛选
 
-ESLint plugins should be linted too! It's suggested to lint your plugin with the `recommended` configurations of:
+ESLint 插件也应该要进行检查！建议使用以下插件的 `recommended` 配置对你的插件进行检查：
 
 * [eslint](https://www.npmjs.com/package/eslint)
 * [eslint-plugin-eslint-plugin](https://www.npmjs.com/package/eslint-plugin-eslint-plugin)
 * [eslint-plugin-node](https://www.npmjs.com/package/eslint-plugin-node)
 
-## Share Plugins
+## 分享插件
 
-In order to make your plugin available to the community you have to publish it on npm.
+为了让社区都可以使用使你的插件，你必须在 npm 上发布它。
 
-Recommended keywords:
+推荐的关键词有：
 
 * `eslint`
 * `eslintplugin`
 
-Add these keywords into your `package.json` file to make it easy for others to find.
+在你的 `package.json` 文件中加入这些关键词，以便别人容易找到。
 
-## Further Reading
+## 进一步阅读
 
-* [npm Developer Guide](https://docs.npmjs.com/misc/developers)
+* [npm 开发者指南](https://docs.npmjs.com/misc/developers)

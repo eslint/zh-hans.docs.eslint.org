@@ -4,9 +4,7 @@ layout: doc
 rule_type: layout
 ---
 
-
-
-This rule normalize style of spacing before/after an arrow function's arrow(`=>`).
+这条规则规范了箭头函数的箭头（`=>`）前后的间距样式。
 
 ```js
 /*eslint-env es6*/
@@ -18,15 +16,15 @@ This rule normalize style of spacing before/after an arrow function's arrow(`=>`
 (a)=>{}
 ```
 
-## Rule Details
+## 规则细节
 
-This rule takes an object argument with `before` and `after` properties, each with a Boolean value.
+这个规则接受对象参数，其中包含 `before` 和 `after` 属性，每个都是布尔值。
 
-The default configuration is `{ "before": true, "after": true }`.
+默认配置是 `{ "before": true, "after": true }`。
 
-`true` means there should be **one or more spaces** and `false` means **no spaces**.
+`true` 意味着应该有**一个或多个空格**，`false` 意味着**没有空格**。
 
-Examples of **incorrect** code for this rule with the default `{ "before": true, "after": true }` option:
+使用此规则与默认 `{ "before": true, "after": true }` 选项的**错误**示例：
 
 :::incorrect
 
@@ -46,7 +44,7 @@ a=> a;
 
 :::
 
-Examples of **correct** code for this rule with the default `{ "before": true, "after": true }` option:
+使用此规则与默认 `{ "before": true, "after": true }` 选项的**正确**示例：
 
 :::correct
 
@@ -62,7 +60,7 @@ a => a;
 
 :::
 
-Examples of **incorrect** code for this rule with the `{ "before": false, "after": false }` option:
+使用此规则与 `{ "before": false, "after": false }` 选项的**错误**示例：
 
 :::incorrect
 
@@ -77,7 +75,7 @@ Examples of **incorrect** code for this rule with the `{ "before": false, "after
 
 :::
 
-Examples of **correct** code for this rule with the `{ "before": false, "after": false }` option:
+使用此规则与 `{ "before": false, "after": false }` 选项的**正确**示例：
 
 :::correct
 
@@ -92,7 +90,7 @@ Examples of **correct** code for this rule with the `{ "before": false, "after":
 
 :::
 
-Examples of **incorrect** code for this rule with the `{ "before": false, "after": true }` option:
+使用此规则与 `{ "before": false, "after": true }` 选项的**错误**示例：
 
 :::incorrect
 
@@ -107,7 +105,7 @@ Examples of **incorrect** code for this rule with the `{ "before": false, "after
 
 :::
 
-Examples of **correct** code for this rule with the `{ "before": false, "after": true }` option:
+使用此规则与 `{ "before": false, "after": true }` 选项的**正确**示例：
 
 :::correct
 

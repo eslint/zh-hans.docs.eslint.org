@@ -1,21 +1,21 @@
 ---
-title: Change Requests
+title: 修改请求
 layout: doc
 
 ---
 
-If you'd like to request a change to ESLint, please [create a new issue](https://github.com/eslint/eslint/issues/new/choose) on GitHub. Be sure to include the following information:
+如果你想请求对 ESLint 进行修改，请在 GitHub 上 [创建新议题](https://github.com/eslint/eslint/issues/new/choose)。请务必包括以下信息：
 
-1. The version of ESLint you are using.
-1. The problem you want to solve.
-1. Your take on the correct solution to problem.
+1. 你所使用的 ESLint 的版本。
+1. 你想解决的问题。
+1. 你对问题的正确解决方案的看法。
 
-If you're requesting a change to a rule, it's helpful to include this information as well:
+如果你要求改变一个规则，包括这些信息也很有帮助：
 
-1. What you did.
-1. What you would like to happen.
-1. What actually happened.
+1. 你做了什么。
+1. 你希望发生什么。
+1. 实际发生的情况。
 
-Please include as much detail as possible to help us properly address your issue. If we need to triage issues and constantly ask people for more detail, that's time taken away from actually fixing issues. Help us be as efficient as possible by including a lot of detail in your issues.
+请包括尽可能多的细节，以帮助我们正确解决你的问题。如果我们需要对问题进行分流，并不断要求人们提供更多的细节，这就占用了实际解决问题的时间。通过在你的问题中包含大量的细节，帮助我们尽可能地提高工作效率。
 
-**Note:** If you just have a question that won't necessarily result in a change to ESLint, such as asking how something works or how to contribute, please use the [mailing list](https://groups.google.com/group/eslint) or [chat](https://eslint.org/chat) instead of filing an issue.
+**注意**：如果你只是有一个不一定会导致 ESLint 改变的问题，比如问某个东西如何工作或如何贡献，请使用[邮件列表](https://groups.google.com/group/eslint或[聊天](https://eslint.org/chat)而不是提交问题。

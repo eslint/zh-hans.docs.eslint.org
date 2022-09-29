@@ -7,22 +7,20 @@ related_rules:
 - brace-style
 ---
 
+## 规则细节
 
+这条规则使开放区块标记和同一行的下一个标记之间的间距一致。这条规则也使同一行的封闭块标记和前一标记的间距一致。
 
-## Rule Details
+## 选项
 
-This rule enforces consistent spacing inside an open block token and the next token on the same line. This rule also enforces consistent spacing inside a close block token and previous token on the same line.
+此规则有个值为字符串的选项：
 
-## Options
-
-This rule has a string option:
-
-* `"always"` (default) requires one or more spaces
-* `"never"` disallows spaces
+* `"always"`（默认值）需要有一个或多个空格
+* `"never"` 禁用空格
 
 ### always
 
-Examples of **incorrect** code for this rule with the default `"always"` option:
+使用此规则与默认 `"always"` 选项的**错误**示例：
 
 :::incorrect
 
@@ -42,7 +40,7 @@ class C {
 
 :::
 
-Examples of **correct** code for this rule with the default `"always"` option:
+使用此规则与默认 `"always"` 选项的**正确**示例：
 
 :::correct
 
@@ -61,7 +59,7 @@ class C {
 
 ### never
 
-Examples of **incorrect** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**错误**示例：
 
 :::incorrect
 
@@ -78,7 +76,7 @@ class C {
 
 :::
 
-Examples of **correct** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**正确**示例：
 
 :::correct
 
@@ -95,6 +93,6 @@ class C {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't want to be notified about spacing style inside of blocks, you can safely disable this rule.
+如果你不希望报告块内部的间距样式，你可以安全地禁用这个规则。

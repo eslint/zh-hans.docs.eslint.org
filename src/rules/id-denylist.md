@@ -4,33 +4,32 @@ layout: doc
 rule_type: suggestion
 ---
 
+> “计算机科学中只有两件难事：缓存失效和命名事物。” - 菲尔-卡尔顿
 
-> "There are only two hard things in Computer Science: cache invalidation and naming things." — Phil Karlton
+通用名称可能导致难以破译的代码。这个规则允许你指定一个不允许的标识符名称的拒绝列表，以避免这种做法。
 
-Generic names can lead to hard-to-decipher code. This rule allows you to specify a deny list of disallowed identifier names to avoid this practice.
+## 规则细节
 
-## Rule Details
+这条规则不允许在赋值和 `function` 定义中使用指定的标识符。
 
-This rule disallows specified identifiers in assignments and `function` definitions.
+这条规则将捕获不允许的标识符，有这些标识符：
 
-This rule will catch disallowed identifiers that are:
+* 变量声明
+* 函数声明
+* 创建对象时分配给对象的属性
+* 类字段
+* 类方法
 
-* variable declarations
-* function declarations
-* object properties assigned to during object creation
-* class fields
-* class methods
+它不会捕捉那些不允许的标识符：
 
-It will not catch disallowed identifiers that are:
+* 函数调用（所以你仍然可以使用你没有控制权的函数）
+* 对象属性（所以你仍然可以使用你没有控制权的对象）
 
-* function calls (so you can still use functions you do not have control over)
-* object properties (so you can still use objects you do not have control over)
+## 选项
 
-## Options
+规则需要一个或多个字符串作为选项：受限标识符的名称。
 
-The rule takes one or more strings as options: the names of restricted identifiers.
-
-For example, to restrict the use of common generic identifiers:
+例如，限制使用常见的通用标识符：
 
 ```json
 {
@@ -38,9 +37,9 @@ For example, to restrict the use of common generic identifiers:
 }
 ```
 
-**Note:** The first element of the array is for the rule severity (see [configuring rules](/docs/latest/user-guide/configuring/rules). The other elements in the array are the identifiers that you want to disallow.
+**注意**:数组的第一个元素代表规则的严重程度（见[配置规则](/docs/latest/user-guide/configuring/rules)。数组中的其他元素是你想禁止的标识符。
 
-Examples of **incorrect** code for this rule with sample `"data", "callback"` restricted identifiers:
+使用此规则与演示的 `"data"、"callback"` 限制性标识符的**错误**示例：
 
 ::: incorrect
 
@@ -80,7 +79,7 @@ class Foo {
 
 :::
 
-Examples of **correct** code for this rule with sample `"data", "callback"` restricted identifiers:
+使用此规则和演示的 `"data", "callback"` 限制性标识符的**正确**示例：
 
 ::: correct
 
@@ -126,6 +125,6 @@ class Foo {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-You can turn this rule off if you do not want to restrict the use of certain identifiers.
+如果你不想限制某些标识符的使用，你可以把这个规则关掉。

@@ -1,53 +1,53 @@
 ---
-title: Source Code
+title: 源码
 layout: doc
 eleventyNavigation:
     key: getting the source code
     parent: developer guide
-    title: Getting the Source Code
+    title: 获取源码
     order: 1
 
 ---
 
-ESLint is hosted at [GitHub](https://github.com/eslint/eslint) and uses [Git](https://git-scm.com/) for source control. In order to obtain the source code, you must first install Git on your system. Instructions for installing and setting up Git can be found at [https://help.github.com/articles/set-up-git/](https://help.github.com/articles/set-up-git/).
+ESLint 托管在 [GitHub](https://github.com/eslint/eslint) 上并使用 [Git](https://git-scm.com/) 对进行源代码控制。要获得源码，你必须先在系统上安装 Git。关于安装和设置 Git 的说明可以参考 <https://help.github.com/articles/set-up-git/>。
 
-If you simply want to create a local copy of the source to play with, you can clone the main repository using this command:
+如果你只想在本地创建个源码副本来玩玩，你可以用这个命令克隆主仓库：
 
 ```shell
 git clone git://github.com/eslint/eslint.git
 ```
 
-If you're planning on contributing to ESLint, then it's a good idea to fork the repository. You can find instructions for forking a repository at [https://help.github.com/articles/fork-a-repo/](https://help.github.com/articles/fork-a-repo/). After forking the ESLint repository, you'll want to create a local copy of your fork.
+如果你打算为 ESLint 做贡献，那么你应该选择分叉该仓库。你可以在 <https://help.github.com/articles/fork-a-repo/> 找到关于分叉版本库的说明。在分叉 ESLint 仓库后，你还需要根据分叉创建本地副本。
 
-## Start Developing
+## 开始开发
 
-Before you can get started developing, you'll need to have a couple of things installed:
+在开始开发之前，还有一些东西需要安装：
 
 * [Node.JS](https://nodejs.org)
 * [npm](https://www.npmjs.com/)
 
-Once you have a local copy and have Node.JS and npm installed, you'll need to install the ESLint dependencies:
+有本地副本，并安装了 Node.JS 和 npm，你就需要安装 ESLint 对依赖：
 
 ```shell
 cd eslint
 npm install
 ```
 
-Now when you run `eslint`, it will be running your local copy and showing your changes.
+现在当你运行 `eslint` 时，它将运行本地副本并使用你的修改。
 
-**Note:** It's a good idea to re-run `npm install` whenever you pull from the main repository to ensure you have the latest development dependencies.
+**注意**：每次从主仓库拉取后，都应该重新运行 `npm install`，以确保你有最新的开发依赖。
 
-## Directory structure
+## 目录结构
 
-The ESLint directory and file structure is as follows:
+ESLint 的目录和文件结构如下：
 
-* `bin` - executable files that are available when ESLint is installed
-* `conf` - default configuration information
-* `docs` - documentation for the project
-* `lib` - contains the source code
-    * `formatters` - all source files defining formatters
-    * `rules` - all source files defining rules
-* `tests` - the main unit test folder
-    * `lib` - tests for the source code
-        * `formatters` - tests for the formatters
-        * `rules` - tests for the rules
+* `bin` - 安装 ESLint 后可以使用的可执行文件
+* `conf` - 默认配置信息
+* `docs` - 项目文档
+* `lib` - 包含源码
+    * `formatters` - 所有定义格式化的源文件
+    * `rules` - 所有定义规则的源文件
+* `tests` - 主要的单元测试文件夹
+    * `lib` - 源码测试
+        * `formatters` - 测试格式化
+        * `rules` - 测试规则

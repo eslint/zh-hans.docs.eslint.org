@@ -1,10 +1,10 @@
 ---
-title: 使用自定义解析器
+title: 创建自定义解析器
 layout: doc
 eleventyNavigation:
     key: working with custom parsers
     parent: developer guide
-    title: 自定义解析器
+    title: 创建自定义解析器
     order: 7
 
 ---

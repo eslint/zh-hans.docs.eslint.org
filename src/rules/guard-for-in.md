@@ -9,8 +9,7 @@ further_reading:
 - https://2ality.com/2012/01/objects-as-maps.html
 ---
 
-
-Looping over objects with a `for in` loop will include properties that are inherited through the prototype chain. This behavior can lead to unexpected items in your for loop.
+用 `for in` 循环遍历对象将包括通过原型链继承的属性。这种行为会导致你的 for 循环中出现意外的项目。
 
 ```js
 for (key in foo) {
@@ -18,13 +17,13 @@ for (key in foo) {
 }
 ```
 
-Note that simply checking `foo.hasOwnProperty(key)` is likely to cause an error in some cases; see [no-prototype-builtins](no-prototype-builtins).
+注意，简单地检查 `foo.hasOwnProperty(key)` 在某些情况下可能会导致错误；见 [no-prototype-builtins](no-prototype-builtins)。
 
-## Rule Details
+## 规则细节
 
-This rule is aimed at preventing unexpected behavior that could arise from using a `for in` loop without filtering the results in the loop. As such, it will warn when `for in` loops do not filter their results with an `if` statement.
+这条规则的目的是防止因使用 `for in` 循环而不对循环中的结果进行过滤而可能产生的意外行为。因此，当 `for in` 循环没有用 `if` 语句过滤其结果时，它将发出警告。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -38,7 +37,7 @@ for (key in foo) {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
