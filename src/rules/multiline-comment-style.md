@@ -5,25 +5,23 @@ edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/mult
 rule_type: suggestion
 ---
 
+许多风格指南要求对跨越多行的注释采用特定的风格。例如，一些风格指南倾向于对多行注释使用单一的块状注释，而其他风格指南则倾向于连续的行注释。
 
+## 规则细节
 
-Many style guides require a particular style for comments that span multiple lines. For example, some style guides prefer the use of a single block comment for multiline comments, whereas other style guides prefer consecutive line comments.
+这条规则的目的是为多行注释强制执行一种特定的风格。
 
-## Rule Details
+### 选项
 
-This rule aims to enforce a particular style for multiline comments.
+这个规则有一个字符串选项，它可以是以下任一值：
 
-### Options
+* `"starred-block"`（默认）：不允许连续的行注释，支持块注释。此外，要求块状注释在每行之前有一个对齐的 `*` 字符。
+* `"bare-block"`：不允许连续的行注释而支持块注释，并且不允许块注释在每行前有一个 `"*"` 字符。
+* `"separate-lines"`：不允许使用块状注释而使用连续的行状注释。
 
-This rule has a string option, which can have one of the following values:
+该规则总是忽略指令性注释，如 `/* eslint-disable */`。此外，除非模式是 `"starred-block"`，否则该规则会忽略 JSDoc 注释。
 
-* `"starred-block"` (default): Disallows consecutive line comments in favor of block comments. Additionally, requires block comments to have an aligned `*` character before each line.
-* `"bare-block"`: Disallows consecutive line comments in favor of block comments, and disallows block comments from having a `"*"` character before each line.
-* `"separate-lines"`: Disallows block comments in favor of consecutive line comments
-
-The rule always ignores directive comments such as `/* eslint-disable */`. Additionally, unless the mode is `"starred-block"`, the rule ignores JSDoc comments.
-
-Examples of **incorrect** code for this rule with the default `"starred-block"` option:
+使用此规则与默认的 `"starred-block"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -59,7 +57,7 @@ foo();
 
 :::
 
-Examples of **correct** code for this rule with the default `"starred-block"` option:
+使用此规则与默认的 `"starred-block"` 选项的**正确**示例：
 
 ::: correct
 
@@ -77,7 +75,7 @@ foo();
 
 :::
 
-Examples of **incorrect** code for this rule with the `"bare-block"` option:
+使用此规则与 `"bare-block"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -97,7 +95,7 @@ foo();
 
 :::
 
-Examples of **correct** code for this rule with the `"bare-block"` option:
+使用此规则与 `"bare-block"` 选项的**正确**示例：
 
 ::: correct
 
@@ -111,7 +109,7 @@ foo();
 
 :::
 
-Examples of **incorrect** code for this rule with the `"separate-lines"` option:
+使用此规则与 `"separate-lines"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -133,7 +131,7 @@ foo();
 
 :::
 
-Examples of **correct** code for this rule with the `"separate-lines"` option:
+使用此规则与 `"separate-lines"` 选项的**正确**示例：
 
 ::: correct
 
@@ -148,6 +146,6 @@ foo();
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't want to enforce a particular style for multiline comments, you can disable the rule.
+如果你不想为多行注释强制执行一个特定的风格，你可以禁用该规则。

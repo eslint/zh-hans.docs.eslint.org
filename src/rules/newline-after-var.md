@@ -5,11 +5,9 @@ edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/newl
 rule_type: layout
 ---
 
+此规则在 ESLint v4.0.0 中**废弃**，并被 [padding-line-between-statements](padding-line-between-statements) 规则取代。
 
-
-This rule was **deprecated** in ESLint v4.0.0 and replaced by the [padding-line-between-statements](padding-line-between-statements) rule.
-
-As of today there is no consistency in separating variable declarations from the rest of the code. Some developers leave an empty line between var statements and the rest of the code like:
+迄今为止，变量声明与代码其他部分的分离并不一致。有些开发者在 var 语句和其他代码之间留有空行，比如：
 
 ```js
 var foo;
@@ -17,32 +15,32 @@ var foo;
 // do something with foo
 ```
 
-Whereas others don't leave any empty newlines at all.
+而另一些人则根本不留任何空换行。
 
 ```js
 var foo;
 // do something with foo
 ```
 
-The problem is when these developers work together in a project. This rule enforces a coding style where empty newlines are allowed or disallowed after `var`, `let`, or `const` statements. It helps the code to look consistent across the entire project.
+问题是当这些开发人员在一个项目中一起工作时。这条规则强制执行一种编码风格，即允许或不允许在 `var`、`let` 或 `const` 语句后有空换行。它可以帮助代码在整个项目中看起来一致。
 
-## Rule Details
+## 规则细节
 
-This rule enforces a coding style where empty lines are required or disallowed after `var`, `let`, or `const` statements to achieve a consistent coding style across the project.
+这条规则强制执行一种编码风格，即在 `var`、`let` 或 `const` 语句后需要或不允许有空行，以实现整个项目的统一编码风格。
 
-## Options
+## 选项
 
-This rule has a string option:
+此规则选项为字符串：
 
-* `"always"` (default) requires an empty line after `var`, `let`, or `const`
+* `"always"`（默认值）要求在 `var`、`let` 或 `const` 后面有空行。
 
-  Comments on a line directly after var statements are treated like additional var statements.
+  在 var 语句后面的注释被视为额外的 var 语句。
 
-* `"never"` disallows empty lines after `var`, `let`, or `const`
+* `"never"` 不允许在 `var`、`let` 或 `const` 后面空行。
 
 ### always
 
-Examples of **incorrect** code for this rule with the default `"always"` option:
+使用此规则与默认的 `"always"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -70,7 +68,7 @@ console.log(greet, name);
 
 :::
 
-Examples of **correct** code for this rule with the default `"always"` option:
+使用此规则与默认的 `"always"` 选项的**正确**示例：
 
 ::: correct
 
@@ -104,7 +102,7 @@ console.log(greet, name);
 
 ### never
 
-Examples of **incorrect** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -136,7 +134,7 @@ console.log(greet, name);
 
 :::
 
-Examples of **correct** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**正确**示例：
 
 ::: correct
 

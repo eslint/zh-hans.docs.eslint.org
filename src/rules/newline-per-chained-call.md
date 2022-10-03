@@ -5,17 +5,15 @@ edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/newl
 rule_type: layout
 ---
 
+单行的链式方法调用如果没有换行，就很难读懂，所以有些开发者在链式方法调用的每一个后面都放一个换行符，以使其更易读，更容易维护。
 
-
-Chained method calls on a single line without line breaks are harder to read, so some developers place a newline character after each method call in the chain to make it more readable and easy to maintain.
-
-Let's look at the following perfectly valid (but single line) code.
+让我们来看看下面这段完全有效的（但却是单行的）代码。
 
 ```js
 d3.select("body").selectAll("p").data([4, 8, 15, 16, 23, 42 ]).enter().append("p").text(function(d) { return "I'm number " + d + "!"; });
 ```
 
-However, with appropriate new lines, it becomes easy to read and understand. Look at the same code written below with line breaks after each call.
+然而，有了适当的新行，它就变得容易阅读和理解了。看看下面写的同样的代码，在每个调用后都有换行。
 
 ```js
 d3
@@ -36,16 +34,16 @@ d3
     });
 ```
 
-Another argument in favor of this style is that it improves the clarity of diffs when something in the method chain is changed:
+支持这种风格的另一个理由是，当方法链中的某些东西被改变时，它可以提高差异的清晰度。
 
-Less clear:
+不太清晰：
 
 ```diff
 -d3.select("body").selectAll("p").style("color", "white");
 +d3.select("body").selectAll("p").style("color", "blue");
 ```
 
-More clear:
+更为清晰：
 
 ```diff
 d3
@@ -55,19 +53,19 @@ d3
 +    .style("color", "blue");
 ```
 
-## Rule Details
+## 规则细节
 
-This rule requires a newline after each call in a method chain or deep member access. Computed property accesses such as `instance[something]` are excluded.
+这条规则要求在方法链或深层成员访问中的每个调用后都有一个换行。不过不包括像 `instance[something]` 这样的计算属性访问。
 
-## Options
+## 选项
 
-This rule has an object option:
+此规则选项为对象：
 
-* `"ignoreChainWithDepth"` (default: `2`) allows chains up to a specified depth.
+* `"ignoreChainWithDepth"`（默认：`2`）允许链路达到指定的深度。
 
 ### ignoreChainWithDepth
 
-Examples of **incorrect** code for this rule with the default `{ "ignoreChainWithDepth": 2 }` option:
+使用此规则与默认的 `{ "ignoreChainWithDepth": 2 }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -76,21 +74,21 @@ Examples of **incorrect** code for this rule with the default `{ "ignoreChainWit
 
 _.chain({}).map(foo).filter(bar).value();
 
-// Or
+// 或
 _.chain({}).map(foo).filter(bar);
 
-// Or
+// 或
 _
   .chain({}).map(foo)
   .filter(bar);
 
-// Or
+// 或
 obj.method().method2().method3();
 ```
 
 :::
 
-Examples of **correct** code for this rule with the default `{ "ignoreChainWithDepth": 2 }` option:
+使用此规则与默认的 `{ "ignoreChainWithDepth": 2 }` 选项的**正确**示例：
 
 ::: correct
 
@@ -103,23 +101,23 @@ _
   .filter(bar)
   .value();
 
-// Or
+// 或
 _
   .chain({})
   .map(foo)
   .filter(bar);
 
-// Or
+// 或
 _.chain({})
   .map(foo)
   .filter(bar);
 
-// Or
+// 或
 obj
   .prop
   .method().prop;
 
-// Or
+// 或
 obj
   .prop.method()
   .method2()
@@ -128,6 +126,6 @@ obj
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you have conflicting rules or when you are fine with chained calls on one line, you can safely turn this rule off.
+如果你有冲突的规则，或者当你对一条链路上的连锁调用没有意见时，你可以安全地关闭这个规则。

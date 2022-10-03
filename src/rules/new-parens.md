@@ -5,28 +5,26 @@ edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/new-
 rule_type: layout
 ---
 
-
-
-JavaScript allows the omission of parentheses when invoking a function via the `new` keyword and the constructor has no arguments. However, some coders believe that omitting the parentheses is inconsistent with the rest of the language and thus makes code less clear.
+当通 过`new` 关键字调用一个函数并且构造函数没有参数时，JavaScript 允许省略括号。然而，一些程序员认为，省略小括号与语言的其他部分不一致，从而使代码不那么清晰。
 
 ```js
 var person = new Person;
 ```
 
-## Rule Details
+## 规则细节
 
-This rule can enforce or disallow parentheses when invoking a constructor with no arguments using the `new` keyword.
+当使用 `new` 关键字调用没有参数的构造函数时，这条规则可以强制或不允许使用括号。
 
-## Options
+## 选项
 
-This rule takes one option.
+这个规则有一个选项。
 
-* `"always"` enforces parenthesis after a new constructor with no arguments (default)
-* `"never"` enforces no parenthesis after a new constructor with no arguments
+* `"always"` 在一个没有参数的新构造函数后执行小括号（默认）。
+* `"never"` 在一个没有参数的新构造函数后，不执行小括号。
 
 ### always
 
-Examples of **incorrect** code for this rule with the `"always"` option:
+使用此规则与 `"always"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -39,7 +37,7 @@ var person = new (Person);
 
 :::
 
-Examples of **correct** code for this rule with the `"always"` option:
+使用此规则与 `"always"` 选项的**正确**示例：
 
 ::: correct
 
@@ -54,7 +52,7 @@ var person = new (Person)();
 
 ### never
 
-Examples of **incorrect** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -67,7 +65,7 @@ var person = new (Person)();
 
 :::
 
-Examples of **correct** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**正确**示例：
 
 ::: correct
 
