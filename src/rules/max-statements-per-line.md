@@ -13,10 +13,10 @@ related_rules:
 - max-statements
 ---
 
-一行包含太多语句的代码可能难以阅读。代码通常是自上而下阅读的，特别是在扫描时，所以限制单行允许的语句数量对可读性和可维护性非常有利。
+一行代码包含太多语句可能会难以阅读。代码通常是自上而下阅读的，特别是在扫描时，所以限制单行允许的语句数量对可读性和可维护性非常有用。
 
 ```js
-function foo () { var bar; if (condition) { bar = 1; } else { bar = 2; } return true; } // too many statements
+function foo () { var bar; if (condition) { bar = 1; } else { bar = 2; } return true; } // 太多语句了
 ```
 
 ## 规则细节
@@ -27,7 +27,7 @@ function foo () { var bar; if (condition) { bar = 1; } else { bar = 2; } return 
 
 ### max
 
-"max" 对象属性是可选的（默认为 1）。
+`"max"` 对象属性是可选的（默认为 1）。
 
 使用此规则与默认的 `{ "max": 1 }` 选项的**错误**示例：
 
@@ -103,4 +103,4 @@ var foo = function foo() { bar = 1; };
 
 ## 何时不用
 
-如果你不关心每行的语句量，你可以关闭这个规则。
+如果你不关心每行的语句数，你可以关闭这个规则。

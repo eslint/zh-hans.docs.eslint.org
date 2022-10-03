@@ -13,10 +13,10 @@ related_rules:
 - max-statements
 ---
 
-带众多参数的函数可能难以阅读和编写，因为它需要记住每个参数是什么，它的类型，以及它们应该出现的顺序。因此，许多程序员坚持一个惯例，即对一个函数可以接受的参数数量设置上限。
+有众多参数的函数可能会难以阅读和编写，因为它需要记住每个参数的内容、类型、顺序。因此，许多程序员坚持一个惯例，即限制单一函数可接收参数数量的上限。
 
 ```js
-function foo (bar, baz, qux, qxx) { // four parameters, may be too many
+function foo (bar, baz, qux, qxx) { // 四个参数可能太多了点
     doSomething();
 }
 ```
@@ -29,7 +29,7 @@ function foo (bar, baz, qux, qxx) { // four parameters, may be too many
 
 这个规则有一个数字或对象选项：
 
-* `"max"`（默认为 `3`）在函数定义中执行最大的参数数。
+* `"max"`（默认为 `3`）在函数定义中执行最大的参数数
 
 **废弃**：对象属性 `maximum` 已废弃，请使用对象属性 `max` 代替。
 

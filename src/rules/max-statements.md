@@ -13,13 +13,13 @@ related_rules:
 - max-params
 ---
 
-max-statements "规则允许你指定一个函数中允许的最大语句数。
+`max-statements` 规则允许你指定一个函数中可以存在的最大语句数。
 
 ```js
 function foo() {
-  var bar = 1; // one statement
-  var baz = 2; // two statements
-  var qux = 3; // three statements
+  var bar = 1; // 一个语句
+  var baz = 2; // 两个语句
+  var qux = 3; // 三个语句
 }
 ```
 
@@ -29,15 +29,15 @@ function foo() {
 
 ## 选项
 
-这条规则有一个数字或对象选项： * "max"（默认为 `10'）在功能块中允许的最大语句数。
+这条规则有一个数字或对象选项：
 
 * `"max"`（默认为 `10`）强制规定函数块中允许的最大语句数。
 
-**废弃**：对象属性 "maximum "已被废弃，请使用对象属性 "max "代替。
+**废弃**：对象属性 `"maximum"` 已被废弃，请使用对象属性 `"max"` 代替。
 
 此规则选项为对象：
 
-* `"ignoreTopLevelFunctions": true` ignores top-level functions
+* `"ignoreTopLevelFunctions": true` 忽略顶级函数
 
 ### max
 
@@ -135,7 +135,7 @@ let foo = () => {
 
 注意，这条规则不适用于类静态块，而且类静态块中的语句不算是包围函数的语句。
 
-本规则的**正确的**代码的例子，有`{ "max": 2 }`选项的情况下，本规则的**正确代码示例。
+使用此规则与 `{ "max": 2 }` 选项的**正确**示例：
 
 ::: correct
 
@@ -163,7 +163,7 @@ function foo() {
 
 ### ignoreTopLevelFunctions
 
-这个规则的附加**正确代码的例子有：`{ "max": 10 }, { "ignoreTopLevelFunctions": true }` 选项 s:
+使用此规则与 `{ "max": 10 }, { "ignoreTopLevelFunctions": true }` 选项的**正确**示例：
 
 ::: correct
 
