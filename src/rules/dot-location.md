@@ -7,11 +7,9 @@ related_rules:
 - dot-notation
 ---
 
+JavaScript 允许你在成员表达式中的点之前或之后放置换行。
 
-
-JavaScript allows you to place newlines before or after a dot in a member expression.
-
-Consistency in placing a newline before or after the dot can greatly increase readability.
+在点之前或之后放置换行的一致性可以大大增加可读性。
 
 ```js
 var a = universe.
@@ -21,22 +19,22 @@ var b = universe
        .galaxy;
 ```
 
-## Rule Details
+## 规则细节
 
-This rule aims to enforce newline consistency in member expressions. This rule prevents the use of mixed newlines around the dot in a member expression.
+这条规则的目的是在成员表达式中强制执行换行的一致性。这条规则防止在成员表达式中的点周围使用混合换行。
 
-## Options
+## 选项
 
-The rule takes one option, a string:
+此规则选项为字符串：
 
-* If it is `"object"` (default), the dot in a member expression should be on the same line as the object portion.
-* If it is `"property"`, the dot in a member expression should be on the same line as the property portion.
+* 如果是 `"object"`（默认），成员表达式中的点应该与对象部分在同一行。
+* 如果是 `"property"`，成员表达式中的点应该和属性部分在同一行。
 
 ### object
 
-The default `"object"` option requires the dot to be on the same line as the object.
+默认的 `"object"` 选项要求点与对象在同一行。
 
-Examples of **incorrect** code for the default `"object"` option:
+使用默认的 `"object"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -49,7 +47,7 @@ var foo = object
 
 :::
 
-Examples of **correct** code for the default `"object"` option:
+使用默认的 `"object"` 选项的**正确**示例：
 
 ::: correct
 
@@ -71,9 +69,9 @@ var baz = object.property;
 
 ### property
 
-The `"property"` option requires the dot to be on the same line as the property.
+`"property"` 选项要求点与属性在同一行。
 
-Examples of **incorrect** code for the `"property"` option:
+使用 `"property"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -86,7 +84,7 @@ property;
 
 :::
 
-Examples of **correct** code for the `"property"` option:
+使用 `"property"` 选项的**正确**示例：
 
 ::: correct
 
@@ -100,6 +98,6 @@ var bar = object.property;
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-You can turn this rule off if you are not concerned with the consistency of newlines before or after dots in member expressions.
+如果你不关心成员表达式中点之前或之后的换行符是否一致，你可以关闭这个规则。

@@ -4,7 +4,7 @@ layout: doc
 rule_type: suggestion
 ---
 
-Putting default parameter at last allows function calls to omit optional tail arguments.
+将默认参数放在最后，允许函数调用省略可选的尾部参数。
 
 ```js
 // Correct: optional argument can be omitted
@@ -16,11 +16,11 @@ function createUser(isAdmin = false, id) {}
 createUser(undefined, "tabby")
 ```
 
-## Rule Details
+## 规则细节
 
-This rule enforces default parameters to be the last of parameters.
+这条规则强制规定默认参数为参数的最后一个。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -34,7 +34,7 @@ function f(a, b = 0, c) {}
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 

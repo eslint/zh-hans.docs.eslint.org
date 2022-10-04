@@ -4,19 +4,17 @@ layout: doc
 rule_type: suggestion
 ---
 
-
-
-In JavaScript, one can access properties using the dot notation (`foo.bar`) or square-bracket notation (`foo["bar"]`). However, the dot notation is often preferred because it is easier to read, less verbose, and works better with aggressive JavaScript minimizers.
+在 JavaScript 中，我们可以使用点符号（`foo.bar`）或方括号符号（`foo["bar"]`）访问属性。然而，点符号通常是首选，因为它更容易阅读，不那么冗长，而且与积极的 JavaScript 最小化器配合得更好。
 
 ```js
 foo["bar"];
 ```
 
-## Rule Details
+## 规则细节
 
-This rule is aimed at maintaining code consistency and improving code readability by encouraging use of the dot notation style whenever possible. As such, it will warn when it encounters an unnecessary use of square-bracket notation.
+这条规则的目的是通过鼓励尽可能地使用点符号风格来保持代码的一致性和提高代码的可读性。因此，当它遇到不必要地使用方括号符号时，会发出警告。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 :::incorrect
 
@@ -28,7 +26,7 @@ var x = foo["bar"];
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 :::correct
 
@@ -42,16 +40,16 @@ var x = foo[bar];    // Property name is a variable, square-bracket notation req
 
 :::
 
-## Options
+## 选项
 
-This rule accepts a single options argument:
+这个规则接受一个选项参数：
 
-* Set the `allowKeywords` option to `false` (default is `true`) to follow ECMAScript version 3 compatible style, avoiding dot notation for reserved word properties.
-* Set the `allowPattern` option to a regular expression string to allow bracket notation for property names that match a pattern (by default, no pattern is tested).
+* 将 `allowKeywords` 选项设置为 `false`（默认为是`true`），以遵循 ECMAScript 第三版的兼容风格，避免对保留字属性使用点符号。
+* 将 `allowPattern` 选项设置为正则表达式字符串，以允许对符合模式的属性名称使用括号符号（默认情况下，不测试模式）。
 
 ### allowKeywords
 
-Examples of **correct** code for the `{ "allowKeywords": false }` option:
+使用 `{ "allowKeywords": false }` 选项的**正确**示例：
 
 :::correct
 
@@ -64,7 +62,7 @@ var x = foo["class"]; // Property name is a reserved word, square-bracket notati
 
 :::
 
-Examples of additional **correct** code for the `{ "allowKeywords": false }` option:
+使用 `{ "allowKeywords": false }` 选项的又一**正确**示例：
 
 :::correct
 
@@ -83,9 +81,9 @@ class C {
 
 ### allowPattern
 
-For example, when preparing data to be sent to an external API, it is often required to use property names that include underscores.  If the `camelcase` rule is in effect, these [snake case](https://en.wikipedia.org/wiki/Snake_case) properties would not be allowed.  By providing an `allowPattern` to the `dot-notation` rule, these snake case properties can be accessed with bracket notation.
+例如，当准备将数据发送到外部 API 时，经常需要使用包括下划线的属性名称。如果 `camelcase` 规则生效，则不允许这些 [snake case](https://en.wikipedia.org/wiki/Snake_case) 属性。通过为 `dot-notation` 规则提供 `allowPattern`，可以通过括号符号来访问这些蛇形大小写的属性。
 
-Examples of **correct** code for the sample `{ "allowPattern": "^[a-z]+(_[a-z]+)+$" }` option:
+使用演示的 `{ "allowPattern": "^[a-z]+(_[a-z]+)+$" }` 选项的**正确**示例：
 
 :::correct
 
@@ -100,7 +98,7 @@ var data = {};
 data["fooBar"] = 42;
 
 var data = {};
-data["foo_bar"] = 42; // no warning
+data["foo_bar"] = 42; // 无警告
 ```
 
 :::
