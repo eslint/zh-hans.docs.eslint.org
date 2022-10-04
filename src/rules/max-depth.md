@@ -12,24 +12,23 @@ related_rules:
 - max-statements
 ---
 
+许多开发者认为，如果块的嵌套超过一定的深度，代码就难以阅读。
 
-Many developers consider code difficult to read if blocks are nested beyond a certain depth.
+## 规则细节
 
-## Rule Details
+这个规则强制规定了块可以嵌套的最大深度，以减少代码的复杂性。
 
-This rule enforces a maximum depth that blocks can be nested to reduce code complexity.
+## 选项
 
-## Options
+这条规则有一个数字或对象选项：
 
-This rule has a number or object option:
+* `"max"`（默认为 `4`）规定了块可以嵌套的最大深度。
 
-* `"max"` (default `4`) enforces a maximum depth that blocks can be nested
-
-**Deprecated:** The object property `maximum` is deprecated; please use the object property `max` instead.
+**废弃**：对象属性 `maximum` 已被废弃，请使用对象属性 `max` 代替。
 
 ### max
 
-Examples of **incorrect** code for this rule with the default `{ "max": 4 }` option:
+使用此规则与默认的 `{ "max": 4 }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -52,7 +51,7 @@ function foo() {
 
 :::
 
-Examples of **correct** code for this rule with the default `{ "max": 4 }` option:
+使用此规则与默认的 `{ "max": 4 }` 选项的**正确**示例：
 
 ::: correct
 
@@ -73,9 +72,9 @@ function foo() {
 
 :::
 
-Note that class static blocks do not count as nested blocks, and that the depth in them is calculated separately from the enclosing context.
+请注意，类的静态块不算是嵌套块，而且其中的深度是与包围的上下文分开计算的。
 
-Examples of **incorrect** code for this rule with `{ "max": 2 }` option:
+使用此规则与 `{ "max": 2 }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -100,7 +99,7 @@ function foo() {
 
 :::
 
-Examples of **correct** code for this rule with `{ "max": 2 }` option:
+使用此规则与 `{ "max": 2 }` 选项的**正确**示例：
 
 ::: correct
 

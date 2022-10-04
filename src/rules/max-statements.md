@@ -12,36 +12,35 @@ related_rules:
 - max-params
 ---
 
-
-The `max-statements` rule allows you to specify the maximum number of statements allowed in a function.
+`max-statements` 规则允许你指定一个函数中可以存在的最大语句数。
 
 ```js
 function foo() {
-  var bar = 1; // one statement
-  var baz = 2; // two statements
-  var qux = 3; // three statements
+  var bar = 1; // 一个语句
+  var baz = 2; // 两个语句
+  var qux = 3; // 三个语句
 }
 ```
 
-## Rule Details
+## 规则细节
 
-This rule enforces a maximum number of statements allowed in function blocks.
+这条规则强制规定了功能块中允许的最大语句数。
 
-## Options
+## 选项
 
-This rule has a number or object option:
+这条规则有一个数字或对象选项：
 
-* `"max"` (default `10`) enforces a maximum number of statements allows in function blocks
+* `"max"`（默认为 `10`）强制规定函数块中允许的最大语句数。
 
-**Deprecated:** The object property `maximum` is deprecated; please use the object property `max` instead.
+**废弃**：对象属性 `"maximum"` 已被废弃，请使用对象属性 `"max"` 代替。
 
-This rule has an object option:
+此规则选项为对象：
 
-* `"ignoreTopLevelFunctions": true` ignores top-level functions
+* `"ignoreTopLevelFunctions": true` 忽略顶级函数
 
 ### max
 
-Examples of **incorrect** code for this rule with the default `{ "max": 10 }` option:
+使用此规则与默认的 `{ "max": 10 }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -82,7 +81,7 @@ let foo = () => {
 
 :::
 
-Examples of **correct** code for this rule with the default `{ "max": 10 }` option:
+使用此规则与默认的 `{ "max": 10 }` 选项的**正确**示例：
 
 ::: correct
 
@@ -133,9 +132,9 @@ let foo = () => {
 
 :::
 
-Note that this rule does not apply to class static blocks, and that statements in class static blocks do not count as statements in the enclosing function.
+注意，这条规则不适用于类静态块，而且类静态块中的语句不算是包围函数的语句。
 
-Examples of **correct** code for this rule with `{ "max": 2 }` option:
+使用此规则与 `{ "max": 2 }` 选项的**正确**示例：
 
 ::: correct
 
@@ -163,7 +162,7 @@ function foo() {
 
 ### ignoreTopLevelFunctions
 
-Examples of additional **correct** code for this rule with the `{ "max": 10 }, { "ignoreTopLevelFunctions": true }` options:
+使用此规则与 `{ "max": 10 }, { "ignoreTopLevelFunctions": true }` 选项的**正确**示例：
 
 ::: correct
 

@@ -4,17 +4,13 @@ layout: doc
 rule_type: suggestion
 ---
 
+包含多个类的文件往往会导致代码库的可操作性降低 和结构不良的代码库。最佳做法是将每个文件 只限于一个功能。
 
-Files containing multiple classes can often result in a less navigable
-and poorly structured codebase. Best practice is to keep each file
-limited to a single responsibility.
+## 规则细节
 
-## Rule Details
+此规则规定，每个文件只能包含特定数量类，而不能有更多的。
 
-This rule enforces that each file may contain only a particular number
-of classes and no more.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -27,7 +23,7 @@ class Bar {}
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -39,16 +35,16 @@ class Foo {}
 
 :::
 
-## Options
+## 选项
 
-This rule may be configured with either an object or a number.
+这个规则可以用一个对象或一个数字来配置。
 
-If the option is an object, it may contain one or both of:
+如果选项是一个对象，它可以包含以下一个或两个。
 
-* `ignoreExpressions`: a boolean option (defaulted to `false`) to ignore class expressions.
-* `max`: a numeric option (defaulted to 1) to specify the maximum number of classes.
+* `ignoreExpressions`：一个布尔选项（默认为`false`），用于忽略类的表达。
+* `max`：一个数字选项（默认为 1），用于指定类的最大数量。
 
-For example:
+例如：
 
 ```json
 {
@@ -65,7 +61,7 @@ For example:
 }
 ```
 
-Examples of **correct** code for this rule with the `max` option set to `2`:
+使用该规则与将 `max` 选项设置为 `2` 的**正确**示例：
 
 ::: correct
 
@@ -78,7 +74,7 @@ class Bar {}
 
 :::
 
-Examples of **correct** code for this rule with the `ignoreExpressions` option set to `true`:
+使用此规则与将 `ignoreExpressions` 选项设置为 `true` 的**正确**示例：
 
 ::: correct
 

@@ -7,11 +7,9 @@ related_rules:
 - padded-blocks
 ---
 
+此规则在 ESLint v4.0.0 中被 [padding-line-between-statements](padding-line-between-statements) 规则所取代，并被**废弃**。
 
-
-This rule was **deprecated** in ESLint v4.0.0 and replaced by the [padding-line-between-statements](padding-line-between-statements) rule.
-
-Directives are used in JavaScript to indicate to the execution environment that a script would like to opt into a feature such as `"strict mode"`. Directives are grouped together in a [directive prologue](https://www.ecma-international.org/ecma-262/7.0/#directive-prologue) at the top of either a file or function block and are applied to the scope in which they occur.
+在 JavaScript 中，指令被用来向执行环境表明一个脚本希望选择 `"strict mode"` 这样的特性。指令被分组在文件或函数块顶部的 [directive prologue](https://www.ecma-international.org/ecma-262/7.0/#directive-prologue) 中，并被应用到它们出现的范围中。
 
 ```js
 // Strict mode is invoked for the entire script
@@ -35,18 +33,18 @@ function bar() {
 }
 ```
 
-## Rule Details
+## 规则细节
 
-This rule requires or disallows blank newlines around directive prologues. This rule does not enforce any conventions about blank newlines between the individual directives. In addition, it does not require blank newlines before directive prologues unless they are preceded by a comment. Please use the [padded-blocks](padded-blocks) rule if this is a style you would like to enforce.
+这条规则要求或不允许在指令的序言部分使用空白换行。这条规则并不强制执行关于各个指令之间的空白换行的任何约定。此外，它也不要求指令序言前的空白换行，除非它们前面有注释。如果你想执行这种风格，请使用 [padded-blocks](padded-blocks) 规则。
 
-## Options
+## 选项
 
-This rule has one option. It can either be a string or an object:
+这个规则有一个选项。它可以是一个字符串，也可以是一个对象：
 
-* `"always"` (default) enforces blank newlines around directives.
-* `"never"` disallows blank newlines around directives.
+* `"always"`（默认值）执行指令周围的空白换行。
+* `"never"`不允许指令周围有空白的新行。
 
-or
+或
 
 ```js
 {
@@ -57,9 +55,9 @@ or
 
 ### always
 
-This is the default option.
+这是默认的选项。
 
-Examples of **incorrect** code for this rule with the `"always"` option:
+使用此规则与 `"always"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -91,7 +89,7 @@ function foo() {
 
 :::
 
-Examples of **correct** code for this rule with the `"always"` option:
+使用此规则与 `"always"` 选项的**正确**示例：
 
 ::: correct
 
@@ -131,7 +129,7 @@ function foo() {
 
 ### never
 
-Examples of **incorrect** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -170,7 +168,7 @@ function foo() {
 
 :::
 
-Examples of **correct** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**正确**示例：
 
 ::: correct
 
@@ -204,7 +202,7 @@ function foo() {
 
 ### before & after
 
-Examples of **incorrect** code for this rule with the `{ "before": "never", "after": "always" }` option:
+使用此规则与 `{ "before": "never", "after": "always" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -239,7 +237,7 @@ function foo() {
 
 :::
 
-Examples of **correct** code for this rule with the `{ "before": "never", "after": "always" }`  option:
+使用此规则与 `{ "before": "never", "after": "always" }`  选项的**正确**示例：
 
 ::: correct
 
@@ -275,7 +273,7 @@ function foo() {
 
 :::
 
-Examples of **incorrect** code for this rule with the `{ "before": "always", "after": "never" }` option:
+使用此规则与 `{ "before": "always", "after": "never" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -311,7 +309,7 @@ function foo() {
 
 :::
 
-Examples of **correct** code for this rule with the `{ "before": "always", "after": "never" }` option:
+使用此规则与 `{ "before": "always", "after": "never" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -345,11 +343,11 @@ function foo() {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-You can safely disable this rule if you do not have any strict conventions about whether or not directive prologues should have blank newlines before or after them.
+如果你对指令性序言前后是否应该有空白换行没有任何严格的约定，你可以安全地禁用这一规则。
 
-## Compatibility
+## 兼容
 
-* **JSCS**: [requirePaddingNewLinesAfterUseStrict](https://jscs-dev.github.io/rule/requirePaddingNewLinesAfterUseStrict)
-* **JSCS**: [disallowPaddingNewLinesAfterUseStrict](https://jscs-dev.github.io/rule/disallowPaddingNewLinesAfterUseStrict)
+* **JSCS**：[requirePaddingNewLinesAfterUseStrict](https://jscs-dev.github.io/rule/requirePaddingNewLinesAfterUseStrict)
+* **JSCS**：[disallowPaddingNewLinesAfterUseStrict](https://jscs-dev.github.io/rule/disallowPaddingNewLinesAfterUseStrict)
