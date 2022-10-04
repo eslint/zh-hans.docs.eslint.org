@@ -6,12 +6,10 @@ further_reading:
 - https://leanpub.com/understandinges6/read/#leanpub-auto-generators
 ---
 
+生成器是 ECMAScript 6 中一种新的函数类型，可以同时返回多个值。
+这些特殊的函数是通过在 `function` 关键字后面加上 `*` 来表示的。
 
-
-Generators are a new type of function in ECMAScript 6 that can return multiple values over time.
-These special functions are indicated by placing an `*` after the `function` keyword.
-
-Here is an example of a generator function:
+下面是生成器函数的例子：
 
 ```js
 /*eslint-env es6*/
@@ -22,7 +20,7 @@ function* generator() {
 }
 ```
 
-This is also valid:
+这也可以：
 
 ```js
 /*eslint-env es6*/
@@ -33,7 +31,7 @@ function *generator() {
 }
 ```
 
-This is valid as well:
+这还是可以：
 
 ```js
 /*eslint-env es6*/
@@ -44,52 +42,52 @@ function * generator() {
 }
 ```
 
-To keep a sense of consistency when using generators this rule enforces a single position for the `*`.
+为了在使用生成器时保持一致性，本规则为 `*` 强制执行单一位置。
 
-## Rule Details
+## 规则细节
 
-This rule aims to enforce spacing around the `*` of generator functions.
+该规则旨在强制执行生成器函数的 `*` 周围的间距。
 
-## Options
+## 选项
 
-The rule takes one option, an object, which has two keys `before` and `after` having boolean values `true` or `false`.
+规则需要一个选项，一个对象，它有两个键 `before` 和 `after`，可以是布尔值 `true` 或 `false`。
 
-* `before` enforces spacing between the `*` and the `function` keyword.
-  If it is `true`, a space is required, otherwise spaces are disallowed.
+* `before` 在 `*` 和 `function` 关键词之间强制执行间隔。
+  如果它是 `true`，则需要一个空格，否则不允许有空格。
 
-  In object literal shorthand methods, spacing before the `*` is not checked, as they lack a `function` keyword.
+  在对象字面量速记方法中，不检查`*` 之前的间隔，因为它们缺少 `function` 关键字。
 
-* `after` enforces spacing between the `*` and the function name (or the opening parenthesis for anonymous generator functions).
-  If it is `true`, a space is required, otherwise spaces are disallowed.
+* `after` 强制要求在 `*` 和函数名（或匿名生成器函数的开头括号）之间有间距。
+  如果它是 `true`，则需要一个空格，否则不允许有空格。
 
-The default is `{"before": true, "after": false}`.
+默认值是`{"before": true, "after": false}`。
 
-An example configuration:
+配置示例：
 
 ```json
 "generator-star-spacing": ["error", {"before": true, "after": false}]
 ```
 
-And the option has shorthand as a string keyword:
+而该选项有速记为一个字符串的关键词。
 
 * `{"before": true, "after": false}` → `"before"`
 * `{"before": false, "after": true}` → `"after"`
 * `{"before": true, "after": true}` → `"both"`
 * `{"before": false, "after": false}` → `"neither"`
 
-An example of shorthand configuration:
+速记配置实力：
 
 ```json
 "generator-star-spacing": ["error", "after"]
 ```
 
-Additionally, this rule allows further configurability via overrides per function type.
+此外，这个规则允许通过每个函数类型的重写来进一步配置。
 
-* `named` provides overrides for named functions
-* `anonymous` provides overrides for anonymous functions
-* `method` provides overrides for class methods or property function shorthand
+* `named` 为命名的函数提供重写。
+* `anonymous` 为匿名函数提供重写。
+* `method` 为类方法或属性函数速记提供重写。
 
-An example of a configuration with overrides:
+一个带有重写的配置示例：
 
 ```json
 "generator-star-spacing": ["error", {
@@ -100,15 +98,14 @@ An example of a configuration with overrides:
 }]
 ```
 
-In the example configuration above, the top level "before" and "after" options define the default behavior of
-the rule, while the "anonymous" and "method" options override the default behavior.
-Overrides can be either an object with "before" and "after", or a shorthand string as above.
+在上面的配置示例中，顶层的 "before" 和 "after" 选项定义了规则的默认行为。规则，而 "anonymous" 和 "method" 选项则覆盖了默认行为。
+覆盖可以是一个带有 "before" 和 "after"的对象，也可以是上述的速记字符串。
 
 ## Examples
 
 ### before
 
-Examples of **correct** code for this rule with the `"before"` option:
+使用此规则与 `"before"` 选项的**正确**示例：
 
 ::: correct
 
@@ -127,7 +124,7 @@ var shorthand = { *generator() {} };
 
 ### after
 
-Examples of **correct** code for this rule with the `"after"` option:
+使用此规则与 `"after"` 选项的**正确**示例：
 
 ::: correct
 
@@ -146,7 +143,7 @@ var shorthand = { * generator() {} };
 
 ### both
 
-Examples of **correct** code for this rule with the `"both"` option:
+使用此规则与 `"both"` 选项的**正确**示例：
 
 ::: correct
 
@@ -165,7 +162,7 @@ var shorthand = { * generator() {} };
 
 ### neither
 
-Examples of **correct** code for this rule with the `"neither"` option:
+使用此规则与 `"neither"` 选项的**正确**示例：
 
 ::: correct
 
@@ -182,7 +179,7 @@ var shorthand = { *generator() {} };
 
 :::
 
-Examples of **incorrect** code for this rule with overrides present:
+此规则的**错误**代码的例子，其中存在重写。
 
 ::: incorrect
 
@@ -206,7 +203,7 @@ class Class { static* method() {} }
 
 :::
 
-Examples of **correct** code for this rule with overrides present:
+该规则的**正确的**代码的例子，其中存在覆盖物。
 
 ::: correct
 
@@ -230,6 +227,6 @@ class Class { static * method() {} }
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If your project will not be using generators or you are not concerned with spacing consistency, you do not need this rule.
+如果你的项目不会使用生成器，或者你不关心间距的一致性，你就不需要这个规则。

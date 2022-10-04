@@ -4,12 +4,11 @@ layout: doc
 rule_type: suggestion
 ---
 
+## 规则细节
 
-## Rule Details
+这条规则要求函数名必须与被分配的变量或属性名相匹配。如果属性名称是一个字面，而这个字面在你的配置中指定的 ECMAScript 版本（默认为 ES5）中不是一个有效的标识符，那么该规则将忽略属性的分配。
 
-This rule requires function names to match the name of the variable or property to which they are assigned. The rule will ignore property assignments where the property name is a literal that is not a valid identifier in the ECMAScript version specified in your configuration (default ES5).
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -49,7 +48,7 @@ class C {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -144,15 +143,15 @@ module['exports'] = function foo(name) {};
 
 :::
 
-## Options
+## 选项
 
-This rule takes an optional string of "always" or "never" (when omitted, it defaults to "always"), and an optional options object with two properties `considerPropertyDescriptor` and `includeCommonJSModuleExports`.
+这个规则需要一个 "always" 或 "never" 的可选字符串（当省略时，默认为 "always"），以及一个带有两个属性 `considerPropertyDescriptor` 和 `includeCommonJSModuleExports` 的可选选项对象。
 
 ### considerPropertyDescriptor
 
-A boolean value that defaults to `false`. If `considerPropertyDescriptor` is set to true, the check will take into account the use of `Object.create`, `Object.defineProperty`, `Object.defineProperties`, and `Reflect.defineProperty`.
+布尔值，默认为 `false`。如果 `considerPropertyDescriptor` 被设置为 true，将检查 `Object.create`、`Object.defineProperty`、`Object.defineProperties` 和 `Reflect.defineProperty` 的使用。
 
-Examples of **correct** code for the `{ considerPropertyDescriptor: true }` option:
+使用 `{ considerPropertyDescriptor: true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -168,7 +167,7 @@ Reflect.defineProperty(obj, 'foo', {value: function foo() {}});
 
 :::
 
-Examples of **incorrect** code for the `{ considerPropertyDescriptor: true }` option:
+使用 `{ considerPropertyDescriptor: true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -186,9 +185,9 @@ Reflect.defineProperty(obj, 'foo', {value: function value() {}});
 
 ### includeCommonJSModuleExports
 
-A boolean value that defaults to `false`. If `includeCommonJSModuleExports` is set to true, `module.exports` and `module["exports"]` will be checked by this rule.
+布尔值，默认为 `false`。如果 `includeCommonJSModuleExports` 被设置为 true，此规则将检查 `module.exports` 和 `module["exports"]`。
 
-Examples of **incorrect** code for the `{ includeCommonJSModuleExports: true }` option:
+使用 `{ includeCommonJSModuleExports: true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -202,10 +201,10 @@ module['exports'] = function foo(name) {};
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-Do not use this rule if you want to allow named functions to have different names from the variable or property to which they are assigned.
+如果你想允许命名的函数拥有与它们被分配到的变量或属性不同的名称，请不要使用这条规则。
 
-## Compatibility
+## 兼容
 
-* **JSCS**: [requireMatchingFunctionName](https://jscs-dev.github.io/rule/requireMatchingFunctionName)
+* **JSCS**：[requireMatchingFunctionName](https://jscs-dev.github.io/rule/requireMatchingFunctionName)
