@@ -1,7 +1,6 @@
 ---
 title: no-dupe-args
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-dupe-args.md
 rule_type: problem
 ---
 

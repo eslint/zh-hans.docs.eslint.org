@@ -1,7 +1,6 @@
 ---
 title: yoda
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/yoda.md
 rule_type: suggestion
 further_reading:
 - https://en.wikipedia.org/wiki/Yoda_conditions

@@ -1,7 +1,6 @@
 ---
 title: 新规则
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/developer-guide/contributing/new-rules.md
 
 ---
 

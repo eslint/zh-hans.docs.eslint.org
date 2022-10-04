@@ -1,7 +1,6 @@
 ---
 title: arrow-body-style
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/arrow-body-style.md
 rule_type: suggestion
 ---
 

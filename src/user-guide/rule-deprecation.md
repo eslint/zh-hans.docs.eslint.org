@@ -1,7 +1,6 @@
 ---
 title: 规则废弃
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/user-guide/rule-deprecation.md
 
 ---
 

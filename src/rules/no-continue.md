@@ -1,7 +1,6 @@
 ---
 title: no-continue
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-continue.md
 rule_type: suggestion
 ---
 

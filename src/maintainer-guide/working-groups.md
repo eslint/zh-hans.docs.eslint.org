@@ -1,7 +1,6 @@
 ---
 title: 工作组
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/maintainer-guide/working-groups.md
 
 ---
 

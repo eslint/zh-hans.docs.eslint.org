@@ -1,7 +1,6 @@
 ---
 title: 维护者指南
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/maintainer-guide/index.md
 eleventyNavigation:
     key: maintainer guide 
     title: 维护者指南 

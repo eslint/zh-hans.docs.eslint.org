@@ -1,7 +1,6 @@
 ---
 title: default-param-last
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/default-param-last.md
 rule_type: suggestion
 ---
 

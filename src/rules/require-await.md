@@ -1,7 +1,6 @@
 ---
 title: require-await
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/require-await.md
 rule_type: suggestion
 related_rules:
 - require-yield

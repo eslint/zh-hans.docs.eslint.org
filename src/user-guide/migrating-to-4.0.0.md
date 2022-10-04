@@ -1,7 +1,6 @@
 ---
 title: 迁移至 v4.0.0
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/user-guide/migrating-to-4.0.0.md
 
 ---
 

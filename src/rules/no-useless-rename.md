@@ -1,7 +1,6 @@
 ---
 title: no-useless-rename
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-useless-rename.md
 rule_type: suggestion
 related_rules:
 - object-shorthand

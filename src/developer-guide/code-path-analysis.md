@@ -1,7 +1,6 @@
 ---
 title: 代码链路分析详情
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/developer-guide/code-path-analysis.md
 
 ---
 

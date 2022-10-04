@@ -1,7 +1,6 @@
 ---
 title: no-wrap-func
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-wrap-func.md
 
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: no-confusing-arrow
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-confusing-arrow.md
 rule_type: suggestion
 related_rules:
 - no-constant-condition

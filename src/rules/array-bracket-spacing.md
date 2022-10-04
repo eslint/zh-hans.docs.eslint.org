@@ -1,7 +1,6 @@
 ---
 title: array-bracket-spacing
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/array-bracket-spacing.md
 rule_type: layout
 related_rules:
 - space-in-parens

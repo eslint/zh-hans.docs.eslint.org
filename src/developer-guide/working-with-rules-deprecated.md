@@ -1,7 +1,6 @@
 ---
 title: 创建规则（废弃）
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/developer-guide/working-with-rules-deprecated.md
 
 ---
 

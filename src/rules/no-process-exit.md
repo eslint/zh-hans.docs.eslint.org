@@ -1,7 +1,6 @@
 ---
 title: no-process-exit
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-process-exit.md
 rule_type: suggestion
 ---
 

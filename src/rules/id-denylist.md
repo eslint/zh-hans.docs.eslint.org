@@ -1,7 +1,6 @@
 ---
 title: id-denylist
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/id-denylist.md
 rule_type: suggestion
 ---
 
@@ -38,7 +37,9 @@ rule_type: suggestion
 }
 ```
 
-本规则的**不正确**代码的例子，有样本 `"data", "callback"` 限制性标识符。
+**注意**:数组的第一个元素代表规则的严重程度（见[配置规则](/docs/latest/user-guide/configuring/rules)。数组中的其他元素是你想禁止的标识符。
+
+使用此规则与演示的 `"data"、"callback"` 限制性标识符的**错误**示例：
 
 ::: incorrect
 

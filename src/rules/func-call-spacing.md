@@ -1,7 +1,6 @@
 ---
 title: func-call-spacing
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/func-call-spacing.md
 rule_type: layout
 related_rules:
 - no-spaced-func

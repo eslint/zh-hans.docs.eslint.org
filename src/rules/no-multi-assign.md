@@ -1,7 +1,6 @@
 ---
 title: no-multi-assign
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-multi-assign.md
 rule_type: suggestion
 related_rules:
 - max-statements-per-line

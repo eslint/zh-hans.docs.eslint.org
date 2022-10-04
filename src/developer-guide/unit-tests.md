@@ -1,7 +1,6 @@
 ---
 title: 单元测试
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/developer-guide/unit-tests.md
 eleventyNavigation:
     key: run the tests
     parent: developer guide

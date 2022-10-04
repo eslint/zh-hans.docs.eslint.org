@@ -1,7 +1,6 @@
 ---
 title: space-before-keywords
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/space-before-keywords.md
 
 related_rules:
 - space-after-keywords

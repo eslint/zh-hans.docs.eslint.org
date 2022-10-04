@@ -2,20 +2,14 @@
 
 > Simplified Chinese website
 
-The synchronization frequency is the same as the ESLint release frequency (the last sync was [4e9671f](https://github.com/eslint/eslint/commit/4e9671fcd5870a87420371176df20e29260cb3e2))
+The synchronization frequency is the same as the ESLint release frequency (the last sync was [d75d3c6](https://github.com/eslint/eslint/commit/d75d3c68ad8c98828aaa522b87ec267ab2dcb002))
 
 ## Contribute
 
 Install dependencies
 
 ```sh
-npm i
-```
-
-Run the command to sync files not related to i18n
-
-```sh
-npm run sync
+node scripts/install.js
 ```
 
 View site preview (optional)
@@ -31,13 +25,7 @@ Then just start to translate files you want
 安装依赖
 
 ```sh
-npm i
-```
-
-同步与 i18n 无关的文件
-
-```sh
-npm run sync
+node scripts/install.js
 ```
 
 预览网站（可选）

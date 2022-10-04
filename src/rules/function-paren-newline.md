@@ -1,7 +1,6 @@
 ---
 title: function-paren-newline
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/function-paren-newline.md
 rule_type: layout
 ---
 

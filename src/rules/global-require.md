@@ -1,7 +1,6 @@
 ---
 title: global-require
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/global-require.md
 rule_type: suggestion
 ---
 

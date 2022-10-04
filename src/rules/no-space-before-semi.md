@@ -1,7 +1,6 @@
 ---
 title: no-space-before-semi
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-space-before-semi.md
 
 related_rules:
 - semi

@@ -1,7 +1,6 @@
 ---
 title: 治理
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/maintainer-guide/governance.md
 eleventyNavigation:
     key: governance
     parent: maintainer guide

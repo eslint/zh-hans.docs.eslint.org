@@ -1,7 +1,6 @@
 ---
 title: no-shadow
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-shadow.md
 rule_type: suggestion
 related_rules:
 - no-shadow-restricted-names

@@ -1,7 +1,6 @@
 ---
 title: max-statements
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/max-statements.md
 rule_type: suggestion
 related_rules:
 - complexity

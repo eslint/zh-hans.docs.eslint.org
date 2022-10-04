@@ -1,7 +1,6 @@
 ---
 title: no-nested-ternary
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-nested-ternary.md
 rule_type: suggestion
 related_rules:
 - no-ternary

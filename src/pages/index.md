@@ -2,7 +2,6 @@
 title: 文档
 layout: doc
 permalink: /index.html
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/pages/index.md
 ---
 
 欢迎来到我们的文档页！你想知道点什么？

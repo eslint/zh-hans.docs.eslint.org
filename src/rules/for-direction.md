@@ -1,7 +1,6 @@
 ---
 title: for-direction
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/for-direction.md
 rule_type: problem
 ---
 

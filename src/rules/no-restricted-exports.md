@@ -1,7 +1,6 @@
 ---
 title: no-restricted-exports
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-restricted-exports.md
 rule_type: suggestion
 ---
 

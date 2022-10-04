@@ -1,7 +1,6 @@
 ---
 title: computed-property-spacing
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/computed-property-spacing.md
 rule_type: layout
 related_rules:
 - array-bracket-spacing

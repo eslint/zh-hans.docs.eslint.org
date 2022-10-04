@@ -1,7 +1,6 @@
 ---
 title: new-parens
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/new-parens.md
 rule_type: layout
 ---
 

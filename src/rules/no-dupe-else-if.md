@@ -1,7 +1,6 @@
 ---
 title: no-dupe-else-if
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-dupe-else-if.md
 rule_type: problem
 related_rules:
 - no-duplicate-case

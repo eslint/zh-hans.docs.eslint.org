@@ -1,7 +1,6 @@
 ---
 title: no-self-compare
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-self-compare.md
 rule_type: problem
 ---
 

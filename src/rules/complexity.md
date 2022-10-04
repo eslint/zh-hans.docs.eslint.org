@@ -1,7 +1,6 @@
 ---
 title: complexity
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/complexity.md
 rule_type: suggestion
 related_rules:
 - max-depth

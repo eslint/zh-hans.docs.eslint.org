@@ -1,7 +1,6 @@
 ---
 title: 修改请求
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/developer-guide/contributing/changes.md
 
 ---
 

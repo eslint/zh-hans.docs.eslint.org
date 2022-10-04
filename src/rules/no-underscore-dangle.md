@@ -1,7 +1,6 @@
 ---
 title: no-underscore-dangle
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-underscore-dangle.md
 rule_type: suggestion
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: no-mixed-spaces-and-tabs
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-mixed-spaces-and-tabs.md
 rule_type: layout
 further_reading:
 - https://www.emacswiki.org/emacs/SmartTabs

@@ -1,7 +1,6 @@
 ---
 title: no-debugger
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-debugger.md
 rule_type: problem
 related_rules:
 - no-alert

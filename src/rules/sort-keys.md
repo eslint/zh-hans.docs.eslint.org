@@ -1,7 +1,6 @@
 ---
 title: sort-keys
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/sort-keys.md
 rule_type: suggestion
 related_rules:
 - sort-imports

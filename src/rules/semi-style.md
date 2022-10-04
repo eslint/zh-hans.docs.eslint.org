@@ -1,7 +1,6 @@
 ---
 title: semi-style
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/semi-style.md
 rule_type: layout
 related_rules:
 - no-extra-semi

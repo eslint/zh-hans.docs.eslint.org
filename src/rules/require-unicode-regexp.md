@@ -1,7 +1,6 @@
 ---
 title: require-unicode-regexp
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/require-unicode-regexp.md
 rule_type: suggestion
 ---
 

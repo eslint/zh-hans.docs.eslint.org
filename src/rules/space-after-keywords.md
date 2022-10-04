@@ -1,7 +1,6 @@
 ---
 title: space-after-keywords
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/space-after-keywords.md
 
 ---
 

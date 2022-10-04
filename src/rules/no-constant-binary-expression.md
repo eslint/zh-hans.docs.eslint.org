@@ -1,7 +1,6 @@
 ---
 title: no-constant-binary-expression
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-constant-binary-expression.md
 rule_type: problem
 related_rules:
 - no-constant-condition

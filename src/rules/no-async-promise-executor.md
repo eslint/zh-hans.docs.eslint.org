@@ -1,7 +1,6 @@
 ---
 title: no-async-promise-executor
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-async-promise-executor.md
 rule_type: problem
 ---
 

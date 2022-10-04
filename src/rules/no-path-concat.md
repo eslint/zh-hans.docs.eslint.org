@@ -1,7 +1,6 @@
 ---
 title: no-path-concat
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-path-concat.md
 rule_type: suggestion
 ---
 

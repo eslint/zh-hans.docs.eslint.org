@@ -1,0 +1,10 @@
+{
+  "private": "true",
+  "type": "module",
+  "scripts": {
+    "sync": "node sync.js"
+  },
+  "devDependencies": {
+    "degit": "^2.8.4"
+  }
+}

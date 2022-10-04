@@ -1,7 +1,6 @@
 ---
 title: 集成
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/user-guide/integrations.md
 eleventyNavigation:
     key: integrations
     parent: user guide

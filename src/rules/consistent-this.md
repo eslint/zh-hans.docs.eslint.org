@@ -1,7 +1,6 @@
 ---
 title: consistent-this
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/consistent-this.md
 rule_type: suggestion
 ---
 

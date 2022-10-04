@@ -1,7 +1,6 @@
 ---
 title: dot-location
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/dot-location.md
 rule_type: layout
 related_rules:
 - newline-after-var

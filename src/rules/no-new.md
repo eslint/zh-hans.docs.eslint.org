@@ -1,7 +1,6 @@
 ---
 title: no-new
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-new.md
 rule_type: suggestion
 ---
 

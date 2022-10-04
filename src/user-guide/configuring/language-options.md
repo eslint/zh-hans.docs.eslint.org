@@ -1,7 +1,6 @@
 ---
 title: 语言选项
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/user-guide/configuring/language-options.md
 eleventyNavigation:
     key: configuring language options
     parent: configuring

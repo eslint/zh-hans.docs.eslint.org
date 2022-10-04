@@ -1,7 +1,6 @@
 ---
 title: ESLint 配置
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/user-guide/configuring/index.md
 eleventyNavigation:
     key: configuring
     parent: user guide

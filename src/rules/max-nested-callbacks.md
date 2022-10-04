@@ -1,7 +1,6 @@
 ---
 title: max-nested-callbacks
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/max-nested-callbacks.md
 rule_type: suggestion
 related_rules:
 - complexity

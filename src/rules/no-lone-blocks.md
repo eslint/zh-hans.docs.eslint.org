@@ -1,7 +1,6 @@
 ---
 title: no-lone-blocks
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-lone-blocks.md
 rule_type: suggestion
 ---
 

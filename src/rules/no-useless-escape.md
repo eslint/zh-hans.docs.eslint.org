@@ -1,7 +1,6 @@
 ---
 title: no-useless-escape
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-useless-escape.md
 rule_type: suggestion
 ---
 

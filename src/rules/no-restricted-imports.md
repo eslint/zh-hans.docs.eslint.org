@@ -1,7 +1,6 @@
 ---
 title: no-restricted-imports
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-restricted-imports.md
 rule_type: suggestion
 ---
 

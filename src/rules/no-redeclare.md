@@ -1,7 +1,6 @@
 ---
 title: no-redeclare
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-redeclare.md
 rule_type: suggestion
 related_rules:
 - no-shadow

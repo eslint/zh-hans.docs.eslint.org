@@ -1,7 +1,6 @@
 ---
 title: vars-on-top
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/vars-on-top.md
 rule_type: suggestion
 further_reading:
 - https://www.adequatelygood.com/JavaScript-Scoping-and-Hoisting.html

@@ -1,7 +1,6 @@
 ---
 title: brace-style
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/brace-style.md
 rule_type: layout
 related_rules:
 - block-spacing

@@ -1,7 +1,6 @@
 ---
 title: no-buffer-constructor
 layout: doc
-edit_link: https://github.com/eslint/zh-hans.eslint.org/edit/main/src/rules/no-buffer-constructor.md
 rule_type: problem
 further_reading:
 - https://nodejs.org/api/buffer.html
