@@ -4,8 +4,7 @@ layout: doc
 rule_type: suggestion
 ---
 
-
-In JavaScript, variables can be assigned during declaration, or at any point afterwards using an assignment statement. For example, in the following code, `foo` is initialized during declaration, while `bar` is initialized later.
+在 JavaScript 中，变量可以在声明时被分配，也可以在之后的任何时候使用分配语句。例如，在下面的代码中，`foo` 是在声明时初始化的，而 `bar` 是在之后初始化的。
 
 ```js
 var foo = 1;
@@ -18,9 +17,9 @@ if (foo) {
 }
 ```
 
-## Rule Details
+## 规则细节
 
-This rule is aimed at enforcing or eliminating variable initializations during declaration. For example, in the following code, `foo` is initialized during declaration, while `bar` is not.
+这个规则的目的是在声明过程中强制或消除变量的初始化。例如，在下面的代码中，`foo` 在声明时被初始化，而 `bar` 没有被初始化。
 
 ```js
 var foo = 1;
@@ -29,18 +28,18 @@ var bar;
 bar = 2;
 ```
 
-This rule aims to bring consistency to variable initializations and declarations.
+这条规则的目的是使变量初始化和声明的一致性。
 
-## Options
+## 选项
 
-The rule takes two options:
+此规则有两个选项：
 
-1. A string which must be either `"always"` (the default), to enforce initialization at declaration, or `"never"` to disallow initialization during declaration. This rule applies to `var`, `let`, and `const` variables, however `"never"` is ignored for `const` variables, as unassigned `const`s generate a parse error.
-2. An object that further controls the behavior of this rule. Currently, the only available parameter is `ignoreForLoopInit`, which indicates if initialization at declaration is allowed in `for` loops when `"never"` is set, since it is a very typical use case.
+1. 一个字符串，必须是 `"always"`（默认值），以便在声明时强制初始化，或者是 `"never"`，以便在声明时不允许初始化。这个规则适用于 `var`、`let` 和 `const` 变量，但是 `"never"` 在 `const` 变量中被忽略，因为未分配的 `const` 会产生一个解析错误。
+2. 一个可以进一步控制该规则行为的对象。目前，唯一可用的参数是 `ignoreForLoopInit`，它表示当 `"never"` 被设置时，是否允许在 `for` 循环中声明初始化，因为这是一个非常典型的用例。
 
-You can configure the rule as follows:
+你可以对该规则进行如下配置：
 
-Variables must be initialized at declaration (default)
+变量必须在声明时初始化（默认）
 
 ```json
 {
@@ -48,7 +47,7 @@ Variables must be initialized at declaration (default)
 }
 ```
 
-Variables must not be initialized at declaration
+变量不能在声明时初始化
 
 ```json
 {
@@ -56,7 +55,7 @@ Variables must not be initialized at declaration
 }
 ```
 
-Variables must not be initialized at declaration, except in for loops, where it is allowed
+变量不能在声明时初始化，除非在 for 循环中才允许初始化
 
 ```json
 {
@@ -66,7 +65,7 @@ Variables must not be initialized at declaration, except in for loops, where it 
 
 ### always
 
-Examples of **incorrect** code for the default `"always"` option:
+使用默认的 `"always"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -82,7 +81,7 @@ function foo() {
 
 :::
 
-Examples of **correct** code for the default `"always"` option:
+使用默认的 `"always"` 选项的**正确**示例：
 
 ::: correct
 
@@ -101,7 +100,7 @@ function foo() {
 
 ### never
 
-Examples of **incorrect** code for the `"never"` option:
+使用 `"never"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -119,7 +118,7 @@ function foo() {
 
 :::
 
-Examples of **correct** code for the `"never"` option:
+使用 `"never"` 选项的**正确**示例：
 
 ::: correct
 
@@ -136,11 +135,11 @@ function foo() {
 
 :::
 
-The `"never"` option ignores `const` variable initializations.
+`"never"` 选项忽略了`const`变量的初始化。
 
 ### ignoreForLoopInit
 
-Examples of **correct** code for the `"never", { "ignoreForLoopInit": true }` options:
+使用 `"never", { "ignoreForLoopInit": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -151,6 +150,6 @@ for (var i = 0; i < 1; i++) {}
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-When you are indifferent as to how your variables are initialized.
+当你对你的变量如何初始化无动于衷时。

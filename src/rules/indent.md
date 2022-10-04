@@ -4,9 +4,7 @@ layout: doc
 rule_type: layout
 ---
 
-
-
-There are several common guidelines which require specific indentation of nested blocks and statements, like:
+有几个常见的准则要求嵌套块和语句的具体缩进，如：
 
 ```js
 function hello(indentSize, type) {
@@ -16,17 +14,17 @@ function hello(indentSize, type) {
 }
 ```
 
-These are the most common scenarios recommended in different style guides:
+这些是不同风格指南中推荐的最常见的情况。
 
-* Two spaces, not longer and no tabs: Google, npm, Node.js, Idiomatic, Felix
-* Tabs: jQuery
-* Four spaces: Crockford
+* 两个空格，非制表符：Google, npm, Node.js, Idiomatic, Felix
+* 制表符：jQuery
+* 四个空格：Crockford
 
-## Rule Details
+## 规则细节
 
-This rule enforces a consistent indentation style. The default style is `4 spaces`.
+这条规则强制执行一致的缩进风格。默认风格是 `4 spaces`。
 
-## Options
+## 选项
 
 This rule has a mixed option:
 
@@ -46,7 +44,7 @@ Or for tabbed indentation:
 }
 ```
 
-Examples of **incorrect** code for this rule with the default options:
+使用此规则与默认选项的**错误**示例：
 
 ::: incorrect
 
@@ -63,7 +61,7 @@ if (a) {
 
 :::
 
-Examples of **correct** code for this rule with the default options:
+使用此规则与默认选项的**正确**示例：
 
 ::: correct
 
@@ -80,50 +78,50 @@ if (a) {
 
 :::
 
-This rule has an object option:
+此规则选项为对象：
 
-* `"ignoredNodes"` can be used to disable indentation checking for any AST node. This accepts an array of [selectors](/docs/developer-guide/selectors). If an AST node is matched by any of the selectors, the indentation of tokens which are direct children of that node will be ignored. This can be used as an escape hatch to relax the rule if you disagree with the indentation that it enforces for a particular syntactic pattern.
-* `"SwitchCase"` (default: 0) enforces indentation level for `case` clauses in `switch` statements
-* `"VariableDeclarator"` (default: 1) enforces indentation level for `var` declarators; can also take an object to define separate rules for `var`, `let` and `const` declarations. It can also be `"first"`, indicating all the declarators should be aligned with the first declarator.
-* `"outerIIFEBody"` (default: 1) enforces indentation level for file-level IIFEs. This can also be set to `"off"` to disable checking for file-level IIFEs.
-* `"MemberExpression"` (default: 1) enforces indentation level for multi-line property chains. This can also be set to `"off"` to disable checking for MemberExpression indentation.
-* `"FunctionDeclaration"` takes an object to define rules for function declarations.
-    * `parameters` (default: 1) enforces indentation level for parameters in a function declaration. This can either be a number indicating indentation level, or the string `"first"` indicating that all parameters of the declaration must be aligned with the first parameter. This can also be set to `"off"` to disable checking for FunctionDeclaration parameters.
-    * `body` (default: 1) enforces indentation level for the body of a function declaration.
-* `"FunctionExpression"` takes an object to define rules for function expressions.
-    * `parameters` (default: 1) enforces indentation level for parameters in a function expression. This can either be a number indicating indentation level, or the string `"first"` indicating that all parameters of the expression must be aligned with the first parameter. This can also be set to `"off"` to disable checking for FunctionExpression parameters.
-    * `body` (default: 1) enforces indentation level for the body of a function expression.
-* `"StaticBlock"` takes an object to define rules for class static blocks.
-    * `body` (default: 1) enforces indentation level for the body of a class static block.
-* `"CallExpression"` takes an object to define rules for function call expressions.
-    * `arguments` (default: 1) enforces indentation level for arguments in a call expression. This can either be a number indicating indentation level, or the string `"first"` indicating that all arguments of the expression must be aligned with the first argument. This can also be set to `"off"` to disable checking for CallExpression arguments.
-* `"ArrayExpression"` (default: 1) enforces indentation level for elements in arrays. It can also be set to the string `"first"`, indicating that all the elements in the array should be aligned with the first element. This can also be set to `"off"` to disable checking for array elements.
-* `"ObjectExpression"` (default: 1) enforces indentation level for properties in objects. It can be set to the string `"first"`, indicating that all properties in the object should be aligned with the first property. This can also be set to `"off"` to disable checking for object properties.
-* `"ImportDeclaration"` (default: 1) enforces indentation level for import statements. It can be set to the string `"first"`, indicating that all imported members from a module should be aligned with the first member in the list. This can also be set to `"off"` to disable checking for imported module members.
-* `"flatTernaryExpressions": true` (`false` by default) requires no indentation for ternary expressions which are nested in other ternary expressions.
-* `"offsetTernaryExpressions": true` (`false` by default) requires indentation for values of ternary expressions.
-* `"ignoreComments"` (default: false) can be used when comments do not need to be aligned with nodes on the previous or next line.
+* `"ignoredNodes"`可以用来禁用任何 AST 节点的缩进检查。它接受[选择器](/docs/developer-guide/selectors)数组。如果一个 AST 节点被任何一个选择器匹配，作为该节点的直接子节点的缩进将被忽略。如果你不同意它对某一特定句法模式的缩进，这可以作为放宽规则的跳板。
+* `"SwitchCase"`（默认为 0) 对 `switch` 语句中的 `case` 子句执行缩进。
+* `"VariableDeclarator"`（默认为 1) 对 `var` 声明者执行缩进级别；也可以采用一个对象来定义 `var`、`let` 和 `const` 声明的单独规则。它也可以是 `"first"`，表示所有的声明者应该与第一个声明者对齐。
+* `"outerIIFEBody"`（默认为 1）强制执行文件级 IIFE 的缩进级别。这也可以设置为 `"off"`，以禁止对文件级 IIFEs 的检查。
+* `"MemberExpression"`（默认为 1) 强制执行多行属性链的缩进级别。这也可以被设置为 `"off"`，以禁止检查 MemberExpression 的缩进。
+* `"FunctionDeclaration"` 需要一个对象来定义函数声明的规则。
+    * `parameters`（默认为 1) 强制执行函数声明中参数的缩进程度。这可以是一个表示缩进程度的数字，也可以是字符串 `"first"` 表示声明中的所有参数必须与第一个参数对齐。这也可以设置为 `"off"`，以禁止检查 FunctionDeclaration 的参数。
+    * `body`（默认为 1) 强制执行函数声明主体的缩进级别。
+* `"FunctionExpression"` 需要一个对象来定义函数表达式的规则。
+    * `parameters`（默认为 1) 强制执行函数表达式中参数的缩进级别。这可以是一个表示缩进程度的数字，也可以是字符串`"first"`表示表达式的所有参数必须与第一个参数对齐。这也可以设置为`"off"`，以禁止检查 FunctionExpression 的参数。
+    * `body`（默认为 1）强制执行函数表达式主体的缩进级别。
+* `"StaticBlock"`需要一个对象来定义类静态块的规则。
+    * `body`（默认为 1) 为类静态块的主体执行缩进级别。
+* `"CallExpression"`需要一个对象来定义函数调用表达式的规则。
+    * `arguments`（默认为 1) 强制执行调用表达式中参数的缩进级别。这可以是一个表示缩进程度的数字，也可以是字符串`"first"` 表示表达式的所有参数必须与第一个参数对齐。这也可以设置为 `"off"` 来禁止对 CallExpression 参数的检查。
+* `"ArrayExpression"`（默认为 1) 强制执行数组中元素的缩进级别。它也可以被设置为字符串 `"first"`，表示数组中的所有元素都应该与第一个元素对齐。也可以设置为 `"off"` 来禁止对数组元素的检查。
+* `"ObjectExpression"`（默认为 1) 强制执行对象中的属性缩进级别。它可以被设置为字符串 `"first"`，表示对象中的所有属性都应该与第一个属性对齐。这也可以设置为 `"off"`，以禁止检查对象的属性。
+* `"ImportDeclaration"`（默认为 1) 强制执行导入语句的缩进水平。它可以被设置为字符串 `"first"`，表示所有从一个模块导入的成员应该与列表中的第一个成员对齐。这也可以设置为 `"off"`，以禁止对导入的模块成员进行检查。
+* `"flatTernaryExpressions": true`（默认为 `false`) 要求嵌套在其他三元表达式中的三元表达式不缩进。
+* `"offsetTernaryExpressions": true`（默认为 `false`) 要求对三元表达式的值进行缩进。
+* `"ignoreComments"`（默认为 `false`）可以在注释不需要与前一行或下一行的节点对齐时使用。
 
-Level of indentation denotes the multiple of the indent specified. Example:
+缩进程度表示指定缩进的倍数。示例：
 
-* Indent of 4 spaces with `VariableDeclarator` set to `2` will indent the multi-line variable declarations with 8 spaces.
-* Indent of 2 spaces with `VariableDeclarator` set to `2` will indent the multi-line variable declarations with 4 spaces.
-* Indent of 2 spaces with `VariableDeclarator` set to `{"var": 2, "let": 2, "const": 3}` will indent the multi-line variable declarations with 4 spaces for `var` and `let`, 6 spaces for `const` statements.
-* Indent of tab with `VariableDeclarator` set to `2` will indent the multi-line variable declarations with 2 tabs.
-* Indent of 2 spaces with `SwitchCase` set to `0` will not indent `case` clauses with respect to `switch` statements.
-* Indent of 2 spaces with `SwitchCase` set to `1` will indent `case` clauses with 2 spaces with respect to `switch` statements.
-* Indent of 2 spaces with `SwitchCase` set to `2` will indent `case` clauses with 4 spaces with respect to `switch` statements.
-* Indent of tab with `SwitchCase` set to `2` will indent `case` clauses with 2 tabs with respect to `switch` statements.
-* Indent of 2 spaces with `MemberExpression` set to `0` will indent the multi-line property chains with 0 spaces.
-* Indent of 2 spaces with `MemberExpression` set to `1` will indent the multi-line property chains with 2 spaces.
-* Indent of 2 spaces with `MemberExpression` set to `2` will indent the multi-line property chains with 4 spaces.
-* Indent of 4 spaces with `MemberExpression` set to `0` will indent the multi-line property chains with 0 spaces.
-* Indent of 4 spaces with `MemberExpression` set to `1` will indent the multi-line property chains with 4 spaces.
-* Indent of 4 spaces with `MemberExpression` set to `2` will indent the multi-line property chains with 8 spaces.
+* `VariableDeclarator` 设置为 `2` 时，缩进 4 个空格，多行变量声明将缩进 8 个空格。
+* `VariableDeclarator` 设置为 `2` 时，缩进 2 个空格，多行变量声明将缩进 4 个空格。
+* `VariableDeclarator` 设置为 `{"var": 2, "let": 2, "const": 3}`时，缩进 2 个空格，在多行变量声明中 `var` 和 `let` 缩进 4 个空格，`const` 语句缩进 6 个空格。
+* `VariableDeclarator` 设置为 `2` 时，缩进制表符，使多行变量声明缩进 2 个制表符。
+* `SwitchCase` 设置为 `0` 时，缩进 2 个空格，`switch` 中的 `case` 不缩进。
+* `SwitchCase` 设置为 `1` 时，缩进 2 个空格，`switch` 中的 `case` 语句缩进 2 个空格。
+* `SwitchCase` 设置为 `2` 时，缩进 2 个空格，`switch` 中的 `case` 语句缩进 4 个空格。
+* `SwitchCase` 设置为 `2` 时，句缩进 2 个制表符，`switch` 中的 `case` 语句缩进 2 个制表符。
+* `MemberExpression` 设置为 `0` 时，缩进 2 个空格，多行属性链的缩进为 0 个空格。
+* `MemberExpression` 设置为 `1` 时，缩进 2 个空格，多行属性链缩进 2 个空格。
+* `MemberExpression` 设置为 `2` 时，缩进 2 个空格，多行属性链缩进 4 个空格。
+* `MemberExpression` 设置为 `0` 时，缩进 4 个空格，多行属性链缩进 0 个空格。
+* `MemberExpression` 设置为 `1` 时，缩进 4 个空格，多行属性链缩进 4 个空格。
+* `MemberExpression` 设置为 `2` 时，缩进 4 个空格，多行属性链缩进 8 个空格。
 
 ### tab
 
-Examples of **incorrect** code for this rule with the `"tab"` option:
+使用此规则与 `"tab"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -140,7 +138,7 @@ function foo(d) {
 
 :::
 
-Examples of **correct** code for this rule with the `"tab"` option:
+使用此规则与 `"tab"` 选项的**正确**示例：
 
 ::: correct
 
@@ -159,9 +157,9 @@ if (a) {
 
 ### ignoredNodes
 
-The following configuration ignores the indentation of `ConditionalExpression` ("ternary expression") nodes:
+下面的配置忽略了`条件表达式`（"三元表达式"）节点的缩进。
 
-Examples of **correct** code for this rule with the `4, { "ignoredNodes": ["ConditionalExpression"] }` option:
+使用此规则与 `4, { "ignoredNodes": ["ConditionalExpression"] }` 选项的**正确**示例：
 
 ::: correct
 
@@ -179,9 +177,9 @@ var a = foo
 
 :::
 
-The following configuration ignores indentation in the body of IIFEs.
+以下配置忽略了 IIFEs 正文中的缩进。
 
-Examples of **correct** code for this rule with the `4, { "ignoredNodes": ["CallExpression > FunctionExpression.callee > BlockStatement.body"] }` option:
+使用此规则与 `4, { "ignoredNodes": ["CallExpression > FunctionExpression.callee > BlockStatement.body"] }` 选项的**正确**示例：
 
 ::: correct
 
@@ -198,11 +196,11 @@ bar();
 
 :::
 
-All AST node types can be found at [ESTree](https://github.com/estree/estree) specification. You can use [AST Explorer](https://astexplorer.net/) with the espree parser to examine AST tree of a code snippet.
+所有的 AST 节点类型都可以在 [ESTree](https://github.com/estree/estree) 规范中找到。你可以使用 [AST Explorer](https://astexplorer.net/) 和 espree 解析器来检查代码片断的 AST 树。
 
 ### SwitchCase
 
-Examples of **incorrect** code for this rule with the `2, { "SwitchCase": 1 }` options:
+使用此规则与 `2, { "SwitchCase": 1 }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -219,7 +217,7 @@ case "b":
 
 :::
 
-Examples of **correct** code for this rule with the `2, { "SwitchCase": 1 }` option:
+使用此规则与 `2, { "SwitchCase": 1 }` 选项的**正确**示例：
 
 ::: correct
 
@@ -238,7 +236,7 @@ switch(a){
 
 ### VariableDeclarator
 
-Examples of **incorrect** code for this rule with the `2, { "VariableDeclarator": 1 }` options:
+使用此规则与 `2, { "VariableDeclarator": 1 }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -259,7 +257,7 @@ const a = 1,
 
 :::
 
-Examples of **correct** code for this rule with the `2, { "VariableDeclarator": 1 }` options:
+使用此规则与 `2, { "VariableDeclarator": 1 }` 选项的**正确**示例：
 
 ::: correct
 
@@ -280,7 +278,7 @@ const a = 1,
 
 :::
 
-Examples of **correct** code for this rule with the `2, { "VariableDeclarator": 2 }` options:
+使用此规则与 `2, { "VariableDeclarator": 2 }` 选项的**正确**示例：
 
 ::: correct
 
@@ -301,7 +299,7 @@ const a = 1,
 
 :::
 
-Examples of **incorrect** code for this rule with the `2, { "VariableDeclarator": "first" }` options:
+使用此规则与 `2, { "VariableDeclarator": "first" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -322,7 +320,7 @@ const a = 1,
 
 :::
 
-Examples of **correct** code for this rule with the `2, { "VariableDeclarator": "first" }` options:
+使用此规则与 `2, { "VariableDeclarator": "first" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -343,7 +341,7 @@ const a = 1,
 
 :::
 
-Examples of **correct** code for this rule with the `2, { "VariableDeclarator": { "var": 2, "let": 2, "const": 3 } }` options:
+使用此规则与 `2, { "VariableDeclarator": { "var": 2, "let": 2, "const": 3 } }` 选项的**正确**示例：
 
 ::: correct
 
@@ -366,7 +364,7 @@ const a = 1,
 
 ### outerIIFEBody
 
-Examples of **incorrect** code for this rule with the options `2, { "outerIIFEBody": 0 }`:
+使用此规则和 `2, { "outerIIFEBody": 0 }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -388,7 +386,7 @@ console.log('foo');
 
 :::
 
-Examples of **correct** code for this rule with the options `2, { "outerIIFEBody": 0 }`:
+使用此规则和 `2, { "outerIIFEBody": 0 }` 选项的**正确**示例：
 
 ::: correct
 
@@ -410,7 +408,7 @@ if (y) {
 
 :::
 
-Examples of **correct** code for this rule with the options `2, { "outerIIFEBody":  "off" }`:
+使用此规则和 `2, { "outerIIFEBody":  "off" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -442,7 +440,7 @@ if (y) {
 
 ### MemberExpression
 
-Examples of **incorrect** code for this rule with the `2, { "MemberExpression": 1 }` options:
+使用此规则与 `2, { "MemberExpression": 1 }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -456,7 +454,7 @@ foo
 
 :::
 
-Examples of **correct** code for this rule with the `2, { "MemberExpression": 1 }` option:
+使用此规则与 `2, { "MemberExpression": 1 }` 选项的**正确**示例：
 
 ::: correct
 
@@ -472,7 +470,7 @@ foo
 
 ### FunctionDeclaration
 
-Examples of **incorrect** code for this rule with the `2, { "FunctionDeclaration": {"body": 1, "parameters": 2} }` option:
+使用此规则与 `2, { "FunctionDeclaration": {"body": 1, "parameters": 2} }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -488,7 +486,7 @@ function foo(bar,
 
 :::
 
-Examples of **correct** code for this rule with the `2, { "FunctionDeclaration": {"body": 1, "parameters": 2} }` option:
+使用此规则与 `2, { "FunctionDeclaration": {"body": 1, "parameters": 2} }` 选项的**正确**示例：
 
 ::: correct
 
@@ -504,7 +502,7 @@ function foo(bar,
 
 :::
 
-Examples of **incorrect** code for this rule with the `2, { "FunctionDeclaration": {"parameters": "first"} }` option:
+使用此规则与 `2, { "FunctionDeclaration": {"parameters": "first"} }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -519,7 +517,7 @@ function foo(bar, baz,
 
 :::
 
-Examples of **correct** code for this rule with the `2, { "FunctionDeclaration": {"parameters": "first"} }` option:
+使用此规则与 `2, { "FunctionDeclaration": {"parameters": "first"} }` 选项的**正确**示例：
 
 ::: correct
 
@@ -536,7 +534,7 @@ function foo(bar, baz,
 
 ### FunctionExpression
 
-Examples of **incorrect** code for this rule with the `2, { "FunctionExpression": {"body": 1, "parameters": 2} }` option:
+使用此规则与 `2, { "FunctionExpression": {"body": 1, "parameters": 2} }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -552,7 +550,7 @@ var foo = function(bar,
 
 :::
 
-Examples of **correct** code for this rule with the `2, { "FunctionExpression": {"body": 1, "parameters": 2} }` option:
+使用此规则与 `2, { "FunctionExpression": {"body": 1, "parameters": 2} }` 选项的**正确**示例：
 
 ::: correct
 
@@ -568,7 +566,7 @@ var foo = function(bar,
 
 :::
 
-Examples of **incorrect** code for this rule with the `2, { "FunctionExpression": {"parameters": "first"} }` option:
+使用此规则与 `2, { "FunctionExpression": {"parameters": "first"} }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -583,7 +581,7 @@ var foo = function(bar, baz,
 
 :::
 
-Examples of **correct** code for this rule with the `2, { "FunctionExpression": {"parameters": "first"} }` option:
+使用此规则与 `2, { "FunctionExpression": {"parameters": "first"} }` 选项的**正确**示例：
 
 ::: correct
 
@@ -600,7 +598,7 @@ var foo = function(bar, baz,
 
 ### StaticBlock
 
-Examples of **incorrect** code for this rule with the `2, { "StaticBlock": {"body": 1} }` option:
+使用此规则与 `2, { "StaticBlock": {"body": 1} }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -616,7 +614,7 @@ class C {
 
 :::
 
-Examples of **correct** code for this rule with the `2, { "StaticBlock": {"body": 1} }` option:
+使用此规则与 `2, { "StaticBlock": {"body": 1} }` 选项的**正确**示例：
 
 ::: correct
 
@@ -632,7 +630,7 @@ class C {
 
 :::
 
-Examples of **incorrect** code for this rule with the `2, { "StaticBlock": {"body": 2} }` option:
+使用此规则与 `2, { "StaticBlock": {"body": 2} }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -648,7 +646,7 @@ class C {
 
 :::
 
-Examples of **correct** code for this rule with the `2, { "StaticBlock": {"body": 2} }` option:
+使用此规则与 `2, { "StaticBlock": {"body": 2} }` 选项的**正确**示例：
 
 ::: correct
 
@@ -666,7 +664,7 @@ class C {
 
 ### CallExpression
 
-Examples of **incorrect** code for this rule with the `2, { "CallExpression": {"arguments": 1} }` option:
+使用此规则与 `2, { "CallExpression": {"arguments": 1} }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -681,7 +679,7 @@ foo(bar,
 
 :::
 
-Examples of **correct** code for this rule with the `2, { "CallExpression": {"arguments": 1} }` option:
+使用此规则与 `2, { "CallExpression": {"arguments": 1} }` 选项的**正确**示例：
 
 ::: correct
 
@@ -696,7 +694,7 @@ foo(bar,
 
 :::
 
-Examples of **incorrect** code for this rule with the `2, { "CallExpression": {"arguments": "first"} }` option:
+使用此规则与 `2, { "CallExpression": {"arguments": "first"} }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -709,7 +707,7 @@ foo(bar, baz,
 
 :::
 
-Examples of **correct** code for this rule with the `2, { "CallExpression": {"arguments": "first"} }` option:
+使用此规则与 `2, { "CallExpression": {"arguments": "first"} }` 选项的**正确**示例：
 
 ::: correct
 
@@ -724,7 +722,7 @@ foo(bar, baz,
 
 ### ArrayExpression
 
-Examples of **incorrect** code for this rule with the `2, { "ArrayExpression": 1 }` option:
+使用此规则与 `2, { "ArrayExpression": 1 }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -740,7 +738,7 @@ baz,
 
 :::
 
-Examples of **correct** code for this rule with the `2, { "ArrayExpression": 1 }` option:
+使用此规则与 `2, { "ArrayExpression": 1 }` 选项的**正确**示例：
 
 ::: correct
 
@@ -756,7 +754,7 @@ var foo = [
 
 :::
 
-Examples of **incorrect** code for this rule with the `2, { "ArrayExpression": "first" }` option:
+使用此规则与 `2, { "ArrayExpression": "first" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -771,7 +769,7 @@ var foo = [bar,
 
 :::
 
-Examples of **correct** code for this rule with the `2, { "ArrayExpression": "first" }` option:
+使用此规则与 `2, { "ArrayExpression": "first" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -788,7 +786,7 @@ var foo = [bar,
 
 ### ObjectExpression
 
-Examples of **incorrect** code for this rule with the `2, { "ObjectExpression": 1 }` option:
+使用此规则与 `2, { "ObjectExpression": 1 }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -804,7 +802,7 @@ baz: 2,
 
 :::
 
-Examples of **correct** code for this rule with the `2, { "ObjectExpression": 1 }` option:
+使用此规则与 `2, { "ObjectExpression": 1 }` 选项的**正确**示例：
 
 ::: correct
 
@@ -820,7 +818,7 @@ var foo = {
 
 :::
 
-Examples of **incorrect** code for this rule with the `2, { "ObjectExpression": "first" }` option:
+使用此规则与 `2, { "ObjectExpression": "first" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -833,7 +831,7 @@ var foo = { bar: 1,
 
 :::
 
-Examples of **correct** code for this rule with the `2, { "ObjectExpression": "first" }` option:
+使用此规则与 `2, { "ObjectExpression": "first" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -848,7 +846,7 @@ var foo = { bar: 1,
 
 ### ImportDeclaration
 
-Examples of **correct** code for this rule with the `4, { "ImportDeclaration": 1 }` option (the default):
+Examples of **correct** code for this rule with `4, { "ImportDeclaration": 1 }` 选项 (the default):
 
 ::: correct
 
@@ -869,7 +867,7 @@ import {
 
 :::
 
-Examples of **incorrect** code for this rule with the `4, { "ImportDeclaration": "first" }` option:
+使用此规则与 `4, { "ImportDeclaration": "first" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -884,7 +882,7 @@ import { foo,
 
 :::
 
-Examples of **correct** code for this rule with the `4, { "ImportDeclaration": "first" }` option:
+使用此规则与 `4, { "ImportDeclaration": "first" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -901,7 +899,7 @@ import { foo,
 
 ### flatTernaryExpressions
 
-Examples of **incorrect** code for this rule with the default `4, { "flatTernaryExpressions": false }` option:
+使用此规则与默认的 `4, { "flatTernaryExpressions": false }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -916,7 +914,7 @@ var a =
 
 :::
 
-Examples of **correct** code for this rule with the default `4, { "flatTernaryExpressions": false }` option:
+使用此规则与默认的 `4, { "flatTernaryExpressions": false }` 选项的**正确**示例：
 
 ::: correct
 
@@ -931,7 +929,7 @@ var a =
 
 :::
 
-Examples of **incorrect** code for this rule with the `4, { "flatTernaryExpressions": true }` option:
+使用此规则与 `4, { "flatTernaryExpressions": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -946,7 +944,7 @@ var a =
 
 :::
 
-Examples of **correct** code for this rule with the `4, { "flatTernaryExpressions": true }` option:
+使用此规则与 `4, { "flatTernaryExpressions": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -963,7 +961,7 @@ var a =
 
 ### offsetTernaryExpressions
 
-Examples of **incorrect** code for this rule with the default `2, { "offsetTernaryExpressions": false }` option:
+使用此规则与默认的 `2, { "offsetTernaryExpressions": false }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -981,7 +979,7 @@ condition
 
 :::
 
-Examples of **correct** code for this rule with the default `2, { "offsetTernaryExpressions": false }` option:
+使用此规则与默认的 `2, { "offsetTernaryExpressions": false }` 选项的**正确**示例：
 
 ::: correct
 
@@ -1003,7 +1001,7 @@ condition
 
 :::
 
-Examples of **incorrect** code for this rule with the `2, { "offsetTernaryExpressions": true }` option:
+使用此规则与 `2, { "offsetTernaryExpressions": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -1025,7 +1023,7 @@ condition
 
 :::
 
-Examples of **correct** code for this rule with the `2, { "offsetTernaryExpressions": true }` option:
+使用此规则与 `2, { "offsetTernaryExpressions": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -1049,7 +1047,7 @@ condition
 
 ### ignoreComments
 
-Examples of additional **correct** code for this rule with the `4, { "ignoreComments": true }` option:
+该规则的额外**正确**代码的例子有：`4, { "ignoreComments": true }` 选项。
 
 ::: correct
 
@@ -1066,7 +1064,7 @@ if (foo) {
 
 :::
 
-## Compatibility
+## 兼容
 
-* **JSHint**: `indent`
-* **JSCS**: [validateIndentation](https://jscs-dev.github.io/rule/validateIndentation)
+* **JSHint**：`indent`
+* **JSCS**：[validateIndentation](https://jscs-dev.github.io/rule/validateIndentation)
