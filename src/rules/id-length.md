@@ -19,6 +19,8 @@ var x = 5; // too short; difficult to understand its purpose without context
 
 这条规则强制执行最小和/或最大标识符长度公约。
 
+此规则统计 [graphemes](https://unicode.org/reports/tr29/#Default_Grapheme_Cluster_Table) 而不是 [`String length`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/length)。
+
 ## 选项
 
 使用此规则与默认选项的**错误**示例：

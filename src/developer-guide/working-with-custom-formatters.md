@@ -128,9 +128,10 @@ eslint -f awesome src/
 
 ## `context` 实参
 
-formatter 函数的第二个实参应为对象。该对象有两个属性：
+formatter 函数的第二个实参应为对象。该对象有以下属性：
 
 * `cwd` ... 当前工作目录。这个值来自 [ESLint](nodejs-api#-new-eslintoptions) 类中的 `cwd` 构造器选项。
+* `maxWarningsExceeded`（可选）：如果设置了 `--max-warnings` 且警告数量达到限制，则此对象将包括两个属性：值为 `--max-warnings` 选项的 `maxWarnings` 和值为检查出的警告数量的 `foundWarnings`。
 * `rulesMeta` ... 规则的 `meta` 属性值。关于规则的更多信息，请参见[使用规则](working-with-rules)页面。
 
 例如，如果运行了 `no-extra-semi` 规则，对象会是这样的：
@@ -138,6 +139,10 @@ formatter 函数的第二个实参应为对象。该对象有两个属性：
 ```js
 {
     cwd: "/path/to/cwd",
+    maxWarningsExceeded: {
+        maxWarnings: 5,
+        foundWarnings: 6
+    },
     rulesMeta: {
         "no-extra-semi": {
             type: "suggestion",
@@ -153,7 +158,7 @@ formatter 函数的第二个实参应为对象。该对象有两个属性：
             }
         }
     }
-}
+},
 ```
 
 **注意**：如果由已废弃的 `CLIEngine` 类来执行检查，`context` 实参可能是一个不同的值，因为它由 API 用户所决定。如果你想支持传统环境，请检查 `context` 实参是否与预期相符。

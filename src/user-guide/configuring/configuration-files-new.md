@@ -76,7 +76,7 @@ export default [
 
 ```js
 export default [
-    {   
+    {
         files: ["src/**/*.js"],
         rules: {
             semi: "error"
@@ -89,7 +89,7 @@ export default [
 
 ```js
 export default [
-    {   
+    {
         files: ["src/**/*.js"],
         ignores: ["**/*.config.js"],
         rules: {
@@ -103,7 +103,7 @@ export default [
 
 ```js
 export default [
-    {   
+    {
         files: ["src/**/*.js"],
         ignores: ["**/*.config.js", "!**/eslint.config.js"],
         rules: {
@@ -119,7 +119,7 @@ export default [
 
 ```js
 export default [
-    {   
+    {
         ignores: ["**/*.config.js"],
         rules: {
             semi: "error"
@@ -132,17 +132,17 @@ export default [
 
 #### 用 `ignores` 全局性地忽略文件
 
-如果 `ignores` 在配置对象中没有任何其他键，那么这些模式将作为额外的全局忽略，类似于 `.eslintignore` 中的模式。下面是示例：
+如果 `ignores` 在配置对象中没有任何其他键，那么这些模式将被全局忽略。下面是示例：
 
 ```js
 export default [
-    {   
+    {
         ignores: [".config/*"]
     }
 ];
 ```
 
-这个配置指定了 `.config` 目录下的所有文件都应该被忽略。这个模式被添加到 `.eslintignore` 中的模式之后。
+这个配置指定了 `.config` 目录下的所有文件都应该被忽略。这个模式被添加到默认模式 `["**/node_modules/**", ".git/**"]` 后。
 
 #### 级联配置对象
 
@@ -156,16 +156,16 @@ export default [
             globals: {
                 MY_CUSTOM_GLOBAL: "readonly"
             }
-        }   
+        }
     },
-    {   
+    {
         files: ["tests/**/*.js"],
         languageOptions: {
             globals: {
                 it: "readonly",
                 describe: "readonly"
             }
-        }   
+        }
     }
 ];
 ```
@@ -233,7 +233,7 @@ ESLint 可以通过三种方式之一来检查代码：
 
 1. ECMAScript 模块（ESM） - 代码有模块作用域，并以严格模式运行。
 1. CommonJS - 代码有顶层函数作用域，并在非严格模式下运行。
-2. Script - 代码有共享的全局作用域，并在非严格模式下运行。
+1. Script - 代码有共享的全局作用域，并在非严格模式下运行。
 
 你可以通过指定 `sourceType` 属性来指定你的代码要在哪种模式下运行。这个属性可以被设置为 `"module"`、`"commonjs"` 或  `"script"`。默认情况下，`.js` 和 `.mjs` 文件的 `sourceType` 是 `"module"`，而 `.cjs` 文件则是 `"commonjs"`。下面是示例：
 
