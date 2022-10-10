@@ -24,6 +24,7 @@ var friend = new Person();
 * `RegExp`
 * `String`
 * `Symbol`
+* `BigInt`
 
 使用此规则的**正确**示例：
 

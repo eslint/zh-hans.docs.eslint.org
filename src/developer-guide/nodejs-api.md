@@ -316,7 +316,7 @@ const filteredResults = ESLint.getErrorResults(results);
 *（`LintResult[]`）<br>
   被过滤的 [LintResult][lintresult] 对象。
 
-### ◆ LintResult type
+### ◆ LintResult 类型
 
 `LintResult` 值是每个文件的提示结果的信息。[`eslint.lintFiles()`][eslint-lintfiles] 和 [`eslint.lintText()`][eslint-linttext] 方法返回它。它有以下属性
 * `filePath`（`string`）<br>
@@ -342,7 +342,7 @@ const filteredResults = ESLint.getErrorResults(results);
 * `usedDeprecatedRules`（`{ ruleId: string; replaceBy: string[] }[]`）<br>
   有关用于检查此文件的已弃用规则的信息。
 
-### ◆ LintMessage type
+### ◆ LintMessage 类型
 
 `LintMessage` 值是每个检查错误的信息。[LintResult] 类型的 `messages` 属性包含它。它具有以下属性：
 
@@ -367,7 +367,7 @@ const filteredResults = ESLint.getErrorResults(results);
 * `suggestions`（`{ desc: string; fix: EditInfo }[] | undefined`）<br>
   建议清单。每个建议都是用于修复代码的描述和 [EditInfo] 对象的对。编辑器集成等 API 用户可以选择其中之一来修复此消息的问题。如果此消息没有任何建议，则此属性未定义。
 
-### ◆ SuppressedLintMessage type
+### ◆ SuppressedLintMessage 类型
 
 `SuppressedLintMessage` 值是每个抑制的检查错误的信息。[LintResult] 类型的 `suppressedMessages` 属性包含它。它具有以下属性：
 
@@ -394,7 +394,7 @@ const filteredResults = ESLint.getErrorResults(results);
 * `suppressions`（`{ kind: string; justification: string}[]`）<br>
   压制清单。每个抑制都是一种类型和一个理由的对。
 
-### ◆ EditInfo type
+### ◆ EditInfo 类型
 
 `EditInfo` 值是编辑文本的信息。[LintMessage] 类型的 `fix` 和 `suggestions` 属性包含它。它具有以下属性：
 
@@ -405,12 +405,12 @@ const filteredResults = ESLint.getErrorResults(results);
 
 这个编辑信息意味着用`text`属性值替换`range`属性的范围。这就像`sourceCodeText.slice(0, edit.range[0])+ edit.text+ sourceCodeText.slice(edit.range[1])`。因此，如果`range[0]`和`range[1]`的属性值是相同的，那就是添加，如果`text`属性值是空字符串，那就是删除。
 
-### ◆ LoadedFormatter type
+### ◆ LoadedFormatter 类型
 
-`LoadedFormatter`值是将 [LintResult][lintresult] 对象转换成文本的对象。eslint.loadFormatter()][eslint-loadformatter] 方法返回它。它有以下方法：
+`LoadedFormatter` 值是将 [LintResult][lintresult] 对象转换成文本的对象。eslint.loadFormatter()][eslint-loadformatter] 方法返回它。它有以下方法：
 
-* `format`（`(results: LintResult[]) => string | Promise<string>`）<br>
-  将 [LintResult][lintresult] 对象转换为文本的方法。
+* `format`（`(results: LintResult[], resultsMeta: ResultsMeta) => string | Promise<string>`）<br>
+  将 [LintResult] 对象转换为文本的方法。如果设置了 `--max-warnings` 且警告数量达到限制，则`resultsMeta` 对象将包括 `maxWarningsExceeded` 对象。`maxWarningsExceeded` 对象将包括两个属性：值为 `--max-warnings` 选项的 `maxWarnings` 和值为检查出的警告数量的 `foundWarnings`。
 
 ---
 
@@ -463,7 +463,7 @@ const codeLines = SourceCode.splitLines(code);
 
 ## 检查器
 
-`Linter` 对象对 JavaScript 代码进行实际评估。它不做任何文件系统的操作，只是对代码进行解析和报告。特别是，`Linter` 对象不处理配置对象或文件。除非你在浏览器中工作，否则你可能想用 [ESLint class] 类代替。
+`Linter` 对象对 JavaScript 代码进行实际评估。它不做任何文件系统的操作，只是对代码进行解析和报告。特别是，`Linter` 对象不处理配置对象或文件。除非你在浏览器中工作，否则你可能想用 [ESLint 类](#eslint-类) 代替。
 
 `Linter`是一个构造函数，你可以通过传入你想使用的选项来创建一个新实例。可用的选项有：
 
@@ -876,7 +876,7 @@ ruleTester.run("my-rule-for-no-foo", rule, {
 
 1. 如果 `RuleTester.describe` 和 `RuleTester.it` 已经被设置为函数值，`RuleTester` 将使用 `RuleTester.describe` 和 `RuleTester.it` 来运行测试。你可以用它来定制 `RuleTester` 的行为，以配合你正在使用的测试框架。
 
-    如果 `RuleTester.itOnly` 被设置为一个函数值，`RuleTester` 将调用 `RuleTester.itOnly` 而不是 `RuleTester.it` 来运行带有 `only: true` 的案例。如果 `RuleTester.itOnly` 没有被设置，但 `RuleTester.it` 有一个 `only` 的函数属性，`RuleTester` 将退回到 `RuleTester.it.only`。
+    如果 `RuleTester.itOnly` 被设置为函数值，`RuleTester` 将调用 `RuleTester.itOnly` 而不是 `RuleTester.it` 来运行带有 `only: true` 的 case。如果未设置 `RuleTester.itOnly`，但 `RuleTester.it` 有一个 `only` 的函数属性，`RuleTester` 将回退到 `RuleTester.it.only`。
 
 2. 否则，如果 `describe` 和 `it` 作为 globals 存在，`RuleTester` 将使用 `global.describe` 和 `global.it` 来运行测试，`global.it.only` 来运行 `only: true` 的案例。这使得 `RuleTester` 在使用 [Mocha](https://mochajs.org/) 这样的框架时，无需任何额外的配置就能工作。
 3. 否则，`RuleTester#run` 将简单地依次执行所有的测试，如果其中一个测试失败，将抛出一个错误。这意味着你可以简单地使用`Node.js`执行一个调用 `RuleTester.run` 的测试文件，而不需要一个测试框架。
@@ -920,20 +920,11 @@ ruleTester.run("my-rule", myRule, {
 [configuration object]: ../user-guide/configuring/
 [builtin-formatters]: https://eslint.org/docs/user-guide/formatters/
 [third-party-formatters]: https://www.npmjs.com/search?q=eslintformatter
-[eslint]: #eslint-类
-[eslint-constructor]: #-new-eslintoptions
 [eslint-lintfiles]: #-eslintlintfilespatterns
 [eslint-linttext]: #-eslintlinttextcode-options
-[eslint-getrulesmetaforresults]: #-eslintgetrulesmetaforresultsresults
-[eslint-calculateconfigforfile]: #-eslintcalculateconfigforfilefilepath
-[eslint-ispathignored]: #-eslintispathignoredfilepath
 [eslint-loadformatter]: #-eslintloadformatternameorpath
-[eslint-version]: #-eslintversion
-[eslint-outputfixes]: #-eslintoutputfixesresults
-[eslint-geterrorresults]: #-eslintgeterrorresultsresults
 [lintresult]: #-lintresult-type
 [lintmessage]: #-lintmessage-type
 [suppressedlintmessage]: #-suppressedlintmessage-type
 [editinfo]: #-editinfo-type
 [loadedformatter]: #-loadedformatter-type
-[linter]: #检查器
