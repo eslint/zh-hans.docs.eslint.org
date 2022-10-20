@@ -4,13 +4,11 @@ layout: doc
 rule_type: problem
 ---
 
+## 规则细节
 
+这条规则应该对试图与 `-0` 比较的代码提出警告，因为这不会像预期的那样工作。也就是说，像 `x === -0` 这样的代码对于 `+0` 和 `-0` 都会通过。作者可能想要的是 `Object.is(x, -0)`。
 
-## Rule Details
-
-The rule should warn against code that tries to compare against `-0`, since that will not work as intended. That is, code like `x === -0` will pass for both `+0` and `-0`. The author probably intended `Object.is(x, -0)`.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -24,7 +22,7 @@ if (x === -0) {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 

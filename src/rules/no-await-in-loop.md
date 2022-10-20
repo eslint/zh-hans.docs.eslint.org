@@ -4,16 +4,11 @@ layout: doc
 rule_type: problem
 ---
 
+对迭代器的每个元素进行操作是一项常见的任务。然而，作为每个操作的一部分执行 `await` 表明程序没有充分利用 `async`/`await` 的并行化优势。
 
-Performing an operation on each element of an iterable is a common task. However, performing an
-`await` as part of each operation is an indication that the program is not taking full advantage of
-the parallelization benefits of `async`/`await`.
+通常情况下，代码应该被重构为一次创建所有的 promise，然后使用 `Promise.all()` 获取结果。否则前一个操作完成前，每一个连续操作将不会开始。
 
-Usually, the code should be refactored to create all the promises at once, then get access to the
-results using `Promise.all()`. Otherwise, each successive operation will not start until the
-previous one has completed.
-
-Concretely, the following function should be refactored as shown:
+具体来说，应该重构下面这个函数，如图所示：
 
 ```js
 async function foo(things) {
@@ -38,13 +33,13 @@ async function foo(things) {
 }
 ```
 
-## Rule Details
+## 规则细节
 
-This rule disallows the use of `await` within loop bodies.
+这条规则不允许在循环体中使用 `await`。
 
 ## Examples
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 :::correct
 
@@ -64,7 +59,7 @@ async function foo(things) {
 
 :::
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 :::incorrect
 
@@ -83,10 +78,6 @@ async function foo(things) {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-In many cases the iterations of a loop are not actually independent of each-other. For example, the
-output of one iteration might be used as the input to another. Or, loops may be used to retry
-asynchronous operations that were unsuccessful. Or, loops may be used to prevent your code from sending
-an excessive amount of requests in parallel. In such cases it makes sense to use `await` within a
-loop and it is recommended to disable the rule via a standard ESLint disable comment.
+在许多情况下，一个循环的迭代实际上并非相互独立。例如，迭代的输出可能被用来作为另一个迭代的输入。或者，循环可能被用来重试不成功的异步操作。或者，循环可能被用来防止你的代码发送 过多的并行请求。在这种情况下，在循环中使用 `await` 是有意义的，建议通过标准的 ESLint disable 注释来禁用该规则。

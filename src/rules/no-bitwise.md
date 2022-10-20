@@ -4,18 +4,17 @@ layout: doc
 rule_type: suggestion
 ---
 
-
-The use of bitwise operators in JavaScript is very rare and often `&` or `|` is simply a mistyped `&&` or `||`, which will lead to unexpected behavior.
+在 JavaScript 中使用位操作符的情况非常少，通常 `&` 或 `||` 都只是输入 `&&` 或 `||` 时手抖了而已，这将导致意外行为。
 
 ```js
 var x = y | z;
 ```
 
-## Rule Details
+## 规则细节
 
-This rule disallows bitwise operators.
+这条规则不允许使用位操作符。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -51,7 +50,7 @@ x >>>= y;
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -71,16 +70,16 @@ x += y;
 
 :::
 
-## Options
+## 选项
 
-This rule has an object option:
+此规则选项为对象：
 
-* `"allow"`: Allows a list of bitwise operators to be used as exceptions.
-* `"int32Hint"`: Allows the use of bitwise OR in `|0` pattern for type casting.
+* `"allow"`：允许此列表中的位运算符在例外情况下使用。
+* `"int32Hint"`: 允许在 `|0` 模式下使用位操作符进行类型转换。
 
 ### allow
 
-Examples of **correct** code for this rule with the `{ "allow": ["~"] }` option:
+使用此规则与 `{ "allow": ["~"] }` 选项的**正确**示例：
 
 ::: correct
 
@@ -94,7 +93,7 @@ Examples of **correct** code for this rule with the `{ "allow": ["~"] }` option:
 
 ### int32Hint
 
-Examples of **correct** code for this rule with the `{ "int32Hint": true }` option:
+使用此规则与 `{ "int32Hint": true }` 选项的**正确**示例：
 
 ::: correct
 
