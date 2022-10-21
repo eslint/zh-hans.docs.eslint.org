@@ -4,11 +4,11 @@ layout: doc
 
 ---
 
-Disallows trailing commas in object and array literals.
+不允许在对象和数组字面上使用尾随逗号。
 
-(removed) This rule was **removed** in ESLint v1.0 and **replaced** by the [comma-dangle](comma-dangle) rule.
+（已移除）此规则在 ESLint v1.0 中移除并被 [comma-dangle](comma-dangle) 所取代。
 
-Trailing commas in object literals are valid according to the ECMAScript 5 (and ECMAScript 3!) spec, however IE8 (when not in IE8 document mode) and below will throw an error when it encounters trailing commas in JavaScript.
+根据 ECMAScript 5（和 ECMAScript 3！）的规范，对象字面量中的尾随逗号是有效的，但是 IE8（当不在 IE8 文档模式下）及以下版本遇到 JavaScript 中的尾随逗号时，会出现错误。
 
 ```js
 var foo = {
@@ -17,11 +17,11 @@ var foo = {
 };
 ```
 
-## Rule Details
+## 规则细节
 
-This rule is aimed at detecting trailing commas in object literals. As such, it will warn whenever it encounters a trailing comma in an object literal.
+这条规则的目的是检测对象字面的尾随逗号。因此，只要遇到对象字面的尾随逗号，它就会发出警告。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -41,7 +41,7 @@ foo({
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -61,6 +61,6 @@ foo({
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If your code will not be run in IE8 or below (a Node.js application, for example) and you'd prefer to allow trailing commas, turn this rule off.
+如果你的代码不会在 IE8 或更低版本中运行（例如 Node.js 应用程序），并且你希望允许尾随逗号，请关闭此规则。

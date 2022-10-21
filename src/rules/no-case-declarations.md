@@ -6,21 +6,15 @@ related_rules:
 - no-fallthrough
 ---
 
+这条规则不允许在 `case`/`default` 子句中进行 lexical 声明（`let`、`const`、`function` 和 `class`）。因为 lexical 声明在整个开关块中是可见的。但只有在被分配时才会被初始化，而这只有在达到它被定义的情况下才会发生。
 
+为了确保词法声明只适用于当前的 case 子句，应将你的子句包裹在块中。
 
-This rule disallows lexical declarations (`let`, `const`, `function` and `class`)
-in `case`/`default` clauses. The reason is that the lexical declaration is visible
-in the entire switch block but it only gets initialized when it is assigned, which
-will only happen if the case where it is defined is reached.
+## 规则细节
 
-To ensure that the lexical declaration only applies to the current case clause
-wrap your clauses in blocks.
+这条规则的目的是防止访问未初始化的词性绑定，以及访问跨例句的悬挂函数。
 
-## Rule Details
-
-This rule aims to prevent access to uninitialized lexical bindings as well as accessing hoisted functions across case clauses.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -45,7 +39,7 @@ switch (foo) {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -82,6 +76,6 @@ switch (foo) {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you depend on fall through behavior and want access to bindings introduced in the case block.
+如果你依赖跌落行为，并希望访问案例块中引入的绑定。

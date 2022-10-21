@@ -4,9 +4,7 @@ layout: doc
 rule_type: problem
 ---
 
-
-
-`ClassDeclaration` creates a variable, and we can modify the variable.
+`ClassDeclaration` 创建了一个可修改的变量。
 
 ```js
 /*eslint-env es6*/
@@ -15,13 +13,13 @@ class A { }
 A = 0;
 ```
 
-But the modification is a mistake in most cases.
+但在大多数情况下，这种修改是一个错误。
 
-## Rule Details
+## 规则细节
 
-This rule is aimed to flag modifying variables of class declarations.
+这条规则的目的是标记修改类声明的变量。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -78,7 +76,7 @@ let A = class A {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -122,6 +120,6 @@ class A {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't want to be notified about modifying variables of class declarations, you can safely disable this rule.
+如果你不希望被通知修改类声明的变量，你可以安全地禁用这个规则。

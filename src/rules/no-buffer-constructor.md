@@ -8,16 +8,15 @@ further_reading:
 - https://github.com/nodejs/node/issues/4660
 ---
 
+此规则于 ESLint v7.0.0 中废弃，请使用 [`eslint-plugin-node`](https://github.com/mysticatea/eslint-plugin-node) 中的对应规则代替。
 
-This rule was **deprecated** in ESLint v7.0.0. Please use the corresponding rule in [`eslint-plugin-node`](https://github.com/mysticatea/eslint-plugin-node).
+在 Node.js 中，`Buffer` 构造函数的行为根据其参数的类型而不同。在没有验证其类型的情况下，将用户输入的参数传递给 `Buffer()`，会导致安全漏洞，如远程内存泄露和拒绝服务。因此，不应该使用废弃的构造函数 `Buffer` 构造函数。而应该使用 producer 方法 `Buffer.from`、`Buffer.alloc` 和 `Buffer.allocUnsafe` 代替。
 
-In Node.js, the behavior of the `Buffer` constructor is different depending on the type of its argument. Passing an argument from user input to `Buffer()` without validating its type can lead to security vulnerabilities such as remote memory disclosure and denial of service. As a result, the `Buffer` constructor has been deprecated and should not be used. Use the producer methods `Buffer.from`, `Buffer.alloc`, and `Buffer.allocUnsafe` instead.
+## 规则细节
 
-## Rule Details
+本规则不允许调用和构造 `Buffer()` 构造函数。
 
-This rule disallows calling and constructing the `Buffer()` constructor.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -34,7 +33,7 @@ new Buffer(res.body.values);
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -49,6 +48,6 @@ Buffer.from(res.body.values);
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't use Node.js, or you still need to support versions of Node.js that lack methods like `Buffer.from`, then you should not enable this rule.
+如果你不使用 Node.js，或者你仍然需要支持缺乏 `Buffer.from` 等方法的 Node.js 版本，那么你不应该启用这个规则。
