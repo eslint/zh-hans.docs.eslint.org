@@ -6,16 +6,15 @@ further_reading:
 - https://spin.atomicobject.com/2011/04/10/javascript-don-t-reassign-your-function-arguments/
 ---
 
+对作为函数参数声明的变量进行赋值可能会产生误导并导致混乱的行为，因为修改函数参数也会改变 `arguments` 对象。通常情况下，对函数参数的赋值是无意的，表明了一个错误或程序员的错误。
 
-Assignment to variables declared as function parameters can be misleading and lead to confusing behavior, as modifying function parameters will also mutate the `arguments` object. Often, assignment to function parameters is unintended and indicative of a mistake or programmer error.
+这条规则也可以被配置为在修改函数参数时失败。参数的副作用会导致反直觉的执行流程，使错误难以追踪。
 
-This rule can be also configured to fail when function parameters are modified. Side effects on parameters can cause counter-intuitive execution flow and make errors difficult to track down.
+## 规则细节
 
-## Rule Details
+这条规则的目的是防止因修改或重新分配函数参数而引起的非预期行为。
 
-This rule aims to prevent unintended behavior caused by modification or reassignment of function parameters.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -41,7 +40,7 @@ function foo(bar) {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -55,13 +54,13 @@ function foo(bar) {
 
 :::
 
-## Options
+## 选项
 
-This rule takes one option, an object, with a boolean property `"props"`, and  arrays `"ignorePropertyModificationsFor"` and `"ignorePropertyModificationsForRegex"`. `"props"` is `false` by default. If `"props"` is set to `true`, this rule warns against the modification of parameter properties unless they're included in `"ignorePropertyModificationsFor"` or `"ignorePropertyModificationsForRegex"`, which is an empty array by default.
+这个规则有一个选项，是一个对象，有一个布尔属性 `"props"` 和数组 `"ignorePropertyModificationsFor"` 和 `"ignorePropertyModificationsForRegex"`。`"props"` 默认为 `false`。如果 `"props"` 设置为 `true`，本规则警告不要修改参数属性，除非它们被包含在 `"ignorePropertyModificationsFor"` 或 `"ignorePropertyModificationsForRegex"` 中，默认为空数组。
 
 ### props
 
-Examples of **correct** code for the default `{ "props": false }` option:
+使用默认的 `{ "props": false }` 选项的**正确**示例：
 
 ::: correct
 
@@ -91,7 +90,7 @@ function foo(bar) {
 
 :::
 
-Examples of **incorrect** code for the `{ "props": true }` option:
+使用 `{ "props": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -121,7 +120,7 @@ function foo(bar) {
 
 :::
 
-Examples of **correct** code for the `{ "props": true }` option with `"ignorePropertyModificationsFor"` set:
+设置了 `"ignorePropertyModificationsFor"` 的 `{ "props": true }` 选项的**正确的代码示例。
 
 ::: correct
 
@@ -151,7 +150,7 @@ function foo(bar) {
 
 :::
 
-Examples of **correct** code for the `{ "props": true }` option with `"ignorePropertyModificationsForRegex"` set:
+设置了 `"ignorePropertyModificationsForRegex"`  的`{ "props": true }` 选项的**正确的代码示例。
 
 ::: correct
 
@@ -181,6 +180,6 @@ function foo(barBaz) {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you want to allow assignment to function parameters, then you can safely disable this rule.
+如果你想允许对函数参数进行赋值，你可以安全地禁用此规则。

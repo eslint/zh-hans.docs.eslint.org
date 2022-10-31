@@ -7,16 +7,15 @@ related_rules:
 - no-restricted-syntax
 ---
 
+在代码库中，对象上的某些属性可能是不允许的。这对于废除一个 API 或者限制一个模块的方法的使用非常有用。例如，你可能想在使用 Mocha 时不允许使用 `describe.only`，或者告诉人们使用 `Object.assign` 而不是 `_.extend`。
 
-Certain properties on objects may be disallowed in a codebase. This is useful for deprecating an API or restricting usage of a module's methods. For example, you may want to disallow using `describe.only` when using Mocha or telling people to use `Object.assign` instead of `_.extend`.
+## 规则细节
 
-## Rule Details
+该规则查找访问给定对象名称上的给定属性键，无论是在读取属性的值还是作为函数调用它时。你可以指定一个选项信息来表明替代的 API 或限制的原因。
 
-This rule looks for accessing a given property key on a given object name, either when reading the property's value or invoking it as a function. You may specify an optional message to indicate an alternative API or a reason for the restriction.
+### 选项
 
-### Options
-
-This rule takes a list of objects, where the object name and property names are specified:
+这个规则接受一个对象的列表，其中指定了对象的名称和属性名称：
 
 ```json
 {
@@ -29,7 +28,7 @@ This rule takes a list of objects, where the object name and property names are 
 }
 ```
 
-Multiple object/property values can be disallowed, and you can specify an optional message:
+可以不允许多个对象/属性值，并且可以指定可选消息：
 
 ```json
 {
@@ -46,7 +45,7 @@ Multiple object/property values can be disallowed, and you can specify an option
 }
 ```
 
-If the object name is omitted, the property is disallowed for all objects:
+如果省略了对象名称，则所有对象都不允许存在该属性：
 
 ```json
 {
@@ -59,7 +58,7 @@ If the object name is omitted, the property is disallowed for all objects:
 }
 ```
 
-If the property name is omitted, accessing any property of the given object is disallowed:
+如果省略了属性名称，则不允许访问给定对象的任何属性：
 
 ```json
 {
@@ -72,7 +71,7 @@ If the property name is omitted, accessing any property of the given object is d
 }
 ```
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -113,7 +112,7 @@ require.resolve('foo');
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -142,6 +141,6 @@ require('foo');
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't have any object/property combinations to restrict, you should not use this rule.
+如果你没有任何要限制的对象/属性组合，你不应该使用这个规则。

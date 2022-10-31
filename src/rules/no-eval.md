@@ -9,8 +9,7 @@ further_reading:
 - https://javascriptweblog.wordpress.com/2010/04/19/how-evil-is-eval/
 ---
 
-
-JavaScript's `eval()` function is potentially dangerous and is often misused. Using `eval()` on untrusted code can open a program up to several different injection attacks. The use of `eval()` in most contexts can be substituted for a better, alternative approach to a problem.
+JavaScript 的 `eval()` 函数具有潜在的危险性，经常被滥用。在不受信任的代码上使用 `eval()` 可以使程序受到几种不同的注入攻击。在大多数情况下，使用 `eval()` 可以用更好的、替代性的方法来解决一个问题。
 
 ```js
 var obj = { x: "foo" },
@@ -18,11 +17,11 @@ var obj = { x: "foo" },
     value = eval("obj." + key);
 ```
 
-## Rule Details
+## 规则细节
 
-This rule is aimed at preventing potentially dangerous, unnecessary, and slow code by disallowing the use of the `eval()` function. As such, it will warn whenever the `eval()` function is used.
+这条规则的目的是通过禁止使用 `eval()` 函数来防止潜在的危险、不必要和缓慢的代码。因此，只要使用 `eval()` 函数，它就会发出警告。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -44,7 +43,7 @@ this.eval("var a = 0");
 
 :::
 
-Example of additional **incorrect** code for this rule when `browser` environment is set to `true`:
+使用此规则并将 `browser` 环境设置为 `true` 时的额外**错误**示例：
 
 ::: incorrect
 
@@ -57,7 +56,7 @@ window.eval("var a = 0");
 
 :::
 
-Example of additional **incorrect** code for this rule when `node` environment is set to `true`:
+使用此规则并将 `node` 环境设置为 `true` 时的额外**错误**示例：
 
 ::: incorrect
 
@@ -70,7 +69,7 @@ global.eval("var a = 0");
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -103,10 +102,10 @@ class A {
 
 :::
 
-## Options
+## 选项
 
-This rule has an option to allow indirect calls to `eval`.
-Indirect calls to `eval` are less dangerous than direct calls to `eval` because they cannot dynamically change the scope. Because of this, they also will not negatively impact performance to the degree of direct `eval`.
+这个规则有一个选项，允许间接调用 `eval`。
+间接调用 `eval` 比直接调用 `eval` 危险性小，因为它们不能动态地改变范围。正因为如此，它们对性能的负面影响也不会达到直接调用 `eval` 的程度。
 
 ```js
 {
@@ -114,7 +113,7 @@ Indirect calls to `eval` are less dangerous than direct calls to `eval` because 
 }
 ```
 
-Example of **incorrect** code for this rule with the `{"allowIndirect": true}` option:
+使用此规则与 `{"allowIndirect": true}` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -128,7 +127,7 @@ var obj = { x: "foo" },
 
 :::
 
-Examples of **correct** code for this rule with the `{"allowIndirect": true}` option:
+使用此规则与 `{"allowIndirect": true}` 选项的**正确**示例：
 
 ::: correct
 
@@ -167,10 +166,10 @@ global.eval("var a = 0");
 
 :::
 
-## Known Limitations
+## 已知限制
 
-* This rule is warning every `eval()` even if the `eval` is not global's.
-  This behavior is in order to detect calls of direct `eval`. Such as:
+* 这条规则会对每个 `eval()` 都发出警告，即使不是全局 `eval`。
+  这种行为是为了检测直接调用 `eval` 的行为。比如说：
 
   ```js
   module.exports = function(eval) {
@@ -180,7 +179,7 @@ global.eval("var a = 0");
   };
   ```
 
-* This rule cannot catch renaming the global object. Such as:
+* 这条规则不能捕捉重命名全局对象。比如说
 
   ```js
   var foo = window;

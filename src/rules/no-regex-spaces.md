@@ -7,29 +7,25 @@ related_rules:
 - no-control-regex
 ---
 
-
-
-
-
-Regular expressions can be very complex and difficult to understand, which is why it's important to keep them as simple as possible in order to avoid mistakes. One of the more error-prone things you can do with a regular expression is to use more than one space, such as:
+正则表达式可能非常复杂且难以理解，这就是为什么为了避免错误而尽可能保持其简单的原因。在正则表达式中，一个比较容易出错的地方是使用一个以上的空格，如：
 
 ```js
 var re = /foo   bar/;
 ```
 
-In this regular expression, it's very hard to tell how many spaces are intended to be matched. It's better to use only one space and then specify how many spaces are expected, such as:
+在这个正则表达式中，很难说出有多少个空格要被匹配。最好是只使用一个空格，然后指定预计有多少个空格，例如：
 
 ```js
 var re = /foo {3}bar/;
 ```
 
-Now it is very clear that three spaces are expected to be matched.
+现在非常清楚的是，有三个空间预计将被匹配。
 
-## Rule Details
+## 规则细节
 
-This rule disallows multiple spaces in regular expression literals.
+这条规则不允许在正则表达式字面上有多个空格。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -42,7 +38,7 @@ var re = new RegExp("foo   bar");
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -55,6 +51,6 @@ var re = new RegExp("foo {3}bar");
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you want to allow multiple spaces in a regular expression, then you can safely turn this rule off.
+如果你想在正则表达式中允许多个空格，那么你可以安全地关闭这个规则。

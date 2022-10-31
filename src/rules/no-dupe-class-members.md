@@ -4,10 +4,8 @@ layout: doc
 rule_type: problem
 ---
 
-
-
-If there are declarations of the same name in class members, the last declaration overwrites other declarations silently.
-It can cause unexpected behaviors.
+如果在类成员中存在同名的声明，最后一个声明会无声地覆盖其他声明。
+这可能会导致意外的行为。
 
 ```js
 /*eslint-env es6*/
@@ -21,13 +19,13 @@ var foo = new Foo();
 foo.bar(); // goodbye
 ```
 
-## Rule Details
+## 规则细节
 
-This rule is aimed to flag the use of duplicate names in class members.
+这条规则旨在标记类成员中的重复名称的使用。
 
 ## Examples
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -62,7 +60,7 @@ class Foo {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -97,10 +95,10 @@ class Foo {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-This rule should not be used in ES3/5 environments.
+不应该在 ES3/5 环境中使用此规则。
 
-In ES2015 (ES6) or later, if you don't want to be notified about duplicate names in class members, you can safely disable this rule.
+在 ES2015（ES6）或更高版本中，如果你不想被通知类成员中的重复名称，你可以安全地禁用这个规则。
 
-It's also safe to disable this rule when using TypeScript because TypeScript's compiler already checks for duplicate function implementations.
+在使用 TypeScript 时，禁用这一规则也是安全的，因为 TypeScript 的编译器已经检查过重复的函数实现。

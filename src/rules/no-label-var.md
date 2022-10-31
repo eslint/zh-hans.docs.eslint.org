@@ -8,12 +8,11 @@ related_rules:
 - no-unused-labels
 ---
 
+## 规则细节
 
-## Rule Details
+这条规则旨在创建更清晰的代码，不允许创建一个与范围内的变量同名的标签的坏做法。
 
-This rule aims to create clearer code by disallowing the bad practice of creating a label that shares a name with a variable that is in scope.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -31,7 +30,7 @@ x:
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -54,6 +53,6 @@ q:
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't want to be notified about usage of labels, then it's safe to disable this rule.
+如果你不希望被通知标签的使用情况，你可以安全地禁用此规则。

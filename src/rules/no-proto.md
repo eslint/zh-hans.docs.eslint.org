@@ -6,14 +6,13 @@ further_reading:
 - https://johnresig.com/blog/objectgetprototypeof/
 ---
 
+`__proto__` 属性在 ECMAScript 3.1 中已经被废弃，不应该在代码中使用。使用 `Object.getPrototypeOf` 和 `Object.setPrototypeOf` 代替。
 
-`__proto__` property has been deprecated as of ECMAScript 3.1 and shouldn't be used in the code. Use `Object.getPrototypeOf` and `Object.setPrototypeOf` instead.
+## 规则细节
 
-## Rule Details
+当用 `new` 操作符创建一个对象时，`__proto__` 被设置为该对象的构造函数的原始“prototype”属性。`Object.getPrototypeOf` 是获取对象原型的首选方法。要改变一个对象的原型，使用 `Object.setPrototypeOf`。
 
-When an object is created with the `new` operator, `__proto__` is set to the original "prototype" property of the object's constructor function. `Object.getPrototypeOf` is the preferred method of getting the object's prototype. To change an object's prototype, use `Object.setPrototypeOf`.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -31,7 +30,7 @@ obj["__proto__"] = b;
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -47,7 +46,6 @@ var c = { __proto__: a };
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-You might want to turn this rule off if you need to support legacy browsers which implement the
-`__proto__` property but not `Object.getPrototypeOf` or `Object.setPrototypeOf`.
+如果你需要支持那些实现了 `__proto__` 属性，而不是 `Object.getPrototypeOf` 或 `Object.setPrototypeOf`。

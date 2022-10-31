@@ -4,21 +4,19 @@ layout: doc
 rule_type: problem
 ---
 
-
-
-Self assignments have no effect, so probably those are an error due to incomplete refactoring.
-Those indicate that what you should do is still remaining.
+自我赋值没有效果，所以可能那些是由于不完整的重构而产生的错误。
+这些表明你应该做的事情仍然存在。
 
 ```js
 foo = foo;
 [bar, baz] = [bar, qiz];
 ```
 
-## Rule Details
+## 规则细节
 
-This rule is aimed at eliminating self assignments.
+这条规则的目的是消除自我分配。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -40,7 +38,7 @@ foo ??= foo;
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -77,9 +75,9 @@ obj["a" + "b"] = obj["a" + "b"];
 
 :::
 
-## Options
+## 选项
 
-This rule has the option to check properties as well.
+这个规则也有检查属性的选项。
 
 ```json
 {
@@ -87,11 +85,11 @@ This rule has the option to check properties as well.
 }
 ```
 
-* `props` - if this is `true`, `no-self-assign` rule warns self-assignments of properties. Default is `true`.
+* `props` - 如果这是 `true`，`no-self-assign` 规则会警告属性的自我分配。默认 为`true`。
 
 ### props
 
-Examples of **correct** code with the `{ "props": false }` option:
+使用 `{ "props": false }` 选项的**正确**示例：
 
 ::: correct
 
@@ -107,6 +105,6 @@ obj[a] = obj[a];
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't want to notify about self assignments, then it's safe to disable this rule.
+如果你不想通知自己的任务，你可以安全地禁用这个规则。

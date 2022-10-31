@@ -6,9 +6,7 @@ related_rules:
 - no-constant-binary-expression
 ---
 
-
-
-A constant expression (for example, a literal) as a test condition might be a typo or development trigger for a specific behavior. For example, the following code looks as if it is not ready for production.
+作为测试条件的常量表达式（例如字面量）可能是一个错别字或开发触发的特定行为。例如，下面的代码看起来好像还没有准备好用于生产。
 
 ```js
 if (false) {
@@ -16,14 +14,14 @@ if (false) {
 }
 ```
 
-## Rule Details
+## 规则细节
 
-This rule disallows constant expressions in the test condition of:
+这条规则不允许在以下测试条件中使用常量表达式：
 
-* `if`, `for`, `while`, or `do...while` statement
-* `?:` ternary expression
+* `if`、`for`、`while` 或 `do...while` 语句
+* `?:` 三元表达式
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -79,7 +77,7 @@ var result = 0 ? a : b;
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -107,13 +105,13 @@ var result = x !== 0 ? a : b;
 
 :::
 
-## Options
+## 选项
 
 ### checkLoops
 
-Set to `true` by default. Setting this option to `false` allows constant expressions in loops.
+默认为 `true`。将此选项设置为 `false` 允许在循环中使用常量表达式。
 
-Examples of **correct** code for when `checkLoops` is `false`:
+当 `checkLoops` 为 `false` 时的**正确**示例：
 
 ::: correct
 

@@ -4,23 +4,21 @@ layout: doc
 rule_type: suggestion
 ---
 
-
-
-Octal literals are numerals that begin with a leading zero, such as:
+八进制字是指以前导零开头的数字，如：
 
 ```js
 var num = 071;      // 57
 ```
 
-Because the leading zero which identifies an octal literal has been a source of confusion and error in JavaScript code, ECMAScript 5 deprecates the use of octal numeric literals.
+由于标识八进制字头的零在 JavaScript 代码中一直是混乱和错误的来源，ECMAScript 5 取消了对八进制数字字头的使用。
 
-## Rule Details
+## 规则细节
 
-The rule disallows octal literals.
+这条规则不允许八进制字头。
 
-If ESLint parses code in strict mode, the parser (instead of this rule) reports the error.
+如果 ESLint 在严格模式下解析代码，解析器（而不是这个规则）会报告错误。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -33,7 +31,7 @@ var result = 5 + 07;
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -45,6 +43,6 @@ var num  = "071";
 
 :::
 
-## Compatibility
+## 兼容
 
-* **JSHint**: W115
+* **JSHint**：W115

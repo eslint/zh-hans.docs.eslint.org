@@ -7,17 +7,13 @@ related_rules:
 - semi-spacing
 ---
 
+打字错误和对哪里需要分号的误解会导致不必要的分号的出现。虽然在技术上不是一个错误，但额外的分号会在阅读代码时造成混乱。
 
+## 规则细节
 
+这条规则不允许不必要的分号。
 
-
-Typing mistakes and misunderstandings about where semicolons are required can lead to semicolons that are unnecessary. While not technically an error, extra semicolons can cause confusion when reading code.
-
-## Rule Details
-
-This rule disallows unnecessary semicolons.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -45,7 +41,7 @@ class C {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -77,6 +73,6 @@ class C {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you intentionally use extra semicolons then you can disable this rule.
+如果你故意使用额外的分号，那么你可以禁用这个规则。

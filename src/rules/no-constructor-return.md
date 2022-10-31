@@ -4,14 +4,13 @@ layout: doc
 rule_type: problem
 ---
 
+在 JavaScript 中，在类的构造函数中返回一个值可能是一个错误。禁止这种模式可以防止因不熟悉语言或复制粘贴错误而导致的错误。
 
-In JavaScript, returning a value in the constructor of a class may be a mistake. Forbidding this pattern prevents mistakes resulting from unfamiliarity with the language or a copy-paste error.
+## 规则细节
 
-## Rule Details
+在类的构造函数中，使用此规则禁用 return 语句。注意，允许在流控制下不返回任何东西。
 
-This rule disallows return statements in the constructor of a class. Note that returning nothing with flow control is allowed.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -36,7 +35,7 @@ class B {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 

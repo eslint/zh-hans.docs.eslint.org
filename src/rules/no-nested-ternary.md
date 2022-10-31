@@ -7,18 +7,17 @@ related_rules:
 - no-unneeded-ternary
 ---
 
-
-Nesting ternary expressions can make code more difficult to understand.
+嵌套三元表达式会使代码更难理解。
 
 ```js
 var foo = bar ? baz : qux === quxx ? bing : bam;
 ```
 
-## Rule Details
+## 规则细节
 
-The `no-nested-ternary` rule disallows nested ternary expressions.
+`no-nested-ternary` 规则不允许使用嵌套的三元表达式。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -32,7 +31,7 @@ foo ? baz === qux ? quxx() : foobar() : bar();
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 

@@ -4,9 +4,7 @@ layout: doc
 rule_type: problem
 ---
 
-
-
-Multiple properties with the same key in object literals can cause unexpected behavior in your application.
+在对象字面中具有相同键的多个属性会在你的应用程序中引起意外的行为。
 
 ```js
 var foo = {
@@ -15,11 +13,11 @@ var foo = {
 };
 ```
 
-## Rule Details
+## 规则细节
 
-This rule disallows duplicate keys in object literals.
+这条规则不允许在对象字面中出现重复的键。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -44,7 +42,7 @@ var foo = {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 

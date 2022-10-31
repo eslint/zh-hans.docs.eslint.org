@@ -4,8 +4,7 @@ layout: doc
 rule_type: suggestion
 ---
 
-
-It's possible to create functions in JavaScript from strings at runtime using the `Function` constructor, such as:
+在 JavaScript 中，可以在运行时使用 `Function` 构造函数从字符串中创建函数，例如：
 
 ```js
 var x = new Function("a", "b", "return a + b");
@@ -15,13 +14,13 @@ var x = Function.apply(null, ["a", "b", "return a + b"]);
 var x = Function.bind(null, "a", "b", "return a + b")();
 ```
 
-This is considered by many to be a bad practice due to the difficulty in debugging and reading these types of functions. In addition, Content-Security-Policy (CSP) directives may disallow the use of eval() and similar methods for creating code from strings.
+这被许多人认为是一种不好的做法，因为很难调试和阅读这些类型的函数。此外，内容安全政策（CSP）指令可能不允许使用 eval() 和类似的方法来从字符串中创建代码。
 
-## Rule Details
+## 规则细节
 
-This error is raised to highlight the use of a bad practice. By passing a string to the Function constructor, you are requiring the engine to parse that string much in the way it has to when you call the `eval` function.
+提出这个错误是为了强调使用了一个不好的做法。通过向 Function 构造函数传递一个字符串，你要求引擎以调用 `eval` 函数的方式来解析这个字符串。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -38,7 +37,7 @@ var f = Function.bind(null, "a", "b", "return a + b"); // assuming that the resu
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -52,6 +51,6 @@ var x = function (a, b) {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-In more advanced cases where you really need to use the `Function` constructor.
+在更高级的情况下，你确实需要使用 `Function` 构造函数。

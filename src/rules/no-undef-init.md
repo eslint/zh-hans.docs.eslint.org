@@ -7,9 +7,7 @@ related_rules:
 - no-void
 ---
 
-
-
-In JavaScript, a variable that is declared and not initialized to any value automatically gets the value of `undefined`. For example:
+在 JavaScript 中，一个被声明但没有被初始化的变量会自动得到  `undefined` 的值。比如：
 
 ```js
 var foo;
@@ -17,19 +15,19 @@ var foo;
 console.log(foo === undefined);     // true
 ```
 
-It's therefore unnecessary to initialize a variable to `undefined`, such as:
+因此，没有必要将一个变量初始化为 `undefined`，例如：
 
 ```js
 var foo = undefined;
 ```
 
-It's considered a best practice to avoid initializing variables to `undefined`.
+一般要避免将变量初始化为 `undefined`。
 
-## Rule Details
+## 规则细节
 
-This rule aims to eliminate `var` and `let` variable declarations that initialize to `undefined`.
+该规则旨在消除初始化为 `undefined` 的 `var` 和 `let` 变量声明。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -42,7 +40,7 @@ let bar = undefined;
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -55,9 +53,9 @@ let bar;
 
 :::
 
-Please note that this rule does not check `const` declarations, destructuring patterns, function parameters, and class fields.
+请注意，这条规则不检查 `const` 声明、解构模式、函数参数和类字段。
 
-Examples of additional **correct** code for this rule:
+使用此规则的额外**正确**示例：
 
 ::: correct
 
@@ -79,11 +77,11 @@ class Foo {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-There is one situation where initializing to `undefined` behaves differently than omitting the initialization, and that's when a `var` declaration occurs inside of a loop. For example:
+有一种情况下，初始化为 `undefined` 的行为与省略初始化的行为不同，那就是当 `var` 声明发生在一个循环中。比如：
 
-Example of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -97,7 +95,7 @@ for (i = 0; i < 10; i++) {
 
 :::
 
-In this case, the `var x` is hoisted out of the loop, effectively creating:
+在这种情况下，`var x` 被吊出了循环，有效地创造了：
 
 ```js
 var x;
@@ -109,7 +107,7 @@ for (i = 0; i < 10; i++) {
 }
 ```
 
-If you were to remove the initialization, then the behavior of the loop changes:
+如果你要删除初始化，那么循环的行为就会改变：
 
 ```js
 for (i = 0; i < 10; i++) {
@@ -119,7 +117,7 @@ for (i = 0; i < 10; i++) {
 }
 ```
 
-This code is equivalent to:
+这个代码相当于：
 
 ```js
 var x;
@@ -130,11 +128,11 @@ for (i = 0; i < 10; i++) {
 }
 ```
 
-This produces a different outcome than defining `var x = undefined` in the loop, as `x` is no longer reset to `undefined` each time through the loop.
+这与在循环中定义 `var x = undefined` 产生不同的结果，因为 `x` 不再在每次循环中被重置为 `undefined`。
 
-If you're using such an initialization inside of a loop, then you should disable this rule.
+如果你在循环中使用这样的初始化，那么你应该禁用这个规则。
 
-Example of **correct** code for this rule, because it is disabled on a specific line:
+使用此规则的**正确**示例，因为它在特定的行上被禁用。
 
 ::: correct
 

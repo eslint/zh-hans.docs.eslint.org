@@ -4,11 +4,7 @@ layout: doc
 rule_type: suggestion
 ---
 
-
-
-
-
-In contexts such as an `if` statement's test where the result of the expression will already be coerced to a Boolean, casting to a Boolean via double negation (`!!`) or a `Boolean` call is unnecessary. For example, these `if` statements are equivalent:
+在诸如 `if` 语句的测试中，表达式的结果已经被强制为布尔值，通过双重否定（`!!`）或 `Boolean` 调用来转换为布尔值是不必要的。例如，这些 `if` 语句是等同的。
 
 ```js
 if (!!foo) {
@@ -24,11 +20,11 @@ if (foo) {
 }
 ```
 
-## Rule Details
+## 规则细节
 
-This rule disallows unnecessary boolean casts.
+这条规则不允许不必要的布尔值转换。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -66,7 +62,7 @@ for (; !!foo; ) {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -85,15 +81,15 @@ var foo = bar ? !!baz : !!bat;
 
 :::
 
-## Options
+## 选项
 
-This rule has an object option:
+此规则选项为对象：
 
-* `"enforceForLogicalOperands"` when set to `true`, in addition to checking default contexts, checks whether the extra boolean cast is contained within a logical expression. Default is `false`, meaning that this rule by default does not warn about extra booleans cast inside logical expression.
+* `"enforceForLogicalOperands"` 当设置为 `true` 时，除了检查默认上下文外，还检查额外的布尔运算是否包含在逻辑表达式中。默认为`false`，这意味着该规则默认不对逻辑表达式中的额外布尔值进行警告。
 
 ### enforceForLogicalOperands
 
-Examples of **incorrect** code for this rule with `"enforceForLogicalOperands"` option set to `true`:
+使用此规则并将 `enforceForLogicalOperands` 选项设置为 `true` 时的**错误**示例：
 
 ::: incorrect
 
@@ -119,7 +115,7 @@ var foo = new Boolean(!!bar || baz)
 
 :::
 
-Examples of **correct** code for this rule with `"enforceForLogicalOperands"` option set to `true`:
+使用此规则并将 `enforceForLogicalOperands` 选项设置为 `true` 时的**正确**示例：
 
 ::: correct
 

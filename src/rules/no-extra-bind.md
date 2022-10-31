@@ -7,9 +7,7 @@ further_reading:
 - https://www.smashingmagazine.com/2014/01/understanding-javascript-function-prototype-bind/
 ---
 
-
-
-The `bind()` method is used to create functions with specific `this` values and, optionally, binds arguments to specific values. When used to specify the value of `this`, it's important that the function actually uses `this` in its function body. For example:
+`bind()` 方法用于创建具有特定 `this` 值的函数，另外，将参数与特定值绑定。当用于指定 `this` 的值时，重要的是该函数在其函数体中实际使用 `this`。比如：
 
 ```js
 var boundGetName = (function getName() {
@@ -19,9 +17,9 @@ var boundGetName = (function getName() {
 console.log(boundGetName());      // "ESLint"
 ```
 
-This code is an example of a good use of `bind()` for setting the value of `this`.
+这段代码是一个很好的使用 `bind()` 的例子，用于设置 `this` 的值。
 
-Sometimes during the course of code maintenance, the `this` value is removed from the function body. In that case, you can end up with a call to `bind()` that doesn't accomplish anything:
+有时在代码维护过程中，`this` 的值被从函数体中删除。在这种情况下，你可能会出现对 `bind()` 的调用，但却没有任何结果。
 
 ```js
 // useless bind
@@ -32,15 +30,15 @@ var boundGetName = (function getName() {
 console.log(boundGetName());      // "ESLint"
 ```
 
-In this code, the reference to `this` has been removed but `bind()` is still used. In this case, the `bind()` is unnecessary overhead (and a performance hit) and can be safely removed.
+在这段代码中，已经删除 `this` 的引用，但 `bind()` 仍然被使用。在这种情况下，`bind()'是不必要的开销（和性能上的打击），可以安全地删除。
 
-## Rule Details
+## 规则细节
 
-This rule is aimed at avoiding the unnecessary use of `bind()` and as such will warn whenever an immediately-invoked function expression (IIFE) is using `bind()` and doesn't have an appropriate `this` value. This rule won't flag usage of `bind()` that includes function argument binding.
+这条规则的目的是避免不必要地使用`bind()`，因此当一个立即调用的函数表达式（IIFE）使用 `bind()` 并且没有适当的 `this` 值时，将发出警告。这条规则不会标记包括函数参数绑定在内的 `bind()` 的用法。
 
-**Note:** Arrow functions can never have their `this` value set using `bind()`. This rule flags all uses of `bind()` with arrow functions as a problem
+**注意**：箭头函数不能使用 `bind()` 来设置其 `this` 值。这条规则将所有使用箭头函数的 `bind()` 标记为一个问题。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -75,7 +73,7 @@ var x = function () {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -93,6 +91,6 @@ var x = function (a) {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you are not concerned about unnecessary calls to `bind()`, you can safely disable this rule.
+如果你不关心对 `bind()` 的不必要的调用，你可以安全地禁用这个规则。

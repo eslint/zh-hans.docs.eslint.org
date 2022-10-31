@@ -8,25 +8,23 @@ further_reading:
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set
 ---
 
+设置器不能有返回值。
 
+虽然从 setter 返回一个值不会产生错误，但返回的值被忽略了。因此，从 setter 返回一个值要么是不必要的，要么是一个可能的错误，因为返回的值不能被使用。
 
-Setters cannot return values.
+## 规则细节
 
-While returning a value from a setter does not produce an error, the returned value is being ignored. Therefore, returning a value from a setter is either unnecessary or a possible error, since the returned value cannot be used.
+使用此规则禁用从 setter 返回值，并在 setter 函数中报告`return`语句。
 
-## Rule Details
+只有没有值的`return`是允许的，因为它是一个控制流语句。
 
-This rule disallows returning values from setters and reports `return` statements in setter functions.
+这条规则会检查以下范围中的设置器：
 
-Only `return` without a value is allowed, as it's a control flow statement.
+* 对象字面量。
+* 类声明和类表达式。
+* 全局对象的 `Object.create`、`Object.defineProperty`、`Object.defineProperties` 和 `Reflect.defineProperty` 方法中的属性描述词。
 
-This rule checks setters in:
-
-* Object literals.
-* Class declarations and class expressions.
-* Property descriptors in `Object.create`, `Object.defineProperty`, `Object.defineProperties`, and `Reflect.defineProperty` methods of the global objects.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -69,7 +67,7 @@ Object.defineProperty(foo, "bar", {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 

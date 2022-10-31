@@ -8,9 +8,7 @@ related_rules:
 - no-unused-labels
 ---
 
-
-
-If a loop contains no nested loops or switches, labeling the loop is unnecessary.
+如果一个循环不包含嵌套的循环或开关，那么就没有必要给这个循环贴标签。
 
 ```js
 A: while (a) {
@@ -18,14 +16,14 @@ A: while (a) {
 }
 ```
 
-You can achieve the same result by removing the label and using `break` or `continue` without a label.
-Probably those labels would confuse developers because they expect labels to jump to further.
+你可以通过删除标签并使用没有标签的 `break` 或 `continue` 来达到同样的效果。
+可能这些标签会让开发者感到困惑，因为他们希望标签能跳到更远的地方。
 
-## Rule Details
+## 规则细节
 
-This rule is aimed at eliminating unnecessary labels.
+这一规则旨在消除不必要的标签。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -48,7 +46,7 @@ C: switch (a) {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -89,6 +87,6 @@ C: switch (a) {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't want to be notified about usage of labels, then it's safe to disable this rule.
+如果你不希望被通知标签的使用情况，你可以安全地禁用此规则。

@@ -4,8 +4,7 @@ layout: doc
 rule_type: suggestion
 ---
 
-
-In JavaScript, prior to ES6, standalone code blocks delimited by curly braces do not create a new scope and have no use. For example, these curly braces do nothing to `foo`:
+在 JavaScript 中，在 ES6 之前，由大括号限定的独立代码块不会创建一个新的作用域，也没有任何用途。例如，这些大括号对 `foo` 没有任何作用。
 
 ```js
 {
@@ -13,13 +12,13 @@ In JavaScript, prior to ES6, standalone code blocks delimited by curly braces do
 }
 ```
 
-In ES6, code blocks may create a new scope if a block-level binding (`let` and `const`), a class declaration or a function declaration (in strict mode) are present. A block is not considered redundant in these cases.
+在 ES6 中，如果存在块级绑定（`let` 和 `const`）、类声明或函数声明（在严格模式下），代码块可以创建一个新的作用域。在这些情况下，一个块不被认为是多余的。
 
-## Rule Details
+## 规则细节
 
-This rule aims to eliminate unnecessary and potentially confusing blocks at the top level of a script or within other blocks.
+这一规则旨在消除脚本顶层或其他区块内不必要的、可能引起混淆的区块。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -61,7 +60,7 @@ class C {
 
 :::
 
-Examples of **correct** code for this rule with ES6 environment:
+在 ES6 环境下，此规则的**正确的代码示例。
 
 ::: correct
 
@@ -113,7 +112,7 @@ class C {
 
 :::
 
-Examples of **correct** code for this rule with ES6 environment and strict mode via `"parserOptions": { "sourceType": "module" }` in the ESLint configuration or `"use strict"` directive in the code:
+在 ES6 环境和严格模式下，此规则的**正确代码的例子通过 `"parserOptions": { "sourceType": "module" }` 在 ESLint 配置中或代码中的 "use strict"`指令。
 
 ::: correct
 

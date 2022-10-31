@@ -4,18 +4,16 @@ layout: doc
 rule_type: problem
 ---
 
+我们不能修改使用 `const` 关键字声明的变量。
+它将引发运行时错误。
 
+在非 ES2015 环境下，它可能仅仅被忽略。
 
-We cannot modify variables that are declared using `const` keyword.
-It will raise a runtime error.
+## 规则细节
 
-Under non ES2015 environment, it might be ignored merely.
+这条规则的目的是标记修改使用 `const` 关键字声明的变量。
 
-## Rule Details
-
-This rule is aimed to flag modifying variables that are declared using `const` keyword.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -53,7 +51,7 @@ const a = 0;
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -93,6 +91,6 @@ for (const a of [1, 2, 3]) { // `a` is re-defined (not modified) on each loop st
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't want to be notified about modifying variables that are declared using `const` keyword, you can safely disable this rule.
+如果你不关心使用 `const` 关键字声明的变量是否被修改，你可以安全地禁用这个规则。

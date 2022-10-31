@@ -4,16 +4,15 @@ layout: doc
 rule_type: problem
 ---
 
+此规则在 ESLint v3.3.0 中废弃并被 [no-unsafe-negation](no-unsafe-negation) 规则所取代。
 
-This rule was **deprecated** in ESLint v3.3.0 and replaced by the [no-unsafe-negation](no-unsafe-negation) rule.
+就像开发者可能会输入 `-a + b`，而他们的意思是 `-(a + b)` 表示一个和的负数，他们可能会错误地输入 `!key in object`，而他们几乎肯定是指 `!(key in object)` 来测试一个键不在一个对象中。
 
-Just as developers might type `-a + b` when they mean `-(a + b)` for the negative of a sum, they might type `!key in object` by mistake when they almost certainly mean `!(key in object)` to test that a key is not in an object.
+## 规则细节
 
-## Rule Details
+这条规则不允许在 `in` 表达式中否定左边的操作数。
 
-This rule disallows negating the left operand in `in` expressions.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -28,7 +27,7 @@ if(!key in object) {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -47,6 +46,6 @@ if(('' + !key) in object) {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-Never.
+绝不要。

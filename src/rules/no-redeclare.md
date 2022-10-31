@@ -6,15 +6,13 @@ related_rules:
 - no-shadow
 ---
 
+在 JavaScript 中，有可能使用 `var` 重新声明相同的变量名。这可能会导致混淆，不知道变量到底是在哪里声明和初始化的。
 
+## 规则细节
 
-In JavaScript, it's possible to redeclare the same variable name using `var`. This can lead to confusion as to where the variable is actually declared and initialized.
+这条规则的目的是消除在同一范围内有多个声明的变量。
 
-## Rule Details
-
-This rule is aimed at eliminating variables that have multiple declarations in the same scope.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -39,7 +37,7 @@ class C {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -65,16 +63,16 @@ class C {
 
 :::
 
-## Options
+## 选项
 
-This rule takes one optional argument, an object with a boolean property `"builtinGlobals"`. It defaults to `true`.
-If set to `true`, this rule also checks redeclaration of built-in globals, such as `Object`, `Array`, `Number`...
+这条规则有一个可选的参数，一个带有布尔属性 `"builtinGlobals"` 的对象。它的默认值是 `true`。
+如果设置为 `true`，该规则也会检查对内置球的重新声明，例如  `Object`、`Array`、`Number`...
 
 ### builtinGlobals
 
-The `"builtinGlobals"` option will check for redeclaration of built-in globals in global scope.
+`"builtinGlobals"` 选项将检查全局范围内的内置球状物的重新声明。
 
-Examples of **incorrect** code for the `{ "builtinGlobals": true }` option:
+使用 `{ "builtinGlobals": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -86,7 +84,7 @@ var Object = 0;
 
 :::
 
-Examples of **incorrect** code for the `{ "builtinGlobals": true }` option and the `browser` environment:
+`{ "builtinGlobals": true }` 选项和 `browser` 环境的**不正确**代码的例子。
 
 ::: incorrect
 
@@ -99,6 +97,6 @@ var top = 0;
 
 :::
 
-The `browser` environment has many built-in global variables (for example, `top`). Some of built-in global variables cannot be redeclared.
+`browser` 环境有许多内置的全局变量（例如：`top`）。一些内置的全局变量不能被重新声明。
 
-Note that when using the `node` or `commonjs` environments (or `ecmaFeatures.globalReturn`, if using the default parser), the top scope of a program is not actually the global scope, but rather a "module" scope. When this is the case, declaring a variable named after a builtin global is not a redeclaration, but rather a shadowing of the global variable. In that case, the [`no-shadow`](no-shadow) rule with the `"builtinGlobals"` option should be used.
+注意，当使用 `node` 或 `commonjs` 环境（或 `ecmaFeatures.globalReturn`，如果使用默认解析器）时，程序的顶部范围实际上不是全局范围，而是 "模块 "范围。在这种情况下，声明一个以内置全局命名的变量并不是重新声明，而是对全局变量进行影射。在这种情况下，应该使用 [`no-shadow`](no-shadow) 规则和 `"buildinGlobals"` 选项。

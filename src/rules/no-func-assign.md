@@ -4,20 +4,18 @@ layout: doc
 rule_type: problem
 ---
 
-
-
-JavaScript functions can be written as a FunctionDeclaration `function foo() { ... }` or as a FunctionExpression `var foo = function() { ... };`. While a JavaScript interpreter might tolerate it, overwriting/reassigning a function written as a FunctionDeclaration is often indicative of a mistake or issue.
+JavaScript 函数可以被写成 FunctionDeclaration `function foo() { ... }` 或 FunctionExpression `var foo = function() { ... };`. 虽然 JavaScript 解释器可能会容忍它，但覆盖/重新分配一个写成 FunctionDeclaration 的函数，往往表明有错误或问题。
 
 ```js
 function foo() {}
 foo = bar;
 ```
 
-## Rule Details
+## 规则细节
 
-This rule disallows reassigning `function` declarations.
+这条规则不允许重新分配 `function` 的声明。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -38,7 +36,7 @@ var a = function hello() {
 
 :::
 
-Examples of **incorrect** code for this rule, unlike the corresponding rule in JSHint:
+此规则的**错误的**代码的例子，与 JSHint 中的相应规则不同。
 
 ::: incorrect
 
@@ -51,7 +49,7 @@ function foo() {}
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 

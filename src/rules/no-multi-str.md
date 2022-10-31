@@ -4,21 +4,20 @@ layout: doc
 rule_type: suggestion
 ---
 
-
-It's possible to create multiline strings in JavaScript by using a slash before a newline, such as:
+在 JavaScript 中，可以通过在换行前使用斜线来创建多行字符串，如：
 
 ```js
 var x = "Line 1 \
          Line 2";
 ```
 
-Some consider this to be a bad practice as it was an undocumented feature of JavaScript that was only formalized later.
+有些人认为这是一种不好的做法，因为它是 JavaScript 的一个没有记录的特性，后来才正式确定下来。
 
-## Rule Details
+## 规则细节
 
-This rule is aimed at preventing the use of multiline strings.
+这条规则的目的是防止使用多行字符串。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -31,7 +30,7 @@ long text";
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 

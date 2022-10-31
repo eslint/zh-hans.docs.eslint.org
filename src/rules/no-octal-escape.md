@@ -4,20 +4,19 @@ layout: doc
 rule_type: suggestion
 ---
 
-
-As of the ECMAScript 5 specification, octal escape sequences in string literals are deprecated and should not be used. Unicode escape sequences should be used instead.
+从 ECMAScript 5 规范开始，字符串中的八进制转义序列已被废弃，不应使用。应该使用 Unicode 转义序列。
 
 ```js
 var foo = "Copyright \251";
 ```
 
-## Rule Details
+## 规则细节
 
-This rule disallows octal escape sequences in string literals.
+这条规则不允许在字符串字面中使用八进制转义序列。
 
-If ESLint parses code in strict mode, the parser (instead of this rule) reports the error.
+如果 ESLint 在严格模式下解析代码，解析器（而不是本规则）会报告错误。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -29,7 +28,7 @@ var foo = "Copyright \251";
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 

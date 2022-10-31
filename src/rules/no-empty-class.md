@@ -4,21 +4,21 @@ layout: doc
 
 ---
 
-Disallows empty character classes in regular expressions.
+不允许正则表达式中出现空字符类。
 
-(removed) This rule was **removed** in ESLint v1.0 and **replaced** by the [no-empty-character-class](no-empty-character-class) rule.
+（已移除）此规则在 ESLint v1.0 中移除并被 [no-empty-character-class](no-empty-character-class) 所取代。
 
-Empty character classes in regular expressions do not match anything and can result in code that may not work as intended.
+正则表达式中的空字符类不匹配任何东西，可能导致代码不能按预期工作。
 
 ```js
 var foo = /^abc[]/;
 ```
 
-## Rule Details
+## 规则细节
 
-This rule is aimed at highlighting possible typos and unexpected behavior in regular expressions which may arise from the use of empty character classes.
+这条规则旨在强调正则表达式中可能出现的打字错误和意外行为，这可能是由于使用了空字符类。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -32,7 +32,7 @@ bar.match(/^abc[]/);
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 

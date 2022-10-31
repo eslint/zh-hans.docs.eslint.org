@@ -12,9 +12,7 @@ related_rules:
 - space-return-throw-case
 ---
 
-
-
-Multiple spaces in a row that are not used for indentation are typically mistakes. For example:
+一行中的多个空格不用于缩进，通常是错误的。比如：
 
 ```js
 
@@ -22,7 +20,7 @@ if(foo  === "bar") {}
 
 ```
 
-It's hard to tell, but there are two spaces between `foo` and `===`. Multiple spaces such as this are generally frowned upon in favor of single spaces:
+很难说，但在 `foo` 和 `===` 之间有两个空格。一般来说，像这样的多个空格是不允许的，而应该是单个空格。
 
 ```js
 
@@ -30,11 +28,11 @@ if(foo === "bar") {}
 
 ```
 
-## Rule Details
+## 规则细节
 
-This rule aims to disallow multiple whitespace around logical expressions, conditional expressions, declarations, array elements, object properties, sequences and function parameters.
+这条规则的目的是不允许在逻辑表达式、条件表达式、声明、数组元素、对象属性、序列和函数参数周围有多个空格。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -54,7 +52,7 @@ a ?  b: c
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -74,16 +72,16 @@ a ? b: c
 
 :::
 
-## Options
+## 选项
 
-This rule's configuration consists of an object with the following properties:
+这个规则的配置由一个具有以下属性的对象组成：
 
-* `"ignoreEOLComments": true` (defaults to `false`) ignores multiple spaces before comments that occur at the end of lines
-* `"exceptions": { "Property": true }` (`"Property"` is the only node specified by default) specifies nodes to ignore
+* `"ignoreEOLComments": true`（默认为 `false`) 忽略行末出现的注释前的多个空格
+* `"exceptions": { "Property": true }`（`"Property"` 是默认指定的唯一节点）指定要忽略的节点
 
 ### ignoreEOLComments
 
-Examples of **incorrect** code for this rule with the `{ "ignoreEOLComments": false }` (default) option:
+使用此规则与 `{ "ignoreEOLComments": false }`（默认值）选项的**错误**示例：
 
 ::: incorrect
 
@@ -98,7 +96,7 @@ var x = 5;      /* multiline
 
 :::
 
-Examples of **correct** code for this rule with the `{ "ignoreEOLComments": false }` (default) option:
+使用此规则与 `{ "ignoreEOLComments": false }`（默认值）选项的**正确**示例：
 
 ::: correct
 
@@ -113,7 +111,7 @@ var x = 5; /* multiline
 
 :::
 
-Examples of **correct** code for this rule with the `{ "ignoreEOLComments": true }` option:
+使用此规则与 `{ "ignoreEOLComments": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -134,13 +132,13 @@ var x = 5;      /* multiline
 
 ### exceptions
 
-To avoid contradictions with other rules that require multiple spaces, this rule has an `exceptions` option to ignore certain nodes.
+为了避免与其他需要多个空格的规则相矛盾，该规则有一个`例外'选项来忽略某些节点。
 
-This option is an object that expects property names to be AST node types as defined by [ESTree](https://github.com/estree/estree). The easiest way to determine the node types for `exceptions` is to use [AST Explorer](https://astexplorer.net/) with the espree parser.
+这个选项是一个期望属性名是 AST 节点类型的对象，由 [ESTree](https://github.com/estree/estree) 定义。确定 `exceptions` 的节点类型的最简单方法是使用 [AST Explorer](https://astexplorer.net/) 和 espree 解析器。
 
-Only the `Property` node type is ignored by default, because for the [key-spacing](key-spacing) rule some alignment options require multiple spaces in properties of object literals.
+只有 `Property` 节点类型在默认情况下被忽略，因为对于 [key-spacing](key-spacing) 规则，一些对齐选项需要在对象字面的属性中使用多个空格。
 
-Examples of **correct** code for the default `"exceptions": { "Property": true }` option:
+使用默认的 `"exceptions": { "Property": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -156,7 +154,7 @@ var obj = {
 
 :::
 
-Examples of **incorrect** code for the `"exceptions": { "Property": false }` option:
+使用 `"exceptions": { "Property": false }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -172,7 +170,7 @@ var obj = {
 
 :::
 
-Examples of **correct** code for the `"exceptions": { "BinaryExpression": true }` option:
+使用 `"exceptions": { "BinaryExpression": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -184,7 +182,7 @@ var a = 1  *  2;
 
 :::
 
-Examples of **correct** code for the `"exceptions": { "VariableDeclarator": true }` option:
+使用 `"exceptions": { "VariableDeclarator": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -197,7 +195,7 @@ var someOtherVar = 'barBaz';
 
 :::
 
-Examples of **correct** code for the `"exceptions": { "ImportDeclaration": true }` option:
+使用 `"exceptions": { "ImportDeclaration": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -210,6 +208,6 @@ import someOtherMod from 'some-other-mod';
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't want to check and disallow multiple spaces, then you should turn this rule off.
+如果你不想检查和不允许有多个空格，那么你应该把这个规则关掉。

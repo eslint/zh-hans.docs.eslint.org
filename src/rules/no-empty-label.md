@@ -8,17 +8,17 @@ related_rules:
 - no-unused-labels
 ---
 
-Disallows labels for anything other than loops and switches.
+不允许给循环和开关以外的东西贴标签。
 
-(removed) This rule was **removed** in ESLint v2.0 and **replaced** by the [no-labels](no-labels) rule.
+（已移除）此规则在 ESLint v2.0 中移除并被 [no-labels](no-labels) 所取代。
 
-Labeled statements are only used in conjunction with labeled break and continue statements. ECMAScript has no goto statement.
+标记的语句只与标记的 break 和 continue 语句一起使用。ECMAScript 没有 goto 语句。
 
-## Rule Details
+## 规则细节
 
-This error occurs when a label is used to mark a statement that is not an iteration or switch
+当标签被用来标记一个不是迭代或切换的语句时，会发生这个错误
 
-Example of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -31,7 +31,7 @@ var x = 10;
 
 :::
 
-Example of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -46,6 +46,6 @@ for (var i=10; i; i--) {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't want to be notified about usage of labels, then it's safe to disable this rule.
+如果你不希望被通知标签的使用情况，你可以安全地禁用此规则。

@@ -4,36 +4,35 @@ layout: doc
 rule_type: suggestion
 ---
 
+进口是 ES6/ES2015 的标准，用于使其他模块的功能在你当前模块中可用。在 CommonJS 中，这是通过 `require()` 调用实现的，这使得这个 ESLint 规则大致等同于 CommonJS 的 `no-restricted-modules` 对应。
 
-Imports are an ES6/ES2015 standard for making the functionality of other modules available in your current module. In CommonJS this is implemented through the `require()` call which makes this ESLint rule roughly equivalent to its CommonJS counterpart `no-restricted-modules`.
+为什么你要限制进口？
 
-Why would you want to restrict imports?
+* 有些导入可能在特定的环境中没有意义。例如，Node.js 的 `fs` 模块在一个没有文件系统的环境中是没有意义的。
 
-* Some imports might not make sense in a particular environment. For example, Node.js' `fs` module would not make sense in an environment that didn't have a file system.
+* 有些模块提供类似或相同的功能，想想 `lodash` 和 `underscore`。你的项目可能已经对一个模块进行了标准化。你要确保其他的替代方案没有被使用，因为这将不必要地使项目臃肿，并提供更高的维护成本，因为有一个依赖性就足够了。
 
-* Some modules provide similar or identical functionality, think `lodash` and `underscore`. Your project may have standardized on a module. You want to make sure that the other alternatives are not being used as this would unnecessarily bloat the project and provide a higher maintenance cost of two dependencies when one would suffice.
+## 规则细节
 
-## Rule Details
+这个规则允许你指定你不想在你的应用程序中使用的导入。
 
-This rule allows you to specify imports that you don't want to use in your application.
+它只适用于静态导入，不适用于动态导入。
 
-It applies to static imports only, not dynamic ones.
+## 选项
 
-## Options
-
-The syntax to specify restricted imports looks like this:
+指定限制性进口的语法看起来像这样：
 
 ```json
 "no-restricted-imports": ["error", "import1", "import2"]
 ```
 
-or like this:
+或像这样：
 
 ```json
 "no-restricted-imports": ["error", { "paths": ["import1", "import2"] }]
 ```
 
-When using the object form, you can also specify an array of gitignore-style patterns:
+当使用对象形式时，你也可以指定一个 gitignore 风格的模式数组：
 
 ```json
 "no-restricted-imports": ["error", {
@@ -42,7 +41,7 @@ When using the object form, you can also specify an array of gitignore-style pat
 }]
 ```
 
-You may also specify a custom message for any paths you want to restrict as follows:
+你也可以为你想限制的任何路径指定一个自定义信息，如下所示：
 
 ```json
 "no-restricted-imports": ["error", {
@@ -54,7 +53,7 @@ You may also specify a custom message for any paths you want to restrict as foll
 }]
 ```
 
-or like this:
+或像这样：
 
 ```json
 "no-restricted-imports": ["error", {
@@ -68,7 +67,7 @@ or like this:
 }]
 ```
 
-or like this if you need to restrict only certain imports from a module:
+或像这样，如果你需要限制只从一个模块导入某些东西：
 
 ```json
 "no-restricted-imports": ["error", {
@@ -80,7 +79,7 @@ or like this if you need to restrict only certain imports from a module:
 }]
 ```
 
-or like this if you want to apply a custom message to pattern matches:
+或像这样，如果你想对模式匹配应用一个自定义的信息：
 
 ```json
 "no-restricted-imports": ["error", {
@@ -94,9 +93,9 @@ or like this if you want to apply a custom message to pattern matches:
 }]
 ```
 
-The custom message will be appended to the default error message.
+自定义信息将被附加到默认的错误信息中。
 
-Pattern matches can also be configured to be case-sensitive:
+模式匹配也可以被配置为大小写敏感的：
 
 ```json
 "no-restricted-imports": ["error", {
@@ -107,7 +106,7 @@ Pattern matches can also be configured to be case-sensitive:
 }]
 ```
 
-Pattern matches can restrict specific import names only, similar to the `paths` option:
+模式匹配可以只限制特定的导入名称，类似于 `paths` 选项：
 
 ```json
 "no-restricted-imports": ["error", {
@@ -119,7 +118,7 @@ Pattern matches can restrict specific import names only, similar to the `paths` 
 }]
 ```
 
-To restrict the use of all Node.js core imports (via <https://github.com/nodejs/node/tree/master/lib>):
+要限制使用所有 Node.js 的核心导入（通过<https://github.com/nodejs/node/tree/master/lib>）：
 
 ```json
     "no-restricted-imports": ["error",
@@ -127,9 +126,9 @@ To restrict the use of all Node.js core imports (via <https://github.com/nodejs/
     ],
 ```
 
-## Examples
+## 示例
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -267,7 +266,7 @@ import { isEmpty } from 'utils/collection-utils';
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -356,6 +355,6 @@ import { hasValues } from 'utils/collection-utils';
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-Don't use this rule or don't include a module in the list for this rule if you want to be able to import a module in your project without an ESLint error or warning.
+如果你想在你的项目中导入一个模块而不出现 ESLint 错误或警告，不要使用这个规则，也不要在这个规则的列表中包含一个模块。

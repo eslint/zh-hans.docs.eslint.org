@@ -4,22 +4,21 @@ layout: doc
 rule_type: suggestion
 ---
 
-
-As far as naming conventions for identifiers go, dangling underscores may be the most polarizing in JavaScript. Dangling underscores are underscores at either the beginning or end of an identifier, such as:
+就标识符的命名规则而言，悬空的下划线可能是 JavaScript 中最有争议的。悬空的下划线是指在标识符的开头或结尾处的下划线，例如：
 
 ```js
 var _foo;
 ```
 
-There is actually a long history of using dangling underscores to indicate "private" members of objects in JavaScript (though JavaScript doesn't have truly private members, this convention served as a warning). This began with SpiderMonkey adding nonstandard methods such as `__defineGetter__()`. The intent with the underscores was to make it obvious that this method was special in some way. Since that time, using a single underscore prefix has become popular as a way to indicate "private" members of objects.
+实际上，在 JavaScript 中使用悬空的下划线来表示对象的 "私有 "成员已经有很长的历史了（尽管 JavaScript 没有真正的私有成员，但这种惯例起到了警示作用）。这始于 SpiderMonkey 添加的非标准方法，如 `__defineGetter__()`。使用下划线的目的是为了让人知道这个方法在某些方面是特殊的。从那时起，使用单一的下划线前缀作为表示对象的 "私有 "成员的方式变得流行起来。
 
-Whether or not you choose to allow dangling underscores in identifiers is purely a convention and has no effect on performance, readability, or complexity. It's purely a preference.
+你是否选择在标识符中允许悬空的下划线纯粹是一种惯例，对性能、可读性或复杂性没有影响。这纯粹是一种偏好。
 
-## Rule Details
+## 规则细节
 
-This rule disallows dangling underscores in identifiers.
+这条规则不允许在标识符中使用悬空的下划线。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -33,7 +32,7 @@ foo._bar();
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -51,21 +50,21 @@ const foo = (_bar) => {};
 
 :::
 
-## Options
+## 选项
 
-This rule has an object option:
+此规则选项为对象：
 
-* `"allow"` allows specified identifiers to have dangling underscores
-* `"allowAfterThis": false` (default) disallows dangling underscores in members of the `this` object
-* `"allowAfterSuper": false` (default) disallows dangling underscores in members of the `super` object
-* `"allowAfterThisConstructor": false` (default) disallows dangling underscores in members of the `this.constructor` object
-* `"enforceInMethodNames": false` (default) allows dangling underscores in method names
-* `"enforceInClassFields": false` (default) allows dangling underscores in es2022 class fields names
-* `"allowFunctionParams": true` (default) allows dangling underscores in function parameter names
+* `"allow"` 允许指定的标识符有悬空的下划线。
+* `"allowAfterThis": false`（默认值）不允许在 `this` 对象的成员中使用悬空的下划线。
+* `"allowAfterSuper": false`（默认值）不允许在 `super` 对象的成员中使用悬空的下划线。
+* `"allowAfterThisConstructor": false`（默认值）不允许在 `this.constructor` 对象的成员中使用悬空的下划线。
+* `"enforceInMethodNames": false`（默认值）允许在方法名称中使用悬空的下划线。
+* `"enforceInClassFields": false`（默认值）允许在 es2022 类字段名中使用悬空的下划线。
+* `"allowFunctionParams": true`（默认值）允许在函数参数名称中使用悬空的下划线。
 
 ### allow
 
-Examples of additional **correct** code for this rule with the `{ "allow": ["foo_", "_bar"] }` option:
+使用此规则与 `{ "allow": ["foo_", "_bar"] }` 选项的额外**正确**示例：
 
 ::: correct
 
@@ -80,7 +79,7 @@ foo._bar();
 
 ### allowAfterThis
 
-Examples of **correct** code for this rule with the `{ "allowAfterThis": true }` option:
+使用此规则与 `{ "allowAfterThis": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -95,7 +94,7 @@ this._bar();
 
 ### allowAfterSuper
 
-Examples of **correct** code for this rule with the `{ "allowAfterSuper": true }` option:
+使用此规则与 `{ "allowAfterSuper": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -110,7 +109,7 @@ super._bar();
 
 ### allowAfterThisConstructor
 
-Examples of **correct** code for this rule with the `{ "allowAfterThisConstructor": true }` option:
+使用此规则与 `{ "allowAfterThisConstructor": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -125,7 +124,7 @@ this.constructor._bar();
 
 ### enforceInMethodNames
 
-Examples of **incorrect** code for this rule with the `{ "enforceInMethodNames": true }` option:
+使用此规则与 `{ "enforceInMethodNames": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -153,7 +152,7 @@ const o = {
 
 ### enforceInClassFields
 
-Examples of **incorrect** code for this rule with the `{ "enforceInClassFields": true }` option:
+使用此规则与 `{ "enforceInClassFields": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -185,7 +184,7 @@ class Foo {
 
 ### allowFunctionParams
 
-Examples of **incorrect** code for this rule with the `{ "allowFunctionParams": false }` option:
+使用此规则与 `{ "allowFunctionParams": false }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -207,6 +206,6 @@ const foo = (..._bar) => {};
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you want to allow dangling underscores in identifiers, then you can safely turn this rule off.
+如果你想在标识符中允许悬空的下划线，那么你可以安全地关闭这个规则。

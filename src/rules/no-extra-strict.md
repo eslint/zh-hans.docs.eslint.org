@@ -8,9 +8,9 @@ further_reading:
 
 Disallows strict mode directives when already in strict mode.
 
-(removed) This rule was **removed** in ESLint v1.0 and **replaced** by the [strict](strict) rule. The `"global"` or `"function"` options in the new rule are similar to the removed rule.
+（已移除）此规则在 ESLint v1.0 中移除并被 [strict](strict) 规则。新规则中的 `"global"` 或 `"function"` 选项类似于被移除的所取代。
 
-The `"use strict";` directive applies to the scope in which it appears and all inner scopes contained within that scope. Therefore, using the `"use strict";` directive in one of these inner scopes is unnecessary.
+`"use strict";` 指令适用于它出现的作用域和包含在该作用域中的所有内部作用域。因此，在这些内部作用域中使用 `"use strict";` 指令是不必要的。
 
 ```js
 "use strict";
@@ -21,11 +21,11 @@ The `"use strict";` directive applies to the scope in which it appears and all i
 }());
 ```
 
-## Rule Details
+## 规则细节
 
-This rule is aimed at preventing unnecessary `"use strict";` directives. As such, it will warn when it encounters a `"use strict";` directive when already in strict mode.
+这条规则的目的是防止不必要的 `"use strict";` 指令。因此，当它遇到已经处于严格模式的 `"use strict";` 指令时，会发出警告。
 
-Example of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -40,7 +40,7 @@ Example of **incorrect** code for this rule:
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 

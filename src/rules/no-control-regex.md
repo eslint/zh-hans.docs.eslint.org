@@ -7,24 +7,22 @@ related_rules:
 - no-regex-spaces
 ---
 
+控制字符是 ASCII 范围内 0-31 的特殊、不可见的字符。这些字符在 JavaScript 字符串中很少使用，所以一个包含明确匹配这些字符的元素的正则表达式很可能是一个错误。
 
+## 规则细节
 
-Control characters are special, invisible characters in the ASCII range 0-31. These characters are rarely used in JavaScript strings so a regular expression containing elements that explicitly match these characters is most likely a mistake.
+这条规则不允许使用控制字符和一些转义序列与正则表达式中的控制字符匹配。
 
-## Rule Details
+正则表达式模式中的以下元素被认为是可能的输入错误，因此本规则不允许使用。
 
-This rule disallows control characters and some escape sequences that match control characters in regular expressions.
+* 十六进制字符转义，从 `x00` 到 `x1F`。
+* Unicode 字符转义从 `u0000` 到 `u001F`。
+* 从`u{0}` 到 `u{1F}` 的 Unicode 代码点转义。
+* 未转义的原始字符从 U+0000 到 U+001F。
 
-The following elements of regular expression patterns are considered possible errors in typing and are therefore disallowed by this rule:
+本规则允许控制转义，如 `t` 和 `n`。
 
-* Hexadecimal character escapes from `\x00` to `\x1F`.
-* Unicode character escapes from `\u0000` to `\u001F`.
-* Unicode code point escapes from `\u{0}` to `\u{1F}`.
-* Unescaped raw characters from U+0000 to U+001F.
-
-Control escapes such as `\t` and `\n` are allowed by this rule.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -42,7 +40,7 @@ var pattern7 = new RegExp("\\x0C"); // \x0C pattern
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -61,9 +59,9 @@ var pattern8 = new RegExp("\\n");
 
 :::
 
-## Known Limitations
+## 已知限制
 
-When checking `RegExp` constructor calls, this rule examines evaluated regular expression patterns. Therefore, although this rule intends to allow syntax such as `\t`, it doesn't allow `new RegExp("\t")` since the evaluated pattern (string value of `"\t"`) contains a raw control character (the TAB character).
+当检查 `RegExp` 构造函数调用时，这条规则会检查评估的正则表达式模式。因此，尽管这条规则打算允许诸如 `\t` 这样的语法，但它不允许 `new RegExp("\t")`，因为被评估的模式（`"\t"` 的字符串值）包含一个原始控制字符（TAB 字符）。
 
 ```js
 /*eslint no-control-regex: "error"*/
@@ -73,8 +71,8 @@ new RegExp("\t"); // disallowed since the pattern is: <TAB>
 new RegExp("\\t"); // allowed since the pattern is: \t
 ```
 
-There is no difference in behavior between `new RegExp("\t")` and `new RegExp("\\t")`, and the intention to match the TAB character is clear in both cases. They are equally valid for the purpose of this rule, but it only allows `new RegExp("\\t")`.
+`new RegExp("\t")` 和 `new RegExp("\\t")` 之间的行为没有区别，在两种情况下，匹配 TAB 字符的意图都很明显。就本规则而言，它们同样有效，但它只允许使用 `new RegExp("\\t")`。
 
-## When Not To Use It
+## 何时不用
 
-If you need to use control character pattern matching, then you should turn this rule off.
+如果你需要使用控制字符模式匹配，那么你应该关闭这个规则。

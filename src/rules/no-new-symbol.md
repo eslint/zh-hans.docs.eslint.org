@@ -6,23 +6,21 @@ further_reading:
 - https://www.ecma-international.org/ecma-262/6.0/#sec-symbol-objects
 ---
 
-
-
-`Symbol` is not intended to be used with the `new` operator, but to be called as a function.
+`Symbol` 不打算与 `new` 操作符一起使用，而是作为一个函数来调用。
 
 ```js
 var foo = new Symbol("foo");
 ```
 
-This throws a `TypeError` exception.
+这将抛出一个 `TypeError` 异常。
 
-## Rule Details
+## 规则细节
 
-This rule is aimed at preventing the accidental calling of `Symbol` with the `new` operator.
+这条规则的目的是防止用 `new` 操作符意外地调用 `Symbol`。
 
 ## Examples
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -35,7 +33,7 @@ var foo = new Symbol('foo');
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -54,6 +52,6 @@ function bar(Symbol) {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-This rule should not be used in ES3/5 environments.
+不应该在 ES3/5 环境中使用此规则。

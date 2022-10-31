@@ -7,18 +7,17 @@ related_rules:
 - no-unneeded-ternary
 ---
 
-
-The ternary operator is used to conditionally assign a value to a variable. Some believe that the use of ternary operators leads to unclear code.
+三元运算符用于有条件地给一个变量赋值。有些人认为，使用三元运算符会导致代码不清晰。
 
 ```js
 var foo = isBar ? baz : qux;
 ```
 
-## Rule Details
+## 规则细节
 
-This rule disallows ternary operators.
+这条规则不允许三元运算符。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -34,7 +33,7 @@ function quux() {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 

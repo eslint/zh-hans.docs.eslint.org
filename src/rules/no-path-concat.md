@@ -4,36 +4,35 @@ layout: doc
 rule_type: suggestion
 ---
 
+此规则于 ESLint v7.0.0 中废弃，请使用 [`eslint-plugin-node`](https://github.com/mysticatea/eslint-plugin-node) 中的对应规则代替。
 
-This rule was **deprecated** in ESLint v7.0.0. Please use the corresponding rule in [`eslint-plugin-node`](https://github.com/mysticatea/eslint-plugin-node).
-
-In Node.js, the `__dirname` and `__filename` global variables contain the directory path and the file path of the currently executing script file, respectively. Sometimes, developers try to use these variables to create paths to other files, such as:
+在 Node.js 中，`__dirname` 和 `__filename`全局变量分别包含了当前执行的脚本文件的目录路径和文件路径。有时，开发者试图使用这些变量来创建其他文件的路径，例如：
 
 ```js
 var fullPath = __dirname + "/foo.js";
 ```
 
-However, there are a few problems with this. First, you can't be sure what type of system the script is running on. Node.js can be run on any computer, including Windows, which uses a different path separator. It's very easy, therefore, to create an invalid path using string concatenation and assuming Unix-style separators. There's also the possibility of having double separators, or otherwise ending up with an invalid path.
+然而，这其中有几个问题。首先，你不能确定脚本是在什么类型的系统上运行。Node.js 可以在任何计算机上运行，包括 Windows，它使用不同的路径分隔符。因此，使用字符串连接和假设 Unix 风格的分隔符，很容易创建一个无效的路径。也有可能出现双重分隔符，或者以其他方式导致无效的路径。
 
-In order to avoid any confusion as to how to create the correct path, Node.js provides the `path` module. This module uses system-specific information to always return the correct value. So you can rewrite the previous example as:
+为了避免在如何创建正确的路径方面出现混乱，Node.js 提供了 `path` 模块。这个模块使用系统特定的信息，总是返回正确的值。因此，你可以把前面的例子改写成。
 
 ```js
 var fullPath = path.join(__dirname, "foo.js");
 ```
 
-This example doesn't need to include separators as `path.join()` will do it in the most appropriate manner. Alternately, you can use `path.resolve()` to retrieve the fully-qualified path:
+这个例子不需要包括分隔符，因为 `path.join()` 会以最合适的方式完成。另外，你可以使用 `path.resolve()` 来检索完全限定的路径。
 
 ```js
 var fullPath = path.resolve(__dirname, "foo.js");
 ```
 
-Both `path.join()` and `path.resolve()` are suitable replacements for string concatenation wherever file or directory paths are being created.
+`path.join()` 和 `path.resolve()` 都适合在创建文件或目录路径时替代字符串连接法。
 
-## Rule Details
+## 规则细节
 
-This rule aims to prevent string concatenation of directory paths in Node.js
+本规则旨在防止 Node.js 中目录路径的字符串串联
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -48,7 +47,7 @@ var fullPath = __filename + "/foo.js";
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -60,6 +59,6 @@ var fullPath = dirname + "/foo.js";
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you want to allow string concatenation of path names.
+如果你想允许路径名称的字符串串联。

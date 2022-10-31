@@ -4,8 +4,7 @@ layout: doc
 rule_type: suggestion
 ---
 
-
-Comparing to `null` without a type-checking operator (`==` or `!=`), can have unintended results as the comparison will evaluate to true when comparing to not just a `null`, but also an `undefined` value.
+在没有类型检查操作符（`==` 或 `!=`）的情况下与 `null` 比较，可能会产生意想不到的结果，因为在与 `null` 和 `undefined` 的值比较时，比较结果将为真。
 
 ```js
 if (foo == null) {
@@ -13,11 +12,11 @@ if (foo == null) {
 }
 ```
 
-## Rule Details
+## 规则细节
 
-The `no-eq-null` rule aims reduce potential bug and unwanted behavior by ensuring that comparisons to `null` only match `null`, and not also `undefined`. As such it will flag comparisons to null when using `==` and `!=`.
+`no-eq-null` 规则旨在通过确保对 `null` 的比较只匹配 `null`，而不匹配 `undefined` 来减少潜在错误和不需要的行为。因此，当使用 `==` 和 `!=` 时，它将标记对 null 的比较。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -35,7 +34,7 @@ while (qux != null) {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -53,10 +52,10 @@ while (qux !== null) {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you want to enforce type-checking operations in general, use the more powerful [eqeqeq](./eqeqeq) instead.
+如果你想在一般情况下执行类型检查操作，请使用更强大的 [eqeqeq](./eqeqeq) 代替。
 
-## Compatibility
+## 兼容
 
-* **JSHint**: This rule corresponds to `eqnull` rule of JSHint.
+**JSHint**：该规则对应于 JSHint 的 `eqnull` 规则。

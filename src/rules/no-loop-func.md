@@ -4,8 +4,7 @@ layout: doc
 rule_type: suggestion
 ---
 
-
-Writing functions within loops tends to result in errors due to the way the function creates a closure around the loop. For example:
+在循环中编写函数往往会导致错误，这是因为函数在循环周围创建了一个闭合的方式。比如：
 
 ```js
 for (var i = 0; i < 10; i++) {
@@ -15,9 +14,9 @@ for (var i = 0; i < 10; i++) {
 }
 ```
 
-In this case, you would expect each function created within the loop to return a different number. In reality, each function returns 10, because that was the last value of `i` in the scope.
+在这种情况下，你会期望在循环中创建的每个函数返回一个不同的数字。实际上，每个函数都返回 10，因为那是作用域中 `i` 的最后一个值。
 
-`let` or `const` mitigate this problem.
+`let` 或 `const` 可以缓解这个问题。
 
 ```js
 /*eslint-env es6*/
@@ -29,15 +28,15 @@ for (let i = 0; i < 10; i++) {
 }
 ```
 
-In this case, each function created within the loop returns a different number as expected.
+在这种情况下，在循环中创建的每个函数都会按照预期返回一个不同的数字。
 
-## Rule Details
+## 规则细节
 
-This error is raised to highlight a piece of code that may not work as you expect it to and could also indicate a misunderstanding of how the language works. Your code may run without any problems if you do not fix this error, but in some situations it could behave unexpectedly.
+这个错误的出现是为了强调一段可能无法像你所期望的那样工作的代码，也可能表明对语言工作方式的误解。如果你不修复这个错误，你的代码可能会顺利运行，但在某些情况下，它可能会有意外的表现。
 
-This rule disallows any function within a loop that contains unsafe references (e.g. to modified variables from the outer scope).
+这条规则不允许循环中的任何函数包含不安全的引用（例如对外部作用域的修改变量）。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -75,7 +74,7 @@ foo = 100;
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
