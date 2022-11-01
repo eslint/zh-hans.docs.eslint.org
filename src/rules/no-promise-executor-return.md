@@ -8,8 +8,7 @@ further_reading:
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
 ---
 
-
-The `new Promise` constructor accepts a single argument, called an *executor*.
+`new Promise` 构造函数接受一个参数，称为**执行器**。
 
 ```js
 const myPromise = new Promise(function executor(resolve, reject) {
@@ -23,17 +22,17 @@ const myPromise = new Promise(function executor(resolve, reject) {
 });
 ```
 
-The executor function usually initiates some asynchronous operation. Once it is finished, the executor should call `resolve` with the result, or `reject` if an error occurred.
+执行器函数通常启动一些异步操作。一旦完成，执行器应该用结果调用 `resolve`，如果发生错误，则调用 `reject`。
 
-The return value of the executor is ignored. Returning a value from an executor function is a possible error because the returned value cannot be used and it doesn't affect the promise in any way.
+执行器的返回值被忽略。从执行器函数中返回一个值是一个可能的错误，因为返回的值不能被使用，它不会以任何方式影响承诺。
 
-## Rule Details
+## 规则细节
 
-This rule disallows returning values from Promise executor functions.
+这条规则不允许从 Promise 执行器函数中返回值。
 
-Only `return` without a value is allowed, as it's a control flow statement.
+只允许不带值的 `return`，因为它是一个控制流语句。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -68,7 +67,7 @@ new Promise(() => {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 

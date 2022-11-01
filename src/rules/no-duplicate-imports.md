@@ -4,10 +4,9 @@ layout: doc
 rule_type: problem
 ---
 
+每个模块使用一个 `import` 语句会使代码更清晰，因为你可以在一行中看到从该模块导入的所有内容。
 
-Using a single `import` statement per module will make the code clearer because you can see everything being imported from that module on one line.
-
-In the following example the `module` import on line 1 is repeated on line 3. These can be combined to make the list of imports more succinct.
+在下面的例子中，第 1 行的 `module` 导入在第 3 行重复。可以把它们合在一起，使导入的列表更简洁。
 
 ```js
 import { merge } from 'module';
@@ -15,11 +14,11 @@ import something from 'another-module';
 import { find } from 'module';
 ```
 
-## Rule Details
+## 规则细节
 
-This rule requires that all imports from a single module that can be merged exist in a single `import` statement.
+这条规则要求所有可以合并的单个模块的导入都在于一个 `import` 语句中。
 
-Example of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -33,7 +32,7 @@ import { find } from 'module';
 
 :::
 
-Example of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -46,7 +45,7 @@ import something from 'another-module';
 
 :::
 
-Example of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -60,13 +59,13 @@ import * as something from 'module';
 
 :::
 
-## Options
+## 选项
 
-This rule takes one optional argument, an object with a single key, `includeExports` which is a `boolean`. It defaults to `false`.
+这条规则有一个可选参数和一个只有一个键的对象，`includeExports` 值为 `boolean`，默认值是 `false`。
 
-If re-exporting from an imported module, you should add the imports to the `import`-statement, and export that directly, not use `export ... from`.
+如果从一个导入的模块重新导出，你应该在 `import` 语句中添加导入，并直接导出，而不是使用 `export ... from`。
 
-Example of **incorrect** code for this rule with the `{ "includeExports": true }` option:
+使用此规则与 `{ "includeExports": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -80,7 +79,7 @@ export { find } from 'module';
 
 :::
 
-Example of **correct** code for this rule with the `{ "includeExports": true }` option:
+使用此规则与 `{ "includeExports": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -94,7 +93,7 @@ export { find };
 
 :::
 
-Example of **correct** code for this rule with the `{ "includeExports": true }` option:
+使用此规则与 `{ "includeExports": true }` 选项的**正确**示例：
 
 ::: correct
 

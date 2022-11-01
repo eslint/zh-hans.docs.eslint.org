@@ -4,9 +4,7 @@ layout: doc
 rule_type: suggestion
 ---
 
-
-
-If an `if` block contains a `return` statement, the `else` block becomes unnecessary. Its contents can be placed outside of the block.
+如果 `if` 块内包含 `return` 语句，`else` 块就没有必要了。它的内容可以放在块的外面。
 
 ```js
 function foo() {
@@ -18,20 +16,20 @@ function foo() {
 }
 ```
 
-## Rule Details
+## 规则细节
 
-This rule is aimed at highlighting an unnecessary block of code following an `if` containing a return statement. As such, it will warn when it encounters an `else` following a chain of `if`s, all of them containing a `return` statement.
+这条规则的目的是突出显示在含有返回语句的 `if` 后面不必要的代码块。因此，当遇到在一连串的 `if` 后面有一个 `else`，而这些 `if` 都包含 `return` 语句时，它将发出警告。
 
-## Options
+## 选项
 
-This rule has an object option:
+此规则选项为对象：
 
-* `allowElseIf: true` (default) allows `else if` blocks after a return
-* `allowElseIf: false` disallows `else if` blocks after a return
+* `allowElseIf: true`（默认值）允许返回后有 `else if` 块
+* `allowElseIf: false` 不允许在返回后有 `else if` 块
 
 ### `allowElseIf: true`
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -92,7 +90,7 @@ function foo() {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -140,7 +138,7 @@ function foo() {
 
 ### `allowElseIf: false`
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -158,7 +156,7 @@ function foo() {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 

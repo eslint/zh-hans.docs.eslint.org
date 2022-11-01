@@ -6,9 +6,8 @@ related_rules:
 - no-extra-parens
 ---
 
-
-Enclosing complex expressions by parentheses clarifies the developer's intention, which makes the code more readable.
-This rule warns when different operators are used consecutively without parentheses in an expression.
+用小括号将复杂的表达式括起来，可以澄清开发者的意图，从而使代码更易读。
+当在一个表达式中连续使用不同的运算符而没有括号时，这条规则会发出警告。
 
 ```js
 var foo = a && b || c || d;    /*BAD: Unexpected mix of '&&' and '||'.*/
@@ -16,8 +15,8 @@ var foo = (a && b) || c || d;  /*GOOD*/
 var foo = a && (b || c || d);  /*GOOD*/
 ```
 
-**Note:**
-It is expected for this rule to emit one error for each mixed operator in a pair. As a result, for each two consecutive mixed operators used, a distinct error will be displayed, pointing to where the specific operator that breaks the rule is used:
+**注意**：
+预计该规则会对一对混合运算符发出一个错误。因此，对于每两个连续使用的混合运算符，将显示一个不同的错误，指出哪里使用了违反规则的特定运算符。
 
 ```js
 var foo = a && b || c || d;
@@ -30,14 +29,14 @@ will generate
 1:18  Unexpected mix of '&&' and '||'. (no-mixed-operators)
 ```
 
-## Rule Details
+## 规则细节
 
-This rule checks `BinaryExpression`, `LogicalExpression` and `ConditionalExpression`.
+该规则检查 `BinaryExpression`、`LogicalExpression` 和 `ConditionalExpression`。
 
-This rule may conflict with [no-extra-parens](no-extra-parens) rule.
-If you use both this and [no-extra-parens](no-extra-parens) rule together, you need to use the `nestedBinaryExpressions` option of [no-extra-parens](no-extra-parens) rule.
+此规则可能与 [no-extra-parens](no-extra-parens) 规则冲突。
+如果你同时使用这条规则和 [no-extra-parens](no-extra-parens) 规则，你需要使用 [no-extra-parens](no-extra-parens) 规则的 `nestedBinaryExpressions` 选项。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -50,7 +49,7 @@ var foo = a + b * c;
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -67,7 +66,7 @@ var foo = (a + b) * c;
 
 :::
 
-## Options
+## 选项
 
 ```json
 {
@@ -89,28 +88,28 @@ var foo = (a + b) * c;
 
 This rule has 2 options.
 
-* `groups` (`string[][]`) - specifies operator groups to be checked. The `groups` option is a list of groups, and a group is a list of binary operators. Default operator groups are defined as arithmetic, bitwise, comparison, logical, and relational operators. Note: Ternary operator(?:) can be part of any group and by default is allowed to be mixed with other operators.
+* `groups`（`string[][]`）- 指定要检查的运算符组。`groups` 选项是一个组的列表，一个组是一个二进制运算符的列表。默认的运算符组被定义为算术、比特、比较、逻辑和关系运算符。注意：三元运算符 (?:) 可以是任何组的一部分，默认情况下，允许与其他运算符混合。
 
-* `allowSamePrecedence` (`boolean`) - specifies whether to allow mixed operators if they are of equal precedence. Default is `true`.
+* `allowSamePrecedence` (`boolean`) - 指定是否允许混合运算符具有相同的优先级。默认为 `true`。
 
 ### groups
 
-The following operators can be used in `groups` option:
+下列运算符可用于 `groups` 选项：
 
-* Arithmetic Operators: `"+"`, `"-"`, `"*"`, `"/"`, `"%"`, `"**"`
-* Bitwise Operators: `"&"`, `"|"`, `"^"`, `"~"`, `"<<"`, `">>"`, `">>>"`
-* Comparison Operators: `"=="`, `"!="`, `"==="`, `"!=="`, `">"`, `">="`, `"<"`, `"<="`
-* Logical Operators: `"&&"`, `"||"`
-* Coalesce Operator: `"??"`
-* Relational Operators: `"in"`, `"instanceof"`
-* Ternary Operator: `?:`
+* 算术运算符：`"+"`, `"-"`, `"*"`, `"/"`, `"%"`, `"**"`
+* 位运算符：`"&"`, `"|"`, `"^"`, `"~"`, `"<<"`, `">>"`, `">>>"`
+* 比较运算符：`"=="`, `"!="`, `"==="`, `"!=="`, `">"`, `">="`, `"<"`, `"<="`
+* 逻辑运算符：`"&&"`, `"||"`
+* 合并运算符：`"??"`
+* 关系运算符：`"in"`, `"instanceof"`
+* 三元运算符：`?:`
 
-Now, consider the following group configuration: `{"groups": [["&", "|", "^", "~", "<<", ">>", ">>>"], ["&&", "||"]]}`.
-There are 2 groups specified in this configuration: bitwise operators and logical operators.
-This rule checks if the operators belong to the same group only.
-In this case, this rule checks if bitwise operators and logical operators are mixed, but ignores all other operators.
+现在，考虑以下组的配置：`{"groups": [["&", "|", "^", "~", "<<", ">>", ">>>"], ["&&", "||"]]}`。
+在这个配置中，有 2 个组被指定：位操作符和逻辑操作符。
+这条规则只检查运算符是否属于同一组。
+在这种情况下，本规则检查位运算符和逻辑运算符是否混合，但忽略所有其他运算符。
 
-Examples of **incorrect** code for this rule with `{"groups": [["&", "|", "^", "~", "<<", ">>", ">>>"], ["&&", "||"]]}` option:
+使用此规则并使用 `{"groups": [["&", "|", "^", "~", "<<", ">>", ">>>"], ["&&", "||"]]}` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -175,7 +174,7 @@ var baz = (a ? b : c) || d;
 
 ### allowSamePrecedence
 
-Examples of **correct** code for this rule with `{"allowSamePrecedence": true}` option:
+使用此规则与 `{"allowSamePrecedence": true}` 选项的**正确**示例：
 
 ::: correct
 
@@ -214,6 +213,6 @@ var foo = (a + b) - c;
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't want to be notified about mixed operators, then it's safe to disable this rule.
+如果你不关心混合操作符，你可以安全地禁用此规则。

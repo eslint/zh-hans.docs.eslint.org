@@ -6,9 +6,7 @@ related_rules:
 - no-extra-parens
 ---
 
-
-
-In conditional statements, it is very easy to mistype a comparison operator (such as `==`) as an assignment operator (such as `=`). For example:
+在条件语句中，很容易把比较运算符（如 `==`）误打成赋值运算符（如 `=`）。比如：
 
 ```js
 // Check the user's job title
@@ -17,22 +15,22 @@ if (user.jobTitle = "manager") {
 }
 ```
 
-There are valid reasons to use assignment operators in conditional statements. However, it can be difficult to tell whether a specific assignment was intentional.
+在条件语句中使用赋值运算符是有理由的。然而，要想知道一个特定赋值是不是故意的就很难。
 
-## Rule Details
+## 规则细节
 
-This rule disallows ambiguous assignment operators in test conditions of `if`, `for`, `while`, and `do...while` statements.
+使用此规则禁用 `if`、`for`、`while` 和 `do...while` 测试条件中的模糊赋值运算符。
 
-## Options
+## 选项
 
-This rule has a string option:
+此规则选项为字符串：
 
-* `"except-parens"` (default) allows assignments in test conditions *only if* they are enclosed in parentheses (for example, to allow reassigning a variable in the test of a `while` or `do...while` loop)
-* `"always"` disallows all assignments in test conditions
+* `"except-parens"`（默认值）只有当它们被括号括住时才允许测试条件中的赋值（例如，允许在 `while` 或 `do...while` 循环测试中重新赋值变量）。
+* `"always"` 不允许在测试条件中进行任意赋值
 
 ### except-parens
 
-Examples of **incorrect** code for this rule with the default `"except-parens"` option:
+使用此规则与默认的 `"except-parens"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -56,7 +54,7 @@ function setHeight(someNode) {
 
 :::
 
-Examples of **correct** code for this rule with the default `"except-parens"` option:
+使用此规则与默认的 `"except-parens"` 选项的**正确**示例：
 
 ::: correct
 
@@ -90,7 +88,7 @@ function setHeight(someNode) {
 
 ### always
 
-Examples of **incorrect** code for this rule with the `"always"` option:
+使用此规则与 `"always"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -130,7 +128,7 @@ function setHeight(someNode) {
 
 :::
 
-Examples of **correct** code for this rule with the `"always"` option:
+使用此规则与 `"always"` 选项的**正确**示例：
 
 ::: correct
 

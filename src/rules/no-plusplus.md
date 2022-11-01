@@ -4,8 +4,7 @@ layout: doc
 rule_type: suggestion
 ---
 
-
-Because the unary `++` and `--` operators are subject to automatic semicolon insertion, differences in whitespace can change semantics of source code.
+因为单数的 `++` 和 `--` 运算符要自动插入分号，所以空白处的不同会改变源代码的语义。
 
 ```js
 var i = 10;
@@ -26,11 +25,11 @@ j
 // i = 10, j = 21
 ```
 
-## Rule Details
+## 规则细节
 
-This rule disallows the unary operators `++` and `--`.
+这条规则不允许使用单数运算符 `++` 和 `-`。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -50,7 +49,7 @@ for (i = 0; i < l; i++) {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -70,15 +69,15 @@ for (i = 0; i < l; i += 1) {
 
 :::
 
-## Options
+## 选项
 
-This rule has an object option.
+这个规则有一个对象选项。
 
-* `"allowForLoopAfterthoughts": true` allows unary operators `++` and `--` in the afterthought (final expression) of a `for` loop.
+* `"allowForLoopAfterthoughts": true` 允许单数运算符 `++` 和 `--` 在 `for` 循环的后缀（最终表达式）中。
 
 ### allowForLoopAfterthoughts
 
-Examples of **correct** code for this rule with the `{ "allowForLoopAfterthoughts": true }` option:
+使用此规则与 `{ "allowForLoopAfterthoughts": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -100,7 +99,7 @@ for (i = 0, j = l; i < l; i++, j--) {
 
 :::
 
-Examples of **incorrect** code for this rule with the `{ "allowForLoopAfterthoughts": true }` option:
+使用此规则与 `{ "allowForLoopAfterthoughts": true }` 选项的**错误**示例：
 
 ::: incorrect
 

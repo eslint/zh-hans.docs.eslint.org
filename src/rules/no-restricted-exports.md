@@ -4,22 +4,21 @@ layout: doc
 rule_type: suggestion
 ---
 
+在一个项目中，由于各种原因，某些名称可能不允许作为导出的名称使用。
 
-In a project, certain names may be disallowed from being used as exported names for various reasons.
+## 规则细节
 
-## Rule Details
+这条规则不允许指定的名称被用作出口的名称。
 
-This rule disallows specified names from being used as exported names.
+## 选项
 
-## Options
+默认情况下，这个规则不禁止任何名字。只有你在配置中指定的名字才会被禁止。
 
-By default, this rule doesn't disallow any names. Only the names you specify in the configuration will be disallowed.
+此规则选项为对象：
 
-This rule has an object option:
+* `"restrictedNamedExports"` 是一个字符串数组，每个字符串是一个要限制的名称。
 
-* `"restrictedNamedExports"` is an array of strings, where each string is a name to be restricted.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -51,7 +50,7 @@ export { "👍" } from "some_module";
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -85,9 +84,9 @@ export { "👍" as thumbsUp } from "some_module";
 
 ### Default exports
 
-By design, this rule doesn't disallow `export default` declarations. If you configure `"default"` as a restricted name, that restriction will apply only to named export declarations.
+根据设计，这条规则并不禁止 `export default` 声明。如果你将 `"default"` 配置为限制性名称，该限制将仅适用于命名的导出声明。
 
-Examples of additional **incorrect** code for this rule:
+使用此规则的额外**正确**示例：
 
 ::: incorrect
 
@@ -111,7 +110,7 @@ export { default } from "some_module";
 
 :::
 
-Examples of additional **correct** code for this rule:
+使用此规则的额外**正确**示例：
 
 ::: correct
 
@@ -123,9 +122,9 @@ export default function foo() {}
 
 :::
 
-## Known Limitations
+## 已知限制
 
-This rule doesn't inspect the content of source modules in re-export declarations. In particular, if you are re-exporting everything from another module's export, that export may include a restricted name. This rule cannot detect such cases.
+这条规则并不检查再出口声明中的源模块内容。特别是，如果你从另一个模块的导出中重新导出所有内容，该导出可能包括一个受限的名称。本规则无法检测到这种情况。
 
 ```js
 

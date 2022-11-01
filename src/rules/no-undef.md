@@ -7,15 +7,13 @@ related_rules:
 - no-redeclare
 ---
 
+这条规则可以帮助你定位潜在的 ReferenceErrors，它是由变量和参数名称的拼写错误或意外的隐含 globals（例如，由于忘记了 `for` 循环初始化器中的 `var` 关键字）导致的。
 
+## 规则细节
 
-This rule can help you locate potential ReferenceErrors resulting from misspellings of variable and parameter names, or accidental implicit globals (for example, from forgetting the `var` keyword in a `for` loop initializer).
+任何对未声明变量的引用都会导致警告，除非该变量在 `/*global ...*/` 注释中明确提及，或者在配置文件中的 [`globals` key in the configuration file](../user-guide/configuring/language-options#using-configuration-files-1)。一个常见的使用情况是，如果你故意使用在其他地方定义的 globals（例如，在一个源自 HTML 的脚本中）。
 
-## Rule Details
-
-Any reference to an undeclared variable causes a warning, unless the variable is explicitly mentioned in a `/*global ...*/` comment, or specified in the [`globals` key in the configuration file](../user-guide/configuring/language-options#using-configuration-files-1). A common use case for these is if you intentionally use globals that are defined elsewhere (e.g. in a script sourced from HTML).
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -28,7 +26,7 @@ var bar = a + 1;
 
 :::
 
-Examples of **correct** code for this rule with `global` declaration:
+本规则的**正确的**代码的例子，带有 `global` 声明：
 
 ::: correct
 
@@ -42,19 +40,19 @@ var bar = a + 1;
 
 :::
 
-Note that this rule does not disallow assignments to read-only global variables.
-See [no-global-assign](no-global-assign) if you also want to disallow those assignments.
+注意，这条规则不允许对只读的全局变量进行赋值。
+如果你也想禁止这些赋值，请参见 [no-global-assign](no-global-assign)。
 
-This rule also does not disallow redeclarations of global variables.
-See [no-redeclare](no-redeclare) if you also want to disallow those redeclarations.
+这条规则也不允许对全局变量进行重新声明。
+如果你也想禁止这些重新声明，请参见 [no-redeclare](no-redeclare)。
 
-## Options
+## 选项
 
-* `typeof` set to true will warn for variables used inside typeof check (Default false).
+* `typeof` 设置为 true 将对 typeof 检查中使用的变量发出警告（默认为 false）。
 
 ### typeof
 
-Examples of **correct** code for the default `{ "typeof": false }` option:
+使用默认的 `{ "typeof": false }` 选项的**正确**示例：
 
 ::: correct
 
@@ -68,9 +66,9 @@ if (typeof UndefinedIdentifier === "undefined") {
 
 :::
 
-You can use this option if you want to prevent `typeof` check on a variable which has not been declared.
+如果你想防止对未声明的变量进行 `typeof` 检查，可以使用这个选项。
 
-Examples of **incorrect** code for the `{ "typeof": true }` option:
+使用 `{ "typeof": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -82,7 +80,7 @@ if(typeof a === "string"){}
 
 :::
 
-Examples of **correct** code for the `{ "typeof": true }` option with `global` declaration:
+使用 `{ "typeof": true }` 选项及 `global`声明的**正确**示例：
 
 ::: correct
 
@@ -97,11 +95,11 @@ if(typeof a === "string"){}
 
 ## Environments
 
-For convenience, ESLint provides shortcuts that pre-define global variables exposed by popular libraries and runtime environments. This rule supports these environments, as listed in [Specifying Environments](../user-guide/configuring/language-options#specifying-environments).  A few examples are given below.
+为了方便起见，ESLint 提供了快捷方式，预先定义了由流行的库和运行时环境暴露的全局变量。本规则支持这些环境，如[指定环境](../user-guide/configuring/language-options#specifying-environments)中所列。 下面给出了几个例子：
 
 ### browser
 
-Examples of **correct** code for this rule with `browser` environment:
+在 `browser` 环境下，使用此规则的**正确**的示例：
 
 ::: correct
 
@@ -118,7 +116,7 @@ setTimeout(function() {
 
 ### Node.js
 
-Examples of **correct** code for this rule with `node` environment:
+在 `node` 环境下，使用此规则的**正确**示例：
 
 ::: correct
 
@@ -134,10 +132,10 @@ module.exports = function() {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If explicit declaration of global variables is not to your taste.
+如果全局变量的明确声明不符合你的喜好。
 
-## Compatibility
+## 兼容
 
-This rule provides compatibility with treatment of global variables in [JSHint](http://jshint.com/) and [JSLint](http://www.jslint.com).
+这条规则与 [JSHint](http://jshint.com/) 和 [JSLint](http://www.jslint.com) 中对全局变量的处理兼容。

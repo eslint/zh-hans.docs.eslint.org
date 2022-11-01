@@ -4,14 +4,13 @@ layout: doc
 rule_type: layout
 ---
 
+有些风格指南根本不允许使用制表符，包括在注释中。
 
-Some style guides don't allow the use of tab characters at all, including within comments.
+## 规则细节
 
-## Rule Details
+该规则寻找文件内的任何地方的标签：代码、注释或其他东西。
 
-This rule looks for tabs anywhere inside a file: code, comments or anything else.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -28,7 +27,7 @@ var x = 1; // \t test
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -45,15 +44,15 @@ var x = 1; // test
 
 :::
 
-### Options
+### 选项
 
-This rule has an optional object option with the following properties:
+这个规则有一个可选的对象选项，其属性如下：
 
-* `allowIndentationTabs` (default: false): If this is set to true, then the rule will not report tabs used for indentation.
+* `allowIndentationTabs`（默认为 false）：如果设置为 true，那么该规则将不报告用于缩进的标签。
 
 #### allowIndentationTabs
 
-Examples of **correct** code for this rule with the `allowIndentationTabs: true` option:
+使用此规则与 `allowIndentationTabs: true` 选项的**正确**示例：
 
 ::: correct
 
@@ -69,10 +68,10 @@ function test() {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you have established a standard where having tabs is fine, then you can disable this rule.
+如果你已经建立了一个可以使用 tab 的标准，那么你可以禁用这个规则。
 
-## Compatibility
+## 兼容
 
-* **JSCS**: [disallowTabs](https://jscs-dev.github.io/rule/disallowTabs)
+* **JSCS**：[disallowTabs](https://jscs-dev.github.io/rule/disallowTabs)

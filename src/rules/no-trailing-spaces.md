@@ -4,15 +4,13 @@ layout: doc
 rule_type: layout
 ---
 
+有时在编辑文件的过程中，你可能会在行尾出现额外的空格。这些空格的差异可能会被源码控制系统发现，并被标记为差异，给开发者带来挫折感。虽然这些额外的空格不会引起任何功能问题，但许多代码惯例要求在签入前删除尾随空格。
 
+## 规则细节
 
-Sometimes in the course of editing files, you can end up with extra whitespace at the end of lines. These whitespace differences can be picked up by source control systems and flagged as diffs, causing frustration for developers. While this extra whitespace causes no functional issues, many code conventions require that trailing spaces be removed before check-in.
+这条规则不允许在行末有尾随空格（空格、制表符和其他 Unicode 空白字符）。
 
-## Rule Details
-
-This rule disallows trailing whitespace (spaces, tabs, and other Unicode whitespace characters) at the end of lines.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -26,7 +24,7 @@ var baz = 5;//••
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -39,18 +37,18 @@ var baz = 5;
 
 :::
 
-## Options
+## 选项
 
-This rule has an object option:
+此规则选项为对象：
 
-* `"skipBlankLines": false` (default) disallows trailing whitespace on empty lines
-* `"skipBlankLines": true` allows trailing whitespace on empty lines
-* `"ignoreComments": false` (default) disallows trailing whitespace in comment blocks
-* `"ignoreComments": true` allows trailing whitespace in comment blocks
+* `"skipBlankLines": false`（默认值）不允许在空行上有尾随空格。
+* `"skipBlankLines": true` 允许在空行上有尾随空格。
+* `"ignoreComments": false`（默认值）不允许在注释块中留有尾随空格。
+* `"ignoreComments": true` 允许在注释区有尾随空格。
 
 ### skipBlankLines
 
-Examples of **correct** code for this rule with the `{ "skipBlankLines": true }` option:
+使用此规则与 `{ "skipBlankLines": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -66,7 +64,7 @@ var baz = 5;
 
 ### ignoreComments
 
-Examples of **correct** code for this rule with the `{ "ignoreComments": true }` option:
+使用此规则与 `{ "ignoreComments": true }` 选项的**正确**示例：
 
 ::: correct
 

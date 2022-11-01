@@ -6,8 +6,7 @@ related_rules:
 - max-statements-per-line
 ---
 
-
-Chaining the assignment of variables can lead to unexpected results and be difficult to read.
+对变量进行链式赋值会导致意想不到的结果，而且难以阅读。
 
 ```js
 (function() {
@@ -17,11 +16,11 @@ Chaining the assignment of variables can lead to unexpected results and be diffi
 console.log(bar);        // This will output 1 since `bar` is not scoped.
 ```
 
-## Rule Details
+## 规则细节
 
-This rule disallows using multiple assignments within a single statement.
+这条规则不允许在一条语句中使用多个赋值。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -45,7 +44,7 @@ a = b = "quux";
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -73,15 +72,15 @@ b = "quux";
 
 :::
 
-## Options
+## 选项
 
-This rule has an object option:
+此规则选项为对象：
 
-* `"ignoreNonDeclaration"`: When set to `true`, the rule allows chains that don't include initializing a variable in a declaration or initializing a class field. Default is `false`.
+* `"ignoreNonDeclaration"`。当设置为`true`时，该规则允许不包括在声明中初始化变量或初始化类字段的链。默认是`false`。
 
 ### ignoreNonDeclaration
 
-Examples of **correct** code for the `{ "ignoreNonDeclaration": true }` option:
+使用 `{ "ignoreNonDeclaration": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -99,7 +98,7 @@ x.one = y.one = 1;
 
 :::
 
-Examples of **incorrect** code for the `{ "ignoreNonDeclaration": true }` option:
+使用 `{ "ignoreNonDeclaration": true }` 选项的**错误**示例：
 
 ::: incorrect
 

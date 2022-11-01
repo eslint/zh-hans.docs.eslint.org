@@ -13,8 +13,7 @@ further_reading:
 - https://es5.github.io/#x15.1.1.3
 ---
 
-
-The `undefined` variable in JavaScript is actually a property of the global object. As such, in ECMAScript 3 it was possible to overwrite the value of `undefined`. While ECMAScript 5 disallows overwriting `undefined`, it's still possible to shadow `undefined`, such as:
+JavaScript 中的 `undefined` 变量实际上是全局对象的一个属性。因此，在 ECMAScript 3 中，可以覆盖 `undefined` 的值。虽然 ECMAScript 5 不允许覆盖 `undefined`，但仍有可能对 `undefined` 进行影射，例如：
 
 ```js
 function doSomething(data) {
@@ -28,19 +27,19 @@ function doSomething(data) {
 }
 ```
 
-Because `undefined` can be overwritten or shadowed, reading `undefined` can give an unexpected value. (This is not the case for `null`, which is a keyword that always produces the same value.) To guard against this, you can avoid all uses of `undefined`, which is what some style guides recommend and what this rule enforces. Those style guides then also recommend:
+因为 `undefined` 可以被覆盖或阴影，读取 `undefined` 可以得到一个意外的值（而 `null` 则不然，它是一个总是产生相同值的关键字）。为了防止这种情况，你可以避免所有 `undefined` 的使用，这是一些风格指南所建议的，也是本规则所执行的。这些风格指南还建议。
 
-* Variables that should be `undefined` are simply left uninitialized. (All uninitialized variables automatically get the value of `undefined` in JavaScript.)
-* Checking if a value is `undefined` should be done with `typeof`.
-* Using the `void` operator to generate the value of `undefined` if necessary.
+* 应该是 `undefined` 的变量被简单地保持未初始化（所有未初始化的变量在 JavaScript 中自动获得 `undefined` 的值）。
+* 检查一个值是否是 `undefined` 应该用 `typeof` 来完成。
+* 必要时使用 `void` 操作符来生成 `undefined` 的值。
 
-As an alternative, you can use the [no-global-assign](no-global-assign) and [no-shadow-restricted-names](no-shadow-restricted-names) rules to prevent `undefined` from being shadowed or assigned a different value. This ensures that `undefined` will always hold its original, expected value.
+作为替代，你可以使用 [no-global-assign](no-global-assign) 和 [no-shadow-restricted-names](no-shadow-restricted-names) 规则来防止 `undefined` 被阴影化或分配不同的值。这确保了 `undefined` 将始终保持其原始的、预期的值。
 
-## Rule Details
+## 规则细节
 
-This rule aims to eliminate the use of `undefined`, and as such, generates a warning whenever it is used.
+这条规则旨在消除 `undefined` 的使用，因此只要使用它就会产生一个警告。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -62,7 +61,7 @@ function foo(undefined) {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -82,6 +81,6 @@ global.undefined = "foo";
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you want to allow the use of `undefined` in your code, then you can safely turn this rule off.
+如果你想允许在你的代码中使用 `undefined`，那么你可以安全地关闭这个规则。

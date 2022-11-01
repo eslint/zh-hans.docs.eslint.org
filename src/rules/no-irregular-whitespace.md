@@ -7,27 +7,25 @@ further_reading:
 - https://web.archive.org/web/20200414142829/http://timelessrepo.com/json-isnt-a-javascript-subset
 ---
 
+无效或不规则的空白会导致 ECMAScript 5 解析器出现问题，也会使代码更难调试，其性质与混合制表符和空格相似。
 
+程序员可能会错误地输入各种空白字符，例如复制或键盘快捷键。例如，在 macOS 上按下 Alt + Space，就会输入一个不间断的空格字符。
 
-Invalid or irregular whitespace causes issues with ECMAScript 5 parsers and also makes code harder to debug in a similar nature to mixed tabs and spaces.
+解决这个问题的一个简单方法是，从头开始重写违规的一行。这也可能是文本编辑器带来的问题：如果重写该行不能解决这个问题，可以尝试使用不同的编辑器。
 
-Various whitespace characters can be inputted by programmers by mistake for example from copying or keyboard shortcuts. Pressing Alt + Space on macOS adds in a non breaking space character for example.
+已知这些空格引起的问题。
 
-A simple fix for this problem could be to rewrite the offending line from scratch. This might also be a problem introduced by the text editor: if rewriting the line does not fix it, try using a different editor.
+* 零宽度空间
+    * 不被认为是标记的分隔符，通常被解析为 `Unexpected token ILLEGAL`
+    * 在现代浏览器中不显示，使得代码库软件有望解决可视化的问题。
+*行分隔符
+    * 在 JSON 中不是一个有效的字符，会导致解析错误
 
-Known issues these spaces cause:
+## 规则细节
 
-* Zero Width Space
-    * Is NOT considered a separator for tokens and is often parsed as an `Unexpected token ILLEGAL`
-    * Is NOT shown in modern browsers making code repository software expected to resolve the visualization
-* Line Separator
-    * Is NOT a valid character within JSON which would cause parse errors
+这条规则的目的是捕捉非正常制表符和空格的无效空白。这些字符中的一些可能会在现代浏览器中引起问题，而另一些则是一个需要发现的调试问题。
 
-## Rule Details
-
-This rule is aimed at catching invalid whitespace that is not a normal tab and space. Some of these characters may cause issues in modern browsers and others will be a debugging issue to spot.
-
-This rule disallows the following characters except where the options allow:
+该规则不允许使用以下字符，但选项允许的情况除外。
 
 ```text
 \u000B - Line Tabulation (\v) - <VT>
@@ -56,18 +54,18 @@ This rule disallows the following characters except where the options allow:
 \u3000 - Ideographic Space
 ```
 
-## Options
+## 选项
 
-This rule has an object option for exceptions:
+这条规则有一个对象选项，用于处理例外情况。
 
-* `"skipStrings": true` (default) allows any whitespace characters in string literals
-* `"skipComments": true` allows any whitespace characters in comments
-* `"skipRegExps": true` allows any whitespace characters in regular expression literals
-* `"skipTemplates": true` allows any whitespace characters in template literals
+* `"skipStrings": true`（默认值）允许在字符串字面中使用任何空白字符
+* `"skipComments": true` 允许在注释中使用任何空白字符
+* `"skipRegExps": true` 允许在正则表达式中使用任何空格字符
+* `"skipTemplates": true` 允许在模板字面中使用任何空白字符
 
 ### skipStrings
 
-Examples of **incorrect** code for this rule with the default `{ "skipStrings": true }` option:
+使用此规则与默认的 `{ "skipStrings": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -118,7 +116,7 @@ function thing() {
 
 :::
 
-Examples of **correct** code for this rule with the default `{ "skipStrings": true }` option:
+使用此规则与默认的 `{ "skipStrings": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -142,7 +140,7 @@ function thing() {
 
 ### skipComments
 
-Examples of additional **correct** code for this rule with the `{ "skipComments": true }` option:
+该规则的附加**正确**代码的例子：`{ "skipComments": true }` 选项。
 
 ::: correct
 
@@ -162,7 +160,7 @@ Description <NBSP>: some descriptive text
 
 ### skipRegExps
 
-Examples of additional **correct** code for this rule with the `{ "skipRegExps": true }` option:
+使用此规则与额外的 `{ "skipRegExps": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -178,7 +176,7 @@ function thing() {
 
 ### skipTemplates
 
-Examples of additional **correct** code for this rule with the `{ "skipTemplates": true }` option:
+使用此该规则与额外的 `{ "skipTemplates": true }` 选项的正确示例：
 
 ::: correct
 
@@ -193,6 +191,6 @@ function thing() {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you decide that you wish to use whitespace other than tabs and spaces outside of strings in your application.
+如果你决定要在你的应用程序中使用除制表符和空格之外的空白，那么你就需要在字符串之外使用空白。

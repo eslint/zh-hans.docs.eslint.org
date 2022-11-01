@@ -6,15 +6,13 @@ related_rules:
 - no-empty-function
 ---
 
+虽然在技术上空块语句并不是错误，但通常是由于没有完成的重构而发生。它们会在阅读代码时会引起混乱。
 
+## 规则细节
 
-Empty block statements, while not technically errors, usually occur due to refactoring that wasn't completed. They can cause confusion when reading code.
+使用此规则禁用空块语句。此规则忽略了包含注释的块语句（例如在 `try` 语句中空的 `catch` 或 `finally` 块，表示无论有无错误都应继续执行）。
 
-## Rule Details
-
-This rule disallows empty block statements. This rule ignores block statements which contain a comment (for example, in an empty `catch` or `finally` block of a `try` statement to indicate that execution should continue regardless of errors).
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -41,7 +39,7 @@ try {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -71,15 +69,15 @@ try {
 
 :::
 
-## Options
+## 选项
 
-This rule has an object option for exceptions:
+这条规则有一个用于处理例外情况的对象选项：
 
-* `"allowEmptyCatch": true` allows empty `catch` clauses (that is, which do not contain a comment)
+* `"allowEmptyCatch": true` 允许空的 `catch` 子句（即不包含注释）。
 
 ### allowEmptyCatch
 
-Examples of additional **correct** code for this rule with the `{ "allowEmptyCatch": true }` option:
+是呀此规则与 `{ "allowEmptyCatch": true }` 选项的额外**正确**示例：
 
 ::: correct
 
@@ -100,6 +98,6 @@ finally {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you intentionally use empty block statements then you can disable this rule.
+如果你故意使用空块语句，那么你可以禁用这一规则。

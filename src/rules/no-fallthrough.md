@@ -6,9 +6,7 @@ related_rules:
 - default-case
 ---
 
-
-
-The `switch` statement in JavaScript is one of the more error-prone constructs of the language thanks in part to the ability to "fall through" from one `case` to the next. For example:
+JavaScript 中的 `switch` 语句是该语言中最容易出错的结构之一，部分原因是它能够从一个 `case` “滑”到下一个。比如：
 
 ```js
 switch(foo) {
@@ -20,7 +18,7 @@ switch(foo) {
 }
 ```
 
-In this example, if `foo` is `1`, then execution will flow through both cases, as the first falls through to the second. You can prevent this by using `break`, as in this example:
+在这个例子中，如果 `foo` 是 `1`，那么执行将流经两种情况，因为第一种情况会落到第二种情况。你可以通过使用 `break` 来防止这种情况，如本例：
 
 ```js
 switch(foo) {
@@ -33,7 +31,7 @@ switch(foo) {
 }
 ```
 
-That works fine when you don't want a fallthrough, but what if the fallthrough is intentional, there is no way to indicate that in the language. It's considered a best practice to always indicate when a fallthrough is intentional using a comment which matches the `/falls?\s?through/i` regular expression:
+当你不想要突破的时候，这样做很好，但是如果突破是故意的呢，在语言中没有办法表明这一点。最好的做法是使用与 `/falls?\s?through/i` 正则表达式相匹配的注释来表明突破是故意的：
 
 ```js
 switch(foo) {
@@ -75,13 +73,13 @@ switch(foo) {
 }
 ```
 
-In this example, there is no confusion as to the expected behavior. It is clear that the first case is meant to fall through to the second case.
+在这个例子中，对于预期的行为没有任何混淆之处。很明显，第一种情况是要落到第二种情况上的。
 
-## Rule Details
+## 规则细节
 
-This rule is aimed at eliminating unintentional fallthrough of one case to the other. As such, it flags any fallthrough scenarios that are not marked by a comment.
+这条规则的目的是为了消除无意中从一个案例到另一个案例的突破。因此，它标记了任何没有被注释标记的突破情况。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -99,7 +97,7 @@ switch(foo) {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -164,19 +162,19 @@ switch(foo) {
 
 :::
 
-Note that the last `case` statement in these examples does not cause a warning because there is nothing to fall through into.
+请注意，这些例子中的最后一个 `case` 语句不会引起警告，因为没有任何东西可以落入。
 
-## Options
+## 选项
 
-This rule has an object option:
+这个规则有一个对象选项。
 
-* Set the `commentPattern` option to a regular expression string to change the test for intentional fallthrough comment.
+* 将 `commentPattern` 选项设置为正则表达式字符串，以改变对故意落空的注释的测试。
 
-* Set the `allowEmptyCase` option to `true` to allow empty cases regardless of the layout. By default, this rule does not require a fallthrough comment after an empty `case` only if the empty `case` and the next `case` are on the same line or on consecutive lines.
+* 将 `allowEmptyCase` 选项设置为 `true`，以允许空的情况，而不管布局如何。默认情况下，只有当空的 `case` 和下一个 `case` 在同一行或连续的行上时，该规则才不要求在空的 `case` 后有落空的注释。
 
 ### commentPattern
 
-Examples of **correct** code for the `{ "commentPattern": "break[\\s\\w]*omitted" }` option:
+使用 `{ "commentPattern": "break[\\s\\w]*omitted" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -206,7 +204,7 @@ switch(foo) {
 
 ### allowEmptyCase
 
-Examples of **correct** code for the `{ "allowEmptyCase": true }` option:
+使用 `{ "allowEmptyCase": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -227,6 +225,6 @@ switch(foo){
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't want to enforce that each `case` statement should end with a `throw`, `return`, `break`, or comment, then you can safely turn this rule off.
+如果你不想强制要求每个 `case` 语句以 `throw`、`return`、`break` 或注释结束，那么你可以安全地关闭这个规则。

@@ -4,17 +4,15 @@ layout: doc
 rule_type: layout
 ---
 
+此规则在 ESLint v3.3.0 中被**废弃**并被 [func-call-spacing](func-call-spacing) 规则所取代。
 
+虽然在一个函数的名称和执行它的圆括号之间可以有空白，但这种模式往往看起来更像错误。
 
-This rule was **deprecated** in ESLint v3.3.0 and replaced by the [func-call-spacing](func-call-spacing) rule.
+## 规则细节
 
-While it's possible to have whitespace between the name of a function and the parentheses that execute it, such patterns tend to look more like errors.
+这条规则不允许函数标识符和它们的应用之间有间隔。
 
-## Rule Details
-
-This rule disallows spacing between function identifiers and their applications.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -29,7 +27,7 @@ fn
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 

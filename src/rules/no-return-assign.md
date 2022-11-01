@@ -4,8 +4,7 @@ layout: doc
 rule_type: suggestion
 ---
 
-
-One of the interesting, and sometimes confusing, aspects of JavaScript is that assignment can happen at almost any point. Because of this, an errant equals sign can end up causing assignment when the true intent was to do a comparison. This is especially true when using a `return` statement. For example:
+JavaScript 的一个有趣的、有时令人困惑的方面是，赋值几乎可以发生在任何地方。正因为如此，一个错误的等号可能会导致赋值，而真正的意图是做一个比较。这在使用 `return` 语句时尤其如此。比如：
 
 ```js
 function doSomething() {
@@ -13,27 +12,27 @@ function doSomething() {
 }
 ```
 
-It is difficult to tell the intent of the `return` statement here. It's possible that the function is meant to return the result of `bar + 2`, but then why is it assigning to `foo`? It's also possible that the intent was to use a comparison operator such as `==` and that this code is an error.
+很难说清这里的 `return` 语句的意图是什么。有可能该函数的目的是返回 `bar + 2` 的结果，但为什么要将其赋值给 `foo`？也有可能是为了使用一个比较运算符，如 `==`，这段代码是一个错误。
 
-Because of this ambiguity, it's considered a best practice to not use assignment in `return` statements.
+由于这种模糊性，一般不在 `return` 语句中进行赋值。
 
-## Rule Details
+## 规则细节
 
-This rule aims to eliminate assignments from `return` statements. As such, it will warn whenever an assignment is found as part of `return`.
+这条规则的目的是消除 `return` 语句中的赋值。因此，只要发现有赋值作为 `return` 的一部分，它就会发出警告。
 
-## Options
+## 选项
 
-The rule takes one option, a string, which must contain one of the following values:
+规则需要一个选项，即一个字符串，它必须包含以下值之一：
 
-* `except-parens` (default): Disallow assignments unless they are enclosed in parentheses.
-* `always`: Disallow all assignments.
+* `except-parens`（默认值）：不允许赋值，除非它们被括在括号内。
+* `always`：不允许所有的赋值。
 
 ### except-parens
 
-This is the default option.
-It disallows assignments unless they are enclosed in parentheses.
+这是默认的选项。
+它不允许赋值，除非它们被括在括号中。
 
-Examples of **incorrect** code for the default `"except-parens"` option:
+使用默认的 `"except-parens"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -59,7 +58,7 @@ function doSomething() {
 
 :::
 
-Examples of **correct** code for the default `"except-parens"` option:
+使用默认的 `"except-parens"` 选项的**正确**示例：
 
 ::: correct
 
@@ -91,10 +90,10 @@ function doSomething() {
 
 ### always
 
-This option disallows all assignments in `return` statements.
-All assignments are treated as problems.
+这个选项不允许在 `return` 语句中进行任何赋值。
+所有的赋值都被当作问题处理。
 
-Examples of **incorrect** code for the `"always"` option:
+使用 `"always"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -116,7 +115,7 @@ function doSomething() {
 
 :::
 
-Examples of **correct** code for the `"always"` option:
+使用 `"always"` 选项的**正确**示例：
 
 ::: correct
 
@@ -134,6 +133,6 @@ function doSomething() {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you want to allow the use of assignment operators in a `return` statement, then you can safely disable this rule.
+如果你想允许在 `return` 语句中使用赋值运算符，你可以安全地禁用此规则。

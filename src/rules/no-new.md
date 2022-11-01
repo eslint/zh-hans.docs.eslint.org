@@ -4,26 +4,25 @@ layout: doc
 rule_type: suggestion
 ---
 
-
-The goal of using `new` with a constructor is typically to create an object of a particular type and store that object in a variable, such as:
+在构造函数中使用 `new` 的目的通常是创建一个特定类型的对象，并将该对象存储在一个变量中，例如：
 
 ```js
 var person = new Person();
 ```
 
-It's less common to use `new` and not store the result, such as:
+使用 `new` 而不存储结果的情况比较少见，例如：
 
 ```js
 new Person();
 ```
 
-In this case, the created object is thrown away because its reference isn't stored anywhere, and in many cases, this means that the constructor should be replaced with a function that doesn't require `new` to be used.
+在这种情况下，创建的对象被扔掉了，因为它的引用没有被保存在任何地方，在很多情况下，这意味着构造函数应该被替换成不需要使用 `new` 的函数。
 
-## Rule Details
+## 规则细节
 
-This rule is aimed at maintaining consistency and convention by disallowing constructor calls using the `new` keyword that do not assign the resulting object to a variable.
+这条规则的目的是保持一致性和惯例，不允许使用 `new` 关键字的构造函数调用，而不把产生的对象分配给一个变量。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -35,7 +34,7 @@ new Thing();
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 

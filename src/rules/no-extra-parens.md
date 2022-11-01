@@ -10,39 +10,37 @@ further_reading:
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence
 ---
 
+这条规则限制了括号的使用，只在有必要的地方使用。
 
+## 规则细节
 
-This rule restricts the use of parentheses to only where they are necessary.
+此规则总是忽略以下周围的额外括号：
 
-## Rule Details
+* 正则字词，如 `(/abc/).test(var)`，以避免与 [wrap-regex](wrap-regex) 规则冲突
+*立即调用的函数表达式（也称为 IIFEs），如 `var x = (function () {})();` 和 `var x = (function () {}();` 以避免与 [wrap-iife](wrap-iife) 规则冲突
+* 箭头函数参数，以避免与 [arrow-parens](arrow-parens) 规则冲突
 
-This rule always ignores extra parentheses around the following:
+## 选项
 
-* RegExp literals such as `(/abc/).test(var)` to avoid conflicts with the [wrap-regex](wrap-regex) rule
-* immediately-invoked function expressions (also known as IIFEs) such as `var x = (function () {})();` and `var x = (function () {}());` to avoid conflicts with the [wrap-iife](wrap-iife) rule
-* arrow function arguments to avoid conflicts with the [arrow-parens](arrow-parens) rule
+此规则选项为字符串：
 
-## Options
+* `"all"`（默认值）不允许在**任何**表达式周围使用不必要的括号。
+* `"functions"` 只允许在函数表达式周围有不必要的括号
 
-This rule has a string option:
+该规则有一个对象选项，用于处理 `"all"` 选项的例外情况。
 
-* `"all"` (default) disallows unnecessary parentheses around *any* expression
-* `"functions"` disallows unnecessary parentheses *only* around function expressions
-
-This rule has an object option for exceptions to the `"all"` option:
-
-* `"conditionalAssign": false` allows extra parentheses around assignments in conditional test expressions
-* `"returnAssign": false` allows extra parentheses around assignments in `return` statements
-* `"nestedBinaryExpressions": false` allows extra parentheses in nested binary expressions
-* `"ignoreJSX": "none|all|multi-line|single-line"` allows extra parentheses around no/all/multi-line/single-line JSX components. Defaults to `none`.
-* `"enforceForArrowConditionals": false` allows extra parentheses around ternary expressions which are the body of an arrow function
-* `"enforceForSequenceExpressions": false` allows extra parentheses around sequence expressions
-* `"enforceForNewInMemberExpressions": false` allows extra parentheses around `new` expressions in member expressions
-* `"enforceForFunctionPrototypeMethods": false` allows extra parentheses around immediate `.call` and `.apply` method calls on function expressions and around function expressions in the same context.
+* `"conditionalAssign": false` 允许在条件测试表达式中的赋值周围加上括号。
+* `"returnAssign": false` 允许在 `return` 语句中使用额外的小括号。
+* `"nestedBinaryExpressions": false` 允许在嵌套二进制表达式中使用额外的小括号。
+* `"ignoreJSX": "none|all|multi-line|single-line"` 允许在没有/所有/多行/单行 JSX 组件周围使用额外的小括号。默认为 `none`。
+* `"enforceForArrowConditionals": false` 允许在作为箭头函数主体的三元表达式周围添加小括号。
+* `"enforceForSequenceExpressions": false` 允许在序列表达式周围加上小括号。
+* `"enforceForNewInMemberExpressions": false`允许在成员表达式中的 `new` 表达式周围使用额外的小括号。
+* `"enforceForFunctionPrototypeMethods": false` 允许在函数表达式的即时 `.call` 和 `.apply` 方法调用周围以及同一上下文中的函数表达式周围添加括号。
 
 ### all
 
-Examples of **incorrect** code for this rule with the default `"all"` option:
+使用此规则与默认的 `"all"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -74,7 +72,7 @@ class B {
 
 :::
 
-Examples of **correct** code for this rule with the default `"all"` option:
+使用此规则与默认的 `"all"` 选项的**正确**示例：
 
 ::: correct
 
@@ -112,7 +110,7 @@ class B {
 
 ### conditionalAssign
 
-Examples of **correct** code for this rule with the `"all"` and `{ "conditionalAssign": false }` options:
+使用此规则与 `"all"` 和 `{ "conditionalAssign": false }` 选项的**正确**示例：
 
 ::: correct
 
@@ -132,7 +130,7 @@ for (;(a = b););
 
 ### returnAssign
 
-Examples of **correct** code for this rule with the `"all"` and `{ "returnAssign": false }` options:
+使用此规则与 `"all"` 和 `{ "returnAssign": false }` 选项的**正确**示例：
 
 ::: correct
 
@@ -156,7 +154,7 @@ b => b ? (c = d) : (c = e);
 
 ### nestedBinaryExpressions
 
-Examples of **correct** code for this rule with the `"all"` and `{ "nestedBinaryExpressions": false }` options:
+使用此规则与 `"all"` 和 `{ "nestedBinaryExpressions": false }` 选项的**正确**示例：
 
 ::: correct
 
@@ -172,7 +170,7 @@ x = (a * b) / c;
 
 ### ignoreJSX
 
-Examples of **correct** code for this rule with the `all` and `{ "ignoreJSX": "all" }` options:
+使用此规则与 `all` 和 `{ "ignoreJSX": "all" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -188,7 +186,7 @@ const Component = (
 
 :::
 
-Examples of **incorrect** code for this rule with the `all` and `{ "ignoreJSX": "multi-line" }` options:
+使用此规则与 `all` 和 `{ "ignoreJSX": "multi-line" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -200,7 +198,7 @@ const Component = (<div><p /></div>)
 
 :::
 
-Examples of **correct** code for this rule with the `all` and `{ "ignoreJSX": "multi-line" }` options:
+使用此规则与 `all` 和 `{ "ignoreJSX": "multi-line" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -220,7 +218,7 @@ const Component = (
 
 :::
 
-Examples of **incorrect** code for this rule with the `all` and `{ "ignoreJSX": "single-line" }` options:
+使用此规则与 `all` 和 `{ "ignoreJSX": "single-line" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -240,7 +238,7 @@ const Component = (
 
 :::
 
-Examples of **correct** code for this rule with the `all` and `{ "ignoreJSX": "single-line" }` options:
+使用此规则与 `all` 和 `{ "ignoreJSX": "single-line" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -254,7 +252,7 @@ const Component = (<div><p /></div>)
 
 ### enforceForArrowConditionals
 
-Examples of **correct** code for this rule with the `"all"` and `{ "enforceForArrowConditionals": false }` options:
+使用此规则与 `"all"` 和 `{ "enforceForArrowConditionals": false }` 选项的**正确**示例：
 
 ::: correct
 
@@ -269,7 +267,7 @@ const d = c => (1 ? 2 : 3);
 
 ### enforceForSequenceExpressions
 
-Examples of **correct** code for this rule with the `"all"` and `{ "enforceForSequenceExpressions": false }` options:
+使用此规则与 `"all"` 和 `{ "enforceForSequenceExpressions": false }` 选项的**正确**示例：
 
 ::: correct
 
@@ -287,7 +285,7 @@ while ((val = foo(), val < 10));
 
 ### enforceForNewInMemberExpressions
 
-Examples of **correct** code for this rule with the `"all"` and `{ "enforceForNewInMemberExpressions": false }` options:
+使用此规则与 `"all"` 和 `{ "enforceForNewInMemberExpressions": false }` 选项的**正确**示例：
 
 ::: correct
 
@@ -305,7 +303,7 @@ const quux = (new Bar())[baz];
 
 ### enforceForFunctionPrototypeMethods
 
-Examples of **correct** code for this rule with the `"all"` and `{ "enforceForFunctionPrototypeMethods": false }` options:
+使用此规则与 `"all"` 和 `{ "enforceForFunctionPrototypeMethods": false }` 选项的**正确**示例：
 
 ::: correct
 
@@ -325,7 +323,7 @@ const quux = (function () {}.apply());
 
 ### functions
 
-Examples of **incorrect** code for this rule with the `"functions"` option:
+使用此规则与 `"functions"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -339,7 +337,7 @@ var y = (function () {return 1;});
 
 :::
 
-Examples of **correct** code for this rule with the `"functions"` option:
+使用此规则与 `"functions"` 选项的**正确**示例：
 
 ::: correct
 

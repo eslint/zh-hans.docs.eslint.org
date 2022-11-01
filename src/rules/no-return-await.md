@@ -7,16 +7,15 @@ further_reading:
 - https://jakearchibald.com/2017/await-vs-return-vs-return-await/
 ---
 
+在 `async function` 中使用 `return await` 可以使当前函数保持在调用堆栈中，直到被等待的 Promise 被解决，代价是在解决外部 Promise 之前有一个额外的微任务。`return await` 也可以在 try/catch 语句中使用，以捕捉来自另一个返回 Promise 的函数的错误。
 
-Using `return await` inside an `async function` keeps the current function in the call stack until the Promise that is being awaited has resolved, at the cost of an extra microtask before resolving the outer Promise. `return await` can also be used in a try/catch statement to catch errors from another function that returns a Promise.
+你可以通过不等待返回值来避免额外的微任务，但代价是如果错误从返回的 Promise 异步抛出，该函数将不再是堆栈跟踪的一部分。这可能会使调试更加困难。
 
-You can avoid the extra microtask by not awaiting the return value, with the trade off of the function no longer being a part of the stack trace if an error is thrown asynchronously from the Promise being returned. This can make debugging more difficult.
+## 规则细节
 
-## Rule Details
+这条规则旨在防止由于缺乏对 `async function` 语义的理解而可能产生的常见性能危险。
 
-This rule aims to prevent a likely common performance hazard due to a lack of understanding of the semantics of `async function`.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -30,7 +29,7 @@ async function foo() {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -62,10 +61,10 @@ async function foo() {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-There are a few reasons you might want to turn this rule off:
+有几个原因你可能想关闭这个规则：
 
-* If you want to use `await` to denote a value that is a thenable
-* If you do not want the performance benefit of avoiding `return await`
-* If you want the functions to show up in stack traces (useful for debugging purposes)
+* 如果你想用 `await` 来表示一个值，而这个值是一个可执行的值
+* 如果你不想要避免 `return await`带 来的性能优势
+* 如果你想让函数显示在堆栈跟踪中（对调试有用）

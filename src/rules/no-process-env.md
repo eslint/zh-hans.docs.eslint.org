@@ -7,16 +7,15 @@ further_reading:
 - https://blog.benhall.me.uk/2012/02/storing-application-config-data-in/
 ---
 
+此规则于 ESLint v7.0.0 中废弃，请使用 [`eslint-plugin-node`](https://github.com/mysticatea/eslint-plugin-node) 中的对应规则代替。
 
-This rule was **deprecated** in ESLint v7.0.0. Please use the corresponding rule in [`eslint-plugin-node`](https://github.com/mysticatea/eslint-plugin-node).
+Node.js 中的 `process.env` 对象是用来存储部署/配置参数的。在一个项目中丢弃它可能会导致维护问题，因为它是另一种全局依赖。因此，它可能导致多用户设置中的合并冲突和多服务器设置中的部署问题。相反，最好的做法之一是在一个单一的配置/设置文件中定义所有这些参数，可以在整个项目中访问。
 
-The `process.env` object in Node.js is used to store deployment/configuration parameters. Littering it through out a project could lead to maintenance issues as it's another kind of global dependency. As such, it could lead to merge conflicts in a multi-user setup and deployment issues in a multi-server setup. Instead, one of the best practices is to define all those parameters in a single configuration/settings file which could be accessed throughout the project.
+## 规则细节
 
-## Rule Details
+这条规则的目的是阻止使用 `process.env` 来避免全局依赖。因此，只要使用 `process.env`，它就会发出警告。
 
-This rule is aimed at discouraging use of `process.env` to avoid global dependencies. As such, it will warn whenever `process.env` is used.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -30,7 +29,7 @@ if(process.env.NODE_ENV === "development") {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -46,6 +45,6 @@ if(config.env === "development") {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you prefer to use `process.env` throughout your project to retrieve values from environment variables, then you can safely disable this rule.
+如果你喜欢在整个项目中使用 `process.env` 来检索环境变量的值，你可以安全地禁用此规则。

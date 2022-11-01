@@ -6,29 +6,27 @@ further_reading:
 - https://es5.github.io/#x15.8
 ---
 
+ECMAScript 提供了几个全局对象，目的是要按原样使用。其中一些对象由于大写字母的缘故，看起来像是构造函数（如`Math'和`JSON'），但如果你试图将它们作为函数执行，就会出现错误。
 
+[ECMAScript 5 规范](https://es5.github.io/#x15.8) 明确指出，`Math` 和 `JSON` 都不能被调用。
 
-ECMAScript provides several global objects that are intended to be used as-is. Some of these objects look as if they could be constructors due their capitalization (such as `Math` and `JSON`) but will throw an error if you try to execute them as functions.
+> Math 对象没有 `[[Call]]` 内部属性；不可能将 Math 对象作为一个函数调用。
 
-The [ECMAScript 5 specification](https://es5.github.io/#x15.8) makes it clear that both `Math` and `JSON` cannot be invoked:
+[ECMAScript 2015 规范](https://www.ecma-international.org/ecma-262/6.0/index.html#sec-reflect-object) 明确指出，`Reflect'不能被调用。
 
-> The Math object does not have a `[[Call]]` internal property; it is not possible to invoke the Math object as a function.
+> Reflect 对象也没有 `[[Call]]` 内部方法；不可能作为一个函数调用 Reflect 对象。
 
-The [ECMAScript 2015 specification](https://www.ecma-international.org/ecma-262/6.0/index.html#sec-reflect-object) makes it clear that `Reflect` cannot be invoked:
+而 [ECMAScript 2017 规范](https://www.ecma-international.org/ecma-262/8.0/index.html#sec-atomics-object) 明确指出，`Atomics` 不能被调用。
 
-> The Reflect object also does not have a `[[Call]]` internal method; it is not possible to invoke the Reflect object as a function.
+> Atomics 对象没有 `[[Call]]` 内部方法；不可能将 Atomics 对象作为一个函数来调用。
 
-And the [ECMAScript 2017 specification](https://www.ecma-international.org/ecma-262/8.0/index.html#sec-atomics-object) makes it clear that `Atomics` cannot be invoked:
+## 规则细节
 
-> The Atomics object does not have a `[[Call]]` internal method; it is not possible to invoke the Atomics object as a function.
+这条规则不允许将 `Math`、`JSON`、`Reflect` 和 `Atomics` 对象作为函数调用。
 
-## Rule Details
+这条规则也不允许用 `new` 操作符将这些对象作为构造器。
 
-This rule disallows calling the `Math`, `JSON`, `Reflect` and `Atomics` objects as functions.
-
-This rule also disallows using these objects as constructors with the `new` operator.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -55,7 +53,7 @@ var newAtomics = new Atomics();
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 

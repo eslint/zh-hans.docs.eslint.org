@@ -4,15 +4,13 @@ layout: doc
 rule_type: problem
 ---
 
+ES 模块对导入的绑定的更新导致运行时错误。
 
+## 规则细节
 
-The updates of imported bindings by ES Modules cause runtime errors.
+这条规则对导入的绑定的分配、增量和减量发出警告。
 
-## Rule Details
-
-This rule warns the assignments, increments, and decrements of imported bindings.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -32,7 +30,7 @@ Object.assign(mod_ns, { foo: "foo" }) // ERROR: The members of 'mod_ns' are read
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -55,6 +53,6 @@ test(mod_ns) // Not errored because it doesn't know that 'test' updates the memb
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't want to be notified about modifying imported bindings, you can disable this rule.
+如果你不希望被通知修改导入的绑定，你可以禁用这个规则。

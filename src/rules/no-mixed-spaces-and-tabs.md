@@ -6,15 +6,13 @@ further_reading:
 - https://www.emacswiki.org/emacs/SmartTabs
 ---
 
+大多数代码惯例要求缩进时使用制表符或空格。因此，如果一行代码同时使用制表符和空格缩进，通常是一个错误。
 
+## 规则细节
 
-Most code conventions require either tabs or spaces be used for indentation. As such, it's usually an error if a single line of code is indented with both tabs and spaces.
+这条规则不允许在缩进时混合使用空格和制表符。
 
-## Rule Details
-
-This rule disallows mixed spaces and tabs for indentation.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -38,7 +36,7 @@ function main() {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -53,15 +51,15 @@ function add(x, y) {
 
 :::
 
-## Options
+## 选项
 
-This rule has a string option.
+这个规则有一个字符串选项。
 
-* `"smart-tabs"` allows mixed tabs and spaces when the spaces are used for alignment.
+* `"smart-tabs"`当空格用于对齐时，允许混合制表符和空格。
 
 ### smart-tabs
 
-Examples of **correct** code for this rule with the `"smart-tabs"` option:
+使用此规则与 `"smart-tabs"` 选项的**正确**示例：
 
 ::: correct
 

@@ -4,17 +4,16 @@ layout: doc
 rule_type: suggestion
 ---
 
+我们认为良好的做法是只抛出 `Error` 对象本身或使用 `Error` 对象作为用户定义的异常的基础对象。
+`Error` 对象的基本好处是，它们会自动跟踪它们的建立和来源地。
 
-It is considered good practice to only `throw` the `Error` object itself or an object using the `Error` object as base objects for user-defined exceptions.
-The fundamental benefit of `Error` objects is that they automatically keep track of where they were built and originated.
+这个规则限制了什么可以作为异常被抛出。当它第一次被创建时，它只防止字面量被抛出（因此而得名），但现在它已被扩展到只允许有可能成为 `Error` 对象的表达式。
 
-This rule restricts what can be thrown as an exception.  When it was first created, it only prevented literals from being thrown (hence the name), but it has now been expanded to only allow expressions which have a possibility of being an `Error` object.
+## 规则细节
 
-## Rule Details
+这条规则的目的是在抛出异常时保持一致性，不允许抛出不可能是 `Error` 对象的字面和其他表达式。
 
-This rule is aimed at maintaining consistency when throwing exception by disallowing to throw literals and other expressions which cannot possibly be an `Error` object.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -41,7 +40,7 @@ throw `${err}`
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -64,11 +63,11 @@ try {
 
 :::
 
-## Known Limitations
+## 已知限制
 
-Due to the limits of static analysis, this rule cannot guarantee that you will only throw `Error` objects.
+由于静态分析的局限性，本规则不能保证你只抛出 `Error` 对象。
 
-Examples of **correct** code for this rule, but which do not throw an `Error` object:
+使用此规则但没有抛出 `Error` 对象的**正确**示例：
 
 ::: correct
 

@@ -9,19 +9,17 @@ further_reading:
 - https://es5.github.io/#C
 ---
 
-
-
-ES5 §15.1.1 Value Properties of the Global Object (`NaN`, `Infinity`, `undefined`) as well as strict mode restricted identifiers `eval` and `arguments` are considered to be restricted names in JavaScript. Defining them to mean something else can have unintended consequences and confuse others reading the code. For example, there's nothing preventing you from writing:
+ES5 §15.1.1 全局对象的值属性（`NaN`、`Infinity`、`undefined`）以及严格模式的限制性标识符 `eval` 和 `arguments` 被认为是 JavaScript 中的限制性名称。将它们定义为其他含义可能会产生意想不到的后果，并使其他人在阅读代码时感到困惑。例如，没有什么可以阻止你写：
 
 ```js
 var undefined = "foo";
 ```
 
-Then any code used within the same scope would not get the global `undefined`, but rather the local version with a very different meaning.
+那么在同一范围内使用的任何代码都不会得到全局的 `undefined`，而是具有非常不同含义的本地版本。
 
-## Rule Details
+## 规则细节
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -39,7 +37,7 @@ try {} catch(eval){}
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 

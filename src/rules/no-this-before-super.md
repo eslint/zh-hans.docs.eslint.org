@@ -4,19 +4,17 @@ layout: doc
 rule_type: problem
 ---
 
+在派生类的构造函数中，如果 `this`/`super` 在 `super()` 调用之前被使用，会引发引用错误。
 
+本规则检查构造函数中的 `this`/`super` 关键字，然后报告那些在 `super()` 之前的关键字。
 
-In the constructor of derived classes, if `this`/`super` are used before `super()` calls, it raises a reference error.
+## 规则细节
 
-This rule checks `this`/`super` keywords in constructors, then reports those that are before `super()`.
-
-## Rule Details
-
-This rule is aimed to flag `this`/`super` keywords before `super()` callings.
+这条规则的目的是在调用 `super()` 之前标记 `this`/`super` 关键字。
 
 ## Examples
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -54,7 +52,7 @@ class A extends B {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -84,6 +82,6 @@ class A extends B {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't want to be notified about using `this`/`super` before `super()` in constructors, you can safely disable this rule.
+如果你不想被通知在构造函数的 `super()` 前使用 `this`/`super`，你可以安全地禁用这一规则。

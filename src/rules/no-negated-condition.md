@@ -4,17 +4,16 @@ layout: doc
 rule_type: suggestion
 ---
 
+否定条件更难理解。可以通过倒置条件来使代码更易读。
 
-Negated conditions are more difficult to understand. Code can be made more readable by inverting the condition instead.
+## 规则细节
 
-## Rule Details
+这条规则不允许以下任何一种情况下的否定条件：
 
-This rule disallows negated conditions in either of the following:
+* `if` 语句有一个 `else` 分支
+* 三元表达式
 
-* `if` statements which have an `else` branch
-* ternary expressions
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -44,7 +43,7 @@ if (a !== b) {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 

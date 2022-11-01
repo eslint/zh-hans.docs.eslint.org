@@ -4,15 +4,14 @@ layout: doc
 rule_type: suggestion
 ---
 
+一些风格指南不允许在代码的同一行有注释。如果注释紧跟在代码后面，代码会变得难以阅读。
+另一方面，将注释紧跟在代码后面有时会更快、更明显。
 
-Some style guides disallow comments on the same line as code. Code can become difficult to read if comments immediately follow the code on the same line.
-On the other hand, it is sometimes faster and more obvious to put comments immediately following code.
+## 规则细节
 
-## Rule Details
+这条规则不允许与代码在同一行的注释。
 
-This rule disallows comments on the same line as code.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -33,7 +32,7 @@ var c = 3; /* A block comment after code */
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -51,9 +50,9 @@ var bar = 5;
 
 ### JSX exception
 
-Comments inside the curly braces in JSX are allowed to be on the same line as the braces, but only if they are not on the same line with other code, and the braces do not enclose an actual expression.
+JSX 中大括号内的注释允许与大括号在同一行，但前提是它们不能与其他代码在同一行，而且大括号不包含实际的表达。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -73,7 +72,7 @@ var bar = (
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -109,13 +108,13 @@ var quux = (
 
 :::
 
-## Options
+## 选项
 
 ### ignorePattern
 
-To make this rule ignore specific comments, set the `ignorePattern` option to a string pattern that will be passed to the [`RegExp` constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/RegExp).
+要使这个规则忽略特定的注释，请将 `ignorePattern` 选项设置为一个字符串模式，该模式将被传递给 [`RegExp` 构造函数](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/RegExp)。
 
-Examples of **correct** code for the `ignorePattern` option:
+使用 `ignorePattern` 选项的**正确**示例：
 
 ::: correct
 
@@ -127,7 +126,7 @@ import(/* webpackChunkName: "my-chunk-name" */ './locale/en');
 
 :::
 
-Examples of **incorrect** code for the `ignorePattern` option:
+使用 `ignorePattern` 选项的**错误**示例：
 
 ::: incorrect
 

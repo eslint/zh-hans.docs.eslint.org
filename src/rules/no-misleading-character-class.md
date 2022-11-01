@@ -4,44 +4,40 @@ layout: doc
 rule_type: problem
 ---
 
+Unicode 包括由多个代码点组成的字符。
+正则字符类语法（`/[abc]/`）不能处理由多个代码点组成的字符，这些字符将被溶入每个代码点。例如，`❇️` 是由 `❇`（`U+2747`）和 VARIATION SELECTOR-16（`U+FE0F`）组成。如果这个字符在正则字符类中，它将与 `❇`（`U+2747`）或 VARIATION SELECTOR-16（`U+FE0F`）匹配，而不是 `❇️`。
 
+这条规则报告在字符类语法中包括多个码位字符的正则表达式。这条规则认为以下字符是多码点字符。
 
+**带有组合字符的字符**：
 
-
-Unicode includes the characters which are made with multiple code points.
-RegExp character class syntax (`/[abc]/`) cannot handle characters which are made by multiple code points as a character; those characters will be dissolved to each code point. For example, `❇️` is made by `❇` (`U+2747`) and VARIATION SELECTOR-16 (`U+FE0F`). If this character is in RegExp character class, it will match to either `❇` (`U+2747`) or VARIATION SELECTOR-16 (`U+FE0F`) rather than `❇️`.
-
-This rule reports the regular expressions which include multiple code point characters in character class syntax. This rule considers the following characters as multiple code point characters.
-
-**A character with combining characters:**
-
-The combining characters are characters which belong to one of `Mc`, `Me`, and `Mn` [Unicode general categories](http://www.unicode.org/L2/L1999/UnicodeData.html#General%20Category).
+组合字符是属于 `Mc`、`Me` 和 `Mn` 之一的字符 [Unicode 一般类别](http://www.unicode.org/L2/L1999/UnicodeData.html#General%20Category)。
 
 ```js
 /^[Á]$/u.test("Á") //→ false
 /^[❇️]$/u.test("❇️") //→ false
 ```
 
-**A character with Emoji modifiers:**
+**一个带有表情符号修饰的字符**：
 
 ```js
 /^[👶🏻]$/u.test("👶🏻") //→ false
 /^[👶🏽]$/u.test("👶🏽") //→ false
 ```
 
-**A pair of regional indicator symbols:**
+**一对区域指标符号**：
 
 ```js
 /^[🇯🇵]$/u.test("🇯🇵") //→ false
 ```
 
-**Characters that ZWJ joins:**
+**ZWJ 合成的人物**：
 
 ```js
 /^[👨‍👩‍👦]$/u.test("👨‍👩‍👦") //→ false
 ```
 
-**A surrogate pair without Unicode flag:**
+**一个没有 Unicode 标志的代替对**：
 
 ```js
 /^[👍]$/.test("👍") //→ false
@@ -50,11 +46,11 @@ The combining characters are characters which belong to one of `Mc`, `Me`, and `
 /^[👍]$/u.test("👍") //→ true
 ```
 
-## Rule Details
+## 规则细节
 
-This rule reports the regular expressions which include multiple code point characters in character class syntax.
+这条规则报告在字符类语法中包含多个码位字符的正则表达式。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -71,7 +67,7 @@ Examples of **incorrect** code for this rule:
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -84,6 +80,6 @@ Examples of **correct** code for this rule:
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-You can turn this rule off if you don't want to check RegExp character class syntax for multiple code point characters.
+如果您不想为多个代码点字符检查正则字符类语法，您可以关闭此规则。

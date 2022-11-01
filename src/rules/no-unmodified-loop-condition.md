@@ -4,9 +4,8 @@ layout: doc
 rule_type: problem
 ---
 
-
-Variables in a loop condition often are modified in the loop.
-If not, it's possibly a mistake.
+经常会循环中修改循环条件中的变量。
+如果没有，那可能是个错误。
 
 ```js
 while (node) {
@@ -21,17 +20,14 @@ while (node) {
 }
 ```
 
-## Rule Details
+## 规则细节
 
-This rule finds references which are inside of loop conditions, then checks the
-variables of those references are modified in the loop.
+这条规则会找到位于循环条件内的引用，然后检查是否有在循环中修改这些引用的变量。
 
-If a reference is inside of a binary expression or a ternary expression, this rule checks the result of
-the expression instead.
-If a reference is inside of a dynamic expression (e.g. `CallExpression`,
-`YieldExpression`, ...), this rule ignores it.
+如果是在二元表达式或三元表达式中的引用，这个规则会检查表达式的结果。
+如果是在动态表达式中的引用（例如 `CallExpression`、`YieldExpression` 等），本规则将忽略它。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -56,7 +52,7 @@ while (node !== root) {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -98,6 +94,6 @@ while (check(obj)) {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't want to notified about references inside of loop conditions, then it's safe to disable this rule.
+如果你不关心循环条件内的引用，你可以安全地禁用此规则。

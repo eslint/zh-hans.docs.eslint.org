@@ -4,21 +4,20 @@ layout: doc
 rule_type: suggestion
 ---
 
-
-'Magic numbers' are numbers that occur multiple times in code without an explicit meaning.
-They should preferably be replaced by named constants.
+神奇的数字 "是在代码中多次出现的数字，没有明确的含义。
+它们最好被命名的常量所取代。
 
 ```js
 var now = Date.now(),
     inOneHour = now + (60 * 60 * 1000);
 ```
 
-## Rule Details
+## 规则细节
 
-The `no-magic-numbers` rule aims to make code more readable and refactoring easier by ensuring that special numbers
-are declared as constants to make their meaning explicit.
+`no-magic-numbers` 规则的目的是通过确保特殊数字
+被声明为常量，使其含义明确。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -55,7 +54,7 @@ SECONDS = 60;
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -70,17 +69,17 @@ var dutyFreePrice = 100,
 
 :::
 
-## Options
+## 选项
 
 ### ignore
 
-An array of numbers to ignore. It's set to `[]` by default.
-If provided, it must be an `Array`.
+一个要忽略的数字数组。默认情况下，它被设置为 `[]`。
+如果提供，它必须是一个 `Array`。
 
-The array can contain values of `number` and `string` types.
-If it's a string, the text must be parsed as `bigint` literal (e.g., `"100n"`).
+该数组可以包含 `number` 和 `string` 类型的值。
+如果它是一个字符串，文本必须被解析为 `bigint` 字面（例如，`"100n"`）。
 
-Examples of **correct** code for the sample `{ "ignore": [1] }` option:
+使用 sample `{ "ignore": [1] }` 选项的**正确**示例：
 
 ::: correct
 
@@ -93,7 +92,7 @@ var dataLast = data.length && data[data.length - 1];
 
 :::
 
-Examples of **correct** code for the sample `{ "ignore": ["1n"] }` option:
+使用 sample `{ "ignore": ["1n"] }` 选项的**正确**示例：
 
 ::: correct
 
@@ -107,15 +106,15 @@ foo(1n);
 
 ### ignoreArrayIndexes
 
-A boolean to specify if numbers used in the context of array indexes (e.g., `data[2]`) are considered okay. `false` by default.
+一个布尔值，用于指定在数组索引范围内使用的数字（例如，`data[2]`）是否被认为是好的。默认为 `false`。
 
-This option allows only valid array indexes: numbers that will be coerced to one of `"0"`, `"1"`, `"2"` ... `"4294967294"`.
+该选项只允许有效的数组索引：数字将被强制为 `"0"`、`"1"`、`"2"`、...、`"4294967294"` 之一。
 
-Arrays are objects, so they can have property names such as `"-1"` or `"2.5"`. However, those are just "normal" object properties that don't represent array elements. They don't influence the array's `length`, and they are ignored by array methods like `.map` or `.forEach`.
+数组是对象，所以它们可以有诸如 `"-1"` 或 `"2.5"` 这样的属性名称。然而，这些只是“普通”的对象属性，并不代表数组元素。它们不影响数组的 `length`，而且它们会被像 `.map` 或 `.forEach` 这样的数组方法忽略。
 
-Additionally, since the maximum [array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) is 2<sup>32</sup> - 1, all values above 2<sup>32</sup> - 2 also represent just normal property names and are thus not considered to be array indexes.
+此外，由于最大[数组长度](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) 为 2<sup>32</sup> - 1 ，所有高于 2<sup>32</sup> - 2 的值也仅代表普通属性名称，因此不被视为数组索引。
 
-Examples of **correct** code for the `{ "ignoreArrayIndexes": true }` option:
+使用 `{ "ignoreArrayIndexes": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -141,7 +140,7 @@ a = data[4294967294]; // max array index
 
 :::
 
-Examples of **incorrect** code for the `{ "ignoreArrayIndexes": true }` option:
+使用 `{ "ignoreArrayIndexes": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -167,9 +166,9 @@ a = data[1e500]; // same as data["Infinity"]
 
 ### ignoreDefaultValues
 
-A boolean to specify if numbers used in default value assignments are considered okay. `false` by default.
+一个布尔值，默认为 `false`。用于指定在默认值分配中使用的数字是否被认为可行。
 
-Examples of **correct** code for the `{ "ignoreDefaultValues": true }` option:
+使用 `{ "ignoreDefaultValues": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -196,9 +195,9 @@ let head;
 
 ### enforceConst
 
-A boolean to specify if we should check for the const keyword in variable declaration of numbers. `false` by default.
+一个布尔值，默认为 `false`。指定我们是否应该在数字的变量声明中检查 const 关键字。
 
-Examples of **incorrect** code for the `{ "enforceConst": true }` option:
+使用 `{ "enforceConst": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -215,9 +214,9 @@ var dutyFreePrice = 100,
 
 ### detectObjects
 
-A boolean to specify if we should detect numbers when setting object properties for example. `false` by default.
+一个布尔值，默认为 `false`。例如指定我们在设置对象属性时是否应该检测数字。
 
-Examples of **incorrect** code for the `{ "detectObjects": true }` option:
+使用 `{ "detectObjects": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -234,7 +233,7 @@ var dutyFreePrice = 100,
 
 :::
 
-Examples of **correct** code for the `{ "detectObjects": true }` option:
+使用 `{ "detectObjects": true }` 选项的**正确**示例：
 
 ::: correct
 

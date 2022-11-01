@@ -4,17 +4,15 @@ layout: doc
 rule_type: suggestion
 ---
 
+`delete` 操作符的目的是为了从一个对象中删除一个属性。在一个变量上使用 `delete` 操作符可能会导致意外的行为。
 
+## 规则细节
 
-The purpose of the `delete` operator is to remove a property from an object. Using the `delete` operator on a variable might lead to unexpected behavior.
+这条规则不允许对变量使用 `delete` 操作符。
 
-## Rule Details
+如果 ESLint 在严格模式下解析代码，解析器（而不是本规则）会报告错误。
 
-This rule disallows the use of the `delete` operator on variables.
-
-If ESLint parses code in strict mode, the parser (instead of this rule) reports the error.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 

@@ -6,12 +6,11 @@ further_reading:
 - https://stackoverflow.com/questions/13497971/what-is-the-matter-with-script-targeted-urls
 ---
 
+一些人认为 `javascript:` 链接是 `eval` 的一种形式。在`javascript:` 链接中传递的代码必须由浏览器以处理 `eval` 的相同方式进行解析和评估。
 
-Using `javascript:` URLs is considered by some as a form of `eval`. Code passed in `javascript:` URLs has to be parsed and evaluated by the browser in the same way that `eval` is processed.
+## 规则细节
 
-## Rule Details
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -25,6 +24,6 @@ location.href = `javascript:void(0)`;
 
 :::
 
-## Compatibility
+## 兼容
 
-* **JSHint**: This rule corresponds to `scripturl` rule of JSHint.
+**JSHint**：此规则对应于 JSHint 的 `scripturl` 规则。

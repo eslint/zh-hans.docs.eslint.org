@@ -6,10 +6,9 @@ related_rules:
 - no-global-assign
 ---
 
+在 JavaScript 中，你可以扩展任何对象，包括内置或“原生”对象。有时，人们会改变这些本地对象的行为，从而打破代码中其他部分对它们的假设。
 
-In JavaScript, you can extend any object, including builtin or "native" objects. Sometimes people change the behavior of these native objects in ways that break the assumptions made about them in other parts of the code.
-
-For example here we are overriding a builtin method that will then affect all Objects, even other builtins.
+例如，在这里我们重写了一个内置方法，这将影响到所有的对象，甚至是其他内置对象。
 
 ```js
 // seems harmless
@@ -27,13 +26,13 @@ for (var id in users) {
 }
 ```
 
-A common suggestion to avoid this problem would be to wrap the inside of the `for` loop with `users.hasOwnProperty(id)`. However, if this rule is strictly enforced throughout your codebase you won't need to take that step.
+为了避免这个问题，一个常见的建议是用 `users.hasOwnProperty(id)` 来包裹 `for` 循环的内部。然而，如果这一规则在你的代码库中被严格执行，你就不需要采取这一步骤。
 
-## Rule Details
+## 规则细节
 
-Disallows directly modifying the prototype of builtin objects.
+不允许直接修改内置对象的原型。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -46,13 +45,13 @@ Object.defineProperty(Array.prototype, "times", { value: 999 });
 
 :::
 
-## Options
+## 选项
 
-This rule accepts an `exceptions` option, which can be used to specify a list of builtins for which extensions will be allowed.
+这条规则接受一个 `exceptions` 选项，可以用来指定一个允许扩展的内置程序列表。
 
 ### exceptions
 
-Examples of **correct** code for the sample `{ "exceptions": ["Object"] }` option:
+使用示例的 `{ "exceptions": ["Object"] }` 选项的**正确**示例：
 
 ::: correct
 
@@ -64,9 +63,9 @@ Object.prototype.a = "a";
 
 :::
 
-## Known Limitations
+## 已知限制
 
-This rule *does not* report any of the following less obvious approaches to modify the prototype of builtin objects:
+这条规则*不*报告任何以下不太明显的修改内置对象原型的方法。
 
 ```js
 var x = Object;
@@ -81,6 +80,6 @@ with(Array) {
 window.Function.prototype.bind = 'tight';
 ```
 
-## When Not To Use It
+## 何时不用
 
-You may want to disable this rule when working with polyfills that try to patch older versions of JavaScript with the latest spec, such as those that might `Function.prototype.bind` or `Array.prototype.forEach` in a future-friendly way.
+在使用 polyfills 时，你可能想禁用这个规则，因为它试图用最新的规范来修补旧版本的 JavaScript，比如那些可能以对未来友好的方式修补 `Function.prototype.bind` 或 `Array.prototype.forEach`。

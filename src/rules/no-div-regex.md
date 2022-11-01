@@ -7,19 +7,17 @@ related_rules:
 - no-regex-spaces
 ---
 
-
-
-Require regex literals to escape division operators.
+要求铰链字词转义为除法运算符。
 
 ```js
 function bar() { return /=foo/; }
 ```
 
-## Rule Details
+## 规则细节
 
-This is used to disambiguate the division operator to not confuse users.
+这是用来消除除法运算符的歧义，以免混淆用户。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 :::incorrect
 
@@ -31,7 +29,7 @@ function bar() { return /=foo/; }
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 :::correct
 

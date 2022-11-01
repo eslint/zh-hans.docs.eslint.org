@@ -11,38 +11,36 @@ further_reading:
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#Temporal_dead_zone
 ---
 
+最好的做法是避免用本应属于脚本的局部变量“污染”全局范围。
 
-It is the best practice to avoid 'polluting' the global scope with variables that are intended to be local to the script.
+从一个脚本中创建的全局变量可能会与从另一个脚本中创建的全局变量产生名称冲突，这通常会导致运行时错误或意外行为。
 
-Global variables created from a script can produce name collisions with global variables created from another script, which will
-usually lead to runtime errors or unexpected behavior.
+这条规则不允许以下情况：
 
-This rule disallows the following:
+* 在全局范围内创建一个或多个变量的声明。
+* 全局变量的泄漏。
+* 对只读的全局变量的重新声明和对只读的全局变量的赋值。
 
-* Declarations that create one or more variables in the global scope.
-* Global variable leaks.
-* Redeclarations of read-only global variables and assignments to read-only global variables.
+在需要的时候，有一种明确的方法来创建全局变量，即通过赋值给全局对象的一个属性。
 
-There is an explicit way to create a global variable when needed, by assigning to a property of the global object.
+这条规则对浏览器脚本大多有用。ES 模块和 CommonJS 模块中的顶级声明会创建模块范围内的
+变量。ES 模块也有隐含的 `strict` 模式，可以防止全局变量的泄露。
 
-This rule is mostly useful for browser scripts. Top-level declarations in ES modules and CommonJS modules create module-scoped
-variables. ES modules also have implicit `strict` mode, which prevents global variable leaks.
+默认情况下，本规则不检查 `const`、`let` 和 `class` 声明。
 
-By default, this rule does not check `const`, `let` and `class` declarations.
+本规则有一个对象选项：
 
-This rule has an object option with one option:
+* 如果你想让这个规则也检查 `const`、`let` 和 `class`的声明，就把 `"lexicalBindings"` 设置为 `true`。
 
-* Set `"lexicalBindings"` to `true` if you want this rule to check `const`, `let` and `class` declarations as well.
-
-## Rule Details
+## 规则细节
 
 ### `var` and `function` declarations
 
-When working with browser scripts, developers often forget that variable and function declarations at the top-level scope become global variables on the `window` object. As opposed to modules which have their own scope. Globals should be explicitly assigned to `window` or `self` if that is the intent. Otherwise variables intended to be local to the script should be wrapped in an IIFE.
+在处理浏览器脚本时，开发人员经常忘记，顶层范围的变量和函数声明会成为 `window` 对象上的全局变量。相对于有自己作用域的模块而言。全局变量应该明确地分配给 `window` 或 `self`，如果这是它的意图。否则，打算在脚本中使用的变量应该用一个 IIFE 来包装。
 
-This rule disallows `var` and `function` declarations at the top-level script scope. This does not apply to ES and CommonJS modules since they have a module scope.
+这条规则不允许在顶层脚本范围内声明 `var` 和 `function`。这不适用于 ES 和 CommonJS 模块，因为它们有一个模块范围。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -56,7 +54,7 @@ function bar() {}
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -77,7 +75,7 @@ window.bar = function() {};
 
 :::
 
-Examples of **correct** code for this rule with `"parserOptions": { "sourceType": "module" }` in the ESLint configuration:
+使用此规则与 `"parserOptions": { "sourceType": "module" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -93,12 +91,11 @@ function bar() {}
 
 ### Global variable leaks
 
-When the code is not in `strict` mode, an assignment to an undeclared variable creates
-a new global variable. This will happen even if the code is in a function.
+当代码不是在 `strict` 模式下，对未声明的变量的赋值会创建一个新的全局变量。即使代码是在一个函数中，这也会发生。
 
-This does not apply to ES modules since the module code is implicitly in `strict` mode.
+这不适用于 ES 模块，因为模块代码是隐含在 `strict` 模式中的。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -116,16 +113,14 @@ Bar.prototype.baz = function () {
 
 ### Read-only global variables
 
-This rule also disallows redeclarations of read-only global variables and assignments to read-only global variables.
+这条规则也不允许对只读的全局变量进行重新声明和对只读的全局变量进行赋值。
 
-A read-only global variable can be a built-in ES global (e.g. `Array`), an environment specific global
-(e.g. `window` in the browser environment), or a global variable defined as `readonly` in the configuration file
-or in a `/*global */` comment.
+一个只读的全局变量可以是 ES 内置的全局变量（如 `Array`），也可以是环境中的全局变量（如浏览器环境中的 `window`），或者在配置文件中定义为 `readonly` 的全局变量或在 `/*global */` 注释中定义的全局变量。
 
-* [Specifying Environments](../user-guide/configuring#specifying-environments)
-* [Specifying Globals](../user-guide/configuring#specifying-globals)
+* [指定环境](../user-guide/configuring#specifying-environments)
+* [指定全局变量](../user-guide/configuring#specifying-globals)
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -144,16 +139,16 @@ var Object;
 
 ### `const`, `let` and `class` declarations
 
-Lexical declarations `const` and `let`, as well as `class` declarations, create variables that are block-scoped.
+词法声明 `const` 和 `let`，以及 `class` 声明，创建的变量都是块范围的。
 
-However, when declared in the top-level of a browser script these variables are not 'script-scoped'.
-They are actually created in the global scope and could produce name collisions with
-`var`, `const` and `let` variables and `function` and `class` declarations from other scripts.
-This does not apply to ES and CommonJS  modules.
+然而，当在浏览器脚本的顶层声明时，这些变量不是“脚本范围”。
+它们实际上是在全局范围内创建的，并且可能会产生与
+ `var`、`const` 和 `let` 变量以及其他脚本的 `function` 和 `class` 声明产生名称冲突。
+这不适用于 ES 和 CommonJS 模块。
 
-If the variable is intended to be local to the script, wrap the code with a block or with an immediately-invoked function expression (IIFE).
+如果该变量打算成为脚本的本地变量，请用一个块或一个立即调用的函数表达式（IIFE）来包装代码。
 
-Examples of **correct** code for this rule with `"lexicalBindings"` option set to `false` (default):
+使用此规则并将默认的 `"lexicalBindings"` 选项设置为 `false` 时的**正确**示例：
 
 ::: correct
 
@@ -169,7 +164,7 @@ class Bar {}
 
 :::
 
-Examples of **incorrect** code for this rule with `"lexicalBindings"` option set to `true`:
+使用此规则并将 `"lexicalBindings"` 选项设置为 `true` 时的**错误**示例：
 
 ::: incorrect
 
@@ -185,7 +180,7 @@ class Bar {}
 
 :::
 
-Examples of **correct** code for this rule with `"lexicalBindings"` option set to `true`:
+使用此规则并将 `"lexicalBindings"` 选项设置为 `true` 时的**正确**示例：
 
 ::: correct
 
@@ -207,19 +202,18 @@ Examples of **correct** code for this rule with `"lexicalBindings"` option set t
 
 :::
 
-If you intend to create a global `const` or `let` variable or a global `class` declaration, to be used from other scripts,
-be aware that there are certain differences when compared to the traditional methods, which are `var` declarations and assigning to a property of the global `window` object:
+如果你打算创建一个全局的 `const` 或 `let` 变量或全局的 `class` 声明，以便在其他脚本中使用。
+请注意，与传统的方法相比，有一定的区别，即 `var` 声明和分配给全局 `window` 对象的一个属性。
 
-* Lexically declared variables cannot be conditionally created. A script cannot check for the existence of
-a variable and then create a new one. `var` variables are also always created, but redeclarations do not
-cause runtime exceptions.
-* Lexically declared variables do not create properties on the global object, which is what a consuming script might expect.
-* Lexically declared variables are shadowing properties of the global object, which might produce errors if a
-consuming script is using both the variable and the property.
-* Lexically declared variables can produce a permanent Temporal Dead Zone (TDZ) if the initialization throws an exception.
-Even the `typeof` check is not safe from TDZ reference exceptions.
+* 词汇上声明的变量不能被有条件地创建。脚本不能检查是否存在
+一个变量的存在，然后再创建一个新的变量。`var` 变量也总是被创建的，但是重新声明不会导致运行时异常。
+* 词法声明的变量不会在全局对象上创建属性，这也是消耗脚本可能期望的。
+* 词法声明的变量是全局对象的影子属性，如果消费脚本同时使用该变量，可能会产生错误。
+如果消费脚本同时使用该变量和该属性，可能会产生错误。
+* 如果初始化时抛出了一个异常，那么按词法声明的变量会产生一个永久的时间死区（TDZ）。
+即使是 `typeof` 检查也不能避免 TDZ 引用异常。
 
-Examples of **incorrect** code for this rule with `"lexicalBindings"` option set to `true`:
+使用此规则并将 `lexicalBindings` 选项设置为 `true` 时的**错误**示例：
 
 ::: incorrect
 
@@ -237,7 +231,7 @@ const MyGlobalFunction = (function() {
 
 :::
 
-Examples of **correct** code for this rule with `"lexicalBindings"` option set to `true`:
+使用此规则并将 `"lexicalBindings"` 选项设置为 `true` 时的**正确**示例：
 
 ::: correct
 
@@ -255,13 +249,13 @@ window.MyGlobalFunction = (function() {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-In the case of a browser script, if you want to be able to explicitly declare variables and functions in the global scope,
-and your code is in strict mode or you don't want this rule to warn you about undeclared variables,
-and you also don't want this rule to warn you about read-only globals, you can disable this rule.
+在浏览器脚本的情况下，如果你希望能够在全局范围内明确地声明变量和函数。
+并且你的代码是在严格模式下，或者你不希望这个规则对未声明的变量发出警告。
+而且你也不希望这条规则对只读的全局范围发出警告，你可以禁用这条规则。
 
-In the case of a CommonJS module, if your code is in strict mode or you don't want this rule to warn you about undeclared variables,
-and you also don't want this rule to warn you about the read-only globals, you can disable this rule.
+在 CommonJS 模块的情况下，如果你的代码是在严格模式下，或者你不希望这个规则对未声明的变量发出警告。
+而且你也不希望这条规则对只读的 globals 发出警告，你可以禁用这条规则。
 
-In the case of an ES module, if you don't want this rule to warn you about the read-only globals you can disable this rule.
+在 ES 模块的情况下，如果你不希望这条规则警告你关于只读的 globals，你可以禁用这条规则。

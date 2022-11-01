@@ -7,21 +7,18 @@ related_rules:
 - no-restricted-syntax
 ---
 
+如果你想通过启用环境来允许一组全局变量的使用，但又想禁止某些全局变量的使用，那么禁止使用特定的全局变量就很有用。
+变量，但仍想禁止其中一些变量的使用。
 
-Disallowing usage of specific global variables can be useful if you want to allow a set of global
-variables by enabling an environment, but still want to disallow some of those.
+例如，早期的 Internet Explorer 版本将当前的 DOM 事件作为一个全局变量 `event` 暴露出来，但使用这个变量在很长一段时间内被认为是一种不好的做法。限制不要将确保此变量用于浏览器代码中。
 
-For instance, early Internet Explorer versions exposed the current DOM event as a global variable
-`event`, but using this variable has been considered as a bad practice for a long time. Restricting
-this will make sure this variable isn't used in browser code.
+## 规则细节
 
-## Rule Details
+这个规则允许你指定你不想在你的应用程序中使用的全局变量名称。
 
-This rule allows you to specify global variable names that you don't want to use in your application.
+## 选项
 
-## Options
-
-This rule takes a list of strings, where each string is a global to be restricted:
+这条规则接受一个字符串列表，其中每个字符串是一个要限制的全局。
 
 ```json
 {
@@ -31,7 +28,7 @@ This rule takes a list of strings, where each string is a global to be restricte
 }
 ```
 
-Alternatively, the rule also accepts objects, where the global name and an optional custom message are specified:
+另外，规则也接受对象，其中指定了全局名称和一个自定义信息的选项。
 
 ```json
 {
@@ -51,7 +48,7 @@ Alternatively, the rule also accepts objects, where the global name and an optio
 }
 ```
 
-Examples of **incorrect** code for sample `"event", "fdescribe"` global variable names:
+`"event"、"fdescribe"` 全局变量名称样本的**不正确**代码的例子。
 
 ::: incorrect
 
@@ -69,7 +66,7 @@ fdescribe("foo", function() {
 
 :::
 
-Examples of **correct** code for a sample `"event"` global variable name:
+使用此规则与 `"event"` 全局变量名的**正确**示例：
 
 ::: correct
 
@@ -93,7 +90,7 @@ var event = 1;
 
 :::
 
-Examples of **incorrect** code for a sample `"event"` global variable name, along with a custom error message:
+使用此规则与 `"event"` 全局变量名及自定义错误信息的**错误**示例：
 
 ::: incorrect
 

@@ -6,17 +6,15 @@ related_rules:
 - no-eval
 ---
 
+在 JavaScript 中避免使用 `eval()` 被认为是一个好的做法。这样做涉及到安全和性能问题，这就是为什么许多 linters（包括 ESLint）建议不允许使用 `eval()`。然而，还有一些传递字符串并将其解释为 JavaScript 代码的方法，也有类似的问题。
 
-It's considered a good practice to avoid using `eval()` in JavaScript. There are security and performance implications involved with doing so, which is why many linters (including ESLint) recommend disallowing `eval()`. However, there are some other ways to pass a string and have it interpreted as JavaScript code that have similar concerns.
-
-The first is using `setTimeout()`, `setInterval()` or `execScript()` (Internet Explorer only), all of which can accept a string of JavaScript code as their first argument. For example:
+第一种是使用 `setTimeout()`, `setInterval()` 或 `execScript()`（仅 Internet Explorer)，所有这些都可以接受一串 JavaScript 代码作为它们的第一个参数。比如：
 
 ```js
 setTimeout("alert('Hi!');", 100);
 ```
 
-This is considered an implied `eval()` because a string of JavaScript code is
- passed in to be interpreted. The same can be done with `setInterval()` and `execScript()`. Both interpret the JavaScript code in  the global scope. For  both `setTimeout()` and `setInterval()`, the first argument can also be a function, and that is considered safer and is more performant:
+这被认为是一个隐含的 `eval()`，因因为有一串需要解释的 JavaScript 代码被传入。同样可以用 `setInterval()` 和 `execScript()` 来做。两者都在全局范围内解释 JavaScript 代码。对于 `setTimeout()` 和 `setInterval()`，第一个参数也可以是一个函数，这被认为是更安全的，而且性能更强。
 
 ```js
 setTimeout(function() {
@@ -24,13 +22,13 @@ setTimeout(function() {
 }, 100);
 ```
 
-The best practice is to always use a function for the first argument of `setTimeout()` and `setInterval()` (and avoid `execScript()`).
+最好的做法是始终使用一个函数作为 `setTimeout()` 和 `setInterval()` 的第一个参数（避免使用 `execScript()`）。
 
-## Rule Details
+## 规则细节
 
-This rule aims to eliminate implied `eval()` through the use of `setTimeout()`, `setInterval()` or `execScript()`. As such, it will warn when either function is used with a string as the first argument.
+本规则旨在通过使用 `setTimeout()`、`setInterval()` 或 `execScript()` 消除隐含的 `eval()`。因此，当这两个函数的第一个参数是字符串时，它将发出警告。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -50,7 +48,7 @@ window.setInterval("foo = bar", 10);
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -68,6 +66,6 @@ setInterval(function() {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you want to allow `setTimeout()` and `setInterval()` with string arguments, then you can safely disable this rule.
+如果你想允许 `setTimeout()` 和 `setInterval()` 使用字符串参数，你可以安全地禁用这个规则。

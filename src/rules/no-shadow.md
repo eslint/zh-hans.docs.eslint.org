@@ -8,8 +8,7 @@ further_reading:
 - https://en.wikipedia.org/wiki/Variable_shadowing
 ---
 
-
-Shadowing is the process by which a local variable shares the same name as a variable in its containing scope. For example:
+阴影是指一个局部变量与它所包含的作用域中的变量共享相同的名字的过程。比如说：
 
 ```js
 var a = 3;
@@ -18,13 +17,13 @@ function b() {
 }
 ```
 
-In this case, the variable `a` inside of `b()` is shadowing the variable `a` in the global scope. This can cause confusion while reading the code and it's impossible to access the global variable.
+在这种情况下，`b()` 内的变量 `a` 在全局范围内对变量 `a` 有阴影。这在阅读代码的时候会造成混乱，而且不可能访问全局变量。
 
-## Rule Details
+## 规则细节
 
-This rule aims to eliminate shadowed variable declarations.
+这条规则旨在消除阴影变量的声明。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -53,9 +52,9 @@ if (true) {
 
 :::
 
-## Options
+## 选项
 
-This rule takes one option, an object, with properties `"builtinGlobals"`, `"hoist"`, `"allow"` and `"ignoreOnInitialization"`.
+这个规则需要一个选项，即一个对象，其属性为 `"builtinGlobals"`、`"hoist"`、`"allow"` 和 `"ignoreOnInitialization"`。
 
 ```json
 {
@@ -65,10 +64,10 @@ This rule takes one option, an object, with properties `"builtinGlobals"`, `"hoi
 
 ### builtinGlobals
 
-The `builtinGlobals` option is `false` by default.
-If it is `true`, the rule prevents shadowing of built-in global variables: `Object`, `Array`, `Number`, and so on.
+`builtinGlobals` 选项默认为 `false`。
+如果它是 `true`，该规则会阻止内置全局变量的阴影：`Object`、`Array`、`Number` 等。
 
-Examples of **incorrect** code for the `{ "builtinGlobals": true }` option:
+使用 `{ "builtinGlobals": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -84,15 +83,15 @@ function foo() {
 
 ### hoist
 
-The `hoist` option has three settings:
+`hoist` 选项有三个设置：
 
-* `functions` (by default) - reports shadowing before the outer functions are defined.
-* `all` - reports all shadowing before the outer variables/functions are defined.
-* `never` - never report shadowing before the outer variables/functions are defined.
+* `functions`（默认） - 在外部函数被定义之前报告阴影。
+* `all` - 在定义外部变量/函数之前报告所有的阴影。
+* `never` - 在定义外部变量/函数之前从不报告阴影。
 
 #### hoist: functions
 
-Examples of **incorrect** code for the default `{ "hoist": "functions" }` option:
+使用默认的 `{ "hoist": "functions" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -109,9 +108,9 @@ function b() {}
 
 :::
 
-Although `let b` in the `if` statement is before the *function* declaration in the outer scope, it is incorrect.
+虽然 `if` 语句中的 `let b` 在外层作用域的**函数**声明之前，但这是不正确的。
 
-Examples of **correct** code for the default `{ "hoist": "functions" }` option:
+使用默认的 `{ "hoist": "functions" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -128,11 +127,11 @@ let a = 5;
 
 :::
 
-Because `let a` in the `if` statement is before the *variable* declaration in the outer scope, it is correct.
+因为 `if` 语句中的 `let a` 在外层作用域的**变量**声明之前，所以它是正确的。
 
 #### hoist: all
 
-Examples of **incorrect** code for the `{ "hoist": "all" }` option:
+使用 `{ "hoist": "all" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -153,7 +152,7 @@ function b() {}
 
 #### hoist: never
 
-Examples of **correct** code for the `{ "hoist": "never" }` option:
+使用 `{ "hoist": "never" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -172,13 +171,13 @@ function b() {}
 
 :::
 
-Because `let a` and `let b` in the `if` statement are before the declarations in the outer scope, they are correct.
+因为 `if` 语句中的 `let a` 和 `let b` 在外层作用域的声明之前，所以它们是正确的。
 
 ### allow
 
-The `allow` option is an array of identifier names for which shadowing is allowed. For example, `"resolve"`, `"reject"`, `"done"`, `"cb"`.
+`allow` 选项是一个允许使用的阴影标识符名称的数组。例如，`"resolve"`、`"reject"`、`"done"`、`"cb"`。
 
-Examples of **correct** code for the `{ "allow": ["done"] }` option:
+使用 `{ "allow": ["done"] }` 选项的**正确**示例：
 
 ::: correct
 
@@ -203,11 +202,11 @@ foo(function (err, result) {
 
 ### ignoreOnInitialization
 
-The `ignoreOnInitialization` option is `false` by default. If it is `true`, it prevents reporting shadowing of variables in their initializers when the shadowed variable is presumably still uninitialized.
+`ignoreOnInitialization` 选项默认为 `false`。如果它是 `true`，它可以防止在变量的初始化过程中报告变量的阴影，因为被阴影的变量可能仍未被初始化。
 
-The shadowed variable must be on the left side. The shadowing variable must be on the right side and declared in a callback function or in an IIFE.
+被影子的变量必须在左边。阴影变量必须在右边，并在回调函数或 IIFE 中声明。
 
-Examples of **incorrect** code for the `{ "ignoreOnInitialization": "true" }` option:
+使用 `{ "ignoreOnInitialization": "true" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -219,9 +218,9 @@ var x = x => x;
 
 :::
 
-Because the shadowing variable `x` will shadow the already initialized shadowed variable `x`.
+因为影射变量 `x`将影射已经初始化的影射变量 `x`。
 
-Examples of **correct** code for the `{ "ignoreOnInitialization": true }` option:
+使用 `{ "ignoreOnInitialization": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -235,4 +234,4 @@ var y = (y => y)()
 
 :::
 
-The rationale for callback functions is the assumption that they will be called during the initialization, so that at the time when the shadowing variable will be used, the shadowed variable has not yet been initialized.
+回调函数的理由是假设它们将在初始化过程中被调用，因此在使用阴影变量的时候，被阴影变量还没有被初始化。
