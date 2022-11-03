@@ -1,2 +1,2 @@
 [build]
-  command = "node scripts/install.js && npm run build"
+  command = "node scripts/install.js && ESLINT_SITE_NAME=zh-hans npm run build"

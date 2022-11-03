@@ -15,7 +15,7 @@ node scripts/install.js
 View site preview (optional)
 
 ```sh
-npm run start
+ESLINT_SITE_NAME=zh-hans npm run start
 ```
 
 Then just start to translate files you want
@@ -31,7 +31,7 @@ node scripts/install.js
 预览网站（可选）
 
 ```sh
-npm run start
+ESLINT_SITE_NAME=zh-hans npm run start
 ```
 
 然后就可以直接开始翻译了
