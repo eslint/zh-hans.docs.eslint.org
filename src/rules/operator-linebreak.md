@@ -6,9 +6,7 @@ related_rules:
 - comma-style
 ---
 
-
-
-When a statement is too long to fit on a single line, line breaks are generally inserted next to the operators separating expressions. The first style coming to mind would be to place the operator at the end of the line, following the English punctuation rules.
+当一个语句太长而不能放在一行中时，一般会在分隔表达式的运算符旁边插入换行符。我想到的第一个样式是将运算符放在行尾，遵循英文标点符号规则。
 
 ```js
 var fullHeight = borderTop +
@@ -16,7 +14,7 @@ var fullHeight = borderTop +
                  borderBottom;
 ```
 
-Some developers find that placing operators at the beginning of the line makes the code more readable.
+一些开发者发现，将运算符放在行首会使代码更易读。
 
 ```js
 var fullHeight = borderTop
@@ -24,29 +22,29 @@ var fullHeight = borderTop
                + borderBottom;
 ```
 
-## Rule Details
+## 规则细节
 
-This rule enforces a consistent linebreak style for operators.
+这条规则为运算符执行了一致的换行风格。
 
-## Options
+## 选项
 
-This rule has two options, a string option and an object option.
+这个规则有两个选项，一个字符串选项和一个对象选项：
 
-String option:
+字符串选项：
 
-* `"after"` requires linebreaks to be placed after the operator
-* `"before"` requires linebreaks to be placed before the operator
-* `"none"` disallows linebreaks on either side of the operator
+* `"after"` 要求将换行符放在运算符之后。
+* `"before"` 要求将换行符放在运算符之前。
+* `"none"` 不允许在运算符的两侧有换行符。
 
-Object option:
+对象选项：
 
-* `"overrides"` overrides the global setting for specified operators
+* `"overrides"` 覆盖指定操作者的全局设置
 
-The default configuration is `"after", { "overrides": { "?": "before", ":": "before" } }`
+默认配置是 `"after", { "overrides": { "?": "before", ":": "before" } }`
 
 ### after
 
-Examples of **incorrect** code for this rule with the `"after"` option:
+使用此规则与 `"after"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -84,7 +82,7 @@ class Foo {
 
 :::
 
-Examples of **correct** code for this rule with the `"after"` option:
+使用此规则与 `"after"` 选项的**正确**示例：
 
 ::: correct
 
@@ -123,7 +121,7 @@ class Foo {
 
 ### before
 
-Examples of **incorrect** code for this rule with the `"before"` option:
+使用此规则与 `"before"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -157,7 +155,7 @@ class Foo {
 
 :::
 
-Examples of **correct** code for this rule with the `"before"` option:
+使用此规则与 `"before"` 选项的**正确**示例：
 
 ::: correct
 
@@ -196,7 +194,7 @@ class Foo {
 
 ### none
 
-Examples of **incorrect** code for this rule with the `"none"` option:
+使用此规则与 `"none"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -245,7 +243,7 @@ class Foo {
 
 :::
 
-Examples of **correct** code for this rule with the `"none"` option:
+使用此规则与 `"none"` 选项的**正确**示例：
 
 ::: correct
 
@@ -277,7 +275,7 @@ class Foo {
 
 ### overrides
 
-Examples of additional **incorrect** code for this rule with the `{ "overrides": { "+=": "before" } }` option:
+使用此规则与 `{ "overrides": { "+=": "before" } }` 选项的额外**错误**示例：
 
 ::: incorrect
 
@@ -291,7 +289,7 @@ thing +=
 
 :::
 
-Examples of additional **correct** code for this rule with the `{ "overrides": { "+=": "before" } }` option:
+使用此规则与 `{ "overrides": { "+=": "before" } }` 选项的额外**正确**示例：
 
 ::: correct
 
@@ -305,7 +303,7 @@ thing
 
 :::
 
-Examples of additional **correct** code for this rule with the `{ "overrides": { "?": "ignore", ":": "ignore" } }` option:
+使用此规则与 `{ "overrides": { "?": "ignore", ":": "ignore" } }` 选项的额外**错误**示例：
 
 ::: correct
 
@@ -325,7 +323,7 @@ answer = everything
 
 :::
 
-Examples of **incorrect** code for this rule with the default `"after", { "overrides": { "?": "before", ":": "before" } }` option:
+使用此规则与默认的 `"after", { "overrides": { "?": "before", ":": "before" } }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -353,7 +351,7 @@ answer = everything ?
 
 :::
 
-Examples of **correct** code for this rule with the default `"after", { "overrides": { "?": "before", ":": "before" } }` option:
+使用此规则与默认的 `"after", { "overrides": { "?": "before", ":": "before" } }` 选项的**正确**示例：
 
 ::: correct
 
@@ -379,6 +377,6 @@ answer = everything
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If your project will not be using a common operator line break style, turn this rule off.
+如果你的项目不会使用常见的操作者换行方式，请关闭此规则。

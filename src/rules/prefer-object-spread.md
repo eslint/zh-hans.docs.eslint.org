@@ -4,15 +4,13 @@ layout: doc
 rule_type: suggestion
 ---
 
+当 Object.assign 被调用时，使用一个对象字头作为第一个参数，这条规则要求使用对象传播语法来代替。这条规则还警告说，如果 `Object.assign` 的调用使用一个单一的参数是一个对象字面，在这种情况下，`Object.assign` 的调用是不需要的。
 
+在 ES2018 中引入的 object spread 是一种声明式的替代方法，它可能比更动态的、命令式的 `Object.assign` 表现得更好。
 
-When Object.assign is called using an object literal as the first argument, this rule requires using the object spread syntax instead. This rule also warns on cases where an `Object.assign` call is made using a single argument that is an object literal, in this case, the `Object.assign` call is not needed.
+## 规则细节
 
-Introduced in ES2018, object spread is a declarative alternative which may perform better than the more dynamic, imperative `Object.assign`.
-
-## Rule Details
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -37,7 +35,7 @@ Object.assign({ foo: bar });
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -60,6 +58,6 @@ Object.assign(foo, { ...baz });
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-This rule should not be used unless ES2018 is supported in your codebase.
+除非你的代码库中支持 ES2018，否则不应使用这一规则。

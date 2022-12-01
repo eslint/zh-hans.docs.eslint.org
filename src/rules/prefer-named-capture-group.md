@@ -6,23 +6,22 @@ related_rules:
 - no-invalid-regexp
 ---
 
+## 规则细节
 
-## Rule Details
-
-With the landing of ECMAScript 2018, named capture groups can be used in regular expressions, which can improve their readability.
-This rule is aimed at using named capture groups instead of numbered capture groups in regular expressions:
+随着 ECMAScript 2018 的登陆，命名的捕获组可以在正则表达式中使用，这可以提高其可读性。
+本规则的目的是在正则表达式中使用命名的捕获组而不是编号的捕获组。
 
 ```js
 const regex = /(?<year>[0-9]{4})/;
 ```
 
-Alternatively, if your intention is not to _capture_ the results, but only express the alternative, use a non-capturing group:
+另外，如果你的目的不是要捕捉_结果，而只是表达另一种选择，那么就使用一个非捕捉组。
 
 ```js
 const regex = /(?:cauli|sun)flower/;
 ```
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -38,7 +37,7 @@ foo.exec('bar')[1]; // Retrieve the group result.
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -55,6 +54,6 @@ foo.exec('bar').groups.id; // Retrieve the group result.
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you are targeting ECMAScript 2017 and/or older environments, you should not use this rule, because this ECMAScript feature is only supported in ECMAScript 2018 and/or newer environments.
+如果你的目标是 ECMAScript 2017 和/或更早的环境，你不应该使用这个规则，因为这个 ECMAScript 功能只在 ECMAScript 2018 和/或更新的环境中被支持。

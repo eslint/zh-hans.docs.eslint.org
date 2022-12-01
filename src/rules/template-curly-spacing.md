@@ -4,21 +4,19 @@ layout: doc
 rule_type: layout
 ---
 
+我们可以通过使用一对 `${` 和 `}`在模板字符串中嵌入表达式。
 
-
-We can embed expressions in template strings with using a pair of `${` and `}`.
-
-This rule can force usage of spacing _within_ the curly brace pair according to style guides.
+这个规则可以根据风格指南强制使用大括号内的间距。
 
 ```js
 let hello = `hello, ${people.name}!`;
 ```
 
-## Rule Details
+## 规则细节
 
-This rule aims to maintain consistency around the spacing inside of template literals.
+这条规则的目的是保持模板字词内部间距的一致性。
 
-## Options
+## 选项
 
 ```json
 {
@@ -26,16 +24,16 @@ This rule aims to maintain consistency around the spacing inside of template lit
 }
 ```
 
-This rule has one option which has either `"never"` or `"always"` as value.
+这个规则有一个选项，其值是 `"never"` 或 `"always"`。
 
-* `"never"` (by default) - Disallows spaces inside of the curly brace pair.
-* `"always"` - Requires one or more spaces inside of the curly brace pair.
+* `"never"`（默认） - 不允许大括号内有空格。
+* `"always"` - 要求在大括号内有一个或多个空格。
 
-## Examples
+## 示例
 
 ### never
 
-Examples of **incorrect** code for this rule with the default `"never"` option:
+使用此规则与默认的 `"never"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -50,7 +48,7 @@ Examples of **incorrect** code for this rule with the default `"never"` option:
 
 :::
 
-Examples of **correct** code for this rule with the default `"never"` option:
+使用此规则与默认的 `"never"` 选项的**正确**示例：
 
 ::: correct
 
@@ -68,7 +66,7 @@ Examples of **correct** code for this rule with the default `"never"` option:
 
 ### always
 
-Examples of **incorrect** code for this rule with the `"always"` option:
+使用此规则与 `"always"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -83,7 +81,7 @@ Examples of **incorrect** code for this rule with the `"always"` option:
 
 :::
 
-Examples of **correct** code for this rule with the `"always"` option:
+使用此规则与 `"always"` 选项的**正确**示例：
 
 ::: correct
 
@@ -99,6 +97,6 @@ Examples of **correct** code for this rule with the `"always"` option:
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't want to be notified about usage of spacing inside of template strings, then it's safe to disable this rule.
+如果你不希望被通知模板字符串内的间距使用情况，你可以安全地禁用此规则。

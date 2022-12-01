@@ -4,15 +4,13 @@ layout: doc
 rule_type: suggestion
 ---
 
+一个后面没有任何内容的 `return;` 语句是多余的，对函数的运行行为没有任何影响。这可能会引起混淆，所以最好是不允许这些多余的语句。
 
+## 规则细节
 
-A `return;` statement with nothing after it is redundant, and has no effect on the runtime behavior of a function. This can be confusing, so it's better to disallow these redundant statements.
+这条规则的目的是报告多余的 `return` 语句。
 
-## Rule Details
-
-This rule aims to report redundant `return` statements.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -49,7 +47,7 @@ function foo() {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -92,6 +90,6 @@ function foo() {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't care about disallowing redundant return statements, you can turn off this rule.
+如果你不关心不允许多余的返回语句，你可以关闭这个规则。

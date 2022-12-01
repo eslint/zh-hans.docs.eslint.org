@@ -4,17 +4,15 @@ layout: doc
 rule_type: layout
 ---
 
+一些风格指南要求或不允许在单数运算符之前或之后有空格。这主要是一个风格问题，然而，一些 JavaScript 表达式可以不使用空格，这使得阅读和维护更加困难。
 
+## 规则细节
 
-Some style guides require or disallow spaces before or after unary operators. This is mainly a stylistic issue, however, some JavaScript expressions can be written without spacing which makes it harder to read and maintain.
+这条规则对 `words` 单项运算符后的空格和 `nonwords` 单项运算符后/前的空格进行了统一。
 
-## Rule Details
+对于 `words` 运算符，该规则只适用于语法上不需要空格的情况。例如，`delete obj.foo` 需要空格，本规则将不考虑。相等的 `delete(obj.foo)` 有一个选项空间（`delete (obj.foo)`），因此本规则将适用于它。
 
-This rule enforces consistency regarding the spaces after `words` unary operators and after/before `nonwords` unary operators.
-
-For `words` operators, this rule only applies when a space is not syntactically required. For instance, `delete obj.foo` requires the space and will not be considered by this rule. The equivalent `delete(obj.foo)` has an optional space (`delete (obj.foo)`), therefore this rule will apply to it.
-
-Examples of unary `words` operators:
+单数 `words` 运算符的例子：
 
 ```js
 // new
@@ -43,15 +41,15 @@ baz = !foo;
 qux = !!baz;
 ```
 
-## Options
+## 选项
 
-This rule has three options:
+这个规则有三个选项：
 
-* `words` - applies to unary word operators such as: `new`, `delete`, `typeof`, `void`, `yield`
-* `nonwords` - applies to unary operators such as: `-`, `+`, `--`, `++`, `!`, `!!`
-* `overrides` - specifies overwriting usage of spacing for each
-  operator, word or non word. This is empty by default, but can be used
-  to enforce or disallow spacing around operators. For example:
+* `words` - 适用于单数词运算符，如 `new`, `delete`, `typeof`, `void`, `yield`
+* `nonwords` - 适用于单数运算符，如 `-`, `+`, `--`, `++`, `!`, `!!`
+* `overrides` - 指定每个运算符的间距的覆盖用法，字或非字。
+  运算符，字或非字。默认情况下是空的，但可以用于
+  强制执行或不允许运算符周围的间距。比如：
 
 ```js
     "space-unary-ops": [
@@ -65,9 +63,9 @@ This rule has three options:
     }]
 ```
 
-In this case, spacing will be disallowed after a `new` operator and required before/after a `++` operator.
+在这种情况下，在 `new` 运算符之后不允许有间隔，而在 `++` 运算符之前/之后需要有间隔。
 
-Examples of **incorrect** code for this rule with the default `{"words": true, "nonwords": false}` option:
+使用此规则与默认的 `{"words": true, "nonwords": false}` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -118,7 +116,7 @@ async function foo() {
 
 :::
 
-Examples of **correct** code for this rule with the `{"words": true, "nonwords": false}` option:
+使用此规则与 `{"words": true, "nonwords": false}` 选项的**正确**示例：
 
 ::: correct
 

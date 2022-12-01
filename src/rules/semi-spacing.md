@@ -10,11 +10,9 @@ related_rules:
 - space-in-parens
 ---
 
+JavaScript 允许你在分号之前或之后放置不必要的空格。
 
-
-JavaScript allows you to place unnecessary spaces before or after a semicolon.
-
-Disallowing or enforcing space around a semicolon can improve the readability of your program.
+不允许或强制执行分号周围的空格可以提高程序的可读性。
 
 ```js
 var a = "b" ;
@@ -22,26 +20,26 @@ var a = "b" ;
 var c = "d";var e = "f";
 ```
 
-## Rule Details
+## 规则细节
 
-This rule aims to enforce spacing around a semicolon. This rule prevents the use of spaces before a semicolon in expressions.
+这条规则的目的是强制执行分号周围的间距。这条规则防止在表达式中分号前使用空格。
 
-This rule doesn't check spacing in the following cases:
+在以下情况下，本规则不检查间距。
 
-* The spacing after the semicolon if it is the first token in the line.
+* 如果分号是该行的第一个标记，则分号后的间距。
 
-* The spacing before the semicolon if it is after an opening parenthesis (`(` or `{`), or the spacing after the semicolon if it is before a closing parenthesis (`)` or `}`). That spacing is checked by `space-in-parens` or `block-spacing`.
+* 分号之前的间距，如果它是在开口括号（`(` 或 `{`）之后，或者分号之后的间距，如果它是在结束括号（`）` 或 `}`）之前。该间距由`space-in-parens` 或 `block-spacing`检查。
 
-* The spacing around the semicolon in a for loop with an empty condition (`for(;;)`).
+* 在空条件的 for 循环中，分号周围的间距（`for(;;)`）。
 
-## Options
+## 选项
 
-The rule takes one option, an object, which has two keys `before` and `after` having boolean values `true` or `false`.
-If `before` is `true`, space is enforced before semicolons and if it's `false`, space is disallowed before semicolons.
-If `after` is `true`, space is enforced after semicolons and if it's `false`, space is disallowed after semicolons.
-The `after` option will be only applied if a semicolon is not at the end of line.
+规则需要一个选项，一个对象，它有两个键 `before` 和 `after`，具有布尔值 `true` 或 `false`。
+如果 `before` 是 `true`，则在分号前执行空格，如果是 `false`，则分号前不允许空格。
+如果 `after` 是 `true`，则在分号后执行空格，如果是 `false`，则在分号后不允许空格。
+`after` 选项只在分号不在行尾时应用。
 
-The default is `{"before": false, "after": true}`.
+默认值是 `{"before": false, "after": true}`。
 
 ```json
     "semi-spacing": ["error", {"before": false, "after": true}]
@@ -49,9 +47,9 @@ The default is `{"before": false, "after": true}`.
 
 ### `{"before": false, "after": true}`
 
-This is the default option. It enforces spacing after semicolons and disallows spacing before semicolons.
+这是默认的选项。它强制执行分号后的间距，不允许分号前的间距。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -68,7 +66,7 @@ for (i = 0;i < 10;i++) {}
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -89,9 +87,9 @@ if (true) {;}
 
 ### `{"before": true, "after": false}`
 
-This option enforces spacing before semicolons and disallows spacing after semicolons.
+该选项在分号前强制执行间距，分号后不允许有间距。
 
-Examples of **incorrect** code for this rule with the `{"before": true, "after": false}` option:
+使用此规则与 `{"before": true, "after": false}` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -108,7 +106,7 @@ for (i = 0; i < 10; i++) {}
 
 :::
 
-Examples of **correct** code for this rule with the `{"before": true, "after": false}` option:
+使用此规则与 `{"before": true, "after": false}` 选项的**正确**示例：
 
 ::: correct
 
@@ -124,6 +122,6 @@ for (i = 0 ;i < 10 ;i++) {}
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-You can turn this rule off if you are not concerned with the consistency of spacing before or after semicolons.
+如果你不关心分号前后间距的一致性，你可以关闭这个规则。

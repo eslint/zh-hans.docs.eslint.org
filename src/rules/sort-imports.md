@@ -7,9 +7,7 @@ related_rules:
 - sort-vars
 ---
 
-
-
-The import statement is used to import members (functions, objects or primitives) that have been exported from an external module. Using a specific member syntax:
+import 语句用于导入从外部模块导出的成员（函数、对象或原始类型）。使用一个特定的成员语法。
 
 ```js
 // single - Import single member.
@@ -23,36 +21,36 @@ import {foo, bar} from "my-module.js";
 import * as myModule from "my-module.js";
 ```
 
-The import statement can also import a module without exported bindings. Used when the module does not export anything, but runs it own code or changes the global context object.
+import 语句也可以导入一个没有导出绑定的模块。当模块不输出任何东西，但运行它自己的代码或改变全局上下文对象时使用。
 
 ```js
 // none - Import module without exported bindings.
 import "my-module.js"
 ```
 
-When declaring multiple imports, a sorted list of import declarations make it easier for developers to read the code and find necessary imports later. This rule is purely a matter of style.
+当声明多个导入时，导入声明的分类列表使开发者更容易阅读代码，并在以后找到必要的导入。这条规则纯粹是一个风格问题。
 
-## Rule Details
+## 规则细节
 
-This rule checks all import declarations and verifies that all imports are first sorted by the used member syntax and then alphabetically by the first member or alias name.
+这个规则检查所有的导入声明，并验证所有的导入首先按照使用的成员语法排序，然后按照第一个成员或别名的字母顺序排序。
 
-The `--fix` option on the command line automatically fixes some problems reported by this rule: multiple members on a single line are automatically sorted (e.g. `import { b, a } from 'foo.js'` is corrected to `import { a, b } from 'foo.js'`), but multiple lines are not reordered.
+命令行中的 `--fix` 选项会自动修复本规则报告的一些问题：单行的多个成员会被自动排序（例如，`import { b, a } from 'foo.js'` 被修正为 `import { a, b } from 'foo.js'`），但多行不会被重新排序。
 
-## Options
+## 选项
 
-This rule accepts an object with its properties as
+该规则接受一个对象，其属性为
 
-* `ignoreCase` (default: `false`)
-* `ignoreDeclarationSort` (default: `false`)
-* `ignoreMemberSort` (default: `false`)
-* `memberSyntaxSortOrder` (default: `["none", "all", "multiple", "single"]`); all 4 items must be present in the array, but you can change the order:
-    * `none` = import module without exported bindings.
-    * `all` = import all members provided by exported bindings.
-    * `multiple` = import multiple members.
-    * `single` = import single member.
-* `allowSeparatedGroups` (default: `false`)
+* 忽略大小写（默认：`false`)
+* 忽略声明排序 (ignoreDeclarationSort)（默认：`false`)
+* 忽略成员排序 (ignoreMemberSort)（默认为 `false`)
+* `memberSyntaxSortOrder`（默认为 `["none", "all", "multiple", "single"]`）; 所有 4 项必须出现在数组中，但你可以改变顺序。
+    * `none` = 导入没有导出绑定的模块。
+    * `all` = 导入由出口绑定提供的所有成员。
+    * `multiple` = 导入多个成员。
+    * `single` = 导入单个成员。
+* `allowSeparatedGroups`（默认为 `false`)
 
-Default option settings are:
+默认的选项设置：
 
 ```json
 {
@@ -66,12 +64,11 @@ Default option settings are:
 }
 ```
 
-## Examples
+## 示例
 
 ### Default settings
 
-Examples of **correct** code for this rule when using default options:
-
+使用此规则与默认选项的**正确**示例：
 ::: correct
 
 ```js
@@ -102,7 +99,7 @@ import {a, b, c} from 'foo.js'
 
 :::
 
-Examples of **incorrect** code for this rule when using default options:
+使用此规则与默认选项的**错误**示例：
 
 ::: incorrect
 
@@ -139,9 +136,9 @@ import {b, a, c} from 'foo.js'
 
 ### `ignoreCase`
 
-When `true` the rule ignores the case-sensitivity of the imports local name.
+当设置成 `true` 时，该规则灰忽略导入的本地名称的大小写敏感性。
 
-Examples of **incorrect** code for this rule with the `{ "ignoreCase": true }` option:
+使用此规则与 `{ "ignoreCase": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -154,7 +151,7 @@ import a from 'bar.js';
 
 :::
 
-Examples of **correct** code for this rule with the `{ "ignoreCase": true }` option:
+使用此规则与 `{ "ignoreCase": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -172,9 +169,9 @@ Default is `false`.
 
 ### `ignoreDeclarationSort`
 
-Ignores the sorting of import declaration statements.
+忽略导入声明语句的排序。
 
-Examples of **incorrect** code for this rule with the default `{ "ignoreDeclarationSort": false }` option:
+使用此规则与默认的 `{ "ignoreDeclarationSort": false }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -186,7 +183,7 @@ import a from 'bar.js'
 
 :::
 
-Examples of **correct** code for this rule with the `{ "ignoreDeclarationSort": true }` option:
+使用此规则与 `{ "ignoreDeclarationSort": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -212,9 +209,9 @@ Default is `false`.
 
 ### `ignoreMemberSort`
 
-Ignores the member sorting within a `multiple` member import declaration.
+忽略 `multiple` 成员导入声明中的成员排序。
 
-Examples of **incorrect** code for this rule with the default `{ "ignoreMemberSort": false }` option:
+使用此规则与默认的 `{ "ignoreMemberSort": false }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -225,7 +222,7 @@ import {b, a, c} from 'foo.js'
 
 :::
 
-Examples of **correct** code for this rule with the `{ "ignoreMemberSort": true }` option:
+使用此规则与 `{ "ignoreMemberSort": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -240,16 +237,16 @@ Default is `false`.
 
 ### `memberSyntaxSortOrder`
 
-There are four different styles and the default member syntax sort order is:
+有四种不同的风格，默认的成员语法排序顺序是。
 
-* `none` - import module without exported bindings.
-* `all` - import all members provided by exported bindings.
-* `multiple` - import multiple members.
-* `single` - import single member.
+* `none` - 导入没有导出绑定的模块。
+* `all` - 导入由导出的绑定提供的所有成员。
+* `multiple` - 导入多个成员。
+* `single` - 导入单个成员。
 
-All four options must be specified in the array, but you can customize their order.
+所有四个选项都必须在数组中指定，但你可以自定义它们的顺序。
 
-Examples of **incorrect** code for this rule with the default `{ "memberSyntaxSortOrder": ["none", "all", "multiple", "single"] }` option:
+使用此规则与默认的 `{ "memberSyntaxSortOrder": ["none", "all", "multiple", "single"] }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -261,7 +258,7 @@ import * as b from 'bar.js';
 
 :::
 
-Examples of **correct** code for this rule with the `{ "memberSyntaxSortOrder": ['single', 'all', 'multiple', 'none'] }` option:
+使用此规则与 `{ "memberSyntaxSortOrder": ['single', 'all', 'multiple', 'none'] }` 选项的**正确**示例：
 
 ::: correct
 
@@ -274,7 +271,7 @@ import * as b from 'bar.js';
 
 :::
 
-Examples of **correct** code for this rule with the `{ "memberSyntaxSortOrder": ['all', 'single', 'multiple', 'none'] }` option:
+使用此规则与 `{ "memberSyntaxSortOrder": ['all', 'single', 'multiple', 'none'] }` 选项的**正确**示例：
 
 ::: correct
 
@@ -292,11 +289,11 @@ Default is `["none", "all", "multiple", "single"]`.
 
 ### `allowSeparatedGroups`
 
-When `true` the rule checks the sorting of import declaration statements only for those that appear on consecutive lines.
+当设置为 `true` 时，该规则只检查那些出现在连续行中的导入声明语句的排序情况。
 
-In other words, a blank line or a comment line or line with any other statement after an import declaration statement will reset the sorting of import declaration statements.
+换句话说，在导入声明语句之后的空行、注释行或带有任何其他语句的行，将重置导入声明语句的排序。
 
-Examples of **incorrect** code for this rule with the `{ "allowSeparatedGroups": true }` option:
+使用此规则与 `{ "allowSeparatedGroups": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -310,7 +307,7 @@ import a from 'baz.js';
 
 :::
 
-Examples of **correct** code for this rule with the `{ "allowSeparatedGroups": true }` option:
+使用此规则与 `{ "allowSeparatedGroups": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -353,6 +350,6 @@ import a from 'baz.js';
 
 Default is `false`.
 
-## When Not To Use It
+## 何时不用
 
-This rule is a formatting preference and not following it won't negatively affect the quality of your code. If alphabetizing imports isn't a part of your coding standards, then you can leave this rule disabled.
+这条规则是一种格式化的偏好，不遵循它不会对你的代码质量产生负面影响。如果按字母顺序排列导入不是你的编码标准的一部分，那么你可以不遵守这个规则。

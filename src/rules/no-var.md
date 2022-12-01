@@ -4,11 +4,7 @@ layout: doc
 rule_type: suggestion
 ---
 
-
-
-ECMAScript 6 allows programmers to create variables with block scope instead of function scope using the `let`
-and `const` keywords. Block scope is common in many other programming languages and helps programmers avoid mistakes
-such as:
+ECMAScript 6 允许程序员使用 `let` 和 `const`关键字在块范围内创建变量而不是函数范围。块范围在许多其他编程语言中很常见，可以帮助程序员避免以下错误，例如：
 
 ```js
 var count = people.length;
@@ -23,13 +19,13 @@ if (enoughFood) {
 console.log("We have " + count + " people and " + sandwiches.length + " sandwiches!");
 ```
 
-## Rule Details
+## 规则细节
 
-This rule is aimed at discouraging the use of `var` and encouraging the use of `const` or `let` instead.
+这条规则的目的是不鼓励使用 `var`，鼓励使用 `const` 或 `let` 代替。
 
-## Examples
+## 示例
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -42,7 +38,7 @@ var CONFIG = {};
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -56,7 +52,6 @@ const CONFIG = {};
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-In addition to non-ES6 environments, existing JavaScript projects that are beginning to introduce ES6 into their
-codebase may not want to apply this rule if the cost of migrating from `var` to `let` is too costly.
+除了非 ES6 环境外，现有的 JavaScript 项目如果开始切换到 ES6 时，如果从 `var` 迁移到 `let` 的成本太高，可能不想应用这个规则。

@@ -8,15 +8,13 @@ related_rules:
 - semi-spacing
 ---
 
+一般来说，分号是在行尾的。然而，在无分号风格中，分号是在行的开头。这条规则强制规定分号在配置的位置。
 
+## 规则细节
 
-Generally, semicolons are at the end of lines. However, in semicolon-less style, semicolons are at the beginning of lines. This rule enforces that semicolons are at the configured location.
+这条规则报告分号周围的行终止符。
 
-## Rule Details
-
-This rule reports line terminators around semicolons.
-
-This rule has an option.
+这条规则有一个选项。
 
 ```json
 {
@@ -24,10 +22,10 @@ This rule has an option.
 }
 ```
 
-* `"last"` (Default) enforces that semicolons are at the end of statements.
-* `"first"` enforces that semicolons are at the beginning of statements. Semicolons of `for` loop heads (`for(a;b;c){}`) should be at the end of lines even if you use this option.
+* `"last"`（默认值）表示分号在语句的末尾。
+* `"first"` 强制要求分号在语句的开头。即使你使用这个选项，`for` 循环头的分号（`for(a;b;c){}`）应该在行尾。
 
-Examples of **incorrect** code for this rule with `"last"` option:
+此规则与 `"last"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -55,7 +53,7 @@ class C {
 
 :::
 
-Examples of **correct** code for this rule with `"last"` option:
+此规则与 `"last"` 选项的**正确**示例：
 
 ::: correct
 
@@ -83,7 +81,7 @@ class C {
 
 :::
 
-Examples of **incorrect** code for this rule with `"first"` option:
+此规则与 `"first"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -111,7 +109,7 @@ class C {
 
 :::
 
-Examples of **correct** code for this rule with `"first"` option:
+此规则与 `"first"` 选项的**正确**示例：
 
 ::: correct
 
@@ -139,6 +137,6 @@ class C {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't want to notify the location of semicolons, then it's safe to disable this rule.
+如果你不想通知分号的位置，你可以安全地禁用此规则。

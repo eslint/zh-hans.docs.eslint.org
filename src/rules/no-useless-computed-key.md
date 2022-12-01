@@ -4,25 +4,23 @@ layout: doc
 rule_type: suggestion
 ---
 
-
-
-It's unnecessary to use computed properties with literals such as:
+使用带有字面意义的计算属性是没有必要的，如：
 
 ```js
 var foo = {["a"]: "b"};
 ```
 
-The code can be rewritten as:
+这代码也可以写成：
 
 ```js
 var foo = {"a": "b"};
 ```
 
-## Rule Details
+## 规则细节
 
-This rule disallows unnecessary usage of computed property keys.
+这条规则不允许在非必要的情况下使用计算的属性键。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -38,7 +36,7 @@ var a = { ['x']() {} };
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -54,7 +52,7 @@ var c = { '0+1,234': 0 };
 
 :::
 
-Examples of additional **correct** code for this rule:
+使用此规则的额外**正确**示例：
 
 ::: correct
 
@@ -70,20 +68,20 @@ var c = {
 
 :::
 
-## Options
+## 选项
 
-This rule has an object option:
+此规则选项为对象：
 
-* `enforceForClassMembers` set to `true` additionally applies this rule to class members (Default `false`).
+* `enforceForClassMembers` 设置为 `true` 会将此规则额外应用于类成员（默认`false`）。
 
 ### enforceForClassMembers
 
-By default, this rule does not check class declarations and class expressions,
-as the default value for `enforceForClassMembers` is `false`.
+默认情况下，该规则不检查类声明和类表达式。
+因为 `enforceForClassMembers` 的默认值是 `false`。
 
-When `enforceForClassMembers` is set to `true`, the rule will also disallow unnecessary computed keys inside of class fields, class methods, class getters, and class setters.
+当 `enforceForClassMembers` 被设置为 `true` 时，该规则也将不允许在类字段、类方法、类 getters 和类 setters 中使用不必要的计算键。
 
-Examples of **incorrect** code for this rule with the `{ "enforceForClassMembers": true }` option:
+使用此规则与 `{ "enforceForClassMembers": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -106,7 +104,7 @@ class Foo {
 
 :::
 
-Examples of **correct** code for this rule with the `{ "enforceForClassMembers": true }` option:
+使用此规则与 `{ "enforceForClassMembers": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -129,7 +127,7 @@ class Foo {
 
 :::
 
-Examples of additional **correct** code for this rule with the `{ "enforceForClassMembers": true }` option:
+使用此规则与 `{ "enforceForClassMembers": true }` 选项的额外**正确**示例：
 
 ::: correct
 
@@ -151,6 +149,6 @@ class Foo {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't want to be notified about unnecessary computed property keys, you can safely disable this rule.
+如果你不希望被通知到不必要的计算属性键，你可以安全地禁用这个规则。

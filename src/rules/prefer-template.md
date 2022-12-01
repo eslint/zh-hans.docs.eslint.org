@@ -7,9 +7,7 @@ related_rules:
 - quotes
 ---
 
-
-
-In ES2015 (ES6), we can use template literals instead of string concatenation.
+在 ES2015（ES6）中，我们可以使用模板字面量，而不是把字符串连接起来。
 
 ```js
 var str = "Hello, " + name + "!";
@@ -21,13 +19,13 @@ var str = "Hello, " + name + "!";
 var str = `Hello, ${name}!`;
 ```
 
-## Rule Details
+## 规则细节
 
-This rule is aimed to flag usage of `+` operators with strings.
+这条规则的目的是标明使用 `+` 运算符连接的字符串。
 
-## Examples
+## 示例
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -40,7 +38,7 @@ var str = "Time: " + (12 * 60 * 60 * 1000);
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -58,8 +56,8 @@ var str = "Hello, " + "World!";
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-This rule should not be used in ES3/5 environments.
+不应该在 ES3/5 环境中使用此规则。
 
-In ES2015 (ES6) or later, if you don't want to be notified about string concatenation, you can safely disable this rule.
+在 ES2015（ES6）或更高版本中，如果你不想得到关于字符串连接的通知，你可以安全地禁用这个规则。

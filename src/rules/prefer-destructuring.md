@@ -7,32 +7,30 @@ further_reading:
 - https://2ality.com/2015/01/es6-destructuring.html
 ---
 
+在 JavaScript ES6 中，增加了一种新的语法，用于从数组索引或对象属性创建变量，称为[解构](#further-reading)。 这条规则强制使用解构，而不是通过成员表达式来访问一个属性。
 
+## 规则细节
 
-With JavaScript ES6, a new syntax was added for creating variables from an array index or object property, called [destructuring](#further-reading).  This rule enforces usage of destructuring instead of accessing a property through a member expression.
+### 选项
 
-## Rule Details
+这个规则需要两组配置对象。第一个对象参数决定了该规则适用于哪些类型的解构。
 
-### Options
+两个属性，`array` 和 `object`，可以用来独立开启或关闭这些类型的解构要求。默认情况下，两者都是真。
 
-This rule takes two sets of configuration objects. The first object parameter determines what types of destructuring the rule applies to.
+另外，你可以为不同的分配类型使用单独的配置。它接受另外两个键，而不是 `array` 和 `object`。
 
-The two properties, `array` and `object`, can be used to turn on or off the destructuring requirement for each of those types independently. By default, both are true.
+一个键是 `VariableDeclarator`，另一个是 `AssignmentExpression`，它可以用来独立控制这些类型的解构要求。每个属性都接受一个对象，该对象接受两个属性，`array` 和 `object`，可以用来独立地控制 `array` 和 `object`中每个变量声明和赋值表达式的解构要求。 默认情况下，`array` 和 `object` 对于 `VariableDeclarator` 和 `AssignmentExpression` 都被设置为 true。
 
-Alternatively, you can use separate configurations for different assignment types. It accepts 2 other keys instead of `array` and `object`.
+该规则有第二个对象，只有一个键，`enforceForRenamedProperties`，它决定了 `object` 的结构化是否适用于重命名的变量。
 
-One key is `VariableDeclarator` and the other is `AssignmentExpression`, which can be used to control the destructuring requirement for each of those types independently. Each property accepts an object that accepts two properties, `array` and `object`, which can be used to control the destructuring requirement for each of `array` and `object` independently for variable declarations and assignment expressions.  By default, `array` and `object` are set to true for both `VariableDeclarator` and `AssignmentExpression`.
+**注意**。在运行时不可能确定一个变量将引用一个对象或一个数组。因此，这个规则通过检查被访问的键是否是一个整数来猜测赋值类型。这可能会导致以下令人困惑的情况。
 
-The rule has a second object with a single key, `enforceForRenamedProperties`, which determines whether the `object` destructuring applies to renamed variables.
+* 访问一个键为整数的对象属性将属于 `array` 的解构范畴。
+* 通过一个计算的索引访问一个数组元素将属于 `object` 解构的范畴。
 
-**Note**: It is not possible to determine if a variable will be referring to an object or an array at runtime. This rule therefore guesses the assignment type by checking whether the key being accessed is an integer. This can lead to the following possibly confusing situations:
+命令行中的 `--fix` 选项只修复变量声明中报告的问题，其中只有那些属于 `object` 重构范畴的问题。此外，声明的变量的名称必须与初始化器中用于非计算成员访问的名称相同。例如，`var foo = object.foo` 可以通过这个规则自动修复。涉及计算成员访问（如 `var foo = object[foo]`）或重命名属性（如 `var foo = object.bar`）的问题不会被自动修复。
 
-* Accessing an object property whose key is an integer will fall under the category `array` destructuring.
-* Accessing an array element through a computed index will fall under the category `object` destructuring.
-
-The `--fix` option on the command line fixes only problems reported in variable declarations, and among them only those that fall under the category `object` destructuring. Furthermore, the name of the declared variable has to be the same as the name used for non-computed member access in the initializer. For example, `var foo = object.foo` can be automatically fixed by this rule. Problems that involve computed member access (e.g., `var foo = object[foo]`) or renamed properties (e.g., `var foo = object.bar`) are not automatically fixed.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -47,7 +45,7 @@ var foo = object['foo'];
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -67,7 +65,7 @@ let foo;
 
 :::
 
-Examples of **incorrect** code when `enforceForRenamedProperties` is enabled:
+启用 `enforceForRenamedProperties` 时的**错误**示例：
 
 ::: incorrect
 
@@ -77,7 +75,7 @@ var foo = object.bar;
 
 :::
 
-Examples of **correct** code when `enforceForRenamedProperties` is enabled:
+启用 `enforceForRenamedProperties` 时**正确**示例：
 
 ::: correct
 
@@ -87,7 +85,7 @@ var { bar: foo } = object;
 
 :::
 
-Examples of additional **correct** code when `enforceForRenamedProperties` is enabled:
+启用 `enforceForRenamedProperties` 时额外的**正确**示例：
 
 ::: correct
 
@@ -102,7 +100,7 @@ class C {
 
 :::
 
-An example configuration, with the defaults `array` and `object` filled in, looks like this:
+配置示例，填入默认的 `array` 和 `object`，看起来像这样：
 
 ```json
 {
@@ -117,9 +115,9 @@ An example configuration, with the defaults `array` and `object` filled in, look
 }
 ```
 
-The two properties, `array` and `object`, which can be used to turn on or off the destructuring requirement for each of those types independently. By default, both are true.
+两个属性，`array` 和 `object`，可以用来独立开启或关闭这些类型的解构要求。默认情况下，两者都是真的。
 
-For example, the following configuration enforces only object destructuring, but not array destructuring:
+例如，下面的配置只强制执行对象解构，而不是数组解构。
 
 ```json
 {
@@ -129,7 +127,7 @@ For example, the following configuration enforces only object destructuring, but
 }
 ```
 
-An example configuration, with the defaults `VariableDeclarator` and `AssignmentExpression` filled in, looks like this:
+一个配置的例子，填写了默认的 `VariableDeclarator` 和 `AssignmentExpression` ，看起来像这样：
 
 ```json
 {
@@ -150,9 +148,9 @@ An example configuration, with the defaults `VariableDeclarator` and `Assignment
 }
 ```
 
-The two properties, `VariableDeclarator` and `AssignmentExpression`, which can be used to turn on or off the destructuring requirement for `array` and `object`. By default, all values are true.
+两个属性，`VariableDeclarator` 和 `AssignmentExpression`，可以用来打开或关闭对 `array` 和 `object` 的解构要求。默认情况下，所有的值都是真。
 
-For example, the following configuration enforces object destructuring in variable declarations and enforces array destructuring in assignment expressions.
+例如，下面的配置在变量声明中执行对象解构，在赋值表达式中执行数组解构。
 
 ```json
 {
@@ -174,7 +172,7 @@ For example, the following configuration enforces object destructuring in variab
 
 ```
 
-Examples of **correct** code when object destructuring in `VariableDeclarator` is enforced:
+当强制解构 `VariableDeclarator` 中的对象时的**正确**示例：
 
 ::: correct
 
@@ -185,7 +183,7 @@ var {bar: foo} = object;
 
 :::
 
-Examples of **correct** code when array destructuring in `AssignmentExpression` is enforced:
+当强制解构 `AssignmentExpression` 中的对象时的**正确**示例：
 
 ::: correct
 
@@ -196,19 +194,19 @@ Examples of **correct** code when array destructuring in `AssignmentExpression` 
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you want to be able to access array indices or object properties directly, you can either configure the rule to your tastes or disable the rule entirely.
+如果你希望能够直接访问数组索引或对象属性，你可以根据自己的口味配置规则，或者完全禁用该规则。
 
-Additionally, if you intend to access large array indices directly, like:
+此外，如果你打算直接访问大的数组索引，比如：
 
 ```javascript
 var foo = array[100];
 ```
 
-Then the `array` part of this rule is not recommended, as destructuring does not match this use case very well.
+那么这条规则的 `array` 部分就不被推荐了，因为解构与这种用例不是很匹配。
 
-Or for non-iterable 'array-like' objects:
+或者对于不可迭代的“类数组”对象。
 
 ```javascript
 var $ = require('jquery');

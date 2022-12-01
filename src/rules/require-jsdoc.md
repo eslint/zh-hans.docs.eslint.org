@@ -6,10 +6,9 @@ related_rules:
 - valid-jsdoc
 ---
 
+此规则在 ESLint v5.10.0 中[**被废弃**](https://eslint.org/blog/2018/11/jsdoc-end-of-life)。
 
-This rule was [**deprecated**](https://eslint.org/blog/2018/11/jsdoc-end-of-life) in ESLint v5.10.0.
-
-[JSDoc](http://usejsdoc.org) is a JavaScript API documentation generator. It uses specially-formatted comments inside of code to generate API documentation automatically. For example, this is what a JSDoc comment looks like for a function:
+[JSDoc](http://usejsdoc.org) 是一个 JavaScript API 文档生成器。它使用代码中特殊格式的注释来自动生成 API 文档。例如，对于一个函数，JSDoc 的注释是这样的。
 
 ```js
 /**
@@ -23,11 +22,11 @@ function sum(num1, num2) {
 }
 ```
 
-Some style guides require JSDoc comments for all functions as a way of explaining function behavior.
+一些风格指南要求对所有函数进行 JSDoc 注释，作为解释函数行为的一种方式。
 
-## Rule Details
+## 规则细节
 
-This rule requires JSDoc comments for specified nodes. Supported nodes:
+此规则要求指定节点的 JSDoc 注释。支持的节点有：
 
 * `"FunctionDeclaration"`
 * `"ClassDeclaration"`
@@ -35,13 +34,13 @@ This rule requires JSDoc comments for specified nodes. Supported nodes:
 * `"ArrowFunctionExpression"`
 * `"FunctionExpression"`
 
-## Options
+## 选项
 
-This rule has a single object option:
+此规则有一个单一的对象选项：
 
-* `"require"` requires JSDoc comments for the specified nodes
+* `"require"` 要求指定节点的 JSDoc 注释。
 
-Default option settings are:
+默认的选项设置为：
 
 ```json
 {
@@ -59,7 +58,7 @@ Default option settings are:
 
 ### require
 
-Examples of **incorrect** code for this rule with the `{ "require": { "FunctionDeclaration": true, "MethodDefinition": true, "ClassDeclaration": true, "ArrowFunctionExpression": true, "FunctionExpression": true } }` option:
+使用此规则与 `{ "require": { "FunctionDeclaration": true, "MethodDefinition": true, "ClassDeclaration": true, "ArrowFunctionExpression": true, "FunctionExpression": true } }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -105,7 +104,7 @@ var foo = {
 
 :::
 
-Examples of **correct** code for this rule with the `{ "require": { "FunctionDeclaration": true, "MethodDefinition": true, "ClassDeclaration": true, "ArrowFunctionExpression": true, "FunctionExpression": true } }` option:
+使用此规则与 `{ "require": { "FunctionDeclaration": true, "MethodDefinition": true, "ClassDeclaration": true, "ArrowFunctionExpression": true, "FunctionExpression": true } }` 选项的**正确**示例：
 
 ::: correct
 
@@ -195,6 +194,6 @@ setTimeout(() => {}, 10); // since it's an anonymous arrow function
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you do not require JSDoc for your functions, then you can leave this rule off.
+如果你的函数不需要 JSDoc，那么你可以不使用这个规则。

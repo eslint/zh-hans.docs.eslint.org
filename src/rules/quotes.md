@@ -4,9 +4,7 @@ layout: doc
 rule_type: layout
 ---
 
-
-
-JavaScript allows you to define strings in one of three ways: double quotes, single quotes, and backticks (as of ECMAScript 6). For example:
+JavaScript 允许你用三种方式之一来定义字符串：双引号、单引号和反斜线（从 ECMAScript 6 开始）。比如：
 
 ```js
 /*eslint-env es6*/
@@ -16,34 +14,34 @@ var single = 'single';
 var backtick = `backtick`;    // ES6 only
 ```
 
-Each of these lines creates a string and, in some cases, can be used interchangeably. The choice of how to define strings in a codebase is a stylistic one outside of template literals (which allow embedded of expressions to be interpreted).
+每一行都会创建一个字符串，在某些情况下，可以互换使用。在代码库中选择如何定义字符串是模板字面以外的一种风格（它允许对表达式的嵌入进行解释）。
 
-Many codebases require strings to be defined in a consistent manner.
+许多代码库要求以一种一致的方式定义字符串。
 
-## Rule Details
+## 规则细节
 
-This rule enforces the consistent use of either backticks, double, or single quotes.
+这条规则强制要求统一使用反斜线、双引号或单引号。
 
-## Options
+## 选项
 
-This rule has two options, a string option and an object option.
+这个规则有两个选项，一个字符串选项和一个对象选项：
 
-String option:
+字符串选项：
 
-* `"double"` (default) requires the use of double quotes wherever possible
-* `"single"` requires the use of single quotes wherever possible
-* `"backtick"` requires the use of backticks wherever possible
+* `"double"`（默认值）要求尽可能使用双引号。
+* `"single"` 要求尽可能使用单引号。
+* `"backtick"` 要求尽可能使用反斜线。
 
-Object option:
+对象选项：
 
-* `"avoidEscape": true` allows strings to use single-quotes or double-quotes so long as the string contains a quote that would have to be escaped otherwise
-* `"allowTemplateLiterals": true` allows strings to use backticks
+* `"avoidEscape": true` 允许字符串使用单引号或双引号，只要该字符串包含一个必须转义的引号即可
+* `"allowTemplateLiterals": true` 允许字符串使用反符号
 
-**Deprecated**: The object property `avoid-escape` is deprecated; please use the object property `avoidEscape` instead.
+**已废弃**：对象属性 `avoid-escape` 已被废弃；请使用对象属性 `avoidEscape` 代替。
 
 ### double
 
-Examples of **incorrect** code for this rule with the default `"double"` option:
+使用此规则与默认的 `"double"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -57,7 +55,7 @@ var backtick = `back\ntick`; // you can use \n in single or double quoted string
 
 :::
 
-Examples of **correct** code for this rule with the default `"double"` option:
+使用此规则与默认的 `"double"` 选项的**正确**示例：
 
 ::: correct
 
@@ -75,7 +73,7 @@ var backtick = tag`backtick`; // backticks are allowed due to tag
 
 ### single
 
-Examples of **incorrect** code for this rule with the `"single"` option:
+使用此规则与 `"single"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -88,7 +86,7 @@ var unescaped = "a string containing 'single' quotes";
 
 :::
 
-Examples of **correct** code for this rule with the `"single"` option:
+使用此规则与 `"single"` 选项的**正确**示例：
 
 ::: correct
 
@@ -104,7 +102,7 @@ var backtick = `back${x}tick`; // backticks are allowed due to substitution
 
 ### backticks
 
-Examples of **incorrect** code for this rule with the `"backtick"` option:
+使用此规则与 `"backtick"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -118,7 +116,7 @@ var unescaped = 'a string containing `backticks`';
 
 :::
 
-Examples of **correct** code for this rule with the `"backtick"` option:
+使用此规则与 `"backtick"` 选项的**正确**示例：
 
 ::: correct
 
@@ -133,8 +131,7 @@ var backtick = `backtick`;
 
 ### avoidEscape
 
-Examples of additional **correct** code for this rule with the `"double", { "avoidEscape": true }` options:
-
+使用此规则与 `"double", { "avoidEscape": true }` 的额外**正确**示例：
 ::: correct
 
 ```js
@@ -145,7 +142,7 @@ var single = 'a string containing "double" quotes';
 
 :::
 
-Examples of additional **correct** code for this rule with the `"single", { "avoidEscape": true }` options:
+使用此规则与 `"single", { "avoidEscape": true }` 的额外**正确**示例：
 
 ::: correct
 
@@ -157,7 +154,7 @@ var double = "a string containing 'single' quotes";
 
 :::
 
-Examples of additional **correct** code for this rule with the `"backtick", { "avoidEscape": true }` options:
+使用此规则与 `"backtick", { "avoidEscape": true }` 的额外**正确**示例：
 
 ::: correct
 
@@ -171,7 +168,7 @@ var double = "a string containing `backtick` quotes"
 
 ### allowTemplateLiterals
 
-Examples of additional **correct** code for this rule with the `"double", { "allowTemplateLiterals": true }` options:
+使用此规则与 `"double", { "allowTemplateLiterals": true }` 的额外**正确**示例：
 
 ::: correct
 
@@ -184,7 +181,7 @@ var double = `double`;
 
 :::
 
-Examples of additional **correct** code for this rule with the `"single", { "allowTemplateLiterals": true }` options:
+使用此规则与 `"single", { "allowTemplateLiterals": true }` 的额外**正确**示例：
 
 ::: correct
 
@@ -197,8 +194,8 @@ var single = `single`;
 
 :::
 
-`{ "allowTemplateLiterals": false }` will not disallow the usage of all template literals. If you want to forbid any instance of template literals, use [no-restricted-syntax](no-restricted-syntax) and target the `TemplateLiteral` selector.
+`{ "allowTemplateLiterals": false }` 不会禁止使用所有模板字面量。如果你想禁止模板字面量的任何实例，请使用 [no-restricted-syntax](no-restricted-syntax) 并针对 `TemplateLiteral` 选择器。
 
-## When Not To Use It
+## 何时不用
 
-If you do not need consistency in your string styles, you can safely disable this rule.
+如果你不需要你的字符串样式的一致性，你可以安全地停用这个规则。

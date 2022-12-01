@@ -9,15 +9,13 @@ related_rules:
 - object-curly-spacing
 ---
 
+这条规则允许你限制对象字面中的属性规范的位置。你可以禁止任何属性说明的任何部分与任何其他属性说明的任何部分出现在同一行。你可以使这一禁止成为绝对的，或者，通过调用一个对象选项，你可以允许一个例外，允许一个对象字面的所有属性规范的所有部分出现在一行。
 
-
-This rule permits you to restrict the locations of property specifications in object literals. You may prohibit any part of any property specification from appearing on the same line as any part of any other property specification. You may make this prohibition absolute, or, by invoking an object option, you may allow an exception, permitting an object literal to have all parts of all of its property specifications on a single line.
-
-## Rule Details
+## 规则细节
 
 ### Motivations
 
-This rule makes it possible to ensure, as some style guides require, that property specifications appear on separate lines for better readability. For example, you can prohibit all of these:
+这条规则使我们有可能像一些风格指南所要求的那样，确保属性规范出现在不同的行中，以提高可读性。例如，你可以禁止所有这些。
 
 ```js
 const newObject = {a: 1, b: [2, {a: 3, b: 4}]};
@@ -38,7 +36,7 @@ const newObject = {
 
 ```
 
-Instead of those, you can comply with the rule by writing
+而不是这些，你可以通过写作来遵守规则
 
 ```js
 const newObject = {
@@ -50,7 +48,7 @@ const newObject = {
 };
 ```
 
-or
+或
 
 ```js
 const newObject = {
@@ -65,7 +63,7 @@ const newObject = {
 };
 ```
 
-Another benefit of this rule is specificity of diffs when a property is changed:
+这个规则的另一个好处是当一个属性被改变时，差异的特殊性。
 
 ```diff
 // More specific
@@ -85,7 +83,7 @@ Another benefit of this rule is specificity of diffs when a property is changed:
 
 ### Optional Exception
 
-The rule offers one object option, `allowAllPropertiesOnSameLine` (a deprecated synonym is `allowMultiplePropertiesPerLine`). If you set it to `true`, object literals such as the first two above, with all property specifications on the same line, will be permitted, but one like
+规则提供了一个对象选项，`allowAllPropertiesOnSameLine`（一个已被废弃的同义词是 `allowMultiplePropertiesPerLine`）。如果你把它设置为 `true`，像上面的前两个对象字面，所有的属性规格都在同一行，将被允许，但是像
 
 ```js
 const newObject = {
@@ -95,17 +93,17 @@ const newObject = {
 
 ```
 
-will be prohibited, because two properties, but not all properties, appear on the same line.
+将被禁止，因为有两个属性，但不是所有的属性，出现在同一行。
 
 ### Notations
 
-This rule applies equally to all property specifications, regardless of notation, including:
+这条规则同样适用于所有的属性规范，不管是什么记号，包括：
 
-* `a: 1` (ES5)
-* `a` (ES2015 shorthand property)
-* ``[`prop${a}`]`` (ES2015 computed property name)
+* `a: 1`（ES5）
+* `a`（ES2015 速记属性）
+* ``[`prop${a}`]``（ES2015 计算的属性名）
 
-Thus, the rule (without the optional exception) prohibits both of these:
+因此，规则（没有选项的例外）禁止这两种情况。
 
 ```js
 const newObject = {
@@ -118,11 +116,11 @@ const newObject = {
 };
 ```
 
-(This behavior differs from that of the JSCS rule cited below, which does not treat the leading `[` of a computed property name as part of that property specification. The JSCS rule prohibits the second of these formats but permits the first.)
+（这种行为与下面引用的 JSCS 规则不同，JSCS 规则不把计算过的属性名称的前面的 `[` 作为该属性规范的一部分。JSCS 规则禁止这些格式中的第二种，但允许第一种）。
 
 ### Multiline Properties
 
-The rule prohibits the colocation on any line of at least 1 character of one property specification with at least 1 character of any other property specification. For example, the rule prohibits
+该规则禁止在任何一行中，将一个属性规范的至少 1 个字符与任何其他属性规范的至少 1 个字符放在一起。例如，该规则禁止
 
 ```js
 const newObject = {a: [
@@ -131,13 +129,13 @@ const newObject = {a: [
 ], b: 2};
 ```
 
-because 1 character of the specification of `a` (i.e. the trailing `]` of its value) is on the same line as the specification of `b`.
+因为 `a` 的规格的 1 个字符（即其值尾部的 `]`）与 `b` 的规格在同一行。
 
-The optional exception does not excuse this case, because the entire collection of property specifications spans 4 lines, not 1.
+可选的例外并不能原谅这种情况，因为整个属性说明的集合跨越了 4 行，而不是 1 行。
 
 ### Inter-property Delimiters
 
-The comma and any whitespace that delimit property specifications are not considered parts of them. Therefore, the rule permits both of these formats:
+划分属性规格的逗号和任何空白都不被视为它们的一部分。因此，该规则允许这两种格式：
 
 ```js
 const newFunction = multiplier => ({
@@ -152,11 +150,11 @@ const newFunction = multiplier => ({
 });
 ```
 
-(This behavior differs from that of the JSCS rule cited below, which permits the first but prohibits the second format.)
+（这种行为与下面引用的 JSCS 规则不同，JSCS 规则允许第一种，但禁止第二种格式。)
 
 ### --fix
 
-If this rule is invoked with the command-line `--fix` option, object literals that violate the rule are generally modified to comply with it. The modification in each case is to move a property specification to the next line whenever there is part or all of a previous property specification on the same line. For example,
+如果用命令行 `--fix` 选项来调用这个规则，违反规则的对象字词通常会被修改以符合规则。每种情况下的修改都是将属性说明移到下一行，只要同一行中存在部分或全部的前一个属性说明。比如说：
 
 ```js
 const newObject = {
@@ -175,15 +173,15 @@ b: 'p.m.',
 };
 ```
 
-The modification does not depend on whether the object option is set to `true`. In other words, ESLint never collects all the property specifications onto a single line, even when the object option would permit that.
+修改并不取决于对象选项是否被设置为 `true`。换句话说，ESLint 从不将所有的属性说明收集到一行，即使对象选项允许这样做。
 
-ESLint does not correct a violation of this rule if a comment immediately precedes the second or subsequent property specification on a line, since ESLint cannot determine which line to put the comment onto.
+如果一个注释紧接在第二行或之后的属性说明之前，ESLint 不会纠正对这一规则的违反，因为 ESLint 无法确定将注释放在哪一行。
 
-As illustrated above, the `--fix` option, applied to this rule, does not comply with other rules, such as `indent`, but, if those other rules are also in effect, the option applies them, too.
+如上图所示，应用于此规则的 `--fix` 选项不符合其他规则，如 `indent`，但是，如果这些其他规则也有效，选项也会应用它们。
 
-## Examples
+## 示例
 
-Examples of **incorrect** code for this rule, with no object option or with `allowAllPropertiesOnSameLine` set to `false`:
+使用此规则切没有使用对象选项或将 `allowAllPropertiesOnSameLine` 设置为 `false` 的**错误**示例：
 
 ::: incorrect
 
@@ -223,7 +221,7 @@ const obj5 = {
 
 :::
 
-Examples of **correct** code for this rule, with no object option or with `allowAllPropertiesOnSameLine` set to `false`:
+此规则的**正确代码的例子，没有对象选项或将 "allowAllPropertiesOnSameLine "设置为 "false"。
 
 ::: correct
 
@@ -257,7 +255,7 @@ const obj3 = {
 
 :::
 
-Examples of additional **correct** code for this rule with the `{ "allowAllPropertiesOnSameLine": true }` option:
+使用此规则与额外的：`{ "allowAllPropertiesOnSameLine": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -277,10 +275,10 @@ const obj3 = {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-You can turn this rule off if you want to decide, case-by-case, whether to place property specifications on separate lines.
+如果你想逐一决定是否将财产规格放在单独的行上，你可以关闭这一规则。
 
-## Compatibility
+## 兼容
 
-* **JSCS**: This rule provides partial compatibility with [requireObjectKeysOnNewLine](https://jscs-dev.github.io/rule/requireObjectKeysOnNewLine).
+**JSCS**：本规则与 [requireObjectKeysOnNewLine](https://jscs-dev.github.io/rule/requireObjectKeysOnNewLine) 部分兼容性。

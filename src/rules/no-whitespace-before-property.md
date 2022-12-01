@@ -4,17 +4,15 @@ layout: doc
 rule_type: layout
 ---
 
-
-
-JavaScript allows whitespace between objects and their properties. However, inconsistent spacing can make code harder to read and can lead to errors.
+JavaScript 允许在对象和它们的属性之间留出空白。然而，不一致的间距会使代码更难阅读，并可能导致错误。
 
 ```js
 foo. bar .baz . quz
 ```
 
-## Rule Details
+## 规则细节
 
-This rule disallows whitespace around the dot or before the opening bracket before properties of objects if they are on the same line. This rule allows whitespace when the object and property are on separate lines, as it is common to add newlines to longer chains of properties:
+如果对象的属性在同一行，这条规则不允许在圆点周围或开头的括号前有空白。当对象和属性在不同的行上时，这条规则允许空白，因为在较长的属性链上添加新行是很常见的。
 
 ```js
 foo
@@ -23,7 +21,7 @@ foo
   .qux()
 ```
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -47,7 +45,7 @@ foo
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -76,6 +74,6 @@ foo.
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-Turn this rule off if you do not care about allowing whitespace around the dot or before the opening bracket before properties of objects if they are on the same line.
+如果你不关心允许在点周围或在对象的属性前的开括号前的空白，如果它们在同一行中，请关闭此规则。

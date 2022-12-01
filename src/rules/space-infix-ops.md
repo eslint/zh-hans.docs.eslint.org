@@ -4,29 +4,27 @@ layout: doc
 rule_type: layout
 ---
 
-
-
-While formatting preferences are very personal, a number of style guides require spaces around operators, such as:
+虽然格式上的偏好是非常个人化的，但一些风格指南要求在运算符周围有空格，例如：
 
 ```js
 var sum = 1 + 2;
 ```
 
-Proponents of this rule believe that it makes code easier to read and can more easily highlight potential errors, such as:
+这一规则的支持者认为，它使代码更容易阅读，可以更容易地突出潜在的错误，如：
 
 ```js
 var sum = i+++2;
 ```
 
-While this is valid JavaScript syntax, it is hard to determine what the author intended.
+虽然这是有效的 JavaScript 语法，但很难确定作者的意图。
 
-## Rule Details
+## 规则细节
 
-This rule is aimed at ensuring there are spaces around infix operators.
+这条规则的目的是确保在英缀运算符周围有空格。
 
-## Options
+## 选项
 
-This rule accepts a single options argument with the following defaults:
+该规则接受一个选项参数，其默认值如下：
 
 ```json
 "space-infix-ops": ["error", { "int32Hint": false }]
@@ -34,13 +32,13 @@ This rule accepts a single options argument with the following defaults:
 
 ### `int32Hint`
 
-Set the `int32Hint` option to `true` (default is `false`) to allow write `a|0` without space.
+设置 `int32Hint` 选项为 `true`（默认为是 `false`），以允许写 `a|0` 时不留空格。
 
 ```js
 var foo = bar|0; // `foo` is forced to be signed 32 bit integer
 ```
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -65,7 +63,7 @@ function foo(a=0) { }
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -88,6 +86,6 @@ function foo(a = 0) { }
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-You can turn this rule off if you are not concerned with the consistency of spacing around infix operators.
+如果你不关心英缀运算符周围间距的一致性，你可以关闭这个规则。

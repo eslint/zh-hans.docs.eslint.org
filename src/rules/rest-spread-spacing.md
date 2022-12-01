@@ -6,9 +6,7 @@ further_reading:
 - https://github.com/tc39/proposal-object-rest-spread
 ---
 
-
-
-ES2015 introduced the rest and spread operators, which expand an iterable structure into its individual parts. Some examples of their usage are as follows:
+ES2015 引入了 rest 和 spread 运算符，它们将一个可迭代的结构扩展为其各个部分。它们的一些使用例子如下。
 
 ```js
 let numArr = [1, 2, 3];
@@ -32,7 +30,7 @@ function numArgs(...args) {
 numArgs(a, b, c); // -> 3
 ```
 
-In addition to the above, there is currently a proposal to add object rest and spread properties to the spec. They can be used as follows:
+除上述内容外，目前还有一项建议，即在规范中增加对象的休息和传播属性。它们可以按以下方式使用：
 
 ```js
 
@@ -45,11 +43,11 @@ let n = { x, y, ...z };
 n; // -> { x: 1, y: 2, a: 3, b: 4 }
 ```
 
-As with other operators, whitespace is allowed between the rest or spread operator and the expression it is operating on, which can lead to inconsistent spacing within a codebase.
+与其他运算符一样，在剩余或展开运算符和它所操作的表达式之间允许有空白，这可能导致代码库中的间距不一致。
 
-## Rule Details
+## 规则细节
 
-This rule aims to enforce consistent spacing between rest and spread operators and their expressions. The rule also supports object rest and spread properties in ES2018:
+这条规则的目的是强制执行剩余运算符和展开运算符及其表达式之间的一致间距。该规则还支持 ES2018 中的剩余对象和展开属性。
 
 ```json
 {
@@ -59,27 +57,27 @@ This rule aims to enforce consistent spacing between rest and spread operators a
 }
 ```
 
-Please read the user guide's section on [configuring parser options](/docs/user-guide/configuring#specifying-parser-options) to learn more.
+请阅读用户指南的[配置分析器选项](/docs/user-guide/configuring#specifying-parser-options)部分以了解更多。
 
-## Options
+## 选项
 
-This rule takes one option: a string with the value of `"never"` or `"always"`. The default value is `"never"`.
+这个规则有一个字符串选项，其值为 `"never"` 或 `"always"`。默认值是 `"never"`。
 
 ### "never"
 
-When using the default `"never"` option, whitespace is not allowed between spread operators and their expressions.
+当使用默认的 `"never"` 选项时，在扩展运算符和其表达式之间不允许有空格：
 
 ```json
 rest-spread-spacing: ["error"]
 ```
 
-or
+或
 
 ```json
 rest-spread-spacing: ["error", "never"]
 ```
 
-Examples of **incorrect** code for this rule with `"never"`:
+使用此规则与 `"never"` 的**错误**示例：
 
 ::: incorrect
 
@@ -96,7 +94,7 @@ let n = { x, y, ... z };
 
 :::
 
-Examples of **correct** code for this rule with `"never"`:
+使用此规则与 `"never"` 的**正确**示例：
 
 ::: correct
 
@@ -115,14 +113,13 @@ let n = { x, y, ...z };
 
 ### "always"
 
-When using the `"always"` option, whitespace is required between spread operators and their expressions.
+当使用 `"always"` 选项时，在扩展运算符和它们的表达式之间需要空格。
 
 ```json
 rest-spread-spacing: ["error", "always"]
 ```
 
-Examples of **incorrect** code for this rule with `"always"`:
-
+使用此规则与 `"always"` 的**错误**示例：
 ::: incorrect
 
 ```js
@@ -138,7 +135,7 @@ let n = { x, y, ...z };
 
 :::
 
-Examples of **correct** code for this rule with `"always"`:
+使用此规则与 `"always"` 的**正确**示例：
 
 ::: correct
 
@@ -155,6 +152,6 @@ let n = { x, y, ... z };
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-You can safely disable this rule if you do not care about enforcing consistent spacing between spread operators and their expressions.
+如果你不关心强制执行传播运算符和其表达式之间的一致间距，你可以安全地禁用这一规则。

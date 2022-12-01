@@ -4,15 +4,13 @@ layout: doc
 rule_type: suggestion
 ---
 
+一个只重新抛出原始错误的 `catch` 子句是多余的，对程序的运行行为没有影响。这些多余的子句可能是混乱和代码膨胀的来源，所以最好不允许这些不必要的 `catch` 子句。
 
+## 规则细节
 
-A `catch` clause that only rethrows the original error is redundant, and has no effect on the runtime behavior of the program. These redundant clauses can be a source of confusion and code bloat, so it's better to disallow these unnecessary `catch` clauses.
+这条规则报告的 `catch` 子句只 `throw` 被捕获的错误。
 
-## Rule Details
-
-This rule reports `catch` clauses that only `throw` the caught error.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -36,7 +34,7 @@ try {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -65,6 +63,6 @@ try {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't want to be notified about unnecessary catch clauses, you can safely disable this rule.
+如果你不希望被通知到不必要的捕获条款，你可以安全地禁用这个规则。

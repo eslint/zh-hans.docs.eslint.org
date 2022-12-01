@@ -7,17 +7,15 @@ further_reading:
 - https://bugs.chromium.org/p/v8/issues/detail?id=5848
 ---
 
+在 ES2016 中引入的 infix 指数运算符 `**` 是标准 `Math.pow` 函数的替代品。
 
+Infix 符号被认为更具可读性，因此比函数符号更可取。
 
-Introduced in ES2016, the infix exponentiation operator `**` is an alternative for the standard `Math.pow` function.
+## 规则细节
 
-Infix notation is considered to be more readable and thus more preferable than the function notation.
+这条规则不允许调用 `Math.pow`，建议使用 `**` 运算符代替。
 
-## Rule Details
-
-This rule disallows calls to `Math.pow` and suggests using the `**` operator instead.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -35,7 +33,7 @@ let quux = Math.pow(-1, n);
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -53,6 +51,6 @@ let quux = (-1) ** n;
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-This rule should not be used unless ES2016 is supported in your codebase.
+除非你的代码库中支持 ES2016，否则不应使用这一规则。

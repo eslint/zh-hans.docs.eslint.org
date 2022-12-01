@@ -4,11 +4,9 @@ layout: doc
 rule_type: suggestion
 ---
 
+严格模式指令是指在脚本或函数体的开头有一个 `use strict` 字样。它开启了严格模式的语义。
 
-
-A strict mode directive is a `"use strict"` literal at the beginning of a script or function body. It enables strict mode semantics.
-
-When a directive occurs in global scope, strict mode applies to the entire script:
+当指令出现在全局范围时，严格模式适用于整个脚本。
 
 ```js
 "use strict";
@@ -20,7 +18,7 @@ function foo() {
 }
 ```
 
-When a directive occurs at the beginning of a function body, strict mode applies only to that function, including all contained functions:
+当指令出现在一个函数体的开头，严格模式只适用于该函数，包括所有包含的函数。
 
 ```js
 function foo() {
@@ -40,48 +38,48 @@ function foo2() {
 }());
 ```
 
-In the **CommonJS** module system, a hidden function wraps each module and limits the scope of a "global" strict mode directive.
+在 **CommonJS** 模块系统中，一个隐藏的函数包装了每个模块，并限制了 "全局 "严格模式指令的范围。
 
-In **ECMAScript** modules, which always have strict mode semantics, the directives are unnecessary.
+在 **ECMAScript** 模块中，总是有严格模式的语义，这些指令是不必要的。
 
-## Rule Details
+## 规则细节
 
-This rule requires or disallows strict mode directives.
+这条规则要求或不允许严格模式指令。
 
-This rule disallows strict mode directives, no matter which option is specified, if ESLint configuration specifies either of the following as [parser options](/docs/user-guide/configuring/language-options#specifying-parser-options):
+如果 ESLint 配置中指定了以下任何一个 [parser 选项 s](/docs/user-guide/configuring/language-options#specifying-parser-options)，则无论哪个选项被指定，本规则都不允许严格模式指令。
 
-* `"sourceType": "module"` that is, files are **ECMAScript** modules
-* `"impliedStrict": true` property in the `ecmaFeatures` object
+* `"sourceType": "module"` 也就是说，文件是 **ECMAScript** 模块
+* `"impliedStrict": true` 属性在 `ecmaFeatures` 对象中。
 
-This rule disallows strict mode directives, no matter which option is specified, in functions with non-simple parameter lists (for example, parameter lists with default parameter values) because that is a syntax error in **ECMAScript 2016** and later. See the examples of the [function](#function) option.
+这条规则不允许在带有非简单参数列表的函数中使用严格模式指令，无论指定哪个选项（例如，带有默认参数值的参数列表），因为这在 **ECMAScript 2016** 及以后版本中是一个语法错误。参见 [function](#function) 选项的例子。
 
-This rule does not apply to class static blocks, no matter which option is specified, because class static blocks do not have directives. Therefore, a `"use strict"` statement in a class static block is not a directive, and will be reported by the [no-unused-expressions](no-unused-expressions) rule.
+这条规则不适用于类静态块，无论指定哪个选项，因为类静态块没有指令。因此，类静态块中的 `"use strict"` 语句不是指令，将被 [no-unused-expressions](no-unused-expressions) 规则所报告。
 
-The `--fix` option on the command line does not insert new `"use strict"` statements, but only removes unneeded statements.
+命令行中的 `"fix"` 选项不会插入新的 `"use strict"` 语句，而只是删除不需要的语句。
 
-## Options
+## 选项
 
-This rule has a string option:
+此规则选项为字符串：
 
-* `"safe"` (default) corresponds either of the following options:
-    * `"global"` if ESLint considers a file to be a **CommonJS** module
-    * `"function"` otherwise
-* `"global"` requires one strict mode directive in the global scope (and disallows any other strict mode directives)
-* `"function"` requires one strict mode directive in each top-level function declaration or expression (and disallows any other strict mode directives)
-* `"never"` disallows strict mode directives
+* `"safe"`（默认值）对应于以下任一选项:
+    * `"global"` 如果 ESLint 认为一个文件是 **CommonJS** 模块的话
+    * `"function"` 否则
+* `"global"` 要求在全局范围内有一个严格模式指令（并且不允许任何其他严格模式指令）
+* `"function"` 要求在每个顶层函数声明或表达式中使用一个严格模式指令（并且不允许任何其他严格模式指令）
+* `"never"` 不允许使用严格模式的指令
 
 ### safe
 
-The `"safe"` option corresponds to the `"global"` option if ESLint considers a file to be a **Node.js** or **CommonJS** module because the configuration specifies either of the following:
+如果 ESLint 认为一个文件是 **Node.js** 或 **CommonJS** 模块，因为配置中指定了以下任何一项，那么 `"safe"` 选项对应于 `"global"` 选项。
 
-* `node` or `commonjs` [environments](/docs/user-guide/configuring/language-options#specifying-environments)
-* `"globalReturn": true` property in the `ecmaFeatures` object of [parser options](/docs/user-guide/configuring/language-options#specifying-parser-options)
+* `node` 或 `commonjs` [环境](/docs/user-guide/configuring/language-options#specifying-environments)
+* [解析器选项](/docs/user-guide/configuring/language-options#specifying-parser-options)的 `ecmaFeatures` 对象中的 `"globalReturn": true` 属性
 
-Otherwise the `"safe"` option corresponds to the `"function"` option. Note that if `"globalReturn": false` is explicitly specified in the configuration, the `"safe"` option will correspond to the `"function"` option regardless of the specified environment.
+否则 `"safe"` 选项将与 `"function"` 选项相对应。注意，如果在配置中明确指定了 `"globalReturn": false`，那么 `"safe"` 选项将对应于`"function"` 选项，而不考虑指定环境。
 
 ### global
 
-Examples of **incorrect** code for this rule with the `"global"` option:
+使用此规则与 `"global"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -120,7 +118,7 @@ function foo() {
 
 :::
 
-Examples of **correct** code for this rule with the `"global"` option:
+使用此规则与 `"global"` 选项的**正确**示例：
 
 ::: correct
 
@@ -137,9 +135,9 @@ function foo() {
 
 ### function
 
-This option ensures that all function bodies are strict mode code, while global code is not. Particularly if a build step concatenates multiple scripts, a strict mode directive in global code of one script could unintentionally enable strict mode in another script that was not intended to be strict code.
+这个选项确保所有的函数体都是严格模式代码，而全局代码则不是。特别是当一个构建步骤串联了多个脚本时，一个脚本的全局代码中的严格模式指令可能会无意中启用另一个脚本中的严格模式，而这个脚本并不打算成为严格代码。
 
-Examples of **incorrect** code for this rule with the `"function"` option:
+使用此规则与 `"function"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -191,7 +189,7 @@ function foo(a = 1) {
 
 :::
 
-Examples of **correct** code for this rule with the `"function"` option:
+使用此规则与 `"function"` 选项的**正确**示例：
 
 ::: correct
 
@@ -224,7 +222,7 @@ var foo = (function() {
 
 ### never
 
-Examples of **incorrect** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -251,7 +249,7 @@ function foo() {
 
 :::
 
-Examples of **correct** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**正确**示例：
 
 ::: correct
 
@@ -266,11 +264,11 @@ function foo() {
 
 ### earlier default (removed)
 
-(removed) The default option (that is, no string option specified) for this rule was **removed** in ESLint v1.0. The `"function"` option is most similar to the removed option.
+（删除）该规则的默认选项（即没有指定字符串选项）在 ESLint v1.0 中被**删除**。`"function"`选项与被删除的选项最为相似。
 
-This option ensures that all functions are executed in strict mode. A strict mode directive must be present in global code or in every top-level function declaration or expression. It does not concern itself with unnecessary strict mode directives in nested functions that are already strict, nor with multiple strict mode directives at the same level.
+这个选项确保所有的函数都在严格模式下执行。严格模式指令必须出现在全局代码或每个顶级函数声明或表达式中。它不关心嵌套函数中不必要的严格模式指令，因为嵌套函数已经是严格的了，也不关心同一层次的多个严格模式指令。
 
-Examples of **incorrect** code for this rule with the earlier default option which has been removed:
+使用此规则与早期已删除的默认选项的**错误**示例：
 
 ::: incorrect
 
@@ -297,7 +295,7 @@ function foo() {
 
 :::
 
-Examples of **correct** code for this rule with the earlier default option which has been removed:
+使用此规则与早期已删除的默认选项的**正确**示例：
 
 ::: correct
 
@@ -339,6 +337,6 @@ function foo() {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-In a codebase that has both strict and non-strict code, either turn this rule off, or [selectively disable it](/docs/user-guide/configuring/rules#disabling-rules) where necessary. For example, functions referencing `arguments.callee` are invalid in strict mode. A [full list of strict mode differences](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode/Transitioning_to_strict_mode#Differences_from_non-strict_to_strict) is available on MDN.
+在一个既有严格代码又有非严格代码的代码库中，要么关闭这个规则，要么在必要时[选择性地禁用它](/docs/user-guide/configuring/rules#disabling-rules)。例如，引用 `arguments.callee` 的函数在严格模式下是无效的。MDN 上有一份[严格模式差异的完整列表](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode/Transitioning_to_strict_mode#Differences_from_non-strict_to_strict)。

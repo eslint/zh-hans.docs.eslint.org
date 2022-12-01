@@ -6,28 +6,28 @@ related_rules:
 - spaced-comment
 ---
 
-Enforces consistent spacing after `//` in line comments.
+在行注释中的 `//` 之后执行一致的间距。
 
-(removed) This rule was **removed** in ESLint v1.0 and **replaced** by the [spaced-comment](spaced-comment) rule.
+（已移除）此规则在 ESLint v1.0 中移除并被 [spaced-comment](spaced-comment) 所取代。
 
-Some style guides require or disallow a whitespace immediately after the initial `//` of a line comment.
-Whitespace after the `//` makes it easier to read text in comments.
-On the other hand, commenting out code is easier without having to put a whitespace right after the `//`.
+一些风格指南要求或不允许在一行注释的最初的 `//` 之后有一个空白。
+在 `//` 之后留白可以使注释中的文字更容易被阅读。
+另一方面，如果不在 `//` 后面加一个空白，注释代码就会更容易。
 
-## Rule Details
+## 规则细节
 
-This rule will enforce consistency of spacing after the start of a line comment `//`.
+这条规则将强制执行行注释`//`开始后的间距的一致性。
 
-This rule takes two arguments. If the first is `"always"` then the `//` must be followed by at least once whitespace.
-If `"never"` then there should be no whitespace following.
-The default is `"always"`.
+这条规则需要两个参数。如果第一个参数是 `"always"`，那么 `//` 后面必须至少有一个空白。
+如果是 `"never"`，那么后面就不应该有空格。
+默认是 `"always"`。
 
-The second argument is an object with one key, `"exceptions"`.
-The value is an array of string patterns which are considered exceptions to the rule.
-It is important to note that the exceptions are ignored if the first argument is `"never"`.
-Exceptions cannot be mixed.
+第二个参数是一个对象，有一个键，`"exceptions"`。
+该值是一个字符串模式的数组，被认为是规则的例外情况。
+值得注意的是，如果第一个参数是 `"never"`，那么例外情况将被忽略。
+例外不能混合使用。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -59,7 +59,7 @@ var foo = 5;
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 

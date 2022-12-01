@@ -6,54 +6,51 @@ related_rules:
 - spaced-line-comment
 ---
 
+一些风格指南要求或不允许在评论的最初的 `//` 或 `/*` 后面有空白。
+在 `//` 或 `/*` 后面的空白使评论中的文本更容易阅读。
+另一方面，如果不在 `//` 或 `/*` 后面加上空白，注释代码也会更容易。
 
+## 规则细节
 
-Some style guides require or disallow a whitespace immediately after the initial `//` or `/*` of a comment.
-Whitespace after the `//` or `/*` makes it easier to read text in comments.
-On the other hand, commenting out code is easier without having to put a whitespace right after the `//` or `/*`.
+这条规则将强制执行注释 `//` 或 `/*` 开始后的间距的一致性。它还为各种文档风格提供了一些例外情况。
 
-## Rule Details
+## 选项
 
-This rule will enforce consistency of spacing after the start of a comment `//` or `/*`. It also provides several
-exceptions for various documentation styles.
+规则需要两个选项。
 
-## Options
+* 第一个是一个字符串，可以是 `"always"` 或 `"never"`。默认是 `"always"`。
 
-The rule takes two options.
+    * 如果 `"always"`，那么 `//` 或 `/*` 后面必须有至少一个空格。
 
-* The first is a string which be either `"always"` or `"never"`. The default is `"always"`.
+    * 如果 `"never"` ，那么后面就不应该有空白。
 
-    * If `"always"` then the `//` or `/*` must be followed by at least one whitespace.
+* 这个规则也可以接受第 2 个选项，一个具有以下任何键的对象。`"exceptions"` 和 `"markers"`。
 
-    * If `"never"` then there should be no whitespace following.
-
-* This rule can also take a 2nd option, an object with any of the following keys: `"exceptions"` and `"markers"`.
-
-    * The `"exceptions"` value is an array of string patterns which are considered exceptions to the rule. The rule will not warn when the pattern starts from the beginning of the comment and repeats until the end of the line or `*/` if the comment is a single line comment.
-    Please note that exceptions are ignored if the first argument is `"never"`.
+    * `"exceptions"` 值是一个字符串模式的数组，被认为是规则的例外情况。 当模式从注释的开头开始并重复到行尾时，规则将不会发出警告，如果注释是单行注释，则是 `*/`。
+    请注意，如果第一个参数是 `"never"`，例外情况将被忽略。
 
     ```js
     "spaced-comment": ["error", "always", { "exceptions": ["-", "+"] }]
     ```
 
-    * The `"markers"` value is an array of string patterns which are considered markers for docblock-style comments,
-    such as an additional `/`, used to denote documentation read by doxygen, vsdoc, etc. which must have additional characters.
-    The `"markers"` array will apply regardless of the value of the first argument, e.g. `"always"` or `"never"`.
+    * `"markers"` 值是一个字符串模式的数组，被认为是 docblock 风格注释的标记。
+    例如附加的 `/`，用于表示由 doxygen、vsdoc 等读取的文档，必须有附加的字符。
+    无论第一个参数的值是多少，`"markers"` 数组都将适用，例如，`"always"` 或 `"never"`。
 
     ```js
     "spaced-comment": ["error", "always", { "markers": ["/"] }]
     ```
 
-The difference between a marker and an exception is that a marker only appears at the beginning of the comment whereas
-exceptions can occur anywhere in the comment string.
+标记和异常的区别在于，标记只出现在注释的开头，而
+异常可以出现在注释字符串中的任何地方。
 
-You can also define separate exceptions and markers for block and line comments. The `"block"` object can have an additional key `"balanced"`, a boolean that specifies if inline block comments should have balanced spacing. The default value is `false`.
+你也可以为块和行注释定义单独的异常和标记。`block` 对象可以有一个额外的键 `"balanced"`，这是一个布尔值，用于指定内联块注释是否应该有平衡的行距。默认值是 `false`。
 
-* If `"balanced": true` and `"always"` then the `/*` must be followed by at least one whitespace, and the `*/` must be preceded by at least one whitespace.
+* 如果 `"balanced": true` 和 `"always"`，那么 `/*` 后面必须有至少一个空格，而 `*/` 前面必须有至少一个空格。
 
-* If `"balanced": true` and `"never"` then there should be no whitespace following `/*` or preceding `*/`.
+* 如果 `"balanced": false` 和 `"never"`，那么 `/*` 后面和 `*/` 前面都不应该有空格。
 
-* If `"balanced": false` then balanced whitespace is not enforced.
+* 如果 `"balanced": false`，则不执行平衡空白。
 
 ```json
 "spaced-comment": ["error", "always", {
@@ -71,7 +68,7 @@ You can also define separate exceptions and markers for block and line comments.
 
 ### always
 
-Examples of **incorrect** code for this rule with the `"always"` option:
+使用此规则与 `"always"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -94,7 +91,7 @@ Examples of **incorrect** code for this rule with the `"always"` option:
 
 :::
 
-Examples of **correct** code for this rule with the `"always"` option:
+使用此规则与 `"always"` 选项的**正确**示例：
 
 ::: correct
 
@@ -130,7 +127,7 @@ This comment has a newline
 
 ### never
 
-Examples of **incorrect** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -155,7 +152,7 @@ Examples of **incorrect** code for this rule with the `"never"` option:
 
 :::
 
-Examples of **correct** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**正确**示例：
 
 ::: correct
 
@@ -181,7 +178,7 @@ Examples of **correct** code for this rule with the `"never"` option:
 
 ### exceptions
 
-Examples of **incorrect** code for this rule with the `"always"` option combined with `"exceptions"`:
+使用此规则与 `"always"` 选项及 `"exceptions"` 的**错误**示例：
 
 ::: incorrect
 
@@ -241,7 +238,7 @@ Examples of **incorrect** code for this rule with the `"always"` option combined
 
 :::
 
-Examples of **correct** code for this rule with the `"always"` option combined with `"exceptions"`:
+使用此规则与 `"always"` 选项及 `"exceptions"` 的**正确**示例：
 
 ::: correct
 
@@ -323,7 +320,7 @@ COMMENT
 
 ### markers
 
-Examples of **incorrect** code for this rule with the `"always"` option combined with `"markers"`:
+使用此规则与 `"always"` 选项及 `"markers"` 的**错误**示例：
 
 ::: incorrect
 
@@ -353,7 +350,7 @@ Examples of **incorrect** code for this rule with the `"always"` option combined
 
 :::
 
-Examples of **correct** code for this rule with the `"always"` option combined with `"markers"`:
+使用此规则与 `"always"` 选项及 `"markers"` 的**正确**示例：
 
 ::: correct
 

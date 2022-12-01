@@ -9,28 +9,26 @@ related_rules:
 - object-property-newline
 ---
 
+一些风格指南要求或不允许在对象大括号和其他标记内有换行符。
 
+## 规则细节
 
-A number of style guides require or disallow line breaks inside of object braces and other tokens.
+这条规则要求或不允许在 `{` 和其后面的标记之间，以及在 `}` 和其前面的对象字面或结构化赋值的标记之间进行换行。
 
-## Rule Details
+## 选项
 
-This rule requires or disallows a line break between `{` and its following token, and between `}` and its preceding token of object literals or destructuring assignments.
+这个规则有一个字符串选项：
 
-## Options
+* `"always"` 要求在开头和结尾的大括号之后和之前进行换行。
+* `"never"` 不允许在大括号开头和结尾之前断行。
 
-This rule has either a string option:
+或对象选项：
 
-* `"always"` requires line breaks after opening and before closing braces
-* `"never"` disallows line breaks after opening and before closing braces
+* `"multiline": true` 如果属性内部或属性之间有换行，就需要换行。否则，它不允许换行。
+* `"minProperties"` 如果属性的数量至少是给定的整数，则需要换行。默认情况下，如果一个对象包含换行符并且其属性数量少于给定的整数，也会报告一个错误。然而，如果 `consistent` 选项被设置为 `true`，第二个行为将被禁用。
+* `"consistent": true`（默认值）要求两个大括号，或者两个大括号都不直接包含新行。注意，启用该选项也会改变 `minProperties` 选项的行为（更多信息见上面的 `minProperties`）。
 
-Or an object option:
-
-* `"multiline": true` requires line breaks if there are line breaks inside properties or between properties. Otherwise, it disallows line breaks.
-* `"minProperties"` requires line breaks if the number of properties is at least the given integer. By default, an error will also be reported if an object contains linebreaks and has fewer properties than the given integer. However, the second behavior is disabled if the `consistent` option is set to `true`
-* `"consistent": true` (default) requires that either both curly braces, or neither, directly enclose newlines. Note that enabling this option will also change the behavior of the `minProperties` option. (See `minProperties` above for more information)
-
-You can specify different options for object literals, destructuring assignments, and named imports and exports:
+你可以为对象字面、结构化赋值和命名的导入和导出指定不同的选项。
 
 ```json
 {
@@ -43,14 +41,14 @@ You can specify different options for object literals, destructuring assignments
 }
 ```
 
-* `"ObjectExpression"` configuration for object literals
-* `"ObjectPattern"` configuration for object patterns of destructuring assignments
-* `"ImportDeclaration"` configuration for named imports
-* `"ExportDeclaration"` configuration for named exports
+* `"ObjectExpression"`配置对象字词
+* `"ObjectPattern"`配置用于重组分配的对象模式
+* `"ImportDeclaration"`配置指定的进口。
+* `"ExportDeclaration"` 配置命名的出口。
 
 ### always
 
-Examples of **incorrect** code for this rule with the `"always"` option:
+使用此规则与 `"always"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -79,7 +77,7 @@ let {k = function() {
 
 :::
 
-Examples of **correct** code for this rule with the `"always"` option:
+使用此规则与 `"always"` 选项的**正确**示例：
 
 ::: correct
 
@@ -128,7 +126,7 @@ let {
 
 ### never
 
-Examples of **incorrect** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -175,7 +173,7 @@ let {
 
 :::
 
-Examples of **correct** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**正确**示例：
 
 ::: correct
 
@@ -206,7 +204,7 @@ let {k = function() {
 
 ### multiline
 
-Examples of **incorrect** code for this rule with the `{ "multiline": true }` option:
+使用此规则与 `{ "multiline": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -245,7 +243,7 @@ let {k = function() {
 
 :::
 
-Examples of **correct** code for this rule with the `{ "multiline": true }` option:
+使用此规则与 `{ "multiline": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -284,7 +282,7 @@ let {
 
 ### minProperties
 
-Examples of **incorrect** code for this rule with the `{ "minProperties": 2 }` option:
+使用此规则与 `{ "minProperties": 2 }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -323,7 +321,7 @@ let {
 
 :::
 
-Examples of **correct** code for this rule with the `{ "minProperties": 2 }` option:
+使用此规则与 `{ "minProperties": 2 }` 选项的**正确**示例：
 
 ::: correct
 
@@ -362,7 +360,7 @@ let {k = function() {
 
 ### consistent
 
-Examples of **incorrect** code for this rule with the default `{ "consistent": true }` option:
+使用此规则与默认的 `{ "consistent": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -410,7 +408,7 @@ let {
 
 :::
 
-Examples of **correct** code for this rule with the default `{ "consistent": true }` option:
+使用此规则与默认的 `{ "consistent": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -468,7 +466,7 @@ let {
 
 ### ObjectExpression and ObjectPattern
 
-Examples of **incorrect** code for this rule with the `{ "ObjectExpression": "always", "ObjectPattern": "never" }` options:
+使用此规则与 `{ "ObjectExpression": "always", "ObjectPattern": "never" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -506,7 +504,7 @@ let {
 
 :::
 
-Examples of **correct** code for this rule with the `{ "ObjectExpression": "always", "ObjectPattern": "never" }` options:
+使用此规则与 `{ "ObjectExpression": "always", "ObjectPattern": "never" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -546,7 +544,7 @@ let {k = function() {
 
 ### ImportDeclaration and ExportDeclaration
 
-Examples of **incorrect** code for this rule with the `{ "ImportDeclaration": "always", "ExportDeclaration": "never" }` options:
+使用此规则与 `{ "ImportDeclaration": "always", "ExportDeclaration": "never" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -571,7 +569,7 @@ export {
 
 :::
 
-Examples of **correct** code for this rule with the `{ "ImportDeclaration": "always", "ExportDeclaration": "never" }` options:
+使用此规则与 `{ "ImportDeclaration": "always", "ExportDeclaration": "never" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -597,11 +595,11 @@ export { foo as f, bar } from 'foo-bar';
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't want to enforce consistent line breaks after opening and before closing braces, then it's safe to disable this rule.
+如果你不想在开括号后和闭括号前执行一致的换行，你可以安全地禁用此规则。
 
-## Compatibility
+## 兼容
 
-* **JSCS**: [requirePaddingNewLinesInObjects](https://jscs-dev.github.io/rule/requirePaddingNewLinesInObjects)
-* **JSCS**: [disallowPaddingNewLinesInObjects](https://jscs-dev.github.io/rule/disallowPaddingNewLinesInObjects)
+* **JSCS**：[requirePaddingNewLinesInObjects](https://jscs-dev.github.io/rule/requirePaddingNewLinesInObjects)
+* **JSCS**：[disallowPaddingNewLinesInObjects](https://jscs-dev.github.io/rule/disallowPaddingNewLinesInObjects)

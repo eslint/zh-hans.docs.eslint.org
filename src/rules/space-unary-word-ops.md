@@ -4,15 +4,15 @@ layout: doc
 
 ---
 
-Requires spaces after unary word operators.
+要求在单数词运算符后有空格。
 
-(removed) This rule was **removed** in ESLint v0.10.0 and **replaced** by the [space-unary-ops](space-unary-ops) rule.
+（已移除）此规则在 ESLint v0.10.0 中移除并被 [space-unary-ops](space-unary-ops) 所取代。
 
-Require spaces following unary word operators.
+要求在单数词运算符后有空格。
 
-## Rule Details
+## 规则细节
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -46,7 +46,7 @@ delete(a.b)
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 

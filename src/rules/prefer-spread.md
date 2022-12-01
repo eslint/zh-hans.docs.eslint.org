@@ -6,15 +6,14 @@ related_rules:
 - no-useless-call
 ---
 
-
-Before ES2015, one must use `Function.prototype.apply()` to call variadic functions.
+在 ES2015 之前，人们必须使用 `Function.prototype.apply()`来调用变量函数。
 
 ```js
 var args = [1, 2, 3, 4];
 Math.max.apply(Math, args);
 ```
 
-In ES2015, one can use spread syntax to call variadic functions.
+在 ES2015 中，人们可以使用 spread 语法来调用 variadic 函数。
 
 ```js
 /*eslint-env es6*/
@@ -23,13 +22,13 @@ var args = [1, 2, 3, 4];
 Math.max(...args);
 ```
 
-## Rule Details
+## 规则细节
 
-This rule is aimed to flag usage of `Function.prototype.apply()` in situations where spread syntax could be used instead.
+这条规则的目的是在可以使用传播语法的情况下，标记出`Function.prototype.apply()` 的用法。
 
-## Examples
+## 示例
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -43,7 +42,7 @@ obj.foo.apply(obj, args);
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -68,9 +67,9 @@ obj.foo.apply(obj, [1, 2, 3]);
 
 :::
 
-Known limitations:
+已知限制：
 
-This rule analyzes code statically to check whether or not the `this` argument is changed. So, if the `this` argument is computed in a dynamic expression, this rule cannot detect a violation.
+这个规则静态地分析代码，检查 `this` 参数是否被改变。因此，如果 `this`参数是在动态表达式中计算的，本规则不能检测到违规。
 
 ```js
 /*eslint prefer-spread: "error"*/
@@ -82,8 +81,8 @@ a[i++].foo.apply(a[i++], args);
 a[++i].foo.apply(a[i], args);
 ```
 
-## When Not To Use It
+## 何时不用
 
-This rule should not be used in ES3/5 environments.
+不应该在 ES3/5 环境中使用此规则。
 
-In ES2015 (ES6) or later, if you don't want to be notified about `Function.prototype.apply()` callings, you can safely disable this rule.
+在 ES2015（ES6）或更高版本中，如果你不关心调用 `Function.prototype.apply()`，你可以安全地禁用这个规则。

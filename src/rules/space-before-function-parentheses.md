@@ -7,11 +7,11 @@ related_rules:
 - space-return-throw-case
 ---
 
-Enforces consistent spacing before opening parenthesis in function definitions.
+在函数定义中打开小括号之前执行一致的间距。
 
-(removed) This rule was **removed** in ESLint v1.0 and **replaced** by the [space-before-function-paren](space-before-function-paren) rule. The name of the rule changed from "parentheses" to "paren" for consistency with the names of other rules.
+（已移除）此规则在 ESLint v1.0 中移除并被 [space-before-function-paren](space-before-function-paren) 规则。该规则的名称从“parentheses”改为“paren”，以便与其他所取代的名称一致。
 
-When formatting a function, whitespace is allowed between the function name or `function` keyword and the opening paren. Named functions also require a space between the `function` keyword and the function name, but anonymous functions require no whitespace. For example:
+当格式化一个函数时，在函数名或 `function` 关键字和开头的 paren 之间允许有空格。命名的函数也需要在 `function` 关键字和函数名之间有一个空格，但匿名函数不需要空格。比如：
 
 ```js
 function withoutSpace(x) {
@@ -27,15 +27,15 @@ var anonymousWithoutSpace = function() {};
 var anonymousWithSpace = function () {};
 ```
 
-Style guides may require a space after the `function` keyword for anonymous functions, while others specify no whitespace. Similarly, the space after a function name may or may not be required.
+风格指南可能要求匿名函数在 `function` 关键字后有一个空格，而其他的则规定没有空格。同样地，函数名称后面的空格可能需要也可能不需要。
 
-## Rule Details
+## 规则细节
 
-This rule aims to enforce consistent spacing before function parentheses and as such, will warn whenever whitespace doesn't match the preferences specified.
+这条规则的目的是在函数括号前强制执行一致的间距，因此，只要空白处不符合指定的偏好，就会发出警告。
 
-This rule takes one argument. If it is `"always"`, which is the default option, all named functions and anonymous functions must have space before function parentheses. If `"never"` then all named functions and anonymous functions must not have space before function parentheses. If you want different spacing for named and anonymous functions you can pass a configuration object as the rule argument to configure those separately (e. g. `{"anonymous": "always", "named": "never"}`).
+这条规则需要一个参数。如果它是 `"always"`，即默认的选项，所有命名函数和匿名函数的括号前必须有空格。如果是 `"never"`，那么所有命名的函数和匿名函数的括号前都不能有空格。如果你希望命名函数和匿名函数有不同的间距，你可以传递一个配置对象作为规则参数来单独配置（如 `{"anonymous": "always", "named": "never"}`）。
 
-Examples of **incorrect** code for this rule with the default `"always"` option:
+使用此规则与默认的 `"always"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -69,7 +69,7 @@ var foo = {
 
 :::
 
-Examples of **correct** code for this rule with the default `"always"` option:
+使用此规则与默认的 `"always"` 选项的**正确**示例：
 
 ::: correct
 
@@ -103,7 +103,7 @@ var foo = {
 
 :::
 
-Examples of **incorrect** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -137,7 +137,7 @@ var foo = {
 
 :::
 
-Examples of **correct** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**正确**示例：
 
 ::: correct
 
@@ -171,7 +171,7 @@ var foo = {
 
 :::
 
-Examples of **incorrect** code for this rule with the `{"anonymous": "always", "named": "never"}` option:
+使用此规则与 `{"anonymous": "always", "named": "never"}` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -201,7 +201,7 @@ var foo = {
 
 :::
 
-Examples of **correct** code for this rule with the `{"anonymous": "always", "named": "never"}` option:
+使用此规则与 `{"anonymous": "always", "named": "never"}` 选项的**正确**示例：
 
 ::: correct
 
@@ -231,7 +231,7 @@ var foo = {
 
 :::
 
-Examples of **incorrect** code for this rule with the `{"anonymous": "never", "named": "always"}` option:
+使用此规则与 `{"anonymous": "never", "named": "always"}` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -261,7 +261,7 @@ var foo = {
 
 :::
 
-Examples of **correct** code for this rule with the `{"anonymous": "never", "named": "always"}` option:
+使用此规则与 `{"anonymous": "never", "named": "always"}` 选项的**正确**示例：
 
 ::: correct
 
@@ -291,6 +291,6 @@ var foo = {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-You can turn this rule off if you are not concerned with the consistency of spacing before function parenthesis.
+如果你不关心函数括号前间距的一致性，你可以关闭这个规则。

@@ -9,17 +9,16 @@ further_reading:
 - https://benalman.com/news/2012/05/multiple-var-statements-javascript/
 ---
 
+当变量声明没有在函数范围的顶部或程序的顶部连续使用时，`vars-on-top` 规则会产生警告。
+默认情况下，变量声明总是被 JavaScript 解释器隐蔽地移动（“提升”）到其包含的作用域顶部。
+这条规则迫使程序员通过手动将变量声明移到其包含的作用域的顶部来表示这一行为。
 
-The `vars-on-top` rule generates warnings when variable declarations are not used serially at the top of a function scope or the top of a program.
-By default variable declarations are always moved (“hoisted”) invisibly to the top of their containing scope by the JavaScript interpreter.
-This rule forces the programmer to represent that behavior by manually moving the variable declaration to the top of its containing scope.
+## 规则细节
 
-## Rule Details
+这条规则的目的是将所有的变量声明保持在前面的一系列语句中。
+允许多个声明有助于促进可维护性，因此是允许的。
 
-This rule aims to keep all variable declarations in the leading series of statements.
-Allowing multiple declarations helps promote maintainability and is thus allowed.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -81,7 +80,7 @@ class C {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 

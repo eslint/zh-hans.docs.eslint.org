@@ -4,11 +4,7 @@ layout: doc
 rule_type: suggestion
 ---
 
-
-
-
-
-Escaping non-special characters in strings, template literals, and regular expressions doesn't have any effect, as demonstrated in the following example:
+在字符串、模板字面和正则表达式中省略非特殊字符不会有任何影响，如下例所示：
 
 ```js
 let foo = "hol\a"; // > foo = "hola"
@@ -16,11 +12,11 @@ let bar = `${foo}\!`; // > bar = "hola!"
 let baz = /\:/ // same functionality with /:/
 ```
 
-## Rule Details
+## 规则细节
 
-This rule flags escapes that can be safely removed without changing behavior.
+这条规则标志着可以安全地删除转义而不改变行为。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -42,7 +38,7 @@ Examples of **incorrect** code for this rule:
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -68,6 +64,6 @@ Examples of **correct** code for this rule:
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't want to be notified about unnecessary escapes, you can safely disable this rule.
+如果你不希望被通知有不必要的转义，你可以安全地禁用这个规则。

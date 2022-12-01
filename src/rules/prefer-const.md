@@ -7,17 +7,15 @@ related_rules:
 - no-use-before-define
 ---
 
+如果一个变量从未被重新赋值，使用 `const` 声明会更好。
 
+`const` 声明告诉读者，“这个变量永远不会被重新赋值”，减少认知负担，提高可维护性。
 
-If a variable is never reassigned, using the `const` declaration is better.
+## 规则细节
 
-`const` declaration tells readers, "this variable is never reassigned," reducing cognitive load and improving maintainability.
+这条规则旨在标记那些使用 `let` 关键字声明的变量，但在初始赋值后从未重新赋值。
 
-## Rule Details
-
-This rule is aimed at flagging variables that are declared using `let` keyword, but never reassigned after the initial assignment.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -53,7 +51,7 @@ for (let a of [1, 2, 3]) {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -125,7 +123,7 @@ console.log(b);
 
 :::
 
-## Options
+## 选项
 
 ```json
 {
@@ -138,13 +136,13 @@ console.log(b);
 
 ### destructuring
 
-The kind of the way to address variables in destructuring.
-There are 2 values:
+那种在解构中解决变量的方式。
+有 2 个值。
 
-* `"any"` (default) - If any variables in destructuring should be `const`, this rule warns for those variables.
-* `"all"` - If all variables in destructuring should be `const`, this rule warns the variables. Otherwise, ignores them.
+* `"any"`（默认值）- 如果在重构中的任何变量应该是 `const`，这个规则对这些变量提出警告。
+* `"all"` - 如果在解构中所有的变量都应该是 `const`，这个规则会警告这些变量。否则，忽略它们。
 
-Examples of **incorrect** code for the default `{"destructuring": "any"}` option:
+使用默认的 `{"destructuring": "any"}` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -158,7 +156,7 @@ a = a + 1;
 
 :::
 
-Examples of **correct** code for the default `{"destructuring": "any"}` option:
+使用默认的 `{"destructuring": "any"}` 选项的**正确**示例：
 
 ::: correct
 
@@ -178,7 +176,7 @@ b = b + 1;
 
 :::
 
-Examples of **incorrect** code for the `{"destructuring": "all"}` option:
+使用 `{"destructuring": "all"}` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -193,7 +191,7 @@ let {a, b} = obj;    /*error 'a' is never reassigned, use 'const' instead.
 
 :::
 
-Examples of **correct** code for the `{"destructuring": "all"}` option:
+使用 `{"destructuring": "all"}` 选项的**正确**示例：
 
 ::: correct
 
@@ -210,11 +208,11 @@ a = a + 1;
 
 ### ignoreReadBeforeAssign
 
-This is an option to avoid conflicting with `no-use-before-define` rule (without `"nofunc"` option).
-If `true` is specified, this rule will ignore variables that are read between the declaration and the first assignment.
-Default is `false`.
+这是一个避免与 `no-use-before-define` 规则（未使用 `nofunc` 选项）冲突的选项。
+如果指定 `true`，该规则将忽略在声明和第一次赋值之间读取的变量。
+默认是 `false`。
 
-Examples of **correct** code for the `{"ignoreReadBeforeAssign": true}` option:
+使用 `{"ignoreReadBeforeAssign": true}` 选项的**正确**示例：
 
 ::: correct
 
@@ -233,7 +231,7 @@ timer = setInterval(initialize, 100);
 
 :::
 
-Examples of **correct** code for the default `{"ignoreReadBeforeAssign": false}` option:
+使用默认的 `{"ignoreReadBeforeAssign": false}` 选项的**正确**示例：
 
 ::: correct
 
@@ -251,6 +249,6 @@ function initialize() {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't want to be notified about variables that are never reassigned after initial assignment, you can safely disable this rule.
+如果你不希望被通知那些在初始分配后从未被重新分配的变量，你可以安全地禁用这个规则。

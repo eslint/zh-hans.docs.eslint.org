@@ -4,30 +4,27 @@ layout: doc
 rule_type: layout
 ---
 
+Unicode 字节顺序标记（BOM）用于指定代码单位是大字节还是小字节。
+编码单位是大英数还是小英数。也就是说，最重要的还是最不重要的
+先的字节。UTF-8 不需要 BOM，因为字节排序
+因为当字符是单字节时，字节排序并不重要。由于 UTF-8 是主流的
+编码，我们把 `"never"`作为默认选项。
 
+## 规则细节
 
-The Unicode Byte Order Mark (BOM) is used to specify whether code units are big
-endian or little endian. That is, whether the most significant or least
-significant bytes come first. UTF-8 does not require a BOM because byte ordering
-does not matter when characters are a single byte. Since UTF-8 is the dominant
-encoding of the web, we make `"never"` the default option.
+如果使用 `"always"` 选项，该规则要求文件始终以
+用 Unicode BOM 字符 U+FEFF。如果使用 `"never"`，文件就不能以 U+FEFF 开头。
 
-## Rule Details
+## 选项
 
-If the `"always"` option is used, this rule requires that files always begin
-with the Unicode BOM character U+FEFF. If `"never"` is used, files must never
-begin with U+FEFF.
+此规则选项为字符串：
 
-## Options
-
-This rule has a string option:
-
-* `"always"` files must begin with the Unicode BOM
-* `"never"` (default) files must not begin with the Unicode BOM
+* `"always"` 文件必须以 Unicode BOM 开始
+* `"never"`（默认值）文件不得以 Unicode BOM 开头
 
 ### always
 
-Example of **correct** code for this rule with the `"always"` option:
+使用此规则与 `"always"` 选项的**正确**示例：
 
 ::: correct
 
@@ -40,7 +37,7 @@ var abc;
 
 :::
 
-Example of **incorrect** code for this rule with the `"always"` option:
+使用此规则与 `"always"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -54,7 +51,7 @@ var abc;
 
 ### never
 
-Example of **correct** code for this rule with the default `"never"` option:
+使用此规则与默认的 `"never"` 选项的**正确**示例：
 
 ::: correct
 
@@ -66,7 +63,7 @@ var abc;
 
 :::
 
-Example of **incorrect** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -79,7 +76,6 @@ var abc;
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you use some UTF-16 or UTF-32 files and you want to allow a file to
-optionally begin with a Unicode BOM, you should turn this rule off.
+如果你使用一些 UTF-16 或 UTF-32 文件，并且你想允许一个文件有选择地以 Unicode BOM 开头，你应该关闭这个规则。
