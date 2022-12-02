@@ -27,7 +27,7 @@ for (let i = 0; i < arr.length; i++) {
 
 该规则旨在通过对循环体进行静态代码路径分析，检测并禁止最多只能有一次迭代的循环。
 
-特别是，这条规则将不允许一个循环的主体在所有代码路径中都退出循环。如果循环主体中的所有代码路径都以 "break"、"return "或 "throw "语句结束，那么无论循环的条件如何，这种循环的第二次迭代肯定是无法到达的。
+特别是，这条规则将不允许一个循环的主体在所有代码路径中都退出循环。如果循环主体中的所有代码路径都以 `break`、`return` 或 `throw` 语句结束，那么无论循环的条件如何，这种循环的第二次迭代肯定是无法到达的。
 
 该规则检查 `while`、`do-while`、`for`、`for-in` 和 `for-of` 循环。你可以选择禁用对这些结构的检查。
 
@@ -171,9 +171,9 @@ for (const a of [1]) {
 
 你可以在 `"ignore"` 数组中最多指定 5 个不同的元素：
 
-* `"WhileStatement"` - 忽略所有`while`循环。
+* `"WhileStatement"` - 忽略所有`while` 循环。
 * `"DoWhileStatement"` - 忽略所有 `do-while` 循环。
-* `"ForStatement"` - 忽略所有的 `for` 循环（不适用于 `for-in` 和 `for-of` 循环）
+* `"ForStatement"` - 忽略所有的 `for` 循环（不适用于 `for-in` 和 `for-of` 循环）。
 * `"ForInStatement"` - 忽略所有的 `for-in` 循环。
 * `"ForOfStatement"` - 忽略所有的 `for-of` 循环。
 

@@ -46,7 +46,7 @@ function foo2() {
 
 这条规则要求或不允许严格模式指令。
 
-如果 ESLint 配置中指定了以下任何一个 [parser 选项 s](/docs/user-guide/configuring/language-options#specifying-parser-options)，则无论哪个选项被指定，本规则都不允许严格模式指令。
+如果 ESLint 配置中指定了以下任何一个[解析器选项](/docs/user-guide/configuring/language-options#specifying-parser-options)，则无论哪个选项被指定，本规则都不允许严格模式指令。
 
 * `"sourceType": "module"` 也就是说，文件是 **ECMAScript** 模块
 * `"impliedStrict": true` 属性在 `ecmaFeatures` 对象中。

@@ -77,8 +77,8 @@ f(x ? x : 1); // default assignment - would be disallowed if defaultAssignment o
 
 此规则选项为对象：
 
-* `"defaultAssignment": true`（默认值）允许将条件表达式作为默认赋值模式。
-* `"defaultAssignment": false` 不允许将条件表达式作为默认赋值模式。
+* `"defaultAssignment": true`（默认值）允许将条件表达式作为默认赋值模式
+* `"defaultAssignment": false` 不允许将条件表达式作为默认赋值模式
 
 ### defaultAssignment
 
