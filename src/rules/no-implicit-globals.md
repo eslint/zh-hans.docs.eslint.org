@@ -30,7 +30,7 @@ further_reading:
 
 本规则有一个对象选项：
 
-* 如果你想让这个规则也检查 `const`、`let` 和 `class`的声明，就把 `"lexicalBindings"` 设置为 `true`。
+* 如果你想让这个规则也检查 `const`、`let` 和 `class` 的声明，就把 `"lexicalBindings"` 设置为 `true`。
 
 ## 规则细节
 

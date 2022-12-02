@@ -87,7 +87,7 @@ const eslint = new ESLint(options);
 * `options.cwd`（`string`）<br>
   默认为 `process.cwd()`。工作目录。这必须是一个绝对路径。
 * `options.errorOnUnmatchedPattern`（`boolean`）<br>
-  默认是`true`。除非设置为`false`，否则 [`eslint.lintFiles()`][eslint-lintfiles] 方法在没有找到目标文件时将抛出一个错误。
+  默认是 `true`。除非设置为 `false`，否则 [`eslint.lintFiles()`][eslint-lintfiles] 方法在没有找到目标文件时将抛出一个错误。
 * `options.extensions`（`string[] | null`）<br>
   默认为 `null`。如果将目录路径传递给 [`eslint.lintFiles()`][eslint-lintfiles] 方法，ESLint 会检查那些目录中具有给定扩展名的文件。例如，当传递 `src/` 目录且 `extensions` 为 `[".js", ".ts"]` 时，ESLint 会 lint `src/` 中的 `*.js` 和 `*.ts` 文件。如果 `extensions` 为 `null`，ESLint 会检查 `*.js` 文件以及与配置中的 `overrides[].files` 模式匹配的文件。<br>**注意**：此选项仅在您传递目录时适用 [`eslint.lintFiles()`][eslint-lintfiles] 方法的路径。如果你传递像 `lib/**/*` 这样的 glob 模式，ESLint 将检查所有匹配 glob 模式的文件，无论扩展名如何。
 * `options.globInputPaths`（`boolean`）<br>
@@ -114,7 +114,7 @@ const eslint = new ESLint(options);
 * `options.resolvePluginsRelativeTo`（`string` | `null`）<br>
   默认为 `null`。应该从中解析插件的目录的路径。如果 `null` 存在，ESLint 从包含插件设置的配置文件的位置加载插件。如果存在路径，ESLint 会从那里加载所有插件。
 * `options.rulePaths`（`string[]`）<br>
-  默认为`[]`。要从中加载自定义规则的目录路径数组。
+  默认为 `[]`。要从中加载自定义规则的目录路径数组。
 * `options.useEslintrc`（`boolean`）<br>
   默认为 `true`。如果 `false` 存在，ESLint 不会加载配置文件（`.eslintrc.*` 文件）。只有构造函数选项的配置是有效的。
 
@@ -130,9 +130,9 @@ const eslint = new ESLint(options);
 * `options.cache`（`boolean`）<br>
    默认为 `false`。如果是 `true`，则 [`eslint.lintFiles()`][eslint-lintfiles] 方法缓存 lint 结果并在每个目标文件未更改时使用它。请注意，升级 ESLint 插件时 ESLint 不会清除缓存。在这种情况下，您必须手动删除缓存文件。[`eslint.lintText()`][eslint-linttext] 方法不使用缓存，即使您将 `options.filePath` 传递给该方法。
 * `options.cacheLocation`（`string`）<br>
-   默认是`.eslintcache`。[`eslint.lintFiles()`][eslint-lintfiles] 方法将缓存写入此文件。
+   默认是 `.eslintcache`。[`eslint.lintFiles()`][eslint-lintfiles] 方法将缓存写入此文件。
 * `options.cacheStrategy`（`string`）<br>
-   默认为 `metadata`。用于检测更改文件的缓存策略。可以是`"metadata"` 或 `"content"`。
+   默认为 `metadata`。用于检测更改文件的缓存策略。可以是 `"metadata"` 或 `"content"`。
 
 ### ◆ eslint.lintFiles(patterns)
 
@@ -162,7 +162,7 @@ const results = await eslint.lintText(code, options);
 
 默认情况下，该方法使用适用于当前工作目录下文件的配置（`cwd`构造函数选项）。如果你想使用不同的配置，传递 `options.filePath`，ESLint 将加载 [`eslint.lintFiles()`][eslint-lintfiles] 对 `options.filePath` 处的文件使用的配置。
 
-如果`options.filePath`值被配置为忽略，该方法返回一个空数组。如果`options.warningIgnored`选项和`options.filePath`选项一起被设置，该方法返回一个 [LintResult][lintresult] 对象。在这种情况下，该结果可能包含一个警告，表明该文件被忽略了。
+如果 `options.filePath`值被配置为忽略，该方法返回一个空数组。如果 `options.warningIgnored`选项和`options.filePath`选项一起被设置，该方法返回一个 [LintResult][lintresult] 对象。在这种情况下，该结果可能包含一个警告，表明该文件被忽略了。
 
 #### 参数
 
@@ -192,7 +192,7 @@ const rulesMeta = eslint.getRulesMetaForResults(results);
 #### 参数
 
 * `results`（`LintResult[]`）<br>
-  从调用`ESLint#lintFiles()`或`ESLint#lintText()`返回的 [LintResult][lintresult] 对象的数组。
+  从调用 `ESLint#lintFiles()` 或 `ESLint#lintText()`返回的 [LintResult][lintresult] 对象的数组。
 
 #### 返回值
 
@@ -209,7 +209,7 @@ const config = await eslint.calculateConfigForFile(filePath);
 
 * 它解析并合并 `extends` 和 `overrides` 设置到顶层配置。
 * 它将 `parser` 设置解析为绝对路径。
-* 它将 `plugins` 设置规范化，以对齐短名称。（例如，`eslint-plugin-foo` → `foo`)
+* 它将 `plugins` 设置规范化，以对齐短名称（如 `eslint-plugin-foo` → `foo`)。
 * 如果匹配了一个传统的文件扩展处理器，它会添加 `processor` 设置。
 * 它不解释 `env` 设置到 `globals` 和 `parserOptions` 设置，所以结果对象包含 `env` 设置。
 
@@ -403,7 +403,7 @@ const filteredResults = ESLint.getErrorResults(results);
 * `text`（`string`）<br>
   要添加的文本。
 
-这个编辑信息意味着用`text`属性值替换`range`属性的范围。这就像`sourceCodeText.slice(0, edit.range[0])+ edit.text+ sourceCodeText.slice(edit.range[1])`。因此，如果`range[0]`和`range[1]`的属性值是相同的，那就是添加，如果`text`属性值是空字符串，那就是删除。
+这个编辑信息意味着用`text`属性值替换`range`属性的范围。这就像`sourceCodeText.slice(0, edit.range[0])+ edit.text+ sourceCodeText.slice(edit.range[1])`。因此，如果 `range[0]` 和 `range[1]` 的属性值是相同的，那就是添加，如果 `text`属性值是空字符串，那就是删除。
 
 ### ◆ LoadedFormatter 类型
 
@@ -465,9 +465,9 @@ const codeLines = SourceCode.splitLines(code);
 
 `Linter` 对象对 JavaScript 代码进行实际评估。它不做任何文件系统的操作，只是对代码进行解析和报告。特别是，`Linter` 对象不处理配置对象或文件。除非你在浏览器中工作，否则你可能想用 [ESLint 类](#eslint-类) 代替。
 
-`Linter`是一个构造函数，你可以通过传入你想使用的选项来创建一个新实例。可用的选项有：
+`Linter` 是一个构造函数，你可以通过传入你想使用的选项来创建一个新实例。可用的选项有：
 
-* `cwd` - 一个应该被视为当前工作目录的目录的路径。规则可以通过调用`context.getCwd()`访问它（见 [上下文对象](./working-with-rules#the-context-object)）。如果 `cwd` 是 `undefined`，如果全局的 `process` 对象被定义（例如，在 Node.js 运行时），它将被规范化为 `process.cwd()`，否则 `undefined`。
+* `cwd` - 一个应该被视为当前工作目录的目录的路径。规则可以通过调用 `context.getCwd()`访问它（见 [上下文对象](./working-with-rules#the-context-object)）。如果 `cwd` 是 `undefined`，如果全局的 `process` 对象被定义（例如，在 Node.js 运行时），它将被规范化为 `process.cwd()`，否则 `undefined`。
 
 比如：
 
@@ -484,7 +484,7 @@ const linter2 = new Linter();
 
 检查器上最重要的方法是 `verify()`，它启动了对给定文本的提示。这个方法接受三个参数：
 
-* `code` - 要检查的源代码（一个字符串或`SourceCode`的实例）。
+* `code` - 要检查的源代码（一个字符串或`SourceCode` 的实例）。
 * `config` - 一个配置对象，已经被`ESLint`使用 eslintrc 文件和/或其他配置参数处理并规范化。
     **注意**: 如果你想对文本进行检查，并让你的配置被读取和处理，请使用 [`ESLint#lintFiles()`][eslint-lintfiles] 或 [`ESLint#lintText()`][eslint-linttext] 来代替。
 * `options` -（可选）本次运行的附加选项。
@@ -494,11 +494,11 @@ const linter2 = new Linter();
     * `filterCodeBlock` -（可选）一个函数，决定 interlet 应该采用哪些代码块。该函数接收两个参数。第一个参数是一个代码块的虚拟文件名。第二个参数是代码块的文本。如果该函数返回 `true`，那么检查器就采用该代码块。如果该函数被省略，则 linter 只采用 `*.js` 的代码块。如果你提供了一个 `filterCodeBlock` 函数，它将覆盖这个默认行为，所以 linter 不会自动采用`*.js`代码块。
     * `disableFixes` -（可选）当设置为 `true` 时，检查器不对检查结果的 `fix` 或 `suggestions` 属性进行处理。
     * `allowInlineConfig` -（可选）设置为 `false`，禁止内联注释改变 ESLint 规则。
-    * `reportUnusedDisableDirectives` -（可选）当设置为`true` 时，为未使用的 `eslint-disable` 指令添加报告错误，无论如何在禁用区不会有问题被报告。
+    * `reportUnusedDisableDirectives` -（可选）当设置为 `true` 时，为未使用的 `eslint-disable` 指令添加报告错误，无论如何在禁用区不会有问题被报告。
 
-如果第三个参数是一个字符串，它被解释为`文件名'。
+如果第三个参数是一个字符串，它被解释为 `文件名'。
 
-你可以像这样调用`verify()`：
+你可以像这样调用 `verify()`：
 
 ```js
 const Linter = require("eslint").Linter;
@@ -626,7 +626,7 @@ const messages = linter.verifyAndFix("var foo", {
 
 ### Linter#defineRule
 
-每个 `Linter` 实例持有一个规则名称到加载规则对象的映射。默认情况下，所有 ESLint 核心规则都被加载。如果你想用自定义规则使用`Linter`，你应该使用 `defineRule` 方法，按 ID 注册你的规则。
+每个 `Linter` 实例持有一个规则名称到加载规则对象的映射。默认情况下，所有 ESLint 核心规则都被加载。如果你想用自定义规则使用 `Linter`，你应该使用 `defineRule` 方法，按 ID 注册你的规则。
 
 ```js
 const Linter = require("eslint").Linter;
@@ -831,7 +831,7 @@ const ruleTester = new RuleTester({ parserOptions: { ecmaVersion: 2015 } });
 建议可以通过在错误对象上定义一个 `suggestions` 键来测试。检查建议的选项有以下几个（都是可选的）：
 
 * `desc`（字符串）。建议的 `desc` 值
-* `messageId`（字符串）: 对于使用 `messageId`的建议，建议的 `messageId` 值。
+* `messageId`（字符串）: 对于使用 `messageId` 的建议，建议的 `messageId` 值。
 * `data`（对象）: 可与 `messageId`结合使用的占位数据。
 * `output`（字符串）。一个代码字符串，代表对输入代码应用建议修正的结果。
 
@@ -879,9 +879,9 @@ ruleTester.run("my-rule-for-no-foo", rule, {
     如果 `RuleTester.itOnly` 被设置为函数值，`RuleTester` 将调用 `RuleTester.itOnly` 而不是 `RuleTester.it` 来运行带有 `only: true` 的 case。如果未设置 `RuleTester.itOnly`，但 `RuleTester.it` 有一个 `only` 的函数属性，`RuleTester` 将回退到 `RuleTester.it.only`。
 
 2. 否则，如果 `describe` 和 `it` 作为 globals 存在，`RuleTester` 将使用 `global.describe` 和 `global.it` 来运行测试，`global.it.only` 来运行 `only: true` 的案例。这使得 `RuleTester` 在使用 [Mocha](https://mochajs.org/) 这样的框架时，无需任何额外的配置就能工作。
-3. 否则，`RuleTester#run` 将简单地依次执行所有的测试，如果其中一个测试失败，将抛出一个错误。这意味着你可以简单地使用`Node.js`执行一个调用 `RuleTester.run` 的测试文件，而不需要一个测试框架。
+3. 否则，`RuleTester#run` 将简单地依次执行所有的测试，如果其中一个测试失败，将抛出一个错误。这意味着你可以简单地使用 `Node.js`执行一个调用 `RuleTester.run` 的测试文件，而不需要一个测试框架。
 
-`RuleTester#run` 调用 `describe` 函数，有两个参数：一个描述规则的字符串，和一个回调函数。回调函数调用 `it` 函数，有一个描述测试案例的字符串，和一个测试函数。如果测试通过，测试函数将成功返回，如果测试失败，则抛出一个错误。`only` 的签名与 `it` 相同。`RuleTester` 为每个案例调用 `it` 或 `only`，即使有些案例有 `only: true`，测试框架负责实现测试案例的排他性（注意这是使用 [Mocha](https://mochajs.org/) 等框架时测试套件的标准行为；只有当你计划定制 `RuleTester.describe`、`RuleTester.it` 或 `RuleTester.itOnly` 时，这一信息才是相关的）。
+`RuleTester#run` 调用 `describe` 函数，有两个参数：一个描述规则的字符串和一个回调函数。回调函数调用 `it` 函数，有一个描述测试案例的字符串和一个测试函数。如果测试通过，测试函数将成功返回，如果测试失败，则抛出一个错误。`only` 的签名与 `it` 相同。`RuleTester` 为每个案例调用 `it` 或 `only`，即使有些案例有 `only: true`，测试框架负责实现测试案例的排他性（注意这是使用 [Mocha](https://mochajs.org/) 等框架时测试套件的标准行为；只有当你计划定制 `RuleTester.describe`、`RuleTester.it` 或 `RuleTester.itOnly` 时，这一信息才是相关的）。
 
 定制 `RuleTester` 的例子：
 

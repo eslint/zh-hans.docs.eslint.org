@@ -44,7 +44,7 @@ var x = foo[bar];    // Property name is a variable, square-bracket notation req
 
 这个规则接受一个选项参数：
 
-* 将 `allowKeywords` 选项设置为 `false`（默认为是`true`），以遵循 ECMAScript 第三版的兼容风格，避免对保留字属性使用点符号。
+* 将 `allowKeywords` 选项设置为 `false`（默认为是 `true`），以遵循 ECMAScript 第三版的兼容风格，避免对保留字属性使用点符号。
 * 将 `allowPattern` 选项设置为正则表达式字符串，以允许对符合模式的属性名称使用括号符号（默认情况下，不测试模式）。
 
 ### allowKeywords

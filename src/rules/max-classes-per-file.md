@@ -41,7 +41,7 @@ class Foo {}
 
 如果选项是一个对象，它可以包含以下一个或两个。
 
-* `ignoreExpressions`：一个布尔选项（默认为`false`），用于忽略类的表达。
+* `ignoreExpressions`：一个布尔选项（默认为 `false`），用于忽略类的表达。
 * `max`：一个数字选项（默认为 1），用于指定类的最大数量。
 
 例如：

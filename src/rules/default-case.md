@@ -104,7 +104,7 @@ switch (a) {
 
 这个规则接受一个选项参数：
 
-* 将`commentPattern`选项设置为一个正则表达式字符串，以改变默认的`/^no default$/i`注释测试模式
+* 将`commentPattern`选项设置为一个正则表达式字符串，以改变默认的 `/^no default$/i`注释测试模式
 
 ### commentPattern
 

@@ -16,7 +16,7 @@ eleventyNavigation:
 * `lib/api.js` - 这是 `require("eslint")` 的入口点。这个文件暴露了一个对象，包含公共类`Linter`、`ESLint`、 `RuleTester` 和 `SourceCode`。
 * `lib/cli.js` - 这是 ESLint CLI 的核心。它接受一个参数数组，然后使用 `eslint` 来执行命令。通过将其作为一个独立的工具，它允许其他人从另一个 Node.js 程序中有效地调用 ESLint，就像在命令行上完成一样。主要的调用是 `cli.execute()`。这也是完成所有文件读取、目录遍历、输入和输出的部分。
 * `lib/cli-engine/` - 这个模块是 `CLIEngine` 类，它寻找源代码文件和配置文件，然后用 `Linter` 类进行代码验证。这包括配置文件、分析器、插件和格式化器的加载逻辑。
-* `lib/linter/` - 这个模块是核心的`Linter`类，根据配置选项进行代码验证。这个文件不做任何文件 I/O，并且完全不与`console`互动。对于其他有 JavaScript 文本需要验证的 Node.js 程序，他们将能够直接使用这个接口。
+* `lib/linter/` - 这个模块是核心的 `Linter` 类，根据配置选项进行代码验证。这个文件不做任何文件 I/O，并且完全不与`console`互动。对于其他有 JavaScript 文本需要验证的 Node.js 程序，他们将能够直接使用这个接口。
 * `lib/rule-tester/` - 这个模块是 `RuleTester` 类，它是 Mocha 的一个封装器，这样可以对规则进行单元测试。这个类让我们可以为每一个实现的规则编写格式一致的测试，并确信每一个规则都能工作。RuleTester 接口是以 Mocha 为模型，并与 Mocha 的全局测试方法一起工作。RuleTester 也可以被修改为与其他测试框架一起工作。
 * `lib/source-code/` - 这个模块是 `SourceCode` 类，用来表示解析的源代码。它接收源代码和代表代码的 AST 的 Program 节点。
 * `lib/rules/` - 这包含验证源代码的内置规则。
@@ -38,7 +38,7 @@ eleventyNavigation:
 
 这个对象不可以：
 
-* 直接调用`process.exit()`
+* 直接调用 `process.exit()`
 * 执行任何异步操作
 
 ## `CLIEngine` 对象
@@ -55,7 +55,7 @@ eleventyNavigation:
 
 这个对象不可以：
 
-* 直接调用`process.exit()`
+* 直接调用 `process.exit()`
 * 执行任何异步操作
 * 输出到控制台
 * 使用格式化器
@@ -96,4 +96,4 @@ eleventyNavigation:
 * 执行任何异步操作
 * 使用 Node.js 的特定功能
 * 访问文件系统
-* 调用`console.log()`或任何其他类似方法
+* 调用 `console.log()`或任何其他类似方法

@@ -6,7 +6,7 @@ further_reading:
 - https://www.ecma-international.org/ecma-262/6.0/#sec-symbol-objects
 ---
 
-`Symbol` 不打算与 `new` 操作符一起使用，而是作为一个函数来调用。
+`Symbol` 不打算与 `new` 运算符一起使用，而是作为一个函数来调用。
 
 ```js
 var foo = new Symbol("foo");
@@ -16,9 +16,9 @@ var foo = new Symbol("foo");
 
 ## 规则细节
 
-这条规则的目的是防止用 `new` 操作符意外地调用 `Symbol`。
+这条规则的目的是防止用 `new` 运算符意外地调用 `Symbol`。
 
-## Examples
+## 示例
 
 使用此规则的**错误**示例：
 

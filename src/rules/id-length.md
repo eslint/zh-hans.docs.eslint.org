@@ -102,7 +102,7 @@ data["y"] = 3;  // excused because of calculated property access
 
 此规则选项为对象：
 
-* `"min"` （默认值：2) 执行最小标识符长度
+* `"min"`（默认值：2) 执行最小标识符长度
 * `"max"`（默认值：无穷大）执行最大标识符长度
 * `"properties": always`（默认值）执行属性名称的标识符长度约定
 * `"properties": never` 忽略属性名的标识符长度约定
@@ -242,7 +242,7 @@ var myObj = { a: 1 };
 
 ### exceptions
 
-适宜此规则与额外的`{ "exceptions": ["x"] }` 选项的**正确**示例：
+适宜此规则与额外的 `{ "exceptions": ["x"] }` 选项的**正确**示例：
 
 ::: correct
 

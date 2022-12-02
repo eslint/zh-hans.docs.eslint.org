@@ -23,8 +23,8 @@ ESLint v5.0.0 是第五个主要发行版。此版本有几个破坏性改变，
 ## 面向插件/自定义规则开发者的破坏性变更
 
 1. [现在在开始运行规则时就添加 AST 节点 `parent` 属性](#parent-before-rules)
-1. [现在当使用默认解析器时，展开操作符有 `SpreadElement` 类型了](#spread-operators)
-1. [当使用默认解析器时，剩余操作符具有 `RestElement` 类型了](#rest-operators)
+1. [现在当使用默认解析器时，展开运算符有 `SpreadElement` 类型了](#spread-operators)
+1. [当使用默认解析器时，剩余运算符具有 `RestElement` 类型了](#rest-operators)
 1. [当使默认解析器时，JJSX元素中的文本节点现在有 `JSXText` 类型](#jsx-text-nodes)
 1. [现在 `context.getScope()` 方法会返回更合适的作用域](#context-get-scope)
 1. [删除规则上下文对象 `_linter ` 属性](#no-context-linter)
@@ -137,9 +137,9 @@ ESLint v5 在满足以下任一条件时将报告致命错误：
 
 ## <a name="deprecated-globals"></a> 删除 `node'、`browser` 和 `jest` 环境中的废弃全局变量
 
-对于在 Node.js、浏览器和 Jest 中运行的代码，一些全局变量已被废弃或删除。（例如，浏览器曾经向 JavaScript 代码暴露了 `SVGAltGlyphElement` 全局变量，但这个全局变量已经从网络标准中删除，并且不再出现在浏览器中）。因此，我们已经从相应的 `eslint` 环境中删除了这些全局变量，所以在使用诸如 [`no-undef`](/docs/rules/no-undef) 这样的规则时，使用这些全局变量会触发一个错误。
+对于在 Node.js、浏览器和 Jest 中运行的代码，一些全局变量已被废弃或删除（例如，浏览器曾经向 JavaScript 代码暴露了 `SVGAltGlyphElement` 全局变量，但这个全局变量已经从网络标准中删除，并且不再出现在浏览器中）。因此，我们已经从相应的 `eslint` 环境中删除了这些全局变量，所以在使用诸如 [`no-undef`](/docs/rules/no-undef) 这样的规则时，使用这些全局变量会触发一个错误。
 
-**解决方案**：如果你在 `node`、`browser` 或 `jest` 环境中使用已废弃的 globals，你可以在配置中添加 `globals` 部分来重新启用任何你需要的 globals。比如说。
+**解决方案**：如果你在 `node`、`browser` 或 `jest` 环境中使用已废弃的 globals，你可以在配置中添加 `globals` 部分来重新启用任何你需要的 globals。比如说：
 
 ```json
 {
@@ -154,7 +154,7 @@ ESLint v5 在满足以下任一条件时将报告致命错误：
 
 ## <a name="empty-files"></a> 检查空文件
 
-ESLint v4 在对只包含空格的文件进行检查时有一个特殊的行为：它将跳过运行分析器和规则，并且总是返回零错误。这给用户和规则作者带来了一些困惑，特别是在为规则编写测试时。（当编写一个文体规则时，规则作者偶尔会写一个测试，其中源代码只包含空格，以确保在没有找到适用的代码时规则的行为是正确的。然而，这样的测试实际上根本不会运行该规则，所以该规则的一个方面最终没有得到测试）。
+ESLint v4 在对只包含空格的文件进行检查时有一个特殊的行为：它将跳过运行分析器和规则，并且总是返回零错误。这给用户和规则作者带来了一些困惑，特别是在为规则编写测试时（当编写一个文体规则时，规则作者偶尔会写一个测试，其中源代码只包含空格，以确保在没有找到适用的代码时规则的行为是正确的。然而，这样的测试实际上根本不会运行该规则，所以该规则的一个方面最终没有得到测试）。
 
 ESLint v5 对待纯白文件的方式与所有其他文件相同：它解析它们，并根据情况对它们运行启用的规则。如果你用了自定义规则以报告空文件错误，这可能会导致额外的提示问题。
 
@@ -193,15 +193,15 @@ alert('foo'); /* eslint-disable-line
 
 **解决方案**：如果你的自定义规则列举 AST 节点所有属性，考虑排除 `parent` 属性或实现循环检测，以确保你获得正确的结果。
 
-## <a name="spread-operators"></a> 现在当使用默认解析器时，展开操作符有 `SpreadElement` 类型了
+## <a name="spread-operators"></a> 现在当使用默认解析器时，展开运算符有 `SpreadElement` 类型了
 
 以前，当解析像是 `const foo = {...data}` 的 JS 代码，并同时启用了 `experimentalObjectRestSpread` 选项时，默认解析器将为 `...data` 展开元素生成 `ExperimentalSpreadProperty` 节点类型。
 
 在 ESLint v5 中，默认解析器现在总是给`...data` AST 节点提供 `SpreadElement` 类型，即使启用了（现已废弃）[`experimentalObjectRestSpread`](#experimental-object-rest-spread) 选项。这使得 AST 符合当前的 ESTree 规范。
 
-**解决方案**：如果你编写的自定义规则依赖于具有 `ExperimentalSpreadProperty` 类型的传播操作符，你应该更新它，使其也能与具有 `SpreadElement`类 型的传播操作符一起工作。
+**解决方案**：如果你编写的自定义规则依赖于具有 `ExperimentalSpreadProperty` 类型的传播运算符，你应该更新它，使其也能与具有 `SpreadElement`类 型的传播运算符一起工作。
 
-## <a name="rest-operators"></a> 当使用默认解析器时，剩余操作符具有 `RestElement` 类型了
+## <a name="rest-operators"></a> 当使用默认解析器时，剩余运算符具有 `RestElement` 类型了
 
 以前，当解析像是 `const {foo, ...rest}` 的 JS 代码，并同时启用了 `experimentalObjectRestSpread` 选项时，默认解析器会为 `.data` 剩余元素生成 `ExperimentalRestProperty` 节点类型。
 
@@ -211,7 +211,7 @@ alert('foo'); /* eslint-disable-line
 
 ## <a name="jsx-text-nodes"></a> 当使默认解析器时，JJSX元素中的文本节点现在有 `JSXText` 类型
 
-当解析像 `<a>foo</a>` 这样的 JSX 代码时，默认解析器现在将给 `foo` AST 节点提供 `JSXText` 类型，而不是`Literal`类型。这让 AST 符合最新的 JSX 规范。
+当解析像 `<a>foo</a>` 这样的 JSX 代码时，默认解析器现在将给 `foo` AST 节点提供 `JSXText` 类型，而不是 `Literal`类型。这让 AST 符合最新的 JSX 规范。
 
 **解决方案**：如果你的自定义规则依赖 JSX 元素中的文本节点具有 `Literal` 类型，你应该更新它，使其也能与具有 `JSXText` 类型的节点一起工作。
 

@@ -4,7 +4,7 @@ layout: doc
 rule_type: suggestion
 ---
 
-JavaScript 中的 `new` 操作符可以创建一个特定类型对象的新实例。该类型的对象由一个构造函数表示。由于构造函数只是普通的函数，唯一的定义特征是 `new` 被作为调用的一部分。原生的 JavaScript 函数以大写字母开始，以区分那些作为构造函数的函数和非构造函数。许多风格指南都建议遵循这种模式，以便更容易地确定哪些函数是作为构造函数使用的。
+JavaScript 中的 `new` 运算符可以创建一个特定类型对象的新实例。该类型的对象由一个构造函数表示。由于构造函数只是普通的函数，唯一的定义特征是 `new` 被作为调用的一部分。原生的 JavaScript 函数以大写字母开始，以区分那些作为构造函数的函数和非构造函数。许多风格指南都建议遵循这种模式，以便更容易地确定哪些函数是作为构造函数使用的。
 
 ```js
 var friend = new Person();
@@ -46,12 +46,12 @@ function foo(arg) {
 
 * `"newIsCap": true`（默认值）要求使用 `new` 运算符调用大写字母开始的函数。
 * `"newIsCap": false` 允许使用 `new` 运算符调用小写字母开始的函数或大写字母开始的函数。
-* `"capIsNew": true`（默认值）要求使用 `new` 操作符调用所有大写字母开始的函数。
-* `"capIsNew": false` 允许在没有 `new` 操作符的情况下调用大写字母启动的函数。
-* `"newIsCapExceptions"` 允许使用 `new` 操作符调用指定的小写启动的函数名称。
-* `"newIsCapExceptionPattern"` 允许使用 `new` 操作符调用任何符合指定的 regex 模式的小写字母开始的函数名称。
-* `"capIsNewExceptions"` 允许在没有 `new` 操作符的情况下调用指定的大写字母开始的函数名。
-* `"capIsNewExceptionPattern"` 允许在没有 `new` 操作符的情况下，调用任何符合指定的 regex 模式的大写字母开始的函数名称。
+* `"capIsNew": true`（默认值）要求使用 `new` 运算符调用所有大写字母开始的函数。
+* `"capIsNew": false` 允许在没有 `new` 运算符的情况下调用大写字母启动的函数。
+* `"newIsCapExceptions"` 允许使用 `new` 运算符调用指定的小写启动的函数名称。
+* `"newIsCapExceptionPattern"` 允许使用 `new` 运算符调用任何符合指定的 regex 模式的小写字母开始的函数名称。
+* `"capIsNewExceptions"` 允许在没有 `new` 运算符的情况下调用指定的大写字母开始的函数名。
+* `"capIsNewExceptionPattern"` 允许在没有 `new` 运算符的情况下，调用任何符合指定的 regex 模式的大写字母开始的函数名称。
 * `"properties": true`（默认值）允许检查对象的属性。
 * `"properties": false` 禁用对对象属性的检查。
 

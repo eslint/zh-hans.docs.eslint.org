@@ -4,7 +4,7 @@ layout: doc
 rule_type: suggestion
 ---
 
-在没有类型检查操作符（`==` 或 `!=`）的情况下与 `null` 比较，可能会产生意想不到的结果，因为在与 `null` 和 `undefined` 的值比较时，比较结果将为真。
+在没有类型检查运算符（`==` 或 `!=`）的情况下与 `null` 比较，可能会产生意想不到的结果，因为在与 `null` 和 `undefined` 的值比较时，比较结果将为真。
 
 ```js
 if (foo == null) {

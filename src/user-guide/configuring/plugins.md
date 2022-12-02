@@ -113,7 +113,7 @@ ESLint 支持使用第三方插件。在使用插件之前，你必须使用 npm
 **注意**：
 
 1. 插件的解析是相对于配置文件的。换句话说，ESLint 将按照用户在配置文件中运行`require('eslint-plugin-pluginname')`获得的方式加载插件。
-2. 基本配置中的插件（通过`extends`设置加载）是相对于派生配置文件的。例如，如果 `./.eslintrc` 中有 `extends: ["foo"]`。而 `eslint-config-foo` 中有`plugins: ["bar"]`，ESLint 会从`./node_modules/`（而不是`./node_modules/eslint-config-foo/node_modules/`）或祖先目录找到 `eslint-plugin-bar`。因此，解析配置文件和基础配置中的每个插件都是独立的。
+2. 基本配置中的插件（通过`extends`设置加载）是相对于派生配置文件的。例如，如果 `./.eslintrc` 中有 `extends: ["foo"]`。而 `eslint-config-foo` 中有`plugins: ["bar"]`，ESLint 会从`./node_modules/`（而不是 `./node_modules/eslint-config-foo/node_modules/`）或祖先目录找到 `eslint-plugin-bar`。因此，解析配置文件和基础配置中的每个插件都是独立的。
 
 ### 命名规范
 

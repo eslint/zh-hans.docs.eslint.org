@@ -31,7 +31,7 @@ function doSomething(data) {
 
 * 应该是 `undefined` 的变量被简单地保持未初始化（所有未初始化的变量在 JavaScript 中自动获得 `undefined` 的值）。
 * 检查一个值是否是 `undefined` 应该用 `typeof` 来完成。
-* 必要时使用 `void` 操作符来生成 `undefined` 的值。
+* 必要时使用 `void` 运算符来生成 `undefined` 的值。
 
 作为替代，你可以使用 [no-global-assign](no-global-assign) 和 [no-shadow-restricted-names](no-shadow-restricted-names) 规则来防止 `undefined` 被阴影化或分配不同的值。这确保了 `undefined` 将始终保持其原始的、预期的值。
 

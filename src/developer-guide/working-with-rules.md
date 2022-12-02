@@ -11,7 +11,7 @@ eleventyNavigation:
 
 **注意**：本页涵盖了 ESLint >= 3.0.0 的最新规则格式。还有一个[废弃的规则格式](./working-with-rules-deprecated)。
 
-ESLint 中的每个规则都有三个以其标识符命名的文件（例如，`no-extra-semi`）。
+ESLint 中的每个规则都有三个以其标识符命名的文件（如 `no-extra-semi`）。
 
 * 在 `lib/rules` 目录下：源文件（如 `no-extra-semi.js`）。
 * 在 `tests/lib/rules` 目录下：测试文件（如 `no-extra-semi.js`）。
@@ -73,11 +73,11 @@ module.exports = {
 
     在自定义规则或插件中，你可以省略 `docs` 或在其中包含你需要的任何属性。
 
-* `fixable`（string）是`"code"`或`"whitespace"`，如果[命令行]上的 `--fix` 选项（../user-guide/command-line-interface#-fix）自动修复规则报告的问题
+* `fixable`（string）是 `"code"` 或 `"whitespace"`，如果[命令行]上的 `--fix` 选项（../user-guide/command-line-interface#-fix）自动修复规则报告的问题
 
     **重点**：`fixable` 属性对于可修复规则是强制性的。如果没有指定这个属性，ESLint 将在规则试图产生一个修复时抛出一个错误。如果规则不是可修复的，则省略 `fixable` 属性。
 
-* `hasSuggestions` (boolean) 指定规则是否可以返回建议（如果省略，默认为`false`）。
+* `hasSuggestions` (boolean) 指定规则是否可以返回建议（如果省略，默认为 `false`）。
 
      **重点**：`hasSuggestions` 属性对于提供建议的规则来说是强制性的。如果这个属性没有设置为 `true`，ESLint 将在规则试图产生建议时抛出一个错误。如果规则不提供建议，省略`hasSuggestions`属性。
 
@@ -156,7 +156,7 @@ module.exports = {
 * `markVariableAsUsed(name)` - 将当前范围内给定名称的变量标记为已使用。这影响到 [no-unused-vars](../rules/no-unused-vars) 规则。如果找到给定名称的变量并标记为已使用，则返回 `true`，否则返回 `false`。
 * `report(descriptor)` - 报告代码中的问题（见[专用部分](#contextreport)）。
 
-**注意**：早期版本的 ESLint 支持对` context` 对象的额外方法。这些方法在新的格式中被删除，不应该被依赖。
+**注意**：早期版本的 ESLint 支持对 ` context` 对象的额外方法。这些方法在新的格式中被删除，不应该被依赖。
 
 ### context.getScope()
 
@@ -183,10 +183,10 @@ module.exports = {
 **※2** Only if the `for` statement defines the iteration variable as a block-scoped variable (E.g., `for (let i = 0;;) {}`).<br>
 **※3** The scope of the closest ancestor node which has own scope. If the closest ancestor node has multiple scopes then it chooses the innermost scope (E.g., the `Program` node has a `global` scope and a `module` scope if `Program#sourceType` is `"module"`. The innermost scope is the `module` scope.).
 
-返回值是一个由 `eslint-scope` 包定义的 [`Scope` 对象](scope-manager-interface)。全局变量 的`Variable` 对象有一些额外的属性。
+返回值是一个由 `eslint-scope` 包定义的 [`Scope` 对象](scope-manager-interface)。全局变量 的 `Variable` 对象有一些额外的属性。
 
 * `variable.writeable` (`boolean | undefined`) ... 如果 `true`，这个全局变量可以被分配任意的值。如果 `false`，这个全局变量是只读的。
-* `variable.eslintExplicitGlobal` (`boolean | undefined`) ... 如果 `true`，这个全局变量是由源代码文件中的`/* globals */`指令注释定义的。
+* `variable.eslintExplicitGlobal` (`boolean | undefined`) ... 如果 `true`，这个全局变量是由源代码文件中的 `/* globals */`指令注释定义的。
 * `variable.eslintExplicitGlobalComments` (`Comment[] | undefined`) ... 在源代码文件中定义该全局变量的 `/* globals */` 指令性注释的数组。如果没有 `/* globals */` 指令注释，这个属性就是 `undefined`。
 * `variable.eslintImplicitGlobalSetting` (`"readonly" | "writable" | undefined`) ... 配置文件中的配置值。如果有 `/* globals */` 指令注释，这可能与`variable.writeable` 不同。
 
@@ -196,7 +196,7 @@ module.exports = {
 
 * `message` - 问题信息。
 * `node` - （可选）与问题有关的 AST 节点。如果存在并且没有指定`loc`，那么该节点的起始位置将作为问题的位置。
-* `loc` - （可选）一个指定问题位置的对象。如果同时指定了`loc`和`node`，那么将使用 `loc` 而不是 `node` 的位置。
+* `loc` - （可选）一个指定问题位置的对象。如果同时指定了`loc` 和 `node`，那么将使用 `loc` 而不是 `node` 的位置。
     * `start` - 一个起始位置的对象。
         * `line` - 从 1 开始计算的发生问题的行号。
         * `column` - 从 0 开始计算的发生问题的列号。
@@ -387,7 +387,7 @@ context.report({
 
 在某些情况下，修正不适合自动应用，例如，如果一个修正可能会改变功能，或者根据实现意图，有多种有效的方法来修正一个规则（见上面列出的[应用修复](#应用修复) 的最佳实践）。在这些情况下，在 `context.report()` 上有一个替代的 `suggest` 选项，允许其他工具，如编辑器，为用户手动应用建议暴露出帮助器。
 
-为了提供建议，在报告参数中使用 `suggest` 键和一个建议对象的数组。建议对象代表可以应用的单个建议，需要一个`desc`键字符串，描述应用建议的作用或`messageId`键（见[下文](#suggestion-messageids)），以及 `fix` 键，这是一个定义建议结果的函数。这个`fix`函数遵循与常规 fix 相同的 API（在上面的[应用修复](#应用修复) 中描述）。
+为了提供建议，在报告参数中使用 `suggest` 键和一个建议对象的数组。建议对象代表可以应用的单个建议，需要一个`desc`键字符串，描述应用建议的作用或`messageId`键（见[下文](#suggestion-messageids)），以及 `fix` 键，这是一个定义建议结果的函数。这个`fix` 函数遵循与常规 fix 相同的 API（在上面的[应用修复](#应用修复) 中描述）。
 
 ```js
 {% raw %}
@@ -512,7 +512,7 @@ module.exports = {
 }
 ```
 
-这个例子中的 `quotes` 规则有一个选项，`"double"`（`error`是错误级别）。你可以通过使用 `context.options` 来检索一个规则的选项，这是一个包含该规则所有配置选项的数组。在这个例子中，`context.options[0]` 将包含 `"double"`。
+这个例子中的 `quotes` 规则有一个选项，`"double"`（`error` 是错误级别）。你可以通过使用 `context.options` 来检索一个规则的选项，这是一个包含该规则所有配置选项的数组。在这个例子中，`context.options[0]` 将包含 `"double"`。
 
 ```js
 module.exports = {
@@ -553,9 +553,9 @@ module.exports = {
 * `getFirstToken(node, skipOptions)` - 返回代表给定节点的第一个令牌。
 * `getFirstTokens(node, countOptions)` - 返回代表给定节点的第一个`count'tokens。
 * `getLastToken(node, skipOptions)` - 返回代表给定节点的最后一个代币。
-* `getLastTokens(node, countOptions)` - 返回代表给定节点的最后的`count'tokens。
+* `getLastTokens(node, countOptions)` - 返回代表给定节点的最后的 `count'tokens。
 * `getTokenAfter(nodeOrToken, skipOptions)` - 返回给定节点或标记后的第一个标记。
-* `getTokensAfter(nodeOrToken, countOptions)` - 返回给定节点或标记后的`计数`标记。
+* `getTokensAfter(nodeOrToken, countOptions)` - 返回给定节点或标记后的 `计数`标记。
 * `getTokenBefore(nodeOrToken, skipOptions)` - 返回给定节点或标记之前的第一个标记。
 * `getTokensBefore(nodeOrToken, countOptions)` - 返回给定节点或标记前的 `count` 标记。
 * `getFirstTokenBetween(nodeOrToken1, nodeOrToken2, skipOptions)` - 返回两个节点或标记之间的第一个标记。
@@ -572,14 +572,14 @@ module.exports = {
 
 `skipOptions` 是一个有 3 个属性的对象；`skip`、`includeComments` 和 `filter`。默认是 `{skip: 0, includeComments: false, filter: null}`。
 
-* `skip`是一个正整数，即跳过的标记的数量。如果同时给了`filter'选项，它不会将过滤的标记算作跳过的标记。
-* `includeComments`是一个布尔值，是将注释标记纳入结果的标志。
+* `skip` 是一个正整数，即跳过的标记的数量。如果同时给了`filter'选项，它不会将过滤的标记算作跳过的标记。
+* `includeComments` 是一个布尔值，是将注释标记纳入结果的标志。
 * `filter` 是一个函数，获得一个标记作为第一个参数，如果该函数返回 `false`，那么结果将排除该标记。
 
-`countOptions`是一个有 3 个属性的对象；`count`, `includeComments` 和 `filter`. 默认是 `{count: 0, includeComments: false, filter: null}`。
+`countOptions` 是一个有 3 个属性的对象；`count`, `includeComments` 和 `filter`. 默认是 `{count: 0, includeComments: false, filter: null}`。
 
 * `count` 是一个正整数，是返回标记的最大数量。
-* `includeComments`是一个布尔值，是将评论标记纳入结果的标志。
+* `includeComments` 是一个布尔值，是将评论标记纳入结果的标志。
 * `filter` 是一个函数，获得一个标记作为第一个参数，如果该函数返回 `false`，则结果不包括该标记。
 
 `rangeOptions` 是包含`includeComments` 属性的对象。
@@ -595,7 +595,7 @@ module.exports = {
 * `visitorKeys` - 用于遍历这个 AST 的访问者键。
 * `lines` - 一个行数组，根据规范中的换行定义进行分割。
 
-当你需要获得更多关于被提示的代码的信息时，你应该使用`SourceCode`对象。
+当你需要获得更多关于被提示的代码的信息时，你应该使用 `SourceCode`对象。
 
 ####  废弃
 
@@ -613,7 +613,7 @@ module.exports = {
 
 规则导出的 `schema` 有两种格式。第一种是一个完整的 JSON 模式对象，描述规则接受的所有可能的选项，包括作为第一个参数的规则错误级别和其后的任何可选参数。
 
-然而，为了简化模式的创建，规则也可以为每个可选的位置参数导出一个模式数组，ESLint 将自动首先验证所需的错误级别。例如，`yoda`规则接受一个主要的模式参数，以及一个带有命名属性的额外选项对象。
+然而，为了简化模式的创建，规则也可以为每个可选的位置参数导出一个模式数组，ESLint 将自动首先验证所需的错误级别。例如，`yoda` 规则接受一个主要的模式参数，以及一个带有命名属性的额外选项对象。
 
 ```js
 // "yoda": [2, "never", { "exceptRange": true }]
@@ -637,7 +637,7 @@ module.exports = {
 };
 ```
 
-在前面的例子中，错误级别被认为是第一个参数。它的后面是第一个可选参数，一个字符串，可以是`"always"` 或 `"never"`。最后一个可选参数是一个对象，它可能有一个名为 `exceptRange` 的布尔属性。
+在前面的例子中，错误级别被认为是第一个参数。它的后面是第一个可选参数，一个字符串，可以是 `"always"` 或 `"never"`。最后一个可选参数是一个对象，它可能有一个名为 `exceptRange` 的布尔属性。
 
 要了解更多关于 JSON 模式的信息，我们建议从 [网站](https://json-schema.org/learn/) 中的一些例子开始，也可以阅读 [了解 JSON 模式](https://json-schema.org/understanding-json-schema/)（免费电子书）。
 
@@ -645,7 +645,7 @@ module.exports = {
 
 ### 获取源码
 
-如果你的规则需要获得实际的 JavaScript 源代码来工作，那么使用`sourceCode.getText()`方法。这个方法的工作原理如下。
+如果你的规则需要获得实际的 JavaScript 源代码来工作，那么使用 `sourceCode.getText()`方法。这个方法的工作原理如下。
 
 ```js
 
@@ -680,7 +680,7 @@ var nodeSourceWithFollowing = sourceCode.getText(node, 0, 2);
 
 #### 令牌遍历方法
 
-最后，评论可以通过许多`sourceCode`的方法使用`includeComments`选项来访问。
+最后，评论可以通过许多`sourceCode` 的方法使用 `includeComments`选项来访问。
 
 ### 访问 Shebangs
 
@@ -695,7 +695,7 @@ ESLint 在遍历 AST 时分析了代码路径。
 
 ## 规则单元测试
 
-ESLint core 的每个捆绑规则必须有一组单元测试与之一起提交才能被接受。测试文件的名称与源文件相同，但住在`tests/lib/`中。例如，如果规则的源文件是`lib/rules/foo.js`，那么测试文件应该是`tests/lib/rules/foo.js`。
+ESLint core 的每个捆绑规则必须有一组单元测试与之一起提交才能被接受。测试文件的名称与源文件相同，但住在`tests/lib/`中。例如，如果规则的源文件是 `lib/rules/foo.js`，那么测试文件应该是 `tests/lib/rules/foo.js`。
 
 ESLint 提供了 [`RuleTester`](/docs/developer-guide/nodejs-api#ruletester) 工具，以方便为规则编写测试。
 
@@ -778,6 +778,6 @@ ESLint 的规则命名约定是相当简单的。
 
 运行时规则的编写格式与所有其他规则相同。像其他规则一样创建你的规则，然后按照以下步骤进行：
 
-1. 把你所有的运行时规则放在同一个目录下（例如，`eslint_rules`）。
+1. 把你所有的运行时规则放在同一个目录下（如 `eslint_rules`）。
 2. 创建[配置文件](../user-guide/configuring/) 并在 `rules` 键下指定你的规则 ID 错误级别。你的规则将不会运行，除非它在配置文件中的值是 `"warn"` 或 `"error"`。
-3. 运行[命令行界面](../user-guide/command-line-interface)，使用`--rulesdir`选项来指定你的运行规则的位置。
+3. 运行[命令行界面](../user-guide/command-line-interface)，使用 `--rulesdir`选项来指定你的运行规则的位置。

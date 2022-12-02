@@ -108,11 +108,11 @@ Node.js 6 在 2019 年 4 月到达了生命的终点，将不再获得安全更�
 
 ESLint 使用的默认解析器 `espree`，现在会因为以下情况下而引发错误：
 
-* `ecmaVersion` 解析器选项被设置为数字以外的东西，例如字符串 `"2015"`。（以前会忽略非数字的选项)
-* `sourceType: "module"` 解析器选项被设置，而 `ecmaVersion` 被设置为 `5` 或未被指定。（以前设置 `sourceType: "module"` 将隐性导致 `ecmaVersion` 设置为令人不知所以然的最小值 2015）。
+* `ecmaVersion` 解析器选项被设置为数字以外的东西，例如字符串 `"2015"`（以前会忽略非数字的选项)。
+* `sourceType: "module"` 解析器选项被设置，而 `ecmaVersion` 被设置为 `5` 或未被指定（以前设置 `sourceType: "module"` 将隐性导致 `ecmaVersion` 设置为令人不知所以然的最小值 2015）。
 * `sourceType` 设置成了 `"script"` 或 `"module"` 以外的值。
 
-**解决方案**：如果配置将 `ecmaVersion` 设置为非数字值，你可以删除 `ecmaVersion` 恢复以前的行为。（然而，你可能想仔细检查一下配置是否真的按预期工作）。如果你的配置设置了 `parserOptions: { sourceType: "module" }` 而没有设置 `parserOptions.ecmaVersion`，你应该添加 `parserOptions: { ecmaVersion: 2015 }` 以恢复以前的行为。
+**解决方案**：如果配置将 `ecmaVersion` 设置为非数字值，你可以删除 `ecmaVersion` 恢复以前的行为（然而，你可能想仔细检查一下配置是否真的按预期工作）。如果你的配置设置了 `parserOptions: { sourceType: "module" }` 而没有设置。`parserOptions.ecmaVersion`，你应该添加 `parserOptions: { ecmaVersion: 2015 }` 以恢复以前的行为。
 
 **相关议题**：[eslint/eslint#9687](https://github.com/eslint/eslint/issues/9687)、[eslint/espree#384](https://github.com/eslint/espree/issues/384)
 

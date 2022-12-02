@@ -41,7 +41,7 @@ var [x,y] = z;
 
 * `"singleValue": false` 禁止包含单一元素的数组字面量的括号内的空格
 * `"objectsInArrays": false` 禁止数组字面量的括号和其对象字面元素的括号 `[{` 或 `}]` 间的空格。
-* `"arraysInArrays": false` 禁止数组字面量和其数组字面量元素的括号 `[[`或``]]` 间的空格。
+* `"arraysInArrays": false` 禁止数组字面量和其数组字面量元素的括号 `[[` 或 ``]]` 间的空格。
 
 这个规则有内置的例外。
 
