@@ -173,7 +173,7 @@ for (const a of [1]) {
 
 * `"WhileStatement"` - 忽略所有`while`循环。
 * `"DoWhileStatement"` - 忽略所有 `do-while` 循环。
-* `"ForStatement"` - 忽略所有的 `for` 循环（不适用于 `for-in` 和 `for-of` 循环）.
+* `"ForStatement"` - 忽略所有的 `for` 循环（不适用于 `for-in` 和 `for-of` 循环）
 * `"ForInStatement"` - 忽略所有的 `for-in` 循环。
 * `"ForOfStatement"` - 忽略所有的 `for-of` 循环。
 
