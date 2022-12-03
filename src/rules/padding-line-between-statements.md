@@ -255,7 +255,7 @@ foo();
 
 ----
 
-这种配置需要在`switch` 语句中的子句之间设置空行。
+这种配置需要在 `switch` 语句中的子句之间设置空行。
 
 使用此规则与 `[{ blankLine: "always", prev: ["case", "default"], next: "*" }]` 配置的**错误**示例：
 
