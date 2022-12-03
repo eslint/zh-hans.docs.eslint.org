@@ -28,9 +28,9 @@ related_rules:
 那么所有的区块都不应该有任何前面的空格。如果需要对函数块、关键字块和类有不同的间距，可以通过一个可选的配置对象作为规则参数来
 分别配置这些情况。如果配置对象中的任何一个值是 `"off"`，那么这两种风格都不会被强制用于该类型的块。
 
-( e.g. `{ "functions": "never", "keywords": "always", "classes": "always" }` )
+（比如 `{ "functions": "never", "keywords": "always", "classes": "always" }`）
 
-The default is `"always"`.
+默认值为 `"always"`。
 
 ### "always"
 

@@ -8,7 +8,7 @@ layout: doc
 
 （已移除）此规则在 ESLint v1.0 中移除并被 [space-before-function-paren](space-before-function-paren) 所取代。
 
-函数名称和参数列表之间的空白是可选的。
+函数名称和参数列表之间的空格是可选的。
 
 ```js
 function withoutSpace(x) {

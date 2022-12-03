@@ -6,7 +6,7 @@ further_reading:
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwn
 ---
 
-写这样的代码是常见：
+这样写的代码很常见：
 
 ```js
 if (Object.prototype.hasOwnProperty.call(object, "foo")) {

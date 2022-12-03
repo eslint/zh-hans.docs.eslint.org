@@ -4,7 +4,7 @@ layout: doc
 rule_type: suggestion
 ---
 
-ECMAScript 6 允许程序员使用 `let` 和 `const`关键字在块范围内创建变量而不是函数范围。块范围在许多其他编程语言中很常见，可以帮助程序员避免以下错误，例如：
+ECMAScript 6 允许程序员使用 `let` 和 `const` 关键字在块范围内创建变量而不是函数范围。块范围在许多其他编程语言中很常见，可以帮助程序员避免以下错误，例如：
 
 ```js
 var count = people.length;

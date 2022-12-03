@@ -4,7 +4,7 @@ layout: doc
 rule_type: suggestion
 ---
 
-JavaScript 提供了速记运算符，将变量赋值和一些简单的数学运算结合起来。例如，`x = x + 4`可以简化为 `x += 4`。支持的速记形式如下：
+JavaScript 提供了速记运算符，将变量赋值和一些简单的数学运算结合起来。例如，`x = x + 4` 可以简化为 `x += 4`。支持的速记形式如下：
 
 ```text
  Shorthand | Separate

@@ -111,7 +111,7 @@ new RegExp(String.raw`^\d\. ${suffix}`);
 
 默认情况下，这个规则不回检查当 regex 字面量被不必要地包裹在 `RegExp` 构造函数调用中的情况。但当选项 `disallowRedundantWrapping` 被设置为 `true` 时，该规则也将禁止这种不必要的模式。
 
-`{ "disallowRedundantWrapping": true }` 的 `incorrect`代码示例：
+`{ "disallowRedundantWrapping": true }` 的 `incorrect` 代码示例：
 
 ```js
 /*eslint prefer-regex-literals: ["error", {"disallowRedundantWrapping": true}]*/

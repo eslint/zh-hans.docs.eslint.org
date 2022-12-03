@@ -4,7 +4,7 @@ layout: doc
 rule_type: problem
 ---
 
-在 JavaScript 中，`NaN` 是 `Number` 类型的一个特殊值。它被用来表示任何由 IEEE 二进制浮点运算标准规定的双精度 64 位格式所代表的 "非数字 "值。
+在 JavaScript 中，`NaN` 是 `Number` 类型的一个特殊值。它被用来表示任何由 IEEE 二进制浮点运算标准规定的双精度 64 位格式所代表的“非数字”值。
 
 因为 `NaN` 在 JavaScript 中是唯一的，它不等于任何东西，包括它自己，所以与 `NaN` 比较的结果是混乱的。
 

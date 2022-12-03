@@ -11,7 +11,7 @@ related_rules:
 
 强制执行对象字样的大括号和数组字样的小括号内的一致间距。
 
-（已移除）此规则在 ESLint v1.0 中移除并被 [object-curly-spacing](object-curly-spacing) 和 [array-bracket-spacing](array-bracket-spacing) 所取代。.
+（已移除）此规则在 ESLint v1.0 中移除并被 [object-curly-spacing](object-curly-spacing) 和 [array-bracket-spacing](array-bracket-spacing) 所取代。
 
 虽然格式偏好是非常个人化的，但一些风格指南要求或不允许括号之间有空格。
 
@@ -185,7 +185,7 @@ Note that `"always"` has a special case where `{}` and `[]` are not considered p
 
 ### Exceptions
 
-一个对象的字面意思可以作为第三个数组项来指定间距异常。这些例外情况在第一个选项的背景下工作。也就是说，如果 `"always"` 被设置为强制执行间距，并且一个例外被设置为 `false`，那么它将不允许与该例外相匹配的情况下的间距。同样地，如果 `"never"` 被设置为不允许间隔，并且一个例外被设置为 "真"，那么它将对符合该例外的情况强制执行间隔。
+一个对象的字面意思可以作为第三个数组项来指定间距异常。这些例外情况在第一个选项的背景下工作。也就是说，如果 `"always"` 被设置为强制执行间距，并且一个例外被设置为 `false`，那么它将不允许与该例外相匹配的情况下的间距。同样地，如果 `"never"` 被设置为不允许间隔，并且一个例外被设置为 `true`，那么它将对符合该例外的情况强制执行间隔。
 
 你可以像这样添加例外情况：
 

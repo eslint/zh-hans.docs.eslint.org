@@ -8,7 +8,7 @@ layout: doc
 
 （移除）这条规则在 ESLint v2.0 中被**移除，被 [keyword-spacing](keyword-spacing)规则取代。
 
-（可修复） [命令行](../user-guide/command-line-interface#-fix) 上的 `-fix` 选项会自动修复此规则所报告的问题。
+（可修复）[命令行](../user-guide/command-line-interface#-fix) 上的 `--fix` 选项会自动修复此规则所报告的问题。
 
 一些风格指南会要求或不允许在某些关键词后面有空格。
 

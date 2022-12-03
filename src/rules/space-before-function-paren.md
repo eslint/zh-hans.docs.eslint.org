@@ -51,7 +51,7 @@ var anonymousWithSpace = function () {};
 为了向后兼容，字符串选项不检查异步箭头函数表达式。
 
 你也可以为每种类型的函数使用一个单独的选项。
-以下每个选项都可以被设置为 `"always"`、`"never"`或 "忽略"。默认是 `"always"`。
+以下每个选项都可以被设置为 `"always"`、`"never"`或 `"ignore"`。默认为 `"always"`。
 
 * `anonymous` 是用于匿名函数表达式（如 `function () {}`）。
 * `named` 用于命名函数表达式（如 `function foo () {}`）。
