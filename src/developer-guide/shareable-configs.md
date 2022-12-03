@@ -182,7 +182,7 @@ module.exports = {
 };
 ```
 
-在你的 `/lib/ci.js`中，你有：
+在你的 `/lib/ci.js` 中，你有：
 
 ```js
 module.exports = require('./ci/backend');

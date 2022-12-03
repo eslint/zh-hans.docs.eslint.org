@@ -11,7 +11,7 @@ eleventyNavigation:
 
 虽然 ESLint 有一些内置的格式化工具可用于格式化检测结果，但也有可能创建和发布你自己的自定义格式化工具。你可以在你的项目中直接包含自定义格式化工具，或者创建 npm 包来单独分发它们。
 
-每个格式化工具都只是一个函数，接收 `results` 对象和 `context` 并返回字符串。例如，下面是 `json`内置格式化工具的实现方式。
+每个格式化工具都只是一个函数，接收 `results` 对象和 `context` 并返回字符串。例如，下面是 `json` 内置格式化工具的实现方式。
 
 ```js
 //my-awesome-formatter.js
@@ -30,13 +30,13 @@ module.exports = async function(results) {
 };
 ```
 
-要用这个格式化工具运行ESLint，你可以使用 `-f`（或`--format`）命令行标志。
+要用这个格式化工具运行ESLint，你可以使用 `-f`（或 `--format`）命令行标志。
 
 ```bash
 eslint -f ./my-awesome-formatter.js src/
 ```
 
-为了使用本地文件作为自定义格式化工具，你必须以点开始文件名（如`./my-awesome-formatter.js` 或 `./formatters/my-awesome-formatter.js`）。
+为了使用本地文件作为自定义格式化工具，你必须以点开始文件名（如 `./my-awesome-formatter.js` 或 `./formatters/my-awesome-formatter.js`）。
 
 ## 包装自定义格式化工具
 

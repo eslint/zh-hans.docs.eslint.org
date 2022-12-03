@@ -197,7 +197,7 @@ alert('foo'); /* eslint-disable-line
 
 以前，当解析像是 `const foo = {...data}` 的 JS 代码，并同时启用了 `experimentalObjectRestSpread` 选项时，默认解析器将为 `...data` 展开元素生成 `ExperimentalSpreadProperty` 节点类型。
 
-在 ESLint v5 中，默认解析器现在总是给`...data` AST 节点提供 `SpreadElement` 类型，即使启用了（现已废弃）[`experimentalObjectRestSpread`](#experimental-object-rest-spread) 选项。这使得 AST 符合当前的 ESTree 规范。
+在 ESLint v5 中，默认解析器现在总是给 `...data` AST 节点提供 `SpreadElement` 类型，即使启用了（现已废弃）[`experimentalObjectRestSpread`](#experimental-object-rest-spread) 选项。这使得 AST 符合当前的 ESTree 规范。
 
 **解决方案**：如果你编写的自定义规则依赖于具有 `ExperimentalSpreadProperty` 类型的传播运算符，你应该更新它，使其也能与具有 `SpreadElement`类 型的传播运算符一起工作。
 

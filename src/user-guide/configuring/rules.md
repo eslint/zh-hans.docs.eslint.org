@@ -123,7 +123,7 @@ rules:
 /* eslint "plugin1/rule1": "error" */
 ```
 
-**注意**：当从插件中指定规则时，确保省略`eslint-plugin-`。ESLint 只在内部使用无前缀的名字来定位规则。
+**注意**：当从插件中指定规则时，确保省略 `eslint-plugin-`。ESLint 只在内部使用无前缀的名字来定位规则。
 
 ## 禁用规则
 

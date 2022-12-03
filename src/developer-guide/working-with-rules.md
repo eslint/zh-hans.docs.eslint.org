@@ -595,7 +595,7 @@ module.exports = {
 * `visitorKeys` - 用于遍历这个 AST 的访问者键。
 * `lines` - 一个行数组，根据规范中的换行定义进行分割。
 
-当你需要获得更多关于被提示的代码的信息时，你应该使用 `SourceCode`对象。
+当你需要获得更多关于被提示的代码的信息时，你应该使用 `SourceCode` 对象。
 
 ####  废弃
 
@@ -645,7 +645,7 @@ module.exports = {
 
 ### 获取源码
 
-如果你的规则需要获得实际的 JavaScript 源代码来工作，那么使用 `sourceCode.getText()`方法。这个方法的工作原理如下。
+如果你的规则需要获得实际的 JavaScript 源代码来工作，那么使用 `sourceCode.getText()` 方法。这个方法的工作原理如下。
 
 ```js
 
@@ -680,7 +680,7 @@ var nodeSourceWithFollowing = sourceCode.getText(node, 0, 2);
 
 #### 令牌遍历方法
 
-最后，评论可以通过许多`sourceCode` 的方法使用 `includeComments`选项来访问。
+最后，评论可以通过许多 `sourceCode` 的方法使用 `includeComments` 选项来访问。
 
 ### 访问 Shebangs
 

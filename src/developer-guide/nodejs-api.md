@@ -162,7 +162,7 @@ const results = await eslint.lintText(code, options);
 
 默认情况下，该方法使用适用于当前工作目录下文件的配置（`cwd`构造函数选项）。如果你想使用不同的配置，传递 `options.filePath`，ESLint 将加载 [`eslint.lintFiles()`][eslint-lintfiles] 对 `options.filePath` 处的文件使用的配置。
 
-如果 `options.filePath`值被配置为忽略，该方法返回一个空数组。如果 `options.warningIgnored`选项和`options.filePath`选项一起被设置，该方法返回一个 [LintResult][lintresult] 对象。在这种情况下，该结果可能包含一个警告，表明该文件被忽略了。
+如果 `options.filePath` 值被配置为忽略，该方法返回一个空数组。如果 `options.warningIgnored` 选项和 `options.filePath` 选项一起被设置，该方法返回一个 [LintResult][lintresult] 对象。在这种情况下，该结果可能包含一个警告，表明该文件被忽略了。
 
 #### 参数
 
@@ -192,7 +192,7 @@ const rulesMeta = eslint.getRulesMetaForResults(results);
 #### 参数
 
 * `results`（`LintResult[]`）<br>
-  从调用 `ESLint#lintFiles()` 或 `ESLint#lintText()`返回的 [LintResult][lintresult] 对象的数组。
+  从调用 `ESLint#lintFiles()` 或 `ESLint#lintText()` 返回的 [LintResult][lintresult] 对象的数组。
 
 #### 返回值
 
@@ -403,7 +403,7 @@ const filteredResults = ESLint.getErrorResults(results);
 * `text`（`string`）<br>
   要添加的文本。
 
-这个编辑信息意味着用`text`属性值替换`range`属性的范围。这就像`sourceCodeText.slice(0, edit.range[0])+ edit.text+ sourceCodeText.slice(edit.range[1])`。因此，如果 `range[0]` 和 `range[1]` 的属性值是相同的，那就是添加，如果 `text`属性值是空字符串，那就是删除。
+这个编辑信息意味着用 `text` 属性值替换 `range` 属性的范围。这就像 `sourceCodeText.slice(0, edit.range[0])+ edit.text+ sourceCodeText.slice(edit.range[1])`。因此，如果 `range[0]` 和 `range[1]` 的属性值是相同的，那就是添加，如果 `text` 属性值是空字符串，那就是删除。
 
 ### ◆ LoadedFormatter 类型
 
@@ -467,7 +467,7 @@ const codeLines = SourceCode.splitLines(code);
 
 `Linter` 是一个构造函数，你可以通过传入你想使用的选项来创建一个新实例。可用的选项有：
 
-* `cwd` - 一个应该被视为当前工作目录的目录的路径。规则可以通过调用 `context.getCwd()`访问它（见 [上下文对象](./working-with-rules#the-context-object)）。如果 `cwd` 是 `undefined`，如果全局的 `process` 对象被定义（例如，在 Node.js 运行时），它将被规范化为 `process.cwd()`，否则 `undefined`。
+* `cwd` - 一个应该被视为当前工作目录的目录的路径。规则可以通过调用 `context.getCwd()` 访问它（见 [上下文对象](./working-with-rules#the-context-object)）。如果 `cwd` 是 `undefined`，如果全局的 `process` 对象被定义（例如，在 Node.js 运行时），它将被规范化为 `process.cwd()`，否则 `undefined`。
 
 比如：
 
@@ -484,8 +484,8 @@ const linter2 = new Linter();
 
 检查器上最重要的方法是 `verify()`，它启动了对给定文本的提示。这个方法接受三个参数：
 
-* `code` - 要检查的源代码（一个字符串或`SourceCode` 的实例）。
-* `config` - 一个配置对象，已经被`ESLint`使用 eslintrc 文件和/或其他配置参数处理并规范化。
+* `code` - 要检查的源代码（一个字符串或 `SourceCode` 的实例）。
+* `config` - 一个配置对象，已经被 `ESLint` 使用 eslintrc 文件和/或其他配置参数处理并规范化。
     **注意**: 如果你想对文本进行检查，并让你的配置被读取和处理，请使用 [`ESLint#lintFiles()`][eslint-lintfiles] 或 [`ESLint#lintText()`][eslint-linttext] 来代替。
 * `options` -（可选）本次运行的附加选项。
     * `filename` -（可选）与源代码相关的文件名。
@@ -832,7 +832,7 @@ const ruleTester = new RuleTester({ parserOptions: { ecmaVersion: 2015 } });
 
 * `desc`（字符串）。建议的 `desc` 值
 * `messageId`（字符串）: 对于使用 `messageId` 的建议，建议的 `messageId` 值。
-* `data`（对象）: 可与 `messageId`结合使用的占位数据。
+* `data`（对象）: 可与 `messageId` 结合使用的占位数据。
 * `output`（字符串）。一个代码字符串，代表对输入代码应用建议修正的结果。
 
 例子：

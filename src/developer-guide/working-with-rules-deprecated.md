@@ -111,7 +111,7 @@ module.exports = function(context) {
 * `getTokenByRangeStart(index)` - 返回范围从源码中给定索引开始的令牌。使用 `sourceCode.getTokenByRangeStart(index)` 代替。
 * `getTokens(node)` - 返回指定节点的所有令牌。使用 `sourceCode.getTokens(node)` 代替。
 * `getTokensAfter(nodeOrToken, count)` - 返回给定节点或标记后的 `count` 标记。使用 `sourceCode.getTokensAfter(nodeOrToken, count)` 代替。
-* `getTokensBefore(nodeOrToken, count)` - 返回指定节点或标记之前的 `count`标记。使用 `sourceCode.getTokensBefore(nodeOrToken, count)` 代替。
+* `getTokensBefore(nodeOrToken, count)` - 返回指定节点或标记之前的 `count` 标记。使用 `sourceCode.getTokensBefore(nodeOrToken, count)` 代替。
 * `getTokensBetween(node1, node2)` - 返回两个节点之间的令牌。使用 `sourceCode.getTokensBetween(node1, node2)` 来代替。
 * `report(node, [location], message)` - 报告代码中的一个问题。
 
@@ -121,7 +121,7 @@ module.exports = function(context) {
 
 * `message` - 问题信息。
 * `node` - （可选）与问题有关的 AST 节点。如果存在并且没有指定`loc`，那么该节点的起始位置将作为问题的位置。
-* `loc` - （可选）一个指定问题位置的对象。如果同时指定了`loc` 和 `node`，那么将使用 `loc` 而不是 `node` 的位置。
+* `loc` - （可选）一个指定问题位置的对象。如果同时指定了 `loc` 和 `node`，那么将使用 `loc` 而不是 `node` 的位置。
     * `line` - 从 1 开始计算的发生问题的行号。
     * `column` - 从 0 开始计算的发生问题的列号。
 * `data` - （可选） `message` 的占位数据。
@@ -245,8 +245,8 @@ module.exports = function(context) {
 * `getTokenBefore(nodeOrToken)` - 返回给定节点或令牌之前的第一个令牌。
 * `getTokenByRangeStart(index)` - 返回范围从源中给定索引开始的令牌。
 * `getTokens(node)` - 返回给定节点的所有令牌。
-* `getTokensAfter(nodeOrToken, count)` - 返回给定节点或标记后的 `count`标记。
-* `getTokensBefore(nodeOrToken, count)` - 返回给定节点或标记之前的 `count`标记。
+* `getTokensAfter(nodeOrToken, count)` - 返回给定节点或标记后的 `count` 标记。
+* `getTokensBefore(nodeOrToken, count)` - 返回给定节点或标记之前的 `count` 标记。
 * `getTokensBetween(node1, node2)` - 返回两个节点之间的令牌。
 
 还有一些你可以访问的属性：
@@ -290,7 +290,7 @@ module.exports.schema = [
 
 ### 获取源代码
 
-如果你的规则需要获得实际的 JavaScript 源代码来工作，那么就使用 `sourceCode.getText()`方法。这个方法的工作原理如下：
+如果你的规则需要获得实际的 JavaScript 源代码来工作，那么就使用 `sourceCode.getText()` 方法。这个方法的工作原理如下：
 
 ```js
 
