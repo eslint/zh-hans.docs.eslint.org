@@ -572,7 +572,7 @@ module.exports = {
 
 `skipOptions` 是一个有 3 个属性的对象；`skip`、`includeComments` 和 `filter`。默认是 `{skip: 0, includeComments: false, filter: null}`。
 
-* `skip` 是一个正整数，即跳过的标记的数量。如果同时给了`filter'选项，它不会将过滤的标记算作跳过的标记。
+* `skip` 是一个正整数，即跳过的标记的数量。如果同时给了  `filter` 选项，它不会将过滤的标记算作跳过的标记。
 * `includeComments` 是一个布尔值，是将注释标记纳入结果的标志。
 * `filter` 是一个函数，获得一个标记作为第一个参数，如果该函数返回 `false`，那么结果将排除该标记。
 
