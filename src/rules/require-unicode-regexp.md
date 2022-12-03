@@ -17,7 +17,7 @@ rule_type: suggestion
 
 2. **使正则表达式尽早抛出语法错误，因为禁用[附件 B 扩展](https://www.ecma-international.org/ecma-262/6.0/#sec-regular-expressions-patterns)**。
 
-    由于历史原因，JavaScript 正则表达式对语法错误是宽容的。例如，`/\w{1, 2/` 是一个语法错误，但是 JavaScript 并没有抛出这个错误。它匹配的是诸如 `"a{1, 2" `这样的字符串。这样的恢复逻辑在附件 B 中进行了定义。
+    由于历史原因，JavaScript 正则表达式对语法错误是宽容的。例如，`/\w{1, 2/` 是一个语法错误，但是 JavaScript 并没有抛出这个错误。它匹配的是诸如 `"a{1, 2"` 这样的字符串。这样的恢复逻辑在附件 B 中进行了定义。
 
     `u` 标志禁用了附件 B 定义的恢复逻辑。因此，你可以提前发现错误。这类似于[严格模式](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode)。
 

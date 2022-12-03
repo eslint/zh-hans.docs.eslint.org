@@ -77,17 +77,17 @@ var globalCounter = { }
 * `"always"`（默认值）要求在语句的结尾处使用分号。
 * `"never"` 不允许将分号作为语句的结尾（除非用于区分以 `[`, `(`, `/`, `+` 或 `-` 开头的语句）。
 
-对象选项（`"always"`时 ）：
+对象选项（`"always"` 时 ）：
 
 * `"omitLastInOneLineBlock": true` 忽略一个块中的最后一个分号，因为它的大括号（以及该块的内容）都在同一行中。
 
 对象选项（`"never"` 时）：
 
-* `"beforeStatementContinuationChars": "any"`（默认值） `[`, `(`, `/`, `+` 或 `-`开头，则忽略语句末尾的分号（或缺少分号）。
-* `"beforeStatementContinuationChars": "always"`如果下一行以 `[`, `(`, `/`, `+` 或 `-`开头，则要求在语句的末尾加上分号。
-* `"beforeStatementContinuationChars": "never"`不允许将分号作为语句的结尾，如果它不会造成 ASI 危险，即使下一行以 `[`, `(`, `/`, `+` 或 `-`开头。
+* `"beforeStatementContinuationChars": "any"`（默认值） `[`, `(`, `/`, `+` 或 `-` 开头，则忽略语句末尾的分号（或缺少分号）。
+* `"beforeStatementContinuationChars": "always"` 如果下一行以 `[`, `(`, `/`, `+` 或 `-` 开头，则要求在语句的末尾加上分号。
+* `"beforeStatementContinuationChars": "never"` 不允许将分号作为语句的结尾，如果它不会造成 ASI 危险，即使下一行以 `[`, `(`, `/`, `+` 或 `-` 开头。
 
-**注意**：`beforeStatementContinuationChars`不适用于类域，因为类域不是语句。
+**注意**：`beforeStatementContinuationChars` 不适用于类域，因为类域不是语句。
 
 ### always
 

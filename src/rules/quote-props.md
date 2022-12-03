@@ -250,7 +250,7 @@ var object2 = {
 
 ### keywords
 
-此规则的额外**错误**代码的例子，有`"as-needed", { "keywords": true }`  选项。
+此规则与 `"as-needed", { "keywords": true }`  选项的额外**错误**示例：
 
 ::: incorrect
 

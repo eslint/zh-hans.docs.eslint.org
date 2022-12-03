@@ -6,7 +6,7 @@ related_rules:
 - no-useless-call
 ---
 
-在 ES2015 之前，人们必须使用 `Function.prototype.apply()`来调用变量函数。
+在 ES2015 之前，人们必须使用 `Function.prototype.apply()` 来调用变量函数。
 
 ```js
 var args = [1, 2, 3, 4];
@@ -24,7 +24,7 @@ Math.max(...args);
 
 ## 规则细节
 
-这条规则的目的是在可以使用传播语法的情况下，标记出`Function.prototype.apply()` 的用法。
+这条规则的目的是在可以使用传播语法的情况下，标记出 `Function.prototype.apply()` 的用法。
 
 ## 示例
 
@@ -69,7 +69,7 @@ obj.foo.apply(obj, [1, 2, 3]);
 
 已知限制：
 
-这个规则静态地分析代码，检查 `this` 参数是否被改变。因此，如果 `this`参数是在动态表达式中计算的，本规则不能检测到违规。
+这个规则静态地分析代码，检查 `this` 参数是否被改变。因此，如果 `this` 参数是在动态表达式中计算的，本规则不能检测到违规。
 
 ```js
 /*eslint prefer-spread: "error"*/

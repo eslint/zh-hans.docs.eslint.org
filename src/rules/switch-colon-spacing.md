@@ -4,7 +4,7 @@ layout: doc
 rule_type: layout
 ---
 
-冒号周围的间距提高了`case`/`default`条款的可读性。
+冒号周围的间距提高了 `case`/`default` 条款的可读性。
 
 ## 规则细节
 

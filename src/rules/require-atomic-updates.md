@@ -181,7 +181,7 @@ async function foo(obj) {
 
 此规则选项为对象：
 
-* `"allowProperties"`：当设置为 "true "时，该规则不报告对属性的分配。默认是 `false`。
+* `"allowProperties"`：当设置为 `true` 时，该规则不报告对属性的分配。默认是 `false`。
 
 ### allowProperties
 

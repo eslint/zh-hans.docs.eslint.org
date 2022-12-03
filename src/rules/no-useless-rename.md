@@ -129,7 +129,7 @@ export { foo as foo } from "bar";
 
 :::
 
-使用此规则与`{ ignoreDestructuring: true }` 选项的**正确**示例：
+使用此规则与 `{ ignoreDestructuring: true }` 选项的**正确**示例：
 
 ::: correct
 

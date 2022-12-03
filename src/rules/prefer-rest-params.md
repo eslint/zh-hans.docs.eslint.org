@@ -7,9 +7,9 @@ related_rules:
 ---
 
 在ES2015中，有休息参数。
-我们可以将该功能用于变量函数而不是 `arguments`变量。
+我们可以将该功能用于变量函数而不是 `arguments` 变量。
 
-`arguments` 没 有`Array.prototype` 的方法，所以有点不方便。
+`arguments` 没有 `Array.prototype` 方法，所以不太方便。
 
 ## 规则细节
 

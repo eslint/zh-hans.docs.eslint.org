@@ -30,7 +30,7 @@ function () { /* side effects */ }(); // SyntaxError
 
 对象选项：
 
-* `"functionPrototypeMethods": true` 另外还强制包装使用 `.call` 和 `.apply`调用的函数表达式。默认是 `false`。
+* `"functionPrototypeMethods": true` 另外还强制包装使用 `.call` 和 `.apply` 调用的函数表达式。默认是 `false`。
 
 ### outside
 

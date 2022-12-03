@@ -275,7 +275,7 @@ var bar = {
 
 :::
 
-不正确的**代码的例子，"consistent-as-need"` 选项，它与 "consistent "非常相似。
+使用与 `"consistent"` 非常相似的 `"consistent-as-needed"` 选项的**错误**示例：
 
 ::: incorrect
 
