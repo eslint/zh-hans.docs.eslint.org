@@ -76,7 +76,7 @@ b = "quux";
 
 此规则选项为对象：
 
-* `"ignoreNonDeclaration"`。当设置为 `true`时，该规则允许不包括在声明中初始化变量或初始化类字段的链。默认是 `false`。
+* `"ignoreNonDeclaration"`。当设置为 `true` 时，该规则允许不包括在声明中初始化变量或初始化类字段的链。默认是 `false`。
 
 ### ignoreNonDeclaration
 

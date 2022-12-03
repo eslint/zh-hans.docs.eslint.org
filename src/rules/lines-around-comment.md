@@ -686,7 +686,7 @@ foo();
 
 ### applyDefaultIgnorePatterns
 
-即使提供了`ignorePattern`，也会应用默认的忽略模式。如果你想省略默认模式，将此选项设置为 `false'。
+即使提供了 `ignorePattern`，也会应用默认的忽略模式。如果你想省略默认模式，将此选项设置为 `false`。
 
 使用 `{ "applyDefaultIgnorePatterns": false }` 选项的**正确**示例：
 

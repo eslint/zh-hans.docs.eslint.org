@@ -117,7 +117,7 @@ rules:
   plugin1/rule1: error
 ```
 
-在这些配置文件中，规则`plugin1/rule1`来自名为 `plugin1` 的插件。你也可以在配置注释中使用这种格式，比如：
+在这些配置文件中，规则 `plugin1/rule1` 来自名为 `plugin1` 的插件。你也可以在配置注释中使用这种格式，比如：
 
 ```js
 /* eslint "plugin1/rule1": "error" */
