@@ -247,7 +247,7 @@ tag`some tagged template string`;
 
 ### enforceForJSX
 
-JSX 在 React 生态系统中最常使用，它被编译成`React.createElement`表达式。虽然没有副作用，但这些调用并没有被 "无用表达式 "规则自动标记出来。如果你使用 React 或其他无副作用的 JSX pragma，可以启用这个选项来标记这些表达式。
+JSX 在 React 生态系统中最常使用，它被编译成 `React.createElement` 表达式。虽然没有副作用，但这些调用并没有被 `no-unused-expression` 规则自动标记出来。如果你使用 React 或其他无副作用的 JSX pragma，可以启用这个选项来标记这些表达式。
 
 使用 `{ "enforceForJSX": true }` 选项的**错误**示例：
 
