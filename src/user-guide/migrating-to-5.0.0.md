@@ -135,7 +135,7 @@ ESLint v5 在满足以下任一条件时将报告致命错误：
 }
 ```
 
-## <a name="deprecated-globals"></a> 删除 `node'、`browser` 和 `jest` 环境中的废弃全局变量
+## <a name="deprecated-globals"></a> 删除 `node`、`browser` 和 `jest` 环境中的废弃全局变量
 
 对于在 Node.js、浏览器和 Jest 中运行的代码，一些全局变量已被废弃或删除（例如，浏览器曾经向 JavaScript 代码暴露了 `SVGAltGlyphElement` 全局变量，但这个全局变量已经从网络标准中删除，并且不再出现在浏览器中）。因此，我们已经从相应的 `eslint` 环境中删除了这些全局变量，所以在使用诸如 [`no-undef`](/docs/rules/no-undef) 这样的规则时，使用这些全局变量会触发一个错误。
 

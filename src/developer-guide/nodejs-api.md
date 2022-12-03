@@ -496,7 +496,7 @@ const linter2 = new Linter();
     * `allowInlineConfig` -（可选）设置为 `false`，禁止内联注释改变 ESLint 规则。
     * `reportUnusedDisableDirectives` -（可选）当设置为 `true` 时，为未使用的 `eslint-disable` 指令添加报告错误，无论如何在禁用区不会有问题被报告。
 
-如果第三个参数是一个字符串，它被解释为 `文件名'。
+如果第三个参数是一个字符串，它被解释为 `filename`。
 
 你可以像这样调用 `verify()`：
 
@@ -622,7 +622,7 @@ const messages = linter.verifyAndFix("var foo", {
 
 * `fixed` - 真，如果代码被修复。
 * `output` - 固定的代码文本（如果没有应用修复，可能与输入相同）。
-* `messages` - 给定代码的所有信息的集合（它的信息与上面`验证'块中解释的一样）。
+* `messages` - 给定代码的所有信息的集合（它的信息与上面 `verify` 块中解释的一样）。
 
 ### Linter#defineRule
 

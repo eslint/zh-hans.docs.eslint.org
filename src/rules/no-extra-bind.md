@@ -30,7 +30,7 @@ var boundGetName = (function getName() {
 console.log(boundGetName());      // "ESLint"
 ```
 
-在这段代码中，已经删除 `this` 的引用，但 `bind()` 仍然被使用。在这种情况下，`bind()'是不必要的开销（和性能上的打击），可以安全地删除。
+在这段代码中，已经删除 `this` 的引用，但 `bind()` 仍然被使用。在这种情况下，`bind()` 是不必要的开销（和性能上的打击），可以安全地删除。
 
 ## 规则细节
 

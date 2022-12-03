@@ -308,7 +308,7 @@ var obj = {
 
 ### align and multiLine
 
-`multiLine` 和 `align` 选项可以不同，这允许对你的文件的 `key-spacing' 进行微调控制。如果 `align` 被配置为一个对象，`align` 将不会**继承 `multiLine`。
+`multiLine` 和 `align` 选项可以不同，这允许对你的文件的 `key-spacing` 进行微调控制。如果 `align` 被配置为一个对象，`align` 将不会**继承 `multiLine`。
 
 `multiLine` 在任何一个对象字头跨越多行的时候都会被使用。`align` 配置在同一对象中有一组属性时使用。比如说：
 

@@ -546,24 +546,24 @@ module.exports = {
 
 * `getText(node)` - 返回指定节点的源代码。省略 `node` 以获得整个源代码。
 * `getAllComments()` - 返回源代码中所有评论的数组。
-* `getCommentsBefore(nodeOrToken)` - 返回直接出现在给定节点或标记之前的评论标记数组。
-* `getCommentsAfter(nodeOrToken)` - 返回直接发生在给定节点或标记之后的评论标记数组。
+* `getCommentsBefore(nodeOrToken)` - 返回直接出现在给定节点或标记之前的注释标记数组。
+* `getCommentsAfter(nodeOrToken)` - 返回直接发生在给定节点或标记之后的注释标记数组。
 * `getCommentsInside(node)` - 返回给定节点内所有评论标记的数组。
 * `isSpaceBetween(nodeOrToken, nodeOrToken)` - 如果两个标记之间有一个空白字符，则返回真，如果给定的是一个节点，则返回第一个节点的最后一个标记和第二个节点的第一个标记。
-* `getFirstToken(node, skipOptions)` - 返回代表给定节点的第一个令牌。
-* `getFirstTokens(node, countOptions)` - 返回代表给定节点的第一个`count'tokens。
-* `getLastToken(node, skipOptions)` - 返回代表给定节点的最后一个代币。
-* `getLastTokens(node, countOptions)` - 返回代表给定节点的最后的 `count'tokens。
+* `getFirstToken(node, skipOptions)` - 返回代表给定节点的第一个标记。
+* `getFirstTokens(node, countOptions)` - 返回代表给定节点的第一个`count` 标记。
+* `getLastToken(node, skipOptions)` - 返回代表给定节点的最后一个标记。
+* `getLastTokens(node, countOptions)` - 返回代表给定节点的最后的 `count` 标记。
 * `getTokenAfter(nodeOrToken, skipOptions)` - 返回给定节点或标记后的第一个标记。
-* `getTokensAfter(nodeOrToken, countOptions)` - 返回给定节点或标记后的 `计数`标记。
+* `getTokensAfter(nodeOrToken, countOptions)` - 返回给定节点或标记后的 `count` 标记。
 * `getTokenBefore(nodeOrToken, skipOptions)` - 返回给定节点或标记之前的第一个标记。
 * `getTokensBefore(nodeOrToken, countOptions)` - 返回给定节点或标记前的 `count` 标记。
 * `getFirstTokenBetween(nodeOrToken1, nodeOrToken2, skipOptions)` - 返回两个节点或标记之间的第一个标记。
-* `getFirstTokensBetween(nodeOrToken1, nodeOrToken2, countOptions)` - 返回两个节点或令牌之间的第一个`count'令牌。
-* `getLastTokenBetween(nodeOrToken1, nodeOrToken2, skipOptions)` - 返回两个节点或代币之间的最后一个代币。
-* `getLastTokensBetween(nodeOrToken1, nodeOrToken2, countOptions)` - 返回两个节点或令牌之间的最后 `count` 令牌。
-* `getTokens(node)` - 返回给定节点的所有令牌。
-* `getTokensBetween(nodeOrToken1, nodeOrToken2)` - 返回两个节点之间的所有代币。
+* `getFirstTokensBetween(nodeOrToken1, nodeOrToken2, countOptions)` - 返回两个节点或标记之间的第一个 `count` 标记。
+* `getLastTokenBetween(nodeOrToken1, nodeOrToken2, skipOptions)` - 返回两个节点或标记之间的最后一个标记。
+* `getLastTokensBetween(nodeOrToken1, nodeOrToken2, countOptions)` - 返回两个节点或标记之间的最后 `count` 标记。
+* `getTokens(node)` - 返回给定节点的所有标记。
+* `getTokensBetween(nodeOrToken1, nodeOrToken2)` - 返回两个节点之间的所有标记。
 * `getTokenByRangeStart(index, rangeOptions)` - 返回范围从源中给定索引开始的标记。
 * `getNodeByRangeIndex(index)` - 返回 AST 中包含指定源索引的最深节点。
 * `getLocFromIndex(index)` - 返回一个具有 `line` 和 `column` 属性的对象，对应于给定源索引的位置。`line` 是基于 1 的，`column` 是基于 0 的。
@@ -678,7 +678,7 @@ var nodeSourceWithFollowing = sourceCode.getText(node, 0, 2);
 
 请记住，这个方法的结果是按需计算的。
 
-#### 令牌遍历方法
+#### 标记遍历方法
 
 最后，评论可以通过许多 `sourceCode` 的方法使用 `includeComments` 选项来访问。
 
@@ -735,7 +735,7 @@ Performance budget ok:  1443.736547ms (limit: 3409.090909090909ms)
 
 ### 每条规则的性能
 
-ESLint 有一个内置的方法来跟踪单个规则的性能。设置`TIMING'环境变量将触发显示，在检查完成后，显示10个运行时间最长的规则，以及它们的单独运行时间（规则创建+规则执行）和相对性能影响占总规则处理时间（规则创建 + 规则执行）的百分比。
+ESLint 有一个内置的方法来跟踪单个规则的性能。设置 `TIMING` 环境变量将触发显示，在检查完成后，显示10个运行时间最长的规则，以及它们的单独运行时间（规则创建+规则执行）和相对性能影响占总规则处理时间（规则创建 + 规则执行）的百分比。
 
 ```bash
 $ TIMING=1 eslint lib
