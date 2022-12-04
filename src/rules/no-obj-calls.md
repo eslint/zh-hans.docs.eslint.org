@@ -6,17 +6,17 @@ further_reading:
 - https://es5.github.io/#x15.8
 ---
 
-ECMAScript 提供了几个全局对象，目的是要按原样使用。其中一些对象由于大写字母的缘故，看起来像是构造函数（如`Math'和`JSON'），但如果你试图将它们作为函数执行，就会出现错误。
+ECMAScript 提供了几个全局对象，目的是要按原样使用。其中一些对象由于大写字母的缘故，看起来像是构造函数（如`Math` 和 `JSON`），但如果你试图将它们作为函数执行，就会出现错误。
 
-[ECMAScript 5 规范](https://es5.github.io/#x15.8) 明确指出，`Math` 和 `JSON` 都不能被调用。
+[ECMAScript 5 规范](https://es5.github.io/#x15.8) 明确指出，不能调用 `Math` 或 `JSON`。
 
 > Math 对象没有 `[[Call]]` 内部属性；不可能将 Math 对象作为一个函数调用。
 
-[ECMAScript 2015 规范](https://www.ecma-international.org/ecma-262/6.0/index.html#sec-reflect-object) 明确指出，`Reflect'不能被调用。
+[ECMAScript 2015 规范](https://www.ecma-international.org/ecma-262/6.0/index.html#sec-reflect-object) 明确指出，不能调用 `Reflect`。
 
 > Reflect 对象也没有 `[[Call]]` 内部方法；不可能作为一个函数调用 Reflect 对象。
 
-而 [ECMAScript 2017 规范](https://www.ecma-international.org/ecma-262/8.0/index.html#sec-atomics-object) 明确指出，`Atomics` 不能被调用。
+而 [ECMAScript 2017 规范](https://www.ecma-international.org/ecma-262/8.0/index.html#sec-atomics-object) 明确指出，不能调用 `Atomics`。
 
 > Atomics 对象没有 `[[Call]]` 内部方法；不可能将 Atomics 对象作为一个函数来调用。
 
@@ -24,7 +24,7 @@ ECMAScript 提供了几个全局对象，目的是要按原样使用。其中一
 
 这条规则不允许将 `Math`、`JSON`、`Reflect` 和 `Atomics` 对象作为函数调用。
 
-这条规则也不允许用 `new` 操作符将这些对象作为构造器。
+这条规则也不允许用 `new` 运算符将这些对象作为构造器。
 
 使用此规则的**错误**示例：
 

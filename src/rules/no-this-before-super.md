@@ -12,7 +12,7 @@ rule_type: problem
 
 这条规则的目的是在调用 `super()` 之前标记 `this`/`super` 关键字。
 
-## Examples
+## 示例
 
 使用此规则的**错误**示例：
 

@@ -88,7 +88,7 @@ function loadData (error, data) {
 如果配置的错误变量名称以 `^` 开头，则被认为是一个 regexp 模式。
 
 * 如果选项是 `"^(err|error|anySpecificError)$"`，规则报告未处理的错误，其中参数名称可以是 `err`、`error` 或 `anySpecificError`。
-* 如果选项是`"^.+Error$"`，该规则报告参数名称以`Error`结尾的未处理错误（例如，`connectionError`或`validationError`将匹配）。
+* 如果选项是 `"^.+Error$"`，该规则报告参数名称以 `Error`结尾的未处理错误（如 `connectionError` 或 `validationError`将匹配）。
 * 如果选项是 `"^.*(e|E)rr"`，该规则报告参数名称与任何包含 `err` 或 `Err` 的字符串相匹配的未处理错误（如匹配 `err`、`error`、`anyError`、`some_err`）。
 
 ## 何时不用

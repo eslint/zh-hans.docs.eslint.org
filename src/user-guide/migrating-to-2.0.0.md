@@ -114,7 +114,7 @@ module.exports = {
 * `regexUFlag` - 启用[正则表达式 `u` 标志](https://leanpub.com/understandinges6/read#leanpub-auto-the-regular-expression-u-flag)
 * `regexYFlag` - 启用[正则表达式 `y` 标志](https://leanpub.com/understandinges6/read#leanpub-auto-the-regular-expression-y-flag)
 * `restParams` - 启用[剩余参数](https://leanpub.com/understandinges6/read#leanpub-auto-rest-parameters)
-* `spread` - 启用数组[展开操作符](https://leanpub.com/understandinges6/read#leanpub-auto-the-spread-operator)
+* `spread` - 启用数组[展开运算符](https://leanpub.com/understandinges6/read#leanpub-auto-the-spread-operator)
 * `superInFunctions` - 启用在函数内引用 `super`
 * `templateStrings` - 启用[模板字符串](https://leanpub.com/understandinges6/read/#leanpub-auto-template-strings)
 * `unicodeCodePointEscapes` - 启用[代码点转义](https://leanpub.com/understandinges6/read/#leanpub-auto-escaping-non-bmp-characters)

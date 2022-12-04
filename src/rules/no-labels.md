@@ -95,8 +95,8 @@ while (true) {
 
 这些选项允许带有循环或开关语句的标签。
 
-* `"allowLoop"` (`boolean`, default is `false`) - 如果这个选项被设置为`true`，这个规则会忽略那些粘有循环语句的标签。
-* `"allowSwitch"` (`boolean`, default is `false`) - 如果这个选项被设置为`true`，这条规则会忽略粘在 switch 语句上的标签。
+* `"allowLoop"` (`boolean`, default is `false`) - 如果这个选项被设置为 `true`，这个规则会忽略那些粘有循环语句的标签。
+* `"allowSwitch"` (`boolean`, default is `false`) - 如果这个选项被设置为 `true`，这条规则会忽略粘在 switch 语句上的标签。
 
 实际上，JavaScript 中的标签语句可以用于循环和开关语句以外的地方。
 但是，这种方式非常罕见，并不为人所知，所以这将使开发人员感到困惑。

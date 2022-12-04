@@ -60,7 +60,7 @@ function * generator() {
 * `after` 强制要求在 `*` 和函数名（或匿名生成器函数的开头括号）之间有间距。
   如果它是 `true`，则需要一个空格，否则不允许有空格。
 
-默认值是`{"before": true, "after": false}`。
+默认值是 `{"before": true, "after": false}`。
 
 配置示例：
 
@@ -101,7 +101,7 @@ function * generator() {
 在上面的配置示例中，顶层的 "before" 和 "after" 选项定义了规则的默认行为。规则，而 "anonymous" 和 "method" 选项则覆盖了默认行为。
 覆盖可以是一个带有 "before" 和 "after"的对象，也可以是上述的速记字符串。
 
-## Examples
+## 示例
 
 ### before
 

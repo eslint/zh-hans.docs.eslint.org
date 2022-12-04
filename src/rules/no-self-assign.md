@@ -85,7 +85,7 @@ obj["a" + "b"] = obj["a" + "b"];
 }
 ```
 
-* `props` - 如果这是 `true`，`no-self-assign` 规则会警告属性的自我分配。默认 为`true`。
+* `props` - 如果这是 `true`，`no-self-assign` 规则会警告属性的自我分配。默认为 `true`。
 
 ### props
 

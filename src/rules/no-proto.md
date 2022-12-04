@@ -10,7 +10,7 @@ further_reading:
 
 ## 规则细节
 
-当用 `new` 操作符创建一个对象时，`__proto__` 被设置为该对象的构造函数的原始“prototype”属性。`Object.getPrototypeOf` 是获取对象原型的首选方法。要改变一个对象的原型，使用 `Object.setPrototypeOf`。
+当用 `new` 运算符创建一个对象时，`__proto__` 被设置为该对象的构造函数的原始“prototype”属性。`Object.getPrototypeOf` 是获取对象原型的首选方法。要改变一个对象的原型，使用 `Object.setPrototypeOf`。
 
 使用此规则的**错误**示例：
 

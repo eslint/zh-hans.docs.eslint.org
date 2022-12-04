@@ -30,8 +30,8 @@ layout: doc
 
 **参数**：
     * `node` (`ASTNode`) ... 用于获取其作用域的 AST 节点。
-    * `inner` (`boolean`) ... 如果节点有多个作用域，这通常返回最外层的作用域。如果 `inner` 是 `true` 则返回最里面的作用域。默认是`false`。
-**返回类型**：`Scope | null`
+    * `inner` (`boolean`) ... 如果节点有多个作用域，这通常返回最外层的作用域。如果 `inner` 是 `true` 则返回最里面的作用域。默认是 `false`。
+**返回类型**：`Scope | null`。
 **描述**：获取给定的 AST 节点的作用域。得到的作用域的 `block` 属性是该节点。这个方法从不返回 `function-expression-name` 作用域。如果节点没有它们的作用域，这将返回 `null`。
 
 #### getDeclaredVariables(node)

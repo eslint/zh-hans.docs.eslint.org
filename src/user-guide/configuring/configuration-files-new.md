@@ -68,7 +68,7 @@ export default [
 ];
 ```
 
-在这种配置下 `semi` 规则就会用于所有与 ESLint 中的默认文件相匹配的文件。因此，如果用 ESLint 检查 `example.js` 则会使用 `semi` 规则。如果你传递了非 JavaScript 文件，比如 `example.txt`，就不会使用 `semi`规则，因为没有其他配置对象与该文件名匹配（同时 ESLint 将输出错误信息，让你知道由于缺少配置，忽略了该文件）。
+在这种配置下 `semi` 规则就会用于所有与 ESLint 中的默认文件相匹配的文件。因此，如果用 ESLint 检查 `example.js` 则会使用 `semi` 规则。如果你传递了非 JavaScript 文件，比如 `example.txt`，就不会使用 `semi` 规则，因为没有其他配置对象与该文件名匹配（同时 ESLint 将输出错误信息，让你知道由于缺少配置，忽略了该文件）。
 
 #### 用 `ignores` 排除文件
 

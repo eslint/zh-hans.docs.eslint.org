@@ -14,9 +14,9 @@ further_reading:
 
 ## 规则细节
 
-使用此规则禁用从 setter 返回值，并在 setter 函数中报告`return`语句。
+使用此规则禁用从 setter 返回值，并在 setter 函数中报告`return` 语句。
 
-只有没有值的`return`是允许的，因为它是一个控制流语句。
+只有没有值的 `return` 是允许的，因为它是一个控制流语句。
 
 这条规则会检查以下范围中的设置器：
 

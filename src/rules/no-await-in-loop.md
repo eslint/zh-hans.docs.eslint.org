@@ -37,7 +37,7 @@ async function foo(things) {
 
 这条规则不允许在循环体中使用 `await`。
 
-## Examples
+## 示例
 
 使用此规则的**正确**示例：
 

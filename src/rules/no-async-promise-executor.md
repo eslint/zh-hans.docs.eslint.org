@@ -20,7 +20,7 @@ const result = new Promise(function executor(resolve, reject) {
 
 执行函数也可以是一个 `async function`。然而，这通常是一个错误，有几个原因：
 
-* 若异步执行函数抛出错误，这个错误会丢失，不会导致拒绝新构建的`Promise`。这可能会使调试和处理一些错误变得困难。
+* 若异步执行函数抛出错误，这个错误会丢失，不会导致拒绝新构建的 `Promise`。这可能会使调试和处理一些错误变得困难。
 * 若 Promise 执行函数使用了 `await`，这通常表明实际上没有必要使用 `new Promise` 构造函数，或者 `new Promise` 构造函数的范围可以缩小。
 
 ## 规则细节

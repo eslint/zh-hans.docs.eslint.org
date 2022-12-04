@@ -236,7 +236,7 @@ ESLint 递归地扩展配置，所以基本配置也可以使用 `extends` 属�
 
 `extends` 属性值可以省略包名的 `eslint-config-`前缀。
 
-`npm init @eslint/config` 命令可以创建一个配置，这样你就可以扩展一个流行的风格指南（例如，`eslint-config-standard`）。
+`npm init @eslint/config` 命令可以创建一个配置，这样你就可以扩展一个流行的风格指南（如 `eslint-config-standard`）。
 
 YAML 格式的配置文件的例子：
 
@@ -422,7 +422,7 @@ project-root
 
 ### 指定目标文件来进行检查
 
-如果你用 CLI 指定了目录（例如，`eslint lib`），ESLint 会在目录中搜索目标文件来进行检查。目标文件包括 `*.js` 或与任何 `overrides` 条目相匹配的文件（但不包括任何以 `*` 结尾的 `files` 条目）。
+如果你用 CLI 指定了目录（如 `eslint lib`），ESLint 会在目录中搜索目标文件来进行检查。目标文件包括 `*.js` 或与任何 `overrides` 条目相匹配的文件（但不包括任何以 `*` 结尾的 `files` 条目）。
 
 如果你指定了 [`--ext`](https://eslint.org/docs/user-guide/command-line-interface#ext) 命令行选项和目录，那么目标文件就只有是指定文件扩展名的文件，而不会考虑 `overrides` 条目。
 

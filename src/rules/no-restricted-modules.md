@@ -71,7 +71,7 @@ or like this:
 }
 ```
 
-## Examples
+## 示例
 
 使用此规则并限制使用 `"fs"、"cluster"、"lodash"` 模块的**错误**示例：
 

@@ -46,7 +46,7 @@ if (booleanObject) {    // all objects are truthy!
 
 ## 规则细节
 
-这条规则的目的是消除 `String`、`Number` 和 `Boolean` 与 `new` 操作符的使用。因此只要发现 `new String`、`new Number` 或 `new Boolean`，它就会发出警告。
+这条规则的目的是消除 `String`、`Number` 和 `Boolean` 与 `new` 运算符的使用。因此只要发现 `new String`、`new Number` 或 `new Boolean`，它就会发出警告。
 
 使用此规则的**错误**示例：
 

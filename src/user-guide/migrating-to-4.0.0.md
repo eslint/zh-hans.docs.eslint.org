@@ -60,7 +60,7 @@ ESLint v4.0.0 是第四个主要发行版。此版本有几个破坏性改变，
 
 在 4.0 中重写 `indent` 规则。新版规则将报告旧版所没有发现的一些缩进错误。另外将默认检查 `MemberExpression` 节点、函数属性和函数参数的缩进（此前为了向后兼容默认忽略。）。
 
-为了让升级过程更加任意，我们引入了 [`indent-legacy`](/docs/rules/indent-legacy) 规则作为 `indent` 3.x 版本规则的快照。如果在你升级 `indent` 规则后出现了问题，你能够使用`indent-legacy` 规则回到 3.x 的行为模式。不过 `indent-legacy` 规则已废弃，所以以后不会再接受漏洞修复和功能改进，最终你还是应该要切换回 `indent` 规则。
+为了让升级过程更加任意，我们引入了 [`indent-legacy`](/docs/rules/indent-legacy) 规则作为 `indent` 3.x 版本规则的快照。如果在你升级 `indent` 规则后出现了问题，你能够使用 `indent-legacy` 规则回到 3.x 的行为模式。不过 `indent-legacy` 规则已废弃，所以以后不会再接受漏洞修复和功能改进，最终你还是应该要切换回 `indent` 规则。
 
 **解决方案**：我们建议升级过程中不对 `indent` 配置进行修改，并修复出现在代码库中新出现的缩进错误。不过如果你坚持想要类似 3.x 的 `indent` 规则，你可以更新配置：
 
@@ -81,7 +81,7 @@ ESLint v4.0.0 是第四个主要发行版。此版本有几个破坏性改变，
 
 ## <a name="eslintignore-patterns"></a> .eslintignore 模式限制基于文件位置解析
 
-由于一个错误，以前 `.eslintignore` 文件中的 glob 模式是从进程的当前工作目录，而不是`.eslintignore`文件的位置来解析的。4.0 起，`.eslintignore` 文件中的模式将从 `.eslintignore` 文件的位置进行解析。
+由于一个错误，以前 `.eslintignore` 文件中的 glob 模式是从进程的当前工作目录，而不是 `.eslintignore`文件的位置来解析的。4.0 起，`.eslintignore` 文件中的模式将从 `.eslintignore` 文件的位置进行解析。
 
 **解决方案**：如果你使用 `.eslintignore` 文件，并且你经常从项目根目录以外的地方运 行ESLint，有可能模式会被不同的匹配。你应该更新 `.eslintignore` 文件中的模式，确保它们是相对于文件的，而不是工作目录的。
 

@@ -85,7 +85,7 @@ var foo = bar ? !!baz : !!bat;
 
 此规则选项为对象：
 
-* `"enforceForLogicalOperands"` 当设置为 `true` 时，除了检查默认上下文外，还检查额外的布尔运算是否包含在逻辑表达式中。默认为`false`，这意味着该规则默认不对逻辑表达式中的额外布尔值进行警告。
+* `"enforceForLogicalOperands"` 当设置为 `true` 时，除了检查默认上下文外，还检查额外的布尔运算是否包含在逻辑表达式中。默认为 `false`，这意味着该规则默认不对逻辑表达式中的额外布尔值进行警告。
 
 ### enforceForLogicalOperands
 

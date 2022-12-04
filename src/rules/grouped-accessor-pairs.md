@@ -46,7 +46,7 @@ var o = {
 
 这条规则要求在对象字面、类声明和类表达式中对同一属性的访问函数进行分组定义。
 
-作为选择，本规则也可以强制执行一致的顺序（`getBeforeSet`或`setBeforeGet`）。
+作为选择，本规则也可以强制执行一致的顺序（`getBeforeSet` 或 `setBeforeGet`）。
 
 这条规则并不强制要求 getter 或 setter 的配对存在。如果你也想强制执行 getter/setter 对，请参阅 [accessor-pairs](accessor-pairs)。
 
