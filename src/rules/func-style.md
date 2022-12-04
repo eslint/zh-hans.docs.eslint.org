@@ -5,7 +5,6 @@ rule_type: suggestion
 further_reading:
 - https://www.adequatelygood.com/JavaScript-Scoping-and-Hoisting.html
 ---
-
 在 JavaScript 中，有两种定义函数的方法。`function` 声明和 `function` 表达式。声明中首先包含 `function` 关键字，然后是名称，接着是其参数和函数体，例如：
 
 ```js
@@ -56,8 +55,8 @@ var doSomething = function() {
 
 此规则选项为字符串：
 
-* `"表达式"`（默认值）要求使用函数表达式而不是函数声明。
-* `"声明"`要求使用函数声明而不是函数表达式。
+* `"expression"`（默认值）要求使用函数表达式而不是函数声明。
+* `"declaration"` 要求使用函数声明而不是函数表达式。
 
 此规则有用于例外情况的对象选项：
 
