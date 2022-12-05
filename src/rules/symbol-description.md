@@ -6,8 +6,7 @@ further_reading:
 - https://www.ecma-international.org/ecma-262/6.0/#sec-symbol-description
 ---
 
-
-The `Symbol` function may have an optional description:
+`Symbol` 函数可以有一个选项描述。
 
 ```js
 var foo = Symbol("some description");
@@ -16,7 +15,7 @@ var someString = "some description";
 var bar = Symbol(someString);
 ```
 
-Using `description` promotes easier debugging: when a symbol is logged the description is used:
+使用 `description` 可以促进调试工作的进行：当一个符号被记录时，会使用描述。
 
 ```js
 var foo = Symbol("some description");
@@ -25,15 +24,15 @@ var foo = Symbol("some description");
 // Symbol(some description)
 ```
 
-It may facilitate identifying symbols when one is observed during debugging.
+当在调试过程中观察到一个符号时，它可能有助于识别该符号。
 
-## Rule Details
+## 规则细节
 
-This rules requires a description when creating symbols.
+本规则要求在创建符号时要有描述。
 
-## Examples
+## 示例
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -46,7 +45,7 @@ var foo = Symbol();
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -62,7 +61,7 @@ var bar = Symbol(someString);
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-This rule should not be used in ES3/5 environments.
-In addition, this rule can be safely turned off if you don't want to enforce presence of `description` when creating Symbols.
+不应该在 ES3/5 环境中使用此规则。
+此外，如果你不想在创建符号时强制执行 `description` 的存在，可以安全地关闭这一规则。

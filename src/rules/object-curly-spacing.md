@@ -9,10 +9,8 @@ related_rules:
 - space-in-parens
 ---
 
-
-
-While formatting preferences are very personal, a number of style guides require
-or disallow spaces between curly braces in the following situations:
+虽然格式化的偏好是非常个人化的，但一些风格指南要求
+或不允许在以下情况下在大括号之间有空格。
 
 ```js
 // simple object literals
@@ -29,29 +27,29 @@ import { foo } from "bar";
 export { foo };
 ```
 
-## Rule Details
+## 规则细节
 
-This rule enforces consistent spacing inside braces of object literals, destructuring assignments, and import/export specifiers.
+这条规则使对象字面、解构赋值和导入/导出指定器的大括号内的间距一致。
 
-## Options
+## 选项
 
-This rule has two options, a string option and an object option.
+这个规则有两个选项，一个字符串选项和一个对象选项：
 
-String option:
+字符串选项：
 
-* `"never"` (default) disallows spacing inside of braces
-* `"always"` requires spacing inside of braces (except `{}`)
+* `"never"`（默认值）不允许在大括号内有间隔
+* `"always"` 要求在大括号内有间距（除了 `{}`）
 
-Object option:
+对象选项：
 
-* `"arraysInObjects": true` requires spacing inside of braces of objects beginning and/or ending with an array element (applies when the first option is set to `never`)
-* `"arraysInObjects": false` disallows spacing inside of braces of objects beginning and/or ending with an array element (applies when the first option is set to `always`)
-* `"objectsInObjects": true` requires spacing inside of braces of objects beginning and/or ending with an object element (applies when the first option is set to `never`)
-* `"objectsInObjects": false` disallows spacing inside of braces of objects beginning and/or ending with an object element (applies when the first option is set to `always`)
+* `"arraysInObjects": true` 要求以数组元素开始和/或结束的对象的大括号内有间距（适用于第一个选项被设置为 `never` 的情况下）
+* `"arraysInObjects": false` 不允许以数组元素开始和/或结束的对象的大括号内有间距（当第一个选项被设置为 `always` 时适用）
+* `"objectsInObjects": true` 要求以对象元素开始和/或结束的对象的大括号内有间距（当第一个选项被设置为 `never` 时适用）
+* `"objectsInObjects": false` 不允许以对象元素开始和/或结束的对象的大括号内有间距（当第一个选项被设置为 `always` 时适用）
 
 ### never
 
-Examples of **incorrect** code for this rule with the default `"never"` option:
+使用此规则与默认的 `"never"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -68,7 +66,7 @@ import { foo } from 'bar';
 
 :::
 
-Examples of **correct** code for this rule with the default `"never"` option:
+使用此规则与默认的 `"never"` 选项的**正确**示例：
 
 ::: correct
 
@@ -93,7 +91,7 @@ import {foo} from 'bar';
 
 ### always
 
-Examples of **incorrect** code for this rule with the `"always"` option:
+使用此规则与 `"always"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -114,7 +112,7 @@ import {foo } from 'bar';
 
 :::
 
-Examples of **correct** code for this rule with the `"always"` option:
+使用此规则与 `"always"` 选项的**正确**示例：
 
 ::: correct
 
@@ -135,7 +133,7 @@ import { foo } from 'bar';
 
 #### arraysInObjects
 
-Examples of additional **correct** code for this rule with the `"never", { "arraysInObjects": true }` options:
+使用此规则与额外的 `"never", { "arraysInObjects": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -148,7 +146,7 @@ var obj = {"foo": [ "baz", "bar" ] };
 
 :::
 
-Examples of additional **correct** code for this rule with the `"always", { "arraysInObjects": false }` options:
+使用此规则与额外的 `"always", { "arraysInObjects": false }` 选项的**正确**示例：
 
 ::: correct
 
@@ -163,7 +161,7 @@ var obj = { "foo": [ "baz", "bar" ]};
 
 #### objectsInObjects
 
-Examples of additional **correct** code for this rule with the `"never", { "objectsInObjects": true }` options:
+使用此规则与额外的 `"never", { "objectsInObjects": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -174,8 +172,7 @@ var obj = {"foo": {"baz": 1, "bar": 2} };
 ```
 
 :::
-
-Examples of additional **correct** code for this rule with the `"always", { "objectsInObjects": false }` options:
+使用此规则与额外的 `"always", { "objectsInObjects": false }` 选项的正确示例：
 
 ::: correct
 
@@ -187,6 +184,6 @@ var obj = { "foo": { "baz": 1, "bar": 2 }};
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-You can turn this rule off if you are not concerned with the consistency of spacing between curly braces.
+如果你不关心大括号之间间距的一致性，你可以关闭这一规则。

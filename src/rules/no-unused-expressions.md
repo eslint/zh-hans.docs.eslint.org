@@ -4,16 +4,15 @@ layout: doc
 rule_type: suggestion
 ---
 
+一个未使用的表达式对程序的状态没有影响，表明是一个逻辑错误。
 
-An unused expression which has no effect on the state of the program indicates a logic error.
+例如，`n + 1;` 不是一个语法错误，但它可能是一个打字错误，程序员的意思是一个赋值语句 `n += 1;` 。有时，这种未使用的表达式可能会被生产环境中的一些构建工具消除，这可能会破坏应用逻辑。
 
-For example, `n + 1;` is not a syntax error, but it might be a typing mistake where a programmer meant an assignment statement `n += 1;` instead. Sometimes, such unused expressions may be eliminated by some build tools in production environment, which possibly breaks application logic.
+## 规则细节
 
-## Rule Details
+这条规则的目的是消除那些对程序状态没有影响的未使用的表达式。
 
-This rule aims to eliminate unused expressions which have no effect on the state of the program.
-
-This rule does not apply to function calls or constructor calls with the `new` operator, because they could have *side effects* on the state of the program.
+这条规则不适用于使用 `new` 运算符的函数调用或构造函数调用，因为它们可能对程序的状态产生**副作用**。
 
 ```js
 var i = 0;
@@ -25,22 +24,22 @@ function Thing() { nThings += 1; }
 new Thing(); // constructed object is unused, but nThings changed as a side effect
 ```
 
-This rule does not apply to directives (which are in the form of literal string expressions such as `"use strict";` at the beginning of a script, module, or function).
+这条规则不适用于指令（指令的形式是字面字符串表达式，如脚本、模块或函数开头的 `"use strict";`）。
 
-Sequence expressions (those using a comma, such as `a = 1, b = 2`) are always considered unused unless their return value is assigned or used in a condition evaluation, or a function call is made with the sequence expression value.
+序列表达式（那些使用逗号的表达式，如 `a = 1, b = 2`）总是被认为是未使用的，除非其返回值被分配或用于条件评估，或者用序列表达式的值进行函数调用。
 
-## Options
+## 选项
 
-This rule, in its default state, does not require any arguments. If you would like to enable one or more of the following you may pass an object with the options set as follows:
+这个规则在其默认状态下不需要任何参数。如果你想启用以下一个或多个参数，你可以通过一个设置了选项的对象，如下所示：
 
-* `allowShortCircuit` set to `true` will allow you to use short circuit evaluations in your expressions (Default: `false`).
-* `allowTernary` set to `true` will enable you to use ternary operators in your expressions similarly to short circuit evaluations (Default: `false`).
-* `allowTaggedTemplates` set to `true` will enable you to use tagged template literals in your expressions (Default: `false`).
-* `enforceForJSX` set to `true` will flag unused JSX element expressions (Default: `false`).
+* `allowShortCircuit` 设置为 `true` 将允许你在表达式中使用短路求值（默认为 `false`）。
+* `allowTernary` 设置为 `true` 将使你能够在表达式中使用三元运算符，类似于短路求值（默认为 `false`）。
+* `allowTaggedTemplates` 设置为 `true` 将使你能够在表达式中使用标记的模板字面（默认为 `false`）。
+* `enforceForJSX` 设置为 `true` 将标记未使用的 JSX 元素表达式（默认为 `false`）。
 
-These options allow unused expressions *only if all* of the code paths either directly change the state (for example, assignment statement) or could have *side effects* (for example, function call).
+这些选项允许未使用的表达式，**只有当所有**的代码路径直接改变状态（例如，赋值语句）或可能有的**副作用**（例如，函数调用）。
 
-Examples of **incorrect** code for the default `{ "allowShortCircuit": false, "allowTernary": false }` options:
+使用默认的 `{ "allowShortCircuit": false, "allowTernary": false }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -71,7 +70,7 @@ injectGlobal`body{ color: red; }`
 
 :::
 
-Examples of **correct** code for the default `{ "allowShortCircuit": false, "allowTernary": false }` options:
+使用默认的 `{ "allowShortCircuit": false, "allowTernary": false }` 选项的**正确**示例：
 
 ::: correct
 
@@ -99,9 +98,9 @@ void a
 
 :::
 
-Note that one or more string expression statements (with or without semi-colons) will only be considered as unused if they are not in the beginning of a script, module, or function (alone and uninterrupted by other statements). Otherwise, they will be treated as part of a "directive prologue", a section potentially usable by JavaScript engines. This includes "strict mode" directives.
+请注意，只有当一个或多个字符串表达式语句（带或不带分号）不在脚本、模块或函数的开头（单独且不被其他语句打断）时，才会被视为未使用。否则，它们将被视为“directive prologue”的一部分，一个可能被 JavaScript 引擎使用的部分。这包括 "严格模式 "指令。
 
-Examples of **correct** code for this rule in regard to directives:
+在指令方面，此规则的**正确**示例：
 
 ::: correct
 
@@ -153,7 +152,7 @@ class Foo {
 
 ### allowShortCircuit
 
-Examples of **incorrect** code for the `{ "allowShortCircuit": true }` option:
+使用 `{ "allowShortCircuit": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -165,7 +164,7 @@ a || b
 
 :::
 
-Examples of **correct** code for the `{ "allowShortCircuit": true }` option:
+使用 `{ "allowShortCircuit": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -180,7 +179,7 @@ a() || (b = c)
 
 ### allowTernary
 
-Examples of **incorrect** code for the `{ "allowTernary": true }` option:
+使用 `{ "allowTernary": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -193,7 +192,7 @@ a ? b : c()
 
 :::
 
-Examples of **correct** code for the `{ "allowTernary": true }` option:
+使用 `{ "allowTernary": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -208,7 +207,7 @@ a ? (b = c) : d()
 
 ### allowShortCircuit and allowTernary
 
-Examples of **correct** code for the `{ "allowShortCircuit": true, "allowTernary": true }` options:
+使用 `{ "allowShortCircuit": true, "allowTernary": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -222,7 +221,7 @@ a ? b() || (c = d) : e()
 
 ### allowTaggedTemplates
 
-Examples of **incorrect** code for the `{ "allowTaggedTemplates": true }` option:
+使用 `{ "allowTaggedTemplates": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -234,7 +233,7 @@ Examples of **incorrect** code for the `{ "allowTaggedTemplates": true }` option
 
 :::
 
-Examples of **correct** code for the `{ "allowTaggedTemplates": true }` option:
+使用 `{ "allowTaggedTemplates": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -248,9 +247,9 @@ tag`some tagged template string`;
 
 ### enforceForJSX
 
-JSX is most-commonly used in the React ecosystem, where it is compiled to `React.createElement` expressions. Though free from side-effects, these calls are not automatically flagged by the `no-unused-expression` rule. If you're using React, or any other side-effect-free JSX pragma, this option can be enabled to flag these expressions.
+JSX 在 React 生态系统中最常使用，它被编译成 `React.createElement` 表达式。虽然没有副作用，但这些调用并没有被 `no-unused-expression` 规则自动标记出来。如果你使用 React 或其他无副作用的 JSX pragma，可以启用这个选项来标记这些表达式。
 
-Examples of **incorrect** code for the `{ "enforceForJSX": true }` option:
+使用 `{ "enforceForJSX": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -264,7 +263,7 @@ Examples of **incorrect** code for the `{ "enforceForJSX": true }` option:
 
 :::
 
-Examples of **correct** code for the `{ "enforceForJSX": true }` option:
+使用 `{ "enforceForJSX": true }` 选项的**正确**示例：
 
 ::: correct
 

@@ -4,11 +4,11 @@ layout: doc
 
 ---
 
-Disallows unnecessary parentheses around function expressions.
+不允许在函数表达式周围使用不必要的括号。
 
-(removed) This rule was **removed** in ESLint v1.0 and **replaced** by the [no-extra-parens](no-extra-parens) rule. The `"functions"` option in the new rule is equivalent to the removed rule.
+（已移除）此规则在 ESLint v1.0 中移除并被 [no-extra-parens](no-extra-parens) rule. `"functions"` 选项 in the new rule is equivalent to the removed 所取代。
 
-Although it's possible to wrap functions in parentheses, this can be confusing when the code also contains immediately-invoked function expressions (IIFEs) since parentheses are often used to make this distinction. For example:
+尽管用小括号包裹函数是可行的，但当代码中还包含立即调用的函数表达式（IIFE）时，这可能会引起混淆，因为小括号经常被用来做这种区分。比如：
 
 ```js
 var foo = (function() {
@@ -20,11 +20,11 @@ var bar = (function() {
 });
 ```
 
-## Rule Details
+## 规则细节
 
-This rule will raise a warning when it encounters a function expression wrapped in parentheses with no following invoking parentheses.
+当它遇到一个用小括号包裹的函数表达式，而后面没有调用小括号时，这条规则会发出警告。
 
-Example of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -34,7 +34,7 @@ var a = (function() {/*...*/});
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 

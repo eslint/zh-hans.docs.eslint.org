@@ -7,16 +7,14 @@ related_rules:
 - sort-imports
 ---
 
+当在同一区块内声明多个变量时，一些开发者喜欢按字母顺序对变量名称进行排序，以便以后能够更容易找到所需的变量。其他人则认为这增加了复杂性，成为维护的负担。
 
+## 规则细节
 
-When declaring multiple variables within the same block, some developers prefer to sort variable names alphabetically to be able to find necessary variable easier at the later time. Others feel that it adds complexity and becomes burden to maintain.
+该规则检查所有的变量声明块，并验证所有的变量是否按字母顺序排序。
+该规则的默认配置是大小写敏感的。
 
-## Rule Details
-
-This rule checks all variable declaration blocks and verifies that all variables are sorted alphabetically.
-The default configuration of the rule is case-sensitive.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -32,7 +30,7 @@ var a, A;
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -51,7 +49,7 @@ var B, a, c;
 
 :::
 
-Alphabetical list is maintained starting from the first variable and excluding any that are considered problems. So the following code will produce two problems:
+按字母顺序列表，从第一个变量开始，排除任何被认为有问题的变量。所以下面的代码将产生两个问题。
 
 ```js
 /*eslint sort-vars: "error"*/
@@ -59,7 +57,7 @@ Alphabetical list is maintained starting from the first variable and excluding a
 var c, d, a, b;
 ```
 
-But this one, will only produce one:
+但这个人，只会产生一个。
 
 ```js
 /*eslint sort-vars: "error"*/
@@ -67,15 +65,15 @@ But this one, will only produce one:
 var c, d, a, e;
 ```
 
-## Options
+## 选项
 
-This rule has an object option:
+此规则选项为对象：
 
-* `"ignoreCase": true` (default `false`) ignores the case-sensitivity of the variables order
+* `"ignoreCase": true`（默认为 `false`）忽略了变量顺序的大小写敏感性。
 
 ### ignoreCase
 
-Examples of **correct** code for this rule with the `{ "ignoreCase": true }` option:
+使用此规则与 `{ "ignoreCase": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -89,6 +87,6 @@ var a, B, c;
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-This rule is a formatting preference and not following it won't negatively affect the quality of your code. If you alphabetizing variables isn't a part of your coding standards, then you can leave this rule off.
+这条规则是一种格式化的偏好，不遵循它不会对你的代码质量产生负面影响。如果你将变量按字母顺序排列不是你的编码标准的一部分，那么你可以不遵守这一规则。

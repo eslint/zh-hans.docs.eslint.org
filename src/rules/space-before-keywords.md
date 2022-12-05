@@ -10,13 +10,13 @@ related_rules:
 - space-infix-ops
 ---
 
-Enforces consistent spacing before keywords.
+强化关键词前的一致间距。
 
-(removed) This rule was **removed** in ESLint v2.0 and **replaced** by the [keyword-spacing](keyword-spacing) rule.
+（已移除）此规则在 ESLint v2.0 中移除并被 [keyword-spacing](keyword-spacing) 所取代。
 
-(fixable) The `--fix` option on the [command line](../user-guide/command-line-interface#--fix) automatically fixed problems reported by this rule.
+（可修复）`--fix` 选项在[命令行](../user-guide/command-line-interface#--fix)上自动修复该规则报告的问题。
 
-Keywords are syntax elements of JavaScript, such as `function` and `if`. These identifiers have special meaning to the language and so often appear in a different color in code editors. As an important part of the language, style guides often refer to the spacing that should be used around keywords. For example, you might have a style guide that says keywords should be always be preceded by spaces, which would mean `if-else` statements must look like this:
+关键词是 JavaScript 的语法元素，如 `function` 和 `if`。这些标识符对语言有特殊的意义，所以在代码编辑器中经常以不同的颜色出现。作为语言的一个重要部分，风格指南经常提到关键词周围应该使用的间距。例如，你可能有一个风格指南，说关键词前面应该总是有空格，这意味着 `if-else` 语句必须看起来像这样。
 
 ```js
 if (foo) {
@@ -26,23 +26,20 @@ if (foo) {
 }
 ```
 
-Of course, you could also have a style guide that disallows spaces before keywords.
+当然，你也可以有一个风格指南，不允许在关键词前有空格。
 
-## Rule Details
+## 规则细节
 
-This rule will enforce consistency of spacing before the keywords `if`, `else`, `for`,
-`while`, `do`, `switch`, `throw`, `try`, `catch`, `finally`, `with`, `break`, `continue`,
-`return`, `function`, `yield`, `class` and variable declarations (`let`, `const`, `var`)
-and label statements.
+这条规则将强制执行关键字前的间距的一致性。
 
-This rule takes one argument: `"always"` or `"never"`. If `"always"` then the keywords
-must be preceded by at least one space. If `"never"` then no spaces will be allowed before
-the keywords `else`, `while` (do...while), `finally` and `catch`. The default value is `"always"`.
+`if`、`else`、`for`、`while`、`do`、`switch`、`throw`、`try`、`catch`、`finally`、`with`、`break`、`continue`、`return`、`function`、`yield`、`class`、变量声明（`let`、`const`、`var`）和标签语句。
 
-This rule will allow keywords to be preceded by an opening curly brace (`{`). If you wish to alter
-this behavior, consider using the [block-spacing](block-spacing) rule.
+这个规则需要一个参数：`"always"` 或 `"never"`。如果是 `"always"`，那么关键字前面必须至少有一个空格。如果 `"never"`，那么在关键字 `else`、`while`（do...while）、`finally` 和 `catch` 前不允许有空格。默认值是 `"always"`。
 
-Examples of **incorrect** code for this rule with the default `"always"` option:
+这个规则允许关键词前面有一个大括号（`{`）。如果你想改变
+这个行为，请考虑使用 [block-spacing](block-spacing) 规则。
+
+使用此规则与默认的 `"always"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -65,7 +62,7 @@ function bar() {
 
 :::
 
-Examples of **correct** code for this rule with the default `"always"` option:
+使用此规则与默认的 `"always"` 选项的**正确**示例：
 
 ::: correct
 
@@ -86,7 +83,7 @@ for (let foo of ['bar', 'baz', 'qux']) {}
 
 :::
 
-Examples of **incorrect** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -109,7 +106,7 @@ try {} catch(e) {}
 
 :::
 
-Examples of **correct** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**正确**示例：
 
 ::: correct
 
@@ -129,6 +126,6 @@ try{}catch(e) {}
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you do not wish to enforce consistency on keyword spacing.
+如果你不希望在关键词间距上执行一致性。

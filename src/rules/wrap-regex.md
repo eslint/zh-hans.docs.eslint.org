@@ -4,9 +4,7 @@ layout: doc
 rule_type: layout
 ---
 
-
-
-When a regular expression is used in certain situations, it can end up looking like a division operator. For example:
+当正则表达式在某些情况下被使用时，它可能最终看起来像一个除法运算符。比如：
 
 ```js
 function a() {
@@ -14,11 +12,11 @@ function a() {
 }
 ```
 
-## Rule Details
+## 规则细节
 
-This is used to disambiguate the slash operator and facilitates more readable code.
+这用于消除斜线运算符的歧义，并有利于提高代码的可读性。
 
-Example of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -32,7 +30,7 @@ function a() {
 
 :::
 
-Example of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 

@@ -6,15 +6,13 @@ related_rules:
 - require-await
 ---
 
+## 规则细节
 
+该规则对没有 `yield` 关键字的生成器函数产生警告。
 
-## Rule Details
+## 示例
 
-This rule generates warnings for generator functions that do not have the `yield` keyword.
-
-## Examples
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -29,7 +27,7 @@ function* foo() {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -52,6 +50,6 @@ function* foo() { }
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't want to notify generator functions that have no `yield` expression, then it's safe to disable this rule.
+如果你不想通知没有 `yield` 表达的生成器函数，你可以安全地禁用此规则。

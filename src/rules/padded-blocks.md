@@ -7,10 +7,8 @@ related_rules:
 - padding-line-between-statements
 ---
 
-
-
-Some style guides require block statements to start and end with blank lines. The goal is
-to improve readability by visually separating the block content and the surrounding code.
+一些风格指南要求块状语句以空行开始和结束。其目的是
+以提高可读性，从视觉上将块内容和周围的代码分开。
 
 ```js
 if (a) {
@@ -20,38 +18,37 @@ if (a) {
 }
 ```
 
-Since it's good to have a consistent code style, you should either always write
-padded blocks or never do it.
+因为有一个一致的代码风格是很好的，所以你应该总是编写缩进块，或者永远不要这样做。
 
-## Rule Details
+## 规则细节
 
-This rule enforces consistent empty line padding within blocks.
+这条规则使块内的空行填充一致。
 
-## Options
+## 选项
 
-This rule has two options, the first one can be a string option or an object option.
-The second one is an object option, it can allow exceptions.
+这个规则有两个选项，第一个选项可以是一个字符串选项或一个对象选项。
+第二个选项是一个对象选项，它可以允许出现例外情况。
 
 ### First option
 
-String option:
+字符串选项：
 
-* `"always"` (default) requires empty lines at the beginning and ending of block statements, function bodies, class static blocks, classes, and `switch` statements.
-* `"never"` disallows empty lines at the beginning and ending of block statements, function bodies, class static blocks, classes, and `switch` statements.
+* `"always"`（默认值）要求在块语句、函数体、类静态块、类和`switch` 语句的开头和结尾处有空行。
+* `"never"` 不允许在块状语句、函数体、类静态块、类和 `switch` 语句的开头和结尾出现空行。
 
-Object option:
+对象选项：
 
-* `"blocks"` require or disallow padding within block statements, function bodies, and class static blocks
-* `"classes"` require or disallow padding within classes
-* `"switches"` require or disallow padding within `switch` statements
+* `"blocks"` 要求或不允许在块语句、函数体和类的静态块中进行填充。
+* `"classes"` 要求或不允许在类内填充。
+* `"switches"` 要求或不允许在 `switch` 中使用填充物。
 
 ### Second option
 
-* `"allowSingleLineBlocks": true` allows single-line blocks
+* `"allowSingleLineBlocks": true` 允许单行块。
 
 ### always
 
-Examples of **incorrect** code for this rule with the default `"always"` option:
+使用此规则与默认的 `"always"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -89,7 +86,7 @@ class C {
 
 :::
 
-Examples of **correct** code for this rule with the default `"always"` option:
+使用此规则与默认的 `"always"` 选项的**正确**示例：
 
 ::: correct
 
@@ -131,7 +128,7 @@ class C {
 
 ### never
 
-Examples of **incorrect** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -174,7 +171,7 @@ class C {
 
 :::
 
-Examples of **correct** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**正确**示例：
 
 ::: correct
 
@@ -201,7 +198,7 @@ class C {
 
 ### blocks
 
-Examples of **incorrect** code for this rule with the `{ "blocks": "always" }` option:
+使用此规则与 `{ "blocks": "always" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -246,7 +243,7 @@ class C {
 
 :::
 
-Examples of **correct** code for this rule with the `{ "blocks": "always" }` option:
+使用此规则与 `{ "blocks": "always" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -295,7 +292,7 @@ class D {
 
 :::
 
-Examples of **incorrect** code for this rule with the `{ "blocks": "never" }` option:
+使用此规则与 `{ "blocks": "never" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -336,7 +333,7 @@ class C {
 
 :::
 
-Examples of **correct** code for this rule with the `{ "blocks": "never" }` option:
+使用此规则与 `{ "blocks": "never" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -371,7 +368,7 @@ class D {
 
 ### classes
 
-Examples of **incorrect** code for this rule with the `{ "classes": "always" }` option:
+使用此规则与 `{ "classes": "always" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -386,7 +383,7 @@ class  A {
 
 :::
 
-Examples of **correct** code for this rule with the `{ "classes": "always" }` option:
+使用此规则与 `{ "classes": "always" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -403,7 +400,7 @@ class  A {
 
 :::
 
-Examples of **incorrect** code for this rule with the `{ "classes": "never" }` option:
+使用此规则与 `{ "classes": "never" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -420,7 +417,7 @@ class  A {
 
 :::
 
-Examples of **correct** code for this rule with the `{ "classes": "never" }` option:
+使用此规则与 `{ "classes": "never" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -437,7 +434,7 @@ class  A {
 
 ### switches
 
-Examples of **incorrect** code for this rule with the `{ "switches": "always" }` option:
+使用此规则与 `{ "switches": "always" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -451,7 +448,7 @@ switch (a) {
 
 :::
 
-Examples of **correct** code for this rule with the `{ "switches": "always" }` option:
+使用此规则与 `{ "switches": "always" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -471,7 +468,7 @@ if (a) {
 
 :::
 
-Examples of **incorrect** code for this rule with the `{ "switches": "never" }` option:
+使用此规则与 `{ "switches": "never" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -487,7 +484,7 @@ switch (a) {
 
 :::
 
-Examples of **correct** code for this rule with the `{ "switches": "never" }` option:
+使用此规则与 `{ "switches": "never" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -509,7 +506,7 @@ if (a) {
 
 ### always + allowSingleLineBlocks
 
-Examples of **incorrect** code for this rule with the `"always", {"allowSingleLineBlocks": true}` options:
+使用此规则与 `"always", {"allowSingleLineBlocks": true}` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -533,7 +530,7 @@ if (a) {
 
 :::
 
-Examples of **correct** code for this rule with the `"always", {"allowSingleLineBlocks": true}` options:
+使用此规则与 `"always", {"allowSingleLineBlocks": true}` 选项的**正确**示例：
 
 ::: correct
 
@@ -551,6 +548,6 @@ if (a) {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-You can turn this rule off if you are not concerned with the consistency of padding within blocks.
+如果你不关心块内填充的一致性，你可以关闭这个规则。

@@ -9,8 +9,7 @@ related_rules:
 - for-direction
 ---
 
-
-A loop that can never reach the second iteration is a possible error in the code.
+代码也可能会存在一个永远无法实现二次迭代的循环。
 
 ```js
 for (let i = 0; i < arr.length; i++) {
@@ -22,17 +21,17 @@ for (let i = 0; i < arr.length; i++) {
 }
 ```
 
-In rare cases where only one iteration (or at most one iteration) is intended behavior, the code should be refactored to use `if` conditionals instead of `while`, `do-while` and `for` loops. It's considered a best practice to avoid using loop constructs for such cases.
+在极少数情况下，可能预期行为就是只使用一个迭代（或最多一个迭代），这种情况下代码应该使用 `if` 条件重构，而不是使用 `while`、`do-while` 和 `for` 循环。在这种情况下，避免使用循环结构被认为是一种最佳做法。
 
-## Rule Details
+## 规则细节
 
-This rule aims to detect and disallow loops that can have at most one iteration, by performing static code path analysis on loop bodies.
+该规则旨在通过对循环体进行静态代码路径分析，检测并禁止最多只能有一次迭代的循环。
 
-In particular, this rule will disallow a loop with a body that exits the loop in all code paths. If all code paths in the loop's body will end with either a `break`, `return` or a `throw` statement, the second iteration of such loop is certainly unreachable, regardless of the loop's condition.
+特别是，这条规则将不允许一个循环的主体在所有代码路径中都退出循环。如果循环主体中的所有代码路径都以 `break`、`return` 或 `throw` 语句结束，那么无论循环的条件如何，这种循环的第二次迭代肯定是无法到达的。
 
-This rule checks `while`, `do-while`, `for`, `for-in` and `for-of` loops. You can optionally disable checks for each of these constructs.
+该规则检查 `while`、`do-while`、`for`、`for-in` 和 `for-of` 循环。你可以选择禁用对这些结构的检查。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -85,7 +84,7 @@ for (foo of bar) {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -138,9 +137,9 @@ for (foo of bar) {
 
 :::
 
-Please note that this rule is not designed to check loop conditions, and will not warn in cases such as the following examples.
+请注意，这条规则不是用来检查循环条件的，在诸如以下例子的情况下不会发出警告。
 
-Examples of additional **correct** code for this rule:
+本规则的其他**正确的**代码的例子。
 
 ::: correct
 
@@ -162,23 +161,23 @@ for (const a of [1]) {
 
 :::
 
-## Options
+## 选项
 
-This rule has an object option, with one option:
+这个规则有一个对象选项，有一个选项。
 
-* `"ignore"` - an optional array of loop types that will be ignored by this rule.
+* `"ignore"` - 一个可选的循环类型数组，它将被该规则忽略。
 
 ### ignore
 
-You can specify up to 5 different elements in the `"ignore"` array:
+你可以在 `"ignore"` 数组中最多指定 5 个不同的元素：
 
-* `"WhileStatement"` - to ignore all `while` loops.
-* `"DoWhileStatement"` - to ignore all `do-while` loops.
-* `"ForStatement"` - to ignore all `for` loops (does not apply to `for-in` and `for-of` loops).
-* `"ForInStatement"` - to ignore all `for-in` loops.
-* `"ForOfStatement"` - to ignore all `for-of` loops.
+* `"WhileStatement"` - 忽略所有`while` 循环。
+* `"DoWhileStatement"` - 忽略所有 `do-while` 循环。
+* `"ForStatement"` - 忽略所有的 `for` 循环（不适用于 `for-in` 和 `for-of` 循环）。
+* `"ForInStatement"` - 忽略所有的 `for-in` 循环。
+* `"ForOfStatement"` - 忽略所有的 `for-of` 循环。
 
-Examples of **correct** code for this rule with the `"ignore"` option:
+使用此规则与 `"ignore"` 选项的**正确**示例：
 
 ::: correct
 
@@ -195,9 +194,9 @@ for (const a of b) break;
 
 :::
 
-## Known Limitations
+## 已知限制
 
-Static code path analysis, in general, does not evaluate conditions. Due to this fact, this rule might miss reporting cases such as the following:
+一般来说只会静态分析代码路径，不评估条件。由于这一情况，次规则可能会遗漏诸如以下的报告情况：
 
 ```js
 for (let i = 0; i < 10; i++) {

@@ -6,17 +6,15 @@ further_reading:
 - https://web.archive.org/web/20200717110117/https://yuiblog.com/blog/2006/04/11/with-statement-considered-harmful/
 ---
 
+`with` 语句存在潜在问题，因为它将一个对象的成员加入到当前的作用域中，使得我们无法分辨块中的变量究竟指的是什么。
 
+## 规则细节
 
-The `with` statement is potentially problematic because it adds members of an object to the current scope, making it impossible to tell what a variable inside the block actually refers to.
+使用此规则禁用 `with` 语句。
 
-## Rule Details
+如果 ESLint 以严格模式解析代码，解析器（而不是本规则）会报告错误。
 
-This rule disallows `with` statements.
-
-If ESLint parses code in strict mode, the parser (instead of this rule) reports the error.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -30,7 +28,7 @@ with (point) {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -43,6 +41,6 @@ const r = ({x, y}) => Math.sqrt(x * x + y * y);
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you intentionally use `with` statements then you can disable this rule.
+如果你故意使用 `with` 语句，那么你可以禁用这个规则。

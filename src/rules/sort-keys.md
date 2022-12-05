@@ -7,14 +7,13 @@ related_rules:
 - sort-vars
 ---
 
+当声明多个属性时，一些开发者喜欢按字母顺序对属性名称进行排序，以便在以后更容易找到和/或区别必要的属性。其他人则认为这增加了复杂性，成为维护的负担。
 
-When declaring multiple properties, some developers prefer to sort property names alphabetically to more easily find and/or diff necessary properties at a later time. Others feel that it adds complexity and becomes burden to maintain.
+## 规则细节
 
-## Rule Details
+该规则检查对象表达式的所有属性定义，并验证所有变量是否按字母顺序排序。
 
-This rule checks all property definitions of object expressions and verifies that all variables are sorted alphabetically.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -40,7 +39,7 @@ let obj = {a: 1, [S]: 3, b: 2};
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -73,7 +72,7 @@ let obj = {b: 1, ...c, a: 2};
 
 :::
 
-## Options
+## 选项
 
 ```json
 {
@@ -81,28 +80,28 @@ let obj = {b: 1, ...c, a: 2};
 }
 ```
 
-The 1st option is `"asc"` or `"desc"`.
+第 1 个选项是 `"asc"` 或 `"desc"`。
 
-* `"asc"` (default) - enforce properties to be in ascending order.
-* `"desc"` - enforce properties to be in descending order.
+* `"asc"`（默认值）- 执行属性的升序。
+* `"desc"` - 强制执行属性的降序。
 
-The 2nd option is an object which has 3 properties.
+第二个选项是一个有 3 个属性的对象：
 
-* `caseSensitive` - if `true`, enforce properties to be in case-sensitive order. Default is `true`.
-* `minKeys` - Specifies the minimum number of keys that an object should have in order for the object's unsorted keys to produce an error. Default is `2`, which means by default all objects with unsorted keys will result in lint errors.
-* `natural` - if `true`, enforce properties to be in natural order. Default is `false`. Natural Order compares strings containing combination of letters and numbers in the way a human being would sort. It basically sorts numerically, instead of sorting alphabetically. So the number 10 comes after the number 3 in Natural Sorting.
-* `allowLineSeparatedGroups` - if `true`, the rule allows to group object keys through line breaks. In other words, a blank line after a property will reset the sorting of keys. Default is `false`.
+* `caseSensitive` - 如果是 `true`，强制要求属性以大小写为序。默认是 `true`。
+* `minKeys` - 指定一个对象应该有的最小键数，以便该对象的未排序键产生错误。默认为 `2`，这意味着默认情况下，所有具有未排序键的对象将导致检查抛出错误。
+* `natural` - 如果是 `true` 则强制要求属性以自然顺序排列。默认是 `false`。自然顺序是以人类排序的方式比较包含字母和数字组合的字符串。它基本上是按数字排序，而不是按字母表排序。所以在自然排序中，数字 10 排在数字 3 之后。
+* `allowLineSeparatedGroups` - 如果 `true` 则该规则允许通过换行来分组对象键。换句话说，一个属性后的空行将重置键值的排序。默认是 `false`。
 
-Example for a list:
+列表示例：
 
-With `natural` as true, the ordering would be
+如果 `natural` 为真，排序将是
 1
 3
 6
 8
 10
 
-With `natural` as false, the ordering would be
+如果 `natural` 为假，排序将是
 1
 10
 3
@@ -111,7 +110,7 @@ With `natural` as false, the ordering would be
 
 ### desc
 
-Examples of **incorrect** code for the `"desc"` option:
+使用 `"desc"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -131,7 +130,7 @@ let obj = {10: b, 2: c, 1: a};
 
 :::
 
-Examples of **correct** code for the `"desc"` option:
+使用 `"desc"` 选项的**正确**示例：
 
 ::: correct
 
@@ -153,7 +152,7 @@ let obj = {2: c, 10: b, 1: a};
 
 ### insensitive
 
-Examples of **incorrect** code for the `{caseSensitive: false}` option:
+使用 `{caseSensitive: false}` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -167,7 +166,7 @@ let obj = {a: 1, C: 3, c: 4, b: 2};
 
 :::
 
-Examples of **correct** code for the `{caseSensitive: false}` option:
+使用 `{caseSensitive: false}` 选项的**正确**示例：
 
 ::: correct
 
@@ -183,7 +182,7 @@ let obj = {a: 1, b: 2, C: 3, c: 4};
 
 ### natural
 
-Examples of **incorrect** code for the `{natural: true}` option:
+使用 `{natural: true}` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -196,7 +195,7 @@ let obj = {1: a, 10: c, 2: b};
 
 :::
 
-Examples of **correct** code for the `{natural: true}` option:
+使用 `{natural: true}` 选项的**正确**示例：
 
 ::: correct
 
@@ -211,7 +210,7 @@ let obj = {1: a, 2: b, 10: c};
 
 ### minKeys
 
-Examples of **incorrect** code for the `{minKeys: 4}` option:
+使用 `{minKeys: 4}` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -239,7 +238,7 @@ let obj = {
 
 :::
 
-Examples of **correct** code for the `{minKeys: 4}` option:
+使用 `{minKeys: 4}` 选项的**正确**示例：
 
 ::: correct
 
@@ -265,7 +264,7 @@ let obj = {
 
 ### allowLineSeparatedGroups
 
-Examples of **incorrect** code for the `{allowLineSeparatedGroups: true}` option:
+使用 `{allowLineSeparatedGroups: true}` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -311,7 +310,7 @@ let obj4 = {
 
 :::
 
-Examples of **correct** code for the `{allowLineSeparatedGroups: true}` option:
+使用 `{allowLineSeparatedGroups: true}` 选项的**正确**示例：
 
 ::: correct
 
@@ -385,10 +384,10 @@ var obj = {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't want to notify about properties' order, then it's safe to disable this rule.
+如果你不关心属性对顺序，你可以安全地禁用此规则。
 
-## Compatibility
+## 兼容
 
-* **JSCS:** [validateOrderInObjectKeys](https://jscs-dev.github.io/rule/validateOrderInObjectKeys)
+* **JSCS**：[validateOrderInObjectKeys](https://jscs-dev.github.io/rule/validateOrderInObjectKeys)

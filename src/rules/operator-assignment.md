@@ -4,9 +4,7 @@ layout: doc
 rule_type: suggestion
 ---
 
-
-
-JavaScript provides shorthand operators that combine variable assignment and some simple mathematical operations. For example, `x = x + 4` can be shortened to `x += 4`. The supported shorthand forms are as follows:
+JavaScript 提供了速记运算符，将变量赋值和一些简单的数学运算结合起来。例如，`x = x + 4` 可以简化为 `x += 4`。支持的速记形式如下：
 
 ```text
  Shorthand | Separate
@@ -25,22 +23,22 @@ JavaScript provides shorthand operators that combine variable assignment and som
  x |= y    | x = x | y
 ```
 
-## Rule Details
+## 规则细节
 
-This rule requires or disallows assignment operator shorthand where possible.
+本规则要求或不允许在可能的情况下使用赋值运算符速记。
 
-The rule applies to the operators listed in the above table. It does not report the logical assignment operators `&&=`, `||=`, and `??=` because their short-circuiting behavior is different from the other assignment operators.
+该规则适用于上表中列出的运算符。它不报告逻辑赋值运算符 `&&=`、`||=` 和 `??=`，因为它们的短路行为与其他赋值运算符不同。
 
-## Options
+## 选项
 
-This rule has a single string option:
+这个规则有一个字符串选项：
 
-* `"always"` (default)  requires assignment operator shorthand where possible
-* `"never"` disallows assignment operator shorthand
+* `"always"`（默认值）。要求在可能的情况下使用赋值运算符速记
+* `"never"` 不允许使用赋值运算符速记
 
 ### always
 
-Examples of **incorrect** code for this rule with the default `"always"` option:
+使用此规则与默认的 `"always"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -55,7 +53,7 @@ x.y = x.y << z;
 
 :::
 
-Examples of **correct** code for this rule with the default `"always"` option:
+使用此规则与默认的 `"always"` 选项的**正确**示例：
 
 ::: correct
 
@@ -75,7 +73,7 @@ x = y + x; // `+` is not always commutative (e.g. x = "abc")
 
 ### never
 
-Examples of **incorrect** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -88,7 +86,7 @@ x ^= (y + z) / foo();
 
 :::
 
-Examples of **correct** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**正确**示例：
 
 ::: correct
 
@@ -101,6 +99,6 @@ x.y = x.y / a.b;
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-Use of operator assignment shorthand is a stylistic choice. Leaving this rule turned off would allow developers to choose which style is more readable on a case-by-case basis.
+使用运算符赋值速记是一种风格上的选择。关闭这一规则将允许开发人员根据具体情况选择哪种风格更易读。

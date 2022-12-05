@@ -4,24 +4,22 @@ layout: doc
 rule_type: problem
 ---
 
+在代码中声明了变量，但没有在任何地方使用，这很可能是由于不完整的重构造成的错误。这样的变量占用了代码中的空间，会导致读者的混淆。
 
+## 规则细节
 
-Variables that are declared and not used anywhere in the code are most likely an error due to incomplete refactoring. Such variables take up space in the code and can lead to confusion by readers.
+这个规则的目的是消除未使用的变量、函数和函数参数。
 
-## Rule Details
+一个变量 `foo` 被认为是被使用的，如果以下任何一项为真：
 
-This rule is aimed at eliminating unused variables, functions, and function parameters.
+* 它被调用（`foo()`）或构造（`new foo()`）
+* 它被读取（`var bar = foo`）
+* 它被作为参数传入一个函数 (`doSomething(foo)`)
+* 在一个函数中读取，并传递给另一个函数（`doSomething(function() { foo(); }）`）
 
-A variable `foo` is considered to be used if any of the following are true:
+如果一个变量只被声明（`var foo = 5`）或分配给（`foo = 7`），则不被认为是被使用。
 
-* It is called (`foo()`) or constructed (`new foo()`)
-* It is read (`var bar = foo`)
-* It is passed into a function as an argument (`doSomething(foo)`)
-* It is read inside of a function that is passed to another function (`doSomething(function() { foo(); })`)
-
-A variable is *not* considered to be used if it is only ever declared (`var foo = 5`) or assigned to (`foo = 7`).
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -61,7 +59,7 @@ function getY([x, y]) {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -96,17 +94,17 @@ function getY([, y]) {
 
 ### exported
 
-In environments outside of CommonJS or ECMAScript modules, you may use `var` to create a global variable that may be used by other scripts. You can use the `/* exported variableName */` comment block to indicate that this variable is being exported and therefore should not be considered unused.
+在 CommonJS 或 ECMAScript 模块之外的环境中，你可以使用 `var` 来创建一个全局变量，该变量可能被其他脚本使用。你可以使用 `/* exported variableName */` 注释块来表示这个变量被导出，因此不应该被认为是未使用的。
 
-Note that `/* exported */` has no effect for any of the following:
+请注意，`/* exported */`对以下任何情况都没有影响：
 
-* when the environment is `node` or `commonjs`
-* when `parserOptions.sourceType` is `module`
-* when `ecmaFeatures.globalReturn` is `true`
+* 当环境是 `node` 或 `commonjs` 时
+* 当 `parserOptions.sourceType` 是 `module`时
+* 当 `ecmaFeatures.globalReturn` 为 `true` 时
 
-The line comment `// exported variableName` will not work as `exported` is not line-specific.
+行注释 `// exported variableName` 将不起作用，因为 `exported` 不是特定于行的。
 
-Examples of **correct** code for `/* exported variableName */` operation:
+`/* exported variableName */`操作的**正确的**代码示例。
 
 ::: correct
 
@@ -118,11 +116,11 @@ var global_var = 42;
 
 :::
 
-## Options
+## 选项
 
-This rule takes one argument which can be a string or an object. The string settings are the same as those of the `vars` property (explained below).
+这个规则需要一个参数，可以是一个字符串或一个对象。字符串的设置与 `vars` 属性的设置相同（解释如下）。
 
-By default this rule is enabled with `all` option for variables and `after-used` for arguments.
+默认情况下，该规则对变量启用 `all` 选项，对参数启用 `after-used`。
 
 ```json
 {
@@ -134,14 +132,14 @@ By default this rule is enabled with `all` option for variables and `after-used`
 
 ### vars
 
-The `vars` option has two settings:
+`vars` 选项有两个设置项：
 
-* `all` checks all variables for usage, including those in the global scope. This is the default setting.
-* `local` checks only that locally-declared variables are used but will allow global variables to be unused.
+* `all`检查所有变量的使用，包括全局范围内的变量。这是默认设置。
+* `local`只检查本地声明的变量是否被使用，但会允许全局变量不被使用。
 
 #### vars: local
 
-Examples of **correct** code for the `{ "vars": "local" }` option:
+使用 `{ "vars": "local" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -156,9 +154,9 @@ some_unused_var = 42;
 
 ### varsIgnorePattern
 
-The `varsIgnorePattern` option specifies exceptions not to check for usage: variables whose names match a regexp pattern. For example, variables whose names contain `ignored` or `Ignored`.
+`varsIgnorePattern` 选项指定了不检查使用情况的例外情况：名称与 regexp 模式匹配的变量。例如，名称中含有 `ignored` 或 `Ignored` 的变量。
 
-Examples of **correct** code for the `{ "varsIgnorePattern": "[iI]gnored" }` option:
+使用 `{ "varsIgnorePattern": "[iI]gnored" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -174,15 +172,15 @@ console.log(secondVar);
 
 ### args
 
-The `args` option has three settings:
+`args` 选项有三个设置：
 
-* `after-used` - unused positional arguments that occur before the last used argument will not be checked, but all named arguments and all positional arguments after the last used argument will be checked.
-* `all` - all named arguments must be used.
-* `none` - do not check arguments.
+* `after-used` - 在最后使用的参数之前出现的未使用的位置参数将不被检查，但所有命名的参数和最后使用的参数之后的所有位置参数将被检查。
+* `all` - 必须使用所有命名的参数。
+* `none` - 不检查参数。
 
 #### args: after-used
 
-Examples of **incorrect** code for the default `{ "args": "after-used" }` option:
+使用默认的 `{ "args": "after-used" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -199,7 +197,7 @@ Examples of **incorrect** code for the default `{ "args": "after-used" }` option
 
 :::
 
-Examples of **correct** code for the default `{ "args": "after-used" }` option:
+使用默认的 `{ "args": "after-used" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -215,7 +213,7 @@ Examples of **correct** code for the default `{ "args": "after-used" }` option:
 
 #### args: all
 
-Examples of **incorrect** code for the `{ "args": "all" }` option:
+使用 `{ "args": "all" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -234,7 +232,7 @@ Examples of **incorrect** code for the `{ "args": "all" }` option:
 
 #### args: none
 
-Examples of **correct** code for the `{ "args": "none" }` option:
+使用 `{ "args": "none" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -250,9 +248,9 @@ Examples of **correct** code for the `{ "args": "none" }` option:
 
 ### ignoreRestSiblings
 
-The `ignoreRestSiblings` option is a boolean (default: `false`). Using a [Rest Property](https://github.com/tc39/proposal-object-rest-spread) it is possible to "omit" properties from an object, but by default the sibling properties are marked as "unused". With this option enabled the rest property's siblings are ignored.
+`ignoreRestSiblings`选项是一个布尔值（默认：`false`）。使用 [Rest Property](https://github.com/tc39/proposal-object-rest-spread) 可以从一个对象中 "省略 "属性，但默认情况下，兄弟姐妹的属性被标记为 "未使用"。启用这个选项后，其余属性的兄弟姐妹将被忽略。
 
-Examples of **correct** code for the `{ "ignoreRestSiblings": true }` option:
+使用 `{ "ignoreRestSiblings": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -269,9 +267,9 @@ var bar;
 
 ### argsIgnorePattern
 
-The `argsIgnorePattern` option specifies exceptions not to check for usage: arguments whose names match a regexp pattern. For example, variables whose names begin with an underscore.
+`argsIgnorePattern` 选项指定了不检查使用情况的例外情况：参数的名称与 regexp 模式相匹配。例如，名称以下划线开头的变量。
 
-Examples of **correct** code for the `{ "argsIgnorePattern": "^_" }` option:
+使用 `{ "argsIgnorePattern": "^_" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -288,9 +286,9 @@ foo();
 
 ### destructuredArrayIgnorePattern
 
-The `destructuredArrayIgnorePattern` option specifies exceptions not to check for usage: elements of array destructuring patterns whose names match a regexp pattern. For example, variables whose names begin with an underscore.
+`destructuredArrayIgnorePattern` 选项指定了不检查使用的例外情况：名称与 regexp 模式匹配的数组解构模式的元素。例如，名字以下划线开头的变量。
 
-Examples of **correct** code for the `{ "destructuredArrayIgnorePattern": "^_" }` option:
+使用 `{ "destructuredArrayIgnorePattern": "^_" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -329,18 +327,18 @@ p;
 
 ### caughtErrors
 
-The `caughtErrors` option is used for `catch` block arguments validation.
+`caughtErrors` 选项用于 `catch` 块参数的验证。
 
-It has two settings:
+它有两个设置：
 
-* `none` - do not check error objects. This is the default setting.
-* `all` - all named arguments must be used.
+* `none` - 不检查错误对象。这是默认设置。
+* `all` - 必须使用所有命名的参数。
 
 #### caughtErrors: none
 
-Not specifying this rule is equivalent of assigning it to `none`.
+不指定这条规则就相当于把它指定为 `none`。
 
-Examples of **correct** code for the `{ "caughtErrors": "none" }` option:
+使用 `{ "caughtErrors": "none" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -358,7 +356,7 @@ try {
 
 #### caughtErrors: all
 
-Examples of **incorrect** code for the `{ "caughtErrors": "all" }` option:
+使用 `{ "caughtErrors": "all" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -378,9 +376,9 @@ try {
 
 ### caughtErrorsIgnorePattern
 
-The `caughtErrorsIgnorePattern` option specifies exceptions not to check for usage: catch arguments whose names match a regexp pattern. For example, variables whose names begin with a string 'ignore'.
+`caughtErrorsIgnorePattern` 选项指定了不检查使用的例外情况：捕获名称与 regexp 模式匹配的参数。例如，名字以 `ignore` 开头的变量。
 
-Examples of **correct** code for the `{ "caughtErrorsIgnorePattern": "^ignore" }` option:
+使用 `{ "caughtErrorsIgnorePattern": "^ignore" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -396,6 +394,6 @@ try {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't want to be notified about unused variables or function arguments, you can safely turn this rule off.
+如果你不想得到关于未使用的变量或函数参数的通知，你可以安全地关闭这个规则。

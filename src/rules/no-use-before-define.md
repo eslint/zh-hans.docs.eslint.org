@@ -4,16 +4,15 @@ layout: doc
 rule_type: problem
 ---
 
+在 JavaScript 中，在 ES6 之前，变量和函数的声明被吊在一个作用域的顶端，所以有可能在代码中正式声明之前使用标识符。这可能会引起混淆，有些人认为最好是在使用变量和函数之前先声明它们。
 
-In JavaScript, prior to ES6, variable and function declarations are hoisted to the top of a scope, so it's possible to use identifiers before their formal declarations in code. This can be confusing and some believe it is best to always declare variables and functions before using them.
+在 ES6 中，块级绑定（`let` 和 `const`）引入了“temporal dead zone”，任何试图在变量声明之前访问它的行为都会被抛出一个 `ReferenceError`。
 
-In ES6, block-level bindings (`let` and `const`) introduce a "temporal dead zone" where a `ReferenceError` will be thrown with any attempt to access the variable before its declaration.
+## 规则细节
 
-## Rule Details
+当遇到对尚未声明的标识符的引用时，该规则将发出警告。
 
-This rule will warn when it encounters a reference to an identifier that has not yet been declared.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -67,7 +66,7 @@ const foo = 1;
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -123,7 +122,7 @@ export { foo };
 
 :::
 
-## Options
+## 选项
 
 ```json
 {
@@ -137,33 +136,33 @@ export { foo };
 ```
 
 * `functions` (`boolean`) -
-  The flag which shows whether or not this rule checks function declarations.
-  If this is `true`, this rule warns every reference to a function before the function declaration.
-  Otherwise, ignores those references.
-  Function declarations are hoisted, so it's safe.
-  Default is `true`.
+  显示此规则是否检查函数声明的标志。
+  如果是 `true`，该规则会警告在函数声明之前对函数的每个引用。
+  否则，忽略这些引用。
+  函数声明被吊起，所以是安全的。
+  默认是 `true`。
 * `classes` (`boolean`) -
-  The flag which shows whether or not this rule checks class declarations of upper scopes.
-  If this is `true`, this rule warns every reference to a class before the class declaration.
-  Otherwise, ignores those references if the declaration is in upper function scopes.
-  Class declarations are not hoisted, so it might be danger.
-  Default is `true`.
+  显示本规则是否检查上层作用域的类声明的标志。
+  如果是 `true`，这个规则会警告每个在类声明之前对类的引用。
+  否则，如果声明是在上层函数作用域中，就会忽略这些引用。
+  类声明没有被吊起，所以可能会有危险。
+  默认为 `true`。
 * `variables` (`boolean`) -
-  This flag determines whether or not the rule checks variable declarations in upper scopes.
-  If this is `true`, the rule warns every reference to a variable before the variable declaration.
-  Otherwise, the rule ignores a reference if the declaration is in an upper scope, while still reporting the reference if it's in the same scope as the declaration.
-  Default is `true`.
-* `allowNamedExports` (`boolean`) -
-  If this flag is set to `true`, the rule always allows references in `export {};` declarations.
-  These references are safe even if the variables are declared later in the code.
-  Default is `false`.
+  这个标志决定了规则是否检查上层作用域中的变量声明。
+  如果是 `true`，规则会警告每一个在变量声明前对变量的引用。
+  否则，如果声明在上层范围内，规则会忽略引用，而如果引用与声明在同一范围内，则仍然会报告。
+  默认为 `true`。
+* `allowNamedExports` (`boolean`)-
+  如果这个标志被设置为 `true`，规则总是允许在 `export {};`声明中的引用。
+  这些引用是安全的，即使这些变量是在代码的后面声明的。
+  默认是 `false`。
 
-This rule accepts `"nofunc"` string as an option.
-`"nofunc"` is the same as `{ "functions": false, "classes": true, "variables": true, "allowNamedExports": false }`.
+这个规则接受 `"nofunc"` 字符串作为一个选项。
+`"nofunc"` 与 `{ "functions": false, "classes": true, "variables": true, "allowNamedExports": false }` 相同。
 
 ### functions
 
-Examples of **correct** code for the `{ "functions": false }` option:
+使用 `{ "functions": false }` 选项的**正确**示例：
 
 ::: correct
 
@@ -176,11 +175,11 @@ function f() {}
 
 :::
 
-This option allows references to function declarations. For function expressions and arrow functions, please see the [`variables`](#variables) option.
+该选项允许对函数声明的引用。关于函数表达式和箭头函数，请参见 [`variables`](#variables) 选项。
 
 ### classes
 
-Examples of **incorrect** code for the `{ "classes": false }` option:
+使用 `{ "classes": false }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -219,7 +218,7 @@ class A {
 
 :::
 
-Examples of **correct** code for the `{ "classes": false }` option:
+使用 `{ "classes": false }` 选项的**正确**示例：
 
 ::: correct
 
@@ -238,7 +237,7 @@ class A {
 
 ### variables
 
-Examples of **incorrect** code for the `{ "variables": false }` option:
+使用 `{ "variables": false }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -279,7 +278,7 @@ const g = function() {};
 
 :::
 
-Examples of **correct** code for the `{ "variables": false }` option:
+使用 `{ "variables": false }` 选项的**正确**示例：
 
 ::: correct
 
@@ -311,7 +310,7 @@ const g = function() {}
 
 ### allowNamedExports
 
-Examples of **correct** code for the `{ "allowNamedExports": true }` option:
+使用 `{ "allowNamedExports": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -331,7 +330,7 @@ class C {}
 
 :::
 
-Examples of **incorrect** code for the `{ "allowNamedExports": true }` option:
+使用 `{ "allowNamedExports": true }` 选项的**错误**示例：
 
 ::: incorrect
 

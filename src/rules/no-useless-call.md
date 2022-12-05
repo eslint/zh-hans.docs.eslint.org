@@ -6,15 +6,14 @@ related_rules:
 - prefer-spread
 ---
 
+函数的调用可以通过 `Function.prototype.call()` 和 `Function.prototype.apply()` 来编写。
+但是 `Function.prototype.call()` 和 `Function.prototype.apply()` 比正常的函数调用要慢一些。
 
-The function invocation can be written by `Function.prototype.call()` and `Function.prototype.apply()`.
-But `Function.prototype.call()` and `Function.prototype.apply()` are slower than the normal function invocation.
+## 规则细节
 
-## Rule Details
+这条规则的目的是标明 `Function.prototype.call()` 和 `Function.prototype.apply()` 的用法，可以用正常的函数调用来代替。
 
-This rule is aimed to flag usage of `Function.prototype.call()` and `Function.prototype.apply()` that can be replaced with the normal function invocation.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -34,7 +33,7 @@ obj.foo.apply(obj, [1, 2, 3]);
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -58,12 +57,12 @@ obj.foo.apply(obj, args);
 
 :::
 
-## Known Limitations
+## 已知限制
 
-This rule compares code statically to check whether or not `thisArg` is changed.
-So if the code about `thisArg` is a dynamic expression, this rule cannot judge correctly.
+这个规则以静态方式比较代码，检查 `thisArg` 是否被改变。
+所以如果关于 `thisArg` 的代码是一个动态表达式，这个规则就不能正确判断。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -75,7 +74,7 @@ a[i++].foo.call(a[i++], 1, 2, 3);
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -87,6 +86,6 @@ a[++i].foo.call(a[i], 1, 2, 3);
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't want to be notified about unnecessary `.call()` and `.apply()`, you can safely disable this rule.
+如果你不想被通知不必要的 `.call()` 和 `.apply()`，你可以安全地禁用这个规则。

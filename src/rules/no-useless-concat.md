@@ -4,24 +4,23 @@ layout: doc
 rule_type: suggestion
 ---
 
-
-It's unnecessary to concatenate two strings together, such as:
+将两个字符串连接在一起是没有必要的，例如：
 
 ```js
 var foo = "a" + "b";
 ```
 
-This code is likely the result of refactoring where a variable was removed from the concatenation (such as `"a" + b + "b"`). In such a case, the concatenation isn't important and the code can be rewritten as:
+这段代码可能是重构的结果，其中一个变量被从连接中移除（如 `"a" + b + "b"`）。在这种情况下，串联并不重要，这段代码也可以写作：
 
 ```js
 var foo = "ab";
 ```
 
-## Rule Details
+## 规则细节
 
-This rule aims to flag the concatenation of 2 literals when they could be combined into a single literal. Literals can be strings or template literals.
+这条规则的目的是当两个字面量可以合并成一个字面量的时候，标记出它们的连接。字面量可以是字符串或模板字面量。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -40,7 +39,7 @@ var a = `1` + `0`;
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -59,6 +58,6 @@ var c = "foo" +
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't want to be notified about unnecessary string concatenation, you can safely disable this rule.
+如果你不希望被通知到不必要的字符串连接，你可以安全地禁用这个规则。

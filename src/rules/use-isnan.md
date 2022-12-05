@@ -4,22 +4,20 @@ layout: doc
 rule_type: problem
 ---
 
+在 JavaScript 中，`NaN` 是 `Number` 类型的一个特殊值。它被用来表示任何由 IEEE 二进制浮点运算标准规定的双精度 64 位格式所代表的“非数字”值。
 
+因为 `NaN` 在 JavaScript 中是唯一的，它不等于任何东西，包括它自己，所以与 `NaN` 比较的结果是混乱的。
 
-In JavaScript, `NaN` is a special value of the `Number` type. It's used to represent any of the "not-a-number" values represented by the double-precision 64-bit format as specified by the IEEE Standard for Binary Floating-Point Arithmetic.
+* `NaN === NaN` 或 `NaN == NaN` 评估为假
+* `NaN !== NaN` 或 `NaN != NaN` 评估为真。
 
-Because `NaN` is unique in JavaScript by not being equal to anything, including itself, the results of comparisons to `NaN` are confusing:
+因此，使用 `Number.isNaN()` 或全局 `isNaN()` 函数来测试一个值是否是 `NaN`。
 
-* `NaN === NaN` or `NaN == NaN` evaluate to false
-* `NaN !== NaN` or `NaN != NaN` evaluate to true
+## 规则细节
 
-Therefore, use `Number.isNaN()` or global `isNaN()` functions to test whether a value is `NaN`.
+这条规则不允许与 `NaN` 进行比较。
 
-## Rule Details
-
-This rule disallows comparisons to 'NaN'.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -45,7 +43,7 @@ if (foo != Number.NaN) {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -63,19 +61,19 @@ if (!isNaN(foo)) {
 
 :::
 
-## Options
+## 选项
 
-This rule has an object option, with two options:
+这个规则有一个对象选项，有两个选项：
 
-* `"enforceForSwitchCase": true` (default) additionally disallows `case NaN` and `switch(NaN)` in `switch` statements.
-* `"enforceForIndexOf": true` additionally disallows the use of `indexOf` and `lastIndexOf` methods with `NaN`. Default is `false`, meaning that this rule by default does not warn about `indexOf(NaN)` or `lastIndexOf(NaN)` method calls.
+* `"enforceForSwitchCase": true`（默认值）另外不允许在 `switch` 语句中使用 `case NaN` 和 `switch(NaN)`。
+* `"enforceForIndexOf": true` 另外禁止使用 `indexOf` 和`lastIndexOf` 方法与 `NaN`。默认为 `false`，意味着该规则默认不会对 `indexOf(NaN)` 或 `lastIndexOf(NaN)` 方法的调用发出警告。
 
 ### enforceForSwitchCase
 
-The `switch` statement internally uses the `===` comparison to match the expression's value to a case clause.
-Therefore, it can never match `case NaN`. Also, `switch(NaN)` can never match a case clause.
+`switch` 语句在内部使用 `===` 比较，将表达式的值与 case 子句相匹配。
+因此，它永远无法匹配 `case NaN`。同时，`switch(NaN)` 也不能匹配 case 子句。
 
-Examples of **incorrect** code for this rule with `"enforceForSwitchCase"` option set to `true` (default):
+使用此规则与默认的 `"enforceForSwitchCase"`选项设置为 `true` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -125,7 +123,7 @@ switch (Number.NaN) {
 
 :::
 
-Examples of **correct** code for this rule with `"enforceForSwitchCase"` option set to `true` (default):
+使用此规则的例子，默认的 `"enforSwitchCase"`选项设置为 `true` 选项**正确。
 
 ::: correct
 
@@ -152,7 +150,7 @@ if (Number.isNaN(a)) {
 
 :::
 
-Examples of **correct** code for this rule with `"enforceForSwitchCase"` option set to `false`:
+在 `"enforceForSwitchCase"` 选项设置为 `false` 的情况下，此规则的**正确的代码示例。
 
 ::: correct
 
@@ -204,16 +202,16 @@ switch (Number.NaN) {
 
 ### enforceForIndexOf
 
-The following methods internally use the `===` comparison to match the given value with an array element:
+以下方法在内部使用 `===`比较法来匹配给定值和数组元素。
 
 * [`Array.prototype.indexOf`](https://www.ecma-international.org/ecma-262/6.0/#sec-array.prototype.indexof)
 * [`Array.prototype.lastIndexOf`](https://www.ecma-international.org/ecma-262/6.0/#sec-array.prototype.lastindexof)
 
-Therefore, for any array `foo`, `foo.indexOf(NaN)` and `foo.lastIndexOf(NaN)` will always return `-1`.
+因此，对于任何数组`foo`，`foo.indexOf(NaN)` 和 `foo.lastIndexOf(NaN)`总是返回`1`。
 
-Set `"enforceForIndexOf"` to `true` if you want this rule to report `indexOf(NaN)` and `lastIndexOf(NaN)` method calls.
+如果你想让这个规则报告 `indexOf(NaN)` 和 `lastIndexOf(NaN)`方法的调用，请将 `"enforexOf"` 设置为 `true`。
 
-Examples of **incorrect** code for this rule with `"enforceForIndexOf"` option set to `true`:
+使用此规则并将 `"enforceForIndexOf"` 选项设置为 `true` 的**错误**示例：
 
 ::: incorrect
 
@@ -229,7 +227,7 @@ var lastIndex = myArray.lastIndexOf(NaN);
 
 :::
 
-Examples of **correct** code for this rule with `"enforceForIndexOf"` option set to `true`:
+使用此规则并将 `"enforceForIndexOf"` 选项设置为 `true` 的**正确**示例：
 
 ::: correct
 
@@ -278,6 +276,6 @@ var hasNaN = myArray.includes(NaN);
 
 :::
 
-#### Known Limitations
+#### 已知限制
 
-This option checks methods with the given names, *even if* the object which has the method is *not* an array.
+这个选项检查给定名称的方法，**即使**拥有该方法的对象**不是数组**。

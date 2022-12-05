@@ -4,9 +4,7 @@ layout: doc
 rule_type: problem
 ---
 
-
-
-JavaScript suspends the control flow statements of `try` and `catch` blocks until the execution of `finally` block finishes. So, when `return`, `throw`, `break`, or `continue` is used in `finally`, control flow statements inside `try` and `catch` are overwritten, which is considered as unexpected behavior. Such as:
+JavaScript 会暂停 `try` 和 `catch` 块的控制流语句，直到`finally` 块执行完毕。因此，当 `return`、`throw`、`break` 或 `continue` 在 `finally` 中使用时，`try` 和 `catch` 中的控制流语句会被覆盖，这被认为是意外行为。比如：
 
 ```js
 // We expect this function to return 1;
@@ -65,11 +63,11 @@ JavaScript suspends the control flow statements of `try` and `catch` blocks unti
 // > 1
 ```
 
-## Rule Details
+## 规则细节
 
-This rule disallows `return`, `throw`, `break`, and `continue` statements inside `finally` blocks. It allows indirect usages, such as in `function` or `class` definitions.
+使用此规则禁用 `return`, `throw`, `break`, 和 `continue` 语句。在 `finally` 块内。它允许间接使用，例如在 `function` 或 `class` 定义中。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -105,7 +103,7 @@ let foo = function() {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -165,6 +163,6 @@ let foo = function(a) {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you want to allow control flow operations in `finally` blocks, you can turn this rule off.
+如果你想允许在 `finally` 块中进行控制流操作，你可以关闭这个规则。

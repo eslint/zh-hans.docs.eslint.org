@@ -4,16 +4,14 @@ layout: doc
 rule_type: layout
 ---
 
+冒号周围的间距提高了 `case`/`default` 条款的可读性。
 
+## 规则细节
 
-Spacing around colons improves readability of `case`/`default` clauses.
+这条规则控制 `switch` 语句中的 `case` 和 `default` 子句周围的间距。
+这条规则只在连续的标记存在于同一行的情况下进行检查。
 
-## Rule Details
-
-This rule controls spacing around colons of `case` and `default` clauses in `switch` statements.
-This rule does the check only if the consecutive tokens exist on the same line.
-
-This rule has 2 options that are boolean value.
+这条规则有 2 个布尔值的选项：
 
 ```json
 {
@@ -21,12 +19,12 @@ This rule has 2 options that are boolean value.
 }
 ```
 
-* `"after": true` (Default) requires one or more spaces after colons.
-* `"after": false` disallows spaces after colons.
-* `"before": true` requires one or more spaces before colons.
-* `"before": false` (Default) disallows before colons.
+* `"after": true`（默认值）要求冒号后有一个或多个空格。
+* `"after": false` 不允许在冒号后有空格。
+* `"before": true` 需要在冒号前有一个或多个空格。
+* `"before": false`（默认值）不允许在冒号之前。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -41,7 +39,7 @@ switch (a) {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -61,7 +59,7 @@ switch (a) {
 
 :::
 
-Examples of **incorrect** code for this rule with `{"after": false, "before": true}` option:
+使用此规则与 `{"after": false, "before": true}` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -76,7 +74,7 @@ switch (a) {
 
 :::
 
-Examples of **correct** code for this rule with `{"after": false, "before": true}` option:
+使用此规则与 `{"after": false, "before": true}` 选项的**正确**示例：
 
 ::: correct
 
@@ -96,6 +94,6 @@ switch (a) {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't want to notify spacing around colons of switch statements, then it's safe to disable this rule.
+如果你不关心 switch 语句的冒号周围的间距，你可以安全地禁用此规则。

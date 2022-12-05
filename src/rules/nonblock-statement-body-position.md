@@ -6,18 +6,16 @@ further_reading:
 - https://jscs-dev.github.io/rule/requireNewlineBeforeSingleStatementsInIf
 ---
 
+当编写 `if`、`else`、`while`、`do-while` 和 `for` 语句时，主体可以是单个语句，而不是一个块。为这些单一的语句执行一个一致的位置可能是很有用的。
 
-
-When writing `if`, `else`, `while`, `do-while`, and `for` statements, the body can be a single statement instead of a block. It can be useful to enforce a consistent location for these single statements.
-
-For example, some developers avoid writing code like this:
+例如，一些开发人员避免写这样的代码：
 
 ```js
 if (foo)
   bar();
 ```
 
-If another developer attempts to add `baz();` to the `if` statement, they might mistakenly change the code to
+如果另一个开发者试图在 `if` 语句中加入 `baz();`，他们可能会错误地将代码改为
 
 ```js
 if (foo)
@@ -25,32 +23,32 @@ if (foo)
   baz(); // this line is not in the `if` statement!
 ```
 
-To avoid this issue, one might require all single-line `if` statements to appear directly after the conditional, without a linebreak:
+为了避免这个问题，我们可以要求所有的单行 `if` 语句直接出现在条件后面，不加换行符。
 
 ```js
 if (foo) bar();
 ```
 
-## Rule Details
+## 规则细节
 
-This rule aims to enforce a consistent location for single-line statements.
+这条规则的目的是为单行语句执行一个一致的位置。
 
-Note that this rule does not enforce the usage of single-line statements in general. If you would like to disallow single-line statements, use the [`curly`](/docs/rules/curly) rule instead.
+请注意，这条规则并不强制要求使用一般的单行语句。如果你想禁止单行语句，请使用 [`curly`](/docs/rules/curly) 规则代替。
 
-### Options
+### 选项
 
-This rule accepts a string option:
+此规则选项为字符串：
 
-* `"beside"` (default) disallows a newline before a single-line statement.
-* `"below"` requires a newline before a single-line statement.
-* `"any"` does not enforce the position of a single-line statement.
+* `"beside"`（默认值）不允许在单行语句前添加换行。
+* `"below"`要求在单行语句前加一个换行。
+* `"any"`不强制执行单行语句的位置。
 
-Additionally, the rule accepts an optional object option with an `"overrides"` key. This can be used to specify a location for particular statements that override the default. For example:
+此外，规则接受一个可选的对象选项，其中有一个 `"overrides"` 键。这可以用来为特定的语句指定一个位置，以覆盖默认值：
 
-* `"beside", { "overrides": { "while": "below" } }` requires all single-line statements to appear on the same line as their parent, unless the parent is a `while` statement, in which case the single-line statement must not be on the same line.
-* `"below", { "overrides": { "do": "any" } }` disallows all single-line statements from appearing on the same line as their parent, unless the parent is a `do-while` statement, in which case the position of the single-line statement is not enforced.
+* `"beside", { "overrides": { "while": "below" } }` 要求所有的单行语句与它们的父语句出现在同一行，除非父语句是 `while` 语句，在这种情况下，单行语句必须不在同一行。
+* `"below", { "overrides": { "do": "any" } }` 不允许所有的单行语句与它们的父语句出现在同一行，除非父语句是一个 `do-while` 语句，在这种情况下，单行语句的位置不被强制执行。
 
-Examples of **incorrect** code for this rule with the default `"beside"` option:
+使用此规则与默认的 `"beside"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -76,7 +74,7 @@ while (foo)
 
 :::
 
-Examples of **correct** code for this rule with the default `"beside"` option:
+使用此规则与默认的 `"beside"` 选项的**正确**示例：
 
 ::: correct
 
@@ -101,7 +99,7 @@ if (foo) { // block statements are always allowed with this rule
 
 :::
 
-Examples of **incorrect** code for this rule with the `"below"` option:
+使用此规则与 `"below"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -120,7 +118,7 @@ do bar(); while (foo)
 
 :::
 
-Examples of **correct** code for this rule with the `"below"` option:
+使用此规则与 `"below"` 选项的**正确**示例：
 
 ::: correct
 
@@ -151,7 +149,7 @@ if (foo) {
 
 :::
 
-Examples of **incorrect** code for this rule with the `"beside", { "overrides": { "while": "below" } }` rule:
+使用此规则与 `"beside", { "overrides": { "while": "below" } }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -166,7 +164,7 @@ while (foo) bar();
 
 :::
 
-Examples of **correct** code for this rule with the `"beside", { "overrides": { "while": "below" } }` rule:
+使用此规则与 `"beside", { "overrides": { "while": "below" } }` 选项的**正确**示例：
 
 ::: correct
 
@@ -181,6 +179,6 @@ while (foo)
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you're not concerned about consistent locations of single-line statements, you should not turn on this rule. You can also disable this rule if you're using the `"all"` option for the [`curly`](/docs/rules/curly) rule, because this will disallow single-line statements entirely.
+如果你不关心单行语句的位置是否一致，你不应该开启这个规则。如果你对 [`curly`](/docs/rules/curly) 规则使用 `"all"` 选项，你也可以禁用此规则，因为这将完全不允许单行语句。

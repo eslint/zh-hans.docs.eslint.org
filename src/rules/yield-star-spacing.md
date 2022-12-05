@@ -6,29 +6,27 @@ further_reading:
 - https://leanpub.com/understandinges6/read/#leanpub-auto-generators
 ---
 
+## 规则细节
 
+这条规则强制要求在 `yield*` 表达式中的 `*` 周围有间距。
 
-## Rule Details
+## 选项
 
-This rule enforces spacing around the `*` in `yield*` expressions.
+规则需要一个选项，一个对象，它有两个键 `before` 和 `after`，具有布尔值 `true` 或 `false`。
 
-## Options
+* `before` 强制执行 `yield` 和 `*` 之间的间距。
+  如时果 `true` 就需要一个空格，否则不允许有空格。
 
-The rule takes one option, an object, which has two keys `before` and `after` having boolean values `true` or `false`.
+* `after` 强制执行 `*` 和参数之间的间距。
+  如果它是 `true`，则需要一个空格，否则不允许有空格。
 
-* `before` enforces spacing between the `yield` and the `*`.
-  If `true`, a space is required, otherwise spaces are disallowed.
-
-* `after` enforces spacing between the `*` and the argument.
-  If it is `true`, a space is required, otherwise spaces are disallowed.
-
-The default is `{"before": false, "after": true}`.
+默认为 `{"before": false, "after": true}`。
 
 ```json
 "yield-star-spacing": ["error", {"before": true, "after": false}]
 ```
 
-The option also has a string shorthand:
+该选项也有一个字符串速记。
 
 * `{"before": false, "after": true}` → `"after"`
 * `{"before": true, "after": false}` → `"before"`
@@ -39,11 +37,11 @@ The option also has a string shorthand:
 "yield-star-spacing": ["error", "after"]
 ```
 
-## Examples
+## 示例
 
 ### after
 
-Examples of **correct** code for this rule with the default `"after"` option:
+使用此规则与默认的 `"after"` 选项的**正确**示例：
 
 ::: correct
 
@@ -60,7 +58,7 @@ function* generator() {
 
 ### before
 
-Examples of **correct** code for this rule with the `"before"` option:
+使用此规则与 `"before"` 选项的**正确**示例：
 
 ::: correct
 
@@ -77,7 +75,7 @@ function *generator() {
 
 ### both
 
-Examples of **correct** code for this rule with the `"both"` option:
+使用此规则与 `"both"` 选项的**正确**示例：
 
 ::: correct
 
@@ -94,7 +92,7 @@ function * generator() {
 
 ### neither
 
-Examples of **correct** code for this rule with the `"neither"` option:
+使用此规则与 `"neither"` 选项的**正确**示例：
 
 ::: correct
 
@@ -109,6 +107,6 @@ function*generator() {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If your project will not be using generators or you are not concerned with spacing consistency, you do not need this rule.
+如果你的项目不会使用生成器，或者你不关心间距的一致性，你就不需要这个规则。

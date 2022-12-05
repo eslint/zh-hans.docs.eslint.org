@@ -4,9 +4,7 @@ layout: doc
 rule_type: problem
 ---
 
-
-
-Because the `return`, `throw`, `break`, and `continue` statements unconditionally exit a block of code, any statements after them cannot be executed. Unreachable statements are usually a mistake.
+因为 `return`、`throw`、`break` 和 `continue` 语句无条件地退出一个代码块，它们之后的任何语句都不能被执行。不会用到的语句通常是一个错误。
 
 ```js
 function fn() {
@@ -16,7 +14,7 @@ function fn() {
 }
 ```
 
-Another kind of mistake is defining instance fields in a subclass whose constructor doesn't call `super()`. Instance fields of a subclass are only added to the instance after `super()`. If there are no `super()` calls, their definitions are never applied and therefore are unreachable code.
+另一种错误是在子类中定义实例字段，其构造函数没有调用 `super()` 。子类的实例字段只有在 `super()` 之后才会被添加到实例中。如果没有 `super()` 的调用，它们的定义就永远不会被应用，因此是不可及的代码。
 
 ```js
 class C extends B {
@@ -28,11 +26,11 @@ class C extends B {
 }
 ```
 
-## Rule Details
+## 规则细节
 
-This rule disallows unreachable code after `return`, `throw`, `continue`, and `break` statements. This rule also flags definitions of instance fields in subclasses whose constructors don't have `super()` calls.
+使用此规则禁用 `return`、`throw`、`continue` 和 `break` 后的不可达代码。 此规则还标记了子类中实例字段的定义，其构造函数没有 `super()` 调用。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -72,7 +70,7 @@ console.log("done");
 
 :::
 
-Examples of **correct** code for this rule, because of JavaScript function and variable hoisting:
+因为 JavaScript 函数和变量的提升，导致的此规则的**正确**示例：
 
 ::: correct
 
@@ -100,7 +98,7 @@ switch (foo) {
 
 :::
 
-Examples of additional **incorrect** code for this rule:
+此规则的额外***错误***示例：
 
 ::: incorrect
 
@@ -121,7 +119,7 @@ class C extends B {
 
 :::
 
-Examples of additional **correct** code for this rule:
+此规则的额外**正确**示例：
 
 ::: correct
 

@@ -8,11 +8,7 @@ related_rules:
 - no-label-var
 ---
 
-
-
-
-
-Labels that are declared and not used anywhere in the code are most likely an error due to incomplete refactoring.
+在代码的任何地方声明了而没有使用的标签，很可能是由于不完整的重构造成的错误。
 
 ```js
 OUTER_LOOP:
@@ -24,14 +20,14 @@ for (const student of students) {
 }
 ```
 
-In this case, probably removing `OUTER_LOOP:` had been forgotten.
-Such labels take up space in the code and can lead to confusion by readers.
+在这种情况下，可能是忘记了删除 `OUTER_LOOP:`。
+这样的标签会占用代码中的空间，也会导致读者的混淆。
 
-## Rule Details
+## 规则细节
 
-This rule is aimed at eliminating unused labels.
+这一规则旨在消除未使用的标签。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -52,7 +48,7 @@ for (let i = 0; i < 10; ++i) {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -77,6 +73,6 @@ for (let i = 0; i < 10; ++i) {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't want to be notified about unused labels, then it's safe to disable this rule.
+如果你不想被通知有未使用的标签，你可以安全地禁用此规则。

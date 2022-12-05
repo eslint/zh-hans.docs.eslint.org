@@ -6,23 +6,19 @@ further_reading:
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof
 ---
 
+在绝大多数情况下，`typeof` 运算符的结果是以下字符串字面的一个：`"undefined"`, `"object"`, `"boolean"`, `"number"`, `"string"`, `"function"`, `"symbol"`, and `"bigint"`。将 `typeof` 运算符的结果与其他字符串字面量进行比较，通常是一个打字错误。
 
+## 规则细节
 
+这条规则强制将 `typeof` 表达式与有效的字符串字面进行比较。
 
+## 选项
 
-For a vast majority of use cases, the result of the `typeof` operator is one of the following string literals: `"undefined"`, `"object"`, `"boolean"`, `"number"`, `"string"`, `"function"`, `"symbol"`, and `"bigint"`. It is usually a typing mistake to compare the result of a `typeof` operator to other string literals.
+此规则选项为对象：
 
-## Rule Details
+* `"requireStringLiterals": true` 要求 `typeof` 表达式只能与字符串字面或其他 `typeof` 表达式进行比较，不允许与任何其他值进行比较。
 
-This rule enforces comparing `typeof` expressions to valid string literals.
-
-## Options
-
-This rule has an object option:
-
-* `"requireStringLiterals": true` requires `typeof` expressions to only be compared to string literals or other `typeof` expressions, and disallows comparisons to any other value.
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -37,7 +33,7 @@ typeof bar !== "fucntion"
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -52,7 +48,7 @@ typeof bar === typeof qux
 
 :::
 
-Examples of **incorrect** code with the `{ "requireStringLiterals": true }` option:
+使用 `{ "requireStringLiterals": true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -69,7 +65,7 @@ typeof foo == 5
 
 :::
 
-Examples of **correct** code with the `{ "requireStringLiterals": true }` option:
+使用 `{ "requireStringLiterals": true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -84,6 +80,6 @@ typeof bar === typeof qux
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-You may want to turn this rule off if you will be using the `typeof` operator on host objects.
+如果你将在主机对象上使用 `typeof` 运算符，你可能想关闭这个规则。

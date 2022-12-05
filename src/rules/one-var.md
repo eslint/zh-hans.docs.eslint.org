@@ -4,16 +4,14 @@ layout: doc
 rule_type: suggestion
 ---
 
+变量可以在 JavaScript 代码中的任何地方使用 `var`、`let` 或 `const` 进行声明。有许多与变量声明有关的风格和偏好，其中之一是决定一个函数中应该允许多少个变量声明。
 
+在这方面有两派观点。
 
-Variables can be declared at any point in JavaScript code using `var`, `let`, or `const`. There are many styles and preferences related to the declaration of variables, and one of those is deciding on how many variable declarations should be allowed in a single function.
+1. 对于函数中的所有变量，应该只有一个变量声明。这个声明通常出现在函数的顶部。
+1. 你应该为你想定义的每个变量使用一个变量声明。
 
-There are two schools of thought in this regard:
-
-1. There should be just one variable declaration for all variables in the function. That declaration typically appears at the top of the function.
-1. You should use one variable declaration for each variable you want to define.
-
-For instance:
+比如说：
 
 ```js
 // one variable declaration per function
@@ -28,47 +26,47 @@ function foo() {
 }
 ```
 
-The single-declaration school of thought is based in pre-ECMAScript 6 behaviors, where there was no such thing as block scope, only function scope. Since all `var` statements are hoisted to the top of the function anyway, some believe that declaring all variables in a single declaration at the top of the function removes confusion around scoping rules.
+单一声明学派是基于 ECMAScript 6 之前的行为，当时没有块范围，只有函数范围。由于所有的 "var "语句都被提升到了函数的顶部，有些人认为在函数顶部的单一声明中声明所有的变量可以消除范围规则方面的混乱。
 
-## Rule Details
+## 规则细节
 
-This rule enforces variables to be declared either together or separately per function ( for `var`) or block (for `let` and `const`) scope.
+这条规则强制要求变量在每个函数（对于 `var`）或块（对于 `let` 和 `const`）范围内一起或分别声明。
 
-## Options
+## 选项
 
-This rule has one option, which can be a string option or an object option.
+这个规则有一个选项，可以是一个字符串选项，也可以是一个对象选项。
 
-String option:
+字符串选项：
 
-* `"always"` (default) requires one variable declaration per scope
-* `"never"` requires multiple variable declarations per scope
-* `"consecutive"` allows multiple variable declarations per scope but requires consecutive variable declarations to be combined into a single declaration
+* `"always"`（默认值）要求每个作用域有一个变量声明
+* `"never"` 要求每个作用域有多个变量声明
+* `"consecutive"` 允许每个作用域有多个变量声明，但要求将连续的变量声明合并为一个声明。
 
-Object option:
+对象选项：
 
-* `"var": "always"` requires one `var` declaration per function
-* `"var": "never"` requires multiple `var` declarations per function
-* `"var": "consecutive"` requires consecutive `var` declarations to be a single declaration
-* `"let": "always"` requires one `let` declaration per block
-* `"let": "never"` requires multiple `let` declarations per block
-* `"let": "consecutive"` requires consecutive `let` declarations to be a single declaration
-* `"const": "always"` requires one `const` declaration per block
-* `"const": "never"` requires multiple `const` declarations per block
-* `"const": "consecutive"` requires consecutive `const` declarations to be a single declaration
-* `"separateRequires": true` enforces `requires` to be separate from declarations
+* `"var": "always"`要求每个函数有一个 `var` 声明
+* `"var": "never"` 要求每个函数有多个 `var` 声明
+* `"var": "consecutive"` 要求连续的 `var` 声明为一个声明
+* `"let": "always"` 要求每个块有一个 `let` 声明
+* `"let": "never"` 要求每个区块有多个 `let` 声明
+* `"let": "consecutive"` 要求连续的 `let` 声明是一个单一的声明
+* `"const": "always"` 要求每个区块有一个 `const` 声明
+* `"const": "never"` 要求每个区块有多个 `const` 声明
+* `"const": "consecutive"` 要求连续的 `const` 声明为一个声明
+* `"separateRequires": true` 强制要求 `requires` 与声明分开。
 
-Alternate object option:
+替代对象选项：
 
-* `"initialized": "always"` requires one variable declaration for initialized variables per scope
-* `"initialized": "never"` requires multiple variable declarations for initialized variables per scope
-* `"initialized": "consecutive"` requires consecutive variable declarations for initialized variables to be a single declaration
-* `"uninitialized": "always"` requires one variable declaration for uninitialized variables per scope
-* `"uninitialized": "never"` requires multiple variable declarations for uninitialized variables per scope
-* `"uninitialized": "consecutive"` requires consecutive variable declarations for uninitialized variables to be a single declaration
+* `"initialized": "always"` 要求每个作用域的初始化变量有一个变量声明。
+* `"initialized": "never"` 要求每个作用域的初始化变量有多个变量声明。
+* `"initialized": "consecutive"` 要求连续的初始化变量声明是一个单一的声明。
+* `"uninitialized": "always"` 要求每个作用域对未初始化的变量进行一次变量声明。
+* `"uninitialized": "never"`要求每个作用域为未被初始化的变量做多个变量声明
+* `"uninitialized": "consecutive"` 要求为未被初始化的变量进行连续的变量声明，使之成为一个单一的声明。
 
 ### always
 
-Examples of **incorrect** code for this rule with the default `"always"` option:
+使用此规则与默认的 `"always"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -119,7 +117,7 @@ class C {
 
 :::
 
-Examples of **correct** code for this rule with the default `"always"` option:
+使用此规则与默认的 `"always"` 选项的**正确**示例：
 
 ::: correct
 
@@ -186,7 +184,7 @@ class C {
 
 ### never
 
-Examples of **incorrect** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -224,7 +222,7 @@ class C {
 
 :::
 
-Examples of **correct** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**正确**示例：
 
 ::: correct
 
@@ -271,7 +269,7 @@ for (var i = 0, len = arr.length; i < len; i++) {
 
 ### consecutive
 
-Examples of **incorrect** code for this rule with the `"consecutive"` option:
+使用此规则与 `"consecutive"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -305,7 +303,7 @@ class C {
 
 :::
 
-Examples of **correct** code for this rule with the `"consecutive"` option:
+使用此规则与 `"consecutive"` 选项的**正确**示例：
 
 ::: correct
 
@@ -342,7 +340,7 @@ class C {
 
 ### var, let, and const
 
-Examples of **incorrect** code for this rule with the `{ var: "always", let: "never", const: "never" }` option:
+使用此规则与 `{ var: "always", let: "never", const: "never" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -367,7 +365,7 @@ function foo() {
 
 :::
 
-Examples of **correct** code for this rule with the `{ var: "always", let: "never", const: "never" }` option:
+使用此规则与 `{ var: "always", let: "never", const: "never" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -392,7 +390,7 @@ function foo() {
 
 :::
 
-Examples of **incorrect** code for this rule with the `{ var: "never" }` option:
+使用此规则与 `{ var: "never" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -408,7 +406,7 @@ function foo() {
 
 :::
 
-Examples of **correct** code for this rule with the `{ var: "never" }` option:
+使用此规则与 `{ var: "never" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -428,7 +426,7 @@ function foo() {
 
 :::
 
-Examples of **incorrect** code for this rule with the `{ separateRequires: true }` option:
+使用此规则与 `{ separateRequires: true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -442,7 +440,7 @@ var foo = require("foo"),
 
 :::
 
-Examples of **correct** code for this rule with the `{ separateRequires: true }` option:
+使用此规则与 `{ separateRequires: true }` 选项的**正确**示例：
 
 ::: correct
 
@@ -465,7 +463,7 @@ var foo = require("foo"),
 
 :::
 
-Examples of **incorrect** code for this rule with the `{ var: "never", let: "consecutive", const: "consecutive" }` option:
+使用此规则与 `{ var: "never", let: "consecutive", const: "consecutive" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -494,7 +492,7 @@ function foo() {
 
 :::
 
-Examples of **correct** code for this rule with the `{ var: "never", let: "consecutive", const: "consecutive" }` option:
+使用此规则与 `{ var: "never", let: "consecutive", const: "consecutive" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -525,7 +523,7 @@ function foo() {
 
 :::
 
-Examples of **incorrect** code for this rule with the `{ var: "consecutive" }` option:
+使用此规则与 `{ var: "consecutive" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -541,7 +539,7 @@ function foo() {
 
 :::
 
-Examples of **correct** code for this rule with the `{ var: "consecutive" }` option:
+使用此规则与 `{ var: "consecutive" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -563,7 +561,7 @@ function foo() {
 
 ### initialized and uninitialized
 
-Examples of **incorrect** code for this rule with the `{ "initialized": "always", "uninitialized": "never" }` option:
+使用此规则与 `{ "initialized": "always", "uninitialized": "never" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -580,7 +578,7 @@ function foo() {
 
 :::
 
-Examples of **correct** code for this rule with the `{ "initialized": "always", "uninitialized": "never" }` option:
+使用此规则与 `{ "initialized": "always", "uninitialized": "never" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -607,7 +605,7 @@ for (z of foo) {
 
 :::
 
-Examples of **incorrect** code for this rule with the `{ "initialized": "never" }` option:
+使用此规则与 `{ "initialized": "never" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -623,7 +621,7 @@ function foo() {
 
 :::
 
-Examples of **correct** code for this rule with the `{ "initialized": "never" }` option:
+使用此规则与 `{ "initialized": "never" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -639,7 +637,7 @@ function foo() {
 
 :::
 
-Examples of **incorrect** code for this rule with the `{ "initialized": "consecutive", "uninitialized": "never" }` option:
+使用此规则与 `{ "initialized": "consecutive", "uninitialized": "never" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -658,7 +656,7 @@ function foo() {
 
 :::
 
-Examples of **correct** code for this rule with the `{ "initialized": "consecutive", "uninitialized": "never" }` option:
+使用此规则与 `{ "initialized": "consecutive", "uninitialized": "never" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -677,7 +675,7 @@ function foo() {
 
 :::
 
-Examples of **incorrect** code for this rule with the `{ "initialized": "consecutive" }` option:
+使用此规则与 `{ "initialized": "consecutive" }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -697,7 +695,7 @@ function foo() {
 
 :::
 
-Examples of **correct** code for this rule with the `{ "initialized": "consecutive" }` option:
+使用此规则与 `{ "initialized": "consecutive" }` 选项的**正确**示例：
 
 ::: correct
 
@@ -717,8 +715,8 @@ function foo() {
 
 :::
 
-## Compatibility
+## 兼容
 
-* **JSHint**: This rule maps to the `onevar` JSHint rule, but allows `let` and `const` to be configured separately.
-* **JSCS**: This rule roughly maps to [disallowMultipleVarDecl](https://jscs-dev.github.io/rule/disallowMultipleVarDecl).
-* **JSCS**: This rule option `separateRequires` roughly maps to [requireMultipleVarDecl](https://jscs-dev.github.io/rule/requireMultipleVarDecl).
+**JSHint**：这条规则映射到 JSHint 的 `onevar` 规则，但允许分开配置 `let` 和 `const`。
+**JSCS**：这条规则大致上映射到 [disallowMultipleVarDecl](https://jscs-dev.github.io/rule/disallowMultipleVarDecl)。
+**JSCS**：此规则选项 `separateRequires` 大致与 [requireMultipleVarDecl](https://jscs-dev.github.io/rule/requireMultipleVarDecl) 对应。

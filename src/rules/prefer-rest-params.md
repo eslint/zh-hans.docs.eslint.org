@@ -6,19 +6,18 @@ related_rules:
 - prefer-spread
 ---
 
+在ES2015中，有剩余参数。
+我们可以将该功能用于变量函数而不是 `arguments` 变量。
 
-There are rest parameters in ES2015.
-We can use that feature for variadic functions instead of the `arguments` variable.
+`arguments` 没有 `Array.prototype` 方法，所以不太方便。
 
-`arguments` does not have methods of `Array.prototype`, so it's a bit of an inconvenience.
+## 规则细节
 
-## Rule Details
+这条规则的目的是标记 `arguments` 变量的使用。
 
-This rule is aimed to flag usage of `arguments` variables.
+## 示例
 
-## Examples
-
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -42,7 +41,7 @@ function foo(action) {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -69,8 +68,8 @@ function foo() {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-This rule should not be used in ES3/5 environments.
+不应该在 ES3/5 环境中使用此规则。
 
-In ES2015 (ES6) or later, if you don't want to be notified about `arguments` variables, then it's safe to disable this rule.
+在ES2015（ES6）或更高版本中，如果你不希望被通知到 `arguments` 变量，你可以安全地禁用此规则。

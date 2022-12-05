@@ -4,11 +4,11 @@ layout: doc
 
 ---
 
-Enforces consistent spacing after name in function definitions.
+强制执行函数定义中名称后的一致间距。
 
-(removed) This rule was **removed** in ESLint v1.0 and **replaced** by the [space-before-function-paren](space-before-function-paren) rule.
+（已移除）此规则在 ESLint v1.0 中移除并被 [space-before-function-paren](space-before-function-paren) 所取代。
 
-Whitespace between a function name and its parameter list is optional.
+函数名称和参数列表之间的空格是可选的。
 
 ```js
 function withoutSpace(x) {
@@ -20,13 +20,13 @@ function withSpace (x) {
 }
 ```
 
-Some style guides may require a consistent spacing for function names.
+一些风格指南可能要求函数名的间距一致。
 
-## Rule Details
+## 规则细节
 
-This rule aims to enforce a consistent spacing after function names. It takes one argument. If it is `"always"` then all function names must be followed by at least one space. If `"never"` then there should be no spaces between the name and the parameter list. The default is `"never"`.
+这条规则的目的是在函数名称后面执行一致的间距。它需要一个参数。如果是 `"always"`，那么所有的函数名后面必须至少有一个空格。如果是 `"never"`，那么函数名和参数列表之间不应该有空格。默认是 `"never"`。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -45,7 +45,7 @@ function bar(x) {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 

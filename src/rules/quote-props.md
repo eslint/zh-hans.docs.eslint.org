@@ -7,9 +7,7 @@ further_reading:
 - https://mathiasbynens.be/notes/javascript-properties
 ---
 
-
-
-Object literal property names can be defined in two ways: using literals or using strings. For example, these two objects are equivalent:
+对象的字面属性名称可以用两种方式定义：使用字面符号或使用字符串。例如，这两个对象是等同的：
 
 ```js
 var object1 = {
@@ -21,14 +19,14 @@ var object2 = {
 };
 ```
 
-In many cases, it doesn't matter if you choose to use an identifier instead of a string or vice-versa. Even so, you might decide to enforce a consistent style in your code.
+在许多情况下，如果你选择使用标识符而不是字符串或反之亦然，这并不重要。即便如此，你可能会决定在你的代码中执行一种一致的风格。
 
-There are, however, some occasions when you must use quotes:
+然而，在一些场合，你必须使用引号：
 
-1. If you are using an ECMAScript 3 JavaScript engine (such as IE8) and you want to use a keyword (such as `if`) as a property name. This restriction was removed in ECMAScript 5.
-2. You want to use a non-identifier character in your property name, such as having a property with a space like `"one two"`.
+1. 如果你使用的是 ECMAScript 3 的 JavaScript 引擎（比如 IE8），并且你想使用关键字（比如 `if`）作为属性名。ECMAScript 5 不再限制这一点。
+2. 你想在你的属性名中使用一个非标识符，比如有一个属性带有空格，如 `"one two"`。
 
-Another example where quotes do matter is when using numeric literals as property keys:
+另一个例子是，当使用数字字面量作为属性键时，引号确实很重要：
 
 ```js
 var object = {
@@ -37,33 +35,33 @@ var object = {
 };
 ```
 
-This may look alright at first sight, but this code in fact throws a syntax error in ECMAScript 5 strict mode. This happens because `1e2` and `100` are coerced into strings before getting used as the property name. Both `String(1e2)` and `String(100)` happen to be equal to `"100"`, which causes the "Duplicate data property in object literal not allowed in strict mode" error. Issues like that can be tricky to debug, so some prefer to require quotes around all property names.
+乍看起来没什么问题，但实际上这段代码在 ECMAScript 5 严格模式下会产生一个语法错误。这是因为 `1e2` 和 `100` 在被用作属性名之前被强制变成了字符串。`String(1e2)` 和 `String(100)` 刚好都等于 `"100"`，这导致了“严格模式下不允许对象字面的重复数据属性”的错误。这样的问题在调试时可能很棘手，所以有些人喜欢要求在所有属性名周围加上引号。
 
-## Rule Details
+## 规则细节
 
-This rule requires quotes around object literal property names.
+这条规则要求在对象的字面属性名称周围加引号。
 
-## Options
+## 选项
 
-This rule has two options, a string option and an object option.
+这个规则有两个选项，一个字符串选项和一个对象选项：
 
-String option:
+字符串选项：
 
-* `"always"` (default) requires quotes around all object literal property names
-* `"as-needed"` disallows quotes around object literal property names that are not strictly required
-* `"consistent"` enforces a consistent quote style; in a given object, either all of the properties should be quoted, or none of the properties should be quoted
-* `"consistent-as-needed"` requires quotes around all object literal property names if any name strictly requires quotes, otherwise disallows quotes around object property names
+* `"always"`（默认值）要求在所有对象字面属性名称周围加引号
+* `"as-needed"` 不允许在不严格要求的对象字面属性名称周围加引号
+* `"consistent"` 强制执行一致的引号风格；在一个给定的对象中，要么所有的属性都应该被引号，要么所有的属性都不应该被引号
+* `"consistent-as-needed"` 要求在所有对象字面属性名称周围加引号，如果任何名称严格要求加引号，否则不允许对象属性名称周围加引号
 
-Object option:
+对象选项：
 
-* `"keywords": true` requires quotes around language keywords used as object property names (only applies when using `as-needed` or `consistent-as-needed`)
-* `"unnecessary": true` (default) disallows quotes around object literal property names that are not strictly required (only applies when using `as-needed`)
-* `"unnecessary": false` allows quotes around object literal property names that are not strictly required (only applies when using `as-needed`)
-* `"numbers": true` requires quotes around numbers used as object property names (only applies when using `as-needed`)
+* `"keywords": true`要求在作为对象属性名称的语言关键词周围加引号（只在使用 `as-needed` 或 `consistent-as-needed`时适用）
+* `"unnecessary": true` （默认值）不允许在不严格要求的对象字面属性名称周围加引号（只适用于使用 `as-needed`时）
+* `"unnecessary": false` 允许在没有严格要求的对象字面属性名称周围加引号（只适用于使用 `as-needed` 的情况下）
+* `"numbers": true` 需要在作为对象属性名称的数字周围加引号（只适用于使用 `as-needed` 时）
 
 ### always
 
-Examples of **incorrect** code for this rule with the default `"always"` option:
+使用此规则与默认的 `"always"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -78,7 +76,7 @@ var object = {
 
 :::
 
-Examples of **correct** code for this rule with the default `"always"` option:
+使用此规则与默认的 `"always"` 选项的**正确**示例：
 
 ::: correct
 
@@ -109,7 +107,7 @@ var object3 = {
 
 ### as-needed
 
-Examples of **incorrect** code for this rule with the `"as-needed"` option:
+使用此规则与 `"as-needed"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -126,7 +124,7 @@ var object = {
 
 :::
 
-Examples of **correct** code for this rule with the `"as-needed"` option:
+使用此规则与 `"as-needed"` 选项的**正确**示例：
 
 ::: correct
 
@@ -159,7 +157,7 @@ var object3 = {
 
 ### consistent
 
-Examples of **incorrect** code for this rule with the `"consistent"` option:
+使用此规则与 `"consistent"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -180,7 +178,7 @@ var object2 = {
 
 :::
 
-Examples of **correct** code for this rule with the `"consistent"` option:
+使用此规则与 `"consistent"` 选项的**正确**示例：
 
 ::: correct
 
@@ -208,7 +206,7 @@ var object3 = {
 
 ### consistent-as-needed
 
-Examples of **incorrect** code for this rule with the `"consistent-as-needed"` option:
+使用此规则与 `"consistent-as-needed"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -229,7 +227,7 @@ var object2 = {
 
 :::
 
-Examples of **correct** code for this rule with the `"consistent-as-needed"` option:
+使用此规则与 `"consistent-as-needed"` 选项的**正确**示例：
 
 ::: correct
 
@@ -252,7 +250,7 @@ var object2 = {
 
 ### keywords
 
-Examples of additional **incorrect** code for this rule with the `"as-needed", { "keywords": true }` options:
+此规则与 `"as-needed", { "keywords": true }`  选项的额外**错误**示例：
 
 ::: incorrect
 
@@ -267,7 +265,7 @@ var x = {
 
 :::
 
-Examples of additional **incorrect** code for this rule with the `"consistent-as-needed", { "keywords": true }` options:
+使用此规则与 `"consistent-as-needed", { "keywords": true }` 选项的额外**错误**示例：
 
 ::: incorrect
 
@@ -284,7 +282,7 @@ var x = {
 
 ### unnecessary
 
-Examples of additional **correct** code for this rule with the `"as-needed", { "unnecessary": false }` options:
+使用此规则与 `"as-needed", { "unnecessary": false }` 选项的额外**正确**示例：
 
 ::: correct
 
@@ -301,7 +299,7 @@ var x = {
 
 ### numbers
 
-Examples of additional **incorrect** code for this rule with the `"as-needed", { "numbers": true }` options:
+使用此规则与`"as-needed", { "numbers": true }` 选项的额外**错误**示例：
 
 ::: incorrect
 
@@ -315,6 +313,6 @@ var x = {
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-If you don't care if property names are consistently wrapped in quotes or not, and you don't target legacy ES3 environments, turn this rule off.
+如果你不关心属性名是否一致地用引号包装，而且你不以传统的 ES3 环境为目标，那么就把这个规则关掉。

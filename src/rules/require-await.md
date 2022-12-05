@@ -6,13 +6,12 @@ related_rules:
 - require-yield
 ---
 
+JavaScript 中的异步函数在两个重要方面与其他函数的行为不同。
 
-Asynchronous functions in JavaScript behave differently than other functions in two important ways:
+1. 返回值总是一个 `Promise`。
+2. 你可以在其中使用 `await` 运算符。
 
-1. The return value is always a `Promise`.
-2. You can use the `await` operator inside of them.
-
-The primary reason to use asynchronous functions is typically to use the `await` operator, such as this:
+使用异步函数的主要原因通常是为了使用 `await` 运算符，比如：
 
 ```js
 async function fetchData(processDataItem) {
@@ -23,15 +22,15 @@ async function fetchData(processDataItem) {
 }
 ```
 
-Asynchronous functions that don't use `await` might not need to be asynchronous functions and could be the unintentional result of refactoring.
+不使用 `await` 的异步函数可能不需要成为异步函数，可能是重构的无意结果。
 
-Note: this rule ignores async generator functions. This is because generators yield rather than return a value and async generators might yield all the values of another async generator without ever actually needing to use await.
+注意：这条规则忽略了异步生成器函数。这是因为生成器产生而不是返回一个值，异步生成器可能会产生另一个异步生成器的所有值，而实际上不需要使用 await。
 
-## Rule Details
+## 规则细节
 
-This rule warns async functions which have no `await` expression.
+这条规则警告那些没有 `await` 表达式的异步函数。
 
-Examples of **incorrect** code for this rule:
+使用此规则的**错误**示例：
 
 ::: incorrect
 
@@ -49,7 +48,7 @@ bar(async () => {
 
 :::
 
-Examples of **correct** code for this rule:
+使用此规则的**正确**示例：
 
 ::: correct
 
@@ -78,9 +77,9 @@ async function noop() {}
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-Asynchronous functions are designed to work with promises such that throwing an error will cause a promise's rejection handler (such as `catch()`) to be called. For example:
+异步函数被设计成与承诺一起工作，这样，抛出一个错误将导致一个承诺的拒绝处理程序（比如 `catch()`）被调用。比如：
 
 ```js
 async function fail() {
@@ -92,6 +91,6 @@ fail().catch(error => {
 });
 ```
 
-In this case, the `fail()` function throws an error that is intended to be caught by the `catch()` handler assigned later. Converting the `fail()` function into a synchronous function would require the call to `fail()` to be refactored to use a `try-catch` statement instead of a promise.
+在这种情况下，`fail()` 函数抛出一个错误，打算由后面分配的 `catch()` 处理程序捕获。将 `fail()` 函数转换为同步函数需要重构对 `fail()` 的调用，使用 `try-catch` 语句而不是承诺。
 
-If you are throwing an error inside of an asynchronous function for this purpose, then you may want to disable this rule.
+如果你是为了这个目的在异步函数内部抛出错误，那么你可能想禁用这个规则。
