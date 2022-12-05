@@ -282,7 +282,7 @@ var x = {
 
 ### unnecessary
 
-该规则的额外**正确**代码的例子，有`"按需要", { "不必要": false }` 选项。
+使用此规则与 `"as-needed", { "unnecessary": false }` 选项的额外**正确**示例：
 
 ::: correct
 
@@ -299,7 +299,7 @@ var x = {
 
 ### numbers
 
-这个规则的额外**错误**代码的例子，有`"as-needed", { "numbers": true }` 选项。
+使用此规则与`"as-needed", { "numbers": true }` 选项的额外**错误**示例：
 
 ::: incorrect
 

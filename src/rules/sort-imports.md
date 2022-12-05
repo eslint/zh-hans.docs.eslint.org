@@ -28,7 +28,7 @@ import 语句也可以导入一个没有导出绑定的模块。当模块不输�
 import "my-module.js"
 ```
 
-当声明多个导入时，导入声明的分类列表使开发者更容易阅读代码，并在以后找到必要的导入。这条规则纯粹是一个风格问题。
+当声明多个导入时，对导入声明进行分类排序可以使开发者更容易阅读代码，并在以后找到必要的导入。这条规则纯粹是一个风格问题。
 
 ## 规则细节
 
@@ -38,11 +38,11 @@ import "my-module.js"
 
 ## 选项
 
-该规则接受一个对象，其属性为
+该规则接受一个对象，其属性为：
 
-* 忽略大小写（默认：`false`)
-* 忽略声明排序 (ignoreDeclarationSort)（默认：`false`)
-* 忽略成员排序 (ignoreMemberSort)（默认为 `false`)
+* `ignoreCase`（默认为 `false`)
+* `ignoreDeclarationSort`（默认为 `false`)
+* `ignoreMemberSort`（默认为 `false`)
 * `memberSyntaxSortOrder`（默认为 `["none", "all", "multiple", "single"]`）; 所有 4 项必须出现在数组中，但你可以改变顺序。
     * `none` = 导入没有导出绑定的模块。
     * `all` = 导入由出口绑定提供的所有成员。

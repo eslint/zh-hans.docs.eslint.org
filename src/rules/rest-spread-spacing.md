@@ -6,7 +6,7 @@ further_reading:
 - https://github.com/tc39/proposal-object-rest-spread
 ---
 
-ES2015 引入了 rest 和 spread 运算符，它们将一个可迭代的结构扩展为其各个部分。它们的一些使用例子如下。
+ES2015 引入了剩余运算符和扩展运算符，它们将一个可迭代的结构扩展为其各个部分。它们的一些使用例子如下：
 
 ```js
 let numArr = [1, 2, 3];

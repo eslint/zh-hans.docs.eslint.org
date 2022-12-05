@@ -13,7 +13,7 @@ var args = [1, 2, 3, 4];
 Math.max.apply(Math, args);
 ```
 
-在 ES2015 中，人们可以使用 spread 语法来调用 variadic 函数。
+在 ES2015 中，人们可以使用扩展语法来调用 variadic 函数。
 
 ```js
 /*eslint-env es6*/

@@ -6,7 +6,7 @@ related_rules:
 - prefer-spread
 ---
 
-在ES2015中，有休息参数。
+在ES2015中，有剩余参数。
 我们可以将该功能用于变量函数而不是 `arguments` 变量。
 
 `arguments` 没有 `Array.prototype` 方法，所以不太方便。
