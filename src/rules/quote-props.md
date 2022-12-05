@@ -299,7 +299,7 @@ var x = {
 
 ### numbers
 
-这个规则的额外**错误**代码的例子，有`"as-need", { "numbers": true }` 选项。
+这个规则的额外**错误**代码的例子，有`"as-needed", { "numbers": true }` 选项。
 
 ::: incorrect
 

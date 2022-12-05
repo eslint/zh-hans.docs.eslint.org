@@ -106,7 +106,7 @@ if (!(foo) in object) {
 * `<=` operator.
 * `>=` operator.
 
-其目的是为了避免诸如`!a < b`（相当于 `(a ? 0 : 1) < b`）的表达，而真正的目的是 `!(a < b)`。
+其目的是为了避免诸如 `!a < b`（相当于 `(a ? 0 : 1) < b`）的表达，而真正的目的是 `!(a < b)`。
 
 使用此规则与 `{ "enforceForOrderingRelations": true }` 选项的额外**错误**示例：
 
