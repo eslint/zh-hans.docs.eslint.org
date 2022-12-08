@@ -54,7 +54,7 @@ eslint -f awesome src/
 * 添加这些 `keywords` 以帮助用户找到你的格式化工具。
     * `"eslint"`
     * `"eslint-formatter"`.
-    [...] 
+    [...]
 
 查看所有[npm上的formatter](https://www.npmjs.com/search?q=eslint-formatter)。
 

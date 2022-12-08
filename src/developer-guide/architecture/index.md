@@ -23,7 +23,7 @@ eleventyNavigation:
 
 ## `cli` 对象
 
-`cli` 对象是命令行界面的 API。从字面上看，`bin/eslint.js`文件只是向 `cli` 对象传递参数，然后将 `process.exitCode` 设置为返回的退出代码。
+`cli` 对象是命令行界面的 API。从字面上看，`bin/eslint.js` 文件只是向 `cli` 对象传递参数，然后将 `process.exitCode` 设置为返回的退出代码。
 
 主要方法是 `cli.execute()`，它接受一个代表命令行选项的字符串数组（就像 `process.argv` 被传递而没有前两个参数一样）。如果你想在另一个程序中运行 ESLint，并让它像 CLI 一样运行，那么`cli`就是要使用的对象。
 

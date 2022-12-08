@@ -36,7 +36,7 @@ var a = function hello() {
 
 :::
 
-此规则的**错误的**代码的例子，与 JSHint 中的相应规则不同。
+使用此规则的**错误**示例，与 JSHint 中的相应规则不同：
 
 ::: incorrect
 

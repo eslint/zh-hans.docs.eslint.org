@@ -43,7 +43,7 @@ ECMAScript 模块中的顶级 `this` 总是被认为是无效的，因为它的�
 否则将被视为有问题。
 
 这条规则只适用于**在严格模式**下。
-随着 `"parserOptions": { "sourceType": "module" }` 在 ESLint 配置中，即使没有 `"use strict"` 指令，你的代码也处于严格模式。
+在 ESLint 中配置 `"parserOptions": { "sourceType": "module" }`，即使没有 `"use strict"` 指令，你的代码也处于严格模式下。
 
 在严格模式下使用此规则的**错误**示例：
 

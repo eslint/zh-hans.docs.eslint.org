@@ -14,7 +14,7 @@ related_rules:
 setTimeout("alert('Hi!');", 100);
 ```
 
-这被认为是一个隐含的 `eval()`，因因为有一串需要解释的 JavaScript 代码被传入。同样可以用 `setInterval()` 和 `execScript()` 来做。两者都在全局范围内解释 JavaScript 代码。对于 `setTimeout()` 和 `setInterval()`，第一个参数也可以是一个函数，这被认为是更安全的，而且性能更强。
+这被认为是一个隐含的 `eval()`，因为有一串需要解释的 JavaScript 代码被传入。同样可以用 `setInterval()` 和 `execScript()` 来做。两者都在全局范围内解释 JavaScript 代码。对于 `setTimeout()` 和 `setInterval()`，第一个参数也可以是一个函数，这被认为是更安全的，而且性能更强。
 
 ```js
 setTimeout(function() {

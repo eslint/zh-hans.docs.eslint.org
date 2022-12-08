@@ -88,7 +88,7 @@ function foo(params) { // \r\n
 
 版本控制系统有时对断行有特殊的行为。为了方便开发者在不同的平台上为你的代码库做贡献，你可能想配置你的 VCS 来适当地处理换行。
 
-例如，Windows 系统上 [git](https://git-scm.com/) 的默认行为是在签出文件时将 LF 换成 CRLF，但在提交修改时将换行存储为 LF。如果配置为 `"unix"`，这将导致 `linebreak-style` 规则报错，因为 ESLint 看到的文件会有 CRLF 换行符。如果你使用 git，你可能想在你的 [`.gitattributes`文件](https://git-scm.com/docs/gitattributes) 中添加一行，以防止 git 在 `.js` 文件中转换行距。
+例如，Windows 系统上 [git](https://git-scm.com/) 的默认行为是在签出文件时将 LF 换成 CRLF，但在提交修改时将换行存储为 LF。如果配置为 `"unix"`，这将导致 `linebreak-style` 规则报错，因为 ESLint 看到的文件会有 CRLF 换行符。如果你使用 git，你可能想在你的 [`.gitattributes` 文件](https://git-scm.com/docs/gitattributes) 中添加一行，以防止 git 在 `.js` 文件中转换行距。
 
 ```txt
 *.js text eol=lf

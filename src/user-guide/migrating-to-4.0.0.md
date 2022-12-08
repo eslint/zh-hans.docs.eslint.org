@@ -81,7 +81,7 @@ ESLint v4.0.0 是第四个主要发行版。此版本有几个破坏性改变，
 
 ## <a name="eslintignore-patterns"></a> .eslintignore 模式限制基于文件位置解析
 
-由于一个错误，以前 `.eslintignore` 文件中的 glob 模式是从进程的当前工作目录，而不是 `.eslintignore`文件的位置来解析的。4.0 起，`.eslintignore` 文件中的模式将从 `.eslintignore` 文件的位置进行解析。
+由于一个错误，以前 `.eslintignore` 文件中的 glob 模式是从进程的当前工作目录，而不是 `.eslintignore` 文件的位置来解析的。4.0 起，`.eslintignore` 文件中的模式将从 `.eslintignore` 文件的位置进行解析。
 
 **解决方案**：如果你使用 `.eslintignore` 文件，并且你经常从项目根目录以外的地方运 行ESLint，有可能模式会被不同的匹配。你应该更新 `.eslintignore` 文件中的模式，确保它们是相对于文件的，而不是工作目录的。
 

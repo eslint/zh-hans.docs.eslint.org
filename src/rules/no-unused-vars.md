@@ -104,7 +104,7 @@ function getY([, y]) {
 
 行注释 `// exported variableName` 将不起作用，因为 `exported` 不是特定于行的。
 
-`/* exported variableName */`操作的**正确的**代码示例。
+使用 `/* exported variableName */` 操作的**正确**示例：
 
 ::: correct
 
@@ -248,7 +248,7 @@ console.log(secondVar);
 
 ### ignoreRestSiblings
 
-`ignoreRestSiblings`选项是一个布尔值（默认：`false`）。使用 [Rest Property](https://github.com/tc39/proposal-object-rest-spread) 可以从一个对象中 "省略 "属性，但默认情况下，兄弟姐妹的属性被标记为 "未使用"。启用这个选项后，其余属性的兄弟姐妹将被忽略。
+`ignoreRestSiblings`选项是一个布尔值（默认：`false`）。使用 [Rest Property](https://github.com/tc39/proposal-object-rest-spread) 可以从一个对象的 `omit` 属性，但默认情况下，兄弟姐妹的属性被标记为 `unused`。启用这个选项后，其余属性的兄弟姐妹将被忽略。
 
 使用 `{ "ignoreRestSiblings": true }` 选项的**正确**示例：
 

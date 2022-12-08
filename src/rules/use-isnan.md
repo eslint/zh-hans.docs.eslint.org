@@ -66,7 +66,7 @@ if (!isNaN(foo)) {
 这个规则有一个对象选项，有两个选项：
 
 * `"enforceForSwitchCase": true`（默认值）另外不允许在 `switch` 语句中使用 `case NaN` 和 `switch(NaN)`。
-* `"enforceForIndexOf": true` 另外禁止使用 `indexOf` 和`lastIndexOf` 方法与 `NaN`。默认为 `false`，意味着该规则默认不会对 `indexOf(NaN)` 或 `lastIndexOf(NaN)` 方法的调用发出警告。
+* `"enforceForIndexOf": true` 另外禁止使用 `indexOf` 和 `lastIndexOf` 方法与 `NaN`。默认为 `false`，意味着该规则默认不会对 `indexOf(NaN)` 或 `lastIndexOf(NaN)` 方法的调用发出警告。
 
 ### enforceForSwitchCase
 
@@ -150,7 +150,7 @@ if (Number.isNaN(a)) {
 
 :::
 
-在 `"enforceForSwitchCase"` 选项设置为 `false` 的情况下，此规则的**正确的代码示例。
+在 `"enforceForSwitchCase"` 选项设置为 `false` 的情况下，此规则的**正确的代码示例：
 
 ::: correct
 

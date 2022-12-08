@@ -98,8 +98,8 @@ function * generator() {
 }]
 ```
 
-在上面的配置示例中，顶层的 "before" 和 "after" 选项定义了规则的默认行为。规则，而 "anonymous" 和 "method" 选项则覆盖了默认行为。
-覆盖可以是一个带有 "before" 和 "after"的对象，也可以是上述的速记字符串。
+在上面的配置示例中，顶层的 `before` 和 `after` 选项定义了规则的默认行为。规则，而 `anonymous` 和 `method` 选项则覆盖了默认行为。
+覆盖可以是一个带有 `before` 和 `after`的对象，也可以是上述的速记字符串。
 
 ## 示例
 
@@ -179,7 +179,7 @@ var shorthand = { *generator() {} };
 
 :::
 
-此规则的**错误**代码的例子，其中存在重写。
+此规则与重写的**错误**示例：
 
 ::: incorrect
 
@@ -203,7 +203,7 @@ class Class { static* method() {} }
 
 :::
 
-该规则的**正确的**代码的例子，其中存在覆盖物。
+使用此规则与覆盖的**正确**示例：
 
 ::: correct
 

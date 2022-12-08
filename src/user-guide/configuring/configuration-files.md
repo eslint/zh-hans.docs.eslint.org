@@ -192,7 +192,7 @@ home
     1. `-c`, `--config`
 3. 项目级配置：
     1. `.eslintrc.*` 或 `package.json` 文件与 linted 文件在同一目录下
-    2. 继续搜索祖先目录中的 `.eslintrc.*` 和`package.json` 文件，直到包括根目录，或者找到`"root": true` 的配置。
+    2. 继续搜索祖先目录中的 `.eslintrc.*` 和 `package.json` 文件，直到包括根目录，或者找到`"root": true` 的配置。
 
 请注意，在这种情况下，[当前用户在你的首选操作系统上的主目录](https://nodejs.org/api/os.html#os_os_homedir)（`~/`）也被认为是根目录，搜索配置文件也会在那里停止。从 8.0.0 版本开始[取消对个人配置文件的支持](https://eslint.org/docs/user-guide/configuring/configuration-files#personal-configuration-files-deprecated)，该目录下的配置文件将被忽略。
 

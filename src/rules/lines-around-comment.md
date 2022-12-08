@@ -650,7 +650,7 @@ const [
 
 ### ignorePattern
 
-默认情况下，这个规则会忽略以下列词语开头的注释。`eslint`, `jshint`, `jslint`, `istanbul`, `global`, `exported`, `jscs`. 要想在默认值之外忽略更多的注释，请将`ignorePattern`选项设置为一个字符串模式，该模式将被传递给 [`RegExp`构造函数](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/RegExp)。
+默认情况下，这个规则会忽略以下列词语开头的注释。`eslint`, `jshint`, `jslint`, `istanbul`, `global`, `exported`, `jscs`。要想在默认值之外忽略更多的注释，请将 `ignorePattern` 选项设置为一个字符串模式，该模式将被传递给 [`RegExp`构造函数](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/RegExp)。
 
 使用 `ignorePattern` 选项的**正确**示例：
 

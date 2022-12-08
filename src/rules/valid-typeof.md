@@ -6,11 +6,11 @@ further_reading:
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof
 ---
 
-在绝大多数情况下，`typeof` 运算符的结果是以下字符串字面的一个：`"undefined"`, `"object"`, `"boolean"`, `"number"`, `"string"`, `"function"`, `"symbol"`, and `"bigint"`。将 `typeof` 运算符的结果与其他字符串字面量进行比较，通常是一个打字错误。
+在绝大多数情况下，`typeof` 运算符的结果是以下字符串字面的一个：`"undefined"`, `"object"`, `"boolean"`, `"number"`, `"string"`, `"function"`, `"symbol"`, and `"bigint"`。将 `typeof` 运算符的结果与其他字符串字面量进行比较，通常是错别字。
 
 ## 规则细节
 
-这条规则强制将 `typeof` 表达式与有效的字符串字面进行比较。
+这条规则强制将 `typeof` 表达式与有效的字符串字面量进行比较。
 
 ## 选项
 
@@ -82,4 +82,4 @@ typeof bar === typeof qux
 
 ## 何时不用
 
-如果你将在主机对象上使用 `typeof` 运算符，你可能想关闭这个规则。
+如果你将在 host 对象上使用 `typeof` 运算符，你可能想关闭这个规则。

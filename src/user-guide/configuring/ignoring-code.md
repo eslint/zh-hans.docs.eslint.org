@@ -72,7 +72,7 @@ Glob 使用 [node-ignore](https://github.com/kaelzhang/node-ignore) 进行匹配
 
 * 如果要检查的路径是一个特定的文件路径，并且通过了 `--no-ignore` 标志，ESLint 将检查该文件，而不考虑隐含的忽略规则。
 
-  例如，`eslint .config/my-config-file.js --no-ignore` 将检查 `my-config-file.js`。需要注意的是，同样的命令如果没有 `--no-ignore` 行，就不会对 `my-config-file.js`文件进行检测。
+  例如，`eslint .config/my-config-file.js --no-ignore` 将检查 `my-config-file.js`。需要注意的是，同样的命令如果没有 `--no-ignore` 行，就不会对 `my-config-file.js` 文件进行检测。
 
 * 通过 `--ignore-pattern` 或 `.eslintignore` 指定的 Allowlist 和 denylist 规则会优先于隐含的忽略规则。
 

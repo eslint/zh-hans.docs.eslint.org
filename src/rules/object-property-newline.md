@@ -221,7 +221,7 @@ const obj5 = {
 
 :::
 
-此规则的**正确代码的例子，没有对象选项或将 "allowAllPropertiesOnSameLine "设置为 "false"。
+此规则并没有对象选项或将 `allowAllPropertiesOnSameLine` 设置为 `false` 的**正确**示例：
 
 ::: correct
 

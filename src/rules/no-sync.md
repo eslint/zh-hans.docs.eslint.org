@@ -48,7 +48,7 @@ async(function() {
 
 :::
 
-这个规则的**错误的**代码的例子：`{ allowAtRootLevel: true }` 选项
+使用此规则与 `{ allowAtRootLevel: true }` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -64,7 +64,7 @@ var bar = baz => fs.readFileSync(qux);
 
 :::
 
-这个规则的**正确的**代码的例子，`{ allowAtRootLevel: true }` 选项
+使用此规则与 `{ allowAtRootLevel: true }` 选项的**正确**示例：
 
 ::: correct
 

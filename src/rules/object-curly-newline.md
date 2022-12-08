@@ -41,10 +41,10 @@ related_rules:
 }
 ```
 
-* `"ObjectExpression"`配置对象字词
-* `"ObjectPattern"`配置用于重组分配的对象模式
-* `"ImportDeclaration"`配置指定的进口。
-* `"ExportDeclaration"` 配置命名的出口。
+* `"ObjectExpression"` 配置对象字面量
+* `"ObjectPattern"` 配置用于重组分配的对象模式
+* `"ImportDeclaration"` 配置指定导入。
+* `"ExportDeclaration"` 配置命名导出。
 
 ### always
 

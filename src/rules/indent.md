@@ -157,7 +157,7 @@ if (a) {
 
 ### ignoredNodes
 
-下面的配置忽略了`条件表达式`（"三元表达式"）节点的缩进。
+下面的配置忽略了 `ConditionalExpression`（“三元表达式”）节点的缩进。
 
 使用此规则与 `4, { "ignoredNodes": ["ConditionalExpression"] }` 选项的**正确**示例：
 
@@ -1047,7 +1047,7 @@ condition
 
 ### ignoreComments
 
-该规则的额外**正确**代码的例子有：`4, { "ignoreComments": true }` 选项。
+使用此规则与 `4, { "ignoreComments": true }` 选项的额外**正确**示例：
 
 ::: correct
 

@@ -45,7 +45,7 @@ prefer-reflect 规则将标记任何旧方法的使用，建议使用较新的 R
 
 废弃了 `Function.prototype.apply()` 和 `Function.prototype.call()`。
 
-本规则在没有例外情况下使用时的**不正确的**代码示例。
+本规则在没有例外情况下使用时的**错误**示例：
 
 ::: incorrect
 
@@ -161,7 +161,7 @@ Reflect.defineProperty({}, 'foo', {value: 1})
 
 废弃了 `Object.getOwnPropertyDescriptor()`。
 
-在没有例外情况下使用此规则时的**错误**代码示例。
+在没有例外情况下使用此规则时的**错误**示例：
 
 ::: incorrect
 
@@ -173,7 +173,7 @@ Object.getOwnPropertyDescriptor({}, 'foo')
 
 :::
 
-在没有例外的情况下使用本规则的**正确的**代码的例子。
+在没有例外的情况下使用此规则的**正确**示例：
 
 ::: correct
 
