@@ -111,7 +111,7 @@ let foo = () => ({ bar: 0 });
 
 #### requireReturnForObjectLiteral
 
-> 该选项只在与 "按需 "选项一起使用时适用。
+> 该选项只在与 `"as-needed"` 选项一起使用时适用。
 
 使用此规则与 `{ "requireReturnForObjectLiteral": true }` 选项的**错误**示例：
 

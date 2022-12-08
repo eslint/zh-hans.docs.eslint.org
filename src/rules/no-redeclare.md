@@ -84,7 +84,7 @@ var Object = 0;
 
 :::
 
-`{ "builtinGlobals": true }` 选项和 `browser` 环境的**不正确**代码的例子。
+使用 `{ "builtinGlobals": true }` 选项和 `browser` 环境的**错误**示例：
 
 ::: incorrect
 
@@ -99,4 +99,4 @@ var top = 0;
 
 `browser` 环境有许多内置的全局变量（例如：`top`）。一些内置的全局变量不能被重新声明。
 
-注意，当使用 `node` 或 `commonjs` 环境（或 `ecmaFeatures.globalReturn`，如果使用默认解析器）时，程序的顶部范围实际上不是全局范围，而是 "模块 "范围。在这种情况下，声明一个以内置全局命名的变量并不是重新声明，而是对全局变量进行影射。在这种情况下，应该使用 [`no-shadow`](no-shadow) 规则和 `"buildinGlobals"` 选项。
+注意，当使用 `node` 或 `commonjs` 环境（或 `ecmaFeatures.globalReturn`，如果使用默认解析器）时，程序的顶部范围实际上不是全局范围，而是“模块”范围。在这种情况下，声明一个以内置全局命名的变量并不是重新声明，而是对全局变量进行影射。在这种情况下，应该使用 [`no-shadow`](no-shadow) 规则和 `"builtinGlobals"` 选项。

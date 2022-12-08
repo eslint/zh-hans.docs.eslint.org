@@ -175,7 +175,7 @@ class WonderfulWidget extends Widget {
 * `"prefer"` 执行一致的文档标签，由一个对象指定，其属性意味着用值代替键（如 `"return": "returns"` 意味着用 `@return` 代替`@returns`)
 * `"preferType"` 强制执行一致的类型字符串，该对象的属性意味着使用值而不是键（如 `"object": "Object"` 意味着使用 `Object` 代替`object`）
 * `"requireReturn"` 需要有返回标签：
-    * `true`（默认值）**即使**函数或方法没有`return` 语句（该选项值不适用于构造函数）
+    * `true`（默认值）**即使**函数或方法没有 `return` 语句（该选项值不适用于构造函数）
     * `false` **当且仅当**函数或方法使用 `return` 语句或返回一个值，例如 `async` 函数（此选项值适用于构造函数）
 * `"requireReturnType": false` 允许在返回标签中缺少类型。
 * `"matchDescription"`指定（作为一个字符串）一个正则表达式来匹配每个 JSDoc 注释中的描述（如 `".+"` 需要一个描述；这个选项不适用于参数或返回标签中的描述）

@@ -138,7 +138,7 @@ foo == null
 
 ### allow-null
 
-**废弃**：使用 `"always"` 代替这个选项，并传递一个 "null" 选项属性，值为 "ignore"。这将告诉 ESLint，除了与 `null` 字面量比较时，总是执行严格的相等判断。
+**废弃**：使用 `"always"` 代替这个选项，并传递一个 `"null"` 选项属性，值为 `"ignore"`。这将告诉 ESLint，除了与 `null` 字面量比较时，总是执行严格的相等判断。
 
 ```js
 ["error", "always", {"null": "ignore"}]

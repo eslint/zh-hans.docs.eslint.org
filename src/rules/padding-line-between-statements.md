@@ -46,8 +46,8 @@ function foo() {
 
 * `STATEMENT_TYPE` 是下列之一，或者是下列的一个数组。
     * `"*"` 是通配符。这可以匹配任何语句。
-    * `"block"` 是孤独的块。
-    * `"block-like"` 是类似于 block 的语句。匹配最后一个符号是块的收尾括号的语句；例如：`{ }`、`if (a) { }`和`while (a) { }`。也可以匹配立即调用的函数表达式语句。
+    * `"block"` 是单独一个块。
+    * `"block-like"` 是类似于 block 的语句。匹配最后一个符号是块的收尾括号的语句；例如：`{ }`、`if (a) { }` 和 `while (a) { }`。也可以匹配立即调用的函数表达式语句。
     * `"break"` 是 `break` 的语句。
     * `"case"` 是 `switch` 语句中的 `case` 子句。
     * `"cjs-export"` 是 CommonJS 的 `export` 语句；例如，`module.exports = 0`、`module.exports.foo = 1` 和 `exports.foo = 2`。这是赋值的一种特殊情况。
@@ -57,7 +57,7 @@ function foo() {
     * `"continue"` 是 `continue` 语句。
     * `"debugger"` 是 `debugger` 语句。
     * `"default"` 是 `switch`中的 `default` 条款 语句。
-    * `"directive"` 是指令性声明。这与指令相匹配；例如， `"use strict"`。
+    * `"directive"` 是指令性声明。这与指令相匹配；例如 `"use strict"`。
     * `"do"` 是 `do-while` 语句。这匹配所有第一个标记是 `do` 关键字的语句。
     * `"empty"` 是空语句。
     * `"export"` 是 `export` 声明。

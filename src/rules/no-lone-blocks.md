@@ -60,7 +60,7 @@ class C {
 
 :::
 
-在 ES6 环境下，此规则的**正确的代码示例。
+在 ES6 环境下，此规则的**正确的代码示例：
 
 ::: correct
 
@@ -112,7 +112,7 @@ class C {
 
 :::
 
-在 ES6 环境和严格模式下，此规则的**正确代码的例子通过 `"parserOptions": { "sourceType": "module" }` 在 ESLint 配置中或代码中的 "use strict"`指令。
+在 ES6 环境和严格模式下，在 ESLint 配置中编写 `"parserOptions": { "sourceType": "module" }` 在在代码中使用 `"use strict"` 指令的**正确**示例：
 
 ::: correct
 

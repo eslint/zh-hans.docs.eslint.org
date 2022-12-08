@@ -140,7 +140,7 @@ function thing() {
 
 ### skipComments
 
-该规则的附加**正确**代码的例子：`{ "skipComments": true }` 选项。
+该规则与 `{ "skipComments": true }` 选项的额外**正确**示例：
 
 ::: correct
 

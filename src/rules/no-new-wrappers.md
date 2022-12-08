@@ -40,7 +40,7 @@ if (booleanObject) {    // all objects are truthy!
 }
 ```
 
-第一个问题是，原始包装对象实际上是对象。这意味着 `typeof` 将返回`"object"`，而不是 `"string"`、`"number"` 或 `"boolean"`。第二个问题来自于布尔型对象。每个对象都是真实的，这意味着 `Boolean` 的一个实例总是被解析为 `true`，即使它的实际值是 `false`。
+第一个问题是，原始包装对象实际上是对象。这意味着 `typeof` 将返回 `"object"`，而不是 `"string"`、`"number"` 或 `"boolean"`。第二个问题来自于布尔型对象。每个对象都是真实的，这意味着 `Boolean` 的一个实例总是被解析为 `true`，即使它的实际值是 `false`。
 
 由于这些原因，避免使用原始包装类型和 `new` 被认为是一种最佳做法。
 

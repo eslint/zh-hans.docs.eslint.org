@@ -7,7 +7,7 @@ related_rules:
 - no-new-wrappers
 ---
 
-对象 "构造函数用于在 JavaScript 中创建新的通用对象，例如：
+`Object` 构造函数用于在 JavaScript 中创建新的通用对象，例如：
 
 ```js
 var myObject = new Object();

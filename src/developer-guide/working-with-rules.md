@@ -61,9 +61,9 @@ module.exports = {
 `meta`（对象） 包含规则的元数据。
 
 * `type`（字符串） 表示规则的类型，是 `"problem"`、`"suggestion"` 或 `"layout"` 之一。
-    * `"problem"`意味着该规则正在识别将导致错误或可能导致混乱行为的代码。开发人员应该把它作为一个高度优先事项来解决。
-    * `"suggestion"`意味着该规则确定了一些可以用更好的方式完成的事情，但如果不改变代码，就不会发生错误。
-    * `"layout"`意味着该规则主要关心的是空白、分号、逗号和括号，所有决定代码外观的部分，而不是代码的执行方式。这些规则对代码中没有在 AST 中指定的部分起作用。
+    * `"problem"` 意味着该规则正在识别将导致错误或可能导致混乱行为的代码。开发人员应该把它作为一个高度优先事项来解决。
+    * `"suggestion"` 意味着该规则确定了一些可以用更好的方式完成的事情，但如果不改变代码，就不会发生错误。
+    * `"layout"` 意味着该规则主要关心的是空白、分号、逗号和括号，所有决定代码外观的部分，而不是代码的执行方式。这些规则对代码中没有在 AST 中指定的部分起作用。
 
 * `docs`（对象）是 ESLint 的核心规则所需要的。
 
@@ -79,7 +79,7 @@ module.exports = {
 
 * `hasSuggestions` (boolean) 指定规则是否可以返回建议（如果省略，默认为 `false`）。
 
-     **重点**：`hasSuggestions` 属性对于提供建议的规则来说是强制性的。如果这个属性没有设置为 `true`，ESLint 将在规则试图产生建议时抛出一个错误。如果规则不提供建议，省略`hasSuggestions`属性。
+     **重点**：`hasSuggestions` 属性对于提供建议的规则来说是强制性的。如果这个属性没有设置为 `true`，ESLint 将在规则试图产生建议时抛出一个错误。如果规则不提供建议，省略 `hasSuggestions` 属性。
 
 * `schema` (array) 指定了 [options](#options-schemas)，所以 ESLint 可以防止无效的 [规则配置](../user-guide/configuring/rules#configuring-rules)
 
@@ -87,7 +87,7 @@ module.exports = {
 
 * `replacedBy`（array） 如果是被废弃的规则，指定替代规则。
 
-`create`（function） 返回一个对象，该对象具有 ESLint 调用的方法，在遍历 JavaScript 代码的抽象语法树（由 [ESTree](https://github.com/estree/estree) 定义的 AST）时 "访问 "节点。
+`create`（function） 返回一个对象，该对象具有 ESLint 调用的方法，在遍历 JavaScript 代码的抽象语法树（由 [ESTree](https://github.com/estree/estree) 定义的 AST）时 `visit"` 节点。
 
 * 如果键是节点类型或[选择器](./selectors)，ESLint 在**down tree** 时调用该 **visitor**函数
 * 如果键是节点类型或[选择器](./selectors)加 `:exit`，ESLint 在***up tree** 时调用该 **visitor** 函数。
@@ -387,7 +387,7 @@ context.report({
 
 在某些情况下，修正不适合自动应用，例如，如果一个修正可能会改变功能，或者根据实现意图，有多种有效的方法来修正一个规则（见上面列出的[应用修复](#应用修复) 的最佳实践）。在这些情况下，在 `context.report()` 上有一个替代的 `suggest` 选项，允许其他工具，如编辑器，为用户手动应用建议暴露出帮助器。
 
-为了提供建议，在报告参数中使用 `suggest` 键和一个建议对象的数组。建议对象代表可以应用的单个建议，需要一个`desc`键字符串，描述应用建议的作用或`messageId`键（见[下文](#suggestion-messageids)），以及 `fix` 键，这是一个定义建议结果的函数。这个`fix` 函数遵循与常规 fix 相同的 API（在上面的[应用修复](#应用修复) 中描述）。
+为了提供建议，在报告参数中使用 `suggest` 键和一个建议对象的数组。建议对象代表可以应用的单个建议，需要一个`desc` 键字符串，描述应用建议的作用或`messageId`键（见[下文](#suggestion-messageids)），以及 `fix` 键，这是一个定义建议结果的函数。这个`fix` 函数遵循与常规 fix 相同的 API（在上面的[应用修复](#应用修复) 中描述）。
 
 ```js
 {% raw %}
@@ -422,7 +422,7 @@ context.report({
 1. 不要试图做得太多，建议大型重构，因为这可能会引入很多破坏性的变化。
 1. 如上所述，不要试图符合用户定义的风格。
 
-建议的目的是为了提供修复。如果建议的 "fix "函数返回 "null "或空数组/序列，ESLint 将自动从 linting 输出中删除整个建议。
+建议的目的是为了提供修复。如果建议的 `fix` 函数返回 `null` 或空数组/序列，ESLint 将自动从 linting 输出中删除整个建议。
 
 #### Suggestion `messageId`s
 
@@ -695,7 +695,7 @@ ESLint 在遍历 AST 时分析了代码路径。
 
 ## 规则单元测试
 
-ESLint core 的每个捆绑规则必须有一组单元测试与之一起提交才能被接受。测试文件的名称与源文件相同，但住在`tests/lib/`中。例如，如果规则的源文件是 `lib/rules/foo.js`，那么测试文件应该是 `tests/lib/rules/foo.js`。
+ESLint core 的每个捆绑规则必须有一组单元测试与之一起提交才能被接受。测试文件的名称与源文件相同，但在 `tests/lib/` 中，如果规则的源文件是 `lib/rules/foo.js`，那么测试文件应该是 `tests/lib/rules/foo.js`。
 
 ESLint 提供了 [`RuleTester`](/docs/developer-guide/nodejs-api#ruletester) 工具，以方便为规则编写测试。
 

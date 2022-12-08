@@ -160,7 +160,7 @@ const results = await eslint.lintText(code, options);
 
 该方法对给定的源代码文本进行行测，然后返回结果。
 
-默认情况下，该方法使用适用于当前工作目录下文件的配置（`cwd`构造函数选项）。如果你想使用不同的配置，传递 `options.filePath`，ESLint 将加载 [`eslint.lintFiles()`][eslint-lintfiles] 对 `options.filePath` 处的文件使用的配置。
+默认情况下，该方法使用适用于当前工作目录下文件的配置（`cwd` 构造函数选项）。如果你想使用不同的配置，传递 `options.filePath`，ESLint 将加载 [`eslint.lintFiles()`][eslint-lintfiles] 对 `options.filePath` 处的文件使用的配置。
 
 如果 `options.filePath` 值被配置为忽略，该方法返回一个空数组。如果 `options.warningIgnored` 选项和 `options.filePath` 选项一起被设置，该方法返回一个 [LintResult][lintresult] 对象。在这种情况下，该结果可能包含一个警告，表明该文件被忽略了。
 
@@ -491,7 +491,7 @@ const linter2 = new Linter();
     * `filename` -（可选）与源代码相关的文件名。
     * `preprocess` -（可选）[插件中的处理器](/docs/developer-guide/working-with-plugins#processors-in-plugins)文档描述的 `preprocess` 方法。
     * `postprocess` -（可选）[插件中的处理器](/docs/developer-guide/working-with-plugins#processors-in-plugins)文档描述的 `postprocess` 方法的一个函数。
-    * `filterCodeBlock` -（可选）一个函数，决定 interlet 应该采用哪些代码块。该函数接收两个参数。第一个参数是一个代码块的虚拟文件名。第二个参数是代码块的文本。如果该函数返回 `true`，那么检查器就采用该代码块。如果该函数被省略，则 linter 只采用 `*.js` 的代码块。如果你提供了一个 `filterCodeBlock` 函数，它将覆盖这个默认行为，所以 linter 不会自动采用`*.js`代码块。
+    * `filterCodeBlock` -（可选）一个函数，决定 interlet 应该采用哪些代码块。该函数接收两个参数。第一个参数是一个代码块的虚拟文件名。第二个参数是代码块的文本。如果该函数返回 `true`，那么检查器就采用该代码块。如果该函数被省略，则检查器只采用 `*.js` 的代码块。如果你提供了一个 `filterCodeBlock` 函数，它将覆盖这个默认行为，所以检查器不会自动采用 `*.js` 代码块。
     * `disableFixes` -（可选）当设置为 `true` 时，检查器不对检查结果的 `fix` 或 `suggestions` 属性进行处理。
     * `allowInlineConfig` -（可选）设置为 `false`，禁止内联注释改变 ESLint 规则。
     * `reportUnusedDisableDirectives` -（可选）当设置为 `true` 时，为未使用的 `eslint-disable` 指令添加报告错误，无论如何在禁用区不会有问题被报告。
@@ -782,7 +782,7 @@ const ruleTester = new RuleTester({ parserOptions: { ecmaVersion: 2015 } });
 * `errors`（数字或数组，需要）：断言该规则在此代码上运行时预期产生的错误的一些属性。如果这是一个数字，断言产生的错误的数量。否则，这应该是一个对象的列表，每个对象都包含关于一个报告错误的信息。以下属性可用于一个错误（所有都是可选的）：
     * `message` (字符串/正则)：错误的信息
     * `messageId`（字符串）: 错误的 ID。参见[用 messageId 测试错误](#testing-errors-with-messageid) 了解详情。
-    * `data`（对象）: 占位数据，可与`messageId`结合使用。
+    * `data`（对象）: 占位数据，可与 `messageId` 结合使用。
     * `type` (string): 报告的 AST 节点的类型
     * `line`（数字）: 报告位置的基于 1 的行号
     * `column`（数字）: 报告位置的基于 1 的列号

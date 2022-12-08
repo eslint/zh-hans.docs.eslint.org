@@ -325,7 +325,7 @@ export default [
 ];
 ```
 
-由于历史原因，布尔值 `false` 和字符串值 `"readable"` 等同于 `"readonly"`。同样地，布尔值`true`和字符串 `"writeable"` 等同于 `"writable"`。然而，旧值已经被废弃了。
+由于历史原因，布尔值 `false` 和字符串值 `"readable"` 等同于 `"readonly"`。同样地，布尔值 `true` 和字符串 `"writeable"` 等同于 `"writable"`。然而，旧值已经被废弃了。
 
 ### 在你的配置中使用插件
 

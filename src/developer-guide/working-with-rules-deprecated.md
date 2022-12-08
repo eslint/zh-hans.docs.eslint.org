@@ -40,7 +40,7 @@ module.exports.schema = []; // 无选项
 
 `schema`（数组）指定[选项](#options-schemas)，这样 ESLint 可以防止无效的[规则配置](../user-guide/configuring/rules#configuring-rules)
 
-`create`（函数）返回对象，该对象包含 ESLint 调用的方法，在遍历 JavaScript 代码的抽象语法树 (AST，由 [ESTree](https://github.com/estree/estree) 定义）时 "访问 "节点。
+`create`（函数）返回对象，该对象包含 ESLint 调用的方法，在遍历 JavaScript 代码的抽象语法树 (AST，由 [ESTree](https://github.com/estree/estree) 定义）时 `"visit"` 节点。
 
 * 如果键是节点类型，ESLint 在 **down tree** 时会调用该 **visitor** 函数
 * 如果键是节点类型加 `:exit`，ESLint 在 **up tree** 时会调用该 **visitor** 函数。

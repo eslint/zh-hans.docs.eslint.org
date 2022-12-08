@@ -145,7 +145,7 @@ module['exports'] = function foo(name) {};
 
 ## 选项
 
-这个规则需要一个 "always" 或 "never" 的可选字符串（当省略时，默认为 "always"），以及一个带有两个属性 `considerPropertyDescriptor` 和 `includeCommonJSModuleExports` 的可选选项对象。
+这个规则需要一个 `always` 或 `never` 的可选字符串（当省略时，默认为 `always`），以及一个带有两个属性 `considerPropertyDescriptor` 和 `includeCommonJSModuleExports` 的可选选项对象。
 
 ### considerPropertyDescriptor
 
