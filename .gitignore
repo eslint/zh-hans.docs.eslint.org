@@ -108,16 +108,14 @@ _site
 
 # Sync file
 .eleventy.js
-docs/
-src/_data
-!sites
-en.yml
+_data
 _includes
 assets
 library.json
 404.html
 pages.11tydata.json
 static
+html-formatter-example.html
 src.json
 /package.json
 /package-lock.json
