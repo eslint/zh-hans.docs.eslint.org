@@ -108,8 +108,10 @@ _site
 
 # Sync file
 .eleventy.js
+docs/
 _data
 _includes
+_plugins
 assets
 library.json
 404.html
