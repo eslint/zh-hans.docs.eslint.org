@@ -66,7 +66,7 @@ ESLint 处理器可以从其他类型的文件中提取 JavaScript 代码，然�
 
 ESLint 格式化工具决定了命令行检查结果的样子。
 
-更多信息请参见[格式化工具](./formatters/index.md)。
+更多信息请参见[格式化工具](./formatters)。
 
 ## 集成
 

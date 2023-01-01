@@ -232,6 +232,10 @@ foo(); // eslint-disable-line example/rule-name
 foo(); /* eslint-disable-line example/rule-name */
 ```
 
+**注意**：禁用文件一部分警告的注释会让 ESLint 不报告禁用部分代码违反规则。然而，ESLint 仍会解析整个文件，所以禁用部分的代码仍需是语法上有效的 JavaScript。
+
+#### 配置注释
+
 配置注释可以包括说明，以解释为什么注释是必要的。描述必须在配置之后，并且需要用两个或多个连续的 `-` 字符与配置分开。比如：
 
 ```js
@@ -244,8 +248,6 @@ console.log('hello');
 **/
 console.log('hello');
 ```
-
-**注意**：禁用文件一部分的警告的注释告诉 ESLint 不要报告被禁用的代码违反规则。然而，ESLint 仍然解析整个文件，所以禁用的代码仍然需要是语法上有效的 JavaScript。
 
 ### 使用配置文件
 

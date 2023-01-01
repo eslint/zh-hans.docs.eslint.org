@@ -8,10 +8,10 @@ layout: doc
 
 ## 开始工作
 
-如果你想在拉动请求上工作，而你以前从未提交过代码，请遵循以下步骤。
+如果你想在拉动请求上工作，而你以前从未提交过代码，请遵循以下步骤：
 
 1. 建立[开发环境](../development-environment)。
-1. 如果你想实现一个突破性的改变或对核心的改变，确保有一个描述你正在做什么的问题，并且该问题已经被接受。你可以创建一个新的议题，或者只是表明你在[处理一个现有的议题](working-on-issues)。错误修复、文档修改和其他拉动请求不需要一个议题。
+1. 如果你想实现破坏性改变或要对核心的改变，请确保要对当前所做事情进行描述，并且该问题已经被接受。你可以创建新议题，也可以表明你在[处理现有的议题](working-on-issues)。错误修复、文档修改和其他拉动请求则无需有对应议题。
 
 在这之后，你就可以开始处理代码了。
 
@@ -31,7 +31,7 @@ layout: doc
 
 ### 第一步：创建新分支<a name="step1"></a>
 
-发送拉动请求的第一步是在你的 ESLint 分叉中创建一个新的分支。给这个分支起一个描述性的名字，描述你要修复的内容，比如说“
+发送拉动请求的第一步是在你的 ESLint 分叉中创建一个新的分支。给这个分支起一个描述性的名字，描述你要修复的内容，比如说：
 
 ```shell
 git checkout -b issue1234
@@ -43,14 +43,14 @@ git checkout -b issue1234
 
 ### 第二步：进行修改<a name="step2"></a>
 
-对代码和测试进行修改，在修改过程中遵循 [代码约定](../code-conventions)。完成后，将修改提交到你的分支。
+对代码和测试进行修改，在修改过程中遵循[代码约定](../code-conventions)。完成后，将修改提交到你的分支。
 
 ```shell
 git add -A
 git commit
 ```
 
-所有 ESLint 项目的提交信息都遵循 [Conventional Commits](https://www.conventionalcommits.org/)。下面是一个提交信息的例子。
+所有 ESLint 项目的提交信息都遵循 [Conventional Commits](https://www.conventionalcommits.org/)（注意：我们并不支持在消息中使用可选的作用域）。下面是提交信息的示例：
 
 ```txt
 tag: Short description of what you did
@@ -60,7 +60,7 @@ Longer description here if necessary
 Fixes #1234
 ```
 
-提交信息的第一行（摘要）必须有一个特定的格式。这个格式是由我们的构建工具检查的。
+提交信息的第一行（摘要）必须有一个特定的格式。这个格式会由我们的构建工具进行检查。
 
 `tag` 是以下其中之一：
 
@@ -130,7 +130,7 @@ npm test
 git push origin issue1234
 ```
 
-If you are unable to push because some references are old, do a forced push instead:
+如果你因为一些引用太旧了而无法推送，那么就使用强制推送：
 
 ```shell
 git push -f origin issue1234
@@ -140,7 +140,7 @@ git push -f origin issue1234
 
 现在你已经准备好发送拉动请求了。进入你的 ESLint 分叉，然后按照 [GitHub 文档](https://help.github.com/articles/creating-a-pull-request)中的方法发送拉动请求。
 
-为了向 ESLint 项目提交代码或文档，当你发送第一个拉动请求时，你会被要求签署我们的 CLA（阅读更多关于 Open JS 基金会 CLA 程序的信息，请访问<https://cla.openjsf.org/>)。
+为了向 ESLint 项目提交代码或文档，当你发送第一个拉动请求时，你会被要求签署我们的 CLA（阅读更多关于 Open JS 基金会 CLA 程序的信息，请访问 <https://cla.openjsf.org/>)。
 
 ## 后续行动
 
@@ -158,7 +158,7 @@ git push -f origin issue1234
 git commit --amend
 ```
 
-This will open up your editor so you can make changes. After that, you'll need to do a forced push to your branch:
+这将打开你的编辑器，以便你可以进行修改。之后你需要对分支进行强制推送：
 
 ```shell
 git push origin issue1234 -f
@@ -180,7 +180,7 @@ git push origin issue1234
 
 ### 变基
 
-如果你的代码已经过期，我们可能会要求你重新发布。这意味着我们希望你在最新的上游代码基础上应用你的修改。请确保你已经建立了一个 [开发环境](../development-environment)，然后你就可以使用这些命令重新发布。
+如果你的代码已经过期，我们可能会要求你重新发布。这意味着我们希望你在最新的上游代码基础上应用你的修改。请确保你已经配置好了[开发环境](../development-environment)，然后你就可以使用这些命令重新发布。
 
 ```shell
 git fetch upstream
