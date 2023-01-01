@@ -1,6 +1,5 @@
 ---
 title: 格式化工具
-layout: doc
 eleventyNavigation:
     key: formatters
     parent: user guide

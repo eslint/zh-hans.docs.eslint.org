@@ -1,6 +1,5 @@
 ---
 title: ESLint 配置
-layout: doc
 eleventyNavigation:
     key: configuring
     parent: user guide

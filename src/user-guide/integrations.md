@@ -1,6 +1,5 @@
 ---
 title: 集成
-layout: doc
 eleventyNavigation:
     key: integrations
     parent: user guide
@@ -8,6 +7,10 @@ eleventyNavigation:
     order: 7
 
 ---
+
+此页面包括了与 ESLint 集成的社区项目。列在此页的项目并不由 ESLint 所维护。
+
+如果你想要推荐项目将其加入此也，请[提交拉去请求](../developer-guide/contributing/pull-requests).
 
 ## 编辑器
 
@@ -18,7 +21,7 @@ eleventyNavigation:
     * [ALE](https://github.com/w0rp/ale)
     * [Syntastic](https://github.com/vim-syntastic/syntastic/tree/master/syntax_checkers/javascript)
 * Emacs：[Flycheck](http://www.flycheck.org/) 和 [javascript-eslint](http://www.flycheck.org/en/latest/languages.html#javascript) 检查器一同提供 ESLint 支持。
-* Eclipse Orion：ESLint 是其[默认限制器](https://dev.eclipse.org/mhonarc/lists/orion-dev/msg02718.html)
+* Eclipse Orion：ESLint 是其[默认检查器](https://dev.eclipse.org/mhonarc/lists/orion-dev/msg02718.html)
 * Eclipse IDE：[Tern ESLint linter](https://github.com/angelozerr/tern.java/wiki/Tern-Linter-ESLint)
 * TextMate 2：
     * [eslint.tmbundle](https://github.com/ryanfitzer/eslint.tmbundle)
@@ -61,15 +64,6 @@ eleventyNavigation:
 ## 测试
 
 * Mocha.js：[mocha-eslint](https://www.npmjs.com/package/mocha-eslint)
-
-## ESLint 外部规则
-
-* [AngularJS](https://github.com/Gillespie59/eslint-plugin-angular)
-* [BackboneJS](https://github.com/ilyavolodin/eslint-plugin-backbone)
-* [Jasmine](https://github.com/tlvince/eslint-plugin-jasmine)
-* [React](https://github.com/yannickcr/eslint-plugin-react)
-
-……以及其他更多附有 [eslintplugin](https://www.npmjs.com/browse/keyword/eslintplugin) 关键词并发布在 npm 的差距.
 
 ## 其他集成列表
 

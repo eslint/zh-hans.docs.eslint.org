@@ -1,6 +1,5 @@
 ---
 title: 创建规则（废弃）
-layout: doc
 
 ---
 

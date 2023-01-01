@@ -1,6 +1,5 @@
 ---
 title: 创建规则
-layout: doc
 eleventyNavigation:
     key: working with rules
     parent: developer guide

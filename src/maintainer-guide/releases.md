@@ -1,6 +1,5 @@
 ---
 title: 版本管理
-layout: doc
 eleventyNavigation:
     key: managing releases
     parent: maintainer guide 

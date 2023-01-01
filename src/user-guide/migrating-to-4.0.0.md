@@ -1,6 +1,5 @@
 ---
 title: 迁移至 v4.0.0
-layout: doc
 
 ---
 

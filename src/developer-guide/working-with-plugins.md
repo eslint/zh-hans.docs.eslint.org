@@ -1,6 +1,5 @@
 ---
 title: 创建插件
-layout: doc
 eleventyNavigation:
     key: working with plugings
     parent: developer guide

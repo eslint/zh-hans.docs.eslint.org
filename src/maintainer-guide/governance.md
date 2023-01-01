@@ -1,6 +1,5 @@
 ---
 title: 治理
-layout: doc
 eleventyNavigation:
     key: governance
     parent: maintainer guide

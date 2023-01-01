@@ -1,6 +1,5 @@
 ---
 title: 规则
-layout: doc
 permalink: /rules/index.html
 eleventyNavigation:
     key: rules

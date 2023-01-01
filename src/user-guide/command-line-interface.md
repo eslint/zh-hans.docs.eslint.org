@@ -1,6 +1,5 @@
 ---
 title: 命令行
-layout: doc
 eleventyNavigation:
     key: command line interface
     parent: user guide
@@ -8,6 +7,10 @@ eleventyNavigation:
     order: 4
 
 ---
+
+ESLint 命令行（CLI）让你可以在终端执行检查，命令行有许多可以传递给 ESLint 进行配置的选项。
+
+## 运行命令行
 
 你需要先安装 Node.js，然后方可根据[入门指南](getting-started)中的说明安装 ESLint。
 
@@ -107,7 +110,7 @@ Miscellaneous:
 
 ```shell
 npx eslint --ext .jsx --ext .js lib/
-
+# OR
 npx eslint --ext .jsx,.js lib/
 ```
 
@@ -139,7 +142,7 @@ npx eslint -c ~/my-eslint.json file.js
 
 #### `--env`
 
-此项可用于启用特定的环境。关于各环境所定义的全局变量的细节可参见[指定环境](configuring/language-options#specifying-environments)文档。此项仅用于启用环境，它不能用于禁用其他配置文件中设置的环境。若要指定多个环境，请用逗号隔开或复用该项。
+此项可用于启用特定的环境。关于各环境所定义的全局变量的细节可参见[指定环境](configuring/language-options#指定环境)文档。此项仅用于启用环境，它不能用于禁用其他配置文件中设置的环境。若要指定多个环境，请用逗号隔开或复用该项。
 
 示例：
 
@@ -172,7 +175,7 @@ npx eslint . --ext .js,.ts
 
 #### `--global`
 
-此项定义了全局变量，这样 `no-undef` 规则就不会将其标记为 undefined。默认情况下任何指定的全局变量都为只读变量，但在变量名称后面加上 `:true` 就允许写入了。要指定多个全局变量，请用逗号隔开或者复用此项。
+此项定义了全局变量，这样 `no-undef` 规则就不会将其标记为 `undefined`。默认情况下任何指定的全局变量都为只读变量，但在变量名称后面加上 `:true` 就允许写入了。要指定多个全局变量，请用逗号隔开或者复用此项。
 
 示例：
 
@@ -367,7 +370,7 @@ npx eslint --quiet file.js
 
 此项用于指定警告阈值，若项目中有太多违反警告级别规则的情况，可以用它来强制 ESLint 以错误状态退出。
 
-通常情况下，如果 ESLint 运行后没有发现错误（只有警告），它将以成功退出状态退出。然而若指定 `--max-warnings` 且总警告数大于给定阈值，则 ESLint 将以错误状态退出。指定阈值为 `-1` 或省略此项将阻止这种行为。
+通常情况下，如果 ESLint 运行后没有发现错误（只有警告），它将以成功退出状态退出。然而若指定 `--max-warnings` 且总警告数大于给定阈值，则 ESLint 将以错误状态退出。要阻止此行为，忽略此选项或将阈值指定为 `-1`。
 
 示例：
 
@@ -500,11 +503,11 @@ npx eslint --report-unused-disable-directives file.js
 
 #### `--cache-location`
 
-缓存位置的路径。可以是一个文件或一个目录。如果没有指定位置，则使用 `.eslintcache`。在这种情况下将在执行 `eslint` 命令的目录下创建文件。
+缓存位置的路径。可以是一个文件或一个目录。如果没有指定文件，则使用 `.eslintcache`。在这种情况下会在执行 `eslint` 命令的目录下创建文件。
 
-如果指定了一个目录，一个缓存文件将在指定的文件夹内创建。该文件的名称将基于当前工作目录（CWD）的哈希值。`.cache_hashOfCWD`。
+如果指定了目录，则将在指定的文件夹内创建缓存文件。该文件的名称将基于当前工作目录（CWD）的哈希值，比如 `.cache_hashOfCWD`。
 
-**重要提示**：如果缓存的目录不存在，请确保在 \*nix 系统中添加尾部的 `/`，在  Windows 中添加 `\`。否则路径将识别为文件。
+**重要提示**：如果缓存的目录不存在，请确保在 \*nix 系统中添加尾部的 `/`，在  Windows 中添加 `\`。否则路径会被识别为文件。
 
 示例：
 
@@ -514,7 +517,7 @@ npx eslint "src/**/*.js" --cache --cache-location "/Users/user/.eslintcache/"
 
 #### `--cache-strategy`
 
-用于检测文件是否变更的缓存策略。可以是 `metadata` 或 `content`。如果没有指定策略，将使用 `metadata`。
+用于检测文件是否变更的缓存策略。可以是 `metadata` 或 `content`。如果没有指定策略，则使用 `metadata`。
 
 `content` 策略在文件的修改时间改变但内容没有改变的情况下很有用。例如，这可能发生在 git 操作中，如 git 克隆，因为 git 不跟踪文件的修改时间。
 

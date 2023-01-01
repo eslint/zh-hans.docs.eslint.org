@@ -1,6 +1,5 @@
 ---
 title: 创建自定义格式化工具
-layout: doc
 eleventyNavigation:
     key: working with custom formatters
     parent: developer guide

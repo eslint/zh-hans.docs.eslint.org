@@ -1,6 +1,5 @@
 ---
 title: 迁移自 JSCS
-layout: doc
 
 ---
 

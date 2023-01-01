@@ -1,6 +1,5 @@
 ---
 title: 代码约定
-layout: doc
 ---
 
 [eslint-config-eslint](https://www.npmjs.com/package/eslint-config-eslint) 定义了 ESLint 的代码约定。

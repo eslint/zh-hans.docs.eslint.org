@@ -1,6 +1,5 @@
 ---
 title: 工作组
-layout: doc
 
 ---
 

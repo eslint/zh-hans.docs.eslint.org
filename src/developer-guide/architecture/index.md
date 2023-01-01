@@ -1,6 +1,5 @@
 ---
 title: 架构
-layout: doc
 eleventyNavigation:
     key: architecture
     parent: developer guide

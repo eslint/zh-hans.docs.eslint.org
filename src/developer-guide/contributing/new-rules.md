@@ -1,6 +1,5 @@
 ---
 title: 新规则
-layout: doc
 
 ---
 

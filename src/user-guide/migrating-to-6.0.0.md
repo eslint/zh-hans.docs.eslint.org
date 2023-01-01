@@ -1,6 +1,5 @@
 ---
 title: 迁移至 v6.0.0
-layout: doc
 
 ---
 

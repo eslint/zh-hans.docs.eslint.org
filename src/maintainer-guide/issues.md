@@ -1,6 +1,5 @@
 ---
 title: 议题管理
-layout: doc
 eleventyNavigation:
     key: managing issues
     parent: maintainer guide 

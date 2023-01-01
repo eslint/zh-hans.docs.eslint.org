@@ -1,6 +1,5 @@
 ---
 title: 迁移至 v7.0.0
-layout: doc
 
 ---
 

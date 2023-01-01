@@ -1,6 +1,5 @@
 ---
 title: 核心概念
-layout: doc
 eleventyNavigation:
     key: core concepts
     title: 核心概念

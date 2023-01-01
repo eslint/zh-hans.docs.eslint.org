@@ -1,6 +1,5 @@
 ---
 title: 拉取请求
-layout: doc
 
 ---
 

@@ -1,6 +1,5 @@
 ---
 title: 开发环境
-layout: doc
 eleventyNavigation:
     key: set up a development environment
     parent: developer guide

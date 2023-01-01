@@ -1,6 +1,5 @@
 ---
 title: no-new-native-nonconstructor
-layout: doc
 rule_type: problem
 related_rules:
 - no-obj-calls

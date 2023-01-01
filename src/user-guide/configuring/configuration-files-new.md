@@ -1,6 +1,5 @@
 ---
 title: 配置文件（新）
-layout: doc
 eleventyNavigation:
     key: configuration files
     parent: configuring
