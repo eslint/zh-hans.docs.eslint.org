@@ -127,18 +127,18 @@ module.exports = {
 
 `context` 对象包含了额外的功能，有助于规则完成其工作。顾名思义，`context` 对象包含与规则的上下文相关的信息。`context` 对象有以下属性：
 
-* `parserOptions` - 为本次运行配置的分析器选项（更多细节 [这里](../user-guide/configuring/language-options#specifying-parser-options)）。
+* `parserOptions` - 为本次运行配置的解析器选项（[了解详情](../user-guide/configuring/language-options#指定解析器选项)）。
 * `id` - 规则 ID。
-* `options` - 这个规则的[配置选项](/docs/user-guide/configuring/rules#configuring-rules) 的数组。这个数组不包括规则的严重程度。更多信息，请参阅[这里](#contextoptions)。
-* `settings` - 配置中的 [共享设置](/docs/user-guide/configuring/configuration-files#adding-shared-settings)。
+* `options` - 这个规则的[配置选项](../user-guide/configuring/rules#规则配置) 的数组。这个数组不包括规则的严重程度。更多信息，请参阅[这里](#contextoptions)。
+* `settings` - 配置中的[共享设置](../user-guide/configuring/configuration-files#添加共享设置)。
 * `parserPath` - 配置中的 `parser` 的名称。
-* `parserServices` - 一个包含解析器提供的规则服务的对象。默认的解析器不提供任何服务。然而，如果一个规则打算与一个自定义的分析器一起使用，它可以使用 `parserServices` 来访问该分析器提供的任何服务（例如，TypeScript 解析器可以提供获取特定节点的计算类型的能力）。
+* `parserServices` - 一个包含解析器提供的规则服务的对象。默认的解析器不提供任何服务。然而，如果一个规则打算与一个自定义的解析器一起使用，它可以使用 `parserServices` 来访问该解析器提供的任何服务（例如，TypeScript 解析器可以提供获取特定节点的计算类型的能力）。
 
 此外，`context`对象有以下方法。
 
 * `getAncestors()` - 返回当前遍历的节点的祖先数组，从 AST 的根开始，一直到当前节点的直接父节点。这个数组不包括当前遍历的节点本身。
 * `getCwd()` - 返回传递给 [Linter](./nodejs-api#linter) 的 `cwd`。它是一个目录的路径，应该被视为当前工作目录。
-* `getDeclaredVariables(node)` - 返回由给定节点声明的 [变量](./scope-manager-interface#variable-interface) 的列表。这个信息可以用来跟踪对变量的引用。
+* `getDeclaredVariables(node)` - 返回由给定节点声明的[变量](./scope-manager-interface#variable-接口) 的列表。这个信息可以用来跟踪对变量的引用。
     * 如果该节点是 `VariableDeclaration`，则返回声明中的所有变量。
     * 如果该节点是 `VariableDeclarator`，将返回所有在声明器中声明的变量。
     * 如果该节点是 `FunctionDeclaration` 或 `FunctionExpression`，除了函数参数的变量外，还将返回函数名称的变量。
@@ -219,7 +219,7 @@ module.exports = {
     * `end` - 一个结束位置的对象。
         * `line` - 从 1 开始计算的发生问题的行号。
         * `column` - 从 0 开始计算的发生问题的列号。
-* `data` - （可选）[placeholder](#using-message-placeholders) `message` 的数据。
+* `data` - （可选）[placeholder](#使用信息占位符) `message` 的数据。
 * `fix` - （可选）一个应用[修复](#应用修复)的函数，以解决这个问题。
 
 请注意，至少需要 `node` 或 `loc` 中的一个。

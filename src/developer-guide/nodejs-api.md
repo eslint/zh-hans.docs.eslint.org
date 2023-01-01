@@ -460,7 +460,7 @@ const codeLines = SourceCode.splitLines(code);
 
 ---
 
-## 检查器
+## Linter
 
 `Linter` 对象对 JavaScript 代码进行实际评估。它不做任何文件系统的操作，只是对代码进行解析和报告。特别是，`Linter` 对象不处理配置对象或文件。除非你在浏览器中工作，否则你可能想用 [ESLint 类](#eslint-类) 代替。
 
@@ -684,7 +684,7 @@ Map {
 
 ### Linter#defineParser
 
-每个 `Linter` 实例都持有一个自定义解析器的映射。如果你想以编程方式定义一个分析器，你可以添加这个函数
+每个 `Linter` 实例都持有一个自定义解析器的映射。如果你想以编程方式定义一个解析器，你可以添加这个函数
 第一个参数是解析器的名称，第二个参数是[解析器对象](/docs/developer-guide/working-with-custom-parsers)。默认的 `"espree"` 解析器将已经为每个 `Linter` 实例加载。
 
 ```js

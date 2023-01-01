@@ -43,7 +43,7 @@ git remote add upstream git@github.com:eslint/eslint.git
 
 ## 第四步：安装 Yeoman 生成器
 
-[Yeoman](http://yeoman.io) 是一个脚手架生成器，ESLint 使用它来简化新规则的开发。如果你还没有安装 Yeoman，你可以通过 npm 安装它：
+[Yeoman](https://yeoman.io) 是一个脚手架生成器，ESLint 使用它来简化新规则的开发。如果你还没有安装 Yeoman，你可以通过 npm 安装它：
 
 ```shell
 npm install -g yo

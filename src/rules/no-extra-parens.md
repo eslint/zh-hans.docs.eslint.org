@@ -36,6 +36,7 @@ further_reading:
 * `"enforceForSequenceExpressions": false` 允许在序列表达式周围加上小括号。
 * `"enforceForNewInMemberExpressions": false`允许在成员表达式中的 `new` 表达式周围使用额外的小括号。
 * `"enforceForFunctionPrototypeMethods": false` 允许在函数表达式的即时 `.call` 和 `.apply` 方法调用周围以及同一上下文中的函数表达式周围添加括号。
+* `"allowParensAfterCommentPattern": "any-string-pattern"` 允许在匹配正则表达式的注释前面加上额外的括号。
 
 ### all
 
@@ -57,6 +58,8 @@ for (a in (b));
 for (a of (b));
 
 typeof (a);
+
+(Object.prototype.toString.call());
 
 (function(){} ? a() : b());
 
@@ -316,6 +319,30 @@ const bar = (function () {}).apply();
 const baz = (function () {}.call());
 
 const quux = (function () {}.apply());
+```
+
+:::
+
+### allowParensAfterCommentPattern
+
+要使此规则允许在特定注释前面有额外的括号，请将此选项设置为字符串模式，它将被传递给 [`RegExp` 构造函数](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/RegExp)。
+
+使用此规则与 `"all"` 和 `{ "allowParensAfterCommentPattern": "@type" }` 选项的**正确**示例：
+
+::: correct
+
+```js
+/* eslint no-extra-parens: ["error", "all", { "allowParensAfterCommentPattern": "@type" }] */
+const span = /**@type {HTMLSpanElement}*/(event.currentTarget);
+if (/** @type {Foo | Bar} */(options).baz) console.log('Lint free');
+foo(/** @type {Bar} */ (bar), options, {
+    name: "name",
+    path: "path",
+});
+if (foo) {
+    /** @type {Bar} */
+    (bar).prop = false;
+}
 ```
 
 :::

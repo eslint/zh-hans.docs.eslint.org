@@ -125,6 +125,8 @@ var { foo: isCamelCased = 1 } = quz;
 var obj = {
     my_pref: 1
 };
+
+obj.foo_bar = "baz";
 ```
 
 :::

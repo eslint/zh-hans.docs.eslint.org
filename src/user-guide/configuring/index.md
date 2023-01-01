@@ -15,8 +15,8 @@ eleventyNavigation:
 
 下面列出了一些 ESLint 中可配置的选项：
 
-* [**环境**](./language-options#specifying-environments) - 你的脚本被设计为在哪些环境下运行。每个环境都会附带一组预设的全局变量。
-* [**全局变量**](./language-options#specifying-globals) - 脚本在执行过程中需要用到的额外全局变量。
+* [**环境**](./language-options#指定环境) - 你的脚本被设计为在哪些环境下运行。每个环境都会附带一组预设的全局变量。
+* [**全局变量**](./language-options#指定全局变量) - 脚本在执行过程中需要用到的额外全局变量。
 * [**规则**](rules) - 启用了哪些规则，它们又是什么级别错误水平
 * [**插件**](plugins) - 第三方插件为 ESLint 定义了额外的规则、环境、配置等。
 
@@ -42,19 +42,19 @@ eleventyNavigation:
 
 [**规则**](rules)
 
-* [规则配置](./rules#规则规则)
+* [规则配置](./rules#规则配置)
 * [禁用规则](./rules#禁用规则)
 
 [**插件**](plugins)
 
-* [指定解析器](./plugins#指定解析器)
-* [指定处理器](./plugins#指定处理器)
 * [配置插件](./plugins#配置插件)
+* [指定处理器](./plugins#指定处理器)
+* [指定解析器](./plugins#指定解析器)
 
 [**忽略代码**](ignoring-code)
 
 * [配置文件中的 `ignorePatterns`](./ignoring-code#配置文件中的-ignorepatterns)
-* [`.eslintignore` 文件](./ignoring-code#the-eslintignore-file)
+* [`.eslintignore` 文件](./ignoring-code#eslintignore-文件)
 * [使用替代文件](./ignoring-code#使用替代文件)
 * [package.json 中的 eslintIgnore](./ignoring-code#packagejson-中的-eslintignore))
 * [忽略文件警告](./ignoring-code#忽略文件警告)
