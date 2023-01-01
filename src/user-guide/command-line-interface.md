@@ -5,7 +5,7 @@ eleventyNavigation:
     key: command line interface
     parent: user guide
     title: 命令行
-    order: 3
+    order: 4
 
 ---
 
@@ -297,6 +297,8 @@ npx eslint --fix --fix-type suggestion,layout .
 ### 忽略文件
 
 #### `--ignore-path`
+
+**注意**：在使用扁平配置（`eslint.config.js`）时，不支持使用 `--ignore-path`。
 
 此项用于指定一个文件作为 `.eslintignore`。ESLint 默认在当前工作目录下寻找 `.eslintignore`。你可以通过指定其他文件的路径来覆盖取代默认地址。
 
