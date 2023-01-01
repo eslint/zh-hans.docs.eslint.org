@@ -10,7 +10,7 @@ title: 迁移自 JSCS
 在开始 ESLint 迁移工作前，你可以阅读下方所列出的 ESLint 所使用的术语及其 JSCS 所用术语见的关系，这有助于迁移工作顺利进行。
 
 * **配置文件** - 在 JSCS 中，配置文件指的是 `.jscsrc`、`.jscsrc.json`、`.jscsrc.yaml` 或 `.jscsrs.js`。在 ESLint 中，配置文件指的是 `.eslintrc.json`、`.eslintrc.yml`、`.eslintrc.yaml` 或 `.eslintrc.js`（还有已废弃的 `.eslintrc` 文件格式)。
-* **预设** - 在 JSCS 中, 直接提供了许多预定义配置的。ESLint 只提供了一个无关风格的预定义配置（`eslint:recommended`）。不过 ESLint 支持[可共享配置](https://eslint.org/docs/developer-guide/shareable-configs)。可共享的配置是指人们自行发布到 npm 的配置，几乎所有的 JSCS 预设都有与之对应的可共享配置（见下文“转换预设”部分）。此外，配置文件中的 `preset` 选项等同于 ESLint 的 `extends` 选项。
+* **预设** - 在 JSCS 中, 直接提供了许多预定义配置的。ESLint 只提供了一个无关风格的预定义配置（`eslint:recommended`）。不过 ESLint 支持[可共享配置](../developer-guide/shareable-configs)。可共享的配置是指人们自行发布到 npm 的配置，几乎所有的 JSCS 预设都有与之对应的可共享配置（见下文“转换预设”部分）。此外，配置文件中的 `preset` 选项等同于 ESLint 的 `extends` 选项。
 
 ## 使用 Polyjuice 转换配置文件
 

@@ -109,10 +109,10 @@ ESLint v8.0.0 从核心中移除了 `codeframe` 和 `table` 格式化工具。ES
 
 `eslint:recommended` 预设启用了四个新的规则：
 
-* [`no-loss-of-precision`](https://eslint.org/docs/rules/no-loss-of-precision)
-* [`no-nonoctal-decimal-escape`](https://eslint.org/docs/rules/no-nonoctal-decimal-escape)
-* [`no-unsafe-optional-chaining`](https://eslint.org/docs/rules/no-unsafe-optional-chaining)
-* [`no-useless-backreference`](https://eslint.org/docs/rules/no-useless-backreference)
+* [`no-loss-of-precision`](../rules/no-loss-of-precision)
+* [`no-nonoctal-decimal-escape`](../rules/no-nonoctal-decimal-escape)
+* [`no-unsafe-optional-chaining`](../rules/no-unsafe-optional-chaining)
+* [`no-useless-backreference`](../rules/no-useless-backreference)
 
 **解决方案**：修复错误或禁用这些规则。
 
@@ -120,7 +120,7 @@ ESLint v8.0.0 从核心中移除了 `codeframe` 和 `table` 格式化工具。ES
 
 ## <a name="suggestions"></a> 规则需要使用 `meta.hasSuggestions` 以提供建议
 
-在 ESLint v7.0.0 中，规则[提供建议](https://eslint.org/docs/developer-guide/working-with-rules#providing-suggestions)不需要让 ESLint 知道。在 v8.0.0 中，规则提供建议需要将 `meta.hasSuggestions` 设置为 `true`。这会告诉 ESLint 规则打算提供建议，如果没有这个属性，任何试图提供建议的行为都会导致错误。
+在 ESLint v7.0.0 中，规则[提供建议](../developer-guide/working-with-rules#providing-suggestions)不需要让 ESLint 知道。在 v8.0.0 中，规则提供建议需要将 `meta.hasSuggestions` 设置为 `true`。这会告诉 ESLint 规则打算提供建议，如果没有这个属性，任何试图提供建议的行为都会导致错误。
 
 **解决方案**：如果你的规则提供了建议，请像这样添加 `meta.hasSuggestions` 对象：
 
@@ -168,7 +168,7 @@ module.exports = {
 
 [eslint-plugin/prefer-object-rule](https://github.com/not-an-aardvark/eslint-plugin-eslint-plugin/blob/master/docs/rules/prefer-object-rule.md)规则可以自动修复并强制使用对象格式重写已废弃的函数格式规则。
 
-参见[规则文档](https://eslint.org/docs/developer-guide/working-with-rules)获取更多关于编写规则的信息。
+参见[规则文档](../developer-guide/working-with-rules)获取更多关于编写规则的信息。
 
 **相关议题**：[#13349](https://github.com/eslint/eslint/issues/13349)
 
@@ -178,7 +178,7 @@ module.exports = {
 
 将在 v9.0.0 中移除 `SourceCode#getComments()` 方法。
 
-**解决方案**：如果你的规则使用了 `SourceCode#getComments()`，请改用 [`SourceCode#getCommentsBefore()`、`SourceCode#getCommentsAfter()` 或 `SourceCode#getCommentsInside()`](https://eslint.org/docs/developer-guide/working-with-rules#sourcecodegetcommentsbefore-sourcecodegetcommentsafter-and-sourcecodegetcommentsinside)。
+**解决方案**：如果你的规则使用了 `SourceCode#getComments()`，请改用 [`SourceCode#getCommentsBefore()`、`SourceCode#getCommentsAfter()` 或 `SourceCode#getCommentsInside()`](../developer-guide/working-with-rules#sourcecodegetcommentsbefore-sourcecodegetcommentsafter-and-sourcecodegetcommentsinside)。
 
 **相关议题**：[#14744](https://github.com/eslint/eslint/issues/14744)
 
@@ -233,7 +233,7 @@ if (propertyNode.key === propertyNode.value) {
 
 ## <a name="remove-cliengine"></a> 移除 `CLIEngine` 类
 
-移除 `CLIEngine` 类，以 [`ESLint` 类](https://eslint.org/docs/developer-guide/nodejs-api#eslint-class)替换之。
+移除 `CLIEngine` 类，以 [`ESLint` 类](../developer-guide/nodejs-api#eslint-class)替换之。
 
 **解决方案**：果你正在使用 `CLIEngine`，更新代码以使用新的 `ESLint` 类。下表列出了 `CLIEngine` 方法对应的 `ESLint` 方法：
 

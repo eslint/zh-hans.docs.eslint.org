@@ -373,7 +373,7 @@ context.report({
         ({ "foo": 1 })
         ```
 
-    * 这个修复器可以随便选择一个报价类型。如果它猜错了，产生的代码将被自动报告并由 [`quotes`](/docs/rules/quotes) 规则修复。
+    * 这个修复器可以随便选择一个报价类型。如果它猜错了，产生的代码将被自动报告并由 [`quotes`](../rules/quotes) 规则修复。
 
 注意：使修复尽可能小是一种最佳做法，但在某些情况下，扩大修复的范围可能是正确的，以便有意防止其他规则在同一段落中对周围范围进行修复。例如，如果替换文本声明了一个新的变量，那么防止在该变量的范围内发生其他变化可能是有用的，因为它们可能会导致名称冲突。
 
@@ -713,7 +713,7 @@ ESLint 在遍历 AST 时分析了代码路径。
 
 ESLint core 的每个捆绑规则必须有一组单元测试与之一起提交才能被接受。测试文件的名称与源文件相同，但在 `tests/lib/` 中，如果规则的源文件是 `lib/rules/foo.js`，那么测试文件应该是 `tests/lib/rules/foo.js`。
 
-ESLint 提供了 [`RuleTester`](/docs/developer-guide/nodejs-api#ruletester) 工具，以方便为规则编写测试。
+ESLint 提供了 [`RuleTester`](../developer-guide/nodejs-api#ruletester) 工具，以方便为规则编写测试。
 
 ## 性能测试
 

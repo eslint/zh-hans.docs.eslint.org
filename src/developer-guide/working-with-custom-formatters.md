@@ -375,7 +375,7 @@ error semi
 
 ### 复杂的实参传递
 
-如果你发现自定义格式化模式没有为你想要格式化 ESLint 结果的方式提供足够的选项，最好的选择是使用 ESLint 内置的 [JSON 格式化工具](https://eslint.org/docs/user-guide/formatters/)，并将把输出传递到第二个程序。比如说：
+如果你发现自定义格式化模式没有为你想要格式化 ESLint 结果的方式提供足够的选项，最好的选择是使用 ESLint 内置的 [JSON 格式化工具](../user-guide/formatters/)，并将把输出传递到第二个程序。比如说：
 
 ```bash
 eslint -f json src/ | your-program-that-reads-JSON --option

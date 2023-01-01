@@ -5,7 +5,7 @@ rule_type: layout
 
 此规则在 ESLint v4.0.0 中被**废弃**。
 
-ESLint 4.0.0 引入了重写 [`indent`](/docs/rules/indent) 规则，现在它比以前的版本报告更多的错误。为了简化迁移到 4.0.0 的过程，`indent-legacy` 规则是作为 ESLint 3.x 的 `indent` 规则的快照而引入的。最终，你应该切换回 `indent` 规则，以便在未来的版本中获得错误修复和改进。
+ESLint 4.0.0 引入了重写 [`indent`](../rules/indent) 规则，现在它比以前的版本报告更多的错误。为了简化迁移到 4.0.0 的过程，`indent-legacy` 规则是作为 ESLint 3.x 的 `indent` 规则的快照而引入的。最终，你应该切换回 `indent` 规则，以便在未来的版本中获得错误修复和改进。
 
 ---
 

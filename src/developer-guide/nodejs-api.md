@@ -466,7 +466,7 @@ const codeLines = SourceCode.splitLines(code);
 
 `Linter` 是一个构造函数，你可以通过传入你想使用的选项来创建一个新实例。可用的选项有：
 
-* `cwd` - 一个应该被视为当前工作目录的目录的路径。规则可以通过调用 `context.getCwd()` 访问它（见 [上下文对象](./working-with-rules#the-context-object)）。如果 `cwd` 是 `undefined`，如果全局的 `process` 对象被定义（例如，在 Node.js 运行时），它将被规范化为 `process.cwd()`，否则 `undefined`。
+* `cwd` - 一个应该被视为当前工作目录的目录的路径。规则可以通过调用 `context.getCwd()` 访问它（见[上下文对象](./working-with-rules#the-context-object)）。如果 `cwd` 是 `undefined`，如果全局的 `process` 对象被定义（例如，在 Node.js 运行时），它将被规范化为 `process.cwd()`，否则 `undefined`。
 
 比如：
 
@@ -488,8 +488,8 @@ const linter2 = new Linter();
     **注意**: 如果你想对文本进行检查，并让你的配置被读取和处理，请使用 [`ESLint#lintFiles()`][eslint-lintfiles] 或 [`ESLint#lintText()`][eslint-linttext] 来代替。
 * `options` -（可选）本次运行的附加选项。
     * `filename` -（可选）与源代码相关的文件名。
-    * `preprocess` -（可选）[插件中的处理器](/docs/developer-guide/working-with-plugins#processors-in-plugins)文档描述的 `preprocess` 方法。
-    * `postprocess` -（可选）[插件中的处理器](/docs/developer-guide/working-with-plugins#processors-in-plugins)文档描述的 `postprocess` 方法的一个函数。
+    * `preprocess` -（可选）[插件中的处理器](working-with-plugins#processors-in-plugins)文档描述的 `preprocess` 方法。
+    * `postprocess` -（可选）[插件中的处理器](working-with-plugins#processors-in-plugins)文档描述的 `postprocess` 方法的一个函数。
     * `filterCodeBlock` -（可选）一个函数，决定 interlet 应该采用哪些代码块。该函数接收两个参数。第一个参数是一个代码块的虚拟文件名。第二个参数是代码块的文本。如果该函数返回 `true`，那么检查器就采用该代码块。如果该函数被省略，则检查器只采用 `*.js` 的代码块。如果你提供了一个 `filterCodeBlock` 函数，它将覆盖这个默认行为，所以检查器不会自动采用 `*.js` 代码块。
     * `disableFixes` -（可选）当设置为 `true` 时，检查器不对检查结果的 `fix` 或 `suggestions` 属性进行处理。
     * `allowInlineConfig` -（可选）设置为 `false`，禁止内联注释改变 ESLint 规则。
@@ -685,7 +685,7 @@ Map {
 ### Linter#defineParser
 
 每个 `Linter` 实例都持有一个自定义解析器的映射。如果你想以编程方式定义一个解析器，你可以添加这个函数
-第一个参数是解析器的名称，第二个参数是[解析器对象](/docs/developer-guide/working-with-custom-parsers)。默认的 `"espree"` 解析器将已经为每个 `Linter` 实例加载。
+第一个参数是解析器的名称，第二个参数是[解析器对象](../developer-guide/working-with-custom-parsers)。默认的 `"espree"` 解析器将已经为每个 `Linter` 实例加载。
 
 ```js
 const Linter = require("eslint").Linter;
@@ -916,14 +916,14 @@ ruleTester.run("my-rule", myRule, {
 
 ---
 
-[configuration object]: ../user-guide/configuring/
-[builtin-formatters]: https://eslint.org/docs/user-guide/formatters/
+[configuration object]: ../user-guide/configuring/index
+[builtin-formatters]: ../user-guide/formatters/
 [third-party-formatters]: https://www.npmjs.com/search?q=eslintformatter
-[eslint-lintfiles]: #-eslintlintfilespatterns
-[eslint-linttext]: #-eslintlinttextcode-options
-[eslint-loadformatter]: #-eslintloadformatternameorpath
-[lintresult]: #-lintresult-type
-[lintmessage]: #-lintmessage-type
-[suppressedlintmessage]: #-suppressedlintmessage-type
-[editinfo]: #-editinfo-type
-[loadedformatter]: #-loadedformatter-type
+[eslint-lintfiles]: #◆-eslintlintfilespatterns
+[eslint-linttext]: #◆-eslintlinttextcode-options
+[eslint-loadformatter]: #◆-eslintloadformatternameorpath
+[lintresult]: #◆-lintresult-类型
+[lintmessage]: #◆-lintmessage-类型
+[suppressedlintmessage]: #◆-suppressedlintmessage-类型
+[editinfo]: #◆-editinfo-类型
+[loadedformatter]: #◆-loadedformatter-类型

@@ -54,11 +54,11 @@ module.exports = {
 
 下列规则都已废弃且被新规则所代替。下面列出了所有移除的规则及其替代品：
 
-* [no-arrow-condition](https://eslint.org/docs/rules/no-arrow-condition) 被 [no-confusing-arrow](https://eslint.org/docs/rules/no-confusing-arrow) 和 [no-constant-condition](https://eslint.org/docs/rules/no-constant-condition) 的组合所代替。同时启用它们两个就可以获得与 `no-arrow-condition` 一致的功能。
-* [no-empty-label](https://eslint.org/docs/rules/no-empty-label) 被 [no-labels](https://eslint.org/docs/rules/no-labels) 搭配 `{"allowLoop": true, "allowSwitch": true}` 选项所代替。
-* [space-after-keywords](https://eslint.org/docs/rules/space-after-keywords) 被 [keyword-spacing](https://eslint.org/docs/rules/keyword-spacing) 所代替。
-* [space-before-keywords](https://eslint.org/docs/rules/space-before-keywords) 被 [keyword-spacing](https://eslint.org/docs/rules/keyword-spacing) 所代替。
-* [space-return-throw-case](https://eslint.org/docs/rules/space-return-throw-case) 被 [keyword-spacing](https://eslint.org/docs/rules/keyword-spacing) 所代替。
+* [no-arrow-condition](../rules/no-arrow-condition) 被 [no-confusing-arrow](../rules/no-confusing-arrow) 和 [no-constant-condition](../rules/no-constant-condition) 的组合所代替。同时启用它们两个就可以获得与 `no-arrow-condition` 一致的功能。
+* [no-empty-label](../rules/no-empty-label) 被 [no-labels](../rules/no-labels) 搭配 `{"allowLoop": true, "allowSwitch": true}` 选项所代替。
+* [space-after-keywords](../rules/space-after-keywords) 被 [keyword-spacing](../rules/keyword-spacing) 所代替。
+* [space-before-keywords](../rules/space-before-keywords) 被 [keyword-spacing](../rules/keyword-spacing) 所代替。
+* [space-return-throw-case](../rules/space-return-throw-case) 被 [keyword-spacing](../rules/keyword-spacing) 所代替。
 
 **解决方案**：要使用新的规则，你需要更新你的规则配置。如果你使用被移除规则时，ESLint v2.0.0 会发出警告并建议使用相关的替代规则。希望借此减少升级过程中遇到的问题。
 
@@ -210,17 +210,17 @@ ruleTester.run("no-var", rule, {
 
 在 2.0.0，`"eslint:recommended"` 新增了以下 11 个规则：
 
-* [constructor-super](https://eslint.org/docs/rules/constructor-super)
-* [no-case-declarations](https://eslint.org/docs/rules/no-case-declarations)
-* [no-class-assign](https://eslint.org/docs/rules/no-class-assign)
-* [no-const-assign](https://eslint.org/docs/rules/no-const-assign)
-* [no-dupe-class-members](https://eslint.org/docs/rules/no-dupe-class-members)
-* [no-empty-pattern](https://eslint.org/docs/rules/no-empty-pattern)
-* [no-new-symbol](https://eslint.org/docs/rules/no-new-symbol)
-* [no-self-assign](https://eslint.org/docs/rules/no-self-assign)
-* [no-this-before-super](https://eslint.org/docs/rules/no-this-before-super)
-* [no-unexpected-multiline](https://eslint.org/docs/rules/no-unexpected-multiline)
-* [no-unused-labels](https://eslint.org/docs/rules/no-unused-labels)
+* [constructor-super](../rules/constructor-super)
+* [no-case-declarations](../rules/no-case-declarations)
+* [no-class-assign](../rules/no-class-assign)
+* [no-const-assign](../rules/no-const-assign)
+* [no-dupe-class-members](../rules/no-dupe-class-members)
+* [no-empty-pattern](../rules/no-empty-pattern)
+* [no-new-symbol](../rules/no-new-symbol)
+* [no-self-assign](../rules/no-self-assign)
+* [no-this-before-super](../rules/no-this-before-super)
+* [no-unexpected-multiline](../rules/no-unexpected-multiline)
+* [no-unused-labels](../rules/no-unused-labels)
 
 **解决方案**：如果你不想管这些规则，你可以简单地把它们统统禁用了。
 

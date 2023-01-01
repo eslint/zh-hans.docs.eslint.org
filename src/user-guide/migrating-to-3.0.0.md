@@ -38,17 +38,17 @@ ESLint v3.0.0 现在需要有配置才能运行。以下几种都属于配置：
 
 在 3.0.0 中，`"eslint:recommended"` 新增了下列规则：
 
-* [`no-unsafe-finally`](https://eslint.org/docs/rules/no-unsafe-finally)帮助捕获与预期不一致的 `finally` 子句。
-* [`no-native-reassign`](https://eslint.org/docs/rules/no-native-reassign)以前是 `no-undef` 的一部分，但由于作为另一条规则的一部分没有意义而独立处理。`no-native-reassign` 规则会在你试图覆盖只读的全局变量时发出警告。
-* [`require-yield`](https://eslint.org/docs/rules/require-yield) 帮助识别没有 `yield` 关键字的生成器函数。
+* [`no-unsafe-finally`](../rules/no-unsafe-finally)帮助捕获与预期不一致的 `finally` 子句。
+* [`no-native-reassign`](../rules/no-native-reassign)以前是 `no-undef` 的一部分，但由于作为另一条规则的一部分没有意义而独立处理。`no-native-reassign` 规则会在你试图覆盖只读的全局变量时发出警告。
+* [`require-yield`](../rules/require-yield) 帮助识别没有 `yield` 关键字的生成器函数。
 
 `"eslint:recommended"` 移除了下列规则：
 
-* [`comma-dangle`](https://eslint.org/docs/rules/comma-dangle) 曾经被推荐使用，因为 Internet Explorer 8 和更早的版本在发现对象字面属性上的尾随逗号时会报语法错误。然而，[Internet Explorer 8 在 2016 年 1 月结束了声明](https://www.microsoft.com/en-us/WindowsForBusiness/End-of-IE-support)，同时所有其他积极更新的浏览器都允许尾随逗号。因此，我们认为尾随逗号现在是风格问题，而不是错误。
+* [`comma-dangle`](../rules/comma-dangle) 曾经被推荐使用，因为 Internet Explorer 8 和更早的版本在发现对象字面属性上的尾随逗号时会报语法错误。然而，[Internet Explorer 8 在 2016 年 1 月结束了声明](https://www.microsoft.com/en-us/WindowsForBusiness/End-of-IE-support)，同时所有其他积极更新的浏览器都允许尾随逗号。因此，我们认为尾随逗号现在是风格问题，而不是错误。
 
 以下规则进行了修改：
 
-* [`complexity`](https://eslint.org/docs/rules/complexity) 在 `eslint:recommended` 中曾经被硬编码将默认值改为 11，如果你打开规则而没有指定最大值则使用默认值。现在的默认值是 20。实际上，该规则的默认值就应该是 20，只不过 `eslint:recommended` 错误地覆盖了它。
+* [`complexity`](../rules/complexity) 在 `eslint:recommended` 中曾经被硬编码将默认值改为 11，如果你打开规则而没有指定最大值则使用默认值。现在的默认值是 20。实际上，该规则的默认值就应该是 20，只不过 `eslint:recommended` 错误地覆盖了它。
 
 **解决方案**：如果你想与 `eslint:recommended` 在 v2.x 中的工作方式类似，你可以使用以下方法：
 

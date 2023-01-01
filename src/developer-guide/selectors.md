@@ -93,7 +93,7 @@ module.exports = {
 
 ### 用选择器限制语法
 
-通过 [no-restricted-syntax](/docs/rules/no-restricted-syntax) 规则，你可以限制代码中特定语法的使用。例如，你可以使用以下配置来禁止使用没有块状语句作为主体的 `if` 语句：
+通过 [no-restricted-syntax](../rules/no-restricted-syntax) 规则，你可以限制代码中特定语法的使用。例如，你可以使用以下配置来禁止使用没有块状语句作为主体的 `if` 语句：
 
 ```json
 {
