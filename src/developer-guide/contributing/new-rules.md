@@ -22,7 +22,7 @@ ESLint 是关于规则的。在项目的大部分时间里，我们已经有了�
 
 ## 提议一条规则
 
-如果你想提出一条新的规则，请参考如何 [创建拉动请求](../developer-guide/contributing/pull-requests) 或通过填写 [新规则模板](https://github.com/eslint/eslint/issues/new/choose) 提交一个问题。
+如果你想提出一条新的规则，请参考如何 [创建拉动请求](pull-requests) 或通过填写 [新规则模板](https://github.com/eslint/eslint/issues/new/choose) 提交一个问题。
 
 我们需要所有这些信息，以确定该规则是否是一个好的核心规则候选者。
 
