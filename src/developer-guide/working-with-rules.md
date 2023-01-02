@@ -1,6 +1,5 @@
 ---
 title: 创建规则
-layout: doc
 eleventyNavigation:
     key: working with rules
     parent: developer guide
@@ -128,18 +127,18 @@ module.exports = {
 
 `context` 对象包含了额外的功能，有助于规则完成其工作。顾名思义，`context` 对象包含与规则的上下文相关的信息。`context` 对象有以下属性：
 
-* `parserOptions` - 为本次运行配置的分析器选项（更多细节 [这里](../user-guide/configuring/language-options#specifying-parser-options)）。
+* `parserOptions` - 为本次运行配置的解析器选项（[了解详情](../user-guide/configuring/language-options#指定解析器选项)）。
 * `id` - 规则 ID。
-* `options` - 这个规则的[配置选项](/docs/user-guide/configuring/rules#configuring-rules) 的数组。这个数组不包括规则的严重程度。更多信息，请参阅[这里](#contextoptions)。
-* `settings` - 配置中的 [共享设置](/docs/user-guide/configuring/configuration-files#adding-shared-settings)。
+* `options` - 这个规则的[配置选项](../user-guide/configuring/rules#规则配置) 的数组。这个数组不包括规则的严重程度。更多信息，请参阅[这里](#contextoptions)。
+* `settings` - 配置中的[共享设置](../user-guide/configuring/configuration-files#添加共享设置)。
 * `parserPath` - 配置中的 `parser` 的名称。
-* `parserServices` - 一个包含解析器提供的规则服务的对象。默认的解析器不提供任何服务。然而，如果一个规则打算与一个自定义的分析器一起使用，它可以使用 `parserServices` 来访问该分析器提供的任何服务（例如，TypeScript 解析器可以提供获取特定节点的计算类型的能力）。
+* `parserServices` - 一个包含解析器提供的规则服务的对象。默认的解析器不提供任何服务。然而，如果一个规则打算与一个自定义的解析器一起使用，它可以使用 `parserServices` 来访问该解析器提供的任何服务（例如，TypeScript 解析器可以提供获取特定节点的计算类型的能力）。
 
 此外，`context`对象有以下方法。
 
 * `getAncestors()` - 返回当前遍历的节点的祖先数组，从 AST 的根开始，一直到当前节点的直接父节点。这个数组不包括当前遍历的节点本身。
 * `getCwd()` - 返回传递给 [Linter](./nodejs-api#linter) 的 `cwd`。它是一个目录的路径，应该被视为当前工作目录。
-* `getDeclaredVariables(node)` - 返回由给定节点声明的 [变量](./scope-manager-interface#variable-interface) 的列表。这个信息可以用来跟踪对变量的引用。
+* `getDeclaredVariables(node)` - 返回由给定节点声明的[变量](./scope-manager-interface#variable-接口) 的列表。这个信息可以用来跟踪对变量的引用。
     * 如果该节点是 `VariableDeclaration`，则返回声明中的所有变量。
     * 如果该节点是 `VariableDeclarator`，将返回所有在声明器中声明的变量。
     * 如果该节点是 `FunctionDeclaration` 或 `FunctionExpression`，除了函数参数的变量外，还将返回函数名称的变量。
@@ -156,13 +155,17 @@ module.exports = {
 * `markVariableAsUsed(name)` - 将当前范围内给定名称的变量标记为已使用。这影响到 [no-unused-vars](../rules/no-unused-vars) 规则。如果找到给定名称的变量并标记为已使用，则返回 `true`，否则返回 `false`。
 * `report(descriptor)` - 报告代码中的问题（见[专用部分](#contextreport)）。
 
-**注意**：早期版本的 ESLint 支持对 ` context` 对象的额外方法。这些方法在新的格式中被删除，不应该被依赖。
+**注意**：早期版本的 ESLint 支持对 `context` 对象的额外方法。这些方法在新的格式中被删除，不应该被依赖。
 
 ### context.getScope()
 
-该方法返回具有以下类型的范围：
+此方法返回当前节点的作用域。在给定作用域内寻找变量信息，以及它们在其他作用域内的使用情况时这个方法很有用。
 
-| AST Node Type             | Scope Type |
+#### 作用域类型
+
+下表列出了 AST 节点类型和与之对应的作用域类型。了解更多关于作用域类型的信息，请参见 [`Scope` 对象文档](./scope-manager-interface.md#scope-接口).
+
+| AST 节点类型               | 作用域类型 |
 |:--------------------------|:-----------|
 | `Program`                 | `global`   |
 | `FunctionDeclaration`     | `function` |
@@ -183,27 +186,40 @@ module.exports = {
 **※2** Only if the `for` statement defines the iteration variable as a block-scoped variable (E.g., `for (let i = 0;;) {}`).<br>
 **※3** The scope of the closest ancestor node which has own scope. If the closest ancestor node has multiple scopes then it chooses the innermost scope (E.g., the `Program` node has a `global` scope and a `module` scope if `Program#sourceType` is `"module"`. The innermost scope is the `module` scope.).
 
-返回值是一个由 `eslint-scope` 包定义的 [`Scope` 对象](scope-manager-interface)。全局变量 的 `Variable` 对象有一些额外的属性。
+#### 作用域变量
+
+`Scope#variables` 属性包括一个包含 [`Variable` 对象](./scope-manager-interface#variable-接口) 的数组。这些时在当前作用域声明的变量。你可以使用这些 `Variable` 对象来跟踪变量在整个模块中的引用情况。
+
+在每个 `Variable` 内部，`Variable#references` 属性包括一个包含 [`Reference` 对象](./scope-manager-interface#reference-接口)的数组。`Reference` 数组包括所有变量在模块源码中被引用的位置。
+
+同样的在每个 `Variable` 内部，`Variable#defs` 属性包括一个包含 [`Definition` 对象](./scope-manager-interface#definition-接口)的数组。你可以使用 `Definitions` 来寻找变量被定义的位置。
+
+全局变量有以下额外属性：
 
 * `variable.writeable` (`boolean | undefined`) ... 如果 `true`，这个全局变量可以被分配任意的值。如果 `false`，这个全局变量是只读的。
 * `variable.eslintExplicitGlobal` (`boolean | undefined`) ... 如果 `true`，这个全局变量是由源代码文件中的 `/* globals */`指令注释定义的。
 * `variable.eslintExplicitGlobalComments` (`Comment[] | undefined`) ... 在源代码文件中定义该全局变量的 `/* globals */` 指令性注释的数组。如果没有 `/* globals */` 指令注释，这个属性就是 `undefined`。
 * `variable.eslintImplicitGlobalSetting` (`"readonly" | "writable" | undefined`) ... 配置文件中的配置值。如果有 `/* globals */` 指令注释，这可能与`variable.writeable` 不同。
 
+关于使用 `context.getScope()` 来跟踪变量的例子，请参考以下内置规则的源代码：
+
+* [no-shadow](https://github.com/eslint/eslint/blob/main/lib/rules/no-shadow.js)：在全局作用域调用 `context.getScopes()` 并解析所有子作用域以确保变量名没有在更低作用域中被再次使用（[no-shadow](../rules/no-shadow) 文档）。
+* [no-redeclare](https://github.com/eslint/eslint/blob/main/lib/rules/no-redeclare.js)：在每个作用域调用 `context.getScope()` 以确保变量没有在此作用域中多次声明（[no-redeclare](../rules/no-redeclare) 文档）。
+
 ### context.report()
 
 你将使用的主要方法是 `context.report()`，它发布一个警告或错误（取决于正在使用的配置）。这个方法接受一个参数，它是一个包含以下属性的对象：
 
 * `message` - 问题信息。
-* `node` - （可选）与问题有关的 AST 节点。如果存在并且没有指定`loc`，那么该节点的起始位置将作为问题的位置。
-* `loc` - （可选）一个指定问题位置的对象。如果同时指定了`loc` 和 `node`，那么将使用 `loc` 而不是 `node` 的位置。
+* `node` - （可选）与问题有关的 AST 节点。如果存在并且没有指定 `loc`，那么该节点的起始位置将作为问题的位置。
+* `loc` - （可选）一个指定问题位置的对象。如果同时指定了 `loc` 和 `node`，那么将使用 `loc` 而不是 `node` 的位置。
     * `start` - 一个起始位置的对象。
         * `line` - 从 1 开始计算的发生问题的行号。
         * `column` - 从 0 开始计算的发生问题的列号。
     * `end` - 一个结束位置的对象。
         * `line` - 从 1 开始计算的发生问题的行号。
         * `column` - 从 0 开始计算的发生问题的列号。
-* `data` - （可选）[placeholder](#using-message-placeholders) `message` 的数据。
+* `data` - （可选）[placeholder](#使用信息占位符) `message` 的数据。
 * `fix` - （可选）一个应用[修复](#应用修复)的函数，以解决这个问题。
 
 请注意，至少需要 `node` 或 `loc` 中的一个。
@@ -357,7 +373,7 @@ context.report({
         ({ "foo": 1 })
         ```
 
-    * 这个修复器可以随便选择一个报价类型。如果它猜错了，产生的代码将被自动报告并由 [`quotes`](/docs/rules/quotes) 规则修复。
+    * 这个修复器可以随便选择一个报价类型。如果它猜错了，产生的代码将被自动报告并由 [`quotes`](../rules/quotes) 规则修复。
 
 注意：使修复尽可能小是一种最佳做法，但在某些情况下，扩大修复的范围可能是正确的，以便有意防止其他规则在同一段落中对周围范围进行修复。例如，如果替换文本声明了一个新的变量，那么防止在该变量的范围内发生其他变化可能是有用的，因为它们可能会导致名称冲突。
 
@@ -417,7 +433,7 @@ context.report({
 
 注意：建议将作为一个独立的变化被应用，而不会触发多通道修复。每个建议都应该关注代码中的单一变化，不应该试图符合用户定义的风格。例如，如果一个建议是在代码库中添加一个新的语句，它不应该试图匹配正确的缩进，或符合用户对分号的存在/不存在的偏好。所有这些都可以通过用户触发的多通道自动修正来进行修正。
 
-建议的最佳做法。
+建议的最佳做法：
 
 1. 不要试图做得太多，建议大型重构，因为这可能会引入很多破坏性的变化。
 1. 如上所述，不要试图符合用户定义的风格。
@@ -697,7 +713,7 @@ ESLint 在遍历 AST 时分析了代码路径。
 
 ESLint core 的每个捆绑规则必须有一组单元测试与之一起提交才能被接受。测试文件的名称与源文件相同，但在 `tests/lib/` 中，如果规则的源文件是 `lib/rules/foo.js`，那么测试文件应该是 `tests/lib/rules/foo.js`。
 
-ESLint 提供了 [`RuleTester`](/docs/developer-guide/nodejs-api#ruletester) 工具，以方便为规则编写测试。
+ESLint 提供了 [`RuleTester`](../developer-guide/nodejs-api#ruletester) 工具，以方便为规则编写测试。
 
 ## 性能测试
 

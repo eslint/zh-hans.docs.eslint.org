@@ -1,6 +1,5 @@
 ---
 title: prefer-const
-layout: doc
 rule_type: suggestion
 related_rules:
 - no-var
@@ -94,7 +93,7 @@ console.log(a);
 
 // `i` gets a new binding each iteration
 for (const i in [1, 2, 3]) {
-  console.log(i);
+  console.log(a);
 }
 
 // `a` gets a new binding each iteration

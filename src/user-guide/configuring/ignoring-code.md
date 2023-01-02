@@ -1,6 +1,5 @@
 ---
 title: Ignoring Code
-layout: doc
 eleventyNavigation:
     key: ignoring code
     parent: configuring
@@ -8,6 +7,13 @@ eleventyNavigation:
     order: 5
 
 ---
+
+你可以提供配置几个 glob 匹配模糊让 ESLint 在检查时忽略明确的文件或目录。
+
+也可以使用下列方法忽略文件：
+
+* 在配置文件中添加 `ignorePatterns`。
+* 创建包括忽略匹配模式的专用文件（默认为 `.eslintignore`）。
 
 ## 配置文件中的 `ignorePatterns`
 
@@ -110,7 +116,7 @@ eslint --ignore-path .gitignore file.js
 
 ## package.json 中的 eslintIgnore
 
-如果没找到 `.eslintignore` 文件，也没有指定替代文件，ESLint 将在 package.json 中寻找 `eslintIgnore` 键获取要忽略检查的文件。
+如果没找到 `.eslintignore` 文件，也没有指定替代文件，ESLint 将在 `package.json` 中寻找 `eslintIgnore` 键获取要忽略检查的文件。
 
 ```json
 {
@@ -128,7 +134,7 @@ eslint --ignore-path .gitignore file.js
 
 ## 忽略文件警告
 
-当你把目录传给 ESLint 时，文件和目录都被默默地忽略了。如果你把一个特定的文件传给 ESLint，那么你会看到警告，表明该文件被跳过。比如假设你有一个 `.eslintignore` 文件，像是这样：
+当你把目录传给 ESLint 时，文件和目录都被默默地忽略了。如果向 ESLint 传递了指定文件，那么 ESLint 会创建表明该文件被跳过的警告。比如假设你有像这样的 `.eslintignore` 文件：
 
 ```text
 foo.js
@@ -151,7 +157,7 @@ foo.js
 
 这条信息的出现是因为 ESLint 不确定你是否真的要对该文件进行忽略处理。正如该信息所示，你可以使用 `--no-ignore` 来省略忽略规则。
 
-考虑另一种情况，你可能想在某个特定的点文件或点文件夹上运行 ESLint，但忘了在 `.eslintignore` 文件中特别允许这些文件。你想要运行：
+考虑另一种情况，你想在某个特定的点文件或点文件夹上运行 ESLint，但忘了在 `.eslintignore` 文件中特别允许这些文件。你想要运行：
 
 ```shell
 eslint .config/foo.js
@@ -166,4 +172,4 @@ eslint .config/foo.js
 ✖ 1 problem (0 errors, 1 warning)
 ```
 
-出现这个消息是因为在通常情况下，这个文件会被 ESLint 的隐式忽略规则所忽略（如上所述）。在 `.eslintignore` 文件中否定的忽略规则将覆盖隐含的规则，并重新包含这个文件进行检测。此外，在这个特定的案例中，`--no-ignore` 也可以用来对文件进行提示。
+出现这个消息是因为在通常情况下，这个文件会被 ESLint 的隐式忽略规则所忽略（如上所述）。在 `.eslintignore` 文件中否定的忽略规则将覆盖隐含的规则，并重新包含这个文件进行检测。此外，在这个案例中，`--no-ignore` 也可以用来对文件进行提示。

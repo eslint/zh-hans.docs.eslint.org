@@ -1,6 +1,5 @@
 ---
 title: 规则废弃
-layout: doc
 
 ---
 

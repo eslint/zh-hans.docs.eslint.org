@@ -1,6 +1,5 @@
 ---
 title: no-magic-numbers
-layout: doc
 rule_type: suggestion
 ---
 
@@ -79,7 +78,7 @@ var dutyFreePrice = 100,
 该数组可以包含 `number` 和 `string` 类型的值。
 如果它是一个字符串，文本必须被解析为 `bigint` 字面量（如 `"100n"`）。
 
-使用 sample `{ "ignore": [1] }` 选项的**正确**示例：
+使用示例的 `{ "ignore": [1] }` 选项的**正确**示例：
 
 ::: correct
 
@@ -92,7 +91,7 @@ var dataLast = data.length && data[data.length - 1];
 
 :::
 
-使用 sample `{ "ignore": ["1n"] }` 选项的**正确**示例：
+使用示例的 `{ "ignore": ["1n"] }` 选项的**正确**示例：
 
 ::: correct
 
@@ -106,7 +105,7 @@ foo(1n);
 
 ### ignoreArrayIndexes
 
-一个布尔值，用于指定在数组索引范围内使用的数字（如 `data[2]`）是否被认为是好的。默认为 `false`。
+布尔值，用于指定在数组索引范围内使用的数字（如 `data[2]`）是否被认为是好的。默认为 `false`。
 
 该选项只允许有效的数组索引：数字将被强制为 `"0"`、`"1"`、`"2"`、...、`"4294967294"` 之一。
 
@@ -166,7 +165,7 @@ a = data[1e500]; // same as data["Infinity"]
 
 ### ignoreDefaultValues
 
-一个布尔值，默认为 `false`。用于指定在默认值分配中使用的数字是否被认为可行。
+布尔值，默认为 `false`。用于指定在默认值分配中使用的数字是否被认为可行。
 
 使用 `{ "ignoreDefaultValues": true }` 选项的**正确**示例：
 
@@ -193,9 +192,45 @@ let head;
 
 :::
 
+### ignoreClassFieldInitialValues
+
+布尔值，默认为 `false`。用于指定作为类字段初始值的数字是否被认为合适。
+
+使用 `{ "ignoreClassFieldInitialValues": true }` 选项的**正确**示例：
+
+::: correct
+
+```js
+/*eslint no-magic-numbers: ["error", { "ignoreClassFieldInitialValues": true }]*/
+class C {
+    foo = 2;
+    bar = -3;
+    #baz = 4;
+    static qux = 5;
+}
+```
+
+:::
+
+使用 `{ "ignoreClassFieldInitialValues": true }` 选项的**错误**示例：
+
+::: incorrect
+
+```js
+/*eslint no-magic-numbers: ["error", { "ignoreClassFieldInitialValues": true }]*/
+class C {
+    foo = 2 + 3;
+}
+class D {
+    2;
+}
+```
+
+:::
+
 ### enforceConst
 
-一个布尔值，默认为 `false`。指定我们是否应该在数字的变量声明中检查 const 关键字。
+布尔值，默认为 `false`。指定我们是否应该在数字的变量声明中检查 const 关键字。
 
 使用 `{ "enforceConst": true }` 选项的**错误**示例：
 
@@ -214,7 +249,7 @@ var dutyFreePrice = 100,
 
 ### detectObjects
 
-一个布尔值，默认为 `false`。例如指定我们在设置对象属性时是否应该检测数字。
+布尔值，默认为 `false`。例如指定我们在设置对象属性时是否应该检测数字。
 
 使用 `{ "detectObjects": true }` 选项的**错误**示例：
 

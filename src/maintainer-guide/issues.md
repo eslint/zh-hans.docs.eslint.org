@@ -1,6 +1,5 @@
 ---
 title: 议题管理
-layout: doc
 eleventyNavigation:
     key: managing issues
     parent: maintainer guide 
@@ -66,7 +65,7 @@ eleventyNavigation:
         * 如果该议题是报告一个错误，请尝试按照议题中的指示重现该议题。如果你能重现这个议题，请添加“repro:yes”标签）机器人会自动删除“repro:need”标签）。如果你不能重现该议题，请向作者询问更多关于他们环境的信息或澄清重现步骤。
         * 如果该议题报告的是如期工作，请添加“如期工作（works as intended）”标签并关闭该议题。
         * 对于所有议题，请添加标签，描述ESLint受影响的部分。
-            * 第三方插件（3rd party plugin）- 与第三方功能（插件、分析器、规则等）有关。
+            * 第三方插件（3rd party plugin）- 与第三方功能（插件、解析器、规则等）有关。
             * 构建（build）- 与在构建过程中运行的命令有关（测试、检查、发布脚本等）。
             * 命令行（cli）- 与命令行输入或输出有关，或与 `CLIEngine` 有关
             * 核心（core）- 与内部 API 有关

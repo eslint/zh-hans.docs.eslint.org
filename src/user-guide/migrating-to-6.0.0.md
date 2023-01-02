@@ -1,6 +1,5 @@
 ---
 title: 迁移至 v6.0.0
-layout: doc
 
 ---
 
@@ -52,19 +51,19 @@ Node.js 6 在 2019 年 4 月到达了生命的终点，将不再获得安全更�
 
 ## <a name="eslint-recommended-changes"></a> 更新 `eslint:recommended`
 
-[`eslint:recommended`](https://eslint.org/docs/user-guide/configuring#using-eslintrecommended) 配置添加了下列规则：
+[`eslint:recommended`](../user-guide/configuring#using-eslintrecommended) 配置添加了下列规则：
 
-* [`no-async-promise-executor`](https://eslint.org/docs/rules/no-async-promise-executor) 不允许使用 `async` 函数作为 `Promise` 构造函数的参数，因为这通常是个漏洞。
-* [`no-misleading-character-class`](https://eslint.org/docs/rules/no-misleading-character-class) 将报告正则表达式中与预期不符的字符类，
-* [`no-prototype-builtins`](https://eslint.org/docs/rules/no-prototype-builtins) 将报告调用 `foo.hasOwnProperty("bar")` 等方法（它经常导致漏洞），并推荐使用 `Object.prototype.hasOwnProperty.call(foo, "bar")` 代替之。
-* [`no-shadow-restricted-names`](https://eslint.org/docs/rules/no-shadow-restricted-names) 不允许使用 `undefined` 这样的阴影变量（例如 `let undefined = 5;`），因为这可能会混淆读者。
-* [`no-useless-catch`](https://eslint.org/docs/rules/no-useless-catch) 报告多余的 `catch` 语句，可以从代码中删除而不改变其行为。
-* [`no-with`](https://eslint.org/docs/rules/no-with) 不允许使用 [`with` 语句](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/with)，这可能使代码难以理解并导致兼容性问题。
-* [`require-atomic-updates`](https://eslint.org/docs/rules/require-atomic-updates) 报告了在异步函数中重新分配变量时可能出现的竞争条件错误。
+* [`no-async-promise-executor`](../rules/no-async-promise-executor) 不允许使用 `async` 函数作为 `Promise` 构造函数的参数，因为这通常是个漏洞。
+* [`no-misleading-character-class`](../rules/no-misleading-character-class) 将报告正则表达式中与预期不符的字符类，
+* [`no-prototype-builtins`](../rules/no-prototype-builtins) 将报告调用 `foo.hasOwnProperty("bar")` 等方法（它经常导致漏洞），并推荐使用 `Object.prototype.hasOwnProperty.call(foo, "bar")` 代替之。
+* [`no-shadow-restricted-names`](../rules/no-shadow-restricted-names) 不允许使用 `undefined` 这样的阴影变量（例如 `let undefined = 5;`），因为这可能会混淆读者。
+* [`no-useless-catch`](../rules/no-useless-catch) 报告多余的 `catch` 语句，可以从代码中删除而不改变其行为。
+* [`no-with`](../rules/no-with) 不允许使用 [`with` 语句](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/with)，这可能使代码难以理解并导致兼容性问题。
+* [`require-atomic-updates`](../rules/require-atomic-updates) 报告了在异步函数中重新分配变量时可能出现的竞争条件错误。
 
 此外，`eslint:recommended` 删除了下列规则：
 
-* [`no-console`](https://eslint.org/docs/rules/no-console) 不允许调用 `console.log` 等函数。虽然这条规则适用于基本情况（例如避免在生产代码中留下调试语句），但它不像 `eslint:recommended` 中的其他规则那样广泛适用，而且在一些情况下是需要使用 `console.log` 的（例如，在 CLI 应用程序中），这使得它错误地进行了报告。
+* [`no-console`](../rules/no-console) 不允许调用 `console.log` 等函数。虽然这条规则适用于基本情况（例如避免在生产代码中留下调试语句），但它不像 `eslint:recommended` 中的其他规则那样广泛适用，而且在一些情况下是需要使用 `console.log` 的（例如，在 CLI 应用程序中），这使得它错误地进行了报告。
 
 最后，在 ESLint v5 中，`eslint:recommended` 会明确地禁用所有不被视为“推荐”的核心规则。如果 `eslint:recommended` 在另一个配置之后加载就会出现问题，因为 `eslint:recommended` 会关闭一些规则。而在 ESLint v6 中，`eslint:recommended` 对非推荐的规则没有影响。
 
@@ -134,7 +133,7 @@ ESLint 使用的默认解析器 `espree`，现在会因为以下情况下而引�
 
 ## <a name="no-redeclare-updates"></a> `no-redeclare` 规则的默认值更严格了
 
-[`no-redeclare`](https://eslint.org/docs/rules/no-redeclare) 规则的默认选项已经从 `{ builtinGlobals: false }` 改为 `{ builtinGlobals: true }`。此外，对于通过注释启用的全局变量，如 `/* global foo */`，如果这些全局变量已经通过配置启用，那么 `no-redeclare` 规则现在将报告错误。
+[`no-redeclare`](../rules/no-redeclare) 规则的默认选项已经从 `{ builtinGlobals: false }` 改为 `{ builtinGlobals: true }`。此外，对于通过注释启用的全局变量，如 `/* global foo */`，如果这些全局变量已经通过配置启用，那么 `no-redeclare` 规则现在将报告错误。
 
 **解决方案**：
 
@@ -154,7 +153,7 @@ ESLint 使用的默认解析器 `espree`，现在会因为以下情况下而引�
 
 ## <a name="comma-dangle-updates"></a> `comma-dangle` 规则的默认值更严格了
 
-以前，[`comma-dangle`](https://eslint.org/docs/rules/comma-dangle) 规则会忽略尾部的函数参数，除非明确配置为检查函数逗号。在 ESLint v6 中，函数逗号的处理方式与其他类型的尾随逗号相同。
+以前，[`comma-dangle`](../rules/comma-dangle) 规则会忽略尾部的函数参数，除非明确配置为检查函数逗号。在 ESLint v6 中，函数逗号的处理方式与其他类型的尾随逗号相同。
 
 **解决方案**：你可以用以下方法将规则恢复成和以前一样的默认行为：
 
@@ -178,7 +177,7 @@ ESLint 使用的默认解析器 `espree`，现在会因为以下情况下而引�
 
 ## <a name="no-confusing-arrow-updates"></a> `no-confusing-arrow` 规则的默认值更宽松了
 
-The default options for the [`no-confusing-arrow`](https://eslint.org/docs/rules/no-confusing-arrow) rule have changed from `{ allowParens: false }` to `{ allowParens: true }`.
+The default options for the [`no-confusing-arrow`](../rules/no-confusing-arrow) rule have changed from `{ allowParens: false }` to `{ allowParens: true }`.
 
 **解决方案**：你可以用以下方法将规则恢复成和以前一样的默认行为：
 
@@ -196,7 +195,7 @@ The default options for the [`no-confusing-arrow`](https://eslint.org/docs/rules
 
 由于一个错误，在配置文件的 `overrides` 部分的 `files` 列表中的 glob 模式永远不会与 `dotfiles` 相匹配，这使得 overrides 无法应用于以点开始的文件。这个错误已经在 ESLint v6 中被修复。
 
-**解决方案**：如果你不希望 dotfiles 被覆盖匹配，可以考虑在 `overrides`部分添加类似 `excludedFiles: [".*"]` 的内容。更多细节见[文档](https://eslint.org/docs/user-guide/configuring#configuration-based-on-glob-patterns)。
+**解决方案**：如果你不希望 dotfiles 被覆盖匹配，可以考虑在 `overrides`部分添加类似 `excludedFiles: [".*"]` 的内容。更多细节见[文档](../user-guide/configuring#configuration-based-on-glob-patterns)。
 
 **相关议题**：[eslint/eslint#11201](https://github.com/eslint/eslint/issues/11201)
 
@@ -283,7 +282,7 @@ module.exports = {
 
 ## <a name="unicode-regexes"></a> 规则选项中的正则表达式的 unicode 标志可以解析了
 
-像 [`max-len`](/docs/rules/max-len) 这样的规则支持字符串选项，它被解释为正则表达式。在 ESLint v6.0.0 中，这些正则表达式被解释为 [unicode 标志](https://mathiasbynens.be/notes/es6-unicode-regex)，在匹配星形符号等字符时，应该表现出更合理的行为。Unicode 正则表达式也比非 unicode 正则表达式更严格地验证转义序列。
+像 [`max-len`](../rules/max-len) 这样的规则支持字符串选项，它被解释为正则表达式。在 ESLint v6.0.0 中，这些正则表达式被解释为 [unicode 标志](https://mathiasbynens.be/notes/es6-unicode-regex)，在匹配星形符号等字符时，应该表现出更合理的行为。Unicode 正则表达式也比非 unicode 正则表达式更严格地验证转义序列。
 
 **解决方案**：如果你在升级后得到规则选项的验证错误，请确保你的规则选项中的任何正则表达式没有无效的转义序列。
 
@@ -325,10 +324,10 @@ module.exports = {
 
 ## <a name="linter-parsers"></a> `Linter` 不再尝试从文件系统中加载缺少的解析器了
 
-以前，当用以前没有定义过的解析器检查代码时，`Linter` API 会尝试从文件系统加载分析器。然而，这种行为令人困惑，因为 `Linter` 在其他情况下都不会访问文件系统，而且很难确保从文件系统加载解析器时能找到正确的解析器。
+以前，当用以前没有定义过的解析器检查代码时，`Linter` API 会尝试从文件系统加载解析器。然而，这种行为令人困惑，因为 `Linter` 在其他情况下都不会访问文件系统，而且很难确保从文件系统加载解析器时能找到正确的解析器。
 
 在 ESLint v6 中，`Linter` 将不再执行任何文件系统操作，包括加载解析器。
 
-**解决方案**：如果你使用了 `Linter` 和自定义解析器，请改用 [`Linter#defineParser`](https://eslint.org/docs/developer-guide/nodejs-api#linterdefineparser)，并在检查代码前明确定义解析器。
+**解决方案**：如果你使用了 `Linter` 和自定义解析器，请改用 [`Linter#defineParser`](../developer-guide/nodejs-api#linterdefineparser)，并在检查代码前明确定义解析器。
 
 **相关议题**：[eslint/rfcs#7](https://github.com/eslint/rfcs/pull/7)

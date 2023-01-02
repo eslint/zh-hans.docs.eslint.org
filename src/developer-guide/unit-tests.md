@@ -1,6 +1,5 @@
 ---
 title: 单元测试
-layout: doc
 eleventyNavigation:
     key: run the tests
     parent: developer guide

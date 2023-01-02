@@ -1,6 +1,5 @@
 ---
 title: 创建插件
-layout: doc
 eleventyNavigation:
     key: working with plugings
     parent: developer guide
@@ -58,7 +57,7 @@ module.exports = {
 
 ### 插件中的处理器
 
-你也可以创建插件，告诉 ESLint 如何处理 JavaScript 以外的文件。为了创建一个处理器，从你的模块导出的对象必须符合以下接口。
+你也可以创建插件，告诉 ESLint 如何处理 JavaScript 以外的文件。为了创建一个处理器，从你的模块导出的对象必须符合以下接口：
 
 ```js
 module.exports = {
@@ -145,7 +144,7 @@ overrides:
     processor: a-plugin/markdown
 ```
 
-参见[指定处理器](../user-guide/configuring/plugins#specifying-processor)获取详情。
+参见[指定处理器](../user-guide/configuring/plugins#指定处理器)获取详情。
 
 #### 文件扩展名处理器
 
@@ -223,7 +222,7 @@ module.exports = {
 
 ### 测试
 
-ESLint 提供了 [`RuleTester`](/docs/developer-guide/nodejs-api#ruletester) 工具，以便测试插件规则。
+ESLint 提供了 [`RuleTester`](nodejs-api#ruletester) 工具，以便测试插件规则。
 
 ### 筛选
 

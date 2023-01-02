@@ -1,6 +1,5 @@
 ---
 title: 迁移至 v7.0.0
-layout: doc
 
 ---
 
@@ -148,20 +147,20 @@ ESLint v7.0.0 也会忽略子目录的 `node_modules/*`，但不再忽略 `bower
 
 废弃了核心中的十个 Node.js/CommonJS 规则，并移动到 [eslint-plugin-node](https://github.com/mysticatea/eslint-plugin-node) 插件中。
 
-**解决方案**：根据[我们的废弃策略](https://eslint.org/docs/user-guide/rule-deprecation)，在可见的未来，这些废弃的规则仍将保留在核心中，并且仍就可用。但我们将不再更新或修复这些规则的错误。建议使用插件中获支持的相应规则来代替。
+**解决方案**：根据[我们的废弃策略](../user-guide/rule-deprecation)，在可见的未来，这些废弃的规则仍将保留在核心中，并且仍就可用。但我们将不再更新或修复这些规则的错误。建议使用插件中获支持的相应规则来代替。
 
 | 废弃规则                                                             | 替代品                                                                                                                     |
 | :--------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------ |
-| [callback-return](https://eslint.org/docs/rules/callback-return)             | [node/callback-return](https://github.com/mysticatea/eslint-plugin-node/blob/v11.1.0/docs/rules/callback-return.md)             |
-| [global-require](https://eslint.org/docs/rules/global-require)               | [node/global-require](https://github.com/mysticatea/eslint-plugin-node/blob/v11.1.0/docs/rules/global-require.md)               |
-| [handle-callback-err](https://eslint.org/docs/rules/handle-callback-err)     | [node/handle-callback-err](https://github.com/mysticatea/eslint-plugin-node/blob/v11.1.0/docs/rules/handle-callback-err.md)     |
-| [no-mixed-requires](https://eslint.org/docs/rules/no-mixed-requires)         | [node/no-mixed-requires](https://github.com/mysticatea/eslint-plugin-node/blob/v11.1.0/docs/rules/no-mixed-requires.md)         |
-| [no-new-require](https://eslint.org/docs/rules/no-new-require)               | [node/no-new-require](https://github.com/mysticatea/eslint-plugin-node/blob/v11.1.0/docs/rules/no-new-require.md)               |
-| [no-path-concat](https://eslint.org/docs/rules/no-path-concat)               | [node/no-path-concat](https://github.com/mysticatea/eslint-plugin-node/blob/v11.1.0/docs/rules/no-path-concat.md)               |
-| [no-process-env](https://eslint.org/docs/rules/no-process-env)               | [node/no-process-env](https://github.com/mysticatea/eslint-plugin-node/blob/v11.1.0/docs/rules/no-process-env.md)               |
-| [no-process-exit](https://eslint.org/docs/rules/no-process-exit)             | [node/no-process-exit](https://github.com/mysticatea/eslint-plugin-node/blob/v11.1.0/docs/rules/no-process-exit.md)             |
-| [no-restricted-modules](https://eslint.org/docs/rules/no-restricted-modules) | [node/no-restricted-require](https://github.com/mysticatea/eslint-plugin-node/blob/v11.1.0/docs/rules/no-restricted-require.md) |
-| [no-sync](https://eslint.org/docs/rules/no-sync)                             | [node/no-sync](https://github.com/mysticatea/eslint-plugin-node/blob/v11.1.0/docs/rules/no-sync.md)                             |
+| [callback-return](../rules/callback-return)             | [node/callback-return](https://github.com/mysticatea/eslint-plugin-node/blob/v11.1.0/docs/rules/callback-return.md)             |
+| [global-require](../rules/global-require)               | [node/global-require](https://github.com/mysticatea/eslint-plugin-node/blob/v11.1.0/docs/rules/global-require.md)               |
+| [handle-callback-err](../rules/handle-callback-err)     | [node/handle-callback-err](https://github.com/mysticatea/eslint-plugin-node/blob/v11.1.0/docs/rules/handle-callback-err.md)     |
+| [no-mixed-requires](../rules/no-mixed-requires)         | [node/no-mixed-requires](https://github.com/mysticatea/eslint-plugin-node/blob/v11.1.0/docs/rules/no-mixed-requires.md)         |
+| [no-new-require](../rules/no-new-require)               | [node/no-new-require](https://github.com/mysticatea/eslint-plugin-node/blob/v11.1.0/docs/rules/no-new-require.md)               |
+| [no-path-concat](../rules/no-path-concat)               | [node/no-path-concat](https://github.com/mysticatea/eslint-plugin-node/blob/v11.1.0/docs/rules/no-path-concat.md)               |
+| [no-process-env](../rules/no-process-env)               | [node/no-process-env](https://github.com/mysticatea/eslint-plugin-node/blob/v11.1.0/docs/rules/no-process-env.md)               |
+| [no-process-exit](../rules/no-process-exit)             | [node/no-process-exit](https://github.com/mysticatea/eslint-plugin-node/blob/v11.1.0/docs/rules/no-process-exit.md)             |
+| [no-restricted-modules](../rules/no-restricted-modules) | [node/no-restricted-require](https://github.com/mysticatea/eslint-plugin-node/blob/v11.1.0/docs/rules/no-restricted-require.md) |
+| [no-sync](../rules/no-sync)                             | [node/no-sync](https://github.com/mysticatea/eslint-plugin-node/blob/v11.1.0/docs/rules/no-sync.md)                             |
 
 **相关议题**：[#12898](https://github.com/eslint/eslint/pull/12898)
 
@@ -169,16 +168,16 @@ ESLint v7.0.0 也会忽略子目录的 `node_modules/*`，但不再忽略 `bower
 
 一些规则得到了加强，现在可以报告更多的错误。
 
-* [accessor-pairs](https://eslint.org/docs/rules/accessor-pairs) 规则现在可以默认识别类成员了。
-* [array-callback-return](https://eslint.org/docs/rules/array-callback-return) 规则现在可以识别 `flatMap` 方法。
-* [computed-property-spacing](https://eslint.org/docs/rules/computed-property-spacing) 规则现在可以默认识别类的成员。
-* [func-names](https://eslint.org/docs/rules/func-names) 规则现在可以识别默认导出中的函数声明了。
-* [no-extra-parens](https://eslint.org/docs/rules/no-extra-parens) 规则现在可以识别赋值目标中的括号了。
-* [no-dupe-class-members](https://eslint.org/docs/rules/no-dupe-class-members) 规则现在可以识别静态类成员的计算键。
-* [no-magic-numbers](https://eslint.org/docs/rules/no-magic-numbers) 规则现在可以识别大数字了。
-* [radix](https://eslint.org/docs/rules/radix) 规则现在可以识别 `parseInt()` 的第二个参数的无效数字。
-* [use-isnan](https://eslint.org/docs/rules/use-isnan) 规则现在可以默认识别类成员了。
-* [yoda](https://eslint.org/docs/rules/yoda) 规则现在可以识别大数字了。
+* [accessor-pairs](../rules/accessor-pairs) 规则现在可以默认识别类成员了。
+* [array-callback-return](../rules/array-callback-return) 规则现在可以识别 `flatMap` 方法。
+* [computed-property-spacing](../rules/computed-property-spacing) 规则现在可以默认识别类的成员。
+* [func-names](../rules/func-names) 规则现在可以识别默认导出中的函数声明了。
+* [no-extra-parens](../rules/no-extra-parens) 规则现在可以识别赋值目标中的括号了。
+* [no-dupe-class-members](../rules/no-dupe-class-members) 规则现在可以识别静态类成员的计算键。
+* [no-magic-numbers](../rules/no-magic-numbers) 规则现在可以识别大数字了。
+* [radix](../rules/radix) 规则现在可以识别 `parseInt()` 的第二个参数的无效数字。
+* [use-isnan](../rules/use-isnan) 规则现在可以默认识别类成员了。
+* [yoda](../rules/yoda) 规则现在可以识别大数字了。
 
 **解决方案**：修正错误或禁用这些规则。
 
@@ -188,9 +187,9 @@ ESLint v7.0.0 也会忽略子目录的 `node_modules/*`，但不再忽略 `bower
 
 `eslint:recommended` 预设启用了三个新规则：
 
-* [no-dupe-else-if](https://eslint.org/docs/rules/no-dupe-else-if)
-* [no-import-assign](https://eslint.org/docs/rules/no-import-assign)
-* [no-setter-return](https://eslint.org/docs/rules/no-setter-return)
+* [no-dupe-else-if](../rules/no-dupe-else-if)
+* [no-import-assign](../rules/no-import-assign)
+* [no-setter-return](../rules/no-setter-return)
 
 **解决方案**：修正错误或禁用这些规则。
 
@@ -210,7 +209,7 @@ ESLint v7.0.0 也会忽略子目录的 `node_modules/*`，但不再忽略 `bower
 
 ## <a name="deprecate-cliengine"></a> 废弃 `CLIEngine` 类
 
-废弃 [`CLIEngine` 类](https://eslint.org/docs/developer-guide/nodejs-api#cliengine)，并用 [`ESLint` 类](https://eslint.org/docs/developer-guide/nodejs-api#eslint-class) 取代。
+废弃 [`CLIEngine` 类](../developer-guide/nodejs-api#cliengine)，并用 [`ESLint` 类](../developer-guide/nodejs-api#eslint-class) 取代。
 
 `CLIEngine` 类提供了同步 API，它阻碍了一些功能的实现，如并行刷新，在可共享的配置/解析器/插件/格式化工具中支持 ES 模块，并增加了可视化显示刷新运行进度的能力。新的 `ESLint` 类提供了一个异步的 API，ESLint 核心将继续使用。`CLIEngine` 在可预见的未来将保留在核心中，但在未来的主要版本中可能会被删除。
 

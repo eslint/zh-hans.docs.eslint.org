@@ -1,6 +1,5 @@
 ---
 title: 规则
-layout: doc
 eleventyNavigation:
     key: configuring rules
     parent: configuring
@@ -9,9 +8,13 @@ eleventyNavigation:
 
 ---
 
+规则是 ESLint 的核心构建模块。规则验证你的代码是否符合某个期望，以及如果不符合该期望该怎么做。规则还可以包含针对该规则的额外配置选项。
+
+ESLint 有大量的[内置规则](../../rules/)，你可以通过插件添加更多规则。你也可以通过配置注释或配置文件来修改你的项目使用哪些规则。
+
 ## 规则配置
 
-ESLint 有大量的内置规则，你可以通过插件添加更多的规则。你也可以通过配置注释或配置文件来修改你的项目使用哪些规则。要改变一个规则的设置，你必须把规则的 ID 设置为这些值之一。
+要改变规则的设置，你必须把规则 ID 设置为这些值之一：
 
 * `"off"` 或 `0` - 关闭规则
 * `"warn"` 或 `1` - 启用并视作警告（不影响退出）。
@@ -41,7 +44,9 @@ ESLint 有大量的内置规则，你可以通过插件添加更多的规则。�
 
 这个注释为 [`quotes`](../../rules/quotes) 规则指定了“双重”选项。数组中的第一项总是规则的严重程度（数字或字符串）。
 
-配置注释可以包括描述，以解释为什么注释是必要的。描述必须出现在配置之后，并以两个或多个连续的 `-` 字符与配置分开。比如。
+#### 配置注释描述
+
+配置注释可以包括描述，以解释为什么注释是必要的。描述必须出现在配置之后，并以两个或多个连续的 `-` 字符与配置分开。比如：
 
 ```js
 /* eslint eqeqeq: "off", curly: "error" -- Here's a description about why this configuration is necessary. */
@@ -86,7 +91,11 @@ rules:
     - double
 ```
 
-要配置一个定义在插件中的规则，你必须在规则的 ID 前加上插件的名称和 `/`。比如说：
+## 插件规则
+
+要配置定义在插件中的规则，你必须在规则 ID 前加上插件的名称和 `/`。
+
+在配置文件中，像这样：
 
 ```json
 {
@@ -117,7 +126,9 @@ rules:
   plugin1/rule1: error
 ```
 
-在这些配置文件中，规则 `plugin1/rule1` 来自名为 `plugin1` 的插件。你也可以在配置注释中使用这种格式，比如：
+在这些配置文件中，规则 `plugin1/rule1` 来自名为 `plugin1` 的插件，包含在名为 `eslint-plugin-plugin1` 的 npm 包中。
+
+你也可以在配置注释中使用这种格式，比如：
 
 ```js
 /* eslint "plugin1/rule1": "error" */
@@ -129,7 +140,7 @@ rules:
 
 ### 使用配置注释
 
-要在你的文件中暂时禁用规则警告，可以使用以下格式的块状注释：
+要在文件的一部分中禁用规则警告，可以使用以下格式的块状注释：
 
 ```js
 /* eslint-disable */
@@ -232,7 +243,11 @@ foo(); // eslint-disable-line example/rule-name
 foo(); /* eslint-disable-line example/rule-name */
 ```
 
-配置注释可以包括说明，以解释为什么注释是必要的。描述必须在配置之后，并且需要用两个或多个连续的 `-` 字符与配置分开。比如：
+**注意**：禁用文件一部分警告的注释会让 ESLint 不报告禁用部分代码违反规则。然而，ESLint 仍会解析整个文件，所以禁用部分的代码仍需是语法上有效的 JavaScript。
+
+#### 注释描述
+
+配置注释可以包括说明，以解释为什么必须禁用或重新启用规则。描述必须在配置之后，并且需要用两个或多个连续的 `-` 字符与配置分开。比如：
 
 ```js
 // eslint-disable-next-line no-console -- Here's a description about why this configuration is necessary.
@@ -244,8 +259,6 @@ console.log('hello');
 **/
 console.log('hello');
 ```
-
-**注意**：禁用文件一部分的警告的注释告诉 ESLint 不要报告被禁用的代码违反规则。然而，ESLint 仍然解析整个文件，所以禁用的代码仍然需要是语法上有效的 JavaScript。
 
 ### 使用配置文件
 
@@ -267,7 +280,7 @@ console.log('hello');
 
 ### 禁用内联注释
 
-要禁用所有内联配置注释，请使用 `noInlineConfig` 设置。比如：
+要禁用所有内联配置注释，请在配置文件中使用 `noInlineConfig` 设置。比如：
 
 ```json
 {
@@ -276,7 +289,7 @@ console.log('hello');
 }
 ```
 
-这个设置类似于 [--no-inline-config](../command-line-interface#--no-inline-config) CLI 选项。
+除其他内联配置外，你也可以使用 [--no-inline-config](../command-line-interface#--no-inline-config) 命令行选项来禁用规则注释。
 
 #### 报告未用 `eslint-disable` 注释
 
@@ -289,4 +302,4 @@ console.log('hello');
 }
 ```
 
-这个设置类似于 [--report-unused-disable-directives](../command-line-interface#--report-unused-disable-directives) CLI 选项，但不会使检查失败（严重程度为 `"warn"`）。
+此配置类似与 [--report-unused-disable-directives](../command-line-interface#--report-unused-disable-directives) 命令行选项，但不会使检查失败（严重程度为 `"warn"`）。

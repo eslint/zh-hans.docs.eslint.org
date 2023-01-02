@@ -1,6 +1,5 @@
 ---
 title: no-obj-calls
-layout: doc
 rule_type: problem
 further_reading:
 - https://es5.github.io/#x15.8
@@ -8,21 +7,33 @@ further_reading:
 
 ECMAScript 提供了几个全局对象，目的是要按原样使用。其中一些对象由于大写字母的缘故，看起来像是构造函数（如`Math` 和 `JSON`），但如果你试图将它们作为函数执行，就会出现错误。
 
-[ECMAScript 5 规范](https://es5.github.io/#x15.8) 明确指出，不能调用 `Math` 或 `JSON`。
+[ECMAScript 5 规范](https://es5.github.io/#x15.8) 明确指出不能调用 `Math` 或 `JSON`：
 
-> Math 对象没有 `[[Call]]` 内部属性；不可能将 Math 对象作为一个函数调用。
+> The Math object does not have a `[[Call]]` internal property; it is not possible to invoke the Math object as a function.
+>
+> Math 对象没有 `[[Call]]` 内部属性；不可能将 Math 对象作为函数调用。
 
-[ECMAScript 2015 规范](https://www.ecma-international.org/ecma-262/6.0/index.html#sec-reflect-object) 明确指出，不能调用 `Reflect`。
+[ECMAScript 2015 规范](https://www.ecma-international.org/ecma-262/6.0/index.html#sec-reflect-object)明确指出不能调用 `Reflect`：
 
-> Reflect 对象也没有 `[[Call]]` 内部方法；不可能作为一个函数调用 Reflect 对象。
+> > The Reflect object also does not have a `[[Call]]` internal method; it is not possible to invoke the Reflect object as a function.
+>
+> Reflect 对象也没有 `[[Call]]` 内部方法；不可能将 Reflect 对象作为函数调用。
 
-而 [ECMAScript 2017 规范](https://www.ecma-international.org/ecma-262/8.0/index.html#sec-atomics-object) 明确指出，不能调用 `Atomics`。
+[ECMAScript 2017 规范](https://www.ecma-international.org/ecma-262/8.0/index.html#sec-atomics-object)明确指出不能调用 `Atomics`：
 
-> Atomics 对象没有 `[[Call]]` 内部方法；不可能将 Atomics 对象作为一个函数来调用。
+> > The Atomics object does not have a `[[Call]]` internal method; it is not possible to invoke the Atomics object as a function.
+>
+> Atomics 对象没有 `[[Call]]` 内部方法；不可能将 Atomics 对象作为函数调用。
+
+而 [ECMAScript 国际化 API 规范](https://tc39.es/ecma402/#intl-object) 明确指出不能调用 `Intl`：
+
+> The Intl object does not have a `[[Call]]` internal method; it is not possible to invoke the Intl object as a function.
+>
+> Intl 对象没有 `[[Call]]` 内部方法；不可能将 Intl 对象作为函数调用。
 
 ## 规则细节
 
-这条规则不允许将 `Math`、`JSON`、`Reflect` 和 `Atomics` 对象作为函数调用。
+这条规则不允许将 `Math`、`JSON`、`Reflect`、`Atomics` 和 `Intl` 对象作为函数调用。
 
 这条规则也不允许用 `new` 运算符将这些对象作为构造器。
 
@@ -32,7 +43,7 @@ ECMAScript 提供了几个全局对象，目的是要按原样使用。其中一
 
 ```js
 /*eslint no-obj-calls: "error"*/
-/*eslint-env es2017*/
+/*eslint-env es2017, browser */
 
 var math = Math();
 
@@ -49,6 +60,10 @@ var newReflect = new Reflect();
 var atomics = Atomics();
 
 var newAtomics = new Atomics();
+
+var intl = Intl();
+
+var newIntl = new Intl();
 ```
 
 :::
@@ -59,7 +74,7 @@ var newAtomics = new Atomics();
 
 ```js
 /*eslint no-obj-calls: "error"*/
-/*eslint-env es2017*/
+/*eslint-env es2017, browser*/
 
 function area(r) {
     return Math.PI * r * r;
@@ -70,6 +85,8 @@ var object = JSON.parse("{}");
 var value = Reflect.get({ x: 1, y: 2 }, "x");
 
 var first = Atomics.load(foo, 0);
+
+var segmenterFr = new Intl.Segmenter("fr", { granularity: "word" });
 ```
 
 :::

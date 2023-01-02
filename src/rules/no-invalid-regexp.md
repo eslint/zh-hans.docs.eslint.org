@@ -1,6 +1,5 @@
 ---
 title: no-invalid-regexp
-layout: doc
 rule_type: problem
 further_reading:
 - https://es5.github.io/#x7.8.5
@@ -44,7 +43,7 @@ this.RegExp('[')
 
 :::
 
-请注意，该规则根据最新的 ECMAScript 规范验证正则表达式，与你的分析器设置无关。
+请注意，该规则根据最新的 ECMAScript 规范验证正则表达式，与你的解析器设置无关。
 
 如果你想出于任何原因允许额外的构造函数标志，你可以使用 `allowConstructorFlags` 选项指定它们。然后，这些标志将被规则忽略。
 

@@ -1,6 +1,5 @@
 ---
 title: 配置文件（新）
-layout: doc
 eleventyNavigation:
     key: configuration files
     parent: configuring
@@ -10,12 +9,14 @@ eleventyNavigation:
 ---
 
 ::: warning
-这是实验性功能，默认情况禁用。但你可以在 `FlatESLint` 类、`FlatRuleTester` 类，或在 `Linter` 类中设置在 `configType: "flat"` 以使用本页所述的配置系统。
+这是实验性功能。你可以在项目根目录放置 `eslint.config.js` 文件或将 `ESLINT_USE_FLAT_CONFIG` 环境变量设置为 `true` 以参加实验。哪怕在有 `eslint.config.js` 文件的情况下，也可以将环境变量设置为 `false` 来退出实验。如果你正在使用 API，那你可以通过使用本页所描述的 `FlatESLint` 类、`FlatRuleTester` 类或在 `Linter` 类中配置 `configType: "flat"` 来使用此配置系统。
 :::
+
+你可以把 ESLint 项目配置放在配置文件中，可以包括内置规则、希望它们如被执行、具有自定义规则的插件、可共享配置、你希望规则适用于哪些文件等等。
 
 ## 配置文件
 
-ESLint 的配置文件叫做 `eslint.config.js` ，它应该放在项目根目录下，并导出包含配置对象的数组。这里有个例子：
+ESLint 的配置文件叫做 `eslint.config.js` ，它应该放在项目根目录下，并导出包含[配置对象](#配置对象)的数组。这里有个例子：
 
 ```js
 export default [
@@ -72,7 +73,7 @@ export default [
 
 #### 用 `ignores` 排除文件
 
-可以通过组合 `files` 和 `ignores` 模式来限制配置对象适用范围。例如，你可能希望某些规则只适用于 `src` 目录下的文件，像这样：
+可以通过组合 `files` 和 `ignores` 模式来限制配置对象适用范围。例如，你可能希望某些规则只适用于 `src` 目录下的文件。
 
 ```js
 export default [
@@ -142,7 +143,7 @@ export default [
 ];
 ```
 
-这个配置指定了 `.config` 目录下的所有文件都应该被忽略。这个模式被添加到默认模式 `["**/node_modules/**", ".git/**"]` 后。
+此配置表明将忽略 `.config` 目录下的所有文件，该模式会被添加到默认模式 `["**/node_modules/**", ".git/**"]` 后面。
 
 #### 级联配置对象
 
@@ -327,9 +328,13 @@ export default [
 
 由于历史原因，布尔值 `false` 和字符串值 `"readable"` 等同于 `"readonly"`。同样地，布尔值 `true` 和字符串 `"writeable"` 等同于 `"writable"`。然而，旧值已经被废弃了。
 
-### 在你的配置中使用插件
+### 在配置中使用插件
 
-插件用于在 ESLint 项目中共享规则、处理器、配置、解析器等等。插件在配置对象中使用 `plugins` 键来指定，这是个对象，其中插件的名称是属性名称，值是插件对象本身。下面是示例：
+插件用于在 ESLint 项目中共享规则、处理器、配置、解析器等等。
+
+#### 使用插件规则
+
+你可以使用插件中的特定规则。可以在配置对象中使用 `plugins` 键指定该插件。`plugin` 键值为对象，其中属性名是插件名，值是插件对象本身。下面是示例：
 
 ```js
 import jsdoc from "eslint-plugin-jsdoc";
@@ -339,7 +344,7 @@ export default [
         files: ["**/*.js"],
         plugins: {
             jsdoc: jsdoc
-        }
+        },
         rules: {
             "jsdoc/require-description": "error",
             "jsdoc/check-values": "error"
@@ -360,7 +365,7 @@ export default [
         files: ["**/*.js"],
         plugins: {
             jsdoc
-        }
+        },
         rules: {
             "jsdoc/require-description": "error",
             "jsdoc/check-values": "error"
@@ -369,7 +374,7 @@ export default [
 ];
 ```
 
-虽然这是最常见的惯例，但你不需要使用插件规定的相同名称。你可以指定任何你想要的前缀，例如：
+虽然这是最常见的约定，但你不一定就要使用与插件规定相同的名称。你可以随意指定想要的前缀，例如：
 
 ```js
 import jsdoc from "eslint-plugin-jsdoc";
@@ -379,7 +384,7 @@ export default [
         files: ["**/*.js"],
         plugins: {
             jsd: jsdoc
-        }
+        },
         rules: {
             "jsd/require-description": "error",
             "jsd/check-values": "error"
@@ -388,11 +393,35 @@ export default [
 ];
 ```
 
-这时该配置对象就用 `jsd` 取代了原先的  `jsdoc` 插件前缀。
+这时该配置对象就是使用 `jsd` 而非原先的 `jsdoc` 插件前缀。
+
+
+#### 使用包含在插件中的配置
+
+你可以直接通过在 `eslint.config.js` 配置数组中添加配置来使用包含在插件中的配置。
+通常，你会使用插件的推荐配置。下面是示例：
+
+```js
+import jsdoc from "eslint-plugin-jsdoc";
+export default [
+    // 包含在插件中的配置
+    jsdoc.configs.recommended,
+    // 其他配置对象……
+    {
+        files: ["**/*.js"],
+        plugins: {
+            jsdoc: jsdoc
+        },
+        rules: {
+            "jsdoc/require-description": "warn",
+        }
+    }
+];
+```
 
 ### 使用处理程序
 
-处理器允许 ESLint 将文本转化为 ESLint 可以检查的代码片段。你可以通过定义一个 `processor` 属性来指定对某个文件类型使用的处理器，该属性包含格式为 `"pluginName/processorName"` 的处理器名称，以引用一个插件中的处理器，或者是一个包含 `preprocess()` 和 `postprocess()` 方法的对象。例如，为了从 Markdown 文件中提取 JavaScript 代码块，你可以在你的配置中加入这个：
+处理器允许 ESLint 将文本转化为 ESLint 可以检查的代码片段。你可以通过定义一个 `processor` 属性来指定某个文件类型所使用的处理器，该属性需要包括形如 `"pluginName/processorName"` 的处理器名称，以引用插件中的处理器，或是包括使用 `preprocess()` 和 `postprocess()` 方法的对象。例如，想要从 Markdown 文件中提取 JavaScript 代码块，你可以在你的配置中加入这个：
 
 ```js
 import markdown from "eslint-plugin-markdown";
@@ -403,7 +432,7 @@ export default [
         plugins: {
             markdown
         },
-        processor: "markdown/markdown"
+        processor: "markdown/markdown",
         settings: {
             sharedData: "Hello"
         }
@@ -411,7 +440,7 @@ export default [
 ];
 ```
 
-这个配置对象指定在名为 `markdown` 的插件中包含一个名为 `markdown` 的处理器，并将该处理器应用于所有以 `.md` 结尾的文件。
+这个配置对象指定在名为 `markdown` 的插件中包含一个名为 `markdown` 的处理器。此配置将使该处理器应用于所有以 `.md` 结尾的文件。
 
 处理器可以将命名代码块当作配置对象中的文件名，如 `0.js` 和 `1.js`。ESLint 将这样的命名代码块作为原始文件的一个子文件来处理。你可以为命名代码块指定额外的配置对象。例如，下面是对 markdown 文件中以 `.js` 结尾的命名代码块禁用 `strict` 规则。
 
@@ -424,7 +453,7 @@ export default [
         plugins: {
             markdown
         },
-        processor: "markdown/markdown"
+        processor: "markdown/markdown",
         settings: {
             sharedData: "Hello"
         }
@@ -454,7 +483,7 @@ export default [
 ];
 ```
 
-这个配置对象指定 [`semi`](/docs/latest/rules/semi) 规则应被启用，其严重程度为 `"error"`。你也可以通过指定一个数组来为规则提供选项，其中第一项是严重程度，之后的每一项都是规则的选项。例如，你可以将 `"semi"` 规则切换为不允许使用分号，将 `"never"` 作为一个选项。
+这个配置对象指定 [`semi`](../../rules/semi) 规则应被启用，其严重程度为 `"error"`。你也可以通过指定一个数组来为规则提供选项，其中第一项是严重程度，之后的每一项都是规则的选项。例如，你可以将 `"semi"` 规则切换为不允许使用分号，将 `"never"` 作为一个选项。
 
 ```js
 export default [
@@ -473,7 +502,7 @@ export default [
 你可以为一个规则指定三种可能的严重程度
 
 * `"error"`（或 `2`） - 将问题视作错误。当使用 ESLint CLI 时，错误导致 CLI 以非零代码退出。
-* `"warn"`（或 `1`） - 将问题视作警告。当使用 ESLint CLI 时，在不改变退出代码报告警告内容。如仅报告警告内容，则退出代码使用 0。
+* `"warn"`（或 `1`） - 将问题视作警告。当使用 ESLint CLI 时，在不改变退出代码报告警告内容。如仅报告警告内容，则退出代码为 0。
 * `"off"`（或 `0`） - 彻底关闭规则。
 
 #### 规则配置级联
@@ -516,7 +545,7 @@ export default [
 
 ### 配置共享设置
 
-ESLint 支持在配置文件中添加共享设置。插件使用 `settings` 来指定应该在其所有规则中共享的信息。你可以在一个配置对象中添加 `settings` 对象，它将被提供给每个正在执行的规则。如果你正在添加自定义规则，并希望它们能够访问相同的信息，这可能是有用的。下面是示例：
+ESLint 支持在配置文件中添加共享设置。当在配置对象中添加 `settings` 对象，它将提供给所有规则。约定俗成插件将他们感兴趣的设置放入命名空间，以避免与其他设置相冲突。插件可以使用 `settings` 来指定应该在其所有规则中共享的信息。如果你正在添加自定义规则，并希望它们能够访问相同的信息，这可能是有用的。下面是示例：
 
 ```js
 export default [
@@ -554,10 +583,10 @@ export default [
 
 当 ESLint 在命令行上运行时，它首先检查当前工作目录中的 `eslint.config.js`，如果没有找到，将在下一个父目录中寻找该文件。这种搜索一直持续到找到该文件或到达根目录。
 
-你可以通过在命令行中使用 `-c` 或 `-config--file` 选项来指定替代的配置文件，以避免检索 `eslint.config.js`。
+你可以通过通过将设置 `ESLINT_USE_FLAT_CONFIG` 环境变量设置为 `true`，并在命令行中使用 `-c` 或 `--config` 选项来指定替代的配置文件，以避免检索 `eslint.config.js`。例如
 
 ```shell
-npx eslint -c some-other-file.js **/*.js
+ESLINT_USE_FLAT_CONFIG=true npx eslint -c some-other-file.js **/*.js
 ```
 
 在这种情况下，ESLint 将不会检索 `eslint.config.js`，而会直接使用 `some-other-file.js`。

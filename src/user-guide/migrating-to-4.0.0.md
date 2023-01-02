@@ -1,6 +1,5 @@
 ---
 title: 迁移至 v4.0.0
-layout: doc
 
 ---
 
@@ -36,10 +35,10 @@ ESLint v4.0.0 是第四个主要发行版。此版本有几个破坏性改变，
 
 ## <a name="eslint-recommended-changes"></a> `eslint:recommended` 更改
 
-[`eslint:recommended`](https://eslint.org/docs/user-guide/configuring#using-eslintrecommended) 配置新增了两个规则：
+[`eslint:recommended`](../user-guide/configuring#using-eslintrecommended) 配置新增了两个规则：
 
-* [`no-compare-neg-zero`](/docs/rules/no-compare-neg-zero) 不允许与 `-0` 比较
-* [`no-useless-escape`](/docs/rules/no-useless-escape) 不允许字符串和正则表达式中出现无用的转义字符
+* [`no-compare-neg-zero`](../rules/no-compare-neg-zero) 不允许与 `-0` 比较
+* [`no-useless-escape`](../rules/no-useless-escape) 不允许字符串和正则表达式中出现无用的转义字符
 
 **解决方案**：要想维持类似 3.x 的 `eslint:recommended` 行为，你可以在配置文件中禁用这些规则：
 
@@ -56,11 +55,11 @@ ESLint v4.0.0 是第四个主要发行版。此版本有几个破坏性改变，
 
 ## <a name="indent-rewrite"></a> 更加严格的 `indent` 规则
 
-之起 [`indent`](/docs/rules/indent) 规则相当于宽松地检查缩进，许多代码模式中的缩进都无法识别。这造成了用户的混乱，他们不小心用了错误的缩进，他们使用 ESLint 自然是希望 ESLint 能够发现这些问题：
+之起 [`indent`](../rules/indent) 规则相当于宽松地检查缩进，许多代码模式中的缩进都无法识别。这造成了用户的混乱，他们不小心用了错误的缩进，他们使用 ESLint 自然是希望 ESLint 能够发现这些问题：
 
 在 4.0 中重写 `indent` 规则。新版规则将报告旧版所没有发现的一些缩进错误。另外将默认检查 `MemberExpression` 节点、函数属性和函数参数的缩进（此前为了向后兼容默认忽略。）。
 
-为了让升级过程更加任意，我们引入了 [`indent-legacy`](/docs/rules/indent-legacy) 规则作为 `indent` 3.x 版本规则的快照。如果在你升级 `indent` 规则后出现了问题，你能够使用 `indent-legacy` 规则回到 3.x 的行为模式。不过 `indent-legacy` 规则已废弃，所以以后不会再接受漏洞修复和功能改进，最终你还是应该要切换回 `indent` 规则。
+为了让升级过程更加任意，我们引入了 [`indent-legacy`](../rules/indent-legacy) 规则作为 `indent` 3.x 版本规则的快照。如果在你升级 `indent` 规则后出现了问题，你能够使用 `indent-legacy` 规则回到 3.x 的行为模式。不过 `indent-legacy` 规则已废弃，所以以后不会再接受漏洞修复和功能改进，最终你还是应该要切换回 `indent` 规则。
 
 **解决方案**：我们建议升级过程中不对 `indent` 配置进行修改，并修复出现在代码库中新出现的缩进错误。不过如果你坚持想要类似 3.x 的 `indent` 规则，你可以更新配置：
 
@@ -87,13 +86,13 @@ ESLint v4.0.0 是第四个主要发行版。此版本有几个破坏性改变，
 
 ## <a name="padded-blocks-defaults"></a> 默认情况下 `padded-blocks` 规则更加严格了
 
-默认情况下 [`padded-blocks`](/docs/rules/padded-blocks) 规则现在将在类体和开关语句中强制执行填充。之起规则将忽略这些情况，除非用户选择执行它们。
+默认情况下 [`padded-blocks`](../rules/padded-blocks) 规则现在将在类体和开关语句中强制执行填充。之起规则将忽略这些情况，除非用户选择执行它们。
 
 **解决方案**：如果这个变化导致你的代码库中出现更多的提示性错误，你应该修复它们或重新配置规则。
 
 ## <a name="space-before-function-paren-defaults"></a> 默认情况下 `space-before-function-paren` 规则更加严格了
 
-默认情况下 [`space-before-function-paren`](/docs/rules/space-before-function-paren) 规则现在将强制执行异步箭头函数的间距。之起规则将忽略这些情况，除非用户选择强制执行它们。
+默认情况下 [`space-before-function-paren`](../rules/space-before-function-paren) 规则现在将强制执行异步箭头函数的间距。之起规则将忽略这些情况，除非用户选择强制执行它们。
 
 **解决方案**：要想维持类似 3.x 的样子，你可以使用：
 
@@ -111,7 +110,7 @@ ESLint v4.0.0 是第四个主要发行版。此版本有几个破坏性改变，
 
 ## <a name="no-multi-spaces-eol-comments"></a> 默认情况下 `no-multi-spaces` 规则更加严格了
 
-现在在默认情况下 [`no-multi-spaces`](/docs/rules/no-multi-spaces) 规则不允许在行尾的注释前有多个空格。之前规则没有检查这种情况。
+现在在默认情况下 [`no-multi-spaces`](../rules/no-multi-spaces) 规则不允许在行尾的注释前有多个空格。之前规则没有检查这种情况。
 
 **解决方案**：要想保持类似 3.x 的样子，你可以使用：
 
@@ -185,7 +184,7 @@ ESLint v4.0.0 是第四个主要发行版。此版本有几个破坏性改变，
 
 4.0 起 AST 遍历过程中将不再传递 `LineComment` 和 `BlockComments` 事件。这有两个原因：
 
-* 该行为依赖于在分析器层面上发生的注释附件，为确保考虑了所有注释，将禁止这种情况再次发生。
+* 该行为依赖于在解析器层面上发生的注释附件，为确保考虑了所有注释，将禁止这种情况再次发生。
 * 根据 token 上下文中考虑注释相较于根据 AST 节点上下文中考虑注释 token 而已更容易预测和推理
 
 **解决方案**：改用 `sourceCode.getAllComments()` 规则来获取文件中的所有注释，而不是依赖 `LineComment` 和 `BlockComment`。要检查某一特定类型的所有注释，规则可以使用以下模式。
