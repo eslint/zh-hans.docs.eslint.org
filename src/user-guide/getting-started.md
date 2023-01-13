@@ -73,7 +73,7 @@ yarn run eslint yourfile.js
 }
 ```
 
-`"semi"` 和 `"quotes"` 是 ESLint [规则](../rules)的名称。第一个值代表规则的错误级别，有以下几种可供选择：
+`"semi"` 和 `"quotes"` 是 ESLint [规则](../rules/)的名称。第一个值代表规则的错误级别，有以下几种可供选择：
 
 * `"off"` 或 `0` - 关闭该规则
 * `"warn"` 或 `1` - 启用并警告（不影响现有代码）
@@ -89,7 +89,7 @@ yarn run eslint yourfile.js
 }
 ```
 
-这一行将启用[所有标记为“推荐”的规则](../rules)。另外，你也可以通过在 [npmjs.com](https://www.npmjs.com/search?q=eslint-config) 上搜索“eslint-config”并使用别人创建的配置。在没有扩展别人的可共享配置或在配置中明确启用规则时，ESLint 不会限制你的代码。
+这一行将启用[所有标记为“推荐”的规则](../rules/)。另外，你也可以通过在 [npmjs.com](https://www.npmjs.com/search?q=eslint-config) 上搜索“eslint-config”并使用别人创建的配置。在没有扩展别人的可共享配置或在配置中明确启用规则时，ESLint 不会限制你的代码。
 
 ---
 

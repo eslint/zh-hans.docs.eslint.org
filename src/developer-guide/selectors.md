@@ -137,7 +137,7 @@ module.exports = {
 
 ### 已知问题
 
-由于 [esquery](https://github.com/estools/esquery) 中的一个 [bug](https://github.com/estools/esquery/issues/68)，无法正确解析包含正斜杠字符 `/` 的正则表达式，所以 `[value=/some/path/]` 会出现语法错误。你可以将 `/` 字符替换成其对应的 unicode 字符，像这样 `[value=/some\u002Fpath/]`，来[解决这个问题](https://github.com/estools/esquery/issues/68)。
+由于 [esquery](https://github.com/estools/esquery) 中的一个 [bug](https://github.com/estools/esquery/issues/68)，无法正确解析包含正斜杠字符 `/` 的正则表达式，所以 `[value=/some\/path/]` 会出现语法错误。你可以将 `/` 字符替换成其对应的 unicode 字符，像这样 `[value=/some\u002Fpath/]`，来[解决这个问题](https://github.com/estools/esquery/issues/68)。
 
 比如下列配置禁止从 `some/path` 导入：
 

@@ -377,7 +377,7 @@ p;
 
 ### ignoreRestSiblings
 
-`ignoreRestSiblings`选项是一个布尔值（默认：`false`）。使用 [Rest Property](https://github.com/tc39/proposal-object-rest-spread) 可以从一个对象的 `omit` 属性，但默认情况下，兄弟姐妹的属性被标记为 `unused`。启用这个选项后，其余属性的兄弟姐妹将被忽略。
+`ignoreRestSiblings` 选项是一个布尔值（默认：`false`）。使用 [Rest Property](https://github.com/tc39/proposal-object-rest-spread) 可以从一个对象的 `omit` 属性，但默认情况下，兄弟姐妹的属性被标记为 `unused`。启用这个选项后，其余属性的兄弟姐妹将被忽略。
 
 使用 `{ "ignoreRestSiblings": true }` 选项的**正确**示例：
 

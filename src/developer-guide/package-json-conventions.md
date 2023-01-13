@@ -37,7 +37,7 @@ If a package contains any `build:*` scripts, there MAY be a script named `build`
 
 ### Release
 
-Scripts that have public side effects (publishing the web site, committing to Git, etc.) MUST begin with `release`.
+Scripts that have public side effects (publishing the website, committing to Git, etc.) It MUST begin with `release`.
 
 ### Lint
 
