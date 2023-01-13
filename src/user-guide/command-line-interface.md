@@ -171,7 +171,7 @@ npx eslint --env browser --env node file.js
 * **多个参数**：支持
 * **默认值**：`.js` 和与配置中 `overrides` 条目相匹配的文件。
 
-只有在检查模式为目录时才会使用 `--ext`。如果你使用 glob 模式或文件名，那么会忽略 `--ext`。例如，`npx eslint "lib/*" --ext .js` 会检查`lib/` 目录下的所有文件，不管扩展名是什么。
+只有在检查模式为目录时才会使用 `--ext`。如果你使用 glob 模式或文件名，那么会忽略 `--ext`。例如，`npx eslint "lib/*" --ext .js` 会检查 `lib/` 目录下的所有文件，不管扩展名是什么。
 
 ##### `--ext` 示例
 
