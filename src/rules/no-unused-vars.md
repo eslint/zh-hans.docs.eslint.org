@@ -124,7 +124,7 @@ var global_var = 42;
 ```json
 {
     "rules": {
-        "no-unused-vars": ["error", { "vars": "all", "args": "after-used", "": false }]
+        "no-unused-vars": ["error", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }]
     }
 }
 ```

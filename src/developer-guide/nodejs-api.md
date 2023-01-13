@@ -916,14 +916,14 @@ ruleTester.run("my-rule", myRule, {
 
 ---
 
-[configuration object]: ../user-guide/configuring/index
+[配置对象]: ../user-guide/configuring/
 [builtin-formatters]: ../user-guide/formatters/
 [third-party-formatters]: https://www.npmjs.com/search?q=eslintformatter
-[eslint-lintfiles]: #◆-eslintlintfilespatterns
-[eslint-linttext]: #◆-eslintlinttextcode-options
-[eslint-loadformatter]: #◆-eslintloadformatternameorpath
-[lintresult]: #◆-lintresult-类型
-[lintmessage]: #◆-lintmessage-类型
-[suppressedlintmessage]: #◆-suppressedlintmessage-类型
-[editinfo]: #◆-editinfo-类型
-[loadedformatter]: #◆-loadedformatter-类型
+[eslint-lintfiles]: #-eslintlintfilespatterns
+[eslint-linttext]: #-eslintlinttextcode-options
+[eslint-loadformatter]: #-eslintloadformatternameorpath
+[lintresult]: #-lintresult-
+[lintmessage]: #-lintmessage-
+[suppressedlintmessage]: #-suppressedlintmessage-
+[editinfo]: #-editinfo-
+[loadedformatter]: #-loadedformatter-

@@ -93,7 +93,7 @@ console.log(a);
 
 // `i` gets a new binding each iteration
 for (const i in [1, 2, 3]) {
-  console.log(a);
+  console.log(i);
 }
 
 // `a` gets a new binding each iteration
