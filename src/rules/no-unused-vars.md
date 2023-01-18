@@ -1,6 +1,5 @@
 ---
 title: no-unused-vars
-layout: doc
 rule_type: problem
 ---
 
@@ -246,25 +245,6 @@ console.log(secondVar);
 
 :::
 
-### ignoreRestSiblings
-
-`ignoreRestSiblings`选项是一个布尔值（默认：`false`）。使用 [Rest Property](https://github.com/tc39/proposal-object-rest-spread) 可以从一个对象的 `omit` 属性，但默认情况下，兄弟姐妹的属性被标记为 `unused`。启用这个选项后，其余属性的兄弟姐妹将被忽略。
-
-使用 `{ "ignoreRestSiblings": true }` 选项的**正确**示例：
-
-::: correct
-
-```js
-/*eslint no-unused-vars: ["error", { "ignoreRestSiblings": true }]*/
-// 'foo' and 'bar' were ignored because they have a rest property sibling.
-var { foo, ...coords } = data;
-
-var bar;
-({ bar, ...coords } = data);
-```
-
-:::
-
 ### argsIgnorePattern
 
 `argsIgnorePattern` 选项指定了不检查使用情况的例外情况：参数的名称与 regexp 模式相匹配。例如，名称以下划线开头的变量。
@@ -284,46 +264,6 @@ foo();
 
 :::
 
-### destructuredArrayIgnorePattern
-
-`destructuredArrayIgnorePattern` 选项指定了不检查使用的例外情况：名称与 regexp 模式匹配的数组解构模式的元素。例如，名字以下划线开头的变量。
-
-使用 `{ "destructuredArrayIgnorePattern": "^_" }` 选项的**正确**示例：
-
-::: correct
-
-```js
-/*eslint no-unused-vars: ["error", { "destructuredArrayIgnorePattern": "^_" }]*/
-
-const [a, _b, c] = ["a", "b", "c"];
-console.log(a+c);
-
-const { x: [_a, foo] } = bar;
-console.log(foo);
-
-function baz([_c, x]) {
-    x;
-}
-baz();
-
-function test({p: [_q, r]}) {
-    r;
-}
-test();
-
-let _m, n;
-foo.forEach(item => {
-    [_m, n] = item;
-    console.log(n);
-});
-
-let _o, p;
-_o = 1;
-[_o, p] = foo;
-p;
-```
-
-:::
 
 ### caughtErrors
 
@@ -390,6 +330,66 @@ try {
 } catch (ignoreErr) {
     console.error("errors");
 }
+```
+
+:::
+
+### destructuredArrayIgnorePattern
+
+`destructuredArrayIgnorePattern` 选项指定了不检查使用的例外情况：名称与 regexp 模式匹配的数组解构模式的元素。例如，名字以下划线开头的变量。
+
+使用 `{ "destructuredArrayIgnorePattern": "^_" }` 选项的**正确**示例：
+
+::: correct
+
+```js
+/*eslint no-unused-vars: ["error", { "destructuredArrayIgnorePattern": "^_" }]*/
+
+const [a, _b, c] = ["a", "b", "c"];
+console.log(a+c);
+
+const { x: [_a, foo] } = bar;
+console.log(foo);
+
+function baz([_c, x]) {
+    x;
+}
+baz();
+
+function test({p: [_q, r]}) {
+    r;
+}
+test();
+
+let _m, n;
+foo.forEach(item => {
+    [_m, n] = item;
+    console.log(n);
+});
+
+let _o, p;
+_o = 1;
+[_o, p] = foo;
+p;
+```
+
+:::
+
+### ignoreRestSiblings
+
+`ignoreRestSiblings` 选项是一个布尔值（默认：`false`）。使用 [Rest Property](https://github.com/tc39/proposal-object-rest-spread) 可以从一个对象的 `omit` 属性，但默认情况下，兄弟姐妹的属性被标记为 `unused`。启用这个选项后，其余属性的兄弟姐妹将被忽略。
+
+使用 `{ "ignoreRestSiblings": true }` 选项的**正确**示例：
+
+::: correct
+
+```js
+/*eslint no-unused-vars: ["error", { "ignoreRestSiblings": true }]*/
+// 'foo' and 'bar' were ignored because they have a rest property sibling.
+var { foo, ...coords } = data;
+
+var bar;
+({ bar, ...coords } = data);
 ```
 
 :::

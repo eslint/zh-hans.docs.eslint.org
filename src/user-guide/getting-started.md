@@ -1,6 +1,5 @@
 ---
 title: ESLint 入门
-layout: doc
 eleventyNavigation:
     key: getting started 
     parent: user guide
@@ -23,6 +22,26 @@ ESLint 是一个根据方案识别并报告 ECMAScript/JavaScript 代码问题�
 
 ```shell
 npm init @eslint/config
+```
+
+如果你想使用托管在 npm 上的指定可共享配置，你可以使用 `--config` 选项并指定包名：
+
+```shell
+# 使用 `eslint-config-semistandard` 可共享配置
+# npm 6.x
+npm init @eslint/config --config semistandard
+# ⚠️ npm 7+ 需要使用额外的双杠：
+npm init @eslint/config -- --config semistandard
+# 或（可以省略 `eslint-config` 前缀）
+npm init @eslint/config -- --config eslint-config-semistandard
+```
+
+`--config` 标志也支持传递数组
+
+```shell
+npm init @eslint/config -- --config semistandard,standard
+# 或
+npm init @eslint/config -- --config semistandard --config standard
 ```
 
 **注意**：使用 `npm init @eslint/config` 时，运行目录需要已经有 `package.json` 文件了。如果还没有该文件，请确保在此之前运行 `npm init` 或 `yarn init`。
@@ -54,7 +73,7 @@ yarn run eslint yourfile.js
 }
 ```
 
-`"semi"` 和 `"quotes"` 是 ESLint [规则](/docs/rules)的名称。第一个值代表规则的错误级别，有以下几种可供选择：
+`"semi"` 和 `"quotes"` 是 ESLint [规则](../rules/)的名称。第一个值代表规则的错误级别，有以下几种可供选择：
 
 * `"off"` 或 `0` - 关闭该规则
 * `"warn"` 或 `1` - 启用并警告（不影响现有代码）
@@ -70,7 +89,7 @@ yarn run eslint yourfile.js
 }
 ```
 
-这一行将启用[所有标记为“推荐”的规则](/docs/rules)。另外，你也可以通过在 [npmjs.com](https://www.npmjs.com/search?q=eslint-config) 上搜索“eslint-config”并使用别人创建的配置。在没有扩展别人的可共享配置或在配置中明确启用规则时，ESLint 不会限制你的代码。
+这一行将启用[所有标记为“推荐”的规则](../rules/)。另外，你也可以通过在 [npmjs.com](https://www.npmjs.com/search?q=eslint-config) 上搜索“eslint-config”并使用别人创建的配置。在没有扩展别人的可共享配置或在配置中明确启用规则时，ESLint 不会限制你的代码。
 
 ---
 
@@ -79,5 +98,5 @@ yarn run eslint yourfile.js
 * 了解 ESLint [可选配置](configuring/)。
 * 熟悉一下[命令行选项](command-line-interface)。
 * 将 [ESLint 集成](integrations)带到诸如编辑器、构建系统以及其他工具中。
-* 找不到合适的规则？创造属于自己的[自定义规则](/docs/developer-guide/working-with-rules)。
-* 通过[贡献](/docs/developer-guide/contributing/)让 ESLint 变得更棒。
+* 找不到合适的规则？创造属于自己的[自定义规则](../developer-guide/working-with-rules)。
+* 通过[贡献](../developer-guide/contributing/)让 ESLint 变得更棒。

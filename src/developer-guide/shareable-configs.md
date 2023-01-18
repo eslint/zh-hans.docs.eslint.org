@@ -1,6 +1,5 @@
 ---
 title: 可共享配置
-layout: doc
 eleventyNavigation:
     key: shareable configs
     parent: developer guide

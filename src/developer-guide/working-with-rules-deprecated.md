@@ -1,6 +1,5 @@
 ---
 title: 创建规则（废弃）
-layout: doc
 
 ---
 
@@ -78,7 +77,7 @@ module.exports = function(context) {
 
 `context` 对象包含额外的功能，有助于规则完成其工作。顾名思义，`context` 对象包含与规则的上下文相关的信息。`context` 对象有以下属性。
 
-* `parserOptions` - 为本次运行配置的分析器选项（[查看更多细节](../user-guide/configuring/language-options#specifying-parser-options)）。
+* `parserOptions` - 为本次运行配置的解析器选项（[查看更多细节](../user-guide/configuring/language-options#specifying-parser-options)）。
 * `id` - 规则 ID。
 * `options` - 规则选项的数组。
 * `settings` - 配置中的 `settings`。
@@ -447,7 +446,7 @@ invalid: [
 
 ### 指定解析器选项
 
-一些测试要求必须使用某种分析器配置。这可以通过 `parserOptions` 设置在测试规范中指定。
+一些测试要求必须使用某种解析器配置。这可以通过 `parserOptions` 设置在测试规范中指定。
 
 例如，将 `ecmaVersion` 设置为 6（以便使用像 `for ... of` 这样的结构）。
 

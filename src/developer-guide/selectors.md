@@ -1,6 +1,5 @@
 ---
 title: 选择器
-layout: doc
 
 ---
 
@@ -94,7 +93,7 @@ module.exports = {
 
 ### 用选择器限制语法
 
-通过 [no-restricted-syntax](/docs/rules/no-restricted-syntax) 规则，你可以限制代码中特定语法的使用。例如，你可以使用以下配置来禁止使用没有块状语句作为主体的 `if` 语句：
+通过 [no-restricted-syntax](../rules/no-restricted-syntax) 规则，你可以限制代码中特定语法的使用。例如，你可以使用以下配置来禁止使用没有块状语句作为主体的 `if` 语句：
 
 ```json
 {
@@ -138,4 +137,16 @@ module.exports = {
 
 ### 已知问题
 
-由于 [esquery](https://github.com/estools/esquery) 中的一个 [bug](https://github.com/estools/esquery/issues/68)，包含正斜线字符 `/` 的正则表达式不能被正确解析，所以 `[value=/some/path/]` 会出现语法错误。你可以将 `/` 字符替换成其对应的 unicode 字符，像这样 `[value=/some\u002Fpath/]`，来[解决这个问题](https://github.com/estools/esquery/issues/68)。
+由于 [esquery](https://github.com/estools/esquery) 中的一个 [bug](https://github.com/estools/esquery/issues/68)，无法正确解析包含正斜杠字符 `/` 的正则表达式，所以 `[value=/some\/path/]` 会出现语法错误。你可以将 `/` 字符替换成其对应的 unicode 字符，像这样 `[value=/some\u002Fpath/]`，来[解决这个问题](https://github.com/estools/esquery/issues/68)。
+
+比如下列配置禁止从 `some/path` 导入：
+
+```json
+{
+  "rules": {
+    "no-restricted-syntax": ["error", "ImportDeclaration[source.value=/^some\\u002Fpath$/]"]
+  }
+}
+```
+
+注意 JSON 和字符串字面量中的 `\` 需要转义（`\\`）。

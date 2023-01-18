@@ -1,6 +1,5 @@
 ---
 title: 创建自定义解析器
-layout: doc
 eleventyNavigation:
     key: working with custom parsers
     parent: developer guide

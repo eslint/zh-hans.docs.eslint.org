@@ -1,12 +1,11 @@
 ---
 title: 规则
-layout: doc
 permalink: /rules/index.html
 eleventyNavigation:
     key: rules
     parent: user guide
     title: 规则
-    order: 4
+    order: 5
 ---
 
 {% from 'components/rule-categories.macro.html' import ruleCategories, recommended, fixable, hasSuggestions %}

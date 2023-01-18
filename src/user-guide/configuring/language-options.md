@@ -1,6 +1,5 @@
 ---
 title: 语言选项
-layout: doc
 eleventyNavigation:
     key: configuring language options
     parent: configuring
@@ -9,9 +8,11 @@ eleventyNavigation:
 
 ---
 
+JavaScript 生态中有多个运行时、版本、扩展和框架。每个所支持的语法和全局变量都不尽相同。ESLint 会让你指定项目中 JavaScript 所使用的语言选项。你也可以在项目中使用插件扩展 ESLint 支持的语言选项。
+
 ## 指定环境
 
-一个环境提供了预定义的全局变量。可用的环境有：
+环境会提供预设的全局变量。可用的环境有：
 
 * `browser` - 浏览器全局变量。
 * `node` - Node.js 的全局变量和 Node.js 的范围。
@@ -62,7 +63,7 @@ eleventyNavigation:
 
 ### 使用配置文件
 
-要在配置文件中使用 `env` 键指定环境，并通过将每个环境设置为 `true` 想启用的环境。例如，下面是启用浏览器和 Node.js 环境的例子：
+在配置文件中使用 `env` 键指定环境，并通过将每个环境设置为 `true` 来启用想要的环境。例如，下面是启用浏览器和 Node.js 环境的例子：
 
 ```json
 {
@@ -73,7 +74,7 @@ eleventyNavigation:
 }
 ```
 
-或者在 `package.json` 文件中
+或者在 `package.json` 文件中：
 
 ```json
 {
@@ -88,7 +89,7 @@ eleventyNavigation:
 }
 ```
 
-And in YAML:
+或者在 YAM 中L:
 
 ```yaml
 ---
@@ -167,7 +168,7 @@ And in YAML:
 
 该例子允许在代码中覆盖 `var1`，但不允许覆盖 `var2`。
 
-可以用字符串 `"off"` 来禁用全局变量。例如，在一个环境中，可以使用大多数 ES2015 全局变量，但不可以使用 `Promise`，那么你就可以使用这个配置：
+可以将它们的值设置为字符串 `"off"` 来禁用全局变量。例如，在一个环境中，可以使用大多数 ES2015 全局变量，但不可以使用 `Promise`，那么你就可以使用这个配置：
 
 ```json
 {
@@ -187,12 +188,11 @@ And in YAML:
 ESLint 允许你指定你想要支持的 JavaScript 语言选项。默认情况下，ESLint 希望使用 ECMAScript 5 语法。你可以通过使用解析器选项来覆盖这一设置，以实现对其他 ECMAScript 版本以及 JSX 的支持。
 
 请注意，支持 JSX 语法并不等同于支持 React。React 对 JSX 语法应用了特定的语义，而 ESLint 并不能识别。如果你使用 React 并且使用 React 语法，我们建议使用 [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react)。
-同样地，支持 ES6 语法不等于支持新的 ES6 全局变量（例如，新的类型，如 `Set`）。
-使用 `{ "parserOptions": { "ecmaVersion": 6 } }`启用 ES6 语法；使用 `{ "env": { "es6": true } }`. `{ "env": { "es6": true }}` 启用新的 ES6 全局变量；`{ "parserOptions": { "ecmaVersion": 6 } }` 会自动启用 ES6 语法，但不会自动启用 ES6 全局变量。
+同样地，支持 ES6 语法不等于支持新的 ES6 全局变量（例如，新的类型，如 `Set`）。使用 `{ "parserOptions": { "ecmaVersion": 6 } }` 启用 ES6 语法；使用 `{ "env": { "es6": true } }` 启用新的 ES6 全局变量，设置 `{ "env": { "es6": true }}` 会自动启用 ES6 语法，但 `{ "parserOptions": { "ecmaVersion": 6 } }` 则不会自动启用 ES6 全局变量。
 
 可以在 `.eslintrc.*` 文件中通过使用 `parserOptions` 属性设置解析器选项。可用选项有：
 
-*  `ecmaVersion`  - 设置为 3、5（默认）、6、7、8、9、10、11、12 或 13，以指定你要使用的 ECMAScript 语法的版本。你也可以设置为 2015（6）、2016（7）、2017（8）、2018（9）、2019（10）、2020（11）、2021（12）或 2022（13）来使用基于年份的命名。你也可以设置 `lastest` 来使用受支持的最新版本。
+* `ecmaVersion`  - 设置为 3、5（默认）、6、7、8、9、10、11、12 或 13，以指定你要使用的 ECMAScript 语法的版本。你也可以设置为 2015（6）、2016（7）、2017（8）、2018（9）、2019（10）、2020（11）、2021（12）或 2022（13）来使用基于年份的命名。你也可以设置 `"latest"` 来使用受支持的最新版本。
 * `sourceType` - 设置为 `"script"`（默认值）或 `"module"`（如果代码是 ECMAScript 模块）。
 * `allowReserved` - 允许使用保留字作为标识符（如果 `ecmaVersion` 为 3）。
 * `ecmaFeatures` - 表示你想使用哪些额外的语言特性的对象。

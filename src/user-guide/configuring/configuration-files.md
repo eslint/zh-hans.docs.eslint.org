@@ -1,6 +1,5 @@
 ---
 title: 配置文件
-layout: doc
 eleventyNavigation:
     key: configuration files
     parent: configuring
@@ -8,6 +7,8 @@ eleventyNavigation:
     order: 1
 
 ---
+
+你可以把 ESLint 项目配置放在配置文件中，可以包括内置规则、希望它们如被执行、具有自定义规则的插件、可共享配置、你希望规则适用于哪些文件等等。
 
 ## 配置文件格式
 
@@ -40,7 +41,7 @@ ESLint 支持几种格式的配置文件：
 eslint -c myconfig.json myfiletotest.js
 ```
 
-如果你使用了配置文件，并希望 ESLint 忽略所有 `.eslintrc.*` 文件，确保使用了 [`--no-eslintrc`](https://eslint.org/docs/user-guide/command-line-interface#--no-eslintrc) 的同时也使用了 [`-c`](https://eslint.org/docs/user-guide/command-line-interface#-c---config) 标志。
+如果你使用了配置文件，并希望 ESLint 忽略所有 `.eslintrc.*` 文件，确保使用了 [`--no-eslintrc`](../command-line-interface#--no-eslintrc) 的同时也使用了 [`--config`](../command-line-interface#-c---config) 标志。
 
 下面是 JSON 配置文件示例，它使用了 `typescript-eslint` 解析器来支持 TypeScript 语法：
 
@@ -71,7 +72,7 @@ eslint -c myconfig.json myfiletotest.js
 
 ### 配置文件中的注释
 
-JSON 和 YAML 配置文件格式都支持注释（package.json 文件中不能使用注释）。你可以在 JSON 文件使用 JavaScript 风格的注释，在 YAML 文件使用 YAML 风格的注释。ESLint 会安全地忽略了配置文件中的注释。这可以使你的配置文件更加人性化。
+JSON 和 YAML 配置文件格式都支持注释（`package.json` 文件中不能使用注释）。你可以在 JSON 文件使用 JavaScript 风格的注释，在 YAML 文件使用 YAML 风格的注释。ESLint 会安全地忽略了配置文件中的注释。这可以使你的配置文件更加人性化。
 
 对于 JavaScript 风格的注释：
 
@@ -123,7 +124,7 @@ ESLint 支持在配置文件中添加共享设置。插件使用 `settings` 来�
 
 ## 级联和层次结构
 
-当使用 `.eslintrc.*` 和 `package.json` 文件进行配置时，你可以利用配置级联的优势。假设你有以下的结构：
+当使用 `.eslintrc.*` 和 `package.json` 文件进行配置时，你可以利用配置级联的优势。假设你的项目符合以下的结构：
 
 ```text
 your-project
@@ -194,7 +195,7 @@ home
     1. `.eslintrc.*` 或 `package.json` 文件与 linted 文件在同一目录下
     2. 继续搜索祖先目录中的 `.eslintrc.*` 和 `package.json` 文件，直到包括根目录，或者找到`"root": true` 的配置。
 
-请注意，在这种情况下，[当前用户在你的首选操作系统上的主目录](https://nodejs.org/api/os.html#os_os_homedir)（`~/`）也被认为是根目录，搜索配置文件也会在那里停止。从 8.0.0 版本开始[取消对个人配置文件的支持](https://eslint.org/docs/user-guide/configuring/configuration-files#personal-configuration-files-deprecated)，该目录下的配置文件将被忽略。
+请注意，在这种情况下，[当前用户在你的首选操作系统上的主目录](https://nodejs.org/api/os.html#os_os_homedir)（`~/`）也被认为是根目录，搜索配置文件也会在那里停止。从 8.0.0 版本开始[取消对个人配置文件的支持](configuration-files#personal-configuration-files-deprecated)，该目录下的配置文件将被忽略。
 
 ## 扩展配置文件
 
@@ -232,7 +233,7 @@ ESLint 递归地扩展配置，所以基本配置也可以使用 `extends` 属�
 
 ### 使用可共享配置包
 
-[可共享配置](https://eslint.org/docs/developer-guide/shareable-configs) 是导出配置对象的一个 npm 包。当你在项目根目录下安装了这个包后，ESLint 就可以使用它了。
+[可共享配置](../../developer-guide/shareable-configs) 是导出配置对象的一个 npm 包。当你在项目根目录下安装了这个包后，ESLint 就可以使用它了。
 
 `extends` 属性值可以省略包名的 `eslint-config-`前缀。
 
@@ -251,7 +252,7 @@ rules:
 
 ### 使用 `eslint:recommended`
 
-在 `extends` 属性中使用 `"eslint:recommended"` 可以启用报告常见问题的核心规则子集（这些规则在[规则页](https://eslint.org/docs/rules/) 上用复选标记“推荐（recommended）”来标识）。
+在 `extends` 属性中使用 `"eslint:recommended"` 可以启用报告常见问题的核心规则子集（这些规则在[规则页](../../rules/) 上用复选标记“推荐（recommended）”来标识）。
 
 下面的示例中扩展 `eslint:recommended` 并覆盖了一些配置选项：
 
@@ -279,9 +280,9 @@ module.exports = {
 
 ### 使用插件配置
 
-[插件](https://eslint.org/docs/developer-guide/working-with-plugins)是一个可以为 ESLint 添加各种扩展功能的 npm 包。一个插件可以执行许多功能，包括但不限于添加新的规则和导出[可共享的配置](https://eslint.org/docs/developer-guide/working-with-plugins#configs-in-plugins)。请确保该包已经安装在 ESLint 能够需要它的目录中。
+[插件](../../developer-guide/working-with-plugins)是一个可以为 ESLint 添加各种扩展功能的 npm 包。一个插件可以执行许多功能，包括但不限于添加新的规则和导出[可共享的配置](../../developer-guide/working-with-plugins#configs-in-plugins)。请确保该包已经安装在 ESLint 能够需要它的目录中。
 
-`plugins` [属性值](./plugins#configuring-plugins)可以省略包名中的 `eslint-plugin-` 前缀。
+`plugins` [属性值](./plugins#配置插件)可以省略包名中的 `eslint-plugin-` 前缀。
 
 `extends` 属性值由以下内容组成：
 
@@ -332,9 +333,9 @@ JSON 格式的配置文件的示例：
 
 **重要的是**：此配置**不建议用于生产**，因为它随着 ESLint 的每个次要和主要版本的变化而变化，使用时风险自担。
 
-在你决定项目配置时，你可以启用所有的核心规则以便快速开始探索规则和选项，特别是如果你很少覆盖选项或禁用规则。规则的默认选项不是 ESLint 的认可（如 [`quotes`](https://eslint.org/docs/rules/quotes) 规则的默认选项并不意味着双引号比单引号好）。
+在你决定项目配置时，你可以启用所有的核心规则以便快速开始探索规则和选项，特别是如果你很少覆盖选项或禁用规则。规则的默认选项不是 ESLint 的认可（如 [`quotes`](../../rules/quotes) 规则的默认选项并不意味着双引号比单引号好）。
 
-如果你的配置扩展了 `eslint:all`，在你升级到 ESLint 较新的主要或次要版本后，在你使用[命令行](https://eslint.org/docs/user-guide/command-line-interface#--fix)上的 `--fix` 选项前，查看报告的问题，这样你就知道一个新的可修复规则是否会对代码进行修改。
+如果你的配置扩展了 `eslint:all`，在你升级到 ESLint 较新的主要或次要版本后，在你使用[命令行](../command-line-interface#--fix)上的 `--fix` 选项前，查看报告的问题，这样你就知道一个新的可修复规则是否会对代码进行修改。
 
 JavaScript 格式的配置文件的示例：
 
@@ -424,11 +425,11 @@ project-root
 
 如果你用 CLI 指定了目录（如 `eslint lib`），ESLint 会在目录中搜索目标文件来进行检查。目标文件包括 `*.js` 或与任何 `overrides` 条目相匹配的文件（但不包括任何以 `*` 结尾的 `files` 条目）。
 
-如果你指定了 [`--ext`](https://eslint.org/docs/user-guide/command-line-interface#ext) 命令行选项和目录，那么目标文件就只有是指定文件扩展名的文件，而不会考虑 `overrides` 条目。
+如果你指定了 [`--ext`](../command-line-interface#ext) 命令行选项和目录，那么目标文件就只有是指定文件扩展名的文件，而不会考虑 `overrides` 条目。
 
 ## 个人配置文件（已废弃）
 
-⚠️ **此功能已弃用**。这个功能将在 8.0.0 版本中被删除。如果你想继续使用个人配置文件，请使用 [`--config` CLI 选项](https://eslint.org/docs/user-guide/command-line-interface#-c---config)。关于这一决定的更多信息，请参见 [RFC 28](https://github.com/eslint/rfcs/pull/28) 和 [RFC 32](https://github.com/eslint/rfcs/pull/32)。
+⚠️ **此功能已弃用**。这个功能将在 8.0.0 版本中被删除。如果你想继续使用个人配置文件，请使用 [`--config` CLI 选项](../command-line-interface#-c---config)。关于这一决定的更多信息，请参见 [RFC 28](https://github.com/eslint/rfcs/pull/28) 和 [RFC 32](https://github.com/eslint/rfcs/pull/32)。
 
 `~/` 指的是[当前用户在你喜欢的操作系统上的主目录](https://nodejs.org/api/os.html#os_os_homedir)。这里所指的个人配置文件是 `~/.eslintrc.*` 文件，目前它的处理方式与其他配置文件不同。
 
@@ -444,4 +445,4 @@ project-root
 
 `~/.eslintrc.*` 文件从 `~/node_modules/` 中加载可共享的配置和自定义解析器 - 类似于 `require()` - 在用户的主目录中。请注意，它不会加载全局安装的包。
 
-`~/.eslintrc.*` 文件默认从 `$CWD/node_modules` 中加载插件，以便唯一地识别插件。如果你想用 `~/.eslintrc.*` 文件使用插件，插件必须在每个项目的本地安装。另外，你可以使用 [`--resolve-plugins-relative-to` CLI 选项](https://eslint.org/docs/user-guide/command-line-interface#--resolve-plugins-relative-to)来修改 ESLint 加载插件的位置。
+`~/.eslintrc.*` 文件默认从 `$CWD/node_modules` 中加载插件，以便唯一地识别插件。如果你想用 `~/.eslintrc.*` 文件使用插件，插件必须在每个项目的本地安装。另外，你可以使用 [`--resolve-plugins-relative-to` CLI 选项](../command-line-interface#--resolve-plugins-relative-to)来修改 ESLint 加载插件的位置。

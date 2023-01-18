@@ -1,6 +1,5 @@
 ---
 title: 迁移至 v1.0.0
-layout: doc
 
 ---
 
@@ -24,62 +23,62 @@ ESLint v1.0.0 是首个主要发行版。因此，ESLint 0.x 时的工作方式�
 
 `"eslint:recommended"` 配置包括了许多与 0.x 默认规则一样的规则。但它们不再默认启用了，所以你一个审查你的配置并确认它们仍符合你的预期：
 
-* [no-alert](https://eslint.org/docs/rules/no-alert)
-* [no-array-constructor](https://eslint.org/docs/rules/no-array-constructor)
-* [no-caller](https://eslint.org/docs/rules/no-caller)
-* [no-catch-shadow](https://eslint.org/docs/rules/no-catch-shadow)
-* [no-empty-label](https://eslint.org/docs/rules/no-empty-label)
-* [no-eval](https://eslint.org/docs/rules/no-eval)
-* [no-extend-native](https://eslint.org/docs/rules/no-extend-native)
-* [no-extra-bind](https://eslint.org/docs/rules/no-extra-bind)
-* [no-extra-strict](https://eslint.org/docs/rules/no-extra-strict)
-* [no-implied-eval](https://eslint.org/docs/rules/no-implied-eval)
-* [no-iterator](https://eslint.org/docs/rules/no-iterator)
-* [no-label-var](https://eslint.org/docs/rules/no-label-var)
-* [no-labels](https://eslint.org/docs/rules/no-labels)
-* [no-lone-blocks](https://eslint.org/docs/rules/no-lone-blocks)
-* [no-loop-func](https://eslint.org/docs/rules/no-loop-func)
-* [no-multi-spaces](https://eslint.org/docs/rules/no-multi-spaces)
-* [no-multi-str](https://eslint.org/docs/rules/no-multi-str)
-* [no-native-reassign](https://eslint.org/docs/rules/no-native-reassign)
-* [no-new](https://eslint.org/docs/rules/no-new)
-* [no-new-func](https://eslint.org/docs/rules/no-new-func)
-* [no-new-object](https://eslint.org/docs/rules/no-new-object)
-* [no-new-wrappers](https://eslint.org/docs/rules/no-new-wrappers)
-* [no-octal-escape](https://eslint.org/docs/rules/no-octal-escape)
-* [no-process-exit](https://eslint.org/docs/rules/no-process-exit)
-* [no-proto](https://eslint.org/docs/rules/no-proto)
-* [no-return-assign](https://eslint.org/docs/rules/no-return-assign)
-* [no-script-url](https://eslint.org/docs/rules/no-script-url)
-* [no-sequences](https://eslint.org/docs/rules/no-sequences)
-* [no-shadow](https://eslint.org/docs/rules/no-shadow)
-* [no-shadow-restricted-names](https://eslint.org/docs/rules/no-shadow-restricted-names)
-* [no-spaced-func](https://eslint.org/docs/rules/no-spaced-func)
-* [no-trailing-spaces](https://eslint.org/docs/rules/no-trailing-spaces)
-* [no-undef-init](https://eslint.org/docs/rules/no-undef-init)
-* [no-underscore-dangle](https://eslint.org/docs/rules/no-underscore-dangle)
-* [no-unused-expressions](https://eslint.org/docs/rules/no-unused-expressions)
-* [no-use-before-define](https://eslint.org/docs/rules/no-use-before-define)
-* [no-with](https://eslint.org/docs/rules/no-with)
-* [no-wrap-func](https://eslint.org/docs/rules/no-wrap-func)
-* [camelcase](https://eslint.org/docs/rules/camelcase)
-* [comma-spacing](https://eslint.org/docs/rules/comma-spacing)
-* [consistent-return](https://eslint.org/docs/rules/consistent-return)
-* [curly](https://eslint.org/docs/rules/curly)
-* [dot-notation](https://eslint.org/docs/rules/dot-notation)
-* [eol-last](https://eslint.org/docs/rules/eol-last)
-* [eqeqeq](https://eslint.org/docs/rules/eqeqeq)
-* [key-spacing](https://eslint.org/docs/rules/key-spacing)
-* [new-cap](https://eslint.org/docs/rules/new-cap)
-* [new-parens](https://eslint.org/docs/rules/new-parens)
-* [quotes](https://eslint.org/docs/rules/quotes)
-* [semi](https://eslint.org/docs/rules/semi)
-* [semi-spacing](https://eslint.org/docs/rules/semi-spacing)
-* [space-infix-ops](https://eslint.org/docs/rules/space-infix-ops)
-* [space-return-throw-case](https://eslint.org/docs/rules/space-return-throw-case)
-* [space-unary-ops](https://eslint.org/docs/rules/space-unary-ops)
-* [strict](https://eslint.org/docs/rules/strict)
-* [yoda](https://eslint.org/docs/rules/yoda)
+* [no-alert](../rules/no-alert)
+* [no-array-constructor](../rules/no-array-constructor)
+* [no-caller](../rules/no-caller)
+* [no-catch-shadow](../rules/no-catch-shadow)
+* [no-empty-label](../rules/no-empty-label)
+* [no-eval](../rules/no-eval)
+* [no-extend-native](../rules/no-extend-native)
+* [no-extra-bind](../rules/no-extra-bind)
+* [no-extra-strict](../rules/no-extra-strict)
+* [no-implied-eval](../rules/no-implied-eval)
+* [no-iterator](../rules/no-iterator)
+* [no-label-var](../rules/no-label-var)
+* [no-labels](../rules/no-labels)
+* [no-lone-blocks](../rules/no-lone-blocks)
+* [no-loop-func](../rules/no-loop-func)
+* [no-multi-spaces](../rules/no-multi-spaces)
+* [no-multi-str](../rules/no-multi-str)
+* [no-native-reassign](../rules/no-native-reassign)
+* [no-new](../rules/no-new)
+* [no-new-func](../rules/no-new-func)
+* [no-new-object](../rules/no-new-object)
+* [no-new-wrappers](../rules/no-new-wrappers)
+* [no-octal-escape](../rules/no-octal-escape)
+* [no-process-exit](../rules/no-process-exit)
+* [no-proto](../rules/no-proto)
+* [no-return-assign](../rules/no-return-assign)
+* [no-script-url](../rules/no-script-url)
+* [no-sequences](../rules/no-sequences)
+* [no-shadow](../rules/no-shadow)
+* [no-shadow-restricted-names](../rules/no-shadow-restricted-names)
+* [no-spaced-func](../rules/no-spaced-func)
+* [no-trailing-spaces](../rules/no-trailing-spaces)
+* [no-undef-init](../rules/no-undef-init)
+* [no-underscore-dangle](../rules/no-underscore-dangle)
+* [no-unused-expressions](../rules/no-unused-expressions)
+* [no-use-before-define](../rules/no-use-before-define)
+* [no-with](../rules/no-with)
+* [no-wrap-func](../rules/no-wrap-func)
+* [camelcase](../rules/camelcase)
+* [comma-spacing](../rules/comma-spacing)
+* [consistent-return](../rules/consistent-return)
+* [curly](../rules/curly)
+* [dot-notation](../rules/dot-notation)
+* [eol-last](../rules/eol-last)
+* [eqeqeq](../rules/eqeqeq)
+* [key-spacing](../rules/key-spacing)
+* [new-cap](../rules/new-cap)
+* [new-parens](../rules/new-parens)
+* [quotes](../rules/quotes)
+* [semi](../rules/semi)
+* [semi-spacing](../rules/semi-spacing)
+* [space-infix-ops](../rules/space-infix-ops)
+* [space-return-throw-case](../rules/space-return-throw-case)
+* [space-unary-ops](../rules/space-unary-ops)
+* [strict](../rules/strict)
+* [yoda](../rules/yoda)
 
 另见：关于默认行为变更的[全部差异](https://github.com/eslint/eslint/commit/e3e9dbd9876daf4bdeb4e15f8a76a9d5e6e03e39#diff-b01a5cfd9361ca9280a460fd6bb8edbbL1)
 
@@ -152,19 +151,19 @@ ESLint v1.0.0 是首个主要发行版。因此，ESLint 0.x 时的工作方式�
 
 在过去的几个版本中，我们废止了一些规则并引入新的规则来取代它们。以下列出了删除的规则以及其替代物：
 
-* [generator-star](https://eslint.org/docs/rules/generator-star) 被 [generator-star-spacing](https://eslint.org/docs/rules/generator-star-spacing) 所取代
-* [global-strict](https://eslint.org/docs/rules/global-strict) 被 [strict](https://eslint.org/docs/rules/strict) 所取代
-* [no-comma-dangle](https://eslint.org/docs/rules/no-comma-dangle) 被 [comma-dangle](https://eslint.org/docs/rules/comma-dangle) 所取代
-* [no-empty-class](https://eslint.org/docs/rules/no-empty-class) 被 [no-empty-character-class](https://eslint.org/docs/rules/no-empty-character-class) 所取代
-* [no-extra-strict](https://eslint.org/docs/rules/no-extra-strict) 被 [strict](https://eslint.org/docs/rules/strict) 所取代
-* [no-reserved-keys](https://eslint.org/docs/rules/no-reserved-keys) 被 [quote-props](https://eslint.org/docs/rules/quote-props) 所取代
-* [no-space-before-semi](https://eslint.org/docs/rules/no-space-before-semi) 被 [semi-spacing](https://eslint.org/docs/rules/semi-spacing) 所取代
-* [no-wrap-func](https://eslint.org/docs/rules/no-wrap-func) 被 [no-extra-parens](https://eslint.org/docs/rules/no-extra-parens) 所取代
-* [space-after-function-name](https://eslint.org/docs/rules/space-after-function-name) 被 [space-before-function-paren](https://eslint.org/docs/rules/space-before-function-paren) 所取代
-* [space-before-function-parentheses](https://eslint.org/docs/rules/space-before-function-parentheses) 被 [space-before-function-paren](https://eslint.org/docs/rules/space-before-function-paren) 所取代
-* [space-in-brackets](https://eslint.org/docs/rules/space-in-brackets) 被 [object-curly-spacing](https://eslint.org/docs/rules/object-curly-spacing ) 和 [array-bracket-spacing](https://eslint.org/docs/rules/array-bracket-spacing) 所取代
-* [space-unary-word-ops](https://eslint.org/docs/rules/space-unary-word-ops) 被 [space-unary-ops](https://eslint.org/docs/rules/space-unary-ops) 所取代
-* [spaced-line-comment](https://eslint.org/docs/rules/spaced-line-comment) 被 [spaced-comment](https://eslint.org/docs/rules/spaced-comment) 所取代
+* [generator-star](../rules/generator-star) 被 [generator-star-spacing](../rules/generator-star-spacing) 所取代
+* [global-strict](../rules/global-strict) 被 [strict](../rules/strict) 所取代
+* [no-comma-dangle](../rules/no-comma-dangle) 被 [comma-dangle](../rules/comma-dangle) 所取代
+* [no-empty-class](../rules/no-empty-class) 被 [no-empty-character-class](../rules/no-empty-character-class) 所取代
+* [no-extra-strict](../rules/no-extra-strict) 被 [strict](../rules/strict) 所取代
+* [no-reserved-keys](../rules/no-reserved-keys) 被 [quote-props](../rules/quote-props) 所取代
+* [no-space-before-semi](../rules/no-space-before-semi) 被 [semi-spacing](../rules/semi-spacing) 所取代
+* [no-wrap-func](../rules/no-wrap-func) 被 [no-extra-parens](../rules/no-extra-parens) 所取代
+* [space-after-function-name](../rules/space-after-function-name) 被 [space-before-function-paren](../rules/space-before-function-paren) 所取代
+* [space-before-function-parentheses](../rules/space-before-function-parentheses) 被 [space-before-function-paren](../rules/space-before-function-paren) 所取代
+* [space-in-brackets](../rules/space-in-brackets) 被 [object-curly-spacing](../rules/object-curly-spacing ) 和 [array-bracket-spacing](../rules/array-bracket-spacing) 所取代
+* [space-unary-word-ops](../rules/space-unary-word-ops) 被 [space-unary-ops](../rules/space-unary-ops) 所取代
+* [spaced-line-comment](../rules/spaced-line-comment) 被 [spaced-comment](../rules/spaced-comment) 所取代
 
 **解决方案**：你需要更新规则配置并使用新的规则。如果你正在使用被移除的规则 ESLint v1.0.0 会发出警告并建议相关的替代规则。希望借此减少升级过程中遇到的问题。
 

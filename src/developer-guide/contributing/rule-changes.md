@@ -1,6 +1,5 @@
 ---
 title: Rule Changes
-layout: doc
 
 ---
 
@@ -8,7 +7,7 @@ layout: doc
 
 ## 提出一个规则的改变
 
-要提议对现有规则进行修改，请[创建拉取请求](/docs/developer-guide/contributing/pull-requests)或[新议题](https://github.com/eslint/eslint/issues/new/choose)并填写模板。
+要提议对现有规则进行修改，请[创建拉取请求](pull-requests)或[新议题](https://github.com/eslint/eslint/issues/new/choose)并填写模板。
 
 我们需要所有这些信息，以确定该变化是否是一个很好的纳入候选者。
 

@@ -1,6 +1,5 @@
 ---
 title: 迁移至 v5.0.0
-layout: doc
 
 ---
 
@@ -50,10 +49,10 @@ Node.js 3 在 2018 年 4 月到达了生命的终点，将不再获得安全更�
 
 ## <a name="eslint-recommended-changes"/> 修改 `eslint:recommended`
 
-[`eslint:recommended`](https://eslint.org/docs/user-guide/configuring#using-eslintrecommended) 配置添加了两个新规则：
+[`eslint:recommended`](../user-guide/configuring#using-eslintrecommended) 配置添加了两个新规则：
 
-* [`for-direction`](/docs/rules/for-direction) 执行 `for` 循环更新子句，计数器将逐渐增大。
-* [`getter-return`](/docs/rules/getter-return) 强制要求属性获取器中有 `return` 语句。
+* [`for-direction`](../rules/for-direction) 执行 `for` 循环更新子句，计数器将逐渐增大。
+* [`getter-return`](../rules/getter-return) 强制要求属性获取器中有 `return` 语句。
 
 **解决方案**：为了使用类似于 4.x 版本的 `eslint:recommended` 行为，你可以在配置文件中禁用这些规则：
 
@@ -96,7 +95,7 @@ Node.js 3 在 2018 年 4 月到达了生命的终点，将不再获得安全更�
 
 为了兼容，ESLint v5 会把配置文件中的 `ecmaFeatures: { experimentalObjectRestSpread: true }` 视作 `ecmaVersion: 2018` 的别名。因此，如果要使用剩余/展开对象，仍可以用 ESLint v5 的配置。不过要注意，ESLint v6 将删除该别名。
 
-**解决方案**：如果使用 `experimentalObjectRestSpread` 选项，则升级时无需改变任何配置，但出现废弃警告。要解决这个警告，就需要在配置文件中使用 `ecmaVersion: 2018` 代替 `ecmaFeatures: { experimentalObjectRestSpread: true }`。如果想禁用其他 ES2018 特性，可以考虑使用诸如 [`no-restricted-syntax`](/docs/rules/no-restricted-syntax) 等规则。
+**解决方案**：如果使用 `experimentalObjectRestSpread` 选项，则升级时无需改变任何配置，但出现废弃警告。要解决这个警告，就需要在配置文件中使用 `ecmaVersion: 2018` 代替 `ecmaFeatures: { experimentalObjectRestSpread: true }`。如果想禁用其他 ES2018 特性，可以考虑使用诸如 [`no-restricted-syntax`](../rules/no-restricted-syntax) 等规则。
 
 ## <a name="nonexistent-files"></a> 在命令行中检查不存在的文件会导致致命错误
 
@@ -113,7 +112,7 @@ ESLint v5 在满足以下任一条件时将报告致命错误：
 * 在命令行中提供的文件不存在
 * 命令行中提供的 glob 或文件夹与任何可检查文件不匹配。
 
-注意，这也会影响到 [`CLIEngine.executeOnFiles()`](https://eslint.org/docs/developer-guide/nodejs-api#cliengineexecuteonfiles) API。
+注意，这也会影响到 [`CLIEngine.executeOnFiles()`](../developer-guide/nodejs-api#cliengineexecuteonfiles) API。
 
 **解决方案**：如果你在升级到 ESLint v5 后遇到关于丢失文件的错误，你可能要仔细检查你提供给 ESLint 的路径中是否有错字。为了使错误消失，你可以简单地从命令行上提供给 ESLint 的参数列表中删除给定的文件或 globs。
 
@@ -121,8 +120,8 @@ ESLint v5 在满足以下任一条件时将报告致命错误：
 
 ## <a name="rule-default-changes"></a> 修改了部分规则的默认选项
 
-* [`object-curly-newline`](/docs/rules/object-curly-newline) 规则的默认选项从 `{ multiline: true }` 改为 `{ consistent: true }`。
-* [`no-self-assign`](/docs/rules/no-self-assign) 规则的默认选项对象已从 `{ props: false }` 改为 `{ props: true }`。
+* [`object-curly-newline`](../rules/object-curly-newline) 规则的默认选项从 `{ multiline: true }` 改为 `{ consistent: true }`。
+* [`no-self-assign`](../rules/no-self-assign) 规则的默认选项对象已从 `{ props: false }` 改为 `{ props: true }`。
 
 **解决方法**：要使用类似于 ESLint v4 的规则行为，你可以更新配置文件以包括以前的选项：
 
@@ -137,7 +136,7 @@ ESLint v5 在满足以下任一条件时将报告致命错误：
 
 ## <a name="deprecated-globals"></a> 删除 `node`、`browser` 和 `jest` 环境中的废弃全局变量
 
-对于在 Node.js、浏览器和 Jest 中运行的代码，一些全局变量已被废弃或删除（例如，浏览器曾经向 JavaScript 代码暴露了 `SVGAltGlyphElement` 全局变量，但这个全局变量已经从网络标准中删除，并且不再出现在浏览器中）。因此，我们已经从相应的 `eslint` 环境中删除了这些全局变量，所以在使用诸如 [`no-undef`](/docs/rules/no-undef) 这样的规则时，使用这些全局变量会触发一个错误。
+对于在 Node.js、浏览器和 Jest 中运行的代码，一些全局变量已被废弃或删除（例如，浏览器曾经向 JavaScript 代码暴露了 `SVGAltGlyphElement` 全局变量，但这个全局变量已经从网络标准中删除，并且不再出现在浏览器中）。因此，我们已经从相应的 `eslint` 环境中删除了这些全局变量，所以在使用诸如 [`no-undef`](../rules/no-undef) 这样的规则时，使用这些全局变量会触发一个错误。
 
 **解决方案**：如果你在 `node`、`browser` 或 `jest` 环境中使用已废弃的 globals，你可以在配置中添加 `globals` 部分来重新启用任何你需要的 globals。比如说：
 
@@ -154,11 +153,11 @@ ESLint v5 在满足以下任一条件时将报告致命错误：
 
 ## <a name="empty-files"></a> 检查空文件
 
-ESLint v4 在对只包含空格的文件进行检查时有一个特殊的行为：它将跳过运行分析器和规则，并且总是返回零错误。这给用户和规则作者带来了一些困惑，特别是在为规则编写测试时（当编写一个文体规则时，规则作者偶尔会写一个测试，其中源代码只包含空格，以确保在没有找到适用的代码时规则的行为是正确的。然而，这样的测试实际上根本不会运行该规则，所以该规则的一个方面最终没有得到测试）。
+ESLint v4 在对只包含空格的文件进行检查时有一个特殊的行为：它将跳过运行解析器和规则，并且总是返回零错误。这给用户和规则作者带来了一些困惑，特别是在为规则编写测试时（当编写一个文体规则时，规则作者偶尔会写一个测试，其中源代码只包含空格，以确保在没有找到适用的代码时规则的行为是正确的。然而，这样的测试实际上根本不会运行该规则，所以该规则的一个方面最终没有得到测试）。
 
 ESLint v5 对待纯白文件的方式与所有其他文件相同：它解析它们，并根据情况对它们运行启用的规则。如果你用了自定义规则以报告空文件错误，这可能会导致额外的提示问题。
 
-**解决方法**：如果你的项目中有空文件，且不想对其检查，可以考虑把它添加到 [`.eslintignore` 文件](/docs/user-guide/configuring#ignoring-files-and-directories)中。
+**解决方法**：如果你的项目中有空文件，且不想对其检查，可以考虑把它添加到 [`.eslintignore` 文件](configuring#ignoring-files-and-directories)中。
 
 如果你有一个自定义规则，你应该确保它适当地处理空文件（在大多数情况下，没有必要进行修改）。
 
@@ -229,7 +228,7 @@ alert('foo'); /* eslint-disable-line
 
 以前，规则上下文对象有一个没有记录的 `_linter` 属性，在 ESLint 内部用来处理规则的报告。一些规则使用这个属性来实现规则本来不可能实现的功能。例如，一些插件使用规则中的 `_linter` 属性来监控其他规则的报告，目的是检查未使用的 `/* eslint-disable */` 指令注释。虽然这个功能对用户来说很有用，但它也可能给使用 ESLint 的项目带来稳定性问题。例如，插件中规则升级可能意外地导致另一个插件中的规则开始报错。
 
-ESLint v5.0 中移除了 `_linter` 属性，所以不能再用这个功能实现规则。不过[`--report-unused-disable-directives`](/docs/user-guide/command-line-interface#--report-unused-disable-directives) CLI 标志可以用来标记未使用的指令注释。
+ESLint v5.0 中移除了 `_linter` 属性，所以不能再用这个功能实现规则。不过[`--report-unused-disable-directives`](command-line-interface#--report-unused-disable-directives) CLI 标志可以用来标记未使用的指令注释。
 
 ## <a name="rule-tester-equality"></a> `RuleTester` now uses strict equality checks in its assertions
 
@@ -268,6 +267,6 @@ ESLint v5.0 中移除了 `_linter` 属性，所以不能再用这个功能实现
 
 ## <a name="non-enumerable-linter"></a> 现在不可枚举 `eslint.linter` 属性
 
-当使用 ESLint 的 Node.js API 时，现在不可以枚举 [`linter`](/docs/developer-guide/nodejs-api#linter-1) 属性了。请注意，ESLint v4 弃用 `linter` 属性，请改用 [`Linter`](/docs/developer-guide/nodejs-api#linter) 属性。
+当使用 ESLint 的 Node.js API 时，现在不可以枚举 [`linter`](../developer-guide/nodejs-api#linter-1) 属性了。请注意，ESLint v4 弃用 `linter` 属性，请改用 [`Linter`](../developer-guide/nodejs-api#linter) 属性。
 
 **解决方案**：如果你依赖于枚举 `eslint` 对象的所有属性，可以使用类似 `Object.getOwnPropertyNames` 的东西来确保捕获非枚举的键。

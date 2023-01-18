@@ -1,6 +1,5 @@
 ---
 title: 维护者指南
-layout: doc
 eleventyNavigation:
     key: maintainer guide 
     title: 维护者指南 

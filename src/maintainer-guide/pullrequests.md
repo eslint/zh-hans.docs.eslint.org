@@ -1,6 +1,5 @@
 ---
 title: 拉取请求审查
-layout: doc
 eleventyNavigation:
     key: reviewing pull requests
     parent: maintainer guide 
