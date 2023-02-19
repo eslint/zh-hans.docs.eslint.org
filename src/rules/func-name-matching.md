@@ -144,7 +144,7 @@ module['exports'] = function foo(name) {};
 
 ## 选项
 
-这个规则需要一个 `always` 或 `never` 的可选字符串（当省略时，默认为 `always`），以及一个带有两个属性 `considerPropertyDescriptor` 和 `includeCommonJSModuleExports` 的可选选项对象。
+这个规则需要一个 `"always"` 或 `"never"` 的可选字符串（当省略时，默认为 `"always"`），以及包括两个属性 `considerPropertyDescriptor` 和 `includeCommonJSModuleExports` 的可选选项对象。
 
 ### considerPropertyDescriptor
 
@@ -184,7 +184,7 @@ Reflect.defineProperty(obj, 'foo', {value: function value() {}});
 
 ### includeCommonJSModuleExports
 
-布尔值，默认为 `false`。如果 `includeCommonJSModuleExports` 被设置为 true，此规则将检查 `module.exports` 和 `module["exports"]`。
+布尔值，默认为 `false`。如果 `includeCommonJSModuleExports` 设置为 `true`，此规则将检查 `module.exports` 和 `module["exports"]`。
 
 使用 `{ includeCommonJSModuleExports: true }` 选项的**错误**示例：
 
