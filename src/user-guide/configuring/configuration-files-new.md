@@ -35,21 +35,21 @@ export default [
 
 每个配置对象都包括了 ESLint 检查一组文件所需的所有信息。配置对象由以下属性组成：
 
-* `files` - 用于表示配置适用的文件范围的 glob 模式数组。在没有指定的情况下，配置对象适用于所有文件。
-* `ignores` - 一个表示配置对象不应适用的文件的 glob 模式数组。如果没有指定，配置对象将适用于所有由 `files` 匹配的文件。
-* `languageOptions` - 一个对象，包含与如何为 linting 配置 JavaScript 有关的设置。
+* `files` - 表示配置适用的文件范围的 glob 模式数组。在没有指定的情况下，配置对象适用于所有与其他配置对象匹配的文件。
+* `ignores` - 表示配置对象不应适用的文件的 glob 模式数组。如果没有指定，配置对象将适用于所有由 `files` 匹配的文件。
+* `languageOptions` - 包含如何配置检查过程中 JavaScript 设置的对。
     * `ecmaVersion` - 支持 ECMAScript 的版本。可以是任何年份（`2022`）或版本（`5`）。设置为 `"latest"` 则使用受支持的最新版本（默认为 `"latest"`）。
-    * `sourceType` - JavaScript 源码类型。传统脚本文件可以使用 `"script"`，ECMAScript 模块（ESM）可以用 `"module"` ，CommonJS 文件使用 `"commonjs`（默认情况下，用于 `.js` 和 `.mjs` 文件使用 `"module"`；`.cjs` 文件使用 `"commonjs"`）
-    * `globals` - 用于指定额外对象的对象，这些对象应该在 linting 期间被添加到全局范围。
-    * `parser` - 包含 `parse()`方法的对象，或者表示插件内解析器名称的字符串（如 `"pluginName/parserName"`，默认为 `"@/espree"`）
+    * `sourceType` - JavaScript 源码类型。传统脚本文件可以使用 `"script"`，ECMAScript 模块（ESM）可以用 `"module"` ，CommonJS 文件使用 `"commonjs`（默认情况下，`.js` 和 `.mjs` 文件使用 `"module"`；`.cjs` 文件使用 `"commonjs"`）
+    * `globals` - 指定额外对象的对象，这些对象应该在检查期间会被添加到全局范围。
+    * `parser` - 包含 `parse()` 方法的对象，或者表示插件内解析器名称的字符串（如 `"pluginName/parserName"`，默认为 `"@/espree"`）
     * `parserOptions` - 指定额外选项的对象，直接传递给解析器的 `parser()` 方法。可用选项基于解析器。
 * `linterOptions` - 对象，包含与提示过程有关的设置。
-    * `noInlineConfig` - 布尔值，表示是否允许内联配置。
-    * `reportUnusedDisableDirectives` - 一个布尔值，表示是否应该跟踪和报告未用的禁用指令。
+    * `noInlineConfig` - 表示是否允许内联配置布尔值。
+    * `reportUnusedDisableDirectives` - 表示是否应该跟踪和报告未用的禁用指令的布尔值。
 * `processor` - 包含 `preprocess()` 和 `postprocess()` 方法的对象，或者表示插件内处理器名称的字符串（如 `"pluginName/processorName"`）。
 * `plugins` - 包含插件名称与对应的插件对象的名值对对象。如果指定了 `files`，则只适用于与之匹配匹配的文件。
 * `rules` - 包含规则配置的对象。如果指定了 `files` 或 `ignores`，则规则配置只适用于与之匹配匹配的文用。
-* `settings` - 包括名值对的对象，这些信息应该对所有规则可用。
+* `settings` - 包含对所有规则可供的名值对的对象。
 
 ### 指定 `files` 和 `ignores`
 
