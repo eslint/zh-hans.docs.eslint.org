@@ -13,7 +13,7 @@ related_rules:
 
 （已移除）此规则在 ESLint v2.0 中移除并被 [keyword-spacing](keyword-spacing) 所取代。
 
-（可修复）`--fix` 选项在[命令行](../user-guide/command-line-interface#--fix)上自动修复该规则报告的问题。
+（可修复）`--fix` 选项在[命令行](../use/command-line-interface#--fix)上自动修复该规则报告的问题。
 
 关键词是 JavaScript 的语法元素，如 `function` 和 `if`。这些标识符对语言有特殊的意义，所以在代码编辑器中经常以不同的颜色出现。作为语言的一个重要部分，风格指南经常提到关键词周围应该使用的间距。例如，你可能有一个风格指南，说关键词前面应该总是有空格，这意味着 `if-else` 语句必须看起来像这样。
 

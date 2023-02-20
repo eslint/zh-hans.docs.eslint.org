@@ -117,8 +117,8 @@ Bar.prototype.baz = function () {
 
 一个只读的全局变量可以是 ES 内置的全局变量（如 `Array`），也可以是环境中的全局变量（如浏览器环境中的 `window`），或者在配置文件中定义为 `readonly` 的全局变量或在 `/*global */` 注释中定义的全局变量。
 
-* [指定环境](../user-guide/configuring#specifying-environments)
-* [指定全局变量](../user-guide/configuring#specifying-globals)
+* [指定环境](../use/configure#specifying-environments)
+* [指定全局变量](../use/configure#specifying-globals)
 
 使用此规则的**错误**示例：
 

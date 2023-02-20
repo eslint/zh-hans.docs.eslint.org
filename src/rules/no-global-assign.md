@@ -21,8 +21,8 @@ window = {};
 
 ESLint 有能力将全局变量配置为只读。
 
-* [Specifying Environments](../user-guide/configuring#specifying-environments)
-* [Specifying Globals](../user-guide/configuring#specifying-globals)
+* [Specifying Environments](../use/configure#specifying-environments)
+* [Specifying Globals](../use/configure#specifying-globals)
 
 使用此规则的**错误**示例：
 
