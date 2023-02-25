@@ -8,15 +8,15 @@ eleventyNavigation:
 
 ---
 
-ESLint 是一个根据方案识别并报告 ECMAScript/JavaScript 代码问题的工具，其目的是使代码风格更加一致并避免错误。
+ESLint 是一个根据方案识别并报告 ECMAScript/JavaScript 代码问题的工具，其目的是使代码风格更加一致并避免错误。在很多地方它都与 JSLint 和 JSHint 类似，除了：
 
-ESLint 是完全插件化的。每一条规则都是一个插件，你可以在运行时添加更多的插件。你也可以添加社区插件、配置和解析器来扩展 ESLint 的功能。
+* ESLint 使用 [Espree](https://github.com/eslint/espree) 对 JavaScript 进行解析。
+* ESLint 在代码中使用 AST 评估方案。
+* ESLint 完全是插件式的，每个规则都是一个插件，你可以在运行时中添加更多插件。
 
-## 使用前提
+## 安装并使用
 
-要使用 ESLint，你必须使用内置 SSL 支持的 [Node.js](https://nodejs.org/en/) 版本（`^12.22.0`、`^14.17.0` 或 `>=16.0.0`），如果你使用的是官方 Node.js 发行版，那么已经内置了 SSL 支持。
-
-## 快速开始
+前提条件：内置 SSL 支持的 [Node.js](https://nodejs.org/en/) 版本（`^12.22.0`、`^14.17.0` 或 `>=16.0.0`），如果你使用的是官方 Node.js 发行版，那么已经内置了 SSL 支持。
 
 你可以使用该命令安装并配置 ESLint：
 
@@ -28,15 +28,15 @@ npm init @eslint/config
 
 ```shell
 # 使用 `eslint-config-semistandard` 可共享配置
-# npm 7+
+# npm 6.x
+npm init @eslint/config --config semistandard
+# ⚠️ npm 7+ 需要使用额外的双杠：
 npm init @eslint/config -- --config semistandard
 # 或（可以省略 `eslint-config` 前缀）
 npm init @eslint/config -- --config eslint-config-semistandard
-# ⚠️ npm 6.x 无需使用额外的双杠：
-npm init @eslint/config --config semistandard
 ```
 
-`--config` 标志也支持传递数组：
+`--config` 标志也支持传递数组
 
 ```shell
 npm init @eslint/config -- --config semistandard,standard
@@ -55,6 +55,8 @@ npx eslint yourfile.js
 
 yarn run eslint yourfile.js
 ```
+
+也可以全局安装 ESLint 而不仅限于本地（使用 `npm install eslint --global`）。但并不推荐这样做，因为无论使用哪种安装方式，你都需要在本地安装插件和可共享配置。
 
 ## 配置
 
@@ -77,7 +79,7 @@ yarn run eslint yourfile.js
 * `"warn"` 或 `1` - 启用并警告（不影响现有代码）
 * `"error"` 或 `2` - 启用并报错（错误代码 1）
 
-你可以调节这三档错误级别以精准控制 ESLint 规则实施方式（更多配置项和细节，参见[配置文档](configure/)）。
+你可以调节这三档错误级别以精准控制 ESLint 规则实施方式（更多配置项和细节，参见[配置文档](configuring/)）。
 
 你的 `.eslintrc.{js,yml,json}` 配置文件也会包括这一行：
 
@@ -87,62 +89,14 @@ yarn run eslint yourfile.js
 }
 ```
 
-这一行将启用[所有标记为“推荐”的规则](../rules)。另外，你也可以通过在 [npmjs.com](https://www.npmjs.com/search?q=eslint-config) 上搜索“eslint-config”并使用别人创建的配置。在没有使用别人的可共享配置或在配置中明确启用规则时，ESLint 不会检查你的代码。
-
-## 全局安装
-
-也可以全局安装 ESLint 而不仅限于羡慕本地（使用 `npm install eslint --global`）。但并不推荐这样做，因为即使全局安装 ESLint，你仍需要在本地安装插件和可共享配置。
-
-## 手动设置
-
-你也可以在项目中手动设置 ESLint.
-
-在开始前你必须确保存在 `package.json` 文件。如果不存在，请优先运行 `npm init` 或 `yarn init` 来创建此文件。
-
-1. 在项目中安装 ESLint 包：
-
-   ```shell
-   npm install --save-dev eslint
-   ```
-
-1. 添加任一[支持的配置文件格式](./configure/configuration-files#配置文件格式)的 `.eslintrc` 文件。
-
-   ```shell
-   # 创建 JavaScript 配置文件
-   touch .eslintrc.js
-   ```
-
-1. 在 `.eslintrc` 文件中添加配置。阅读[配置 ESLint 文档](configure/)学习如何添加规则、环境、自定义配置、插件以及其他内容。
-
-   ```js
-   // .eslintrc.js 示例
-   module.exports = {
-     "env": {
-         "browser": true,
-         "es2021": true
-     },
-     "extends": "eslint:recommended",
-     "parserOptions": {
-         "ecmaVersion": "latest",
-         "sourceType": "module"
-     },
-   }
-   ```
-
-1. 使用 ESLint 命令行检查代码：
-
-   ```shell
-   npx eslint project-dir/ file1.js
-   ```
-
-   更多关于可用命令行选项的信息，参见[命令行文档](./command-line-interface)。
+这一行将启用[所有标记为“推荐”的规则](../rules/)。另外，你也可以通过在 [npmjs.com](https://www.npmjs.com/search?q=eslint-config) 上搜索“eslint-config”并使用别人创建的配置。在没有扩展别人的可共享配置或在配置中明确启用规则时，ESLint 不会限制你的代码。
 
 ---
 
 ## 下一步
 
-* 了解 ESLint [可选配置](configure/)。
+* 了解 ESLint [可选配置](configuring/)。
 * 熟悉一下[命令行选项](command-line-interface)。
 * 将 [ESLint 集成](integrations)带到诸如编辑器、构建系统以及其他工具中。
-* 找不到合适的规则？创造属于自己的[自定义规则](../extend/custom-rules)。
-* 通过[贡献](../contribute//)让 ESLint 变得更棒。
+* 找不到合适的规则？创造属于自己的[自定义规则](../developer-guide/working-with-rules)。
+* 通过[贡献](../developer-guide/contributing/)让 ESLint 变得更棒。
