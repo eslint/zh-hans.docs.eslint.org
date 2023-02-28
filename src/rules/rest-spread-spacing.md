@@ -56,7 +56,7 @@ n; // -> { x: 1, y: 2, a: 3, b: 4 }
 }
 ```
 
-请阅读用户指南的[配置解析器选项](../user-guide/configuring#specifying-parser-options)部分以了解更多。
+请阅读用户指南的[配置解析器选项](../use/configure#specifying-parser-options)部分以了解更多。
 
 ## 选项
 

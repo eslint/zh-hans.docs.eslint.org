@@ -45,7 +45,7 @@ function foo2() {
 
 这条规则要求或不允许严格模式指令。
 
-如果 ESLint 配置中指定了以下任何一个[解析器选项](../user-guide/configuring/language-options#specifying-parser-options)，则无论哪个选项被指定，本规则都不允许严格模式指令。
+如果 ESLint 配置中指定了以下任何一个[解析器选项](../use/configure/language-options#specifying-parser-options)，则无论哪个选项被指定，本规则都不允许严格模式指令。
 
 * `"sourceType": "module"` 也就是说，文件是 **ECMAScript** 模块
 * `"impliedStrict": true` 属性在 `ecmaFeatures` 对象中。
@@ -71,8 +71,8 @@ function foo2() {
 
 如果 ESLint 认为一个文件是 **Node.js** 或 **CommonJS** 模块，因为配置中指定了以下任何一项，那么 `"safe"` 选项对应于 `"global"` 选项。
 
-* `node` 或 `commonjs` [环境](../user-guide/configuring/language-options#specifying-environments)
-* [解析器选项](../user-guide/configuring/language-options#specifying-parser-options)的 `ecmaFeatures` 对象中的 `"globalReturn": true` 属性
+* `node` 或 `commonjs` [环境](../use/configure/language-options#specifying-environments)
+* [解析器选项](../use/configure/language-options#specifying-parser-options)的 `ecmaFeatures` 对象中的 `"globalReturn": true` 属性
 
 否则 `"safe"` 选项将与 `"function"` 选项相对应。注意，如果在配置中明确指定了 `"globalReturn": false`，那么 `"safe"` 选项将对应于`"function"` 选项，而不考虑指定环境。
 
@@ -338,4 +338,4 @@ function foo() {
 
 ## 何时不用
 
-在一个既有严格代码又有非严格代码的代码库中，要么关闭这个规则，要么在必要时[选择性地禁用它](../user-guide/configuring/rules#disabling-rules)。例如，引用 `arguments.callee` 的函数在严格模式下是无效的。MDN 上有一份[严格模式差异的完整列表](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode/Transitioning_to_strict_mode#Differences_from_non-strict_to_strict)。
+在一个既有严格代码又有非严格代码的代码库中，要么关闭这个规则，要么在必要时[选择性地禁用它](../use/configure/rules#disabling-rules)。例如，引用 `arguments.callee` 的函数在严格模式下是无效的。MDN 上有一份[严格模式差异的完整列表](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode/Transitioning_to_strict_mode#Differences_from_non-strict_to_strict)。

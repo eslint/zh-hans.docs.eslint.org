@@ -10,7 +10,7 @@ related_rules:
 
 ## 规则细节
 
-任何对未声明变量的引用都会导致警告，除非该变量在 `/*global ...*/` 注释中明确提及，或者在配置文件中的 [`globals` key in the configuration file](../user-guide/configuring/language-options#using-configuration-files-1)。一个常见的使用情况是，如果你故意使用在其他地方定义的 globals（例如，在一个源自 HTML 的脚本中）。
+任何对未声明变量的引用都会导致警告，除非该变量在 `/*global ...*/` 注释中明确提及，或者在配置文件中的 [`globals` key in the configuration file](../use/configure/language-options#using-configuration-files-1)。一个常见的使用情况是，如果你故意使用在其他地方定义的 globals（例如，在一个源自 HTML 的脚本中）。
 
 使用此规则的**错误**示例：
 
@@ -94,7 +94,7 @@ if(typeof a === "string"){}
 
 ## Environments
 
-为了方便起见，ESLint 提供了快捷方式，预先定义了由流行的库和运行时环境暴露的全局变量。本规则支持这些环境，如[指定环境](../user-guide/configuring/language-options#specifying-environments)中所列。 下面给出了几个例子：
+为了方便起见，ESLint 提供了快捷方式，预先定义了由流行的库和运行时环境暴露的全局变量。本规则支持这些环境，如[指定环境](../use/configure/language-options#specifying-environments)中所列。 下面给出了几个例子：
 
 ### browser
 

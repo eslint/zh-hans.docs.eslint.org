@@ -27,6 +27,7 @@ var _foo;
 var foo_;
 var __proto__ = {};
 foo._bar();
+const [_foo, ..._bar] = list;
 ```
 
 :::
@@ -53,6 +54,7 @@ const foo = (_bar) => {};
 
 此规则选项为对象：
 
+<<<<<<< HEAD
 * `"allow"` 允许指定的标识符有悬空的下划线
 * `"allowAfterThis": false`（默认值）不允许在 `this` 对象的成员中使用悬空的下划线
 * `"allowAfterSuper": false`（默认值）不允许在 `super` 对象的成员中使用悬空的下划线
@@ -62,6 +64,25 @@ const foo = (_bar) => {};
 * `"allowInArrayDestructuring": true`（默认值）允许在由数组解构分配的变量名称中使用悬空的下划线
 * `"allowInObjectDestructuring": true`（默认值）允许在对象解构分配的变量名称中使用悬空的下划线
 * `"allowFunctionParams": true`（默认值）允许在函数参数名称中使用悬空的下划线
+||||||| parent of c89c5dc (docs: add options to check destructuring in no-underscore-dangle)
+* `"allow"` 允许指定的标识符有悬空的下划线。
+* `"allowAfterThis": false`（默认值）不允许在 `this` 对象的成员中使用悬空的下划线。
+* `"allowAfterSuper": false`（默认值）不允许在 `super` 对象的成员中使用悬空的下划线。
+* `"allowAfterThisConstructor": false`（默认值）不允许在 `this.constructor` 对象的成员中使用悬空的下划线。
+* `"enforceInMethodNames": false`（默认值）允许在方法名称中使用悬空的下划线。
+* `"enforceInClassFields": false`（默认值）允许在 es2022 类字段名中使用悬空的下划线。
+* `"allowFunctionParams": true`（默认值）允许在函数参数名称中使用悬空的下划线。
+=======
+* `"allow"` 允许指定的标识符有悬空的下划线
+* `"allowAfterThis": false`（默认值）不允许在 `this` 对象的成员中使用悬空的下划线
+* `"allowAfterSuper": false`（默认值）不允许在 `super` 对象的成员中使用悬空的下划线
+* `"allowAfterThisConstructor": false`（默认值）不允许在 `this.constructor` 对象的成员中使用悬空的下划线
+* `"enforceInMethodNames": false`（默认值）允许在方法名称中使用悬空的下划线
+* `"enforceInClassFields": false`（默认值）允许在 es2022 类字段名中使用悬空的下划线
+* `"allowInArrayDestructuring": true`（默认值）允许在由数组解构分配的变量名称中使用悬空的下划线
+* `"allowInObjectDestructuring": true`（默认值）允许在对象解构分配的变量名称中使用悬空的下划线
+* `"allowFunctionParams": true`（默认值）允许在函数参数名称中使用悬空的下划线
+>>>>>>> c89c5dc (docs: add options to check destructuring in no-underscore-dangle)
 
 ### allow
 
@@ -179,6 +200,47 @@ class Foo {
 class Foo {
     #bar_;
 }
+```
+
+:::
+
+### allowInArrayDestructuring
+
+使用此规则与 `{ "allowInArrayDestructuring": false }` 选项的**错误**示例：
+
+::: incorrect
+
+```js
+/*eslint no-underscore-dangle: ["error", { "allowInArrayDestructuring": false }]*/
+const [_foo, _bar] = list;
+const [foo_, ..._bar] = list;
+const [foo, [bar, _baz]] = list;
+```
+
+:::
+
+### allowInObjectDestructuring
+
+使用此规则与 `{ "allowInObjectDestructuring": false }` 选项的**错误**示例：
+
+::: incorrect
+
+```js
+/*eslint no-underscore-dangle: ["error", { "allowInObjectDestructuring": false }]*/
+const { foo, bar: _bar } = collection;
+const { foo, bar, _baz } = collection;
+```
+
+:::
+
+使用此规则与 `{ "allowInObjectDestructuring": false }` 选项的**正确**示例：
+
+::: correct
+
+```js
+/*eslint no-underscore-dangle: ["error", { "allowInObjectDestructuring": false }]*/
+const { foo, bar, _baz: { a, b } } = collection;
+const { foo, bar, _baz: baz } = collection;
 ```
 
 :::

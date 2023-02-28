@@ -40,7 +40,7 @@ if (obj.getStuff() != undefined) { }
 
 ### always
 
-默认的 `"always"` 选项强制在任何情况下使用 `===` 和 `!==`（除非你选择了对 `null` 的更具体处理[见下文]）。
+默认的 `"always"` 选项强制在任何情况下使用 `===` 和 `!==`（除非你选择了对 `null` 的更具体处理见下文）。
 
 使用 `"always"` 选项的**错误**示例：
 
@@ -137,7 +137,7 @@ foo == null
 
 ### allow-null
 
-**废弃**：使用 `"always"` 代替这个选项，并传递一个 `"null"` 选项属性，值为 `"ignore"`。这将告诉 ESLint，除了与 `null` 字面量比较时，总是执行严格的相等判断。
+**废弃**：使用 `"always"` 代替这个选项，并传递值为 `"ignore"` 对`"null"` 选项属性。这将告诉 ESLint，除与 `null` 字面量比较外，其他时候总是执行严格的相等判断。
 
 ```js
 ["error", "always", {"null": "ignore"}]

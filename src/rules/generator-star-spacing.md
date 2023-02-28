@@ -49,14 +49,14 @@ function * generator() {
 
 ## 选项
 
-规则需要一个选项，一个对象，它有两个键 `before` 和 `after`，可以是布尔值 `true` 或 `false`。
+规则需要一个选项，一个对象，它有两个键 `"before"` 和 `"after"`，可以是布尔值 `true` 或 `false`。
 
-* `before` 在 `*` 和 `function` 关键词之间强制执行间隔。
+* `"before"` 在 `*` 和 `function` 关键词之间强制执行间隔。
   如果它是 `true`，则需要一个空格，否则不允许有空格。
 
   在对象字面量速记方法中，不检查`*` 之前的间隔，因为它们缺少 `function` 关键字。
 
-* `after` 强制要求在 `*` 和函数名（或匿名生成器函数的开头括号）之间有间距。
+* `"after"` 强制要求在 `*` 和函数名（或匿名生成器函数的开头括号）之间有间距。
   如果它是 `true`，则需要一个空格，否则不允许有空格。
 
 默认值是 `{"before": true, "after": false}`。
@@ -74,7 +74,7 @@ function * generator() {
 * `{"before": true, "after": true}` → `"both"`
 * `{"before": false, "after": false}` → `"neither"`
 
-速记配置实力：
+速记配置示例：
 
 ```json
 "generator-star-spacing": ["error", "after"]
@@ -97,8 +97,8 @@ function * generator() {
 }]
 ```
 
-在上面的配置示例中，顶层的 `before` 和 `after` 选项定义了规则的默认行为。规则，而 `anonymous` 和 `method` 选项则覆盖了默认行为。
-覆盖可以是一个带有 `before` 和 `after`的对象，也可以是上述的速记字符串。
+在上面的配置示例中，顶层的 `"before"` 和 `"after"` 选项定义了规则的默认行为。规则，而 `anonymous` 和 `method` 选项则覆盖了默认行为。
+覆盖可以是一个带有 `"before"` 和 `"after"`的对象，也可以是上述的速记字符串。
 
 ## 示例
 
