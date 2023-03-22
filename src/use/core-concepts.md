@@ -49,7 +49,7 @@ ESLint 插件是一个包含 ESLint 规则、配置、解析器和环境变量�
 
 ESLint 解析器将代码转换为 ESLint 可以评估的抽象语法树（AST, abstract syntax tree）。默认情况下，ESLint 使用内置的与标准 JavaScript运行时和版本兼容的 [Espree](https://github.com/eslint/espree) 解析器。
 
-自定义解析器让 ESLint 可以解析非标准的 JavaScript 语法。通常自定义解析器会被包含在可共享配置或插件中，这一你就不需要直接使用它们了。
+自定义解析器让 ESLint 可以解析非标准的 JavaScript 语法。通常自定义解析器会被包含在可共享配置或插件中，这样你就不需要直接使用它们了。
 
 比如用于让 ESLint 可以解析 TypeScript 代码的 [@typescript-eslint/parser](https://www.npmjs.com/package/@typescript-eslint/parser) 解析器就被包含在 [typescript-eslint](https://github.com/typescript-eslint/typescript-eslint) 项目中。
 
