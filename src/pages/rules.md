@@ -1,10 +1,10 @@
 ---
-title: 规则
+title: 规则参考
 permalink: /rules/index.html
 eleventyNavigation:
     key: rules
-    parent: user guide
-    title: 规则
+    parent: use eslint
+    title: 规则参考
     order: 5
 ---
 

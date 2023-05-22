@@ -1,8 +1,8 @@
 ---
 title: ESLint 入门
 eleventyNavigation:
-    key: getting started 
-    parent: user guide
+    key: getting started
+    parent: use eslint
     title: 入门
     order: 1
 

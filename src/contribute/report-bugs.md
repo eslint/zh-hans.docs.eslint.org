@@ -1,6 +1,10 @@
 ---
-title: Reporting Bugs
-
+title: 报告漏洞
+eleventyNavigation:
+    key: report bugs
+    parent: contribute to eslint
+    title: 报告漏洞
+    order: 1
 ---
 
 如果你认为你发现了 ESLint 中的漏洞，请在 GitHub 上[创建新议题](https://github.com/eslint/eslint/issues/new/choose)或[拉动请求](pull-requests)。

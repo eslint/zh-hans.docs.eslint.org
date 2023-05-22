@@ -1,11 +1,10 @@
 ---
-title: 议题管理
+title: 管理议题
 eleventyNavigation:
-    key: managing issues
-    parent: maintainer guide 
-    title: 议题管理
+    key: manage issues
+    parent: maintain eslint
+    title: 管理议题
     order: 1
-
 ---
 
 新的议题经常被提交，我们如何应对这些议题直接影响到项目的成功。作为项目组的一员，意味着要帮助分流和解决所出现的议题，以便项目能够继续顺利运行。

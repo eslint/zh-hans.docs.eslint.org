@@ -2,11 +2,10 @@
 title: space-before-function-paren
 rule_type: layout
 related_rules:
-- space-after-keywords
-- space-return-throw-case
+- keyword-spacing
 ---
 
-当格式化一个函数时，在函数名或 `function` 关键字和开头的括号之间允许有空白。命名的函数也需要在 `function` 关键字和函数名之间有一个空格，但匿名函数不需要空格。比如：
+当格式化一个函数时，在函数名或 `function` 关键字和开头的括号之间允许有空白。命名函数也需要在 `function` 关键字和函数名之间有一个空格，但匿名函数间不需要空格。比如：
 
 ```js
 function withoutSpace(x) {

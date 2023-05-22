@@ -1,6 +1,10 @@
 ---
 title: 工作组
-
+eleventyNavigation:
+    key: working groups
+    parent: maintain eslint
+    title: 工作组
+    order: 4
 ---
 
 ESLint TSC 可以创建专注于项目的某个特定领域的工作组。
@@ -14,7 +18,7 @@ ESLint TSC 可以创建专注于项目的某个特定领域的工作组。
 1. 可以有任何数量的提交者和审查者。
 1. 必须至少有两名成员。
 
-活跃的工作组在[团队页面](https://eslint.org/team)上列出。
+在[团队页面](https://eslint.org/team)列出活跃的工作组。
 
 ## 工作小组如何工作
 

@@ -1,11 +1,10 @@
 ---
-title: 创建规则
+title: 自定义规则
 eleventyNavigation:
-    key: working with rules
-    parent: developer guide
-    title: 创建规则
-    order: 4
-
+    key: custom rules
+    parent: extend eslint
+    title: 自定义规则
+    order: 2
 ---
 
 **注意**：本页涵盖了 ESLint >= 3.0.0 的最新规则格式。还有一个[废弃的规则格式](./custom-rules-deprecated)。

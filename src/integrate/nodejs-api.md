@@ -1,11 +1,10 @@
 ---
-title: Node.js API
+title: Node.js API 参考
 eleventyNavigation:
     key: node.js api
-    parent: developer guide
-    title: Node.js API
-    order: 9
-
+    parent: extend eslint
+    title: Node.js API 参考
+    order: 7
 ---
 
 虽然 ESLint 被设计成可以在命令行上运行，但也可以通过 Node.js API 以编程方式使用 ESLint。Node.js API 的目的是允许插件和工具作者直接使用 ESLint 功能，而不需要通过命令行界面。
@@ -18,54 +17,93 @@ eleventyNavigation:
 
 这个类依赖于 Node.js 的 `fs` 模块和文件系统，所以你不能在浏览器中使用它。如果你想在浏览器上提示代码，请使用 [Linter][linter] 类代替。
 
-下面是一个使用 `ESLint` 类的简单例子：
+下面是一个使用 `ESLint` 类的简单示例：
 
 ```js
 const { ESLint } = require("eslint");
 
 (async function main() {
-  // 1. 创建实例
-  const eslint = new ESLint();
+    // 1. 创建实例
+    const eslint = new ESLint();
 
-  // 2. 检查文件
-  const results = await eslint.lintFiles(["lib/**/*.js"]);
+    // 2. 检查文件
+    const results = await eslint.lintFiles(["lib/**/*.js"]);
 
-  // 3. 格式化结果
-  const formatter = await eslint.loadFormatter("stylish");
-  const resultText = formatter.format(results);
+    // 3. 格式化结果
+    const formatter = await eslint.loadFormatter("stylish");
+    const resultText = formatter.format(results);
 
-  // 4. 输出
-  console.log(resultText);
+    // 4. 输出
+    console.log(resultText);
 })().catch((error) => {
-  process.exitCode = 1;
-  console.error(error);
+    process.exitCode = 1;
+    console.error(error);
 });
 ```
 
-而这里有一个例子，可以自动修复检查出的问题：
+这里有个可以自动修复检查出的问题的示例：
 
 ```js
 const { ESLint } = require("eslint");
 
 (async function main() {
-  // 1. 用 `fix` 选项创建实例
-  const eslint = new ESLint({ fix: true });
+    // 1. 用 `fix` 选项创建实例
+    const eslint = new ESLint({ fix: true });
 
-  // 2. 检查文件，这不会修改目标文件
-  const results = await eslint.lintFiles(["lib/**/*.js"]);
+    // 2. 检查文件，这不会修改目标文件
+    const results = await eslint.lintFiles(["lib/**/*.js"]);
 
-  // 3. 用固定的代码修改文件
-  await ESLint.outputFixes(results);
+    // 3. 将文件改为修复后的代码
+    await ESLint.outputFixes(results);
 
-  // 4. 格式化结果
-  const formatter = await eslint.loadFormatter("stylish");
-  const resultText = formatter.format(results);
+    // 4. 格式化结果
+    const formatter = await eslint.loadFormatter("stylish");
+    const resultText = formatter.format(results);
 
-  // 5. 输出
-  console.log(resultText);
+    // 5. 输出
+    console.log(resultText);
 })().catch((error) => {
-  process.exitCode = 1;
-  console.error(error);
+    process.exitCode = 1;
+    console.error(error);
+});
+```
+
+这里有个使用 ESLint 类和 `lintText` API 的示例：
+
+```js
+const { ESLint } = require("eslint");
+const testCode = `
+  const name = "eslint";
+  if(true) {
+    console.log("constant condition warning")
+  };
+`;
+(async function main() {
+    // 1. 创建实例
+    const eslint = new ESLint({
+        useEslintrc: false,
+        overrideConfig: {
+            extends: ["eslint:recommended"],
+            parserOptions: {
+                sourceType: "module",
+                ecmaVersion: "latest",
+            },
+            env: {
+                es2022: true,
+                node: true,
+            },
+        },
+    });
+    // 2. 检查文本
+    const results = await eslint.lintText(testCode);
+    // 3. 格式化结果
+    const formatter = await eslint.loadFormatter("stylish");
+    const resultText = formatter.format(results);
+    // 4. 输出
+    console.log(resultText);
+})().catch((error) => {
+    process.exitCode = 1;
+    console.error(error);
 });
 ```
 

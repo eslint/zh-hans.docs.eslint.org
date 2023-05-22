@@ -1,11 +1,10 @@
 ---
-title: 命令行
+title: 命令行参考
 eleventyNavigation:
     key: command line interface
-    parent: user guide
-    title: 命令行
+    parent: use eslint
+    title: 命令行参考
     order: 4
-
 ---
 
 ESLint 命令行（CLI）让你可以在终端执行检查，命令行有许多可以传递给 ESLint 进行配置的选项。

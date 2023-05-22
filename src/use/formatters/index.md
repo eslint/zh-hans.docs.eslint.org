@@ -1,10 +1,10 @@
 ---
-title: 格式化工具
+title: 格式化工具参考
 eleventyNavigation:
     key: formatters
-    parent: user guide
+    parent: user eslint
     title: 格式化工具
-    order: 5
+    order: 6
 ---
 
 ESLint 有几个用来控制提示结果外观的内置格式化工具，同时也支持第三方格式化工具。

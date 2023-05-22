@@ -3,7 +3,7 @@ title: 核心概念
 eleventyNavigation:
     key: core concepts
     title: 核心概念
-    parent: user guide
+    parent: use eslint
     order: 2
 ---
 

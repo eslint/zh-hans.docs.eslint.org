@@ -1,10 +1,9 @@
 ---
-title: Contributing
+title: 向 ESLint 贡献
 eleventyNavigation:
-    key: contributing
-    parent: developer guide
-    title: Contributing
-    order: 10
+    key: contribute to eslint
+    title: 向 ESLint 贡献
+    order: 3
 
 ---
 
@@ -16,33 +15,49 @@ eleventyNavigation:
 
 ESLint 欢迎每个人的贡献，并遵守 [OpenJS 基金会的行为准则](https://eslint.org/conduct)。我们恳请您在投稿前仔细阅读我们的行为准则。
 
-## [错误报告](report-bugs)
+## [报告错误](report-bugs)
 
 你认为你发现了一个问题？我们很乐意听到这个问题。本节解释了如何提交一个 bug，我们需要什么样的信息来正确验证它，以及整个过程。
 
-## 提议[新规则](propose-new-rule)
+## [提议新规则](propose-new-rule)
 
 我们在 ESLint 中收到很多关于新规则的提议。本节解释了我们如何确定哪些规则被接受，以及你应该提供哪些信息来帮助我们评估你的建议。
 
-## 提议[规则修改](propose-rule-change)
+## [提议规则修改](propose-rule-change)
 
 想对现有的规则进行修改？本节解释了这一过程以及我们如何评估此类提案。
 
-## 请求[修改](request-change)
+## [请求修改](request-change)
 
 如果你想请求一个除错误修复或新规则之外的变化，本节将解释这一过程。
 
-## 报告安全漏洞
+## [架构](architecture)
 
-要报告 ESLint 的安全漏洞，请使用我们的 [HackerOne 程序](https://hackerone.com/eslint)。
+了解关于 ESLint 项目的架构。
+
+## [设置开发环境](development-environment)
+
+开发 ESLint 和将其在命令行中运行有所差异。此章节想你展示如何设置开发环境并做好写代码的准备。
+
+## [运行测试](tests)
+
+ESLint 包括了许多单元测试以确保我们可以保持高水准的代码质量。此章节解释了如何运行单元测试。
 
 ## [专注议题](work-on-issue)
 
 有一些额外的时间并想做出贡献？本节讲述了在议题上工作的过程。
 
-## 提交[拉取请求](pull-requests)
+## [提交拉取请求](pull-requests)
 
 我们一直在寻找来自社区的贡献。本节解释了拉动请求的要求和贡献代码的过程。
+
+## [治理](governance)
+
+描述了 ESLint 的治理政策，包括个人在项目中的权利和特权。
+
+## [报告安全漏洞](report-security-vulnerability)
+
+要报告 ESLint 的安全漏洞，请使用我们的 [HackerOne 程序](https://hackerone.com/eslint)。
 
 ## 签署 CLA
 

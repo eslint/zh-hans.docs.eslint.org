@@ -1,11 +1,10 @@
 ---
 title: 迁移至 v8.0.0
 eleventyNavigation:
-    key: migrating to v8
-    parent: user guide
+    key: migrate to v8
+    parent: use eslint
     title: 迁移至 v8.x
     order: 7
-
 ---
 
 ESLint v8.0.0 是 ESLint 主要发行版。在此版本中有一些破坏性变更，而本指南旨在引导你了解这些变化。

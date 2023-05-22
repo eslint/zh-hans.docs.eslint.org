@@ -2,10 +2,9 @@
 title: 配置文件
 eleventyNavigation:
     key: configuration files
-    parent: configuring
+    parent: configure
     title: 配置文件
-    order: 1
-
+    order: 2
 ---
 
 你可以把 ESLint 项目配置放在配置文件中，可以包括内置规则、希望它们如被执行、具有自定义规则的插件、可共享配置、你希望规则适用于哪些文件等等。

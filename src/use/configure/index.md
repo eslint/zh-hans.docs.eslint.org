@@ -1,11 +1,10 @@
 ---
-title: ESLint 配置
+title: 配置 ESLint
 eleventyNavigation:
-    key: configuring
-    parent: user guide
-    title: 配置
+    key: configure
+    parent: use eslint
+    title: 配置 ESLint
     order: 3
-
 ---
 
 你可以根据你的情况定制 ESLint，它十分灵活且具可配置性。你可以关闭全部规则，只运行基本的语法验证，或者也可以根据项目需要，一起使用合适的捆绑规则与自定义规则。主要有两个配置 ESLint 的方法：
@@ -34,24 +33,24 @@ eleventyNavigation:
 * [基于 glob 模式的配置](./configuration-files#基于-glob-模式的配置)
 * [个人配置文件](./configuration-files#个人配置文件已废弃)
 
-[**语言选项**](language-options)
+[**配置语言选项**](language-options)
 
 * [指定环境](./language-options#指定环境)
 * [指定全局变量](./language-options#指定全局变量)
 * [指定解析器选项](./language-options#指定解析器选项)
 
-[**规则**](rules)
+[**配置规则**](rules)
 
 * [规则配置](./rules#规则配置)
 * [禁用规则](./rules#禁用规则)
 
-[**插件**](plugins)
+[**配置插件**](plugins)
 
 * [配置插件](./plugins#配置插件)
 * [指定处理器](./plugins#指定处理器)
 * [指定解析器](./plugins#指定解析器)
 
-[**忽略代码**](ignore)
+[**忽略文件**](ignore)
 
 * [配置文件中的 `ignorePatterns`](./ignore#配置文件中的-ignorepatterns)
 * [`.eslintignore` 文件](./ignore#eslintignore-文件)

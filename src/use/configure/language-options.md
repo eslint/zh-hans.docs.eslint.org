@@ -1,11 +1,10 @@
 ---
-title: 语言选项
+title: 配置语言选项
 eleventyNavigation:
-    key: configuring language options
+    key: configure language options
     parent: configuring
     title: 配置语言选项
-    order: 2
-
+    order: 3
 ---
 
 JavaScript 生态中有多个运行时、版本、扩展和框架。每个所支持的语法和全局变量都不尽相同。ESLint 会让你指定项目中 JavaScript 所使用的语言选项。你也可以在项目中使用插件扩展 ESLint 支持的语言选项。

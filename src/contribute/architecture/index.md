@@ -2,12 +2,14 @@
 title: 架构
 eleventyNavigation:
     key: architecture
-    parent: developer guide
+    parent: contribute to eslint
     title: 架构
-    order: 1
+    order: 5
 ---
 
-<center><img alt="dependency graph" src="../../assets/images/architecture/dependency.svg"></center>
+:::img-container
+<img alt="dependency graph" src="../../assets/images/architecture/dependency.svg">
+:::
 
 在较高层次上看，ESLint 有几个关键部分：
 

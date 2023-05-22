@@ -2,10 +2,9 @@
 title: 治理
 eleventyNavigation:
     key: governance
-    parent: maintainer guide
+    parent: contribute to eslint
     title: 治理
-    order: 4
-
+    order: 10
 ---
 
 ESLint 是一个依赖于社区贡献者的开源项目。每个人都可以随时提交代码、参与讨论、提交建议或其他合适的贡献。本文档讲述了 ESLint 项目中几种类型的贡献者。
@@ -37,7 +36,7 @@ ESLint 是一个依赖于社区贡献者的开源项目。每个人都可以随�
 * 必须为所有修改提交拉取请求。
 * 审查者和 TSC 成员会对他们的工作进行审查，然后才会接受到版本库中。
 * 可以标记和关闭与网站有关的议题（见[议题管理](../maintain/manage-issues)）。
-* 可以合并一些拉取请求（见[拉取请求管理](../maintain/review-pull-requests)）。
+* 可以合并一些拉取请求（见[拉取请求审查](../maintain/review-pull-requests)）。
 
 要成为网站团队成员：
 
@@ -59,8 +58,8 @@ ESLint 是一个依赖于社区贡献者的开源项目。每个人都可以随�
 * 当他们不再需要时，应删除他们的公开分支
 * 必须为所有修改提交拉取请求
 * 在 TSC 成员审查后，再合并仓库中
-* 可以标记和关闭议题（见[管理议题](../maintain/manage-issues)）
-* 可以合并一些拉取请求（见[管理拉取请求](../maintain/review-pull-requests)）
+* 可以标记和关闭议题（见[议题管理](../maintain/manage-issues)）
+* 可以合并一些拉取请求（见[拉取请求审查](../maintain/review-pull-requests)）
 
 要成为提交者：
 
@@ -142,14 +141,14 @@ TSC 成员可以履行审查者的所有职责，并且还可以：
 #### 新增 TSC 成员流程
 
 1. 将 GitHub 用户添加到 GitHub ESLint TSC 团队中。
-1. 将 GitHub 用户设置为 ESLint 组织的“owner”角色
-1. 发送一封欢迎邮件，并附上[维护者指南](./)的链接和 npm 2FA 的说明。
-1. 邀请加入 Discord TSC 频道
-1. 让 TSC 成员成为 ESLint 团队邮件列表中的管理员
-1. 将 TSC 成员添加到谷歌日历上经常性的 TSC 会议事件中。
-1. 在 Tweetdeck 上将 TSC 成员添加为 ESLint Twitter 账户管理员
-1. 将 TSC 成员添加到 ESLint TSC 邮件列表中，作为“owner”
-1. 用 ESLint Twitter 账户发推向新的 TSC 成员表示祝贺
+2. 将 GitHub 用户设置为 ESLint 组织的“owner”角色
+3. 发送一封欢迎邮件，并附上[维护 ESLint 文档](../maintain/))的链接和 npm 2FA 的说明。
+4. 邀请加入 Discord TSC 频道
+5. 让 TSC 成员成为 ESLint 团队邮件列表中的管理员
+6. 将 TSC 成员添加到谷歌日历上经常性的 TSC 会议事件中。
+7. 在 Tweetdeck 上将 TSC 成员添加为 ESLint Twitter 账户管理员
+8. 将 TSC 成员添加到 ESLint TSC 邮件列表中，作为“owner”
+9. 用 ESLint Twitter 账户发推向新的 TSC 成员表示祝贺
 
 #### TSC 会议
 
