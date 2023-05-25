@@ -2,7 +2,7 @@
 title: 格式化工具参考
 eleventyNavigation:
     key: formatters
-    parent: user eslint
+    parent: use eslint
     title: 格式化工具
     order: 6
 ---

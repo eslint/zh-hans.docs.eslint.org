@@ -2,7 +2,7 @@
 title: 设置开发环境
 eleventyNavigation:
     key: set up a development environment
-    parent: developer guide
+    parent: contribute to eslint
     title: 设置开发环境
     order: 6
 ---

@@ -2,7 +2,7 @@
 title: 配置语言选项
 eleventyNavigation:
     key: configure language options
-    parent: configuring
+    parent: configure
     title: 配置语言选项
     order: 3
 ---
