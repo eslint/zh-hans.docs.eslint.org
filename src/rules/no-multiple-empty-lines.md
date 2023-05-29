@@ -29,6 +29,7 @@ rule_type: layout
 var foo = 5;
 
 
+
 var bar = 3;
 ```
 
