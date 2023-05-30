@@ -2,10 +2,9 @@
 title: 配置文件（新）
 eleventyNavigation:
     key: configuration files
-    parent: configuring
+    parent: configure
     title: 配置文件（新）
     order: 1
-
 ---
 
 ::: warning
@@ -348,7 +347,7 @@ export default [
         rules: {
             "jsdoc/require-description": "error",
             "jsdoc/check-values": "error"
-        }  
+        }
     }
 ];
 ```
@@ -369,7 +368,7 @@ export default [
         rules: {
             "jsdoc/require-description": "error",
             "jsdoc/check-values": "error"
-        }  
+        }
     }
 ];
 ```
@@ -388,7 +387,7 @@ export default [
         rules: {
             "jsd/require-description": "error",
             "jsd/check-values": "error"
-        }  
+        }
     }
 ];
 ```

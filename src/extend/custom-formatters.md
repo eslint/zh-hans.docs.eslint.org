@@ -1,11 +1,10 @@
 ---
-title: 创建自定义格式化工具
+title: 自定义格式化工具
 eleventyNavigation:
-    key: working with custom formatters
-    parent: developer guide
-    title: 创建自定义格式化工具
-    order: 6
-
+    key: custom formatters
+    parent: extend eslint
+    title: 自定义格式化工具
+    order: 3
 ---
 
 虽然 ESLint 有一些内置的格式化工具可用于格式化检测结果，但也有可能创建和发布你自己的自定义格式化工具。你可以在你的项目中直接包含自定义格式化工具，或者创建 npm 包来单独分发它们。
@@ -29,7 +28,7 @@ module.exports = async function(results) {
 };
 ```
 
-要用这个格式化工具运行ESLint，你可以使用 `-f`（或 `--format`）命令行标志。
+要用这个格式化工具运行 ESLint，你可以使用 `-f`（或 `--format`）命令行标志。
 
 ```bash
 eslint -f ./my-awesome-formatter.js src/
@@ -103,7 +102,7 @@ eslint -f awesome src/
 
 ### `result` 对象
 
-<! -- 本节从“Node.js API ：页面复制。对本节的修改应该也要手动添加到该页面。-->
+<! -- 本节从“Node.js API”页面复制。对本节的修改应该也要手动添加到该页面。-->
 
 `results` 数组中的每个对象都是 `result` 对象。每个 `results` 对象包含被检查的文件路径和检查出问题的信息。下面是每个 `results` 对象的可用属性：
 
@@ -131,7 +130,7 @@ formatter 函数的第二个实参应为对象。该对象有以下属性：
 
 * `cwd` ... 当前工作目录。这个值来自 [ESLint](../integrate/nodejs-api#-new-eslintoptions) 类中的 `cwd` 构造器选项。
 * `maxWarningsExceeded`（可选）：如果设置了 `--max-warnings` 且警告数量达到限制，则此对象将包括两个属性：值为 `--max-warnings` 选项的 `maxWarnings` 和值为检查出的警告数量的 `foundWarnings`。
-* `rulesMeta` ... 规则的 `meta` 属性值。关于规则的更多信息，请参见[使用规则](custom-rules)页面。
+* `rulesMeta` ... 规则的 `meta` 属性值。关于规则的更多信息，请参见[自定义规则](custom-rules)页面。
 
 例如，如果运行了 `no-extra-semi` 规则，对象会是这样的：
 

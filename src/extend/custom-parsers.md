@@ -1,11 +1,10 @@
 ---
-title: 创建自定义解析器
+title: 自定义解析器
 eleventyNavigation:
-    key: working with custom parsers
-    parent: developer guide
+    key: custom parsers
+    parent: extend eslint
     title: 创建自定义解析器
-    order: 7
-
+    order: 4
 ---
 
 如果你想使用自己的解析器以便为自己的规则提供额外的功能，你可以指定使用自定义解析器。这就可以使用解析器暴露的 `parseForESLint` 方法来解析代码，或者也可以使用 `parse` 方法。这两个方法都应该将源码作为第一个参数，并将可选的配置对象作为第二个参数（在配置文件中作为 `parserOptions` 提供）。`parse` 方法应该简单地返回 AST。`parseForESLint` 方法应该返回包含必需属性 `ast` 和可选属性 `services`、`scopeManager` 和 `visitorKeys` 的对象。

@@ -1,11 +1,10 @@
 ---
-title: 规则
+title: 配置规则
 eleventyNavigation:
-    key: configuring rules
-    parent: configuring
-    title: 规则配置
-    order: 3
-
+    key: configure rules
+    parent: configure
+    title: 配置规则
+    order: 4
 ---
 
 规则是 ESLint 的核心构建模块。规则验证你的代码是否符合某个期望，以及如果不符合该期望该怎么做。规则还可以包含针对该规则的额外配置选项。

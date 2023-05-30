@@ -1,11 +1,10 @@
 ---
 title: 版本管理
 eleventyNavigation:
-    key: managing releases
-    parent: maintainer guide 
+    key: manage releases
+    parent: maintain eslint
     title: 版本管理
     order: 3
-
 ---
 
 发布是指项目向社区正式发布新版本，有两种类型的发布：

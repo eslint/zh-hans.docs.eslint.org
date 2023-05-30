@@ -1,16 +1,20 @@
 ---
-title: 着手处理议题
-
+title: 处理议题
+eleventyNavigation:
+    key: work on issues
+    parent: contribute to eslint
+    title: 处理议题
+    order: 8
 ---
 
 我们公开的[议题追踪器](https://github.com/eslint/eslint/issues)列出了所有我们计划去做的事，以及来自社区的建议。在开始着手处理议题前，请确保读完本页面的其余部分。
 
 ## 议题标签
 
-我们给议题状态打上标签。[维护者指南](../maintain/manage-issues#当有新议题时)中有关于标签最完整的文档，但本页的信息对大多数贡献者足够了。作为贡献者，标签可以回答你最重要的问题有：
+我们给议题状态打上标签。[维护 ESLint 文档](../maintain/manage-issues#当有新议题时)中有关于标签最完整的文档，但本页的信息对大多数贡献者足够了。作为贡献者，标签可以回答你最重要的问题有：
 
 1. 我可以就这个议题工作吗？如果你对向 ESLint 贡献没有或者经验不多，那么 [`good first issue`](https://github.com/eslint/eslint/labels/good%20first%20issue) 标签标记的议题就很适合你。否则，你可以选择来自 [`help wanted`](https://github.com/eslint/eslint/labels/help%20wanted) 标签的邀请。如果你有足够的经验，你可以尝试 [`accepted`](https://github.com/eslint/eslint/labels/accepted) 标签。此外，议题如果还没有准备好就会打上 `triage`、`evaluating` 或 `needs bikeshedding` 标签，而由于其他原因目前不能工作的问题，如依赖的错误，则被标记为 `blocked`。
-1. 这个问题是关于什么的？描述议题性质的标签包括 `bug`、`enhancement`、`feature`、`question`、`rule`、`documentation`、`core`、`build`、`cli`、`infrastructure`、`breaking` 和 `chore`。这些都在[维护者指南](../maintain/manage-issues#议题的类型)中有所记载。
+1. 这个问题是关于什么的？描述议题性质的标签包括 `bug`、`enhancement`、`feature`、`question`、`rule`、`documentation`、`core`、`build`、`cli`、`infrastructure`、`breaking` 和 `chore`。这些都在[维护 ESLint 文档](../maintain/manage-issues#议题的类型)中有所记载。
 1. 先解决哪个议题？因为存在很多议题，因此对议题优先级进行了排序。以下是从高到低的优先级列表：
 
     1. **漏洞** - 项目的问题正在积极影响用户。我们希望尽可能快地解决这些问题。

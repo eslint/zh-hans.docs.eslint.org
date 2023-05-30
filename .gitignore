@@ -118,6 +118,8 @@ library.json
 pages.11tydata.json
 static
 html-formatter-example.html
+html-formatter-example.json
 src.json
 /package.json
 /package-lock.json
+.stylelintrc.json

@@ -1,11 +1,10 @@
 ---
-title: Ignoring Code
+title: 忽略文件
 eleventyNavigation:
-    key: ignoring code
-    parent: configuring
-    title: Ignoring Code
-    order: 5
-
+    key: ignoring files
+    parent: configure
+    title: 忽略文件
+    order: 6
 ---
 
 你可以提供配置几个 glob 匹配模糊让 ESLint 在检查时忽略明确的文件或目录。

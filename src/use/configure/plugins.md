@@ -1,11 +1,10 @@
 ---
-title: 插件与解析器
+title: 配置插件与解析器
 eleventyNavigation:
-    key: configuring plugins
-    parent: configuring
-    title: 插件与解析器配置
-    order: 4
-
+    key: configure plugins
+    parent: configure
+    title: 配置插件与解析器
+    order: 5
 ---
 
 你可以用插件以各种不同的方式扩展 ESLint。插件可以包括：

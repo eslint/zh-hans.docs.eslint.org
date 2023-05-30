@@ -14,7 +14,9 @@ if (a && b) {
 bar();
 ```
 
+:::img-container
 ![代码链路示例](../assets/images/code-path-analysis/helo.svg)
+:::
 
 ## 对象
 
@@ -143,17 +145,23 @@ bar();
 
 1. 首先，分析推进到循环的终点。
 
+:::img-container
    ![循环事件示例 1](./assets/images/code-path-analysis/loop-event-example-while-1.svg)
+:::
 
-2. 其次，它创建了循环链路。
+1. 其次，它创建了循环链路。
    这时，已经存在下一个片段，所以不会触发 `onCodePathSegmentStart` 事件。
    而是触发 `onCodePathSegmentLoop`。
 
+:::img-container
    ![循环事件示例 2](../assets/images/code-path-analysis/loop-event-example-while-2.svg)
+:::
 
-3. 最后，它达到终点。
+1. 最后，它达到终点。
 
+:::img-container
    ![循环事件示例 3](../assets/images/code-path-analysis/loop-event-example-while-3.svg)
+:::
 
 示例 2：
 
@@ -168,29 +176,39 @@ bar();
    首先，分析推进到 `ForStatement.update`。
    `update` 段先会停留。
 
+:::img-container
    ![循环事件示例 1](../assets/images/code-path-analysis/loop-event-example-for-1.svg)
+:::
 
 2. 第二，它推进到 `ForStatement.body`。
    当然，在 `body` 段之前有 `test` 段。
    它会停留在 `update` 段。
 
+:::img-container
    ![循环事件示例 2](../assets/images/code-path-analysis/loop-event-example-for-2.svg)
+:::
 
 3. 第三，它创建了从 `body` 段到 `update` 段的循环路径。
    此时存在下一个，所以不会触发 `onCodePathSegmentStart` 事件。
    而是触发 `onCodePathSegmentLoop`。
 
+:::img-container
    ![循环事件示例 3](../assets/images/code-path-analysis/loop-event-example-for-3.svg)
+:::
 
 4. 第四，它还创建了从 `update` 段到 `test` 段的循环路径。
    此时存在下一个段，所以不会触发 `onCodePathSegmentStart` 事件。
    而是触发 `onCodePathSegmentLoop`。
 
+:::img-container
    ![循环事件示例 4](../assets/images/code-path-analysis/loop-event-example-for-4.svg)
+:::
 
 5. 最后，到达终点。
 
+:::img-container
    ![循环事件示例 5](../assets/images/code-path-analysis/loop-event-example-for-5.svg)
+:::
 
 ## 使用示例
 
@@ -336,7 +354,9 @@ module.exports = function(context) {
 console.log("Hello world!");
 ```
 
+:::img-container
 ![Hello World](../assets/images/code-path-analysis/example-hello-world.svg)
+:::
 
 ### `IfStatement`
 
@@ -348,7 +368,9 @@ if (a) {
 }
 ```
 
+:::img-container
 ![`IfStatement`](../assets/images/code-path-analysis/example-ifstatement.svg)
+:::
 
 ### `IfStatement`（链）
 
@@ -362,7 +384,9 @@ if (a) {
 }
 ```
 
+:::img-container
 ![`IfStatement`（链）](../assets/images/code-path-analysis/example-ifstatement-chain.svg)
+:::
 
 ### `SwitchStatement`
 
@@ -383,7 +407,9 @@ switch (a) {
 }
 ```
 
+:::img-container
 ![`SwitchStatement`](../assets/images/code-path-analysis/example-switchstatement.svg)
+:::
 
 ### `SwitchStatement`（有 `default` 值）
 
@@ -408,7 +434,9 @@ switch (a) {
 }
 ```
 
+:::img-container
 ![`SwitchStatement`（有 `default` 值）](../assets/images/code-path-analysis/example-switchstatement-has-default.svg)
+:::
 
 ### `TryStatement` (try-catch)
 
@@ -431,7 +459,9 @@ last();
 * `try` 块中的第一个可抛节点（如调用函数）。
 * `try` 块的结束。
 
+:::img-container
 ![`TryStatement` (try-catch)](../assets/images/code-path-analysis/example-trystatement-try-catch.svg)
+:::
 
 ### `TryStatement` (try-finally)
 
@@ -449,7 +479,9 @@ last();
 这时，`CodePath.currentSegments.length` 是 `2`。
 一个是正常路径，另一个是返回路径（`throw` 或 `return`）。
 
+:::img-container
 ![`TryStatement` (try-finally)](../assets/images/code-path-analysis/example-trystatement-try-finally.svg)
+:::
 
 ### `TryStatement` (try-catch-finally)
 
@@ -465,7 +497,9 @@ try {
 last();
 ```
 
+:::img-container
 ![`TryStatement` (try-catch-finally)](../assets/images/code-path-analysis/example-trystatement-try-catch-finally.svg)
+:::
 
 ### `WhileStatement`
 
@@ -479,7 +513,9 @@ while (a) {
 }
 ```
 
+:::img-container
 ![`WhileStatement`](../assets/images/code-path-analysis/example-whilestatement.svg)
+:::
 
 ### `DoWhileStatement`
 
@@ -490,7 +526,9 @@ do {
 } while (a);
 ```
 
+:::img-container
 ![`DoWhileStatement`](../assets/images/code-path-analysis/example-dowhilestatement.svg)
+:::
 
 ### `ForStatement`
 
@@ -504,7 +542,9 @@ for (let i = 0; i < 10; ++i) {
 }
 ```
 
+:::img-container
 ![`ForStatement`](../assets/images/code-path-analysis/example-forstatement.svg)
+:::
 
 ### `ForStatement`（永远）
 
@@ -515,7 +555,9 @@ for (;;) {
 bar();
 ```
 
+:::img-container
 ![`ForStatement`（永远）](../assets/images/code-path-analysis/example-forstatement-for-ever.svg)
+:::
 
 ### `ForInStatement`
 
@@ -525,7 +567,9 @@ for (let key in obj) {
 }
 ```
 
+:::img-container
 ![`ForInStatement`](../assets/images/code-path-analysis/example-forinstatement.svg)
+:::
 
 ### 当有函数时
 
@@ -544,8 +588,12 @@ foo(false);
 
 * 全局：
 
+:::img-container
   ![当有函数时](../assets/images/code-path-analysis/example-when-there-is-a-function-g.svg)
+:::
 
 * 仅该函数：
 
+:::img-container
   ![当有函数时](../assets/images/code-path-analysis/example-when-there-is-a-function-f.svg)
+:::

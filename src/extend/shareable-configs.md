@@ -1,11 +1,10 @@
 ---
-title: 可共享配置
+title: 共享配置
 eleventyNavigation:
-    key: shareable configs
-    parent: developer guide
-    title: 可共享配置
-    order: 8
-
+    key: share configs
+    parent: extend eslint
+    title: 共享配置
+    order: 6
 ---
 
 `.eslintrc` 文件中的配置是项目的重要组成部分，因此，你可能想与其他项目或人分享它。可共享配置允许你在 [npm](https://www.npmjs.com/) 上发布你的配置设置，让其他人下载并在他们的 ESLint 项目中使用它。

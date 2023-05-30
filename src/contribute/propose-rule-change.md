@@ -1,6 +1,10 @@
 ---
-title: Rule Changes
-
+title: 提议规则修改
+eleventyNavigation:
+    key: propose rule change
+    parent: contribute to eslint
+    title: 提议规则修改
+    order: 3
 ---
 
 有时需要修改 ESLint 核心规则。这不一定是一个错误，而是一个使规则更加可配置的增强。在这些情况下，我们会考虑对规则进行修改。

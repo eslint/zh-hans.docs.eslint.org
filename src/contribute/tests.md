@@ -1,11 +1,10 @@
 ---
-title: 单元测试
+title: 运行测试
 eleventyNavigation:
-    key: run the tests
-    parent: developer guide
+    key: run tests
+    parent: contribute to eslint
     title: 运行测试
-    order: 3
-
+    order: 7
 ---
 
 ESLint 大多数部分都有与之相关的单元测试。单元测试是用 [Mocha](https://mochajs.org/) 编写的，你在为 ESLint 做贡献时需要用到。可以在 `tests` 目录下找到所有的单元测试。

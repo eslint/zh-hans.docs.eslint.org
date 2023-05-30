@@ -1,11 +1,10 @@
 ---
-title: 拉取请求审查
+title: 审查拉取请求
 eleventyNavigation:
-    key: reviewing pull requests
-    parent: maintainer guide 
-    title: 拉取请求审查
+    key: review pull requests
+    parent: maintain eslint
+    title: 审查拉取请求
     order: 2
-
 ---
 
 经常会有人提交拉取请求，它代表了我们与社区互动的最佳机会。因此在合并前，审查拉取请求并积极就此请求进行讨论，非常重要。

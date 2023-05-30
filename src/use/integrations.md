@@ -2,10 +2,9 @@
 title: 集成
 eleventyNavigation:
     key: integrations
-    parent: user guide
+    parent: use eslint
     title: 集成
     order: 7
-
 ---
 
 此页面包括了与 ESLint 集成的社区项目。列在此页的项目并不由 ESLint 所维护。
