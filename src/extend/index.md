@@ -22,7 +22,7 @@ eleventyNavigation:
 
 ## [自定义规则](custom-rules)
 
-此章节解释了如何创建和修改 ESLint 规则。
+此章节解释了如何创建自定义规则并与 ESLint 一同食用。
 
 ## [自定义格式化工具](custom-formatters)
 

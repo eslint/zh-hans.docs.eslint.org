@@ -4,7 +4,6 @@ eleventyNavigation:
     key: contribute to eslint
     title: 向 ESLint 贡献
     order: 3
-
 ---
 
 开源项目的一个伟大之处在于任何人都可以以任何有意义的方式作出贡献。ESLint 的存在离不开自项目开始以来众多贡献者的帮助，我们希望你能感觉到你也能做出贡献并有所作为。
@@ -50,6 +49,10 @@ ESLint 包括了许多单元测试以确保我们可以保持高水准的代码�
 ## [提交拉取请求](pull-requests)
 
 我们一直在寻找来自社区的贡献。本节解释了拉动请求的要求和贡献代码的过程。
+
+## [贡献核心规则](core-rules)
+
+此章节解释了如何向 ESLint 添加核心规则。
 
 ## [治理](governance)
 

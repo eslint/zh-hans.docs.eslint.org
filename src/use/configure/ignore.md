@@ -4,7 +4,7 @@ eleventyNavigation:
     key: ignoring files
     parent: configure
     title: 忽略文件
-    order: 6
+    order: 7
 ---
 
 你可以提供配置几个 glob 匹配模糊让 ESLint 在检查时忽略明确的文件或目录。

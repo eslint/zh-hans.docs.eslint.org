@@ -1,9 +1,9 @@
 ---
-title: 配置插件与解析器
+title: 配置插件
 eleventyNavigation:
     key: configure plugins
     parent: configure
-    title: 配置插件与解析器
+    title: 配置插件
     order: 5
 ---
 
@@ -13,36 +13,6 @@ eleventyNavigation:
 * 自定义配置。
 * 自定义环境。
 * 自定义处理器，从其他类型的文件中提取 JavaScript 代码，或在提示前对代码进行预处理。
-
-你也可以使用自定义解析器将 JavaScript 代码转换成抽象的语法树，供 ESLint 评估。如果你的代码与 ESLint 的默认解析器 Espree 不兼容，可能需要添加自定义解析器。
-
-## 指定解析器
-
-默认情况下，ESLint 使用 [Espree](https://github.com/eslint/espree) 作为其解析器。你可以选择在你的配置文件中指定使用一个不同的解析器，只要该解析器满足以下要求。
-
-1. 它必须是一个可以从使用解析器的配置文件中加载的 Node 模块。通常情况下，这意味着你应该使用 npm 单独安装解析器包。
-1. 它必须符合[解析器接口](../../extend/custom-parsers)。
-
-请注意，即使有这些兼容性，也不能保证外部解析器能与 ESLint 正确工作，ESLint 也不会修复与其他解析器不兼容的漏洞。
-
-你可以在 `.eslintrc` 文件中使用 `parser` 选项指定 npm 模块作为解析器。例如，下面指定使用 Esprima 而不是 Espree：
-
-```json
-{
-    "parser": "esprima",
-    "rules": {
-        "semi": "error"
-    }
-}
-```
-
-以下解析器与 ESLint 兼容：
-
-* [Esprima](https://www.npmjs.com/package/esprima)
-* [@babel/eslint-parser](https://www.npmjs.com/package/@babel/eslint-parser) - 使 [Babel](https://babeljs.io) 解析器与 ESLint 兼容的的包装器。
-* [@typescript-eslint/parser](https://www.npmjs.com/package/@typescript-eslint/parser) - 一个将 TypeScript 转换为与 ESTree 兼容的形式的解析器，因此它可以在 ESLint 中使用。
-
-注意当使用自定义的解析器时，仍然需要配置 `parserOptions` 属性，以便 ESLint 在默认情况下与 ECMAScript 5 中没有的功能正常工作。解析器都是用 `parserOptions` 来决定特性启用与否。
 
 ## 配置插件
 

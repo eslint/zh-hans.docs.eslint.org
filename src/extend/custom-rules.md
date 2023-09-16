@@ -7,46 +7,26 @@ eleventyNavigation:
     order: 2
 ---
 
+你可以创建自定义规则并与 ESLint 一同食用。当[核心规则](../rules/)没有覆盖你的用例时，就可能需要创建自定义规则。
+
 **注意**：本页涵盖了 ESLint >= 3.0.0 的最新规则格式。还有一个[废弃的规则格式](./custom-rules-deprecated)。
 
-ESLint 中的每个规则都有三个以其标识符命名的文件（如 `no-extra-semi`）。
-
-* 在 `lib/rules` 目录下：源文件（如 `no-extra-semi.js`）。
-* 在 `tests/lib/rules` 目录下：测试文件（如 `no-extra-semi.js`）。
-* 在 `docs/src/rules` 目录下：Markdown 文档文件（如 `no-extra-semi.md`)
-
-**重点**：如果你向 ESLint 仓库提交**核心**规则，则必须**遵循下面解释的一些约定。
-
-以下是一个规则的源文件的基本格式：
+以下是自定义规则的基础格式：
 
 ```js
-/**
- * @fileoverview Rule to disallow unnecessary semicolons
- * @author Nicholas C. Zakas
- */
-
-"use strict";
-
-//------------------------------------------------------------------------------
-// Rule Definition
-//------------------------------------------------------------------------------
-
-/** @type {import('eslint').Rule.RuleModule} */
+// customRule.js
 module.exports = {
     meta: {
         type: "suggestion",
-
         docs: {
-            description: "disallow unnecessary semicolons",
-            recommended: true,
-            url: "https://eslint.org/docs/rules/no-extra-semi"
+            description: "Description of the rule",
         },
         fixable: "code",
-        schema: [] // no options
+        schema: [] // 没有提供选项
     },
     create: function(context) {
         return {
-            // callback functions
+            // 回调函数
         };
     }
 };
@@ -710,45 +690,23 @@ ESLint 在遍历 AST 时分析了代码路径。
 
 ## 规则单元测试
 
-ESLint core 的每个捆绑规则必须有一组单元测试与之一起提交才能被接受。测试文件的名称与源文件相同，但在 `tests/lib/` 中，如果规则的源文件是 `lib/rules/foo.js`，那么测试文件应该是 `tests/lib/rules/foo.js`。
+ESLint 提供了 [`RuleTester`](../integrate/nodejs-api#ruletester) 实用工具，以方便为规则编写测试。
 
-ESLint 提供了 [`RuleTester`](../integrate/nodejs-api#ruletester) 工具，以方便为规则编写测试。
+## 规则命名约定
 
-## 性能测试
+虽然你可以随便给自定义规则取你喜欢的名字，但如果自定义规则也采用核心规则的命名规范那会更加清晰。要了解更多信息，请参见[核心规则命名规范](../contribute/core-rules#规则命名规范)文档。
 
-为了保持提示过程的高效性和非侵入性，验证新规则或对现有规则的修改对性能的影响是非常有用的。
+## 运行时规则
 
-### 整体性能
+这使得 ESLint 与其他检查器不同，它可以在运行时中定义自定义规则。这非常适合用在特定于项目或公司的规则，因为这对于 ESLint 无用。
 
-当在 ESLint 核心库中开发时，`npm run perf`命令给出了所有核心规则启用后 ESLint 运行时间的高级概览。
+运行时规则使用与其他规则一致的格式编写。像创建其他规则一样创建你的规则，并同样遵循以下步骤：
 
-```bash
-$ git checkout main
-Switched to branch 'main'
+1. 将所有运行时规则放在相同的目录下（如 `eslint_rules`）。
+2. 创建[配置文件](../use/configure/)并在 `rules` 键下指定你的规则 ID 和错误等级。如果配置文件中没有指定 `"warn"` 或 `"error"` 值的话就不会运行。
+3. 在运行[命令行界面](../use/command-line-interface)时，应使用 `--rulesdir` 选项指定运行时规则所处位置。
 
-$ npm run perf
-CPU Speed is 2200 with multiplier 7500000
-Performance Run #1:  1394.689313ms
-Performance Run #2:  1423.295351ms
-Performance Run #3:  1385.09515ms
-Performance Run #4:  1382.406982ms
-Performance Run #5:  1409.68566ms
-Performance budget ok:  1394.689313ms (limit: 3409.090909090909ms)
-
-$ git checkout my-rule-branch
-Switched to branch 'my-rule-branch'
-
-$ npm run perf
-CPU Speed is 2200 with multiplier 7500000
-Performance Run #1:  1443.736547ms
-Performance Run #2:  1419.193291ms
-Performance Run #3:  1436.018228ms
-Performance Run #4:  1473.605485ms
-Performance Run #5:  1457.455283ms
-Performance budget ok:  1443.736547ms (limit: 3409.090909090909ms)
-```
-
-### 每条规则的性能
+## 验证规则性能
 
 ESLint 有一个内置的方法来跟踪单个规则的性能。设置 `TIMING` 环境变量将触发显示，在检查完成后，显示10个运行时间最长的规则，以及它们的单独运行时间（规则创建+规则执行）和相对性能影响占总规则处理时间（规则创建 + 规则执行）的百分比。
 
@@ -778,21 +736,3 @@ quotes |    18.066 |   100.0%
 ```
 
 要看到更长的结果列表（超过 10 个），请将环境变量设置为其他值，如 `TIMING=50` 或 `TIMING=all`。
-
-## 规则命名约定
-
-ESLint 的规则命名约定是相当简单的。
-
-* 如果你的规则不允许某些东西，就用 `no-` 作为前缀，比如 `no-eval` 表示不允许 `eval()`，`no-debugger` 表示不允许`debugger`。
-* 如果你的规则是强制包含某些东西，使用一个没有特殊前缀的短名称。
-* 在单词之间使用破折号。
-
-## 运行时规则
-
-使得 ESLint 与其他 linters 不同的是，它能够在运行时定义自定义规则。这对于那些针对你的项目或公司的规则来说是完美的，因为 ESLint 在发货时是没有意义的。有了运行时规则，你不必等待 ESLint 的下一个版本，也不必为你的规则不足以适用于更大的 JavaScript 社区而感到失望，只需编写你的规则并在运行时将其包括在内。
-
-运行时规则的编写格式与所有其他规则相同。像其他规则一样创建你的规则，然后按照以下步骤进行：
-
-1. 把你所有的运行时规则放在同一个目录下（如 `eslint_rules`）。
-2. 创建[配置文件](../use/configure/) 并在 `rules` 键下指定你的规则 ID 错误级别。你的规则将不会运行，除非它在配置文件中的值是 `"warn"` 或 `"error"`。
-3. 运行[命令行界面](../use/command-line-interface)，使用 `--rulesdir`选项来指定你的运行规则的位置。

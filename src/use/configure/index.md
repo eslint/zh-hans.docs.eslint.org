@@ -48,7 +48,10 @@ eleventyNavigation:
 
 * [配置插件](./plugins#配置插件)
 * [指定处理器](./plugins#指定处理器)
-* [指定解析器](./plugins#指定解析器)
+
+[**指定解析器**](./parser)
+
+* [配置自定义解析器](./parser#配置自定义解析器)
 
 [**忽略文件**](ignore)
 
