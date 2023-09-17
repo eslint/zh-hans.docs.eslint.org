@@ -17,7 +17,7 @@ ESLint 是一个可配置的 JavaScript 检查器。它可以帮助你发现并�
 
 规则是 ESLint 的核心构建块。规则会验证 你的代码是否符合预期，以及如果不符合预期该怎么做。规则还可以包含针对该规则的额外配置项。
 
-比如 [`semi`](../rules/semi) 规则会让你指定 JavaScript 语句结尾是否应该要有分号（`;`）。你可以通过设置规则来要求总是语句结尾总是要或绝不要有分号。
+比如 [`semi`](../rules/semi) 规则会让你指定 JavaScript 语句结尾是否应该要有分号（`;`）。你可以通过设置规则来要求语句结尾总时要或绝不要有分号。
 
 ESLint 包括数百个可以使用的内置规则。此外你也可以创建自定义规则或使用别人用[插件](#插件)创建的规则。
 
@@ -39,7 +39,7 @@ ESLint 配置文件是指项目中存储 ESLint 配置的地方。可以包括�
 
 ## 插件
 
-ESLint 插件是一个包含 ESLint 规则、配置、解析器和环境变量的集合的 npm 模块。通过插件包括自定义规则。插件可以强制使用某个风格指南并支持 JavaScript 扩展（比如 TypeScript）、库（比如 React）和框架（比如 Angular）。
+ESLint 插件是一个包含 ESLint 规则、配置、解析器和环境变量的集合的 npm 模块。通常插件包括自定义规则。插件可以强制使用某个风格指南并支持 JavaScript 扩展（比如 TypeScript）、库（比如 React）和框架（比如 Angular）。
 
 插件的流行用例就是强制执行框架规定的最佳实践。比如 [@angular-eslint/eslint-plugin](https://www.npmjs.com/package/@angular-eslint/eslint-plugin) 包括了使用 Angular 框架的最佳实践。
 

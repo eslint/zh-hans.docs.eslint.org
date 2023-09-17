@@ -11,7 +11,7 @@ eleventyNavigation:
 这是实验性功能。你可以在项目根目录放置 `eslint.config.js` 文件或将 `ESLINT_USE_FLAT_CONFIG` 环境变量设置为 `true` 以参加实验。哪怕在有 `eslint.config.js` 文件的情况下，也可以将环境变量设置为 `false` 来退出实验。如果你正在使用 API，那你可以通过使用本页所描述的 `FlatESLint` 类、`FlatRuleTester` 类或在 `Linter` 类中配置 `configType: "flat"` 来使用此配置系统。
 :::
 
-你可以把 ESLint 项目配置放在配置文件中，可以包括内置规则、希望它们如被执行、具有自定义规则的插件、可共享配置、你希望规则适用于哪些文件等等。
+你可以把 ESLint 项目配置放在配置文件中，可以在里面添加内置规则及其行为、具有自定义规则的插件、可共享配置、希望规则适用的文件范围等等。
 
 ## 配置文件
 
@@ -46,9 +46,9 @@ export default [
     * `noInlineConfig` - 表示是否允许内联配置布尔值。
     * `reportUnusedDisableDirectives` - 表示是否应该跟踪和报告未用的禁用指令的布尔值。
 * `processor` - 包含 `preprocess()` 和 `postprocess()` 方法的对象，或者表示插件内处理器名称的字符串（如 `"pluginName/processorName"`）。
-* `plugins` - 包含插件名称与对应的插件对象的名值对对象。如果指定了 `files`，则只适用于与之匹配匹配的文件。
-* `rules` - 包含规则配置的对象。如果指定了 `files` 或 `ignores`，则规则配置只适用于与之匹配匹配的文用。
-* `settings` - 包含对所有规则可供的名值对的对象。
+* `plugins` - 包含插件名称与对应的插件对象的名值对对象。如果指定了 `files`，则只适用于与之匹配的文件。
+* `rules` - 包含规则配置的对象。如果指定了 `files` 或 `ignores`，则规则配置只适用于与之匹配匹配的文件。
+* `settings` - 包含对所有规则可用的名值对的对象。
 
 ### 指定 `files` 和 `ignores`
 
@@ -99,7 +99,7 @@ export default [
 ];
 ```
 
-这个配置对会象匹配 `src` 目录下的所有 JavaScript 文件，除了以 `.config.js` 结尾的文件。你也可以在 `ignores` 中使用否定模式，将文件排除在忽略模式之外，例如：
+这个配置对象会匹配 `src` 目录下的所有 JavaScript 文件，除了以 `.config.js` 结尾的文件。你也可以在 `ignores` 中使用否定模式，将文件排除在忽略模式之外，例如：
 
 ```js
 export default [

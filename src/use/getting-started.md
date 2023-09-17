@@ -93,7 +93,7 @@ yarn run eslint yourfile.js
 
 ## 全局安装
 
-也可以全局安装 ESLint 而不仅限于羡慕本地（使用 `npm install eslint --global`）。但并不推荐这样做，因为即使全局安装 ESLint，你仍需要在本地安装插件和可共享配置。
+也可以全局安装 ESLint 而不仅限于本地（使用 `npm install eslint --global`）。但并不推荐这样做，因为即使全局安装 ESLint，你仍需要在本地安装插件和可共享配置。
 
 ## 手动设置
 
