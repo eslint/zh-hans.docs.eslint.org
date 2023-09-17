@@ -28,13 +28,14 @@ var indexMap = myArray.reduce(function(memo, item, index) {
 * [`Array.prototype.findLast`](https://tc39.es/ecma262/#sec-array.prototype.findlast)
 * [`Array.prototype.findLastIndex`](https://tc39.es/ecma262/#sec-array.prototype.findlastindex)
 * [`Array.prototype.flatMap`](https://www.ecma-international.org/ecma-262/10.0/#sec-array.prototype.flatmap)
-* [`Array.prototype.forEach`](https://www.ecma-international.org/ecma-262/6.0/#sec-array.prototype.foreach) (optional, based on `checkForEach` parameter)
+* [`Array.prototype.forEach`](https://www.ecma-international.org/ecma-262/6.0/#sec-array.prototype.foreach)（可选，基于 `checkForEach` 参数）
 * [`Array.prototype.map`](https://www.ecma-international.org/ecma-262/6.0/#sec-array.prototype.map)
 * [`Array.prototype.reduce`](https://www.ecma-international.org/ecma-262/6.0/#sec-array.prototype.reduce)
 * [`Array.prototype.reduceRight`](https://www.ecma-international.org/ecma-262/6.0/#sec-array.prototype.reduceright)
 * [`Array.prototype.some`](https://www.ecma-international.org/ecma-262/6.0/#sec-array.prototype.some)
 * [`Array.prototype.sort`](https://www.ecma-international.org/ecma-262/6.0/#sec-array.prototype.sort)
-* And above of typed arrays.
+* [`Array.prototype.toSorted`](https://tc39.es/proposal-change-array-by-copy/#sec-array.prototype.toSorted)
+* 以及以上类型数组。
 
 此规则的**错误**示例：
 

@@ -1,9 +1,9 @@
 ---
-title: 命令行参考
+title: 命令行界面
 eleventyNavigation:
     key: command line interface
     parent: use eslint
-    title: 命令行参考
+    title: 命令行界面
     order: 4
 ---
 
