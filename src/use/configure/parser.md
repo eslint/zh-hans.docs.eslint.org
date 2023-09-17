@@ -33,6 +33,6 @@ eleventyNavigation:
 
 * [Esprima](https://www.npmjs.com/package/esprima)
 * [@babel/eslint-parser](https://www.npmjs.com/package/@babel/eslint-parser) - [Babel](https://babeljs.io) 解析器的包装以便与 ESLint 兼容。
-* [@typescript-eslint/parser](https://www.npmjs.com/package/@typescript-eslint/parser) - A parser that converts TypeScript into an ESTree-compatible form so it can be used in ESLint. 将 TypeScript 转换为与 ESTree 格式兼容的解析器，好可以在 ESLint 中使用。
+* [@typescript-eslint/parser](https://www.npmjs.com/package/@typescript-eslint/parser) - 将 TypeScript 转换为与 ESTree 格式兼容的解析器，好可以在 ESLint 中使用。
 
 注意当使用自定义解析器时，仍需要使用 `parserOptions` 配置属性以便 ESLint 可以正常使用默认不在 ECMAScript 5 中的特性。解析器都会传递 `parserOptions`，并可能使用或不使用它们来决定启用哪些功能。
