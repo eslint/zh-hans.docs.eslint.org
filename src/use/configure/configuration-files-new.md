@@ -558,16 +558,18 @@ export default [
 
 ### 使用预定义配置
 
-ESLint 有两个预定义配置：
+ESLint 有两个针对 JavaScript 的预定义配置：
 
-* `eslint:recommended` - 启用 ESLint 推荐大家使用的规则，以避免潜在错误
-* `eslint:all` - 启用所有 ESLint 提供的规则
+* `js.configs.recommended` - 启用 ESLint 推荐大家使用的规则，以避免潜在错误
+* `js.configs.all` - 启用所有 ESLint 提供的规则
 
-为了包括这些预定义配置，你可以在返回的数组中插入字符串值，然后在随后的配置对象中对其他属性进行任何修改：
+要使用这些预定义配置，要先安装 `@eslint/js` 包，然后在配置对象的其他属性中加入：
 
 ```js
+import js from "@eslint/js";
+
 export default [
-    "eslint:recommended",
+    "js.configs.recommended",
     {
         rules: {
             semi: ["warn", "always"]
@@ -576,7 +578,22 @@ export default [
 ];
 ```
 
-这里，首先应用了 `eslint:recommended` 预定义配置，然后另一个配置对象为 `semi` 增加了所需的配置。
+这里，首先应用了 `js.configs.recommended` 预定义配置，然后另一个配置对象为 `semi` 增加了所需的配置。
+
+可以通过指定一个带有 `files` 键的配置对象，将这些预定义配置应用于部分文件，就像这样：
+
+你可以
+
+```js
+import js from "@eslint/js";
+
+export default [
+    {
+        files: ["**/src/safe/*.js"],
+        ...js.configs.recommended
+    }
+];
+```
 
 ## 配置文件解析
 

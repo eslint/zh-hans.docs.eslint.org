@@ -74,6 +74,13 @@ const value4 = Boolean(foo) === true;
 const objIsEmpty = Object.keys(someObj).length === 0;
 
 const arrIsEmpty = someArr.length === 0;
+
+const shortCircuit1 = condition1 && false && condition2;
+
+const shortCircuit2 = condition1 || true || condition2;
+
+const shortCircuit3 = condition1 ?? "non-nullish" ?? condition2;
+
 ```
 
 :::

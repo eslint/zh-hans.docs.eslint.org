@@ -2,9 +2,9 @@
 title: 自定义规则
 eleventyNavigation:
     key: custom rules
-    parent: extend eslint
+    parent: create plugins
     title: 自定义规则
-    order: 2
+    order: 1
 ---
 
 你可以创建自定义规则并与 ESLint 一同食用。当[核心规则](../rules/)没有覆盖你的用例时，就可能需要创建自定义规则。
