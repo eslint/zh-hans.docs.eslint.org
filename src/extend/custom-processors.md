@@ -2,9 +2,9 @@
 title: 自定义处理器
 eleventyNavigation:
     key: custom processors
-    parent: extend eslint
+    parent: create plugins
     title: 自定义处理器
-    order: 5
+    order: 2
 ---
 
 你也可以创建自定义处理器，告诉ESLint如何处理JavaScript以外的文件。

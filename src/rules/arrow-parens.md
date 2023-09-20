@@ -129,7 +129,7 @@ var b = 0;
 if ((a) => b) {
  console.log('truthy value returned');
 } else {
- console.log('falsey value returned');
+ console.log('falsy value returned');
 }
 // outputs 'truthy value returned'
 ```

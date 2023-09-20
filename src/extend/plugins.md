@@ -4,8 +4,12 @@ eleventyNavigation:
     key: create plugings
     parent: extend eslint
     title: 创建插件
-    order: 1
+    order: 2
 ---
+
+ESLint 插件是给 ESLint 添加额外的规则和插件选项的扩展。插件让你可以自定义 ESLint 配置来强制执行不包括在 ESLint 核心包中的规则。插件也可以提供额外的环境、自定义处理器和配置。
+
+## 插件命名
 
 每个插件都是以 `eslint-plugin-<plugin-name>` 为名的 npm 模块，例如 `eslint-plugin-jquery`。你也可以使用 `@<scope>/eslint-plugin-<plugin-name>` 格式的范围包，如 `@jquery/eslint-plugin-jquery`以及 `@<scope>/eslint-plugin`，如 `@jquery/eslint-plugin`。
 
@@ -15,7 +19,7 @@ eleventyNavigation:
 
 ### 插件中的规则
 
-插件可以为 ESLint 提供额外的规则。要做到这一点，插件必须输出 `rules` 对象，其中包含一个规则 ID 到规则的键值映射。规则 ID 不需要遵循任何命名惯例（例如，它可以只是 `dollar-sign`）。
+插件可以为 ESLint 提供自定义的规则。要做到这一点，插件必须输出 `rules` 对象，其中包含一个规则 ID 到规则的键值映射。规则 ID 不需要遵循任何命名惯例（比如可以是 `dollar-sign`）。了解更多关于在插件中创建自定义规则的信息，请参见[自定义规则](custom-rules)。
 
 ```js
 module.exports = {
@@ -78,7 +82,9 @@ module.exports = {
 
 ### 插件中的配置
 
-你可以通过在 `configs` 键下指定配置，将其捆绑在一个插件内。当你想提供的不仅仅是代码风格，还有一些自定义的规则来支持它时，这可能很有用。每个插件支持多个配置。请注意，不可能为一个给定的插件指定一个默认的配置，用户必须在他们的配置文件中指定，当他们想使用一个配置。
+你可以通过在 `configs` 键下指定配置，将其捆绑在一个插件内。适用于当你想捆绑自定义规则和额外配置集合时。每个插件支持多个配置。
+
+你可以在配置中包括来自也同样来自插件中的单个规则。你必须在配置中的 `plugins` 数组里指定你的的插件名称，并指定你想要启用的来自插件中的任何规则。任何规则必须以以缩略插件名或完整插件名为前缀。
 
 ```js
 // eslint-plugin-myPlugin
@@ -103,25 +109,33 @@ module.exports = {
                 "eslint-plugin-myPlugin/yet-another-rule": "error"
             }
         }
+    },
+    rules: {
+        "my-rule": {/* rule definition */},
+        "another-rule": {/* rule definition */},
+        "yet-another-rule": {/* rule definition */}
     }
 };
 ```
 
-如果上面的示例插件名为 `eslint-plugin-myPlugin`，那么就可以分别通过 `"plugin:myPlugin/myConfig"` 和 `"plugin:myPlugin/myOtherConfig"` 使用 `myConfig` 和 `myOtherConfig` 配置。
+插件不能强制使用某个特定配置。用户必须手动在配置文件中包括来自插件的配置。
+
+如果上面的示例插件名为 `eslint-plugin-myPlugin`，那么就可以在配置文件中分别通过添加 `"plugin:myPlugin/myConfig"` 和 `"plugin:myPlugin/myOtherConfig"` 使用 `myConfig` 和 `myOtherConfig` 配置。
 
 ```json
+// .eslintrc.json
+
 {
     "extends": ["plugin:myPlugin/myConfig"]
 }
 
 ```
 
-**注意**：请注意，配置将不会默认启用插件的任何规则，而应被视为一个独立的配置。这意味着你必须在 `plugins` 数组中指定你的插件名称，以及你想启用的属于该插件的任何规则。任何插件规则必须以短或长的插件名称为前缀。参见[配置插件](../use/configure/plugins#配置插件)获取更多信息。
-
 ### 对等依赖
 
-为了明确该插件需要 ESLint 才能正常工作，你必须在你的 `package.json` 中将 ESLint 声明为 `peerDependency`。
-该插件的支持是在 ESLint `0.8.0` 版本中引入的。确保 `peerDependency` 指向 ESLint `0.8.0` 或更高版本。
+为了明确该插件需要 ESLint 才能正常工作，你必须在你插件的 `package.json` 的 `peerDependencies` 字段中提及并声明 ESLint 是插件的对等依赖。
+
+该插件的支持是在 ESLint `0.8.0` 版本中引入的。确保 `peerDependencies` 指向 ESLint `0.8.0` 或更高版本。
 
 ```json
 {
@@ -131,11 +145,11 @@ module.exports = {
 }
 ```
 
-### 测试
+## 测试
 
 ESLint 提供了 [`RuleTester`](../integrate/nodejs-api#ruletester) 工具，以便测试插件规则。
 
-### 筛选
+## 检查
 
 ESLint 插件也应该要进行检查！建议使用以下插件的 `recommended` 配置对你的插件进行检查：
 
@@ -145,15 +159,9 @@ ESLint 插件也应该要进行检查！建议使用以下插件的 `recommended
 
 ## 分享插件
 
-为了让社区都可以使用使你的插件，你必须在 npm 上发布它。
+为了让其他人更容易发现你的插件，可以在 `package.json` 文件中添加这些[关键词](https://docs.npmjs.com/cli/v9/configuring-npm/package-json#keywords)。
 
 推荐的关键词有：
 
 * `eslint`
 * `eslintplugin`
-
-在你的 `package.json` 文件中加入这些关键词，以便别人容易找到。
-
-## 进一步阅读
-
-* [npm 开发者指南](https://docs.npmjs.com/misc/developers)

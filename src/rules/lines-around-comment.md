@@ -30,6 +30,7 @@ related_rules:
 * `"allowClassEnd": true` 允许注释出现在类的末尾
 * `"applyDefaultIgnorePatterns"` 启用或禁用规则所忽略的默认注释模式
 * `"ignorePattern"`自定义模式将被规则忽略
+* `"afterHashbangComment": true` 要求在 hashbang 注释后要有一个空行
 
 ### beforeBlockComment
 
@@ -710,6 +711,35 @@ foo();
 foo();
 /* eslint mentioned in comment */
 
+```
+
+:::
+
+### afterHashbangComment
+
+使用 `{ "afterHashbangComment": true }` 选项的**错误**示例：
+
+::: incorrect
+
+```js
+#!foo
+var day = "great"
+
+/*eslint lines-around-comment: ["error", { "afterHashbangComment": true }] */
+```
+
+:::
+
+使用 `{ "afterHashbangComment": true }` 选项的**正确**示例：
+
+::: correct
+
+```js
+#!foo
+
+var day = "great"
+
+/*eslint lines-around-comment: ["error", { "afterHashbangComment": true }] */
 ```
 
 :::

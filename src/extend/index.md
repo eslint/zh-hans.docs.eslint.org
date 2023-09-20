@@ -16,6 +16,10 @@ eleventyNavigation:
 
 如果这听起来像你，那么继续阅读就可以开始了。
 
+## [扩展 ESLint](ways-to-extend)
+
+此页概括了扩展 ESLint 的几种方式以及这些扩展是如何配合工作的。
+
 ## [创建插件](plugins)
 
 你已经为 ESLint 开发了特定库规则且想与社区分享它们。你可以在 npm 上发布 ESLint 插件。
