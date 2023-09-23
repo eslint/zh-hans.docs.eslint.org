@@ -41,7 +41,7 @@ eleventyNavigation:
 
 [**配置规则**](rules)
 
-* [规则配置](./rules#规则配置)
+* [规则配置](./rules)
 * [禁用规则](./rules#禁用规则)
 
 [**配置插件**](plugins)

@@ -7,40 +7,45 @@ eleventyNavigation:
     order: 5
 ---
 
-如果你想使用自己的解析器以便为自己的规则提供额外的功能，你可以指定使用自定义解析器。这就可以使用解析器暴露的 `parseForESLint` 方法来解析代码，或者也可以使用 `parse` 方法。这两个方法都应该将源码作为第一个参数，并将可选的配置对象作为第二个参数（在配置文件中作为 `parserOptions` 提供）。`parse` 方法应该简单地返回 AST。`parseForESLint` 方法应该返回包含必需属性 `ast` 和可选属性 `services`、`scopeManager` 和 `visitorKeys` 的对象。
+ESLint 自定义解析器用于扩展 ESLint，以支持检查代码中新的非标准 JavaScript 语言功能或自定义语法。解析器负责提取代码并将其转换为抽象语法树（AST），ESLint 可对其进行分析和检查。
 
-* `ast` 应该包含 AST。
+## 创建自定义解析器
+
+自定义解析器是一个 JavaScript 对象，带有 `parse` 或 `parseForESLint` 方法。`parse` 方法只返回 AST，而 `parseForESLint` 方法还会返回附加属性，让解析器能更多地自定义 ESLint 的行为。
+
+这两种方法的第一个参数都是源代码，第二个参数是可选的配置对象，配置对象在配置文件中以 [`parserOptions`](../use/configure/language-options#指定解析器选项) 的形式提供。
+
+```javascript
+// customParser.js
+
+const espree = require("espree");
+
+// Logs the duration it takes to parse each file.
+function parse(code, options) {
+    const label = `Parsing file "${options.filePath}"`;
+    console.time(label);
+    const ast = espree.parse(code, options);
+    console.timeEnd(label);
+    return ast; // Only the AST is returned.
+};
+
+module.exports = { parse };
+```
+
+## `parse` 返回对象
+
+`parse` 方法应该简单地返回 [AST](#ast-规范) 对象。
+
+## `parseForESLint` 返回对象
+
+`parseForESLint` 方法应该返回一个包括所需的 `ast` 属性和可选的 `services`、`scopeManager` 和 `visitorKeys` 属性。
+
+* `ast` 应该包含 [AST](#ast-规范) 对象。
 * `services` 可以包含任何依赖于解析器的服务（例如节点的类型检查器）。`services` 属性的值可以作为 `context.parserServices` 传递给规则。默认为空对象。
 * `scopeManager` 可以是 [ScopeManager](./scope-manager-interface) 对象。自定义解析器可以为实验性/增强性语法提供自定义范围分析。默认使用 [eslint-scope](https://github.com/eslint/eslint-scope) 创建的 `ScopeManager` 对象。
     * 在 ESLint v4.14.0 中加入了对 `scopeManager` 的支持。支持 `scopeManager` 的 ESLint 版本将在 `parserOptions` 中提供 `eslintScopeManager: true` 属性，可用于特征检测。
 * `visitorKeys` 可以是自定义 AST 遍历的对象。该对象的键是 AST 节点的类型。每个值是一个应该被遍历的属性名称的数组。默认为 [`eslint-visitor-keys` 的键](https://github.com/eslint/eslint-visitor-keys#evkkeys)。
     * 在 ESLint v4.14.0 中加入了对 `visitorKeys` 的支持。支持 `visitorKeys` 的 ESLint 版本将在 `parserOptions` 中提供 `eslintVisitorKeys: true` 属性，它可以用作特征检测。
-
-你可以[在这](https://github.com/typescript-eslint/typescript-eslint)找到 ESLint 解析器项目。
-
-```json
-{
-    "parser": "./path/to/awesome-custom-parser.js"
-}
-```
-
-```javascript
-var espree = require("espree");
-// awesome-custom-parser.js
-exports.parseForESLint = function(code, options) {
-    return {
-        ast: espree.parse(code, options),
-        services: {
-            foo: function() {
-                console.log("foo");
-            }
-        },
-        scopeManager: null,
-        visitorKeys: null
-    };
-};
-
-```
 
 ## AST 规范
 
@@ -63,7 +68,8 @@ exports.parseForESLint = function(code, options) {
 interface Token {
     type: string;
     loc: SourceLocation;
-    range: [number, number]; // 参见“所有节点”部分，了解“范围”属性的细节。
+    range: [number, number];
+    // 参见“所有节点”部分，了解 `range` 属性的细节。
     value: string;
 }
 ```
@@ -78,3 +84,67 @@ interface Token {
 `Literal` 节点必须要有 `raw` 属性。
 
 * `raw`（`string`）是这个字面的源代码。这与 `code.slice(node.range[0], node.range[1])` 相同。
+
+## 打包自定义解析器
+
+要将自定义解析器发布到 npm，请执行以下操作：
+
+1. 按照上述[创建自定义分析程序](#创建自定义解析器)部分创建自定义解析器。
+1. [给自定义解析器创建 npm 包](https://docs.npmjs.com/creating-node-js-modules)。
+1. 在 `package.json` 文件中，将 [`main`](https://docs.npmjs.com/cli/v9/configuring-npm/package-json#main) 字段设置为导出自定义解析器的文件。
+1. [发布 npm 软件包。](https://docs.npmjs.com/creating-and-publishing-unscoped-public-packages)
+
+有关发布 npm 软件包的更多信息，请参阅 [npm 文档](https://docs.npmjs.com/)。
+
+发布 npm 软件包后，将软件包添加到项目中即可使用。例如
+
+```shell
+npm install eslint-parser-myparser --save-dev
+```
+
+然后使用 `parser` 属性将自定义分析程序添加到 ESLint 配置文件中。例如：
+
+```js
+// .eslintrc.js
+
+module.exports = {
+  parser: 'eslint-parser-myparser',
+  // ... rest of configuration
+};
+```
+
+了解更多在项目中使用 ESLint 解析器的信息，请参见[配置解析器](../use/configure/parser)。
+
+## 示例
+
+有关自定义解析器的复杂示例，请参阅 [`@typescript-eslint/parser`](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/parser) 源代码。
+
+为规则提供 `context.parserServices.foo()` 方法的简单自定义解析器。
+
+```javascript
+// awesome-custom-parser.js
+var espree = require("espree");
+function parseForESLint(code, options) {
+    return {
+        ast: espree.parse(code, options),
+        services: {
+            foo: function() {
+                console.log("foo");
+            }
+        },
+        scopeManager: null,
+        visitorKeys: null
+    };
+};
+
+module.exports = { parseForESLint };
+```
+
+在 ESLint 配置文件中包括自定义解析器：
+
+```js
+// .eslintrc.json
+{
+    "parser": "./path/to/awesome-custom-parser.js"
+}
+```
