@@ -59,7 +59,7 @@ module.exports = {
 
      **重点**：`hasSuggestions` 属性对于提供建议的规则来说是强制性的。如果这个属性没有设置为 `true`，ESLint 将在规则试图产生建议时抛出一个错误。如果规则不提供建议，省略 `hasSuggestions` 属性。
 
-* `schema` (array) 指定了 [options](#选项模式)，所以 ESLint 可以防止无效的[规则配置](../use/configure/rules#规则配置)
+* `schema` (array) 指定了 [options](#选项模式)，所以 ESLint 可以防止无效的[规则配置](../use/configure/rules)
 
 * `deprecated` (boolean) 表示该规则是否已经被废弃。如果规则没有被废除，你可以省略 `deprecated` 属性。
 
@@ -108,7 +108,7 @@ module.exports = {
 
 * `parserOptions` - 为本次运行配置的解析器选项（[了解详情](../use/configure/language-options#指定解析器选项)）。
 * `id` - 规则 ID。
-* `options` - 这个规则的[配置选项](../use/configure/rules#规则配置) 的数组。这个数组不包括规则的严重程度。更多信息，请参阅[这里](#contextoptions)。
+* `options` - 这个规则的[配置选项](../use/configure/rules) 的数组。这个数组不包括规则的严重程度。更多信息，请参阅[这里](#contextoptions)。
 * `settings` - 配置中的[共享设置](../use/configure/configuration-files#添加共享设置)。
 * `parserPath` - 配置中的 `parser` 的名称。
 * `parserServices` - 一个包含解析器提供的规则服务的对象。默认的解析器不提供任何服务。然而，如果一个规则打算与一个自定义的解析器一起使用，它可以使用 `parserServices` 来访问该解析器提供的任何服务（例如，TypeScript 解析器可以提供获取特定节点的计算类型的能力）。

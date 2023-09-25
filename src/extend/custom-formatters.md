@@ -106,7 +106,7 @@ eslint -f ./my-awesome-formatter.js src/
 **message**：错误的可读描述
 **line**：问题所在的行
 **column**：问题所在的列
-**nodeType**：[AST](https://github.com/estree/estree/blob/master/spec.md#node-objects) 中节点的类型
+**nodeType**：[AST](https://github.com/estree/estree/blob/master/es5.md#node-objects) 中节点的类型
 
 ### `context` 实参
 

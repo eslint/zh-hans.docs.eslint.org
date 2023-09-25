@@ -36,7 +36,7 @@ module.exports.schema = []; // 无选项
 
 ## 规则基础
 
-`schema`（数组）指定[选项](#选项模式)，这样 ESLint 可以防止无效的[规则配置](../use/configure/rules#规则配置)
+`schema`（数组）指定[选项](#选项模式)，这样 ESLint 可以防止无效的[规则配置](../use/configure/rules)
 
 `create`（函数）返回对象，该对象包含 ESLint 调用的方法，在遍历 JavaScript 代码的抽象语法树 (AST，由 [ESTree](https://github.com/estree/estree) 定义）时 `"visit"` 节点。
 

@@ -14,10 +14,10 @@ rule_type: suggestion
 这个规则有一个字符串选项，它可以是以下任一值：
 
 * `"starred-block"`（默认）：不允许连续的行注释，支持块注释。此外，要求块状注释在每行之前有一个对齐的 `*` 字符。
-* `"bare-block"`：不允许连续的行注释而支持块注释，并且不允许块注释在每行前有一个 `"*"` 字符。
-* `"separate-lines"`：不允许使用块状注释而使用连续的行状注释。
+* `"bare-block"`：不允许连续的行注释而支持块注释，并且不允许块注释在每行前有一个 `"*"` 字符。此选项忽略 JSDoc 注释。
+* `"separate-lines"`：不允许使用块状注释而使用连续的行状注释。默认情况下，此选项忽略 JSDoc 注释。在将 `checkJSDoc` 选项设置为 `true` 时，也可以使用 JSDoc 注释。
 
-该规则总是忽略指令性注释，如 `/* eslint-disable */`。此外，除非模式是 `"starred-block"`，否则该规则会忽略 JSDoc 注释。
+该规则总是忽略指令性注释，如 `/* eslint-disable */`。
 
 使用此规则与默认的 `"starred-block"` 选项的**错误**示例：
 
@@ -138,6 +138,39 @@ foo();
 
 // This line
 // calls foo()
+foo();
+
+```
+
+:::
+
+使用此规则与 `"separate-lines"` 选项并将 `checkJSDoc` 设置为 `true` 的**错误**示例：
+
+::: incorrect
+
+```js
+
+/* eslint multiline-comment-style: ["error", "separate-lines", { "checkJSDoc": true }] */
+
+/**
+ * I am a JSDoc comment
+ * and I'm not allowed
+ */
+foo();
+
+```
+
+:::
+
+使用此规则与 `"separate-lines"` 选项并将 `checkJSDoc` 设置为 `true` 的**正确**示例：
+
+::: correct
+
+```js
+/* eslint multiline-comment-style: ["error", "separate-lines", { "checkJSDoc": true }] */
+
+// I am a JSDoc comment
+// and I'm not allowed
 foo();
 
 ```
