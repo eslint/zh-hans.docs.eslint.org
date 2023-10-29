@@ -109,6 +109,7 @@ _site
 # Sync file
 .eleventy.js
 docs/
+tools/
 _data
 _includes
 _plugins

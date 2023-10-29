@@ -34,7 +34,7 @@ var indexMap = myArray.reduce(function(memo, item, index) {
 * [`Array.prototype.reduceRight`](https://www.ecma-international.org/ecma-262/6.0/#sec-array.prototype.reduceright)
 * [`Array.prototype.some`](https://www.ecma-international.org/ecma-262/6.0/#sec-array.prototype.some)
 * [`Array.prototype.sort`](https://www.ecma-international.org/ecma-262/6.0/#sec-array.prototype.sort)
-* [`Array.prototype.toSorted`](https://tc39.es/proposal-change-array-by-copy/#sec-array.prototype.toSorted)
+* [`Array.prototype.toSorted`](https://tc39.es/ecma262/#sec-array.prototype.tosorted)
 * 以及以上类型数组。
 
 此规则的**错误**示例：

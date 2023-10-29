@@ -129,61 +129,12 @@ module.exports = {
     * 否则，如果该节点没有声明任何变量，将返回一个空数组。
 * `getFilename()` - 返回与源相关的文件名。
 * `getPhysicalFilename()` - 当给文件加注时，它返回磁盘上文件的完整路径，没有任何代码块信息。当对文本着色时，它返回传递给 `—stdin-filename` 的值，如果没有指定则返回 `<text>`。
-* `getScope()` - 返回当前遍历的节点的[范围](./scope-manager-interface#scope-interface)。这个信息可以用来跟踪对变量的引用。
+* `getScope()` - （**废弃: 使用 `SourceCode.getScope(node)` 代替**）返回当前遍历的节点的[范围](./scope-manager-interface#scope-interface)。这个信息可以用来跟踪对变量的引用。
 * `getSourceCode()` - 返回 [`SourceCode`](#contextgetsourcecode) 对象，你可以用它来处理传递给 ESLint 的源代码。
 * `markVariableAsUsed(name)` - 将当前范围内给定名称的变量标记为已使用。这影响到 [no-unused-vars](../rules/no-unused-vars) 规则。如果找到给定名称的变量并标记为已使用，则返回 `true`，否则返回 `false`。
 * `report(descriptor)` - 报告代码中的问题（见[专用部分](#contextreport)）。
 
 **注意**：早期版本的 ESLint 支持对 `context` 对象的额外方法。这些方法在新的格式中被删除，不应该被依赖。
-
-### context.getScope()
-
-此方法返回当前节点的作用域。在给定作用域内寻找变量信息，以及它们在其他作用域内的使用情况时这个方法很有用。
-
-#### 作用域类型
-
-下表列出了 AST 节点类型和与之对应的作用域类型。了解更多关于作用域类型的信息，请参见 [`Scope` 对象文档](./scope-manager-interface#scope-接口).
-
-| AST 节点类型               | 作用域类型 |
-|:--------------------------|:-----------|
-| `Program`                 | `global`   |
-| `FunctionDeclaration`     | `function` |
-| `FunctionExpression`      | `function` |
-| `ArrowFunctionExpression` | `function` |
-| `ClassDeclaration`        | `class`    |
-| `ClassExpression`         | `class`    |
-| `BlockStatement` ※1      | `block`    |
-| `SwitchStatement` ※1     | `switch`   |
-| `ForStatement` ※2        | `for`      |
-| `ForInStatement` ※2      | `for`      |
-| `ForOfStatement` ※2      | `for`      |
-| `WithStatement`           | `with`     |
-| `CatchClause`             | `catch`    |
-| others                    | ※3        |
-
-**※1** Only if the configured parser provided the block-scope feature. The default parser provides the block-scope feature if `parserOptions.ecmaVersion` is not less than `6`.<br>
-**※2** Only if the `for` statement defines the iteration variable as a block-scoped variable (E.g., `for (let i = 0;;) {}`).<br>
-**※3** The scope of the closest ancestor node which has own scope. If the closest ancestor node has multiple scopes then it chooses the innermost scope (E.g., the `Program` node has a `global` scope and a `module` scope if `Program#sourceType` is `"module"`. The innermost scope is the `module` scope.).
-
-#### 作用域变量
-
-`Scope#variables` 属性包括一个包含 [`Variable` 对象](./scope-manager-interface#variable-接口) 的数组。这些时在当前作用域声明的变量。你可以使用这些 `Variable` 对象来跟踪变量在整个模块中的引用情况。
-
-在每个 `Variable` 内部，`Variable#references` 属性包括一个包含 [`Reference` 对象](./scope-manager-interface#reference-接口)的数组。`Reference` 数组包括所有变量在模块源码中被引用的位置。
-
-同样的在每个 `Variable` 内部，`Variable#defs` 属性包括一个包含 [`Definition` 对象](./scope-manager-interface#definition-接口)的数组。你可以使用 `Definitions` 来寻找变量被定义的位置。
-
-全局变量有以下额外属性：
-
-* `variable.writeable` (`boolean | undefined`) ... 如果 `true`，这个全局变量可以被分配任意的值。如果 `false`，这个全局变量是只读的。
-* `variable.eslintExplicitGlobal` (`boolean | undefined`) ... 如果 `true`，这个全局变量是由源代码文件中的 `/* globals */`指令注释定义的。
-* `variable.eslintExplicitGlobalComments` (`Comment[] | undefined`) ... 在源代码文件中定义该全局变量的 `/* globals */` 指令性注释的数组。如果没有 `/* globals */` 指令注释，这个属性就是 `undefined`。
-* `variable.eslintImplicitGlobalSetting` (`"readonly" | "writable" | undefined`) ... 配置文件中的配置值。如果有 `/* globals */` 指令注释，这可能与`variable.writeable` 不同。
-
-关于使用 `context.getScope()` 来跟踪变量的例子，请参考以下内置规则的源代码：
-
-* [no-shadow](https://github.com/eslint/eslint/blob/main/lib/rules/no-shadow.js)：在全局作用域调用 `context.getScopes()` 并解析所有子作用域以确保变量名没有在更低作用域中被再次使用（[no-shadow](../rules/no-shadow) 文档）。
-* [no-redeclare](https://github.com/eslint/eslint/blob/main/lib/rules/no-redeclare.js)：在每个作用域调用 `context.getScope()` 以确保变量没有在此作用域中多次声明（[no-redeclare](../rules/no-redeclare) 文档）。
 
 ### context.report()
 
@@ -680,6 +631,55 @@ var nodeSourceWithFollowing = sourceCode.getText(node, 0, 2);
 ### 访问 Shebangs
 
 Shebangs 是由 `"Shebang"` 类型的标记表示的。它们被视为注释，可以通过上述方法访问。
+
+### 访问变量作用域
+
+`SourceCode#getScope(node)` 方法返回给定节点的作用域。它通常用于查找给定作用域内变量的信息及其在其他作用域内的使用情况。
+
+#### 作用域类型
+
+下表列出了 AST 节点类型和与之对应的作用域类型。了解更多关于作用域类型的信息，请参见 [`Scope` 对象文档](./scope-manager-interface#scope-接口).
+
+| AST 节点类型               | 作用域类型   |
+|:--------------------------|:-----------|
+| `Program`                 | `global`   |
+| `FunctionDeclaration`     | `function` |
+| `FunctionExpression`      | `function` |
+| `ArrowFunctionExpression` | `function` |
+| `ClassDeclaration`        | `class`    |
+| `ClassExpression`         | `class`    |
+| `BlockStatement` ※1       | `block`    |
+| `SwitchStatement` ※1      | `switch`   |
+| `ForStatement` ※2         | `for`      |
+| `ForInStatement` ※2       | `for`      |
+| `ForOfStatement` ※2       | `for`      |
+| `WithStatement`           | `with`     |
+| `CatchClause`             | `catch`    |
+| 其他                      | ※3         |
+
+**※1** 仅当配置的解析器提供了块级作用域功能时才有效。如果 `parserOptions.ecmaVersion` 不小于 `6`，默认解析器将提供块级作用域功能。
+**※2** 仅当 `for` 语句将迭代变量定义为块级作用域变量时才有效（例如，`for (let i = 0;;) {}`）。
+**※3** 最接近的祖先节点的作用域，该节点具有自己的作用域。如果最接近的祖先节点具有多个作用域，则选择最内层的作用域（例如，如果 `Program#sourceType` 为 `"module"`，`Program` 节点具有 `global` 作用域和 `module` 作用域。最内层的作用域是 `module` 作用域）。
+
+#### 作用域变量
+
+`Scope#variables` 属性包括一个包含 [`Variable` 对象](./scope-manager-interface#variable-接口) 的数组。这些时在当前作用域声明的变量。你可以使用这些 `Variable` 对象来跟踪变量在整个模块中的引用情况。
+
+在每个 `Variable` 内部，`Variable#references` 属性包括一个包含 [`Reference` 对象](./scope-manager-interface#reference-接口)的数组。`Reference` 数组包括所有变量在模块源码中被引用的位置。
+
+同样的在每个 `Variable` 内部，`Variable#defs` 属性包括一个包含 [`Definition` 对象](./scope-manager-interface#definition-接口)的数组。你可以使用 `Definitions` 来寻找变量被定义的位置。
+
+全局变量有以下额外属性：
+
+* `Variable#writeable`（`boolean | undefined`） ... 如果 `true`，这个全局变量可以被分配任意的值。如果 `false`，这个全局变量是只读的。
+* `Variable#eslintExplicitGlobal`（`boolean | undefined`） ... 如果 `true`，这个全局变量是由源代码文件中的 `/* globals */` 指令注释定义的。
+* `Variable#eslintExplicitGlobalComments`（`Comment[] | undefined`） ... 在源代码文件中定义该全局变量的 `/* globals */` 指令性注释的数组。如果没有 `/* globals */` 指令注释，这个属性就是 `undefined`。
+* `Variable#eslintImplicitGlobalSetting`（`"readonly" | "writable" | undefined`） ... 配置文件中的配置值。如果有 `/* globals */` 指令注释，这可能与 `variable.writeable` 不同。
+
+关于使用 `SourceCode#getScope()` 来跟踪变量的例子，请参考以下内置规则的源代码：
+
+* [no-shadow](https://github.com/eslint/eslint/blob/main/lib/rules/no-shadow.js)：在全局作用域调用 `sourceCode.getScope()` 并解析所有子作用域以确保变量名没有在更低作用域中被再次使用（[no-shadow](../rules/no-shadow) 文档）。
+* [no-redeclare](https://github.com/eslint/eslint/blob/main/lib/rules/no-redeclare.js)：在每个作用域调用 `sourceCode.getScope()` 以确保变量没有在此作用域中多次声明（[no-redeclare](../rules/no-redeclare) 文档）。
 
 ### 访问代码路径
 
