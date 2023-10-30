@@ -90,10 +90,10 @@ class myClass {
 
 * `"properties": false`（默认值）不检查对象属性
 * `"properties": true` 要求对象字面属性和成员表达式赋值属性与指定的正则表达式匹配
-* `"classFields": false`（默认值）不对字段名进行分类。
+* `"classFields": false`（默认值）不检查类字段名。
 * `"classFields": true` 要求类字段名与指定的正则表达式匹配
 * `"onlyDeclarations": false`（默认值）要求所有变量名称与指定的正则表达式相匹配
-* `"onlyDeclarations": true` 要求只有 `var`、`function` 和 `class` 的声明与指定的正则表达式匹配
+* `"onlyDeclarations": true` 要求只有 `var`、`const`、`let`、`function` 和 `class` 的声明与指定的正则表达式匹配
 * `"ignoreDestructuring": false`（默认值）对非结构化的标识符执行`id-match`
 * `"ignoreDestructuring": true`不 检查非结构化的标识符
 

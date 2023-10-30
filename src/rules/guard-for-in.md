@@ -2,6 +2,7 @@
 title: guard-for-in
 rule_type: suggestion
 related_rules:
+- prefer-object-has-own
 - no-prototype-builtins
 further_reading:
 - https://javascriptweblog.wordpress.com/2011/01/04/exploring-javascript-for-in-loops/
@@ -15,6 +16,12 @@ for (key in foo) {
     doSomething(key);
 }
 ```
+
+对于不支持 ES2022 的代码库，可以使用 `Object.prototype.hasOwnProperty.call(foo, key)` 作为检查属性是否不是继承而来的方式。
+
+而对于支持 ES2022 的代码库，可以使用更简洁的替代方法 `Object.hasOwn(foo, key)`；请参考 [prefer-object-has-own](prefer-object-has-own)。
+
+这两种方法都用于验证一个对象是否拥有特定属性，而不是继承自原型链。使用 `Object.prototype.hasOwnProperty.call(foo, key)` 可以确保属性不是继承自原型链的，而 `Object.hasOwn(foo, key)` 是 ES2022 引入的更简便的语法，用于执行相同的检查。选择使用哪种方式取决于你的代码库是否支持 ES2022 特性。
 
 注意，简单地检查 `foo.hasOwnProperty(key)` 在某些情况下可能会导致错误；见 [no-prototype-builtins](no-prototype-builtins)。
 
@@ -42,6 +49,12 @@ for (key in foo) {
 
 ```js
 /*eslint guard-for-in: "error"*/
+
+for (key in foo) {
+    if (Object.hasOwn(foo, key)) {
+        doSomething(key);
+    }
+}
 
 for (key in foo) {
     if (Object.prototype.hasOwnProperty.call(foo, key)) {

@@ -17,6 +17,34 @@ ESLint 插件是给 ESLint 添加额外的规则和插件选项的扩展。插�
 
 要想创建一个插件的最简单方法是使用 [Yeoman 生成器](https://www.npmjs.com/package/generator-eslint)。该生成器将引导你创建插件骨架。
 
+### 插件的元数据
+
+为了更容易进行调试和更有效地缓存插件，建议在插件的根文件中提供 `meta` 对象，包括名称和版本，如下所示：
+
+```js
+// preferred location of name and version
+module.exports = {
+    meta: {
+        name: "eslint-plugin-custom",
+        version: "1.2.3"
+    }
+};
+```
+
+`meta.name` 属性应该与插件的 npm 包名称匹配，而 `meta.version` 属性应该与你的插件的 npm 包版本匹配。最简单的方法是从你的 `package.json` 中读取这些信息。
+
+作为替代方法，你还可以在你的插件的根文件下暴露 `name` 和 `version` 属性，例如：
+
+```js
+// alternate location of name and version
+module.exports = {
+    name: "eslint-plugin-custom",
+    version: "1.2.3"
+};
+```
+
+虽然使用 `meta` 对象是提供插件名称和版本的首选方式，但这种格式也是可以接受的，并向后兼容。
+
 ### 插件中的规则
 
 插件可以为 ESLint 提供自定义的规则。要做到这一点，插件必须输出 `rules` 对象，其中包含一个规则 ID 到规则的键值映射。规则 ID 不需要遵循任何命名惯例（比如可以是 `dollar-sign`）。了解更多关于在插件中创建自定义规则的信息，请参见[自定义规则](custom-rules)。

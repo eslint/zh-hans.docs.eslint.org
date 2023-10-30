@@ -40,8 +40,8 @@ export default [
     * `ecmaVersion` - 支持 ECMAScript 的版本。可以是任何年份（`2022`）或版本（`5`）。设置为 `"latest"` 则使用受支持的最新版本（默认为 `"latest"`）。
     * `sourceType` - JavaScript 源码类型。传统脚本文件可以使用 `"script"`，ECMAScript 模块（ESM）可以用 `"module"` ，CommonJS 文件使用 `"commonjs`（默认情况下，`.js` 和 `.mjs` 文件使用 `"module"`；`.cjs` 文件使用 `"commonjs"`）
     * `globals` - 指定额外对象的对象，这些对象应该在检查期间会被添加到全局范围。
-    * `parser` - 包含 `parse()` 方法的对象，或者表示插件内解析器名称的字符串（如 `"pluginName/parserName"`，默认为 `"@/espree"`）
-    * `parserOptions` - 指定额外选项的对象，直接传递给解析器的 `parser()` 方法。可用选项基于解析器。
+    * `parser` - 包含 `parse()` 方法或 `parseForESLint()` 方法的对象（默认为 [`espree`](https://github.com/eslint/espree)）
+    * `parserOptions` - 指定额外选项的对象，这些选项将直接传递给解析器上的 `parse()` 或 `parseForESLint()` 方法。可用选项取决于解析器。
 * `linterOptions` - 对象，包含与提示过程有关的设置。
     * `noInlineConfig` - 表示是否允许内联配置布尔值。
     * `reportUnusedDisableDirectives` - 表示是否应该跟踪和报告未用的禁用指令的布尔值。
@@ -250,7 +250,7 @@ export default [
 
 #### 配置自定义解析器及其选项
 
-在许多情况下，你可以使用 ESLint 提供的默认解析器来解析你的 JavaScript 代码。你可以通过使用 `parser` 属性来覆盖默认的解析器。`parser` 属性可以是一个字符串，格式为 `"pluginName/parserName"`（表示从插件中检索解析器），或是包含 `parse()` 方法或 `parseForESLint()` 方法的对象。例如，你可以使用 [`@babel/eslint-parser`](https://www.npmjs.com/package/@babel/eslint-parser) 包来让 ESLint 解析实验性语法：
+在许多情况下，你可以使用 ESLint 提供的默认解析器来解析你的 JavaScript 代码。你可以通过使用 `parser` 属性来覆盖默认的解析器。`parser` 属性必须是包含 `parse()` 方法或 `parseForESLint()` 方法的对象。例如，你可以使用 [`@babel/eslint-parser`](https://www.npmjs.com/package/@babel/eslint-parser) 包来让 ESLint 解析实验性语法：
 
 ```js
 import babelParser from "@babel/eslint-parser";

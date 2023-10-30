@@ -4,10 +4,10 @@ eleventyNavigation:
     key: working groups
     parent: maintain eslint
     title: 工作组
-    order: 4
+    order: 6
 ---
 
-ESLint TSC 可以创建专注于项目的某个特定领域的工作组。
+ESLint [技术指导委员会](../contribute/governance#技术指导委员会tsc)（TSC）可以创建专注于项目的某个特定领域的工作组。
 
 ## 创建工作组
 
