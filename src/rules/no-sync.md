@@ -3,7 +3,7 @@ title: no-sync
 rule_type: suggestion
 ---
 
-此规则于 ESLint v7.0.0 中废弃，请使用 [`eslint-plugin-node`](https://github.com/mysticatea/eslint-plugin-node) 中的对应规则代替。
+此规则于 ESLint v7.0.0 中废弃，请使用 [`eslint-plugin-n`](https://github.com/eslint-community/eslint-plugin-n) 中的对应规则代替。
 
 在 Node.js 中，大多数 I/O 是通过异步方法完成的。然而，异步方法往往有同步版本。例如，`fs.exists()` 和 `fs.existsSync()`。在某些情况下，使用同步操作是可以的（如果像 ESLint 那样，你正在编写一个命令行工具）。然而，在其他情况下，使用同步操作被认为是一种不好的做法，应该避免。例如，如果你在 Node.js 上运行一个高流量的网络服务器，你应该仔细考虑是否要允许任何可能锁定服务器的同步操作。
 

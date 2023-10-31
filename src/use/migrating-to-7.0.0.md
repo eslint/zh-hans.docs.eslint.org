@@ -145,7 +145,7 @@ ESLint v7.0.0 也会忽略子目录的 `node_modules/*`，但不再忽略 `bower
 
 ## <a name="deprecate-node-rules"></a> 废弃 Node.js/CommonJS 规则
 
-废弃了核心中的十个 Node.js/CommonJS 规则，并移动到 [eslint-plugin-node](https://github.com/mysticatea/eslint-plugin-node) 插件中。
+废弃了核心中的十个 Node.js/CommonJS 规则，并移动到 [eslint-plugin-node](https://github.com/mysticatea/eslint-plugin-node) 插件中（ESLint v8.0.0 后，可以使用其受维护的分叉 [eslint-plugin-n](https://github.com/eslint-community/eslint-plugin-n) 代替）。
 
 **解决方案**：根据[我们的废弃策略](../use/rule-deprecation)，在可见的未来，这些废弃的规则仍将保留在核心中，并且仍就可用。但我们将不再更新或修复这些规则的错误。建议使用插件中获支持的相应规则来代替。
 

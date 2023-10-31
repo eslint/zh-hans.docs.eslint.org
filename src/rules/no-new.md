@@ -42,7 +42,7 @@ new Thing();
 
 var thing = new Thing();
 
-Thing();
+Foo();
 ```
 
 :::

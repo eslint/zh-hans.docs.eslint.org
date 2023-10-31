@@ -3,7 +3,7 @@ title: no-mixed-requires
 rule_type: suggestion
 ---
 
-此规则于 ESLint v7.0.0 中废弃，请使用 [`eslint-plugin-node`](https://github.com/mysticatea/eslint-plugin-node) 中的对应规则代替。
+此规则于 ESLint v7.0.0 中废弃，请使用 [`eslint-plugin-n`](https://github.com/eslint-community/eslint-plugin-n) 中的对应规则代替。
 
 在 Node.js 社区，人们通常习惯于将调用 `require` 模块的初始化与其他变量声明分开，有时还按模块的类型分组。这个规则可以帮助你执行这个惯例。
 

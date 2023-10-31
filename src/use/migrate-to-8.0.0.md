@@ -54,7 +54,7 @@ Node.js 10、13 和 15 都在 2020 年或 2021 年初到达了生命的终点。
 
 ESLint v8.0.0 从核心中移除了 `codeframe` 和 `table` 格式化工具。ESLint 其他部分不会复用这些格式化工具依赖，删除它们可以压缩 ESLint 大小，并获得更快的安装速度。
 
-**解决方案**：如果你正在使用 `codeframe` 或 `table` 格式化工具，你需要分别安装 [`eslint-formatter-codeframe`](https://github.com/fregante/eslint-formatter-codeframe) 或[`eslint-formatter-table`](https://github.com/fregante/eslint-formatter-table) 独立分包以在 ESLint v8.0.0 中使用它们。
+**解决方案**：如果你正在使用 `codeframe` 或 `table` 格式化工具，你需要分别安装 [`eslint-formatter-codeframe`](https://github.com/eslint-community/eslint-formatter-codeframe) 或[`eslint-formatter-table`](https://github.com/eslint-community/eslint-formatter-table) 独立分包以在 ESLint v8.0.0 中使用它们。
 
 **相关议题**：[#14277](https://github.com/eslint/eslint/issues/14277)、[#14316](https://github.com/eslint/eslint/pull/14316)
 
@@ -134,7 +134,7 @@ module.exports = {
 };
 ```
 
-[eslint-plugin/require-meta-has-suggestions](https://github.com/not-an-aardvark/eslint-plugin-eslint-plugin/blob/master/docs/rules/require-meta-has-suggestions.md) 规则可以自动修复并强制指定规则的 `meta.hasSuggestions`。
+[eslint-plugin/require-meta-has-suggestions](https://github.com/eslint-community/eslint-plugin-eslint-plugin/blob/main/docs/rules/require-meta-has-suggestions.md) 规则可以自动修复并强制指定规则的 `meta.hasSuggestions`。
 
 **相关议题**：[#14312](https://github.com/eslint/eslint/issues/14312)
 
@@ -163,9 +163,9 @@ module.exports = {
 };
 ```
 
-[eslint-plugin/require-meta-fixable](https://github.com/not-an-aardvark/eslint-plugin-eslint-plugin/blob/master/docs/rules/require-meta-fixable.md)规则可以自动修复并强制指定规则的 `meta.fixable`。
+[eslint-plugin/require-meta-fixable](https://github.com/eslint-community/eslint-plugin-eslint-plugin/blob/main/docs/rules/require-meta-fixable.md)规则可以自动修复并强制指定规则的 `meta.fixable`。
 
-[eslint-plugin/prefer-object-rule](https://github.com/not-an-aardvark/eslint-plugin-eslint-plugin/blob/master/docs/rules/prefer-object-rule.md)规则可以自动修复并强制使用对象格式重写已废弃的函数格式规则。
+[eslint-plugin/prefer-object-rule](https://github.com/eslint-community/eslint-plugin-eslint-plugin/blob/main/docs/rules/prefer-object-rule.md)规则可以自动修复并强制使用对象格式重写已废弃的函数格式规则。
 
 参见[规则文档](../extend/custom-rules)获取更多关于编写规则的信息。
 

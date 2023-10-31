@@ -183,7 +183,7 @@ ESLint 插件也应该要进行检查！建议使用以下插件的 `recommended
 
 * [eslint](https://www.npmjs.com/package/eslint)
 * [eslint-plugin-eslint-plugin](https://www.npmjs.com/package/eslint-plugin-eslint-plugin)
-* [eslint-plugin-node](https://www.npmjs.com/package/eslint-plugin-node)
+* [eslint-plugin-n](https://www.npmjs.com/package/eslint-plugin-n)
 
 ## 分享插件
 
