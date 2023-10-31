@@ -26,7 +26,7 @@ JavaScript 生态中有多个运行时、版本、扩展和框架。每个所支
 * `es2021` - 添加所有 ECMAScript 2021 的全局变量，并自动将解析器选项 `ecmaVersion` 设置为 12。
 * `es2022` - 添加所有 ECMAScript 2022 的全局变量，并自动将解析器选项 `ecmaVersion` 设置为 13。
 * `worker` - 网络工作者全局变量。
-* `amd` - 根据 [amd](https://github.com/amdjs/amdjs-api/wiki/AMD) 规范，将 `require()` 和 `define()` 定义为全局变量。
+* `amd` - 根据 [amd](https://github.com/amdjs/amdjs-api/blob/master/AMD.md) 规范，将 `require()` 和 `define()` 定义为全局变量。
 * `mocha` - 添加所有 Mocha 测试的全局变量。
 * `jasmine` - 添加 1.3 和 2.0 版本的所有 Jasmine 测试全局变量。
 * `jest` - Jest 全局变量。

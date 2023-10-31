@@ -3,7 +3,7 @@ title: no-process-exit
 rule_type: suggestion
 ---
 
-此规则于 ESLint v7.0.0 中废弃，请使用 [`eslint-plugin-node`](https://github.com/mysticatea/eslint-plugin-node) 中的对应规则代替。
+此规则于 ESLint v7.0.0 中废弃，请使用 [`eslint-plugin-n`](https://github.com/eslint-community/eslint-plugin-n) 中的对应规则代替。
 
 Node.js 中的 `process.exit()` 方法被用来立即停止 Node.js 进程并退出。这是一个危险的操作，因为它可以在任何时间点的任何方法中发生，当错误发生时，有可能完全停止 Node.js 应用程序。比如：
 

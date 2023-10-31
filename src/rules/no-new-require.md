@@ -3,7 +3,7 @@ title: no-new-require
 rule_type: suggestion
 ---
 
-此规则于 ESLint v7.0.0 中废弃，请使用 [`eslint-plugin-node`](https://github.com/mysticatea/eslint-plugin-node) 中的对应规则代替。
+此规则于 ESLint v7.0.0 中废弃，请使用 [`eslint-plugin-n`](https://github.com/eslint-community/eslint-plugin-n) 中的对应规则代替。
 
 `require` 函数用于包含存在于独立文件中的模块，例如：
 

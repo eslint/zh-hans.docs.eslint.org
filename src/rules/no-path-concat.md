@@ -3,7 +3,7 @@ title: no-path-concat
 rule_type: suggestion
 ---
 
-此规则于 ESLint v7.0.0 中废弃，请使用 [`eslint-plugin-node`](https://github.com/mysticatea/eslint-plugin-node) 中的对应规则代替。
+此规则于 ESLint v7.0.0 中废弃，请使用 [`eslint-plugin-n`](https://github.com/eslint-community/eslint-plugin-n) 中的对应规则代替。
 
 在 Node.js 中，`__dirname` 和 `__filename`全局变量分别包含了当前执行的脚本文件的目录路径和文件路径。有时，开发者试图使用这些变量来创建其他文件的路径，例如：
 

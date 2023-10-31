@@ -8,7 +8,7 @@ eleventyNavigation:
 ---
 
 ::: warning
-这是实验性功能。你可以在项目根目录放置 `eslint.config.js` 文件或将 `ESLINT_USE_FLAT_CONFIG` 环境变量设置为 `true` 以参加实验。哪怕在有 `eslint.config.js` 文件的情况下，也可以将环境变量设置为 `false` 来退出实验。如果你正在使用 API，那你可以通过使用本页所描述的 `FlatESLint` 类、`FlatRuleTester` 类或在 `Linter` 类中配置 `configType: "flat"` 来使用此配置系统。
+此系统功能完备，但尚未默认启用。你可以在项目根目录放置 `eslint.config.js` 文件或将 `ESLINT_USE_FLAT_CONFIG` 环境变量设置为 `true` 来启用该系统。哪怕在有 `eslint.config.js` 文件的情况下，也可以将环境变量设置为 `false` 来禁用它。如果你正在使用 API，那你可以通过使用本页所描述的 `FlatESLint` 类、`FlatRuleTester` 类或在 `Linter` 类中配置 `configType: "flat"` 来使用此配置系统。
 :::
 
 你可以把 ESLint 项目配置放在配置文件中，可以在里面添加内置规则及其行为、具有自定义规则的插件、可共享配置、希望规则适用的文件范围等等。

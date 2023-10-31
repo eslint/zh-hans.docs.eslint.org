@@ -7,9 +7,9 @@ eleventyNavigation:
     order: 1
 ---
 
-你可以创建自定义规则并与 ESLint 一同食用。当[核心规则](../rules/)没有覆盖你的用例时，就可能需要创建自定义规则。
+你可以创建自定义规则并与 ESLint 一同使用。当[核心规则](../rules/)没有覆盖你的用例时，就可能需要创建自定义规则。
 
-**注意**：本页涵盖了 ESLint >= 3.0.0 的最新规则格式。还有一个[废弃的规则格式](./custom-rules-deprecated)。
+**注意**：本页涵盖了 ESLint >= 3.0.0 的最新规则格式，以及[废弃的规则格式](./custom-rules-deprecated)。
 
 以下是自定义规则的基础格式：
 
@@ -129,7 +129,7 @@ module.exports = {
     * 否则，如果该节点没有声明任何变量，将返回一个空数组。
 * `getFilename()` - 返回与源相关的文件名。
 * `getPhysicalFilename()` - 当给文件加注时，它返回磁盘上文件的完整路径，没有任何代码块信息。当对文本着色时，它返回传递给 `—stdin-filename` 的值，如果没有指定则返回 `<text>`。
-* `getScope()` - （**废弃: 使用 `SourceCode.getScope(node)` 代替**）返回当前遍历的节点的[范围](./scope-manager-interface#scope-interface)。这个信息可以用来跟踪对变量的引用。
+* `getScope()` - （**废弃**：使用 `SourceCode#getScope(node)` 代替）返回当前遍历的节点的[范围](./scope-manager-interface#scope-interface)。这个信息可以用来跟踪对变量的引用。
 * `getSourceCode()` - 返回 [`SourceCode`](#contextgetsourcecode) 对象，你可以用它来处理传递给 ESLint 的源代码。
 * `markVariableAsUsed(name)` - 将当前范围内给定名称的变量标记为已使用。这影响到 [no-unused-vars](../rules/no-unused-vars) 规则。如果找到给定名称的变量并标记为已使用，则返回 `true`，否则返回 `false`。
 * `report(descriptor)` - 报告代码中的问题（见[专用部分](#contextreport)）。

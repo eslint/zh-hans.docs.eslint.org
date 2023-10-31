@@ -6,7 +6,7 @@ further_reading:
 - https://web.archive.org/web/20171224042620/https://docs.nodejitsu.com/articles/errors/what-are-the-error-conventions/
 ---
 
-此规则于 ESLint v7.0.0 中废弃，请使用 [`eslint-plugin-node`](https://github.com/mysticatea/eslint-plugin-node) 中的对应规则代替。
+此规则于 ESLint v7.0.0 中废弃，请使用 [`eslint-plugin-n`](https://github.com/eslint-community/eslint-plugin-n) 中的对应规则代替。
 
 在 Node.js 中，处理异步行为的一个常见模式被称为回调模式。
 这种模式期望一个 `Error` 对象或 `null` 作为回调的第一个参数。

@@ -6,7 +6,7 @@ further_reading:
 - https://blog.benhall.me.uk/2012/02/storing-application-config-data-in/
 ---
 
-此规则于 ESLint v7.0.0 中废弃，请使用 [`eslint-plugin-node`](https://github.com/mysticatea/eslint-plugin-node) 中的对应规则代替。
+此规则于 ESLint v7.0.0 中废弃，请使用 [`eslint-plugin-n`](https://github.com/eslint-community/eslint-plugin-n) 中的对应规则代替。
 
 Node.js 中的 `process.env` 对象是用来存储部署/配置参数的。在一个项目中丢弃它可能会导致维护问题，因为它是另一种全局依赖。因此，它可能导致多用户设置中的合并冲突和多服务器设置中的部署问题。相反，最好的做法之一是在一个单一的配置/设置文件中定义所有这些参数，可以在整个项目中访问。
 

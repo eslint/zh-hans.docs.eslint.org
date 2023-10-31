@@ -7,7 +7,7 @@ further_reading:
 - https://github.com/nodejs/node/issues/4660
 ---
 
-此规则于 ESLint v7.0.0 中废弃，请使用 [`eslint-plugin-node`](https://github.com/mysticatea/eslint-plugin-node) 中的对应规则代替。
+此规则于 ESLint v7.0.0 中废弃，请使用 [`eslint-plugin-n`](https://github.com/eslint-community/eslint-plugin-n) 中的对应规则代替。
 
 在 Node.js 中，`Buffer` 构造函数的行为根据其参数的类型而不同。在没有验证其类型的情况下，将用户输入的参数传递给 `Buffer()`，会导致安全漏洞，如远程内存泄露和拒绝服务。因此，不应该使用废弃的构造函数 `Buffer` 构造函数。而应该使用 producer 方法 `Buffer.from`、`Buffer.alloc` 和 `Buffer.allocUnsafe` 代替。
 

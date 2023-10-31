@@ -3,7 +3,7 @@ title: no-restricted-modules
 rule_type: suggestion
 ---
 
-此规则于 ESLint v7.0.0 中废弃，请使用 [`eslint-plugin-node`](https://github.com/mysticatea/eslint-plugin-node) 中的对应规则代替。
+此规则于 ESLint v7.0.0 中废弃，请使用 [`eslint-plugin-n`](https://github.com/eslint-community/eslint-plugin-n) 中的对应规则代替。
 
 Node.js 中的模块是一个简单或复杂的功能，组织在一个 JavaScript 文件中，可以在整个 Node.js 中重复使用
 应用中重复使用。关键字 `require` 在 Node.js/CommonJS 中用于将模块导入到应用程序中。这样，你可以有动态加载，其中加载的模块名称不是预定义的/静态的，或者只在“真正需要时”加载一个模块。
