@@ -22,7 +22,7 @@ if (foo) {
 
 ## 规则细节
 
-这条规则使关键字和类似关键字的标记的间距一致。`as`（在模块声明中），`async`（在 async 函数中），`await`（在 await 表达式中），`break`、`case`、`catch`、`class`、`const`、`continue`、`debugger`、`default`、`delete`、`do`、`else`、`export`、`extends`、`finally`、`for`、`from`（在模块声明中）。`function `、`get`（getter）, `if`、`import`、`in`（在 for-in 语句中）、`let`、`new`、`of`（在 for-of 语句中）、`return`、`set`（setter）、`static`、`super`、`switch`、`this`、`throw`、`try`、`typeof`、`var`、`void`、`while`、`with` 和 `yield`。这条规则经过精心设计的，不与其他间距规则冲突：它不适用于其他规则报告有问题的间距。
+这条规则使关键字和类似关键字的标记的间距一致。`as`（在模块声明中），`async`（在 async 函数中），`await`（在 await 表达式中），`break`、`case`、`catch`、`class`、`const`、`continue`、`debugger`、`default`、`delete`、`do`、`else`、`export`、`extends`、`finally`、`for`、`from`（在模块声明中）。`function`、`get`（getter）, `if`、`import`、`in`（在 for-in 语句中）、`let`、`new`、`of`（在 for-of 语句中）、`return`、`set`（setter）、`static`、`super`、`switch`、`this`、`throw`、`try`、`typeof`、`var`、`void`、`while`、`with` 和 `yield`。这条规则经过精心设计的，不与其他间距规则冲突：它不适用于其他规则报告有问题的间距。
 
 ## 选项
 

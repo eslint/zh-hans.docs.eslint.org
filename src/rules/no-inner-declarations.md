@@ -28,7 +28,7 @@ function anotherThing() {
 }
 ```
 
-变量声明可以出现在语句的任何地方，甚至可以深深嵌套在其他块中。这通常是不可取的，因为变量的悬挂，将声明移到程序或函数体的根部可以提高清晰度。请注意，[块绑定](https://leanpub.com/understandinges6/read#leanpub-auto-block-bindings) (`let`, `const`) 并不是 hoisted 的，因此它们不受此规则影响。
+变量声明可以出现在语句的任何地方，甚至可以深深嵌套在其他块中。这通常是不可取的，因为变量的悬挂，将声明移到程序或函数体的根部可以提高清晰度。请注意，[块绑定](https://leanpub.com/understandinges6/read#leanpub-auto-block-bindings)（`let`、`const`）并不是 hoisted 的，因此它们不受此规则影响。
 
 ```js
 /*eslint-env es6*/

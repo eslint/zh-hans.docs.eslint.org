@@ -3,7 +3,7 @@ title: no-self-compare
 rule_type: problem
 ---
 
-将一个变量与自身进行比较通常是一个错误，要么是打字错误，要么是重构错误。它让读者感到困惑，并有可能带来运行时的错误。
+将一个变量与自身进行比较通常是一个错误，要么是输入错误，要么是重构错误。它让阅读者感到困惑，并有可能带来运行时的错误。
 
 只有在测试 `NaN` 的时候，你才会将一个变量与它自己进行比较。然而，使用 `typeof x === 'number' && isNaN (x)` 或 [Number.isNaN ES2015 函数](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN) 来处理这个用例，比让代码的读者来确定自我比较的意图要合适得多。
 

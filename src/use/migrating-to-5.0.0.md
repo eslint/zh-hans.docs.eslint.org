@@ -163,7 +163,7 @@ ESLint v5 对待纯白文件的方式与所有其他文件相同：它解析它�
 
 ## <a name="scoped-plugins"></a> 可以解析配置中的范围包插件了
 
-当 ESLint v5 遇到配置中以 `@` 开头的插件名称时，会将该插件解析为 [npm 范围包](https://docs.npmjs.com/misc/scope)。假使配置包含 `"plugins": ["@foo"]`，ESLint v5 将尝试加载 `@foo/eslint-plugin` 包（而 ESLint v4 则会尝试加载 `eslint-plugin-@foo` 包)。用户可能之前用这种方式解析 `node_modules/eslint-plugin-@foo`。不过考虑到大多用户不会这样干，发布到 npm 的包也不能在中间包含 `@` 字符，所以我们就做出了这个破坏性变更。
+当 ESLint v5 遇到配置中以 `@` 开头的插件名称时，会将该插件解析为 [npm 范围包](https://docs.npmjs.com/misc/scope)。假使配置包含 `"plugins": ["@foo"]`，ESLint v5 将尝试加载 `@foo/eslint-plugin` 包（而 ESLint v4 则会尝试加载 `eslint-plugin-@foo` 包）。用户可能之前用这种方式解析 `node_modules/eslint-plugin-@foo`。不过考虑到大多用户不会这样干，发布到 npm 的包也不能在中间包含 `@` 字符，所以我们就做出了这个破坏性变更。
 
 **解决方案**：如果你像加载像 `eslint-config-@foo` 这样的包，考虑把包名改一下：
 

@@ -20,8 +20,8 @@ rule_type: suggestion
     * `direct`：限制 `export default` 声明。
     * `named`：限制 `export { foo as default };` 声明。
     * `defaultFrom`：限制 `export { default } from 'foo';` 声明。
-    * `namedFrom`: 限制 `export { foo as default } from 'foo';` 声明。
-    * `namespaceFrom`: 限制 `export * as default from 'foo';` 声明。
+    * `namedFrom`：限制 `export { foo as default } from 'foo';` 声明。
+    * `namespaceFrom`：限制 `export * as default from 'foo';` 声明。
 
 ### restrictedNamedExports
 

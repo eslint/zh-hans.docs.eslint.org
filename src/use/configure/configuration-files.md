@@ -394,7 +394,7 @@ overrides 中的 glob 模式使用 [minimatch 语法](https://github.com/isaacs/
 
 以下是重写在配置文件中的工作方式：
 
-* 模式是针对相对于配置文件目录的文件路径而应用的。例如，如果你的配置文件的路径是 `/Users/john/workspace/any-project/.eslintrc.js` ，而你要覆盖的文件的路径是 `/Users/john/workspace/any-project/lib/util.js`，那么 `.eslintrc.js` 中提供的模式将针对相对路径 `lib/util.js` 执行。
+* 模式是针对相对于配置文件目录的文件路径而应用的。例如，如果你的配置文件的路径是 `/Users/john/workspace/any-project/.eslintrc.js`，而你要覆盖的文件的路径是 `/Users/john/workspace/any-project/lib/util.js`，那么 `.eslintrc.js` 中提供的模式将针对相对路径 `lib/util.js` 执行。
 * 在同一配置文件中，glob 模式覆盖的优先级高于常规配置。同一个配置文件中的多个覆盖会按顺序应用。也就是说，配置文件中的最后一个覆盖块总是具有最高的优先权。
 * 针对 glob 的配置与其他 ESLint 配置的工作原理几乎相同。覆盖块可以包含任何在常规配置中有效的配置选项，但 `root` 和 `ignorePatterns` 除外。
     * 一个 glob 特定的配置可以有一个 `extends` 设置，但扩展配置中的 `root` 属性会被忽略。扩展配置中的 `ignorePatterns` 属性只用于 glob 特定配置所匹配的文件。
@@ -420,7 +420,7 @@ project-root
 ├── .eslintrc.json
 ```
 
-`app/.eslintrc.json` 中的配置定义了 glob 模式 `**/*Spec.js`，该模式就基于 `app/.eslintrc.json` 目录。因此，这个模式会匹配 `app/lib/fooSpec.js` 和 `app/components/barSpec.js` ，但**不匹配** `server/serverSpec.js`。如果你在 `project-root` 文件夹下的 `.eslintrc.json` 文件中定义了相同的模式，它会匹配所有三个 `*Spec` 文件。
+`app/.eslintrc.json` 中的配置定义了 glob 模式 `**/*Spec.js`，该模式就基于 `app/.eslintrc.json` 目录。因此，这个模式会匹配 `app/lib/fooSpec.js` 和 `app/components/barSpec.js`，但**不匹配** `server/serverSpec.js`。如果你在 `project-root` 文件夹下的 `.eslintrc.json` 文件中定义了相同的模式，它会匹配所有三个 `*Spec` 文件。
 
 如果配置是通过 `--config` CLI 选项提供的，配置中的 glob 模式是相对于当前工作目录的，而不是给定配置的基本目录。例如，如果 `--config configs/.eslintrc.json` 出现，那么配置中的 glob 模式是相对于 `.` 而不是 `./configs`。
 

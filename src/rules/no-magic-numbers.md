@@ -111,7 +111,7 @@ foo(1n);
 
 数组是对象，所以它们可以有诸如 `"-1"` 或 `"2.5"` 这样的属性名称。然而，这些只是“普通”的对象属性，并不代表数组元素。它们不影响数组的 `length`，而且它们会被像 `.map` 或 `.forEach` 这样的数组方法忽略。
 
-此外，由于最大[数组长度](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) 为 2<sup>32</sup> - 1 ，所有高于 2<sup>32</sup> - 2 的值也仅代表普通属性名称，因此不被视为数组索引。
+此外，由于最大[数组长度](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) 为 2<sup>32</sup> - 1，所有高于 2<sup>32</sup> - 2 的值也仅代表普通属性名称，因此不被视为数组索引。
 
 使用 `{ "ignoreArrayIndexes": true }` 选项的**正确**示例：
 

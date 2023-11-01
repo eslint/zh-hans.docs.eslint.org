@@ -35,11 +35,11 @@ foo = String(foo);
 
 这个规则有三个主要的选项和一个覆盖选项，以允许一些必要的强制措施。
 
-* `"boolean"`（默认为 `true`) - 当这个选项为 `true` 时，该规则对 `boolean` 类型的短类型转换发出警告。
-* `"number"`（默认为 `true`) - 当此规则为 `true` 时，此规则对 `number` 类型的短类型转换发出警告。
-* `"string"`（默认为 `true`) - 当此规则为 `true` 时，此规则对 `string` 类型的短类型转换发出警告。
-* `"disallowTemplateShorthand"`（默认为 `false`) - 当此规则为 `true` 时，此规则警告使用 `${expression}` 形式的 `string` 类型转换。
-* `"allow"`（默认为 `empty`) - 这个数组中的每个条目都允许使用，可以是 `~`、`!`、`+` 或 `*` 之一。
+* `"boolean"`（默认为 `true`） - 当这个选项为 `true` 时，该规则对 `boolean` 类型的短类型转换发出警告。
+* `"number"`（默认为 `true`） - 当此规则为 `true` 时，此规则对 `number` 类型的短类型转换发出警告。
+* `"string"`（默认为 `true`） - 当此规则为 `true` 时，此规则对 `string` 类型的短类型转换发出警告。
+* `"disallowTemplateShorthand"`（默认为 `false`） - 当此规则为 `true` 时，此规则警告使用 `${expression}` 形式的 `string` 类型转换。
+* `"allow"`（默认为 `empty`） - 这个数组中的每个条目都允许使用，可以是 `~`、`!`、`+` 或 `*` 之一。
 
 请注意，`allow` 列表中存在运算符 `+` 将允许使用 `+foo`（数字强制）以及 `"" + foo`（字符串强制）。
 

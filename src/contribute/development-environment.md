@@ -103,7 +103,7 @@ ESLint 有几个构建脚本，可以帮助开发各个部分。
 
 主要使用的脚本是 `npm test`，它做了几件事：
 
-1. 检查所有 JavaScript（包括测试）和 JSON 。
+1. 检查所有 JavaScript（包括测试）和 JSON。
 1. 在 Node.js 上运行所有测试
 1. 检查代码覆盖率目标
 1. 生成 `build/eslint.js`，以便在浏览器中使用。

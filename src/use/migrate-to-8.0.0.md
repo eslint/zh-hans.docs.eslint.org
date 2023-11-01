@@ -245,10 +245,10 @@ if (propertyNode.key === propertyNode.value) {
 | `isPathIgnored(filePath)`                    | `isPathIgnored(filePath)`          |
 | `static outputFixes(results)`                | `static outputFixes(results)`      |
 | `static getErrorResults(results)`            | `static getErrorResults(results)`  |
-| `static getFormatter(name)`                  | (移除※1)                      |
-| `addPlugin(pluginId, definition)`            | `plugins` 构造函数选项   |
-| `getRules()`                                 | (移除※2)                      |
-| `resolveFileGlobPatterns()`                  | (移除※3)                      |
+| `static getFormatter(name)`                  | （移除 ※1）                         |
+| `addPlugin(pluginId, definition)`            | `plugins` 构造函数选项               |
+| `getRules()`                                 | （移除 ※2）                         |
+| `resolveFileGlobPatterns()`                  | （移除 ※3）                         |
 
 * ※1 `engine.getFormatter()` 方法目前按原样返回加载的包的对象，由于向后兼容的原因，这使得很难向格式化工具添加新功能。新的 `eslint.loadFormatter()` 方法返回适配器对象，该对象包装了加载的包的对象，以简化添加新特性的过程。此外，适配器对象可以访问 `ESLint` 实例来计算默认数据（例如，使用加载的插件规则来制作 `rulesMeta`）。因此，`ESLint` 类只实现了 `loadFormatter()` 方法的实例版本。
 * ※2 `CLIEngine#getRules()` 方法有副作用，所以被删除。如果你使用 `CLIEngine#getRules()` 来检索基于检查结果的规则元信息，请使用 `ESLint#getRulesMetaForResults()` 代替。如果你使用 `CLIEngine#getRules()` 检索所有内置规则，请从 `eslint/use-at-your-own-risk` 导入 `builtinRules`，以访问内部规则并获得不支持的 API。

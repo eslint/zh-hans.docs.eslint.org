@@ -180,7 +180,7 @@ module.exports = {
 
 此外, 如果你在规则外使用 `context.ecmaFeatures`，那么你将需要用以下几种方式更新代码：
 
-1. 如果你正在使用像 `context.ecmaFeatures.blockBindings` 这样的 ES6 特性标志， 重写并检查 `context.parserOptions.ecmaVersion > 5`。
+1. 如果你正在使用像 `context.ecmaFeatures.blockBindings` 这样的 ES6 特性标志，重写并检查 `context.parserOptions.ecmaVersion > 5`。
 2. 如果你正在使用 `context.ecmaFeatures.modules`，重写并检查 Program 节点的 `sourceType` 属性值为 `"module"`。
 3. 如果你正在使用像 `context.ecmaFeatures.jsx` 这样的非 ES6 特性标志，重写并检查 `context.parserOptions.ecmaFeatures.jsx`。
 

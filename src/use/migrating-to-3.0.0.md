@@ -67,7 +67,7 @@ ESLint v3.0.0 现在需要有配置才能运行。以下几种都属于配置：
 
 ## `CLIEngine#executeOnText()` 变更
 
-`CLIEngine#executeOnText()` 方式修改得更像 `CLIEngine#executeOnFiles()`。在 v2.x 中，`CLIEngine#executeOnText()` 默认对被忽略的文件发出警告，且没有办法选择禁用这些警告，而 `CLIEngine#executeOnFiles()` 默认不对被忽略的文件发出警告，并且允许你选择加入对它们的警告。 `CLIEngine#executeOnText()` 方法现在也默认不对被忽略的文件发出警告，并允许你用一个新的第三个参数（布尔值，`true` 表示对被忽略的文件发出警告， `false` 表示不发出警告）选择加入。
+`CLIEngine#executeOnText()` 方式修改得更像 `CLIEngine#executeOnFiles()`。在 v2.x 中，`CLIEngine#executeOnText()` 默认对被忽略的文件发出警告，且没有办法选择禁用这些警告，而 `CLIEngine#executeOnFiles()` 默认不对被忽略的文件发出警告，并且允许你选择加入对它们的警告。 `CLIEngine#executeOnText()` 方法现在也默认不对被忽略的文件发出警告，并允许你用一个新的第三个参数（布尔值，`true` 表示对被忽略的文件发出警告，`false` 表示不发出警告）选择加入。
 
 **解决方案**：如果你正在项目中像这样使用 `CLIEngine#executeOnText()`：
 

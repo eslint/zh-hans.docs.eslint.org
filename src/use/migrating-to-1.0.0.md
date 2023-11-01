@@ -161,7 +161,7 @@ ESLint v1.0.0 是首个主要发行版。因此，ESLint 0.x 时的工作方式�
 * [no-wrap-func](../rules/no-wrap-func) 被 [no-extra-parens](../rules/no-extra-parens) 所取代
 * [space-after-function-name](../rules/space-after-function-name) 被 [space-before-function-paren](../rules/space-before-function-paren) 所取代
 * [space-before-function-parentheses](../rules/space-before-function-parentheses) 被 [space-before-function-paren](../rules/space-before-function-paren) 所取代
-* [space-in-brackets](../rules/space-in-brackets) 被 [object-curly-spacing](../rules/object-curly-spacing ) 和 [array-bracket-spacing](../rules/array-bracket-spacing) 所取代
+* [space-in-brackets](../rules/space-in-brackets) 被 [object-curly-spacing](../rules/object-curly-spacing) 和 [array-bracket-spacing](../rules/array-bracket-spacing) 所取代
 * [space-unary-word-ops](../rules/space-unary-word-ops) 被 [space-unary-ops](../rules/space-unary-ops) 所取代
 * [spaced-line-comment](../rules/spaced-line-comment) 被 [spaced-comment](../rules/spaced-comment) 所取代
 

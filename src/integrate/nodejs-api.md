@@ -246,7 +246,7 @@ const config = await eslint.calculateConfigForFile(filePath);
 
 * 它解析并合并 `extends` 和 `overrides` 设置到顶层配置。
 * 它将 `parser` 设置解析为绝对路径。
-* 它将 `plugins` 设置规范化，以对齐短名称（如 `eslint-plugin-foo` → `foo`)。
+* 它将 `plugins` 设置规范化，以对齐短名称（如 `eslint-plugin-foo` → `foo`）。
 * 如果匹配了一个传统的文件扩展处理器，它会添加 `processor` 设置。
 * 它不解释 `env` 设置到 `globals` 和 `parserOptions` 设置，所以结果对象包含 `env` 设置。
 
@@ -523,7 +523,7 @@ const linter2 = new Linter();
 
 * `code` - 要检查的源代码（字符串或 `SourceCode` 的实例）。
 * `config` - 一个配置对象，已经被 `ESLint` 使用 eslintrc 文件和/或其他配置参数处理并规范化。
-    **注意**: 如果你想对文本进行检查，并让你的配置被读取和处理，请使用 [`ESLint#lintFiles()`][eslint-lintfiles] 或 [`ESLint#lintText()`][eslint-linttext] 来代替。
+    **注意**：如果你想对文本进行检查，并让你的配置被读取和处理，请使用 [`ESLint#lintFiles()`][eslint-lintfiles] 或 [`ESLint#lintText()`][eslint-linttext] 来代替。
 * `options` -（可选）本次运行的附加选项。
     * `filename` -（可选）与源代码相关的文件名。
     * `preprocess` -（可选）[插件中的处理器](../extend/plugins#processors-in-plugins)文档描述的 `preprocess` 方法。
@@ -810,7 +810,7 @@ const ruleTester = new RuleTester({ parserOptions: { ecmaVersion: 2015 } });
 
 * `name`（字符串，可选）：测试用例的名称，以使其更容易找到。
 * `code`（字符串，必需）：该规则应该运行的源代码。
-* `options`（数组，可选）: 传递给规则的选项。规则的严重性不应该包括在这个列表中。
+* `options`（数组，可选）：传递给规则的选项。规则的严重性不应该包括在这个列表中。
 * `filename`（字符串，可选）：给定情况下的文件名（对于对文件名进行断言的规则很有用）。
 * `only`（布尔值，可选）：在支持的测试框架中专门运行此案例进行调试。
 
@@ -818,14 +818,14 @@ const ruleTester = new RuleTester({ parserOptions: { ecmaVersion: 2015 } });
 
 * `errors`（数字或数组，需要）：断言该规则在此代码上运行时预期产生的错误的一些属性。如果这是一个数字，断言产生的错误的数量。否则，这应该是一个对象的列表，每个对象都包含关于一个报告错误的信息。以下属性可用于一个错误（所有都是可选的）：
     * `message` (字符串/正则)：错误的信息
-    * `messageId`（字符串）: 错误的 ID。参见[用 messageId 测试错误](#testing-errors-with-messageid) 了解详情。
-    * `data`（对象）: 占位数据，可与 `messageId` 结合使用。
-    * `type` (string): 报告的 AST 节点的类型
-    * `line`（数字）: 报告位置的基于 1 的行号
-    * `column`（数字）: 报告位置的基于 1 的列号
-    * `endLine`（数字）: 报告位置结束时的 1 个行号。
+    * `messageId`（字符串）：错误的 ID。参见[用 messageId 测试错误](#testing-errors-with-messageid) 了解详情。
+    * `data`（对象）：占位数据，可与 `messageId` 结合使用。
+    * `type` (string)：报告的 AST 节点的类型
+    * `line`（数字）：报告位置的基于 1 的行号
+    * `column`（数字）：报告位置的基于 1 的列号
+    * `endLine`（数字）：报告位置结束时的 1 个行号。
     * `endColumn`（数字）：报告位置结束时基于 1 的列号。
-    * `suggestions` (array): 一个包含建议细节的对象数组，用于检查。详见[测试建议](#testing-suggestions)
+    * `suggestions`（array）：一个包含建议细节的对象数组，用于检查。详见[测试建议](#testing-suggestions)
 
     如果提供一个字符串作为错误，而不是一个对象，该字符串被用来断言错误的 `message`。
 * `output`（字符串，如果规则修复了代码，则需要）。断言在使用此规则进行单次自动修复时将产生的输出（例如，使用 `--fix` 命令行标志）。如果这是 `null`，断言没有一个报告的问题是建议自动修正的。
@@ -868,8 +868,8 @@ const ruleTester = new RuleTester({ parserOptions: { ecmaVersion: 2015 } });
 建议可以通过在错误对象上定义一个 `suggestions` 键来测试。检查建议的选项有以下几个（都是可选的）：
 
 * `desc`（字符串）。建议的 `desc` 值
-* `messageId`（字符串）: 对于使用 `messageId` 的建议，建议的 `messageId` 值。
-* `data`（对象）: 可与 `messageId` 结合使用的占位数据。
+* `messageId`（字符串）：对于使用 `messageId` 的建议，建议的 `messageId` 值。
+* `data`（对象）：可与 `messageId` 结合使用的占位数据。
 * `output`（字符串）。一个代码字符串，代表对输入代码应用建议修正的结果。
 
 例子：

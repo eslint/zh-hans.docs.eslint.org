@@ -95,7 +95,7 @@ Node.js 6 在 2019 年 4 月到达了生命的终点，将不再获得安全更�
 
 以前 ESLint 基于相对于 ESLint 包本身的位置来加载插件的。因此，我们建议全局安装 ESLint 的用户也应该在全局安装插件，而安装了本地 ESLint 的用户应该在本地安装插件。然而，由于设计错误，这个策略导致 ESLint 在某些情况下随机地不能加载插件和可共享配置，特别是在使用像 [`lerna`](https://github.com/lerna/lerna) 和 [Yarn Plug n' Play](https://yarnpkg.com/lang/en/docs/pnp/) 这样的包管理器时。
 
-经验之谈：在 ESLint v6 中，即使是全局 ESLint ，也应该在本地安装插件。更确切地说，ESLint v6 默认将基于用户项目进行解析插件，并且总是相对于配置文件进行解析可共享配置和解析器。
+经验之谈：在 ESLint v6 中，即使是全局 ESLint，也应该在本地安装插件。更确切地说，ESLint v6 默认将基于用户项目进行解析插件，并且总是相对于配置文件进行解析可共享配置和解析器。
 
 **解决方案**：如果你全局安装了 ESLint （如用 `npm install eslint --global` 安装）以及插件，你应该在运行 ESLint 的项目中安装这些插件。如果配置文件扩展了可共享的配置和解析器，你应该确保配置文件中包含了这些包依赖。
 
@@ -107,7 +107,7 @@ Node.js 6 在 2019 年 4 月到达了生命的终点，将不再获得安全更�
 
 ESLint 使用的默认解析器 `espree`，现在会因为以下情况下而引发错误：
 
-* `ecmaVersion` 解析器选项被设置为数字以外的东西，例如字符串 `"2015"`（以前会忽略非数字的选项)。
+* `ecmaVersion` 解析器选项被设置为数字以外的东西，例如字符串 `"2015"`（以前会忽略非数字的选项）。
 * `sourceType: "module"` 解析器选项被设置，而 `ecmaVersion` 被设置为 `5` 或未被指定（以前设置 `sourceType: "module"` 将隐性导致 `ecmaVersion` 设置为令人不知所以然的最小值 2015）。
 * `sourceType` 设置成了 `"script"` 或 `"module"` 以外的值。
 

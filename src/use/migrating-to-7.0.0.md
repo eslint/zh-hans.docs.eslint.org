@@ -41,7 +41,7 @@ ESLint v7.0.0 是 ESLint 主要发行版。在此版本中有一些破坏性变�
 
 Node.js 8 在 2019 年 12 月到达了生命的终点，我们在此版本中正式放弃了对它的支持。ESLint 现在支持以下版本 Node.js：
 
-* Node.js 10 (`10.12.0` 以上）
+* Node.js 10（`10.12.0` 以上）
 * Node.js 12 以上
 
 **解决方案**：在使用 ESLint v7.0.0 前，请确保你至少升级到 Node.js `10.12.0`。如果你使用 ESLint 编辑扩展那么要复查所用编辑器所支持的 Node.js 版本。我们推荐在能够升级 Node.js 版本前，继续使用 ESLint 6。
@@ -224,10 +224,10 @@ ESLint v7.0.0 也会忽略子目录的 `node_modules/*`，但不再忽略 `bower
 | `isPathIgnored(filePath)`                    | `isPathIgnored(filePath)`          |
 | `static outputFixes(results)`                | `static outputFixes(results)`      |
 | `static getErrorResults(results)`            | `static getErrorResults(results)`  |
-| `static getFormatter(name)`                  | (移除※1)                           |
-| `addPlugin(pluginId, definition)`            | `plugins` 构造函数选项              |
-| `getRules()`                                 | (移除※2)                           |
-| `resolveFileGlobPatterns()`                  | (移除※3)                           |
+| `static getFormatter(name)`                  | （移除 ※1）                         |
+| `addPlugin(pluginId, definition)`            | `plugins` 构造函数选项               |
+| `getRules()`                                 | （移除 ※2）                         |
+| `resolveFileGlobPatterns()`                  | （移除 ※3）                         |
 
 * ※1 `engine.getFormatter()` 方法目前按原样返回加载的包的对象，由于向后兼容的原因，这使得很难向格式化工具添加新功能。新的 `eslint.loadFormatter()` 方法返回适配器对象，该对象包装了加载的包的对象，以简化添加新特性的过程。此外，适配器对象可以访问 `ESLint` 实例来计算默认数据（例如，使用加载的插件规则来制作 `rulesMeta`）。因此，`ESLint` 类只实现了 `loadFormatter()` 方法的实例版本。
 * ※2 从 ESLint v6.0.0 起，ESLint 就使用 `resolveFileGlobPatterns()` 方法的不同逻辑来迭代文件，这个方法已经过时了。

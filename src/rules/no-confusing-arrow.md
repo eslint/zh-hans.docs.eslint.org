@@ -87,7 +87,7 @@ var x = (a) => (1 ? 2 : 3);
 
 :::
 
-`onlyOneSimpleParam` 设置值为布尔值，可以是 `true` 或 `false`（默认值)：
+`onlyOneSimpleParam` 设置值为布尔值，可以是 `true` 或 `false`（默认值）：
 
 1. `true` 放宽规则，如果箭头函数有 0 个或 1 个以上的参数，或者参数不是标识符，则不报告错误。
 2. `false` 不管参数如何都会发出警告。
