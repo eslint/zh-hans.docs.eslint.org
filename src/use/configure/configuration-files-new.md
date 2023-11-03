@@ -15,7 +15,7 @@ eleventyNavigation:
 
 ## 配置文件
 
-ESLint 的配置文件叫做 `eslint.config.js` ，它应该放在项目根目录下，并导出包含[配置对象](#配置对象)的数组。这里有个例子：
+ESLint 的配置文件叫做 `eslint.config.js`，它应该放在项目根目录下，并导出包含[配置对象](#配置对象)的数组。这里有个例子：
 
 ```js
 export default [
@@ -38,7 +38,7 @@ export default [
 * `ignores` - 表示配置对象不应适用的文件的 glob 模式数组。如果没有指定，配置对象将适用于所有由 `files` 匹配的文件。
 * `languageOptions` - 包含如何配置检查过程中 JavaScript 设置的对。
     * `ecmaVersion` - 支持 ECMAScript 的版本。可以是任何年份（`2022`）或版本（`5`）。设置为 `"latest"` 则使用受支持的最新版本（默认为 `"latest"`）。
-    * `sourceType` - JavaScript 源码类型。传统脚本文件可以使用 `"script"`，ECMAScript 模块（ESM）可以用 `"module"` ，CommonJS 文件使用 `"commonjs`（默认情况下，`.js` 和 `.mjs` 文件使用 `"module"`；`.cjs` 文件使用 `"commonjs"`）
+    * `sourceType` - JavaScript 源码类型。传统脚本文件可以使用 `"script"`，ECMAScript 模块（ESM）可以用 `"module"`，CommonJS 文件使用 `"commonjs`（默认情况下，`.js` 和 `.mjs` 文件使用 `"module"`；`.cjs` 文件使用 `"commonjs"`）
     * `globals` - 指定额外对象的对象，这些对象应该在检查期间会被添加到全局范围。
     * `parser` - 包含 `parse()` 方法或 `parseForESLint()` 方法的对象（默认为 [`espree`](https://github.com/eslint/espree)）
     * `parserOptions` - 指定额外选项的对象，这些选项将直接传递给解析器上的 `parse()` 或 `parseForESLint()` 方法。可用选项取决于解析器。
@@ -311,7 +311,7 @@ export default [
 
 这些例子允许在代码中覆盖 `var1`，但不允许覆盖 `var2`。
 
-可以用字符串 `"off"` 来禁用全局变量。例如，在一个环境中，可以使用大多数 ES2015 的全局变量，但不能用 `Promise` ，你就可以使用这个配置：
+可以用字符串 `"off"` 来禁用全局变量。例如，在一个环境中，可以使用大多数 ES2015 的全局变量，但不能用 `Promise`，你就可以使用这个配置：
 
 ```js
 export default [

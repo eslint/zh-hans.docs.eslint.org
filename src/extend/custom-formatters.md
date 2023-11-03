@@ -90,12 +90,12 @@ eslint -f ./my-awesome-formatter.js src/
 
 `results` 数组中的每个对象都是 `result` 对象。每个 `results` 对象包含被检查的文件路径和检查出问题的信息。下面是每个 `results` 对象的可用属性：
 
-* **filePath**: 被检查文件的绝对路径。
-* **messages**: 由 [`message`](#message-对象) 对象组成的数组。关于 messages 的更多信息请见下文。
-* **errorCount**: 给定文件的错误数量。
-* **warningCount**: 给定文件的警告数量。
-* **source**: 给定文件的源代码。如果该文件没有错误/警告，或者有 `output` 属性，则忽略该属性。
-* **output**: 给定文件的源代码，并尽可能多地应用修复。如果没有进行修复，则省略此属性。
+* **filePath**：被检查文件的绝对路径。
+* **messages**：由 [`message`](#message-对象) 对象组成的数组。关于 messages 的更多信息请见下文。
+* **errorCount**：给定文件的错误数量。
+* **warningCount**：给定文件的警告数量。
+* **source**：给定文件的源代码。如果该文件没有错误/警告，或者有 `output` 属性，则忽略该属性。
+* **output**：给定文件的源代码，并尽可能多地应用修复。如果没有进行修复，则省略此属性。
 
 #### `message` 对象
 
@@ -115,7 +115,7 @@ formatter 函数的第二个实参应为 `context` 对象。该对象有以下�
 * `cwd`：当前工作目录。这个值来自 [ESLint](../integrate/nodejs-api#-new-eslintoptions) 类中的 `cwd` 构造器选项。
 * `maxWarningsExceeded`（可选）：如果设置了 `--max-warnings` 且警告数量达到限制，则此对象将包括两个属性
     * `maxWarnings`：值为 `--max-warnings` 选项的值
-    * `foundWarnings`：检查出的警告数量的值 。
+    * `foundWarnings`：检查出的警告数量的值。
 * `rulesMeta` ... 规则的 `meta` 属性值。关于规则的更多信息，请参见[自定义规则](custom-rules)页面。
 
 如果运行了 `no-extra-semi` 规则，对象会是这样的：

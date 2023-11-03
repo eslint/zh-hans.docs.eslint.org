@@ -17,10 +17,10 @@ rule_type: suggestion
 这条规则区分了六种变量声明的类型：
 
 * `core`：声明必要的[核心模块][1]
-* `file`: 声明必要的[文件模块][2]
-* `module`: 声明来自 [node_modules 文件夹][3] 的必要模块
-* `computed`: 声明所需的模块，其类型无法确定（要么是因为它是计算出来的，要么是因为 require 的调用没有参数）
-* `uninitialized`: 一个没有被初始化的声明
+* `file`：声明必要的[文件模块][2]
+* `module`：声明来自 [node_modules 文件夹][3] 的必要模块
+* `computed`：声明所需的模块，其类型无法确定（要么是因为它是计算出来的，要么是因为 require 的调用没有参数）
+* `uninitialized`：一个没有被初始化的声明
 * `other`：任何其他类型的声明。
 
 在本文件中，前四种类型被归纳为 **require 声明**这一术语。

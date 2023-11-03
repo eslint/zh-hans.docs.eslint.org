@@ -40,7 +40,7 @@ bar.baz();
 * 字段：`FunctionDeclaration > Identifier.id`
 * 第一个或最后一个子项：`:first-child` 或 `:last-child`
 * 第 n 个子项（不支持 ax+b）：`:nth-child(2)`
-* 最后 n 个子项（不支持 ax+b ）：`:nth-last-child(1)`
+* 最后 n 个子项（不支持 ax+b）：`:nth-last-child(1)`
 * 后裔：`FunctionExpression ReturnStatement`
 * 子项：`UnaryExpression > Literal`
 * 随同兄弟：`VariableDeclaration ~ VariableDeclaration`

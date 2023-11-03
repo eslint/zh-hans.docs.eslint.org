@@ -33,13 +33,13 @@ bar();
 
 * `id`（`string`） - 一个唯一的字符串。各自的规则可以使用 `id` 来保存每个代码链路额外信息。
 * `origin`（`string`） - 代码链路开始的原因。可以是 `"program"`、`"function"`、`"class-field-initializer"` 或 `"class-static-block"`.
-* `initialSegment`（`CodePathSegment`）- 代码链路初始段。
-* `finalSegments`（`CodePathSegment[]`）- 包括返回和抛出的最终段。
-* `returnedSegments`（`CodePathSegment[]`）- 只包括返回的最终段。
-* `thrownSegments`（`CodePathSegment[]`）- 最后只包括抛出的片段。
-* `currentSegments`（`CodePathSegment[]`）- 当前位置的片段。
-* `upper`（`CodePath|null`）- 上层函数/全局范围的代码链路。
-* `childCodePaths`（`CodePath[]`）- 包括函数代码链路的代码链路。
+* `initialSegment`（`CodePathSegment`） - 代码链路初始段。
+* `finalSegments`（`CodePathSegment[]`） - 包括返回和抛出的最终段。
+* `returnedSegments`（`CodePathSegment[]`） - 只包括返回的最终段。
+* `thrownSegments`（`CodePathSegment[]`） - 最后只包括抛出的片段。
+* `currentSegments`（`CodePathSegment[]`） - 当前位置的片段。
+* `upper`（`CodePath|null`） - 上层函数/全局范围的代码链路。
+* `childCodePaths`（`CodePath[]`） - 包括函数代码链路的代码链路。
 
 ### `CodePathSegment`
 

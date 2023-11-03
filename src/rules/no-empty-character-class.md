@@ -3,7 +3,7 @@ title: no-empty-character-class
 rule_type: problem
 ---
 
-因为正则表达式中的空字符类并不匹配任何东西，它们可能是打字错误。
+因为正则表达式中的空字符类并不匹配任何东西，它们可能是输入错误。
 
 ```js
 var foo = /^abc[]/;

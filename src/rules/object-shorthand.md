@@ -108,9 +108,9 @@ var foo = {
 此外，规则需要一个选项对象配置：
 
 * `"avoidQuotes": true` 表示当对象键是一个字符串字面时，首选长式语法（默认为 `false`）。注意，只有当字符串选项被设置为 `"always"`、`"methods"` 或 `"properties"` 时，该选项才能被启用。
-* `"ignoreConstructors": true`可以用来防止规则报告构造函数的错误。（默认情况下，规则对构造函数的处理与其他函数相同。) 注意，只有当字符串选项被设置为 `"always"` 或 `"methods"` 时，这个选项才能被启用。
+* `"ignoreConstructors": true`可以用来防止规则报告构造函数的错误（默认情况下，规则对构造函数的处理与其他函数相同）。注意，只有当字符串选项被设置为 `"always"` 或 `"methods"` 时，这个选项才能被启用。
 * `"methodsIgnorePattern"`（`string`）对于名称与此重码模式匹配的方法，将不执行方法速记。注意，这个选项只能在字符串选项被设置为 `"always"` 或 `"methods"` 时使用。
-* `"avoidExplicitReturnArrows": true` 表示方法优先于函数属性的明确返回箭头函数（默认情况下，规则允许这两种情况) 。注意，只有当字符串选项被设置为 `"always"` 或 `"methods"` 时，这个选项才能被启用。
+* `"avoidExplicitReturnArrows": true` 表示方法优先于函数属性的明确返回箭头函数（默认情况下，规则允许这两种情况）。注意，只有当字符串选项被设置为 `"always"` 或 `"methods"` 时，这个选项才能被启用。
 
 ### `avoidQuotes`
 

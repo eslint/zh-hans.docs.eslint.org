@@ -23,11 +23,11 @@ OpenJS Foundation 为像 ESLint 这样的 JavaScript 项目提供法律基础设
 
 ESLint 通过多种来源获得资金支持，包括：
 
-* [**Open Collective**](https://opencollective.com/eslint): 用于为开源项目提供资金支持的平台。
-* [**GitHub Sponsors**](https://github.com/sponsors/eslint): 用于资助与 Github 相关的开源项目的平台。
-* [**Tidelift**](https://tidelift.com/subscription/pkg/npm-eslint): 一项让企业管理和资助他们组织使用的开源项目的订阅服务。
-* [**Carbon Ads**](https://www.carbonads.net/open-source): 在 [eslint.org](https://eslint.org/) 上使用的面向开发者的广告提供商。
-* [**Stackaid.us**](https://simulation.stackaid.us/github/eslint/eslint): 开发者可以用来为他们使用的开源项目分配资金的工具。
+* [**Open Collective**](https://opencollective.com/eslint)：用于为开源项目提供资金支持的平台。
+* [**GitHub Sponsors**](https://github.com/sponsors/eslint)：用于资助与 Github 相关的开源项目的平台。
+* [**Tidelift**](https://tidelift.com/subscription/pkg/npm-eslint)：一项让企业管理和资助他们组织使用的开源项目的订阅服务。
+* [**Carbon Ads**](https://www.carbonads.net/open-source)：在 [eslint.org](https://eslint.org/) 上使用的面向开发者的广告提供商。
+* [**Stackaid.us**](https://simulation.stackaid.us/github/eslint/eslint)：开发者可以用来为他们使用的开源项目分配资金的工具。
 
 ESLint 利用这些资金用于以下用途：
 

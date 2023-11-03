@@ -38,7 +38,7 @@ module.exports.schema = []; // 无选项
 
 `schema`（数组）指定[选项](#选项模式)，这样 ESLint 可以防止无效的[规则配置](../use/configure/rules)
 
-`create`（函数）返回对象，该对象包含 ESLint 调用的方法，在遍历 JavaScript 代码的抽象语法树 (AST，由 [ESTree](https://github.com/estree/estree) 定义）时 `"visit"` 节点。
+`create`（函数）返回对象，该对象包含 ESLint 调用的方法，在遍历 JavaScript 代码的抽象语法树（AST，由 [ESTree](https://github.com/estree/estree) 定义）时 `"visit"` 节点。
 
 * 如果键是节点类型，ESLint 在 **down tree** 时会调用该 **visitor** 函数
 * 如果键是节点类型加 `:exit`，ESLint 在 **up tree** 时会调用该 **visitor** 函数。
@@ -199,7 +199,7 @@ context.report({
 }
 ```
 
-本例中的 `quotes` 规则有一个选项，`"double"`（`2` 是错误级别）。你可以通过使用 `context.options` 来检索一个规则的选项，它是一个包含该规则所有配置选项的数组。在这个例子中， `context.options[0]` 将包含 `"double"`：
+本例中的 `quotes` 规则有一个选项，`"double"`（`2` 是错误级别）。你可以通过使用 `context.options` 来检索一个规则的选项，它是一个包含该规则所有配置选项的数组。在这个例子中，`context.options[0]` 将包含 `"double"`：
 
 ```js
 module.exports = function(context) {
@@ -262,7 +262,7 @@ module.exports = function(context) {
 
 规则导出的 `schema` 有两种格式。第一种是一个完整的 JSON 模式对象，描述规则接受的所有可能的选项，包括作为第一个参数的规则错误级别和其后的任何可选参数。
 
-然而，为了简化模式的创建，规则也可以为每个可选的位置参数导出一个模式数组，ESLint 将自动首先验证所需的错误级别。例如， `yoda` 规则接受一个主要的模式参数，以及一个带有命名属性的额外选项对象。
+然而，为了简化模式的创建，规则也可以为每个可选的位置参数导出一个模式数组，ESLint 将自动首先验证所需的错误级别。例如，`yoda` 规则接受一个主要的模式参数，以及一个带有命名属性的额外选项对象。
 
 ```js
 // "yoda": [2, "never", { "exceptRange": true }]

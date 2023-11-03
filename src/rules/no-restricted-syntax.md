@@ -10,7 +10,7 @@ related_rules:
 
 JavaScript 有很多语言特性，而不是每个人都喜欢所有的特性。因此，有些项目会选择完全不允许使用某些语言特性。例如，你可能决定不允许使用 `try-catch` 或 `class`，或者你可能决定不允许使用 `in` 运算符。
 
-与其为每个你想关闭的语言功能创建单独的规则，这条规则允许你配置你想限制使用的语法元素。这些元素由其 [ESTree](https://github.com/estree/estree) 节点类型表示。例如，函数声明由 `FunctionDeclaration` 表示，`with` 语句由 `WithStatement` 表示。你可以[在 GitHub 上](https://github.com/eslint/eslint-visitor-keys/blob/main/lib/visitor-keys.js)找到你可以使用的 AST 节点名称的完整列表 ，并使用 [AST Explorer](https://astexplorer.net/) 与 espree 解析器来查看你的代码由哪些类型的节点组成。
+与其为每个你想关闭的语言功能创建单独的规则，这条规则允许你配置你想限制使用的语法元素。这些元素由其 [ESTree](https://github.com/estree/estree) 节点类型表示。例如，函数声明由 `FunctionDeclaration` 表示，`with` 语句由 `WithStatement` 表示。你可以[在 GitHub 上](https://github.com/eslint/eslint-visitor-keys/blob/main/lib/visitor-keys.js)找到你可以使用的 AST 节点名称的完整列表，并使用 [AST Explorer](https://astexplorer.net/) 与 espree 解析器来查看你的代码由哪些类型的节点组成。
 
 你也可以指定 [AST 选择器](../extend/selectors) 来限制，允许对语法模式进行更精确的控制。
 

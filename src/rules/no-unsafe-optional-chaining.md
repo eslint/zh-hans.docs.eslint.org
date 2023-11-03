@@ -126,7 +126,7 @@ async function foo () {
 
 此规则选项为对象：
 
-* `disallowArithmeticOperators`: 不允许对可选链式表达式进行算术运算（默认为 `false`）。如果是 `true`，本规则对可选链式表达式的算术操作提出警告，这可能导致 `NaN`。
+* `disallowArithmeticOperators`：不允许对可选链式表达式进行算术运算（默认为 `false`）。如果是 `true`，本规则对可选链式表达式的算术操作提出警告，这可能导致 `NaN`。
 
 ### disallowArithmeticOperators
 

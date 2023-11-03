@@ -126,7 +126,7 @@ class C {
 }
 ```
 
-一个配置的例子，填写了默认的 `VariableDeclarator` 和 `AssignmentExpression` ，看起来像这样：
+一个配置的例子，填写了默认的 `VariableDeclarator` 和 `AssignmentExpression`，看起来像这样：
 
 ```json
 {
