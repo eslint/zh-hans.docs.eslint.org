@@ -32,44 +32,44 @@ module.exports = {
 };
 ```
 
-## 规则基础
+## 规则结构
 
-一个规则的源文件导出一个具有以下属性的对象。
+一个规则的源文件导出一个具有以下属性的对象。自定义规则和核心规则均遵守此格式。
 
-`meta`（对象） 包含规则的元数据。
+`meta`：（`object`）包含规则的元数据。
 
-* `type`（字符串） 表示规则的类型，是 `"problem"`、`"suggestion"` 或 `"layout"` 之一。
+* `type`：（`string`）表示规则的类型，是 `"problem"`、`"suggestion"` 或 `"layout"` 其中之一。
     * `"problem"` 意味着该规则正在识别将导致错误或可能导致混乱行为的代码。开发人员应该把它作为一个高度优先事项来解决。
     * `"suggestion"` 意味着该规则确定了一些可以用更好的方式完成的事情，但如果不改变代码，就不会发生错误。
     * `"layout"` 意味着该规则主要关心的是空白、分号、逗号和括号，所有决定代码外观的部分，而不是代码的执行方式。这些规则对代码中没有在 AST 中指定的部分起作用。
 
-* `docs`（对象）是 ESLint 的核心规则所需要的。
+* `docs`：（`object`）核心规则必须存在此字段，而自定义规则则可自行选择与否。核心规则在 `docs` 中有特定的条目，而自定义规则可以包含任何需要的属性。以下属性仅适用于核心规则。
 
-    * `description` (string) 在[规则页面](../rules/)中提供规则的简短描述。
-    * `recommended` (boolean) 表示在[配置文件](../use/configure/configuration-files#扩展配置文件) 中是否使用 `"extends": "eslint:recommended"` 属性启用该规则。
-    * `url` (string) 指定可以访问完整文档的链接（使代码编辑器能够在突出显示的规则违反上提供一个有用的链接）
+    * `description`：（`string`）在[规则页面](../rules/)中提供规则的简短描述。
+    * `recommended`：（`boolean`）表示在[配置文件](../use/configure/configuration-files#扩展配置文件) 中是否使用 `"extends": "eslint:recommended"` 属性启用该规则。
+    * `url`： (`string`) 指定可以访问完整文档的链接（使代码编辑器能够在突出显示的规则违反上提供一个有用的链接）
 
     在自定义规则或插件中，你可以省略 `docs` 或在其中包含你需要的任何属性。
 
-* `fixable`（string）是 `"code"` 或 `"whitespace"`，如果[命令行](../use/command-line-interface#-fix)上的 `--fix` 选项自动修复规则报告的问题
+* `fixable`：（`string`）是 `"code"` 或 `"whitespace"`，如果[命令行](../use/command-line-interface#-fix)上的 `--fix` 选项自动修复规则报告的问题
 
     **重点**：`fixable` 属性对于可修复规则是强制性的。如果没有指定这个属性，ESLint 将在规则试图产生一个修复时抛出一个错误。如果规则不是可修复的，则省略 `fixable` 属性。
 
-* `hasSuggestions` (boolean) 指定规则是否可以返回建议（如果省略，默认为 `false`）。
+* `hasSuggestions`：（`boolean`）指定规则是否可以返回建议（如果省略，默认为 `false`）。
 
-     **重点**：`hasSuggestions` 属性对于提供建议的规则来说是强制性的。如果这个属性没有设置为 `true`，ESLint 将在规则试图产生建议时抛出一个错误。如果规则不提供建议，省略 `hasSuggestions` 属性。
+    **重点**：`hasSuggestions` 属性对于提供建议的规则来说是强制性的。如果这个属性没有设置为 `true`，ESLint 将在规则试图产生建议时抛出一个错误。如果规则不提供建议，省略 `hasSuggestions` 属性。
 
-* `schema` (array) 指定了 [options](#选项模式)，所以 ESLint 可以防止无效的[规则配置](../use/configure/rules)
+* `schema`：（`object | array`）指定了 [options](#选项模式)，所以 ESLint 可以防止无效的[规则配置](../use/configure/rules)
 
-* `deprecated` (boolean) 表示该规则是否已经被废弃。如果规则没有被废除，你可以省略 `deprecated` 属性。
+* `deprecated`：（`boolean`）表示该规则是否已经被废弃。如果规则没有被废除，你可以省略 `deprecated` 属性。
 
-* `replacedBy`（array） 如果是被废弃的规则，指定替代规则。
+* `replacedBy`：（`array`）如果是被废弃的规则，指定替代规则。
 
-`create`（function） 返回一个对象，该对象具有 ESLint 调用的方法，在遍历 JavaScript 代码的抽象语法树（由 [ESTree](https://github.com/estree/estree) 定义的 AST）时 `visit"` 节点。
+`create()`：返回一个对象，该对象具有 ESLint 调用的方法，在遍历 JavaScript 代码的抽象语法树（由 [ESTree](https://github.com/estree/estree) 定义的 AST）时 `visit"` 节点。
 
-* 如果键是节点类型或[选择器](./selectors)，ESLint 在**down tree** 时调用该 **visitor**函数
-* 如果键是节点类型或[选择器](./selectors)加 `:exit`，ESLint 在***up tree** 时调用该 **visitor** 函数。
-* 如果一个键是一个事件名称，ESLint 调用该 **handler** 函数进行[代码链路分析](./code-path-analysis)
+* 如果键是节点类型或[选择器](./selectors)，ESLint 在 **down tree** 时调用该 **visitor**函数。
+* 如果键是节点类型或[选择器](./selectors)加 `:exit`，ESLint 在 ***up tree** 时调用该 **visitor** 函数。
+* 如果一个键是一个事件名称，ESLint 调用该 **handler** 函数进行[代码链路分析](./code-path-analysis)。
 
 一个规则可以使用当前节点和它周围的树来报告或修复问题。
 
@@ -104,20 +104,36 @@ module.exports = {
 
 ## 上下文对象
 
-`context` 对象包含了额外的功能，有助于规则完成其工作。顾名思义，`context` 对象包含与规则的上下文相关的信息。`context` 对象有以下属性：
+`context` 对象是规则中 `create` 方法的唯一参数。例如：
 
+```js
+// customRule.js
+
+module.exports = {
+    meta: { ... },
+    // `context` object is the argument
+    create(context) {
+       // ...
+    }
+};
+```
+
+顾名思义，`context` 对象包含与规则上下文相关的信息。
+
+`context` 对象有下列属性：
+
+* `id`：（`string`）规则 ID。
+* `options`：（`array`）这个规则的[配置选项](../use/configure/rules)的数组。这个数组不包括规则的严重程度。更多信息，请参阅[这里](#contextoptions)。
+* `settings`：（`object`）配置中的[共享设置](../use/configure/configuration-files#添加共享设置)。
+* `parserPath`：（`string`）配置中的 `parser` 的名称。
+* `parserServices`：（`object`）一个包含解析器提供的规则服务的对象。默认的解析器不提供任何服务。然而，如果一个规则打算与一个自定义的解析器一起使用，它可以使用 `parserServices` 来访问该解析器提供的任何服务（例如，TypeScript 解析器可以提供获取特定节点的计算类型的能力）。
 * `parserOptions` - 为本次运行配置的解析器选项（[了解详情](../use/configure/language-options#指定解析器选项)）。
-* `id` - 规则 ID。
-* `options` - 这个规则的[配置选项](../use/configure/rules) 的数组。这个数组不包括规则的严重程度。更多信息，请参阅[这里](#contextoptions)。
-* `settings` - 配置中的[共享设置](../use/configure/configuration-files#添加共享设置)。
-* `parserPath` - 配置中的 `parser` 的名称。
-* `parserServices` - 一个包含解析器提供的规则服务的对象。默认的解析器不提供任何服务。然而，如果一个规则打算与一个自定义的解析器一起使用，它可以使用 `parserServices` 来访问该解析器提供的任何服务（例如，TypeScript 解析器可以提供获取特定节点的计算类型的能力）。
 
-此外，`context`对象有以下方法。
+此外，`context` 对象有以下方法。
 
-* `getAncestors()` - 返回当前遍历的节点的祖先数组，从 AST 的根开始，一直到当前节点的直接父节点。这个数组不包括当前遍历的节点本身。
-* `getCwd()` - 返回传递给 [Linter](../integrate/nodejs-api#linter) 的 `cwd`。它是一个目录的路径，应该被视为当前工作目录。
-* `getDeclaredVariables(node)` - 返回由给定节点声明的[变量](./scope-manager-interface#variable-接口) 的列表。这个信息可以用来跟踪对变量的引用。
+* `getAncestors()`：返回当前遍历的节点的祖先数组，从 AST 的根开始，一直到当前节点的直接父节点。这个数组不包括当前遍历的节点本身。
+* `getCwd()`：返回传递给 [Linter](../integrate/nodejs-api#linter) 的 `cwd`。它是一个目录的路径，应该被视为当前工作目录。
+* `getDeclaredVariables(node)`：返回由给定节点声明的[变量](./scope-manager-interface#variable-接口)的列表。这个信息可以用来跟踪对变量的引用。
     * 如果该节点是 `VariableDeclaration`，则返回声明中的所有变量。
     * 如果该节点是 `VariableDeclarator`，将返回所有在声明器中声明的变量。
     * 如果该节点是 `FunctionDeclaration` 或 `FunctionExpression`，除了函数参数的变量外，还将返回函数名称的变量。
@@ -127,30 +143,30 @@ module.exports = {
     * 如果该节点是 `ImportDeclaration`，将返回其所有的指定变量。
     * 如果该节点是 `ImportSpecifier`、`ImportDefaultSpecifier` 或 `ImportNamespaceSpecifier`，则返回声明的变量。
     * 否则，如果该节点没有声明任何变量，将返回一个空数组。
-* `getFilename()` - 返回与源相关的文件名。
-* `getPhysicalFilename()` - 当给文件加注时，它返回磁盘上文件的完整路径，没有任何代码块信息。当对文本着色时，它返回传递给 `—stdin-filename` 的值，如果没有指定则返回 `<text>`。
-* `getScope()` - （**废弃**：使用 `SourceCode#getScope(node)` 代替）返回当前遍历的节点的[范围](./scope-manager-interface#scope-interface)。这个信息可以用来跟踪对变量的引用。
-* `getSourceCode()` - 返回 [`SourceCode`](#contextgetsourcecode) 对象，你可以用它来处理传递给 ESLint 的源代码。
-* `markVariableAsUsed(name)` - 将当前范围内给定名称的变量标记为已使用。这影响到 [no-unused-vars](../rules/no-unused-vars) 规则。如果找到给定名称的变量并标记为已使用，则返回 `true`，否则返回 `false`。
-* `report(descriptor)` - 报告代码中的问题（见[专用部分](#contextreport)）。
+* `getFilename()`：返回与源相关的文件名。
+* `getPhysicalFilename()`：当给文件加注时，它返回磁盘上文件的完整路径，没有任何代码块信息。当对文本着色时，它返回传递给 `—stdin-filename` 的值，如果没有指定则返回 `<text>`。
+* `getScope()`：（**废弃**：使用 `SourceCode#getScope(node)` 代替）返回当前遍历的节点的[范围](./scope-manager-interface#scope-接口)。这个信息可以用来跟踪对变量的引用。
+* `getSourceCode()`：返回 `SourceCode` 对象，你可以用它来处理传递给 ESLint 的源代码。（查看[访问源文件](#contextgetsourcecode)）
+* `markVariableAsUsed(name)`：（**废弃**：使用 `SourceCode#markVariableAsUsed(name, node)` 代替）将当前范围内给定名称的变量标记为已使用。这影响到 [no-unused-vars](../rules/no-unused-vars) 规则。如果找到给定名称的变量并标记为已使用，则返回 `true`，否则返回 `false`。
+* `report(descriptor)`：报告代码中的问题（见[专用部分](#报告问题)）。
 
 **注意**：早期版本的 ESLint 支持对 `context` 对象的额外方法。这些方法在新的格式中被删除，不应该被依赖。
 
-### context.report()
+### 报告问题
 
-你将使用的主要方法是 `context.report()`，它发布一个警告或错误（取决于正在使用的配置）。这个方法接受一个参数，它是一个包含以下属性的对象：
+在编写自定义规则时将使用的主要方法是 `context.report()`，它发布一个警告或错误（取决于正在使用的配置）。这个方法接受一个参数，它是一个包含以下属性的对象：
 
-* `message` - 问题信息。
-* `node` - （可选）与问题有关的 AST 节点。如果存在并且没有指定 `loc`，那么该节点的起始位置将作为问题的位置。
-* `loc` - （可选）一个指定问题位置的对象。如果同时指定了 `loc` 和 `node`，那么将使用 `loc` 而不是 `node` 的位置。
-    * `start` - 一个起始位置的对象。
-        * `line` - 从 1 开始计算的发生问题的行号。
-        * `column` - 从 0 开始计算的发生问题的列号。
-    * `end` - 一个结束位置的对象。
-        * `line` - 从 1 开始计算的发生问题的行号。
-        * `column` - 从 0 开始计算的发生问题的列号。
-* `data` - （可选）[placeholder](#使用信息占位符) `message` 的数据。
-* `fix` - （可选）一个应用[修复](#应用修复)的函数，以解决这个问题。
+* `message`：（`string`）问题信息。
+* `node`：（可选的 `object`）与问题有关的 AST 节点。如果存在并且没有指定 `loc`，那么该节点的起始位置将作为问题的位置。
+* `loc`：（可选的 `object`）一个指定问题位置的对象。如果同时指定了 `loc` 和 `node`，那么将使用 `loc` 而不是 `node` 的位置。
+    * `start`：一个起始位置的对象。
+        * `line`：（`number`）从 1 开始计算的发生问题的行号。
+        * `column`：（`number`）从 0 开始计算的发生问题的列号。
+    * `end`：一个结束位置的对象。
+        * `line`：（`number`）从 1 开始计算的发生问题的行号。
+        * `column`：（`number`）从 0 开始计算的发生问题的列号。
+* `data`: (可选的 `object`）[placeholder](#使用信息占位符) `message` 的数据。
+* `fix(fixer)`：（可选的 `function`）一个应用[修复](#应用修复)的函数，以解决这个问题。
 
 请注意，至少需要 `node` 或 `loc` 中的一个。
 
@@ -165,7 +181,7 @@ context.report({
 
 该节点包含了所有必要的信息，以计算出违规文本的行数和列数，以及代表该节点的源文本。
 
-### 使用信息占位符
+#### 使用信息占位符
 
 你也可以在信息中使用占位符并提供 `data`。
 
@@ -185,15 +201,17 @@ context.report({
 
 该节点包含所有必要的信息，以计算出违规文本的行数和列数，以及代表该节点的源文本。
 
-### `messageId`s
+#### `messageId`s
 
 在 `context.report()` 调用和你的测试中，你可以使用 `messageId` 来代替打出信息。
 
 这使你可以避免重复输入错误信息。它还可以防止在你的规则的不同部分报告的错误有过时的信息。
 
+规则文件：
+
 ```js
 {% raw %}
-// in your rule
+// avoid-name.js
 module.exports = {
     meta: {
         messages: {
@@ -216,18 +234,25 @@ module.exports = {
         };
     }
 };
+{% endraw %}
+```
 
-// in the file to lint:
+文件检查：
 
+```js
+// someFile.js
 var foo = 2;
 //  ^ error: Avoid using variables named 'foo'
+```
 
-// In your tests:
+在测试中：
+
+```js
 var rule = require("../../../lib/rules/my-rule");
 var RuleTester = require("eslint").RuleTester;
 
 var ruleTester = new RuleTester();
-ruleTester.run("my-rule", rule, {
+ruleTester.run("avoid-name", rule, {
     valid: ["bar", "baz"],
     invalid: [
         {
@@ -240,10 +265,9 @@ ruleTester.run("my-rule", rule, {
         }
     ]
 });
-{% endraw %}
 ```
 
-### 应用修复
+#### 应用修复
 
 如果你想让 ESLint 尝试修复你报告的问题，你可以在使用 `context.report()` 时指定 `fix` 函数来实现。`fix` 函数接收一个参数，即 `fixer` 对象，你可以用它来应用修复。比如说：
 
@@ -251,7 +275,7 @@ ruleTester.run("my-rule", rule, {
 context.report({
     node: node,
     message: "Missing semicolon",
-    fix: function(fixer) {
+    fix(fixer) {
         return fixer.insertTextAfter(node, ";");
     }
 });
@@ -259,23 +283,23 @@ context.report({
 
 此处 `fix()` 函数被用来在节点后面插入一个分号。请注意，修复并不是立即应用的，如果与其他修复有冲突，可能根本就不会应用。在应用修复后，ESLint 将在修复的代码上再次运行所有启用的规则，可能会应用更多的修复。这个过程最多重复 10 次，或者直到没有发现更多可修复的问题。之后，任何剩余的问题都会像往常一样被报告。
 
-**重点**：`meta.fixable` 属性对于可修复规则是必须的。如果一个实现 `fix` 功能的规则没有[导出](#规则基础) `meta.fixable` 属性，ESLint 将抛出一个错误。
+**重点**：`meta.fixable` 属性对于可修复规则是必须的。如果一个实现 `fix` 功能的规则没有[导出](#规则结构) `meta.fixable` 属性，ESLint 将抛出一个错误。
 
 `fixer` 对象有以下方法：
 
-* `insertTextAfter(nodeOrToken, text)` - 在给定的节点或标记后插入文本。
-* `insertTextAfterRange(range, text)` - 在给定的范围后插入文本。
-* `insertTextBefore(nodeOrToken, text)` - 在给定的节点或标记之前插入文本。
-* `insertTextBeforeRange(range, text)` - 在给定范围之前插入文本。
-* `remove(nodeOrToken)` - 删除指定的节点或标记。
-* `removeRange(range)` - 移除给定范围内的文本。
-* `replaceText(nodeOrToken, text)` - 替换给定节点或标记中的文本
-* `replaceTextRange(range, text)` - 替换给定范围内的文本。
+* `insertTextAfter(nodeOrToken, text)`：在给定的节点或标记后插入文本。
+* `insertTextAfterRange(range, text)`：在给定的范围后插入文本。
+* `insertTextBefore(nodeOrToken, text)`：在给定的节点或标记之前插入文本。
+* `insertTextBeforeRange(range, text)`：在给定范围之前插入文本。
+* `remove(nodeOrToken)`：删除指定的节点或标记。
+* `removeRange(range)`：移除给定范围内的文本。
+* `replaceText(nodeOrToken, text)`：替换给定节点或标记中的文本
+* `replaceTextRange(range, text)`：替换给定范围内的文本。
 
-范围是一个双项数组，包含源代码中的字符索引。第一项是范围的开始（包括），第二项是范围的结束（不包括）。每个节点和标记都有一个 `range` 属性，以确定它们所代表的源代码范围。
+`range` 数组仅有两项，包含源代码中的字符索引。第一项是范围的开始（包括），第二项是范围的结束（不包括）。每个节点和标记都有一个 `range` 属性，以确定它们所代表的源代码范围。
 
 上述方法返回一个 `fixing` 对象。
- `fix()` 函数可以返回以下值：
+`fix()` 函数可以返回以下值：
 
 * 一个 `fixing` 对象。
 * 一个包括 `fixing` 对象的数组。
@@ -329,11 +353,11 @@ context.report({
 
 例如，如果有两个修复想将字符从 0 改为 5，那么只会使用其中之一。
 
-### 提供建议
+#### 提供建议
 
 在某些情况下，修正不适合自动应用，例如，如果一个修正可能会改变功能，或者根据实现意图，有多种有效的方法来修正一个规则（见上面列出的[应用修复](#应用修复) 的最佳实践）。在这些情况下，在 `context.report()` 上有一个替代的 `suggest` 选项，允许其他工具，如编辑器，为用户手动应用建议暴露出帮助器。
 
-为了提供建议，在报告参数中使用 `suggest` 键和一个建议对象的数组。建议对象代表可以应用的单个建议，需要一个`desc` 键字符串，描述应用建议的作用或`messageId`键（见[下文](#suggestion-messageids)），以及 `fix` 键，这是一个定义建议结果的函数。这个`fix` 函数遵循与常规 fix 相同的 API（在上面的[应用修复](#应用修复) 中描述）。
+在报告参数中使用 `suggest` 键和建议对象的数组，可以提供建议。建议对象代表可以应用的单个建议，需要一个 `desc` 键字符串，描述应用建议的作用或 `messageId` 键（见[下文](#建议性-messageid)），以及 `fix` 键，这是一个定义建议结果的函数。这个 `fix` 函数遵循与常规 fix 相同的 API（在上面的[应用修复](#应用修复)中描述）。
 
 ```js
 {% raw %}
@@ -359,7 +383,7 @@ context.report({
 {% endraw %}
 ```
 
-**重点**：`meta.hasSuggestions`属性对于提供建议的规则来说是强制性的。如果一个规则试图产生一个建议，但没有[导出](#规则基础)这个属性，ESLint 将抛出一个错误。
+**重点**：`meta.hasSuggestions` 属性对于提供建议的规则来说是强制性的。如果一个规则试图产生一个建议，但没有[导出](#规则结构)这个属性，ESLint 将抛出一个错误。
 
 注意：建议将作为一个独立的变化被应用，而不会触发多通道修复。每个建议都应该关注代码中的单一变化，不应该试图符合用户定义的风格。例如，如果一个建议是在代码库中添加一个新的语句，它不应该试图匹配正确的缩进，或符合用户对分号的存在/不存在的偏好。所有这些都可以通过用户触发的多通道自动修正来进行修正。
 
@@ -370,9 +394,9 @@ context.report({
 
 建议的目的是为了提供修复。如果建议的 `fix` 函数返回 `null` 或空数组/序列，ESLint 将自动从 linting 输出中删除整个建议。
 
-#### Suggestion `messageId`s
+#### 建议性 `messageId`
 
-可以用 `messageId` 代替建议的 `desc` 键。这与`messageId` 对整个错误的作用相同（见 [messageIds](#messageids)）。下面是一个如何在规则中使用它的例子。
+可以用 `messageId` 代替建议的 `desc` 键。这与 `messageId` 对整个错误的作用相同（见 [messageIds](#messageids)）。下面是一个如何在规则中使用建议性 `messageId` 的例子：
 
 ```js
 {% raw %}
@@ -393,13 +417,13 @@ module.exports = {
             data: { character },
             suggest: [
                 {
-                    messageId: "removeEscape",
+                    messageId: "removeEscape", // 建议性 messageId
                     fix: function(fixer) {
                         return fixer.removeRange(range);
                     }
                 },
                 {
-                    messageId: "escapeBackslash",
+                    messageId: "escapeBackslash", // 建议性 messageId
                     fix: function(fixer) {
                         return fixer.insertTextBeforeRange(range, "\\");
                     }
@@ -413,7 +437,7 @@ module.exports = {
 
 #### 建议信息中的占位符
 
-你也可以在建议信息中使用占位符。这与整体错误的占位符的工作方式相同（见[使用消息占位符](#using-message-placeholders)）。
+你也可以在建议信息中使用占位符。这与整体错误的占位符的工作方式相同（见[使用消息占位符](#使用信息占位符)）。
 
 请注意，你必须在建议的对象上提供 `data`。建议信息不能使用整个错误的 `data` 的属性。
 
@@ -448,7 +472,7 @@ module.exports = {
 {% endraw %}
 ```
 
-### context.options
+### 访问传递给规则的选项
 
 一些规则需要选项才能正确运行。这些选项出现在配置（`.eslintrc`、命令行或注释中）。比如说：
 
@@ -474,9 +498,9 @@ module.exports = {
 
 当使用选项时，确保你的规则有一些逻辑上的默认值，以防选项没有被提供。
 
-### context.getSourceCode()
+### 访问源代码
 
-`SourceCode` 对象是获取更多关于被提示的源代码信息的主要对象。你可以在任何时候通过使用 `getSourceCode()` 方法来检索 `SourceCode` 对象。
+`SourceCode` 对象是获取更多关于被提示的源代码信息的主要对象。你可以在任何时候通过使用 `context.getSourceCode()` 方法来检索 `SourceCode` 对象。
 
 ```js
 module.exports = {
@@ -490,60 +514,95 @@ module.exports = {
 
 一旦你有一个 `SourceCode` 的实例，你可以使用它的下列方法来处理这些代码：
 
-* `getText(node)` - 返回指定节点的源代码。省略 `node` 以获得整个源代码。
-* `getAllComments()` - 返回源代码中所有评论的数组。
-* `getCommentsBefore(nodeOrToken)` - 返回直接出现在给定节点或标记之前的注释标记数组。
-* `getCommentsAfter(nodeOrToken)` - 返回直接发生在给定节点或标记之后的注释标记数组。
-* `getCommentsInside(node)` - 返回给定节点内所有评论标记的数组。
+* `getText(node)`：返回指定节点的源代码。省略 `node` 以获得整个源代码。（查看[专用章节](#访问源文本))
+* `getAllComments()`：返回源代码中所有评论的数组。（查看[专用章节](#访问注释))
+* `getCommentsBefore(nodeOrToken)`：返回直接出现在给定节点或标记之前的注释标记数组。（查看[专用章节](#访问注释))
+* `getCommentsAfter(nodeOrToken)`：返回直接发生在给定节点或标记之后的注释标记数组。（查看[专用章节](#访问注释))
+* `getCommentsInside(node)`：返回给定节点内所有评论标记的数组。（查看[专用章节](#访问注释))
 * `isSpaceBetween(nodeOrToken, nodeOrToken)` - 如果两个标记之间有一个空白字符，则返回真，如果给定的是一个节点，则返回第一个节点的最后一个标记和第二个节点的第一个标记。
-* `getFirstToken(node, skipOptions)` - 返回代表给定节点的第一个标记。
-* `getFirstTokens(node, countOptions)` - 返回代表给定节点的第一个`count` 标记。
-* `getLastToken(node, skipOptions)` - 返回代表给定节点的最后一个标记。
-* `getLastTokens(node, countOptions)` - 返回代表给定节点的最后的 `count` 标记。
-* `getTokenAfter(nodeOrToken, skipOptions)` - 返回给定节点或标记后的第一个标记。
-* `getTokensAfter(nodeOrToken, countOptions)` - 返回给定节点或标记后的 `count` 标记。
-* `getTokenBefore(nodeOrToken, skipOptions)` - 返回给定节点或标记之前的第一个标记。
-* `getTokensBefore(nodeOrToken, countOptions)` - 返回给定节点或标记前的 `count` 标记。
-* `getFirstTokenBetween(nodeOrToken1, nodeOrToken2, skipOptions)` - 返回两个节点或标记之间的第一个标记。
-* `getFirstTokensBetween(nodeOrToken1, nodeOrToken2, countOptions)` - 返回两个节点或标记之间的第一个 `count` 标记。
-* `getLastTokenBetween(nodeOrToken1, nodeOrToken2, skipOptions)` - 返回两个节点或标记之间的最后一个标记。
-* `getLastTokensBetween(nodeOrToken1, nodeOrToken2, countOptions)` - 返回两个节点或标记之间的最后 `count` 标记。
-* `getTokens(node)` - 返回给定节点的所有标记。
-* `getTokensBetween(nodeOrToken1, nodeOrToken2)` - 返回两个节点之间的所有标记。
-* `getTokenByRangeStart(index, rangeOptions)` - 返回范围从源中给定索引开始的标记。
-* `getNodeByRangeIndex(index)` - 返回 AST 中包含指定源索引的最深节点。
-* `getLocFromIndex(index)` - 返回一个具有 `line` 和 `column` 属性的对象，对应于给定源索引的位置。`line` 是基于 1 的，`column` 是基于 0 的。
-* `getIndexFromLoc(loc)` - 返回源代码中给定位置的索引，其中 `loc` 是一个对象，有一个基于 1 的 `line` 键和一个基于 0 的 `column` 键。
-* `commentsExistBetween(nodeOrToken1, nodeOrToken2)` - 如果两个节点之间存在注释，则返回 `true`。
+* `getFirstToken(node, skipOptions)`：返回代表给定节点的第一个标记。
+* `getFirstTokens(node, countOptions)`：返回代表给定节点的第一个`count` 标记。
+* `getLastToken(node, skipOptions)`：返回代表给定节点的最后一个标记。
+* `getLastTokens(node, countOptions)`：返回代表给定节点的最后的 `count` 标记。
+* `getTokenAfter(nodeOrToken, skipOptions)`：返回给定节点或标记后的第一个标记。
+* `getTokensAfter(nodeOrToken, countOptions)`：返回给定节点或标记后的 `count` 标记。
+* `getTokenBefore(nodeOrToken, skipOptions)`：返回给定节点或标记之前的第一个标记。
+* `getTokensBefore(nodeOrToken, countOptions)`：返回给定节点或标记前的 `count` 标记。
+* `getFirstTokenBetween(nodeOrToken1, nodeOrToken2, skipOptions)`：返回两个节点或标记之间的第一个标记。
+* `getFirstTokensBetween(nodeOrToken1, nodeOrToken2, countOptions)`：返回两个节点或标记之间的第一个 `count` 标记。
+* `getLastTokenBetween(nodeOrToken1, nodeOrToken2, skipOptions)`：返回两个节点或标记之间的最后一个标记。
+* `getLastTokensBetween(nodeOrToken1, nodeOrToken2, countOptions)`：返回两个节点或标记之间的最后 `count` 标记。
+* `getTokens(node)`：返回给定节点的所有标记。
+* `getTokensBetween(nodeOrToken1, nodeOrToken2)`：返回两个节点之间的所有标记。
+* `getTokenByRangeStart(index, rangeOptions)`：返回范围从源中给定索引开始的标记。
+* `getNodeByRangeIndex(index)`：返回 AST 中包含指定源索引的最深节点。
+* `getLocFromIndex(index)`：返回一个具有 `line` 和 `column` 属性的对象，对应于给定源索引的位置。`line` 是基于 1 的，`column` 是基于 0 的。
+* `getIndexFromLoc(loc)`：返回源代码中给定位置的索引，其中 `loc` 是一个对象，有一个基于 1 的 `line` 键和一个基于 0 的 `column` 键。
+* `commentsExistBetween(nodeOrToken1, nodeOrToken2)`：如果两个节点之间存在注释，则返回 `true`。
 
 `skipOptions` 是一个有 3 个属性的对象；`skip`、`includeComments` 和 `filter`。默认是 `{skip: 0, includeComments: false, filter: null}`。
 
-* `skip` 是一个正整数，即跳过的标记的数量。如果同时给了  `filter` 选项，它不会将过滤的标记算作跳过的标记。
-* `includeComments` 是一个布尔值，是将注释标记纳入结果的标志。
-* `filter` 是一个函数，获得一个标记作为第一个参数，如果该函数返回 `false`，那么结果将排除该标记。
+* `skip`：（`number`）正整数，即跳过的标记的数量。如果同时给了  `filter` 选项，它不会将过滤的标记算作跳过的标记。
+* `includeComments`：（`boolean`）将注释标记纳入结果的标志。
+* `filter(token)`：使用 token 作为第一个参数的函数，如果该函数返回 `false`，那么结果将排除该标记。
 
 `countOptions` 是一个有 3 个属性的对象；`count`, `includeComments` 和 `filter`. 默认是 `{count: 0, includeComments: false, filter: null}`。
 
-* `count` 是一个正整数，是返回标记的最大数量。
-* `includeComments` 是一个布尔值，是将评论标记纳入结果的标志。
-* `filter` 是一个函数，获得一个标记作为第一个参数，如果该函数返回 `false`，则结果不包括该标记。
+* `count`：（`number`）正整数，返回标记的最大数量。
+* `includeComments`：（`boolean`是将评论标记纳入结果的标志。
+* `filter(token)`：使用 token 作为第一个参数的函数，如果该函数返回 `false`，则结果不包括该标记。
 
-`rangeOptions` 是包含`includeComments` 属性的对象。
+`rangeOptions` 对象包含 `includeComments` 属性，默认为 `{includeComments: false}`。
 
-* `includeComments` 是一个布尔值，是将注释标记纳入结果的标志。
+* `includeComments`：（`boolean`）将注释标记纳入结果的标志。
 
 还有一些你可以访问的属性：
 
-* `hasBOM` - 表示源代码是否有 Unicode BOM 的标志。
-* `text` - 被提示的代码的全文。Unicode BOM 已经从这个文本中被剥离。
-* `ast` - 被提示的代码的 AST 的 `Program` 节点。
-* `scopeManager` - 代码的 [ScopeManager](./scope-manager-interface#scopemanager-interface) 对象。
-* `visitorKeys` - 用于遍历这个 AST 的访问者键。
-* `lines` - 一个行数组，根据规范中的换行定义进行分割。
+* `hasBOM`：（`boolean`）表示源代码是否有 Unicode BOM 的标志。
+* `text`：（`string`）被提示的代码的全文。Unicode BOM 已经从这个文本中被剥离。
+* `ast`：（`object`）被提示的代码的 AST 的 `Program` 节点。
+* `scopeManager`：代码的 [ScopeManager](./scope-manager-interface#scopemanager-interface) 对象。
+* `visitorKeys`：（`object`）用于遍历这个 AST 的访问者键。
+* `lines`：（`array`）各行的数组，根据规范中的换行定义进行分割。
 
 当你需要获得更多关于被提示的代码的信息时，你应该使用 `SourceCode` 对象。
 
-####  废弃
+#### 访问源文本
+
+如果你的规则需要获得实际的 JavaScript 源代码来工作，那么使用 `sourceCode.getText()` 方法。这个方法的工作原理如下：
+
+```js
+
+//获得所有的源码
+var source = sourceCode.getText();
+
+//只获取这个 AST 节点的源
+var nodeSource = sourceCode.getText(node);
+
+//获得 AST 节点的源码，加上之前的两个字符
+var nodeSourceWithPrev = sourceCode.getText(node, 2);
+
+//得到 AST 节点的来源，加上后面的两个字符
+var nodeSourceWithFollowing = sourceCode.getText(node, 0, 2);
+```
+
+通过这种方式，当 AST 没有提供相应的数据时，你可以在 JavaScript 文本本身中寻找模式（比如逗号、分号、括号的位置等）。
+
+### 访问注释
+
+虽然注释在技术上不是 AST 的一部分，但 ESLint 提供了 `sourceCode.getAllComments()`、`sourceCode.getCommentsBefore()`、`sourceCode.getCommentsAfter()` 和 `sourceCode.getCommentsInside()` 来访问它们。
+
+`sourceCode.getCommentsBefore()`、`sourceCode.getCommentsAfter()` 和 `sourceCode.getCommentsInside()` 对于需要检查与给定节点或令牌相关的注释的规则非常有用。
+
+请记住，这个方法的结果是按需计算的。
+
+你也可以通过 `includeComments` 使用许多 `sourceCode` 方法访问注释
+
+#### 标记遍历方法
+
+最后，评论可以通过许多 `sourceCode` 的方法使用 `includeComments` 选项来访问。
+
+#### 废弃
 
 请注意，以下方法已被废弃，并将在 ESLint 的未来版本中被删除。
 
@@ -555,7 +614,7 @@ module.exports = {
 
 ### 选项模式
 
-规则可以导出一个`schema` 属性，它是规则选项的 [JSON schema](https://json-schema.org/) 格式描述，ESLint 将使用它来验证配置选项，并在它们被传递到规则的 `context.options` 之前防止无效或意外输入。
+规则可以导出一个`schema` 属性，它是规则选项的 [JSON Schema](https://json-schema.org/) 格式描述，ESLint 将使用它来验证配置选项，并在它们被传递到规则的 `context.options` 之前防止无效或意外输入。
 
 规则导出的 `schema` 有两种格式。第一种是一个完整的 JSON 模式对象，描述规则接受的所有可能的选项，包括作为第一个参数的规则错误级别和其后的任何可选参数。
 
@@ -587,50 +646,11 @@ module.exports = {
 
 要了解更多关于 JSON 模式的信息，我们建议从 [网站](https://json-schema.org/learn/) 中的一些例子开始，也可以阅读 [了解 JSON 模式](https://json-schema.org/understanding-json-schema/)（免费电子书）。
 
-**注意**：目前你需要使用完整的 JSON 模式对象而不是数组，如果你的模式有引用（$ref），因为在数组格式的情况下，ESLint 将这个数组转化为一个单一的模式，而不更新引用，这使得它们不正确（它们被忽略）。
-
-### 获取源码
-
-如果你的规则需要获得实际的 JavaScript 源代码来工作，那么使用 `sourceCode.getText()` 方法。这个方法的工作原理如下。
-
-```js
-
-//获得所有的源码
-var source = sourceCode.getText();
-
-//只获取这个 AST 节点的源
-var nodeSource = sourceCode.getText(node);
-
-//获得 AST 节点的源码，加上之前的两个字符
-var nodeSourceWithPrev = sourceCode.getText(node, 2);
-
-//得到 AST 节点的来源，加上后面的两个字符
-var nodeSourceWithFollowing = sourceCode.getText(node, 0, 2);
-```
-
-通过这种方式，当 AST 没有提供相应的数据时，你可以在 JavaScript 文本本身中寻找模式（比如逗号、分号、括号的位置等）。
-
-### 访问注释
-
-虽然注释在技术上不是 AST 的一部分，但 ESLint 提供了一些方法让规则访问它们。
-
-#### sourceCode.getAllComments()
-
-该方法返回在程序中发现的所有注释的数组。这对需要检查所有评论的规则很有用，无论其位置如何。
-
-#### sourceCode.getCommentsBefore(), sourceCode.getCommentsAfter(), and sourceCode.getCommentsInside()
-
-这些方法分别返回出现在节点正前、正后和内部的评论数组。它们对于需要检查与给定节点或标记有关的注释的规则很有用。
-
-请记住，这个方法的结果是按需计算的。
-
-#### 标记遍历方法
-
-最后，评论可以通过许多 `sourceCode` 的方法使用 `includeComments` 选项来访问。
+**注意**：如果你的规则架构使用 JSON Schema 的 [`$ref`](https://json-schema.org/understanding-json-schema/structuring.html#ref) 属性，则必须使用完整的 JSON Schema 对象而不是位置属性模式数组。 这是因为 ESLint 将数组简写转换为单个模式，而不更新导致它们不正确的引用（它们被忽略）。
 
 ### 访问 Shebangs
 
-Shebangs 是由 `"Shebang"` 类型的标记表示的。它们被视为注释，可以通过上述方法访问。
+[Shebangs (#!)](https://en.wikipedia.org/wiki/Shebang_(Unix)) 由专属 `"Shebang"` 类型的 token 表示的。它们被视为注释，可以通过 [访问注释](#访问注释) 章节中的方法访问，比如 `sourceCode.getAllComments()`。
 
 ### 访问变量作用域
 
@@ -681,12 +701,49 @@ Shebangs 是由 `"Shebang"` 类型的标记表示的。它们被视为注释，�
 * [no-shadow](https://github.com/eslint/eslint/blob/main/lib/rules/no-shadow.js)：在全局作用域调用 `sourceCode.getScope()` 并解析所有子作用域以确保变量名没有在更低作用域中被再次使用（[no-shadow](../rules/no-shadow) 文档）。
 * [no-redeclare](https://github.com/eslint/eslint/blob/main/lib/rules/no-redeclare.js)：在每个作用域调用 `sourceCode.getScope()` 以确保变量没有在此作用域中多次声明（[no-redeclare](../rules/no-redeclare) 文档）。
 
+### 标记变量已使用
+
+**废弃**：`context.markVariableAsUsed()` 方法已弃用，并由 `sourceCode.markVariableAsUsed()` 所取代。
+
+某些 ESLint 规则，例如 [`no-unused-vars`](../rules/no-unused-vars)，会检查变量是否已被使用。 ESLint 本身只知道变量访问的标准规则，因此访问变量的自定义方式可能不会注册为“已使用”。
+
+为了帮助解决这个问题，你可以使用 `sourceCode.markVariableAsUsed()` 方法。 此方法采用两个参数：要标记为已使用的变量的名称和指示正在工作的范围的选项引用节点。这有一个例子：
+
+```js
+module.exports = {
+    create: function(context) {
+        var sourceCode = context.getSourceCode();
+
+        return {
+            ReturnStatement(node) {
+
+                // look in the scope of the function for myCustomVar and mark as used
+                sourceCode.markVariableAsUsed("myCustomVar", node);
+
+                // or: look in the global scope for myCustomVar and mark as used
+                sourceCode.markVariableAsUsed("myCustomVar");
+            }
+        }
+        // ...
+    }
+};
+```
+
+这里的 `myCustomVar` 变量被标记为相对于 `ReturnStatement` 节点使用，这意味着 ESLint 将从最接近该节点的范围开始搜索。如果省略第二个参数，则使用顶级范围。（ESM 文件中顶级作用域是模块作用域；CommonJS 文件中顶级作用域是第一个函数作用域）
+
 ### 访问代码路径
 
-ESLint 在遍历 AST 时分析了代码路径。
-你可以通过五个与代码路径有关的事件访问该代码路径对象。
+ESLint 在遍历 AST 时分析了代码路径。你可以通过五个与代码路径有关的事件访问该代码路径对象。 有关详细信息，请参阅[代码路径分析](code-path-analysis)。
 
-[详情在此](./code-path-analysis)
+### 废弃的 `SourceCode` 方法
+
+请注意，以下 `SourceCode` 方法已被弃用，并将在 ESLint 的未来版本中删除：
+
+* `getComments()`：由 `SourceCode#getCommentsBefore()`、`SourceCode#getCommentsAfter()` 和 `SourceCode#getCommentsInside()` 取代。
+* `getTokenOrCommentBefore()`：由使用 `{ includeComments: true }` 选项的 `SourceCode#getTokenBefore()` 取代。
+* `getTokenOrCommentAfter()`：由使用 `{ includeComments: true }` 选项的 `SourceCode#getTokenAfter()` 取代 。
+* `isSpaceBetweenTokens()`: 由 `SourceCode#isSpaceBetween()` 取代
+* `getJSDocComment()`
 
 ## 规则单元测试
 
@@ -694,11 +751,11 @@ ESLint 提供了 [`RuleTester`](../integrate/nodejs-api#ruletester) 实用工具
 
 ## 规则命名约定
 
-虽然你可以随便给自定义规则取你喜欢的名字，但如果自定义规则也采用核心规则的命名规范那会更加清晰。要了解更多信息，请参见[核心规则命名规范](../contribute/core-rules#规则命名规范)文档。
+虽然你可以随便给自定义规则取你喜欢的名字，但如果自定义规则也采用与核心规则的相同命名规范那会更加清晰。要了解更多信息，请参见[核心规则命名规范](../contribute/core-rules#规则命名规范)文档。
 
 ## 运行时规则
 
-这使得 ESLint 与其他检查器不同，它可以在运行时中定义自定义规则。这非常适合用在特定于项目或公司的规则，因为这对于 ESLint 无用。
+可以在运行时中定义自定义规则，使得 ESLint 与其他检查器不同。这非常适合用在特定于项目或公司的规则，因为这不会同 ESLint 或插件一起分发。
 
 运行时规则使用与其他规则一致的格式编写。像创建其他规则一样创建你的规则，并同样遵循以下步骤：
 

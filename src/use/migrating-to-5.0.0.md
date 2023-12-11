@@ -220,7 +220,7 @@ alert('foo'); /* eslint-disable-line
 
 此外，`context.getScope()` 返回了不合适的 `CatchClause`（ES5）、`ForStatement`（≧ES2015）、`ForInStatement`（≧ES2015）、`ForOfStatement` 和 `WithStatement` 节点父范围。
 
-在 ESLint v5 中，无论 `parserOptions.ecmaVersion` 如何，`context.getScope()` 方法都有同样的行为，并返回适当的范围。参见[文档](./extend/custom-rules#contextgetscope)以了解更多关于返回作用域的细节。
+在 ESLint v5 中，无论 `parserOptions.ecmaVersion` 如何，`context.getScope()` 方法都有同样的行为，并返回适当的范围。参见[文档](../extend/scope-manager-interface)以了解更多关于返回作用域的细节。
 
 **解决方案**：如果你的自定义规则，在节点处理程序中使用了 `context.getScope()` 方法，你可能需要更新它以说明修改后的范围信息。
 
