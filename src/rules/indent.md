@@ -845,7 +845,7 @@ var foo = { bar: 1,
 
 ### ImportDeclaration
 
-Examples of **correct** code for this rule with `4, { "ImportDeclaration": 1 }` 选项 (the default):
+使用此规则与 `4, { "ImportDeclaration": 1 }` 选项（默认值）的**正确**示例：
 
 ::: correct
 

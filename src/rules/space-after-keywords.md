@@ -5,7 +5,7 @@ title: space-after-keywords
 
 强制执行关键词后的一致间距。
 
-（移除）这条规则在 ESLint v2.0 中被**移除，被 [keyword-spacing](keyword-spacing)规则取代。
+（移除）此规则在 ESLint v2.0 中移除并被 [keyword-spacing](keyword-spacing) 规则取代。
 
 （可修复）[命令行](../use/command-line-interface#-fix) 上的 `--fix` 选项会自动修复此规则所报告的问题。
 

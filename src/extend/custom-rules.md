@@ -68,7 +68,7 @@ module.exports = {
 `create()`：返回一个对象，该对象具有 ESLint 调用的方法，在遍历 JavaScript 代码的抽象语法树（由 [ESTree](https://github.com/estree/estree) 定义的 AST）时 `visit"` 节点。
 
 * 如果键是节点类型或[选择器](./selectors)，ESLint 在 **down tree** 时调用该 **visitor**函数。
-* 如果键是节点类型或[选择器](./selectors)加 `:exit`，ESLint 在 ***up tree** 时调用该 **visitor** 函数。
+* 如果键是节点类型或[选择器](./selectors)加 `:exit`，ESLint 在 **up tree** 时调用该 **visitor** 函数。
 * 如果一个键是一个事件名称，ESLint 调用该 **handler** 函数进行[代码链路分析](./code-path-analysis)。
 
 一个规则可以使用当前节点和它周围的树来报告或修复问题。
@@ -123,7 +123,11 @@ module.exports = {
 `context` 对象有下列属性：
 
 * `id`：（`string`）规则 ID。
-* `options`：（`array`）这个规则的[配置选项](../use/configure/rules)的数组。这个数组不包括规则的严重程度。更多信息，请参阅[这里](#访问传递给规则的选项)。
+* `filename`：（`string`）与源文件相关的文件名。
+* `physicalFilename`：（`string`）在检测文件时，它会提供文件在磁盘上的完整路径，但不包含任何代码块信息。如果是文本，则提供传递给 `-stdin-filename` 的值，如果未指定，则提供 `<text>`。
+* `cwd`：（`string`）传递给 [Linter](../integrate/nodejs-api#linter) 的 `cwd` 选项。它是指向目录的路径，该目录应被视为当前工作目录。
+* `options`：（`array`）此规则[配置选项](../use/configure/rules)的数组。次数组不包括规则的严重程度。更多信息，请参阅[这里](#访问传递给规则的选项)。
+* `sourceCode`：（`object`）`SourceCode` 对象，可以用它来处理传递给 ESLint 的源代码（请参阅[访问源代码](#访问源代码)）。
 * `settings`：（`object`）配置中的[共享设置](../use/configure/configuration-files#添加共享设置)。
 * `parserPath`：（`string`）配置中的 `parser` 的名称。
 * `parserServices`：（`object`）一个包含解析器提供的规则服务的对象。默认的解析器不提供任何服务。然而，如果一个规则打算与一个自定义的解析器一起使用，它可以使用 `parserServices` 来访问该解析器提供的任何服务（例如，TypeScript 解析器可以提供获取特定节点的计算类型的能力）。
@@ -132,7 +136,7 @@ module.exports = {
 此外，`context` 对象有以下方法。
 
 * `getAncestors()`：返回当前遍历的节点的祖先数组，从 AST 的根开始，一直到当前节点的直接父节点。这个数组不包括当前遍历的节点本身。
-* `getCwd()`：返回传递给 [Linter](../integrate/nodejs-api#linter) 的 `cwd`。它是一个目录的路径，应该被视为当前工作目录。
+* `getCwd()`：（**废弃**：使用 `context.cwd` 替代）返回传递给 [Linter](../integrate/nodejs-api#linter) 的 `cwd`。它是一个目录的路径，应该被视为当前工作目录。
 * `getDeclaredVariables(node)`：返回由给定节点声明的[变量](./scope-manager-interface#variable-接口)的列表。这个信息可以用来跟踪对变量的引用。
     * 如果该节点是 `VariableDeclaration`，则返回声明中的所有变量。
     * 如果该节点是 `VariableDeclarator`，将返回所有在声明器中声明的变量。
@@ -143,10 +147,10 @@ module.exports = {
     * 如果该节点是 `ImportDeclaration`，将返回其所有的指定变量。
     * 如果该节点是 `ImportSpecifier`、`ImportDefaultSpecifier` 或 `ImportNamespaceSpecifier`，则返回声明的变量。
     * 否则，如果该节点没有声明任何变量，将返回一个空数组。
-* `getFilename()`：返回与源相关的文件名。
+* `getFilename()`：（**废弃**：使用 `context.filename` 代替）返回与源相关的文件名。
 * `getPhysicalFilename()`：当给文件加注时，它返回磁盘上文件的完整路径，没有任何代码块信息。当对文本着色时，它返回传递给 `—stdin-filename` 的值，如果没有指定则返回 `<text>`。
 * `getScope()`：（**废弃**：使用 `SourceCode#getScope(node)` 代替）返回当前遍历的节点的[范围](./scope-manager-interface#scope-接口)。这个信息可以用来跟踪对变量的引用。
-* `getSourceCode()`：返回 `SourceCode` 对象，你可以用它来处理传递给 ESLint 的源代码。（查看[访问源代码](#访问源代码)）
+* `getSourceCode()`：(**废弃**：使用 `context.sourceCode` 代替）返回 `SourceCode` 对象，你可以用它来处理传递给 ESLint 的源代码。（查看[访问源代码](#访问源代码)）
 * `markVariableAsUsed(name)`：（**废弃**：使用 `SourceCode#markVariableAsUsed(name, node)` 代替）将当前范围内给定名称的变量标记为已使用。这影响到 [no-unused-vars](../rules/no-unused-vars) 规则。如果找到给定名称的变量并标记为已使用，则返回 `true`，否则返回 `false`。
 * `report(descriptor)`：报告代码中的问题（见[专用部分](#报告问题)）。
 
@@ -500,19 +504,21 @@ module.exports = {
 
 ### 访问源代码
 
-`SourceCode` 对象是获取更多关于被提示的源代码信息的主要对象。你可以在任何时候通过使用 `context.getSourceCode()` 方法来检索 `SourceCode` 对象。
+`SourceCode` 对象是获取更多关于被提示的源代码信息的主要对象。你可以在任何时候通过使用 `context.sourceCode` 属性来检索 `SourceCode` 对象。
 
 ```js
 module.exports = {
     create: function(context) {
-        var sourceCode = context.getSourceCode();
+        var sourceCode = context.sourceCode;
 
         // ...
     }
 };
 ```
 
-一旦你有一个 `SourceCode` 的实例，你可以使用它的下列方法来处理这些代码：
+**废弃**：`context.getSourceCode()` 方法已废弃；请确保使用 `context.sourceCode` 属性代替。
+
+当有 `SourceCode` 实例后，你可以使用它的下列方法来处理这些代码：
 
 * `getText(node)`：返回指定节点的源代码。省略 `node` 以获得整个源代码。（查看[专用章节](#访问源文本))
 * `getAllComments()`：返回源代码中所有评论的数组。（查看[专用章节](#访问注释))
@@ -614,14 +620,19 @@ var nodeSourceWithFollowing = sourceCode.getText(node, 0, 2);
 
 ### 选项模式
 
-规则可以导出一个`schema` 属性，它是规则选项的 [JSON Schema](https://json-schema.org/) 格式描述，ESLint 将使用它来验证配置选项，并在它们被传递到规则的 `context.options` 之前防止无效或意外输入。
+规则可以导出 `schema` 属性，它是规则选项的 [JSON Schema](https://json-schema.org/) 格式描述，ESLint 将使用它来验证配置选项，并在它们被传递到规则的 `context.options` 之前防止无效或意外输入。
 
-规则导出的 `schema` 有两种格式。第一种是一个完整的 JSON 模式对象，描述规则接受的所有可能的选项，包括作为第一个参数的规则错误级别和其后的任何可选参数。
+规则导出的 `schema` 有两种格式：
 
-然而，为了简化模式的创建，规则也可以为每个可选的位置参数导出一个模式数组，ESLint 将自动首先验证所需的错误级别。例如，`yoda` 规则接受一个主要的模式参数，以及一个带有命名属性的额外选项对象。
+1. 完整的 JSON 模式对象，描述规则接受的所有可能的选项。
+2. 每个可选位置参数的 JSON 模式对象数组。
+
+在这两种情况下，这些对象都应排除[严重性](../use/configure/rules#规则严重性)，因为 ESLint 会先自行验证这一点。
+
+例如，`yoda` 规则接受 `"always"` 或 `"never"` 的主要模式参数，以及可选属性 `"exceptRange"` 的额外选项对象：
 
 ```js
-// "yoda": [2, "never", { "exceptRange": true }]
+// "yoda": [2, "error", { "exceptRange": true }]
 module.exports = {
     meta: {
         schema: [
@@ -642,11 +653,9 @@ module.exports = {
 };
 ```
 
-在前面的例子中，错误级别被认为是第一个参数。它的后面是第一个可选参数，一个字符串，可以是 `"always"` 或 `"never"`。最后一个可选参数是一个对象，它可能有一个名为 `exceptRange` 的布尔属性。
-
-要了解更多关于 JSON 模式的信息，我们建议从 [网站](https://json-schema.org/learn/) 中的一些例子开始，也可以阅读 [了解 JSON 模式](https://json-schema.org/understanding-json-schema/)（免费电子书）。
-
 **注意**：如果你的规则架构使用 JSON Schema 的 [`$ref`](https://json-schema.org/understanding-json-schema/structuring.html#ref) 属性，则必须使用完整的 JSON Schema 对象而不是位置属性模式数组。 这是因为 ESLint 将数组简写转换为单个模式，而不更新导致它们不正确的引用（它们被忽略）。
+
+要了解更多关于 JSON 模式的信息，我们建议从[网站](https://json-schema.org/learn/)中的一些例子开始，也可以阅读[了解 JSON 模式](https://json-schema.org/understanding-json-schema/)（免费电子书）。
 
 ### 访问 Shebangs
 
@@ -712,7 +721,7 @@ module.exports = {
 ```js
 module.exports = {
     create: function(context) {
-        var sourceCode = context.getSourceCode();
+        var sourceCode = context.sourceCode;
 
         return {
             ReturnStatement(node) {
