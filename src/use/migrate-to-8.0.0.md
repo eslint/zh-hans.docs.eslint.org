@@ -177,7 +177,7 @@ module.exports = {
 
 将在 v9.0.0 中移除 `SourceCode#getComments()` 方法。
 
-**解决方案**：如果你的规则使用了 `SourceCode#getComments()`，请改用 [`SourceCode#getCommentsBefore()`、`SourceCode#getCommentsAfter()` 或 `SourceCode#getCommentsInside()`](../extend/custom-rules#sourcecodegetcommentsbefore-sourcecodegetcommentsafter-and-sourcecodegetcommentsinside)。
+**解决方案**：如果你的规则使用了 `SourceCode#getComments()`，请改用 [`SourceCode#getCommentsBefore()`、`SourceCode#getCommentsAfter()` 或 `SourceCode#getCommentsInside()`](../extend/custom-rules#访问注释)。
 
 **相关议题**：[#14744](https://github.com/eslint/eslint/issues/14744)
 

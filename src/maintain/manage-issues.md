@@ -29,7 +29,7 @@ eleventyNavigation:
 
 ## 分流过程
 
-所有 ESLint 的议题，包括所有 GitHub 仓库，都在我们的 [Triage Project](https://github.com/orgs/eslint/projects/2) 上管理。在审查议题时，请使用 Triage 项目，而不是议题列表，以确定要处理的议题。Triage 项目有几个栏目：
+所有 ESLint 的议题，包括所有 GitHub 仓库，都在我们的 [Triage Project](https://github.com/orgs/eslint/projects/3) 上管理。在审查议题时，请使用 Triage 项目，而不是议题列表，以确定要处理的议题。Triage 项目有几个栏目：
 
 **需要分流（Needs Triage）**：尚未被任何人审查的议题
 **分流（Triaging）**：有人审查过但尚未完全分流的议题
@@ -119,8 +119,8 @@ eleventyNavigation:
 
 如果不能就某一议题达成共识，或某一议题的进展停滞不前，不清楚是否应该关闭该议题，那么你可以将该议题提交给 TSC 解决。要做到这一点，请为该议题添加“TSC 议程（tsc agenda）”标签，并添加包括以下信息的评论：
 
-1. 对到目前为止的讨论进行一段总结。
-2. 你希望 TSC 回答的议题。
+1. 对到目前为止的讨论进行一段总结。应以“TSC Summary:”开头。
+2. 你希望 TSC 回答的议题。应以“TSC Question:”开头。
 
 该议题将在下一次 TSC 会议上讨论，决议将被贴回该议题。
 
