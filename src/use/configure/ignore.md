@@ -105,7 +105,6 @@ Glob 使用 [node-ignore](https://github.com/kaelzhang/node-ignore) 进行匹配
 eslint --ignore-path .jshintignore file.js
 ```
 
-
 你也可以使用 `.gitignore` 文件：
 
 ```shell
