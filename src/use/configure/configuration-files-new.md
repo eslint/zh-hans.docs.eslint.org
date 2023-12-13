@@ -15,7 +15,7 @@ eleventyNavigation:
 
 ## 配置文件
 
-ESLint 的配置文件叫做 `eslint.config.js`，它应该放在项目根目录下，并导出包含[配置对象](#配置对象)的数组。这里有个例子：
+ESLint 的配置文件是 `eslint.config.js`，它应该放在项目根目录下，并导出包含[配置对象](#配置对象)的数组。下面有一个示例：
 
 ```js
 export default [
@@ -39,7 +39,7 @@ export default [
 * `languageOptions` - 包含如何配置检查过程中 JavaScript 设置的对。
     * `ecmaVersion` - 支持 ECMAScript 的版本。可以是任何年份（`2022`）或版本（`5`）。设置为 `"latest"` 则使用受支持的最新版本（默认为 `"latest"`）。
     * `sourceType` - JavaScript 源码类型。传统脚本文件可以使用 `"script"`，ECMAScript 模块（ESM）可以用 `"module"`，CommonJS 文件使用 `"commonjs`（默认情况下，`.js` 和 `.mjs` 文件使用 `"module"`；`.cjs` 文件使用 `"commonjs"`）
-    * `globals` - 指定额外对象的对象，这些对象应该在检查期间会被添加到全局范围。
+    * `globals` - 指定额外对象的对象，这些对象应该在检查期间会被添加到全局范围内。
     * `parser` - 包含 `parse()` 方法或 `parseForESLint()` 方法的对象（默认为 [`espree`](https://github.com/eslint/espree)）
     * `parserOptions` - 指定额外选项的对象，这些选项将直接传递给解析器上的 `parse()` 或 `parseForESLint()` 方法。可用选项取决于解析器。
 * `linterOptions` - 对象，包含与提示过程有关的设置。
@@ -70,7 +70,7 @@ export default [
 
 在这种配置下 `semi` 规则就会用于所有与 ESLint 中的默认文件相匹配的文件。因此，如果用 ESLint 检查 `example.js` 则会使用 `semi` 规则。如果你传递了非 JavaScript 文件，比如 `example.txt`，就不会使用 `semi` 规则，因为没有其他配置对象与该文件名匹配（同时 ESLint 将输出错误信息，让你知道由于缺少配置，忽略了该文件）。
 
-#### 用 `ignores` 排除文件
+#### 使用 `ignores` 排除文件
 
 可以通过组合 `files` 和 `ignores` 模式来限制配置对象适用范围。例如，你可能希望某些规则只适用于 `src` 目录下的文件。
 
@@ -113,7 +113,7 @@ export default [
 ];
 ```
 
-这里，配置对象排除了以 `.config.js` 结尾的文件，除了 `eslint.config.js`。该文件仍将应用 `semi`。
+这里，配置对象排除了以 `.config.js` 结尾的文件，除了 `eslint.config.js`。该文件仍将应用 `semi` 规则。
 
 如果 `ignores` 被使用而没有 `files` 和任何其他设置，那么配置对象适用于所有文件，除了`ignores` 中指定的文件，例如：
 
@@ -128,9 +128,9 @@ export default [
 ];
 ```
 
-这个配置对象适用于所有文件，除了以 `.config.js` 结尾的文件。实际上这就像把 `files` 设置为 `**/*`。但一般来说，如果指定看 `"ignore"`，最好也要指定 `files`。
+此配置对象适用于所有文件，除了以 `.config.js` 结尾的文件。实际上这就相当于把 `files` 设置为 `**/*`。但一般来说，如果指定了 `"ignore"`，最好也要指定 `files`。
 
-#### 用 `ignores` 全局性地忽略文件
+#### 使用 `ignores` 全局性地忽略文件
 
 如果 `ignores` 在配置对象中没有任何其他键，那么这些模式将被全局忽略。下面是示例：
 
@@ -142,7 +142,21 @@ export default [
 ];
 ```
 
-此配置表明将忽略 `.config` 目录下的所有文件，该模式会被添加到默认模式 `["**/node_modules/**", ".git/**"]` 后面。
+此配置表明将忽略 `.config` 目录下的所有文件，该模式会添加在默认匹配模式 `["**/node_modules/**", ".git/**"]` 后。
+
+你也可以不忽略被包含在默认匹配模式中的应被忽略的文件和目录。比如此配置不会忽略 `node_modules/mylibrary`：
+
+```js
+export default [
+    {
+        ignores: [
+            "!node_modules/",           // unignore `node_modules/` directory
+            "node_modules/*",           // ignore its content
+            "!node_modules/mylibrary/"  // unignore `node_modules/mylibrary` directory
+        ]
+    }
+];
+```
 
 #### 级联配置对象
 
