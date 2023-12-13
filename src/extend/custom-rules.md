@@ -104,7 +104,7 @@ module.exports = {
 
 ## 上下文对象
 
-`context` 对象是规则中 `create` 方法的唯一参数。例如：
+在定义规则的 `create` 方法仅有唯一的参数 `context` 对象。例如：
 
 ```js
 // customRule.js
@@ -123,7 +123,7 @@ module.exports = {
 `context` 对象有下列属性：
 
 * `id`：（`string`）规则 ID。
-* `options`：（`array`）这个规则的[配置选项](../use/configure/rules)的数组。这个数组不包括规则的严重程度。更多信息，请参阅[这里](#contextoptions)。
+* `options`：（`array`）这个规则的[配置选项](../use/configure/rules)的数组。这个数组不包括规则的严重程度。更多信息，请参阅[这里](#访问传递给规则的选项)。
 * `settings`：（`object`）配置中的[共享设置](../use/configure/configuration-files#添加共享设置)。
 * `parserPath`：（`string`）配置中的 `parser` 的名称。
 * `parserServices`：（`object`）一个包含解析器提供的规则服务的对象。默认的解析器不提供任何服务。然而，如果一个规则打算与一个自定义的解析器一起使用，它可以使用 `parserServices` 来访问该解析器提供的任何服务（例如，TypeScript 解析器可以提供获取特定节点的计算类型的能力）。
@@ -146,7 +146,7 @@ module.exports = {
 * `getFilename()`：返回与源相关的文件名。
 * `getPhysicalFilename()`：当给文件加注时，它返回磁盘上文件的完整路径，没有任何代码块信息。当对文本着色时，它返回传递给 `—stdin-filename` 的值，如果没有指定则返回 `<text>`。
 * `getScope()`：（**废弃**：使用 `SourceCode#getScope(node)` 代替）返回当前遍历的节点的[范围](./scope-manager-interface#scope-接口)。这个信息可以用来跟踪对变量的引用。
-* `getSourceCode()`：返回 `SourceCode` 对象，你可以用它来处理传递给 ESLint 的源代码。（查看[访问源文件](#contextgetsourcecode)）
+* `getSourceCode()`：返回 `SourceCode` 对象，你可以用它来处理传递给 ESLint 的源代码。（查看[访问源代码](#访问源代码)）
 * `markVariableAsUsed(name)`：（**废弃**：使用 `SourceCode#markVariableAsUsed(name, node)` 代替）将当前范围内给定名称的变量标记为已使用。这影响到 [no-unused-vars](../rules/no-unused-vars) 规则。如果找到给定名称的变量并标记为已使用，则返回 `true`，否则返回 `false`。
 * `report(descriptor)`：报告代码中的问题（见[专用部分](#报告问题)）。
 
@@ -729,7 +729,7 @@ module.exports = {
 };
 ```
 
-这里的 `myCustomVar` 变量被标记为相对于 `ReturnStatement` 节点使用，这意味着 ESLint 将从最接近该节点的范围开始搜索。如果省略第二个参数，则使用顶级范围。（ESM 文件中顶级作用域是模块作用域；CommonJS 文件中顶级作用域是第一个函数作用域）
+这里的 `myCustomVar` 变量被标记为相对于 `ReturnStatement` 节点使用，这意味着 ESLint 将从最接近该节点的范围开始搜索。如果省略第二个参数，则使用顶级作用域（ESM 文件中顶级作用域是模块作用域；CommonJS 文件中顶级作用域是第一个函数作用域）。
 
 ### 访问代码路径
 
