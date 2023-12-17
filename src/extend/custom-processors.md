@@ -4,7 +4,7 @@ eleventyNavigation:
     key: custom processors
     parent: create plugins
     title: 自定义处理器
-    order: 2
+    order: 3
 ---
 
 你也可以创建自定义处理器，告诉 ESLint 如何处理标准 JavaScript 以外的文件。比如你可以编写一个自定义处理器从 Markdown 文件中提取并处理 JavaScript（[eslint-plugin-markdown](https://www.npmjs.com/package/eslint-plugin-markdown) 包含的处理器就是做这个的）。

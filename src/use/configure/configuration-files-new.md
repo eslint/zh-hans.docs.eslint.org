@@ -113,9 +113,11 @@ export default [
 ];
 ```
 
-这里，配置对象排除了以 `.config.js` 结尾的文件，除了 `eslint.config.js`。该文件仍将应用 `semi` 规则。
+这里，配置对象排除了以 `.config.js` 结尾的文件，除了 `eslint.config.js` 文件仍将应用 `semi` 规则。
 
-如果 `ignores` 被使用而没有 `files` 和任何其他设置，那么配置对象适用于所有文件，除了`ignores` 中指定的文件，例如：
+非全局的 `ignores` 模式只能匹配文件名。类似 `"dir-to-exclude/"` 的模式将不会忽略任何内容。为了忽略特定目录中的所有内容，应该使用类似 `"dir-to-exclude/**"` 的模式。
+
+如果使用了 `ignores` 而没有使用 `files` ，但有任何其他键（如 `rules`），那么配置对象适用于除了 `ignores` 中指定的文件外的所有文件，例如：
 
 ```js
 export default [
@@ -157,6 +159,8 @@ export default [
     }
 ];
 ```
+
+请注意，只有全局的 `ignores` 模式才能匹配目录。属于特定配置的 `ignores` 模式只会匹配文件名。
 
 #### 级联配置对象
 
@@ -310,13 +314,12 @@ export default [
 要在配置对象中配置全局变量，请将 `globals` 配置属性设置为一个对象，其中包含为你要使用的每个全局变量命名的键。对于每个全局变量的键，设置相应的值等于 `"writable"` 以允许变量被覆盖，或 `"readonly"` 不允许覆盖。例如：
 
 ```js
+import globals from "globals";
 export default [
     {
-        files: ["**/*.js"],
         languageOptions: {
             globals: {
-                var1: "writable",
-                var2: "readonly"
+                ...globals.browser
             }
         }
     }
@@ -407,7 +410,6 @@ export default [
 ```
 
 这时该配置对象就是使用 `jsd` 而非原先的 `jsdoc` 插件前缀。
-
 
 #### 使用包含在插件中的配置
 
