@@ -27,7 +27,7 @@ class C extends B {
 
 ## 规则细节
 
-使用此规则禁用 `return`、`throw`、`continue` 和 `break` 后的不可达代码。 此规则还标记了子类中实例字段的定义，其构造函数没有 `super()` 调用。
+使用此规则禁用 `return`、`throw`、`continue` 和 `break` 后的不可达代码。此规则还标记了子类中实例字段的定义，其构造函数没有 `super()` 调用。
 
 使用此规则的**错误**示例：
 

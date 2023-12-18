@@ -6,7 +6,7 @@ further_reading:
 - https://2ality.com/2015/01/es6-destructuring.html
 ---
 
-在 JavaScript ES6 中，增加了一种新的语法，用于从数组索引或对象属性创建变量，称为[解构](#further-reading)。 这条规则强制使用解构，而不是通过成员表达式来访问一个属性。
+在 JavaScript ES6 中，增加了一种新的语法，用于从数组索引或对象属性创建变量，称为[解构](#further-reading)。这条规则强制使用解构，而不是通过成员表达式来访问一个属性。
 
 ## 规则细节
 
@@ -18,7 +18,7 @@ further_reading:
 
 另外，你可以为不同的分配类型使用单独的配置。它接受另外两个键，而不是 `array` 和 `object`。
 
-一个键是 `VariableDeclarator`，另一个是 `AssignmentExpression`，它可以用来独立控制这些类型的解构要求。每个属性都接受一个对象，该对象接受两个属性，`array` 和 `object`，可以用来独立地控制 `array` 和 `object`中每个变量声明和赋值表达式的解构要求。 默认情况下，`array` 和 `object` 对于 `VariableDeclarator` 和 `AssignmentExpression` 都被设置为 true。
+一个键是 `VariableDeclarator`，另一个是 `AssignmentExpression`，它可以用来独立控制这些类型的解构要求。每个属性都接受一个对象，该对象接受两个属性，`array` 和 `object`，可以用来独立地控制 `array` 和 `object`中每个变量声明和赋值表达式的解构要求。默认情况下，`array` 和 `object` 对于 `VariableDeclarator` 和 `AssignmentExpression` 都被设置为 true。
 
 该规则有第二个对象，只有一个键，`enforceForRenamedProperties`，它决定了 `object` 的结构化是否适用于重命名的变量。
 

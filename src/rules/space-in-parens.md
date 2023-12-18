@@ -129,12 +129,12 @@ var foo = ( 1 + 2 ) * 3;
 
 ### Empty Exception
 
-Empty parens exception and behavior:
+空括号的例外情况和行为：
 
-* `always` allows for both `()` and `( )`
-* `never` (default) requires `()`
-* `always` excepting `empty` requires `()`
-* `never` excepting `empty` requires `( )` (empty parens without a space is here forbidden)
+* `always` 允许 `()` 和 `( )` 两种形式
+* `never`（默认）要求使用 `()`
+* `always` 除了 `empty` 外，要求使用 `()`
+* `never` 除了 `empty` 外，要求使用 `( )`（禁止使用没有空格的空括号形式）
 
 ### 示例
 

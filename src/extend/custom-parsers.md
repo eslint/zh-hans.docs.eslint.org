@@ -41,7 +41,7 @@ module.exports = { parse };
 `parseForESLint` 方法应该返回一个包括所需的 `ast` 属性和可选的 `services`、`scopeManager` 和 `visitorKeys` 属性。
 
 * `ast` 应该包含 [AST](#ast-规范) 对象。
-* `services` 可以包含任何依赖于解析器的服务（例如节点的类型检查器）。`services` 属性的值可以作为 `context.parserServices` 传递给规则。默认为空对象。
+* `services` 可以包含任何依赖于解析器的服务（例如节点的类型检查器）。`services` 属性的值可以作为 `context.sourceCode.parserServices` 传递给规则。默认为空对象。
 * `scopeManager` 可以是 [ScopeManager](./scope-manager-interface) 对象。自定义解析器可以为实验性/增强性语法提供自定义范围分析。默认使用 [eslint-scope](https://github.com/eslint/eslint-scope) 创建的 `ScopeManager` 对象。
     * 在 ESLint v4.14.0 中加入了对 `scopeManager` 的支持。支持 `scopeManager` 的 ESLint 版本将在 `parserOptions` 中提供 `eslintScopeManager: true` 属性，可用于特征检测。
 * `visitorKeys` 可以是自定义 AST 遍历的对象。该对象的键是 AST 节点的类型。每个值是一个应该被遍历的属性名称的数组。默认为 [`eslint-visitor-keys` 的键](https://github.com/eslint/eslint-visitor-keys#evkkeys)。
@@ -119,7 +119,7 @@ module.exports = {
 
 有关自定义解析器的复杂示例，请参阅 [`@typescript-eslint/parser`](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/parser) 源代码。
 
-为规则提供 `context.parserServices.foo()` 方法的简单自定义解析器。
+为规则提供 `context.sourceCode.parserServices.foo()` 方法的简单自定义解析器。
 
 ```javascript
 // awesome-custom-parser.js

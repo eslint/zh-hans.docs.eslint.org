@@ -31,6 +31,7 @@ further_reading:
 * `"conditionalAssign": false` 允许在条件测试表达式中的赋值周围加上括号。
 * `"returnAssign": false` 允许在 `return` 语句中使用额外的小括号。
 * `"nestedBinaryExpressions": false` 允许在嵌套二进制表达式中使用额外的小括号。
+* `"ternaryOperandBinaryExpressions": false` 允许在三元运算符 `?:` 的操作数周围添加额外的括号。
 * `"ignoreJSX": "none|all|multi-line|single-line"` 允许在没有/所有/多行/单行 JSX 组件周围使用额外的小括号。默认为 `none`。
 * `"enforceForArrowConditionals": false` 允许在作为箭头函数主体的三元表达式周围添加小括号。
 * `"enforceForSequenceExpressions": false` 允许在序列表达式周围加上小括号。
@@ -166,6 +167,26 @@ b => b ? (c = d) : (c = e);
 x = a || (b && c);
 x = a + (b * c);
 x = (a * b) / c;
+```
+
+:::
+
+### ternaryOperandBinaryExpressions
+
+使用规则选项 `"all"` 和 `{ "ternaryOperandBinaryExpressions": false }` 时，以下是符合规则的代码示例：
+
+::: correct
+
+```js
+/* eslint no-extra-parens: ["error", "all", { "ternaryOperandBinaryExpressions": false }] */
+
+(a && b) ? foo : bar;
+
+(a - b > a) ? foo : bar;
+
+foo ? (bar || baz) : qux;
+
+foo ? bar : (baz || qux);
 ```
 
 :::

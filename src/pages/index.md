@@ -7,11 +7,15 @@ permalink: /index.html
 
 ## [在项目中使用 ESLint](use/)
 
-面向 ESLint 终端用户。包括了核心规则、配置、命令行选项、格式化工具和集成的信息，以及从早期 ESLint 版本迁移的指南。
+面向 ESLint 终端用户，包括了核心规则、配置、命令行选项、格式化工具和集成的信息，以及从早期 ESLint 版本迁移的指南。
 
 ## [扩展 ESLint](extend/)
 
-面向 ESLint 贡献者和致力于扩展 ESLint 的人。包括了配置向 ESLint 做出贡献、创建制度与规则、配置、插件和格式化工具的信息，以及关于 ESLint 架构和 Node.js API 的信息。
+面向希望扩展 ESLint 的人，包括了创建自定义规则、配置、插件和格式化程序的信息。
+
+## [集成 ESLint](integrate/)
+
+面向希望创建与 ESLint 集成的人，包括了创建集成和使用 Node.js API 的信息。
 
 ## [向 ESLint 贡献](contribute/)
 

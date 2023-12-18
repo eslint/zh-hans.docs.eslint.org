@@ -2,7 +2,7 @@
 
 > Simplified Chinese website
 
-The synchronization frequency is the same as the ESLint release frequency (the last sync was [v8.43.0](https://github.com/eslint/eslint/tree/v8.43.0))
+The synchronization frequency is the same as the ESLint release frequency (the last sync was [v8.44.0](https://github.com/eslint/eslint/tree/v8.44.0))
 
 ## Contribute
 

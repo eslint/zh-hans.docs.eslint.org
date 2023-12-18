@@ -2,9 +2,9 @@
 title: Node.js API 参考
 eleventyNavigation:
     key: node.js api
-    parent: extend eslint
+    parent: integrate eslint
     title: Node.js API 参考
-    order: 6
+    order: 2
 ---
 
 虽然 ESLint 被设计成可以在命令行上运行，但也可以通过 Node.js API 以编程方式使用 ESLint。Node.js API 的目的是允许插件和工具作者直接使用 ESLint 功能，而不需要通过命令行界面。
