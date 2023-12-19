@@ -32,7 +32,7 @@ eleventyNavigation:
 
 ## 自定义规则
 
-本教程中的自定义规则要求为所有名为 `foo` 的 `const` 变量分配字符串文字 `"bar"`。该规则定义在文件 `enforce-foo-bar.js` 中。该规则还建议使用 `"bar"` 替换分配给 `const foo` 的任何其他值。
+本教程中的自定义规则要求为所有名为 `foo` 的 `const` 变量赋值字符串文字 `"bar"`。该规则定义在文件 `enforce-foo-bar.js` 中。该规则还建议使用 `"bar"` 替换赋值给 `const foo` 的任何其他值。
 
 例如，假设你拥有下列的 `foo.js` 文件：
 
@@ -52,7 +52,6 @@ const foo = "bar";
 
 ## 步骤一：设置项目
 
-First, create a new project for your custom rule. Create a new directory, initiate a new npm project in it, and create a new file for the custom rule:
 
 首先，给你的自定义规则创建新的项目。创建新的目录，并初始化 npm 项目，并创建新的文件用于自定义规则。
 
@@ -116,7 +115,7 @@ module.exports = {
 
 你可以选择任何 [ESTree 节点类型](https://github.com/estree/estree)或[选择器](selectors)。
 
-在 `VariableDeclarator` 访问方法内，检查节点是否表示 `const` 变量声明，它的名称是否为 `foo`，以及它是否未分配给字符串 `"bar"`。你可以通过评估传递给 `VariableDeclaration` 方法的 `node` 来完成这个操作。
+在 `VariableDeclarator` 访问方法内，检查节点是否表示 `const` 变量声明，它的名称是否为 `foo`，以及它是否未被赋值为字符串 `"bar"`。你可以通过评估传递给 `VariableDeclaration` 方法的 `node` 来完成这个操作。
 
 如果 `const foo` 声明被赋值为 `"bar"`，则规则什么也不做。如果 `const foo` **未**赋值为 `"bar"`，则 `context.report()` 向 ESLint 报告错误。错误报告包括有关错误的信息以及如何修复它。
 
