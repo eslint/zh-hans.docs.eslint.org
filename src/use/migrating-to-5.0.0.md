@@ -26,7 +26,7 @@ ESLint v5.0.0 是第五个主要发行版。此版本有几个破坏性变更，
 1. [当使用默认解析器时，剩余运算符具有 `RestElement` 类型了](#rest-operators)
 1. [当使默认解析器时，JJSX元素中的文本节点现在有 `JSXText` 类型](#jsx-text-nodes)
 1. [现在 `context.getScope()` 方法会返回更合适的作用域](#context-get-scope)
-1. [删除规则上下文对象 `_linter ` 属性](#no-context-linter)
+1. [删除规则上下文对象 `_linter` 属性](#no-context-linter)
 1. [`RuleTester` 在其断言中使用了更严格的等值检查](#rule-tester-equality)
 1. [规则需要和报告一起提供信息](#required-report-messages)
 

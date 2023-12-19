@@ -3,7 +3,7 @@ title: no-import-assign
 rule_type: problem
 ---
 
-ES 模块对导入的绑定的更新导致运行时错误。
+ES 模块对导入的绑定的更新会导致运行时错误。
 
 ## 规则细节
 

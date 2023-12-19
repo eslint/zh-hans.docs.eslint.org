@@ -132,7 +132,7 @@ var colleague = Person();
 
 ### newIsCapExceptions
 
-使用此规则与额外的 `{ "newIsCapExceptions": ["events"] }`  选项的**正确**示例：
+使用此规则与额外的 `{ "newIsCapExceptions": ["events"] }` 选项的**正确**示例：
 
 ::: correct
 

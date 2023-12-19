@@ -24,7 +24,7 @@ Node.js 中的模块是一个简单或复杂的功能，组织在一个 JavaScri
 "no-restricted-modules": ["error", "foo-module", "bar-module"]
 ```
 
-它也可以接受一个包含  `paths` 和gitignore风格的 `patterns` 字符串列表的对象。
+它也可以接受一个包含 `paths` 和gitignore风格的 `patterns` 字符串列表的对象。
 
 ```json
 "no-restricted-modules": ["error", { "paths": ["foo-module", "bar-module"] }]

@@ -210,7 +210,7 @@ sourceCode.getAllComments().filter(comment => comment.type !== "Shebang");
 
 ## <a name="global-property"></a> 不再支持 `linter.verify()` API 中的 `global` 属性
 
-之前 `linter.verify()` API 支持作为  `globals` 别名的 `global` 配置选项。但实际上 `global` 选项从未被记录在案，也不被官方支持，在配置文件中也不起作用。它已经在 4.0 中被移除。
+之前 `linter.verify()` API 支持作为 `globals` 别名的 `global` 配置选项。但实际上 `global` 选项从未被记录在案，也不被官方支持，在配置文件中也不起作用。它已经在 4.0 中被移除。
 
 **解决方案**：如果你正在使用 `global` 属性，请使用功能一致的 `globals` 属性。
 

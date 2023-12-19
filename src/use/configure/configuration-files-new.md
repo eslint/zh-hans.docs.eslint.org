@@ -112,7 +112,7 @@ export default [
 ];
 ```
 
-此处的 `semi` 规则只用于 `src` 目录下的 JavaScript 文件。如果你在其他目录的文件上运行 ESLint，则忽略该配置对象。通过添加 `ignores`，你也可以让这个配置对象不用在  `src` 中的部分文件：
+此处的 `semi` 规则只用于 `src` 目录下的 JavaScript 文件。如果你在其他目录的文件上运行 ESLint，则忽略该配置对象。通过添加 `ignores`，你也可以让这个配置对象不用在 `src` 中的部分文件：
 
 ```js
 export default [
@@ -280,7 +280,7 @@ ESLint 可以通过三种方式之一来检查代码：
 1. CommonJS - 代码有顶层函数作用域，并在非严格模式下运行。
 1. Script - 代码有共享的全局作用域，并在非严格模式下运行。
 
-你可以通过指定 `sourceType` 属性来指定你的代码要在哪种模式下运行。这个属性可以被设置为 `"module"`、`"commonjs"` 或  `"script"`。默认情况下，`.js` 和 `.mjs` 文件的 `sourceType` 是 `"module"`，而 `.cjs` 文件则是 `"commonjs"`。下面是示例：
+你可以通过指定 `sourceType` 属性来指定你的代码要在哪种模式下运行。这个属性可以被设置为 `"module"`、`"commonjs"` 或 `"script"`。默认情况下，`.js` 和 `.mjs` 文件的 `sourceType` 是 `"module"`，而 `.cjs` 文件则是 `"commonjs"`。下面是示例：
 
 ```js
 export default [

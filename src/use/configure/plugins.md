@@ -18,7 +18,7 @@ eleventyNavigation:
 
 ESLint 支持使用第三方插件。在使用插件之前，你必须使用 npm 安装它。
 
-要在配置文件内配置插件，请使用 `plugins` 键，它应该是由插件名称组成的列表。可以省略插件名称中的  `eslint-plugin-` 前缀。
+要在配置文件内配置插件，请使用 `plugins` 键，它应该是由插件名称组成的列表。可以省略插件名称中的 `eslint-plugin-` 前缀。
 
 ```json
 {

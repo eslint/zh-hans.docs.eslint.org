@@ -14,7 +14,7 @@ eleventyNavigation:
 在较高层次上看，ESLint 有几个关键部分：
 
 * `bin/eslint.js` - 这是一个实际被执行的命令行工具的文件。它是一个愚蠢的包装器，除了引导 ESLint 之外，没有其他作用，它将命令行参数传递给 `cli`。这是有意为之的，因为不需要大量的测试。
-* `lib/api.js` - 这是 `require("eslint")` 的入口点。这个文件暴露了一个对象，包含公共类`Linter`、`ESLint`、 `RuleTester` 和 `SourceCode`。
+* `lib/api.js` - 这是 `require("eslint")` 的入口点。这个文件暴露了一个对象，包含公共类`Linter`、`ESLint`、`RuleTester` 和 `SourceCode`。
 * `lib/cli.js` - 这是 ESLint CLI 的核心。它接受一个参数数组，然后使用 `eslint` 来执行命令。通过将其作为一个独立的工具，它允许其他人从另一个 Node.js 程序中有效地调用 ESLint，就像在命令行上完成一样。主要的调用是 `cli.execute()`。这也是完成所有文件读取、目录遍历、输入和输出的部分。
 * `lib/cli-engine/` - 这个模块是 `CLIEngine` 类，它寻找源代码文件和配置文件，然后用 `Linter` 类进行代码验证。这包括配置文件、解析器、插件和格式化器的加载逻辑。
 * `lib/linter/` - 这个模块是核心的 `Linter` 类，根据配置选项进行代码验证。这个文件不做任何文件 I/O，并且完全不与`console`互动。对于其他有 JavaScript 文本需要验证的 Node.js 程序，他们将能够直接使用这个接口。

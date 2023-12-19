@@ -249,7 +249,7 @@ var object2 = {
 
 ### keywords
 
-此规则与 `"as-needed", { "keywords": true }`  选项的额外**错误**示例：
+此规则与 `"as-needed", { "keywords": true }` 选项的额外**错误**示例：
 
 ::: incorrect
 

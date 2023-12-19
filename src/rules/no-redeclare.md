@@ -65,7 +65,7 @@ class C {
 ## 选项
 
 这条规则有一个可选的参数，一个带有布尔属性 `"builtinGlobals"` 的对象。它的默认值是 `true`。
-如果设置为 `true`，该规则也会检查对内置球的重新声明，例如  `Object`、`Array`、`Number`...
+如果设置为 `true`，该规则也会检查对内置球的重新声明，例如 `Object`、`Array`、`Number`...
 
 ### builtinGlobals
 

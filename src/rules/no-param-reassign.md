@@ -149,7 +149,7 @@ function foo(bar) {
 
 :::
 
-设置了 `"ignorePropertyModificationsForRegex"`  的 `{ "props": true }` 选项的**正确的代码示例：
+设置了 `"ignorePropertyModificationsForRegex"` 的 `{ "props": true }` 选项的**正确的代码示例：
 
 ::: correct
 

@@ -36,6 +36,7 @@ further_reading:
 ```javascript
 // With `array` enabled
 var foo = array[0];
+bar.baz = array[0];
 
 // With `object` enabled
 var foo = object.foo;
@@ -52,6 +53,7 @@ var foo = object['foo'];
 // With `array` enabled
 var [ foo ] = array;
 var foo = array[someIndex];
+[bar.baz] = array;
 
 // With `object` enabled
 var { foo } = object;

@@ -548,7 +548,7 @@ module.exports = {
 
 `skipOptions` 是一个有 3 个属性的对象；`skip`、`includeComments` 和 `filter`。默认是 `{skip: 0, includeComments: false, filter: null}`。
 
-* `skip`：（`number`）正整数，即跳过的标记的数量。如果同时给了  `filter` 选项，它不会将过滤的标记算作跳过的标记。
+* `skip`：（`number`）正整数，即跳过的标记的数量。如果同时给了 `filter` 选项，它不会将过滤的标记算作跳过的标记。
 * `includeComments`：（`boolean`）将注释标记纳入结果的标志。
 * `filter(token)`：使用 token 作为第一个参数的函数，如果该函数返回 `false`，那么结果将排除该标记。
 
@@ -621,37 +621,165 @@ var nodeSourceWithFollowing = sourceCode.getText(node, 0, 2);
 
 ### 选项模式
 
-规则可以导出 `schema` 属性，它是规则选项的 [JSON Schema](https://json-schema.org/) 格式描述，ESLint 将使用它来验证配置选项，并在它们被传递到规则的 `context.options` 之前防止无效或意外输入。
+规则可以指定 `schema` 属性，它是规则选项使用 [JSON Schema](https://json-schema.org/) 格式进行的描述，ESLint 将使用它来验证配置选项，并在它们被传递到规则的 `context.options` 之前防止无效或意外输入。
 
-规则导出的 `schema` 有两种格式：
+注意：在 ESLint v9.0.0 之前，没有模式的规则直接从配置中传递其选项，没有进行任何验证。在 ESLint v9.0.0 及更高版本中，没有模式的规则在传递选项时将引发错误。有关更多详细信息，请参阅 [Require schemas and object-style rules](https://github.com/eslint/rfcs/blob/main/designs/2021-schema-object-rules/README.md) RFC。
 
-1. 完整的 JSON 模式对象，描述规则接受的所有可能的选项。
-2. 每个可选位置参数的 JSON 模式对象数组。
+在验证规则的配置时，有五个步骤：
 
-在这两种情况下，这些对象都应排除[严重性](../use/configure/rules#规则严重性)，因为 ESLint 会先自行验证这一点。
+1. 如果规则配置不是数组，则该值将包装成数组（例如，`"off"` 变为 `["off"]`）；如果规则配置是数组，则直接使用。
+2. ESLint 将规则配置数组的第一个元素验证为严重性（`"off"`，`"warn"`，`"error"`，`0`，`1`，`2`）。
+3. 如果严重性是 `off` 或 `0`，则规则被禁用，并且验证停止，忽略规则配置数组中的任何其他元素。
+4. 如果规则已启用，则将严重性后的数组中的任何元素复制到 `context.options` 数组中（例如，`["warn", "never", { someOption: 5 }]` 配置的结果为 `context.options = ["never", { someOption: 5 }]`）。
+5. 对 `context.options` 数组运行规则的模式验证。
+
+注意：这意味着规则模式无法验证严重性。规则模式仅验证规则配置中严重性后的数组元素。规则无法知道其配置的严重性。
+
+规则的 `schema` 有两种格式：
+
+* 一组 JSON Schema 对象
+  * 每个元素将与 `context.options` 数组中的相同位置进行比较。
+  * 如果 `context.options` 数组的元素少于模式的元素，则未匹配的模式将被忽略。
+  * 如果 `context.options` 数组的元素多于模式的元素，则验证失败。
+  * 使用此格式有两个重要的后果：
+    * 用户始终可以提供没有任何选项的规则配置（除了严重性），这是_始终有效的_。
+    * 如果指定一个空数组，则对于用户提供规则配置中的任何选项（除了严重性）都_始终是一个错误的_。
+* 完整的 JSON Schema 对象，将验证 `context.options` 数组
+  * 模式应该假定一个选项数组，即使你的规则只接受一个选项。
+  * 模式可以是任意复杂的，因此你可以通过 `oneOf`、`anyOf` 等验证完全不同的潜在选项集。
+  * JSON Schema 的支持版本是 [Draft-04](http://json-schema.org/draft-04/schema)，因此一些较新的功能，如 `if` 或 `$data`，不可用。
+    * 目前，明确计划不更新模式支持超出此级别，因为存在生态系统兼容性问题。有关进一步上下文，请参阅[此评论](https://github.com/eslint/eslint/issues/13888#issuecomment-872591875)。
 
 例如，`yoda` 规则接受 `"always"` 或 `"never"` 的主要模式参数，以及可选属性 `"exceptRange"` 的额外选项对象：
 
 ```js
+// Valid configuration:
+// "yoda": "warn"
+// "yoda": ["error"]
+// "yoda": ["error", "always"]
 // "yoda": ["error", "never", { "exceptRange": true }]
+// Invalid configuration:
+// "yoda": ["warn", "never", { "exceptRange": true }, 5]
+// "yoda": ["error", { "exceptRange": true }, "never"]
 module.exports = {
     meta: {
         schema: [
             {
-                "enum": ["always", "never"]
+                enum: ["always", "never"]
             },
             {
-                "type": "object",
-                "properties": {
-                    "exceptRange": {
-                        "type": "boolean"
-                    }
+                type: "object",
+                properties: {
+                    exceptRange: { type: "boolean" }
                 },
-                "additionalProperties": false
+                additionalProperties: false
             }
         ]
-    },
+    }
 };
+```
+
+这是等效的基于对象的模式：
+
+```js
+// Valid configuration:
+// "yoda": "warn"
+// "yoda": ["error"]
+// "yoda": ["error", "always"]
+// "yoda": ["error", "never", { "exceptRange": true }]
+// Invalid configuration:
+// "yoda": ["warn", "never", { "exceptRange": true }, 5]
+// "yoda": ["error", { "exceptRange": true }, "never"]
+module.exports = {
+    meta: {
+        schema: {
+            type: "array",
+            minItems: 0,
+            maxItems: 2,
+            items: [
+                {
+                    enum: ["always", "never"]
+                },
+                {
+                    type: "object",
+                    properties: {
+                        exceptRange: { type: "boolean" }
+                    },
+                    additionalProperties: false
+                }
+            ]
+        }
+    }
+};
+```
+
+对象模式可以更精确和限制允许的内容。例如，下面的模式始终要求指定第一个选项（介于 0 和 10 之间的数字），但第二个选项是可选的，可以是显式设置了一些选项的对象，也可以是 `"off"` 或 `"strict"`。
+
+```js
+// Valid configuration:
+// "someRule": ["error", 6]
+// "someRule": ["error", 5, "strict"]
+// "someRule": ["warn", 10, { someNonOptionalProperty: true }]
+// Invalid configuration:
+// "someRule": "warn"
+// "someRule": ["error"]
+// "someRule": ["warn", 15]
+// "someRule": ["warn", 7, { }]
+// "someRule": ["error", 3, "on"]
+// "someRule": ["warn", 7, { someOtherProperty: 5 }]
+// "someRule": ["warn", 7, { someNonOptionalProperty: false, someOtherProperty: 5 }]
+module.exports = {
+    meta: {
+        schema: {
+            type: "array",
+            minItems: 1, // Can't specify only severity!
+            maxItems: 2,
+            items: [
+                {
+                    type: "number",
+                    minimum: 0,
+                    maximum: 10
+                },
+                {
+                    anyOf: [
+                        {
+                            type: "object",
+                            properties: {
+                                someNonOptionalProperty: { type: "boolean" }
+                            },
+                            required: ["someNonOptionalProperty"],
+                            additionalProperties: false
+                        },
+                        {
+                            enum: ["off", "strict"]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
+```
+
+记住，规则选项始终是一个数组，因此要小心不要在顶层为非数组类型指定模式。如果你的模式在顶层没有指定数组，用户永远无法启用你的规则，因为启用规则时他们的配置将始终是无效的。
+以下是一个始终无法通过验证的示例模式：
+
+```js
+// Possibly trying to validate ["error", { someOptionalProperty: true }]
+// but when the rule is enabled, config will always fail validation because the options are an array which doesn't match "object"
+module.exports = {
+    meta: {
+        schema: {
+            type: "object",
+            properties: {
+                someOptionalProperty: {
+                    type: "boolean"
+                }
+            },
+            additionalProperties: false
+        }
+    }
+}
 ```
 
 **注意**：如果你的规则架构使用 JSON Schema 的 [`$ref`](https://json-schema.org/understanding-json-schema/structuring.html#ref) 属性，则必须使用完整的 JSON Schema 对象而不是位置属性模式数组。这是因为 ESLint 将数组简写转换为单个模式，而不更新导致它们不正确的引用（它们被忽略）。
@@ -751,7 +879,7 @@ ESLint 在遍历 AST 时分析了代码路径。你可以通过五个与代码�
 
 * `getComments()`：由 `SourceCode#getCommentsBefore()`、`SourceCode#getCommentsAfter()` 和 `SourceCode#getCommentsInside()` 取代。
 * `getTokenOrCommentBefore()`：由使用 `{ includeComments: true }` 选项的 `SourceCode#getTokenBefore()` 取代。
-* `getTokenOrCommentAfter()`：由使用 `{ includeComments: true }` 选项的 `SourceCode#getTokenAfter()` 取代 。
+* `getTokenOrCommentAfter()`：由使用 `{ includeComments: true }` 选项的 `SourceCode#getTokenAfter()` 取代。
 * `isSpaceBetweenTokens()`: 由 `SourceCode#isSpaceBetween()` 取代
 * `getJSDocComment()`
 
