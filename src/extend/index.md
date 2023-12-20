@@ -26,7 +26,11 @@ eleventyNavigation:
 
 ## [自定义规则](custom-rules)
 
-此章节解释了如何创建自定义规则并与 ESLint 一同食用。
+此章节解释了如何创建自定义规则并与 ESLint 一同使用。
+
+## [自定义规则指南](custom-rule-tutorial)
+
+一个引导你逐步创建一个用于 ESLint 的自定义规则的指南。
 
 ## [自定义格式化工具](custom-formatters)
 

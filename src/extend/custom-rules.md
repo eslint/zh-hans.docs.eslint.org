@@ -4,7 +4,7 @@ eleventyNavigation:
     key: custom rules
     parent: create plugins
     title: 自定义规则
-    order: 1
+    order: 2
 ---
 
 你可以创建自定义规则并与 ESLint 一同使用。当[核心规则](../rules/)没有覆盖你的用例时，就可能需要创建自定义规则。
@@ -622,14 +622,9 @@ var nodeSourceWithFollowing = sourceCode.getText(node, 0, 2);
 
 规则可以导出 `schema` 属性，它是规则选项的 [JSON Schema](https://json-schema.org/) 格式描述，ESLint 将使用它来验证配置选项，并在它们被传递到规则的 `context.options` 之前防止无效或意外输入。
 
-规则导出的 `schema` 有两种格式：
+规则导出的 `schema` 有两种格式。第一个是一个完整的 JSON Schema 对象，描述了规则接受的所有可能选项，其中包括规则的错误级别作为第一个参数，以及随后的任何可选参数。
 
-1. 完整的 JSON 模式对象，描述规则接受的所有可能的选项。
-2. 每个可选位置参数的 JSON 模式对象数组。
-
-在这两种情况下，这些对象都应排除[严重性](../use/configure/rules#规则严重性)，因为 ESLint 会先自行验证这一点。
-
-例如，`yoda` 规则接受 `"always"` 或 `"never"` 的主要模式参数，以及可选属性 `"exceptRange"` 的额外选项对象：
+然而，为了简化模式创建，规则还可以为每个可选的位置参数导出一个模式数组。ESLint 会自动首先验证所需的错误级别。例如，`yoda` 规则接受一个主要模式参数，以及一个带有命名属性的额外选项对象。
 
 ```js
 // "yoda": [2, "error", { "exceptRange": true }]
@@ -653,9 +648,11 @@ module.exports = {
 };
 ```
 
-**注意**：如果你的规则架构使用 JSON Schema 的 [`$ref`](https://json-schema.org/understanding-json-schema/structuring.html#ref) 属性，则必须使用完整的 JSON Schema 对象而不是位置属性模式数组。 这是因为 ESLint 将数组简写转换为单个模式，而不更新导致它们不正确的引用（它们被忽略）。
+在上述示例中，假设错误级别是第一个参数。它后面是第一个可选参数，一个字符串，可能是 `"always"` 或 `"never"`。最后的可选参数是一个对象，可能包括名为 `exceptRange` 的布尔属性。
 
-要了解更多关于 JSON 模式的信息，我们建议从[网站](https://json-schema.org/learn/)中的一些例子开始，也可以阅读[了解 JSON 模式](https://json-schema.org/understanding-json-schema/)（免费电子书）。
+要了解更多关于 JSON 模式的信息，我们建议从[网站](https://json-schema.org/learn/)中的一些例子开始，也可以阅读[了解 JSON Schema](https://json-schema.org/understanding-json-schema/)（免费电子书）。
+
+**注意**：如果你的规则架构使用 JSON Schema 的 [`$ref`](https://json-schema.org/understanding-json-schema/structuring.html#ref) 属性，则必须使用完整的 JSON Schema 对象而不是位置属性模式数组。 这是因为 ESLint 将数组简写转换为单个模式，而不更新导致它们不正确的引用（它们被忽略）。
 
 ### 访问 Shebangs
 

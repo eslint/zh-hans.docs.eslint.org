@@ -125,3 +125,4 @@ src.json
 /package-lock.json
 .stylelintrc.json
 postcss.config.js
+_examples
