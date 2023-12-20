@@ -94,7 +94,7 @@ if(typeof a === "string"){}
 
 ## Environments
 
-为了方便起见，ESLint 提供了快捷方式，预先定义了由流行的库和运行时环境暴露的全局变量。本规则支持这些环境，如[指定环境](../use/configure/language-options#specifying-environments)中所列。 下面给出了几个例子：
+为了方便起见，ESLint 提供了快捷方式，预先定义了由流行的库和运行时环境暴露的全局变量。本规则支持这些环境，如[指定环境](../use/configure/language-options#指定全局变量)中所列。下面给出了几个例子：
 
 ### browser
 

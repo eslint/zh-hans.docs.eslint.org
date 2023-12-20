@@ -25,10 +25,37 @@ export default [
             "prefer-const": "error"
         }
     }
-]
+];
 ```
 
 此处的配置数组只包含一个配置对象。而该配置对象启用了两条规则：`semi` 和 `prefer-const`。ESLint 会在所有使用此配置文件处理的文件中使用这两个规则。
+
+如果你的项目在其 `package.json` 文件中未指定 `"type":"module"`，那么 `eslint.config.js` 则必须采用 CommonJS 格式，例如：
+
+```js
+module.exports = [
+    {
+        rules: {
+            semi: "error",
+            "prefer-const": "error"
+        }
+    }
+];
+```
+
+配置文件还可以导出一个解析为配置数组的 Promise。这对于在 CommonJS 配置文件中使用 ESM 依赖项非常有用，就像在这个例子中一样：
+
+```js
+module.exports = (async () => {
+
+    const someDependency = await import("some-esm-dependency");
+
+    return [
+        // ... use `someDependency` here
+    ];
+
+})();
+```
 
 ## 配置对象
 
@@ -117,7 +144,7 @@ export default [
 
 非全局的 `ignores` 模式只能匹配文件名。类似 `"dir-to-exclude/"` 的模式将不会忽略任何内容。为了忽略特定目录中的所有内容，应该使用类似 `"dir-to-exclude/**"` 的模式。
 
-如果使用了 `ignores` 而没有使用 `files` ，但有任何其他键（如 `rules`），那么配置对象适用于除了 `ignores` 中指定的文件外的所有文件，例如：
+如果使用了 `ignores` 而没有使用 `files`，但有任何其他键（如 `rules`），那么配置对象适用于除了 `ignores` 中指定的文件外的所有文件，例如：
 
 ```js
 export default [

@@ -64,7 +64,7 @@ touch enforce-foo-bar.js # create file enforce-foo-bar.js
 
 ## 步骤二：编写规则文件
 
-在 `enforce-foo-bar.js` 文件中，为 `enforce-foo-bar` 自定义规则添加一些脚手架。 另外，再添加 `meta` 对象，其中包含有关规则的一些基本信息。
+在 `enforce-foo-bar.js` 文件中，为 `enforce-foo-bar` 自定义规则添加一些脚手架。另外，再添加 `meta` 对象，其中包含有关规则的一些基本信息。
 
 ```javascript
 // enforce-foo-bar.js
@@ -83,9 +83,9 @@ module.exports = {
 
 ## 步骤三：添加规则元数据
 
-在编写规则之前，向规则对象添加一些元数据。 ESLint 会在运行规则时使用此信息。
+在编写规则之前，向规则对象添加一些元数据。ESLint 会在运行规则时使用此信息。
 
-首先导出一个具有 `meta` 属性的对象，该属性包含规则的元数据，例如规则类型、文档和可修复性。 在本例中，规则类型是 `"problem"`，描述是“Enforce that a variable named `foo` can only be assigned a value of 'bar'.”。
+首先导出一个具有 `meta` 属性的对象，该属性包含规则的元数据，例如规则类型、文档和可修复性。在本例中，规则类型是 `"problem"`，描述是“Enforce that a variable named `foo` can only be assigned a value of 'bar'.”。
 
 ```javascript
 // enforce-foo-bar.js

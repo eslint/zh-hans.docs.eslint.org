@@ -3,7 +3,7 @@ title: 维护 ESLint
 eleventyNavigation:
     key: maintain eslint
     title: 维护 ESLint
-    order: 4
+    order: 5
 ---
 
 本指南面向 ESLint 项目组成员。

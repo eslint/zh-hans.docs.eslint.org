@@ -25,6 +25,8 @@ JavaScript 生态中有多个运行时、版本、扩展和框架。每个所支
 * `es2020` - 添加所有 ECMAScript 2020 的全局变量，并自动将解析器选项 `ecmaVersion` 设置为 11。
 * `es2021` - 添加所有 ECMAScript 2021 的全局变量，并自动将解析器选项 `ecmaVersion` 设置为 12。
 * `es2022` - 添加所有 ECMAScript 2022 的全局变量，并自动将解析器选项 `ecmaVersion` 设置为 13。
+* `es2023` - 添加所有 ECMAScript 2023 的全局变量，并自动将解析器选项 `ecmaVersion` 设置为 14。
+* `es2024` - 添加所有 ECMAScript 2024 的全局变量，并自动将解析器选项 `ecmaVersion` 设置为 15。
 * `worker` - 网络工作者全局变量。
 * `amd` - 根据 [amd](https://github.com/amdjs/amdjs-api/blob/master/AMD.md) 规范，将 `require()` 和 `define()` 定义为全局变量。
 * `mocha` - 添加所有 Mocha 测试的全局变量。
@@ -191,7 +193,7 @@ ESLint 允许你指定你想要支持的 JavaScript 语言选项。默认情况�
 
 可以在 `.eslintrc.*` 文件中通过使用 `parserOptions` 属性设置解析器选项。可用选项有：
 
-* `ecmaVersion`  - 设置为 3、5（默认）、6、7、8、9、10、11、12 或 13，以指定你要使用的 ECMAScript 语法的版本。你也可以设置为 2015（6）、2016（7）、2017（8）、2018（9）、2019（10）、2020（11）、2021（12）或 2022（13）来使用基于年份的命名。你也可以设置 `"latest"` 来使用受支持的最新版本。
+* `ecmaVersion`  - 设置为 3、5（默认）、6、7、8、9、10、11、12 、13、14 或 15，以指定你要使用的 ECMAScript 语法的版本。你也可以设置为 2015（6）、2016（7）、2017（8）、2018（9）、2019（10）、2020（11）、2021（12）、2022（13）、2023（14）或 2024（15）来使用基于年份的命名。你也可以设置 `"latest"` 来使用受支持的最新版本。
 * `sourceType` - 设置为 `"script"`（默认值）或 `"module"`（如果代码是 ECMAScript 模块）。
 * `allowReserved` - 允许使用保留字作为标识符（如果 `ecmaVersion` 为 3）。
 * `ecmaFeatures` - 表示你想使用哪些额外的语言特性的对象。

@@ -44,10 +44,6 @@ eleventyNavigation:
 
 此章节解释了如何使用自定义解析器来让 ESlint 处理 JavaScript 以外的文件。
 
-## 【共享配置](shareable-configs)
+## [共享配置](shareable-configs)
 
 此章节解释了如何在 JavaScript 包中捆绑和分享 ESLint 配置。
-
-## [Node.js API 参考](../integrate/nodejs-api)
-
-如果你有兴趣编写一个使用 ESLint 的工具，那么你可以使用 Node.js API 来获得程序化功能。

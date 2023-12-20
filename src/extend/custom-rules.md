@@ -47,7 +47,7 @@ module.exports = {
 
     * `description`：（`string`）在[规则页面](../rules/)中提供规则的简短描述。
     * `recommended`：（`boolean`）表示在[配置文件](../use/configure/configuration-files#扩展配置文件) 中是否使用 `"extends": "eslint:recommended"` 属性启用该规则。
-    * `url`： (`string`) 指定可以访问完整文档的链接（使代码编辑器能够在突出显示的规则违反上提供一个有用的链接）
+    * `url`：（`string`）指定可以访问完整文档的链接（使代码编辑器能够在突出显示的规则违反上提供一个有用的链接）
 
     在自定义规则或插件中，你可以省略 `docs` 或在其中包含你需要的任何属性。
 
@@ -130,7 +130,7 @@ module.exports = {
 * `sourceCode`：（`object`）`SourceCode` 对象，可以用它来处理传递给 ESLint 的源代码（请参阅[访问源代码](#访问源代码)）。
 * `settings`：（`object`）配置中的[共享设置](../use/configure/configuration-files#添加共享设置)。
 * `parserPath`：（`string`）配置中的 `parser` 的名称。
-* `parserServices`：（`object`）一个包含解析器提供的规则服务的对象。默认的解析器不提供任何服务。然而，如果一个规则打算与一个自定义的解析器一起使用，它可以使用 `parserServices` 来访问该解析器提供的任何服务（例如，TypeScript 解析器可以提供获取特定节点的计算类型的能力）。
+* `parserServices`：（**废弃**：使用 `SourceCode#parserServices` 代替）包含解析器提供的规则服务的对象。默认的解析器不提供任何服务。然而，如果一个规则打算与一个自定义的解析器一起使用，它可以使用 `parserServices` 来访问该解析器提供的任何服务（例如，TypeScript 解析器可以提供获取特定节点的计算类型的能力）。
 * `parserOptions` - 为本次运行配置的解析器选项（[了解详情](../use/configure/language-options#指定解析器选项)）。
 
 此外，`context` 对象有以下方法。
@@ -150,7 +150,7 @@ module.exports = {
 * `getFilename()`：（**废弃**：使用 `context.filename` 代替）返回与源相关的文件名。
 * `getPhysicalFilename()`：当给文件加注时，它返回磁盘上文件的完整路径，没有任何代码块信息。当对文本着色时，它返回传递给 `—stdin-filename` 的值，如果没有指定则返回 `<text>`。
 * `getScope()`：（**废弃**：使用 `SourceCode#getScope(node)` 代替）返回当前遍历的节点的[范围](./scope-manager-interface#scope-接口)。这个信息可以用来跟踪对变量的引用。
-* `getSourceCode()`：(**废弃**：使用 `context.sourceCode` 代替）返回 `SourceCode` 对象，你可以用它来处理传递给 ESLint 的源代码。（查看[访问源代码](#访问源代码)）
+* `getSourceCode()`：（**废弃**：使用 `context.sourceCode` 代替）返回 `SourceCode` 对象，你可以用它来处理传递给 ESLint 的源代码。（查看[访问源代码](#访问源代码)）
 * `markVariableAsUsed(name)`：（**废弃**：使用 `SourceCode#markVariableAsUsed(name, node)` 代替）将当前范围内给定名称的变量标记为已使用。这影响到 [no-unused-vars](../rules/no-unused-vars) 规则。如果找到给定名称的变量并标记为已使用，则返回 `true`，否则返回 `false`。
 * `report(descriptor)`：报告代码中的问题（见[专用部分](#报告问题)）。
 
@@ -569,6 +569,7 @@ module.exports = {
 * `ast`：（`object`）被提示的代码的 AST 的 `Program` 节点。
 * `scopeManager`：代码的 [ScopeManager](./scope-manager-interface#scopemanager-interface) 对象。
 * `visitorKeys`：（`object`）用于遍历这个 AST 的访问者键。
+* `parserServices`: (`object`) 包含规则所需的由解析器提供的服务。默认解析器不提供任何服务。然而，如果一个规则旨在与自定义解析器一起使用，它可以使用 `parserServices` 来访问由该解析器提供的任何内容（例如，TypeScript 解析器提供的获取给定节点的计算类型的能力）。
 * `lines`：（`array`）各行的数组，根据规范中的换行定义进行分割。
 
 当你需要获得更多关于被提示的代码的信息时，你应该使用 `SourceCode` 对象。
@@ -622,12 +623,17 @@ var nodeSourceWithFollowing = sourceCode.getText(node, 0, 2);
 
 规则可以导出 `schema` 属性，它是规则选项的 [JSON Schema](https://json-schema.org/) 格式描述，ESLint 将使用它来验证配置选项，并在它们被传递到规则的 `context.options` 之前防止无效或意外输入。
 
-规则导出的 `schema` 有两种格式。第一个是一个完整的 JSON Schema 对象，描述了规则接受的所有可能选项，其中包括规则的错误级别作为第一个参数，以及随后的任何可选参数。
+规则导出的 `schema` 有两种格式：
 
-然而，为了简化模式创建，规则还可以为每个可选的位置参数导出一个模式数组。ESLint 会自动首先验证所需的错误级别。例如，`yoda` 规则接受一个主要模式参数，以及一个带有命名属性的额外选项对象。
+1. 完整的 JSON 模式对象，描述规则接受的所有可能的选项。
+2. 每个可选位置参数的 JSON 模式对象数组。
+
+在这两种情况下，这些对象都应排除[严重性](../use/configure/rules#规则严重性)，因为 ESLint 会先自行验证这一点。
+
+例如，`yoda` 规则接受 `"always"` 或 `"never"` 的主要模式参数，以及可选属性 `"exceptRange"` 的额外选项对象：
 
 ```js
-// "yoda": [2, "error", { "exceptRange": true }]
+// "yoda": ["error", "never", { "exceptRange": true }]
 module.exports = {
     meta: {
         schema: [
@@ -648,11 +654,9 @@ module.exports = {
 };
 ```
 
-在上述示例中，假设错误级别是第一个参数。它后面是第一个可选参数，一个字符串，可能是 `"always"` 或 `"never"`。最后的可选参数是一个对象，可能包括名为 `exceptRange` 的布尔属性。
+**注意**：如果你的规则架构使用 JSON Schema 的 [`$ref`](https://json-schema.org/understanding-json-schema/structuring.html#ref) 属性，则必须使用完整的 JSON Schema 对象而不是位置属性模式数组。这是因为 ESLint 将数组简写转换为单个模式，而不更新导致它们不正确的引用（它们被忽略）。
 
 要了解更多关于 JSON 模式的信息，我们建议从[网站](https://json-schema.org/learn/)中的一些例子开始，也可以阅读[了解 JSON Schema](https://json-schema.org/understanding-json-schema/)（免费电子书）。
-
-**注意**：如果你的规则架构使用 JSON Schema 的 [`$ref`](https://json-schema.org/understanding-json-schema/structuring.html#ref) 属性，则必须使用完整的 JSON Schema 对象而不是位置属性模式数组。 这是因为 ESLint 将数组简写转换为单个模式，而不更新导致它们不正确的引用（它们被忽略）。
 
 ### 访问 Shebangs
 
@@ -711,9 +715,9 @@ module.exports = {
 
 **废弃**：`context.markVariableAsUsed()` 方法已弃用，并由 `sourceCode.markVariableAsUsed()` 所取代。
 
-某些 ESLint 规则，例如 [`no-unused-vars`](../rules/no-unused-vars)，会检查变量是否已被使用。 ESLint 本身只知道变量访问的标准规则，因此访问变量的自定义方式可能不会注册为“已使用”。
+某些 ESLint 规则，例如 [`no-unused-vars`](../rules/no-unused-vars)，会检查变量是否已被使用ESLint 本身只知道变量访问的标准规则，因此访问变量的自定义方式可能不会注册为“已使用”。
 
-为了帮助解决这个问题，你可以使用 `sourceCode.markVariableAsUsed()` 方法。 此方法采用两个参数：要标记为已使用的变量的名称和指示正在工作的范围的选项引用节点。这有一个例子：
+为了帮助解决这个问题，你可以使用 `sourceCode.markVariableAsUsed()` 方法。此方法采用两个参数：要标记为已使用的变量的名称和指示正在工作的范围的选项引用节点。这有一个例子：
 
 ```js
 module.exports = {
@@ -739,7 +743,7 @@ module.exports = {
 
 ### 访问代码路径
 
-ESLint 在遍历 AST 时分析了代码路径。你可以通过五个与代码路径有关的事件访问该代码路径对象。 有关详细信息，请参阅[代码路径分析](code-path-analysis)。
+ESLint 在遍历 AST 时分析了代码路径。你可以通过五个与代码路径有关的事件访问该代码路径对象。有关详细信息，请参阅[代码路径分析](code-path-analysis)。
 
 ### 废弃的 `SourceCode` 方法
 

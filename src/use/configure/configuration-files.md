@@ -170,7 +170,7 @@ your-project
   root: true
 ```
 
-例如，考虑到 `projectA` 在 `lib/` 目录下的 `.eslintrc` 文件中设置了 `"root": true`。 在这种情况下，当对 `main.js` 进行检查时，`lib/` 中的配置将被使用，但 `projectA/` 中的 `.eslintrc` 文件不会被使用。
+例如，考虑到 `projectA` 在 `lib/` 目录下的 `.eslintrc` 文件中设置了 `"root": true` 在这种情况下，当对 `main.js` 进行检查时，`lib/` 中的配置将被使用，但 `projectA/` 中的 `.eslintrc` 文件不会被使用。
 
 ```text
 home
