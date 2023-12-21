@@ -3,9 +3,9 @@ title: no-restricted-imports
 rule_type: suggestion
 ---
 
-进口是 ES6/ES2015 的标准，用于使其他模块的功能在你当前模块中可用。在 CommonJS 中，这是通过 `require()` 调用实现的，这使得这个 ESLint 规则大致等同于 CommonJS 的 `no-restricted-modules` 对应。
+导入是 ES6/ES2015 的标准，用于使其他模块的功能在你当前模块中可用。在 CommonJS 中，这是通过 `require()` 调用实现的，这使得这个 ESLint 规则大致等同于 CommonJS 的 `no-restricted-modules` 对应。
 
-为什么你要限制进口？
+为什么你要限制导入？
 
 * 有些导入可能在特定的环境中没有意义。例如，Node.js 的 `fs` 模块在一个没有文件系统的环境中是没有意义的。
 
@@ -19,7 +19,7 @@ rule_type: suggestion
 
 ## 选项
 
-指定限制性进口的语法看起来像这样：
+指定限制导入的语法像是这样：
 
 ```json
 "no-restricted-imports": ["error", "import1", "import2"]
@@ -40,7 +40,7 @@ rule_type: suggestion
 }]
 ```
 
-你也可以为你想限制的任何路径指定一个自定义信息，如下所示：
+你也可以为你想限制的任何路径指定自定义信息，如下所示：
 
 ```json
 "no-restricted-imports": ["error", {
@@ -66,7 +66,7 @@ rule_type: suggestion
 }]
 ```
 
-或像这样，如果你需要限制只从一个模块导入某些东西：
+或像这样，如果你需要限制只能从模块导入某些东西：
 
 ```json
 "no-restricted-imports": ["error", {
@@ -78,7 +78,7 @@ rule_type: suggestion
 }]
 ```
 
-或像这样，如果你想对模式匹配应用一个自定义的信息：
+或像这样，如果你想对模式匹配应用自定义的信息：
 
 ```json
 "no-restricted-imports": ["error", {
@@ -117,7 +117,7 @@ rule_type: suggestion
 }]
 ```
 
-要限制使用所有 Node.js 的核心导入（通过<https://github.com/nodejs/node/tree/master/lib>）：
+要限制使用所有 Node.js 的核心导入（通过 <https://github.com/nodejs/node/tree/master/lib>）：
 
 ```json
     "no-restricted-imports": ["error",
@@ -129,7 +129,7 @@ rule_type: suggestion
 
 使用此规则的**错误**示例：
 
-::: incorrect
+::: incorrect { "sourceType": "module" }
 
 ```js
 /*eslint no-restricted-imports: ["error", "fs"]*/
@@ -139,7 +139,7 @@ import fs from 'fs';
 
 :::
 
-::: incorrect
+::: incorrect { "sourceType": "module" }
 
 ```js
 /*eslint no-restricted-imports: ["error", "fs"]*/
@@ -149,7 +149,7 @@ export { fs } from 'fs';
 
 :::
 
-::: incorrect
+::: incorrect { "sourceType": "module" }
 
 ```js
 /*eslint no-restricted-imports: ["error", "fs"]*/
@@ -159,7 +159,7 @@ export * from 'fs';
 
 :::
 
-::: incorrect
+::: incorrect { "sourceType": "module" }
 
 ```js
 /*eslint no-restricted-imports: ["error", { "paths": ["cluster"] }]*/
@@ -169,7 +169,7 @@ import cluster from 'cluster';
 
 :::
 
-::: incorrect
+::: incorrect { "sourceType": "module" }
 
 ```js
 /*eslint no-restricted-imports: ["error", { "patterns": ["lodash/*"] }]*/
@@ -179,7 +179,7 @@ import pick from 'lodash/pick';
 
 :::
 
-::: incorrect
+::: incorrect { "sourceType": "module" }
 
 ```js
 /*eslint no-restricted-imports: ["error", { paths: [{
@@ -193,7 +193,7 @@ import DisallowedObject from "foo";
 
 :::
 
-::: incorrect
+::: incorrect { "sourceType": "module" }
 
 ```js
 /*eslint no-restricted-imports: ["error", { paths: [{
@@ -211,7 +211,7 @@ import { "DisallowedObject" as AllowedObject } from "foo";
 
 :::
 
-::: incorrect
+::: incorrect { "sourceType": "module" }
 
 ```js
 /*eslint no-restricted-imports: ["error", { paths: [{
@@ -225,7 +225,7 @@ import * as Foo from "foo";
 
 :::
 
-::: incorrect
+::: incorrect { "sourceType": "module" }
 
 ```js
 /*eslint no-restricted-imports: ["error", { patterns: [{
@@ -238,7 +238,7 @@ import pick from 'lodash/pick';
 
 :::
 
-::: incorrect
+::: incorrect { "sourceType": "module" }
 
 ```js
 /*eslint no-restricted-imports: ["error", { patterns: [{
@@ -251,7 +251,7 @@ import pick from 'fooBar';
 
 :::
 
-::: incorrect
+::: incorrect { "sourceType": "module" }
 
 ```js
 /*eslint no-restricted-imports: ["error", { patterns: [{
@@ -267,7 +267,7 @@ import { isEmpty } from 'utils/collection-utils';
 
 使用此规则的**正确**示例：
 
-::: correct
+::: correct { "sourceType": "module" }
 
 ```js
 /*eslint no-restricted-imports: ["error", "fs"]*/
@@ -278,7 +278,7 @@ export { foo } from "bar";
 
 :::
 
-::: correct
+::: correct { "sourceType": "module" }
 
 ```js
 /*eslint no-restricted-imports: ["error", { "paths": ["fs"], "patterns": ["eslint/*"] }]*/
@@ -290,7 +290,7 @@ export * from "path";
 
 :::
 
-::: correct
+::: correct { "sourceType": "module" }
 
 ```js
 /*eslint no-restricted-imports: ["error", { paths: [{ name: "foo", importNames: ["DisallowedObject"] }] }]*/
@@ -300,7 +300,7 @@ import DisallowedObject from "foo"
 
 :::
 
-::: correct
+::: correct { "sourceType": "module" }
 
 ```js
 /*eslint no-restricted-imports: ["error", { paths: [{
@@ -314,7 +314,7 @@ import { AllowedObject as DisallowedObject } from "foo";
 
 :::
 
-::: correct
+::: correct { "sourceType": "module" }
 
 ```js
 /*eslint no-restricted-imports: ["error", { patterns: [{
@@ -327,7 +327,7 @@ import lodash from 'lodash';
 
 :::
 
-::: correct
+::: correct { "sourceType": "module" }
 
 ```js
 /*eslint no-restricted-imports: ["error", { patterns: [{
@@ -340,7 +340,7 @@ import pick from 'food';
 
 :::
 
-::: correct
+::: correct { "sourceType": "module" }
 
 ```js
 /*eslint no-restricted-imports: ["error", { patterns: [{
@@ -356,4 +356,4 @@ import { hasValues } from 'utils/collection-utils';
 
 ## 何时不用
 
-如果你想在你的项目中导入一个模块而不出现 ESLint 错误或警告，不要使用这个规则，也不要在这个规则的列表中包含一个模块。
+如果你想在你的项目中导入一个模块而不出现 ESLint 错误或警告，不要使用这个规则，也不要在这个规则的列表中包含任何模块。

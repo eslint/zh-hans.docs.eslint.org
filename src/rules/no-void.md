@@ -11,7 +11,7 @@ further_reading:
 
 `void` 运算符接收一个操作数并返回 `undefined`：`void expression` 将评估 `expression` 并返回 `undefined`。它可以被用来忽略 `expression` 可能产生的任何副作用。
 
-使用 `void` 运算符的常见情况是获得一个“纯粹的” `undefined` 值，因为在 ES5 之前，`undefined` 变量是可变的。
+使用 `void` 运算符的常见情况是获得一个“纯粹的”`undefined` 值，因为在 ES5 之前，`undefined` 变量是可变的。
 
 ```js
 // will always return undefined

@@ -131,7 +131,7 @@ JSCS `--auto-configure` 选项可以根据给定文件内容创建配置：
 jscs --auto-configure file.js
 ```
 
-在 ESLint 里有类似的  `--init` 选项，你可以 "Inspect your JavaScript file(s)"（获取 JavaScript 文件）：
+在 ESLint 里有类似的 `--init` 选项，你可以“Inspect your JavaScript file(s)”（获取 JavaScript 文件）：
 
 ```shell
 eslint --init
@@ -143,7 +143,7 @@ eslint --init
 
 ## `--config`, `-c`
 
-JSCS 支持在命令行中使用  `--config` 或 `-c` 指定配置文件，像是这样：
+JSCS 支持在命令行中使用 `--config` 或 `-c` 指定配置文件，像是这样：
 
 ```shell
 jscs --config myconfig.json file.js

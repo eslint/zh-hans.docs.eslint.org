@@ -281,7 +281,7 @@ npx eslint --plugin eslint-plugin-mocha file.js
 
 这些规则将与配置文件中指定的规则合并。如果规则是由插件定义的，你必须在规则的 ID 前加上插件的名称和 `/`。
 
-要忽略 `.eslintrc` 配置文件中的规则，只需在运行命令行时使用  `--rules` 标志和 [`--no-eslintrc`](#--no-eslintrc) 标志组合指定规则。
+要忽略 `.eslintrc` 配置文件中的规则，只需在运行命令行时使用 `--rules` 标志和 [`--no-eslintrc`](#--no-eslintrc) 标志组合指定规则。
 
 ##### `--rule` 示例
 

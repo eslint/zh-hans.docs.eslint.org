@@ -6,7 +6,7 @@ related_rules:
 - no-void
 ---
 
-在 JavaScript 中，一个被声明但没有被初始化的变量会自动得到  `undefined` 的值。比如：
+在 JavaScript 中，一个被声明但没有被初始化的变量会自动得到 `undefined` 的值。比如：
 
 ```js
 var foo;

@@ -16,7 +16,7 @@ further_reading:
 此规则总是忽略以下周围的额外括号：
 
 * 正则字词，如 `(/abc/).test(var)`，以避免与 [wrap-regex](wrap-regex) 规则冲突
-*立即调用的函数表达式（也称为 IIFEs），如 `var x = (function () {})();` 和 `var x = (function () {}();` 以避免与 [wrap-iife](wrap-iife) 规则冲突
+*立即调用的函数表达式（也称为 IIFE），如 `var x = (function () {})();` 和 `var x = (function () {}();` 以避免与 [wrap-iife](wrap-iife) 规则冲突
 * 箭头函数参数，以避免与 [arrow-parens](arrow-parens) 规则冲突
 
 ## 选项

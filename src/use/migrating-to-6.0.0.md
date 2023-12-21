@@ -26,7 +26,7 @@ ESLint v6.0.0 是 ESLint 主要发行版。在此版本中有一些破坏性变�
 ## 面向插件/自定义规则开发者的破坏性变更
 
 1. [插件作者可能需要更新安装指南](#plugin-documentation)
-1. [`RuleTester`  现在可以验证规则模式中无效的  `default` 关键字了](#rule-tester-defaults)
+1. [`RuleTester` 现在可以验证规则模式中无效的 `default` 关键字了](#rule-tester-defaults)
 1. [`RuleTester` 的 `parser` 选项需要是相对路径](#rule-tester-parser)
 1. [删除 `eslintExplicitGlobalComment` 范围分析属性](#eslintExplicitGlobalComment)
 
@@ -296,7 +296,7 @@ module.exports = {
 
 **相关议题**：[eslint/rfcs#7](https://github.com/eslint/rfcs/pull/7)
 
-## <a name="rule-tester-defaults"></a> `RuleTester`  现在可以验证规则模式中无效的  `default` 关键字了
+## <a name="rule-tester-defaults"></a> `RuleTester` 现在可以验证规则模式中无效的 `default` 关键字了
 
 在某些情况下，规则模式可以使用 `default` 关键字来自动指定规则选项的默认值。然而，`default` 关键字只在特定的模式位置有效，而在其他地方被忽略，如果规则错误地期望提供默认值作为规则选项，就会由产生错误的风险。在 ESLint v6.0.0 中，如果规则模式中有无效的 `default` 关键字，`RuleTester` 将引发错误。
 
@@ -314,7 +314,7 @@ module.exports = {
 
 ## <a name="eslintExplicitGlobalComment"></a> 删除 `eslintExplicitGlobalComment` 范围分析属性
 
-以前，ESLint 会在范围分析中为 `Variable`  对象添加 `eslintExplicitGlobalComment` 属性，以表明变量是由于 `/* global */` 注释而引入的。这个属性并没有任何记录，同时 ESLint 团队也无法在 ESLint 核心中找到这个属性的任何用法。该属性在 ESLint v6 中被删除，取而代之的是 `eslintExplicitGlobalComments` 属性，如果变量在声明时有多个注释，该属性可以列出所有 `/* global */` 注释。
+以前，ESLint 会在范围分析中为 `Variable` 对象添加 `eslintExplicitGlobalComment` 属性，以表明变量是由于 `/* global */` 注释而引入的。这个属性并没有任何记录，同时 ESLint 团队也无法在 ESLint 核心中找到这个属性的任何用法。该属性在 ESLint v6 中被删除，取而代之的是 `eslintExplicitGlobalComments` 属性，如果变量在声明时有多个注释，该属性可以列出所有 `/* global */` 注释。
 
 **解决方案**：如果你维护的规则使用了 `eslintExplicitGlobalComment` 属性，请使用 `eslintExplicitGlobalComments` 属性替换。
 

@@ -135,7 +135,7 @@ SomeObject.foo = function() {
 
 ### allowArrowFunctions
 
-使用此规则与额外的 ` "declaration", { "allowArrowFunctions": true }` 选项的**正确**示例:
+使用此规则与额外的 `"declaration", { "allowArrowFunctions": true }` 选项的**正确**示例:
 
 ::: correct
 

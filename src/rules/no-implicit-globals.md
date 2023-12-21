@@ -11,9 +11,9 @@ further_reading:
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#Temporal_dead_zone
 ---
 
-最好的做法是避免用本应属于脚本的局部变量“污染”全局范围。
+最好避免用本应属于脚本的局部变量“污染”全局范围。
 
-从一个脚本中创建的全局变量可能会与从另一个脚本中创建的全局变量产生名称冲突，这通常会导致运行时错误或意外行为。
+在脚本中创建的全局变量可能会与在另一个脚本中创建的全局变量产生名称冲突，这通常会导致运行时错误或意外行为。
 
 这条规则不允许以下情况：
 
@@ -23,8 +23,7 @@ further_reading:
 
 在需要的时候，有一种明确的方法来创建全局变量，即通过赋值给全局对象的一个属性。
 
-这条规则对浏览器脚本大多有用。ES 模块和 CommonJS 模块中的顶级声明会创建模块范围内的
-变量。ES 模块也有隐含的 `strict` 模式，可以防止全局变量的泄露。
+这条规则对浏览器脚本大多有用。ES 模块和 CommonJS 模块中的顶级声明会创建模块范围内的变量。ES 模块也有隐含的 `strict` 模式，可以防止全局变量的泄露。
 
 默认情况下，本规则不检查 `const`、`let` 和 `class` 声明。
 
@@ -34,7 +33,7 @@ further_reading:
 
 ## 规则细节
 
-### `var` and `function` declarations
+### `var` 和 `function` 声明
 
 在处理浏览器脚本时，开发人员经常忘记，顶层范围的变量和函数声明会成为 `window` 对象上的全局变量。相对于有自己作用域的模块而言。全局变量应该明确地分配给 `window` 或 `self`，如果这是它的意图。否则，打算在脚本中使用的变量应该用一个 IIFE 来包装。
 
@@ -42,7 +41,7 @@ further_reading:
 
 使用此规则的**错误**示例：
 
-::: incorrect
+::: incorrect { "sourceType": "module" }
 
 ```js
 /*eslint no-implicit-globals: "error"*/
@@ -56,7 +55,7 @@ function bar() {}
 
 使用此规则的**正确**示例：
 
-::: correct
+::: correct { "sourceType": "module" }
 
 ```js
 /*eslint no-implicit-globals: "error"*/
@@ -77,7 +76,7 @@ window.bar = function() {};
 
 使用此规则与 `"parserOptions": { "sourceType": "module" }` 选项的**正确**示例：
 
-::: correct
+::: correct { "sourceType": "module" }
 
 ```js
 /*eslint no-implicit-globals: "error"*/
@@ -89,7 +88,7 @@ function bar() {}
 
 :::
 
-### Global variable leaks
+### 全局变量泄漏
 
 当代码不是在 `strict` 模式下，对未声明的变量的赋值会创建一个新的全局变量。即使代码是在一个函数中，这也会发生。
 
@@ -111,7 +110,7 @@ Bar.prototype.baz = function () {
 
 :::
 
-### Read-only global variables
+### 只读全局变量
 
 这条规则也不允许对只读的全局变量进行重新声明和对只读的全局变量进行赋值。
 
@@ -122,7 +121,7 @@ Bar.prototype.baz = function () {
 
 使用此规则的**错误**示例：
 
-::: incorrect
+::: incorrect { "sourceType": "module" }
 
 ```js
 /*eslint no-implicit-globals: "error"*/
@@ -137,20 +136,19 @@ var Object;
 
 :::
 
-### `const`, `let` and `class` declarations
+### `const`、`let` 和 `class` 声明
 
 词法声明 `const` 和 `let`，以及 `class` 声明，创建的变量都是块范围的。
 
 然而，当在浏览器脚本的顶层声明时，这些变量不是“脚本范围”。
-它们实际上是在全局范围内创建的，并且可能会产生与
- `var`、`const` 和 `let` 变量以及其他脚本的 `function` 和 `class` 声明产生名称冲突。
+它们实际上是在全局范围内创建的，并且可能会产生与 `var`、`const` 和 `let` 变量以及其他脚本的 `function` 和 `class` 声明产生名称冲突。
 这不适用于 ES 和 CommonJS 模块。
 
 如果该变量打算成为脚本的本地变量，请用一个块或一个立即调用的函数表达式（IIFE）来包装代码。
 
 使用此规则并将默认的 `"lexicalBindings"` 选项设置为 `false` 时的**正确**示例：
 
-::: correct
+::: correct { "sourceType": "module" }
 
 ```js
 /*eslint no-implicit-globals: ["error", {"lexicalBindings": false}]*/
@@ -166,7 +164,7 @@ class Bar {}
 
 使用此规则并将 `"lexicalBindings"` 选项设置为 `true` 时的**错误**示例：
 
-::: incorrect
+::: incorrect { "sourceType": "module" }
 
 ```js
 /*eslint no-implicit-globals: ["error", {"lexicalBindings": true}]*/
@@ -182,7 +180,7 @@ class Bar {}
 
 使用此规则并将 `"lexicalBindings"` 选项设置为 `true` 时的**正确**示例：
 
-::: correct
+::: correct { "sourceType": "module" }
 
 ```js
 /*eslint no-implicit-globals: ["error", {"lexicalBindings": true}]*/
@@ -214,7 +212,7 @@ class Bar {}
 
 使用此规则并将 `lexicalBindings` 选项设置为 `true` 时的**错误**示例：
 
-::: incorrect
+::: incorrect { "sourceType": "module" }
 
 ```js
 /*eslint no-implicit-globals: ["error", {"lexicalBindings": true}]*/
@@ -232,7 +230,7 @@ const MyGlobalFunction = (function() {
 
 使用此规则并将 `"lexicalBindings"` 选项设置为 `true` 时的**正确**示例：
 
-::: correct
+::: correct { "sourceType": "module" }
 
 ```js
 /*eslint no-implicit-globals: ["error", {"lexicalBindings": true}]*/
@@ -254,7 +252,7 @@ window.MyGlobalFunction = (function() {
 
 使用 `/* exported variableName */` 操作的**正确**示例：
 
-::: correct
+::: correct { "sourceType": "module" }
 
 ```js
 /* exported global_var */

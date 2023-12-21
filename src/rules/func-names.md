@@ -35,7 +35,7 @@ Foo.prototype.bar = function bar() {};
 
 当没有提供 `generators` 值时，生成器函数的行为就会回到基本选项。
 
-请注意，`"always"` 和 `"as-needed"` 要求函数表达式和  `export default` 声明中的函数声明必须有名字。
+请注意，`"always"` 和 `"as-needed"` 要求函数表达式和 `export default` 声明中的函数声明必须有名字。
 
 ### always
 

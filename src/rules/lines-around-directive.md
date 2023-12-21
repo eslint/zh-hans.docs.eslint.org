@@ -236,7 +236,7 @@ function foo() {
 
 :::
 
-使用此规则与 `{ "before": "never", "after": "always" }`  选项的**正确**示例：
+使用此规则与 `{ "before": "never", "after": "always" }` 选项的**正确**示例：
 
 ::: correct
 

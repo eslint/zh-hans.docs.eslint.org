@@ -33,7 +33,7 @@ related_rules:
 
 ### "always"
 
-使用此规则与 "always" 选项的**错误**示例：
+使用此规则与 `"always"` 选项的**错误**示例：
 
 ::: incorrect
 
