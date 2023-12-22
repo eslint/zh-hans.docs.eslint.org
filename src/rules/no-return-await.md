@@ -2,9 +2,12 @@
 title: no-return-await
 rule_type: suggestion
 further_reading:
+- https://v8.dev/blog/fast-async
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
 - https://jakearchibald.com/2017/await-vs-return-vs-return-await/
 ---
+
+此规则在 ESLint v8.46.0 中**弃用**，没有替代品。由于 JavaScript 现在以不同的方式处理本地 `Promises`，该规则的初衷已不再适用。现在，删除 `await` 比保留它更慢。更多技术信息请参阅[此 V8 博客文章](https://v8.dev/blog/fast-async)。
 
 在 `async function` 中使用 `return await` 可以使当前函数保持在调用堆栈中，直到被等待的 Promise 被解决，代价是在解决外部 Promise 之前有一个额外的微任务。`return await` 也可以在 try/catch 语句中使用，以捕捉来自另一个返回 Promise 的函数的错误。
 
