@@ -16,6 +16,10 @@ eleventyNavigation:
 ```js
 module.exports = {
     processors: {
+        meta: {
+            name: "eslint-processor-name",
+            version: "1.2.3"
+        },
         "processor-name": {
             // takes text of the file and filename
             preprocess: function(text, filename) {
@@ -44,11 +48,13 @@ module.exports = {
 };
 ```
 
-**`preprocess` 方法**将文件内容和文件名作为参数，并返回一个代码块的数组以进行提示。这些代码块将被单独检查，但仍被注册到文件名上。
+**`preprocess` 方法*使用文件内容和文件名作为参数，并返回一个代码块的数组以进行提示。这些代码块将被单独检查，但仍被注册到文件名上。
 
 一个代码块有两个属性 `text` 和 `filename`。`text` 属性是代码块的内容，`filename` 属性是代码块的名称。块的名称可以是任何东西，但应包括文件扩展名，这将告诉检查器如何处理当前块。检查器将检查 [`--ext` CLI 选项](../use/command-line-interface#--ext)，看当前块是否应该被检查，并解决 `overrides` 配置，检查如何处理当前块。
 
 由插件决定它是否需要只返回非 JavaScript 文件的一部分或多个片段的。例如在处理 `.html` 文件的情况下，你可能想通过合并所有的脚本只返回数组中的一个项目。像是 `.md` 文件，因为每个 JavaScript 块都可能是独立的，就可以返回多个项目。
+
+**`meta` 对象** 有助于 ESLint 缓存处理器并提供更友好的调试消息。`meta.name` 属性应与处理器名称匹配，而 `meta.version` 属性应与你的处理器的 npm 包版本匹配。最简单的方法是从你的 `package.json` 中读取这些信息。
 
 **`postprocess` 方法**接收一个二维数组，该数组包括检查器消息和文件名。输入数组中的每一项都对应于从 `preprocess` 方法返回的部分。`postprocess` 方法必须调整所有错误的位置，使其与原始的、未处理的代码中的位置相对应，并将其汇总为一个平面数组并返回。
 

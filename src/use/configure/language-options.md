@@ -189,7 +189,8 @@ And in YAML:
 ESLint 允许你指定你想要支持的 JavaScript 语言选项。默认情况下，ESLint 希望使用 ECMAScript 5 语法。你可以通过使用解析器选项来覆盖这一设置，以实现对其他 ECMAScript 版本以及 JSX 的支持。
 
 请注意，支持 JSX 语法并不等同于支持 React。React 对 JSX 语法应用了特定的语义，而 ESLint 并不能识别。如果你使用 React 并且使用 React 语法，我们建议使用 [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react)。
-同样地，支持 ES6 语法不等于支持新的 ES6 全局变量（例如，新的类型，如 `Set`）。使用 `{ "parserOptions": { "ecmaVersion": 6 } }` 启用 ES6 语法；使用 `{ "env": { "es6": true } }` 启用新的 ES6 全局变量，设置 `{ "env": { "es6": true }}` 会自动启用 ES6 语法，但 `{ "parserOptions": { "ecmaVersion": 6 } }` 则不会自动启用 ES6 全局变量。
+
+同样地，支持 ES6 语法不等于支持新的 ES6 全局变量（例如，新的类型，如 `Set`）。使用 `{ "parserOptions": { "ecmaVersion": 6 } }` 启用 ES6 语法；使用 `{ "env": { "es6": true } }` 启用新的 ES6 全局变量，设置 `{ "env": { "es6": true }}` 会自动启用 ES6 语法，但 `{ "parserOptions": { "ecmaVersion": 6 } }` 则不会自动启用 ES6 全局变量。总之，要仅支持 ES6 语法，请使用 `{ "parserOptions": { "ecmaVersion": 6 } }`，要同时支持 ES6 语法和新的 ES6 全局变量，如 `Set` 等，请使用 `{ "env": { "es6": true } }`。
 
 可以在 `.eslintrc.*` 文件中通过使用 `parserOptions` 属性设置解析器选项。可用选项有：
 

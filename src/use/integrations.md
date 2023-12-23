@@ -9,7 +9,7 @@ eleventyNavigation:
 
 此页面包括了与 ESLint 集成的社区项目。列在此页的项目并不由 ESLint 所维护。
 
-如果你想要推荐项目将其加入此也，请[提交拉去请求](../contribute/pull-requests).
+如果你想要推荐项目将其加入此也，请[提交拉取请求](../contribute/pull-requests).
 
 ## 编辑器
 
