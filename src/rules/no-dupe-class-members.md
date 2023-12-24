@@ -1,6 +1,7 @@
 ---
 title: no-dupe-class-members
 rule_type: problem
+handled_by_typescript: true
 ---
 
 如果在类成员中存在同名的声明，最后一个声明会无声地覆盖其他声明。
@@ -99,5 +100,3 @@ class Foo {
 不应该在 ES3/5 环境中使用此规则。
 
 在 ES2015（ES6）或更高版本中，如果你不想被通知类成员中的重复名称，你可以安全地禁用这个规则。
-
-在使用 TypeScript 时，也可以安全地禁用此规则，因为 TypeScript 编译器已经检查过重复的函数实现。

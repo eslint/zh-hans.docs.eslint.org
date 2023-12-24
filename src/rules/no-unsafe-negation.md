@@ -1,6 +1,7 @@
 ---
 title: no-unsafe-negation
 rule_type: problem
+handled_by_typescript: true
 ---
 
 就像开发者可能会输入 `-a + b`，而他们的意思是 `-(a + b)` 表示一个和的负数，他们可能会错误地输入 `！key in object`，而他们几乎肯定是指 `!(key in object)` 来测试一个键不在一个对象中。`!obj instanceof Ctor` 是类似的。

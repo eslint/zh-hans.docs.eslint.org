@@ -1,6 +1,7 @@
 ---
 title: no-dupe-keys
 rule_type: problem
+handled_by_typescript: true
 ---
 
 在对象字面中具有相同键的多个属性会在你的应用程序中引起意外的行为。

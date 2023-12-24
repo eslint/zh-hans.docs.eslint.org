@@ -1,6 +1,7 @@
 ---
 title: no-unreachable
 rule_type: problem
+handled_by_typescript: true
 ---
 
 因为 `return`、`throw`、`break` 和 `continue` 语句无条件地退出一个代码块，它们之后的任何语句都不能被执行。不会用到的语句通常是一个错误。

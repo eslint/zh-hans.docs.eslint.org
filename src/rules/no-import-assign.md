@@ -1,6 +1,8 @@
 ---
 title: no-import-assign
 rule_type: problem
+handled_by_typescript: true
+extra_typescript_info: 注意编译器不会捕获 `Object.assign()` 的情况。因此，如果你在代码库中使用 `Object.assign()`，这个规则仍然会提供一些价值。
 ---
 
 ES 模块对导入的绑定的更新会导致运行时错误。

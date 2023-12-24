@@ -1,6 +1,8 @@
 ---
 title: no-invalid-this
 rule_type: suggestion
+handled_by_typescript: true
+extra_typescript_info: 注意从技术上讲 TypeScript 只会在启用了 `strict` 或 `noImplicitThis` 标志时才会捕获这种情况。大多数 TypeScript 项目都启用了这些标志，因为它被认为是最佳实践。
 ---
 
 在严格模式下，类或类状对象之外的 `this` 关键字可能是 `undefined`，并引发 `TypeError`。

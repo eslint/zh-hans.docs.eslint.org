@@ -37,6 +37,7 @@ const myPromise = new Promise(function executor(resolve, reject) {
 
 ```js
 /*eslint no-promise-executor-return: "error"*/
+/*eslint-env es6*/
 
 new Promise((resolve, reject) => {
     if (someCondition) {
@@ -72,6 +73,7 @@ new Promise(() => {
 
 ```js
 /*eslint no-promise-executor-return: "error"*/
+/*eslint-env es6*/
 
 new Promise((resolve, reject) => {
     if (someCondition) {
@@ -98,6 +100,47 @@ new Promise((resolve, reject) => {
 });
 
 Promise.resolve(1);
+```
+
+:::
+
+## 选项
+
+此规则接受选项，一个带有以下属性的对象：
+
+* `allowVoid`：如果设置为 `true`（默认为 `false`），此规则将允许返回 `void` 值。
+
+### allowVoid
+
+使用此规则与 `{ "allowVoid": true }` 选项的**正确**示例：
+
+::: correct
+
+```js
+/*eslint no-promise-executor-return: ["error", { allowVoid: true }]*/
+/*eslint-env es6*/
+
+new Promise((resolve, reject) => {
+    if (someCondition) {
+        return void resolve(defaultResult);
+    }
+    getSomething((err, result) => {
+        if (err) {
+            reject(err);
+        } else {
+            resolve(result);
+        }
+    });
+});
+
+new Promise((resolve, reject) => void getSomething((err, data) => {
+    if (err) {
+        reject(err);
+    } else {
+        resolve(data);
+    }
+}));
+new Promise(r => void r(1));
 ```
 
 :::

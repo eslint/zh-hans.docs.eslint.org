@@ -1,6 +1,7 @@
 ---
 title: no-const-assign
 rule_type: problem
+handled_by_typescript: true
 ---
 
 我们不能修改使用 `const` 关键字声明的变量。

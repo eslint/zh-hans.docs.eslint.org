@@ -1,6 +1,7 @@
 ---
 title: no-this-before-super
 rule_type: problem
+handled_by_typescript: true
 ---
 
 在派生类的构造函数中，如果 `this`/`super` 在 `super()` 调用之前被使用，会引发引用错误。
