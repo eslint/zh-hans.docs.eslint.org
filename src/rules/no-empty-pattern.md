@@ -63,3 +63,47 @@ function foo({a = []}) {}
 ```
 
 :::
+
+## 选项
+
+此规则有一个用于例外情况的对象选项：
+
+### allowObjectPatternsAsParameters
+
+默认值为 `false`。将此选项设置为 `true` 允许将空对象模式用作函数参数。
+
+**注意**：该规则不允许将空数组模式用作函数参数。
+
+使用此与 `{"allowObjectPatternsAsParameters": true}` 选项的**错误**示例：
+
+::: incorrect
+
+```js
+/*eslint no-empty-pattern: ["error", { "allowObjectPatternsAsParameters": true }]*/
+
+function foo({a: {}}) {}
+var foo = function({a: {}}) {};
+var foo = ({a: {}}) => {};
+var foo = ({} = bar) => {};
+var foo = ({} = { bar: 1 }) => {};
+
+function foo([]) {}
+```
+
+:::
+
+使用此规则与 `{"allowObjectPatternsAsParameters": true}` 选项的**正确**示例：
+
+::: correct
+
+```js
+/*eslint no-empty-pattern: ["error", { "allowObjectPatternsAsParameters": true }]*/
+
+function foo({}) {}
+var foo = function({}) {};
+var foo = ({}) => {};
+
+function foo({} = {}) {}
+```
+
+:::

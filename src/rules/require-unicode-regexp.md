@@ -20,7 +20,37 @@ rule_type: suggestion
 
     `u` 标志禁用了附件 B 定义的恢复逻辑。因此，你可以提前发现错误。这类似于[严格模式](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode)。
 
-因此，`u` 标志可以让我们更好地使用正则表达式工作。
+正则表达式中的 `v` 标志是在 ECMAScript 2024 中引入的，它是 `u` 标志的一个超集，并提供了两个额外的功能：
+
+1. **字符串的 Unicode 属性**
+
+    使用 Unicode 属性转义，你可以使用字符串的属性。
+
+    ```js
+    const re = /^\p{RGI_Emoji}$/v;
+
+    // Match an emoji that consists of just 1 code point:
+    re.test('⚽'); // '\u26BD'
+    // → true ✅
+
+    // Match an emoji that consists of multiple code points:
+    re.test('👨🏾‍⚕️'); // '\u{1F468}\u{1F3FE}\u200D\u2695\uFE0F'
+    // → true ✅
+    ```
+
+2. **集合表示法**
+
+    它允许在字符类之间进行集合操作。
+
+    ```js
+    const re = /[\p{White_Space}&&\p{ASCII}]/v;
+    re.test('\n'); // → true
+    re.test('\u2028'); // → false
+    ```
+
+请查看 <https://github.com/tc39/proposal-regexp-v-flag> 和 <https://v8.dev/features/regexp-v-flag> 以获取更多详细信息。
+
+因此，`u` 和 `v` 标志让我们更好地处理正则表达式。
 
 ## 规则细节
 
@@ -37,6 +67,11 @@ const a = /aaa/
 const b = /bbb/gi
 const c = new RegExp("ccc")
 const d = new RegExp("ddd", "gi")
+
+const e = /aaa/v
+const f = /bbb/giv
+const g = new RegExp("ccc", "v")
+const h = new RegExp("ddd", "giv")
 ```
 
 :::

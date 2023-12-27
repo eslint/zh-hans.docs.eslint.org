@@ -114,6 +114,83 @@ export default [
 ];
 ```
 
+### 处理器
+
+在 eslintrc 文件中，处理器必须在插件中定义，然后通过名称在配置中引用。以点号开头的处理器表示 [以文件扩展名命名的处理器](../../extend/custom-processors#文件扩展名处理器)，ESLint 将自动为该文件扩展名配置。
+
+在扁平的配置文件中，处理器仍然可以通过它们的名称从插件中引用，但现在也可以直接插入到配置中。处理器将**永远不会**被自动配置，必须在配置中明确设置。
+
+以下是具有自定义插件和处理器的示例：
+
+```javascript
+// node_modules/eslint-plugin-someplugin/index.js
+module.exports = {
+    processors: {
+        ".md": {
+            preprocess() {},
+            postprocess() {}
+        },
+        "someProcessor": {
+            preprocess() {},
+            postprocess() {}
+        }
+    }
+};
+```
+
+在 eslintrc 中，你可以按以下方式配置：
+
+```javascript
+// .eslintrc.js
+module.exports = {
+    plugins: ["someplugin"],
+    processor: "someplugin/someProcessor"
+};
+```
+
+ESLint 还会自动添加以下等效项：
+
+```javascript
+{
+     overrides: [{
+        files: ["**/*.md"],
+        processor: "someplugin/.md"
+     }]
+}
+```
+
+在平面配置中，以下都是表达相同含义的有效方式：
+
+```javascript
+// eslint.config.js
+import somePlugin from "eslint-plugin-someplugin";
+
+export default [
+    {
+        plugins: { somePlugin },
+        processor: "somePlugin/someProcessor"
+    },
+    {
+        plugins: { somePlugin },
+        // We can embed the processor object in the config directly
+        processor: somePlugin.processors.someProcessor
+    },
+    {
+        // We don't need the plugin to be present in the config to use the processor directly
+        processor: somePlugin.processors.someProcessor
+    }
+];
+```
+
+请注意，由于在扁平配置中**不会**自动添加 `.md` 处理器，因此你还需要指定额外的配置元素：
+
+```javascript
+{
+    files: ["**/*.md"],
+    processor: somePlugin.processors[".md"]
+}
+```
+
 ### 基于 Glob 的配置
 
 默认情况下，eslintrc 文件会对放置它们的目录及其子目录中的所有文件（除了被 `.eslintignore` 包含的文件）进行 lint。如果你希望对不同的文件 glob 模式使用不同的配置，可以在 `overrides` 属性中指定它们。
@@ -253,14 +330,64 @@ export default [
 ];
 ```
 
-### 预定义配置
+### `eslint-env` 配置注释
 
-在 eslintrc 文件中，使用 `extends` 属性来使用预定义的配置。ESLint 提供了两个可以作为字符串访问的预定义配置：
+在 eslintrc 配置系统中，可以使用 `eslint-env` 配置注释为文件定义全局变量。在使用平面配置进行检查时，不再识别这些注释：在 ESLint 的将来版本中，`eslint-env` 注释将被报告为错误。因此，在从 eslintrc 迁移到平面配置时，应该从所有文件中删除 `eslint-env` 配置注释。可以用等效但更冗长的 `global` 配置注释替换它们，或者在配置文件中使用 `globals` 定义。
+
+例如，在使用 eslintrc 时，待检查的文件可能如下所示：
+
+```javascript
+// tests/my-file.js
+/* eslint-env mocha */
+describe("unit tests", () => {
+    it("should pass", () => {
+        // ...
+    });
+});
+```
+
+在上面的例子中，`describe` 和 `it` 会被识别为全局标识符，因为有 `/* eslint-env mocha */` 注释。
+
+使用平面配置，可以通过 `global` 配置注释来实现相同的效果，例如：
+
+```javascript
+// tests/my-file.js
+/* global describe, it -- Globals defined by Mocha */
+describe("unit tests", () => {
+    it("should pass", () => {
+        // ...
+    });
+});
+```
+
+另一个选项是从待检查的文件中删除注释，并在配置中定义全局变量，例如：
+
+```javascript
+// eslint.config.js
+import globals from "globals";
+export default [
+    // ...other config
+    {
+        files: [
+            "tests/**"
+        ],
+        languageOptions: {
+            globals: {
+                ...globals.mocha
+            }
+        }
+    }
+];
+```
+
+### 预定义配置和可共享配置
+
+在 eslintrc 文件中，使用 `extends` 属性来使用预定义的配置。ESLint 提供了两个可以作为字符串访问的预定义配置和可共享配置：
 
 * `"eslint:recommended"`：ESLint 推荐的规则
 * `"eslint:all"`：所有 ESLint 内置的规则
 
-你还可以使用 `extends` 属性来扩展自定义配置。自定义配置可以是指向本地配置文件或 npm 包名称的路径。
+你还可以使用 `extends` 属性来扩展可共享配置。可共享配置可以是指向本地配置文件或 npm 包名称的路径。
 
 在平面配置文件中，预定义配置需要从单独的模块导入到平面配置文件中的。`recommended` 和 `all` 规则配置位于 [`@eslint/js`](https://www.npmjs.com/package/@eslint/js) 包中。你必须导入此包才能使用这些配置：
 
@@ -285,7 +412,7 @@ module.exports = {
 }
 ```
 
-这个 ESLint 配置文件使用了内置配置、本地自定义配置以及来自 npm 包的自定义配置：
+这个 ESLint 配置文件使用了内置配置、本地可共享配置以及来自 npm 包的可共享配置：
 
 ```javascript
 // .eslintrc.js
@@ -339,18 +466,46 @@ export default [
 ];
 ```
 
+#### 在平面配置中使用 eslintrc 配置
+
+你可能会发现有一个你依赖的可共享配置尚未更新为平面配置格式。在这种情况下，你可以使用 `FlatCompat` 工具将 eslintrc 格式转换为平面配置格式。首先，安装 `@eslint/eslintrc` 包：
+
+```shell
+npm install @eslint/eslintrc --save-dev
+```
+
+然后，导入 `FlatCompat` 并创建一个新实例来转换现有的 eslintrc 配置。例如，如果 npm 包 `eslint-config-my-config` 是 eslintrc 格式的，你可以这样写：
+
+```js
+import { FlatCompat } from "@eslint/eslintrc";
+import path from "path";
+import { fileURLToPath } from "url";
+// mimic CommonJS variables -- not needed if using CommonJS
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const compat = new FlatCompat({
+    baseDirectory: __dirname
+});
+export default [
+    // mimic ESLintRC-style extends
+    ...compat.extends("eslint-config-my-config"),
+];
+```
+
+这个例子使用了 `FlatCompat#extends()` 方法将 `eslint-config-my-config` 插入到扁平配置数组中。有关 `FlatCompat` 类的更多信息，请参阅[包的 README](https://github.com/eslint/eslintrc#usage)。
+
 ### 忽略文件
 
 使用 eslintrc，你可以通过在项目根目录创建一个单独的 `.eslintignore` 文件来让 ESLint 忽略某些文件。`.eslintignore` 文件使用与 `.gitignore` 文件相同的 glob 模式语法。或者你也可以在 eslintrc 文件中使用 `ignorePatterns` 属性。
 
-而要在平面配置中忽略文件，你则需要使用配置对象中的 `ignores` 属性。`ignores` 属性接受 glob 模式的数组。请注意，平面配置的 glob 模式**不匹配**点文件（例如，`*.js` 不会匹配 `.dotfile.js`）。平面配置不支持从 `.eslintignore` 文件加载 ignore 模式，因此你需要直接将这些模式迁移到平面配置中。
+而要在平面配置中忽略文件，你则需要使用配置对象中的 `ignores` 属性。`ignores` 属性接受 glob 模式的数组。平面配置不支持从 `.eslintignore` 文件加载 ignore 模式，因此你需要直接将这些模式迁移到平面配置中。
 
 例如，以下是一个可以与 eslintrc 配置一起使用的 `.eslintignore` 示例：
 
 ```shell
 # .eslintignore
 temp.js
-.config/*
+config/*
 # ...other ignored files
 ```
 
@@ -360,7 +515,7 @@ temp.js
 // .eslintrc.js
 module.exports = {
     // ...other config
-    ignorePatterns: ["temp.js", ".config/*"],
+    ignorePatterns: ["temp.js", "config/*"],
 };
 ```
 
@@ -370,10 +525,12 @@ module.exports = {
 export default [
     {
         // ...other config
-        ignores: ["temp.js", ".config/*"]
+        ignores: ["temp.js", "config/*"]
     }
 ];
 ```
+
+此外，使用平面配置时，不再默认忽略点文件（例如 `.dotfile.js`）。如果要忽略点文件，请添加文件忽略模式 `"**/.*"`。
 
 ### 检查器选项
 

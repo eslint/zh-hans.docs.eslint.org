@@ -43,7 +43,7 @@ ruleTester.run("my-rule", myRule, {
 })
 ```
 
-当你在处理一个特定的漏洞并迭代解决方案时，就需要运行单个测试。在提交拉动请求前，你需要运行 `npm test`。`npm test` 会使用 Mocha 的 `--forbid-only` 选项来防止 `only` 测试通过完整的测试运行。
+当你在处理一个特定的漏洞并迭代解决方案时，就需要运行单个测试。在提交拉取请求前，你需要运行 `npm test`。`npm test` 会使用 Mocha 的 `--forbid-only` 选项来防止 `only` 测试通过完整的测试运行。
 
 ## 对单元测试的更多控制
 

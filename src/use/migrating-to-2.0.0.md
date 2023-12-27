@@ -116,7 +116,7 @@ module.exports = {
 * `spread` - 启用数组[展开运算符](https://leanpub.com/understandinges6/read#leanpub-auto-the-spread-operator)
 * `superInFunctions` - 启用在函数内引用 `super`
 * `templateStrings` - 启用[模板字符串](https://leanpub.com/understandinges6/read/#leanpub-auto-template-strings)
-* `unicodeCodePointEscapes` - 启用[代码点转义](https://leanpub.com/understandinges6/read/#leanpub-auto-escaping-non-bmp-characters)
+* `unicodeCodePointEscapes` - 启用[码位转义](https://leanpub.com/understandinges6/read/#leanpub-auto-escaping-non-bmp-characters)
 
 如果你正在使用这些标志，比如说：
 

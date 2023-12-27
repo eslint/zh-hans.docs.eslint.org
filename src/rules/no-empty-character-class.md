@@ -3,7 +3,7 @@ title: no-empty-character-class
 rule_type: problem
 ---
 
-因为正则表达式中的空字符类并不匹配任何东西，它们可能是输入错误。
+正则表达式中的空字符类并不会匹配任何东西，它们很有可能是错别字。
 
 ```js
 var foo = /^abc[]/;
@@ -22,6 +22,23 @@ var foo = /^abc[]/;
 
 /^abc[]/.test("abcdefg"); // false
 "abcdefg".match(/^abc[]/); // null
+
+/^abc[[]]/v.test("abcdefg"); // false
+"abcdefg".match(/^abc[[]]/v); // null
+
+/^abc[[]--[x]]/v.test("abcdefg"); // false
+"abcdefg".match(/^abc[[]--[x]]/v); // null
+
+/^abc[[d]&&[]]/v.test("abcdefg"); // false
+"abcdefg".match(/^abc[[d]&&[]]/v); // null
+
+const regex = /^abc[d[]]/v;
+regex.test("abcdefg"); // true, the nested `[]` has no effect
+"abcdefg".match(regex); // ["abcd"]
+regex.test("abcefg"); // false, the nested `[]` has no effect
+"abcefg".match(regex); // null
+regex.test("abc"); // false, the nested `[]` has no effect
+"abc".match(regex); // null
 ```
 
 :::
@@ -38,6 +55,9 @@ var foo = /^abc[]/;
 
 /^abc[a-z]/.test("abcdefg"); // true
 "abcdefg".match(/^abc[a-z]/); // ["abcd"]
+
+/^abc[^]/.test("abcdefg"); // true
+"abcdefg".match(/^abc[^]/); // ["abcd"]
 ```
 
 :::

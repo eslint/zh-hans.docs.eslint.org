@@ -7,7 +7,7 @@ eleventyNavigation:
     order: 1
 ---
 
-如果你认为你发现了 ESLint 中的缺陷，请在 GitHub 上[创建新议题](https://github.com/eslint/eslint/issues/new/choose)或[拉动请求](pull-requests)。
+如果你认为你发现了 ESLint 中的缺陷，请在 GitHub 上[创建新议题](https://github.com/eslint/eslint/issues/new/choose)或[拉取请求](pull-requests)。
 
 请包括尽可能多的细节，以帮助我们正确解决你的问题。如果我们需要对问题进行分流，并不断要求人们提供更多的细节，这就占用了实际解决问题的时间。如果你的问题中包含够多细节，就能帮助我们尽可能地提高工作效率。
 
