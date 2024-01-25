@@ -1,6 +1,10 @@
 ---
 title: Package.json 约定
-edit_link: https://github.com/eslint/eslint/edit/main/docs/src/contribute/package-json-conventions.md
+eleventyNavigation:
+    key: package.json conventions
+    parent: contribute to eslint
+    title: Package.json Conventions
+    order: 8
 ---
 
 以下内容适用于 `package.json` 文件中的 `scripts` 部分。
@@ -14,7 +18,7 @@ npm 脚本名称必须仅包含小写字母，使用 `:` 分隔部分，使用 `
 ```abnf
 name         = life-cycle / main target? option* ":watch"?
 life-cycle   = "prepare" / "preinstall" / "install" / "postinstall" / "prepublish" / "preprepare" / "prepare" / "postprepare" / "prepack" / "postpack" / "prepublishOnly"
-main         = "build" / "lint" ":fix"? / "release" / "start" / "test"
+main         = "build" / "lint" ":fix"? / "release" / "start" / "test" / "fetch"
 target       = ":" word ("-" word)* / extension ("+" extension)*
 option       = ":" word ("-" word)*
 word         = ALPHA +
@@ -34,6 +38,12 @@ extension    = ( ALPHA / DIGIT )+
 生成一组文件，这些文件是从源代码和/或数据生成的，脚本的名称必须以 `build` 开头。
 
 如果一个包包含任何 `build:*` 脚本，那么可能会有一个名为 `build` 的脚本。如果有，它应该生成与单独运行每个 `build` 脚本相同的输出。它必须生成从运行这些脚本中的每一个脚本生成的输出的子集。
+
+### Fetch
+
+生成数据或资源来自外部文件的脚本，必须以 `fetch` 开头命名。
+
+如果一个包含任何 `fetch:*` 脚本，可能会有一个名为 `fetch` 的脚本。如果有的话，它应该产生与单独运行每个 `fetch` 脚本相同的输出。它必须产生运行这些脚本时输出的一个子集。
 
 ### Release
 

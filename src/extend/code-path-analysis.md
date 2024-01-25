@@ -1,6 +1,5 @@
 ---
 title: 代码链路分析详情
-
 ---
 
 ESLint 规则可以使用代码链路。
@@ -59,74 +58,107 @@ bar();
 有五个与代码链路有关的事件，你可以在规则中定义事件处理程序。
 
 ```js
-module.exports = function(context) {
-    return {
-        /**
-         * 这在分析代码链路的开始阶段被调用。
-         * 此时代码链路对象只有初始段。
-         *
-         * @param {CodePath} codePath - 新的代码链路
-         * @param {ASTNode} node - 当前节点
-         * @returns {void}
-         */
-        "onCodePathStart": function(codePath, node) {
-            // 对 codePath 做点什么
-        },
+module.exports = {
+    meta: {
+        // ...
+    },
+    create(context) {
 
-        /**
-         * 这是在分析代码链路结束时调用的。
-         * 在这个时候，代码链路对象已经完成。
-         *
-         * @param {CodePath} codePath - 完成的代码路径
-         * @param {ASTNode} node - 当前节点
-         * @returns {void}
-         */
-        "onCodePathEnd": function(codePath, node) {
-            // 对 codePath 做点什么
-        },
+        return {
+            /**
+             * This is called at the start of analyzing a code path.
+             * In this time, the code path object has only the initial segment.
+             *
+             * @param {CodePath} codePath - The new code path.
+             * @param {ASTNode} node - The current node.
+             * @returns {void}
+             */
+            onCodePathStart(codePath, node) {
+                // do something with codePath
+            },
 
-        /**
-         * 当创建代码链路段时，会调用它。
-         * 这意味着代码链路被分叉或合并了。
-         * 在这个时候，该段有以前的段，并且已经被
-         * 判断为可达或不可达。
-         *
-         * @param {CodePathSegment} segment - 新的代码链路段
-         * @param {ASTNode} node - 当前节点
-         * @returns {void}
-         */
-        "onCodePathSegmentStart": function(segment, node) {
-            // 做点什么
-        },
+            /**
+             * This is called at the end of analyzing a code path.
+             * In this time, the code path object is complete.
+             *
+             * @param {CodePath} codePath - The completed code path.
+             * @param {ASTNode} node - The current node.
+             * @returns {void}
+             */
+            onCodePathEnd(codePath, node) {
+                // do something with codePath
+            },
 
-        /**
-         *当一个代码链路段被留下时，这被调用。
-         *在这个时候，该段还没有下一个段。
-         *
-         * @param {CodePathSegment} segment - 左边的代码链路段
-         * @param {ASTNode} node - 当前节点
-         * @returns {void}
-         */
-        "onCodePathSegmentEnd": function(segment, node) {
-            // 做点什么
-        },
+            /**
+             * This is called when a reachable code path segment was created.
+             * It meant the code path is forked or merged.
+             * In this time, the segment has the previous segments and has been
+             * judged reachable or not.
+             *
+             * @param {CodePathSegment} segment - The new code path segment.
+             * @param {ASTNode} node - The current node.
+             * @returns {void}
+             */
+            onCodePathSegmentStart(segment, node) {
+                // do something with segment
+            },
 
-        /**
-         * 当代码链路段被循环使用时，会调用它。
-         * 通常情况下，段在创建时有每一个前段。
-         * 但当循环时，一个段被作为一个新的前段添加到一个
-         * 现有的段。
-         *
-         * @param {CodePathSegment} fromSegment - 代码链路段的源码
-         * @param {CodePathSegment} toSegment - 目标代码链路段
-         * @param {ASTNode} node - 当前节点
-         * @returns {void}
-         */
-        "onCodePathSegmentLoop": function(fromSegment, toSegment, node) {
-            // 做点什么
-        }
-    };
-};
+            /**
+             * This is called when a reachable code path segment was left.
+             * In this time, the segment does not have the next segments yet.
+             *
+             * @param {CodePathSegment} segment - The left code path segment.
+             * @param {ASTNode} node - The current node.
+             * @returns {void}
+             */
+            onCodePathSegmentEnd(segment, node) {
+                // do something with segment
+            },
+
+            /**
+             * This is called when an unreachable code path segment was created.
+             * It meant the code path is forked or merged.
+             * In this time, the segment has the previous segments and has been
+             * judged reachable or not.
+             *
+             * @param {CodePathSegment} segment - The new code path segment.
+             * @param {ASTNode} node - The current node.
+             * @returns {void}
+             */
+            onUnreachableCodePathSegmentStart(segment, node) {
+                // do something with segment
+            },
+
+            /**
+             * This is called when an unreachable code path segment was left.
+             * In this time, the segment does not have the next segments yet.
+             *
+             * @param {CodePathSegment} segment - The left code path segment.
+             * @param {ASTNode} node - The current node.
+             * @returns {void}
+             */
+            onUnreachableCodePathSegmentEnd(segment, node) {
+                // do something with segment
+            },
+
+            /**
+             * This is called when a code path segment was looped.
+             * Usually segments have each previous segments when created,
+             * but when looped, a segment is added as a new previous segment into a
+             * existing segment.
+             *
+             * @param {CodePathSegment} fromSegment - A code path segment of source.
+             * @param {CodePathSegment} toSegment - A code path segment of destination.
+             * @param {ASTNode} node - The current node.
+             * @returns {void}
+             */
+            onCodePathSegmentLoop(fromSegment, toSegment, node) {
+                // do something with segment
+            }
+        };
+
+    }
+}
 ```
 
 ### 关于 `onCodePathSegmentLoop`
@@ -146,7 +178,7 @@ bar();
 1. 首先，分析推进到循环的终点。
 
 :::img-container
-   ![循环事件示例 1](./assets/images/code-path-analysis/loop-event-example-while-1.svg)
+   ![循环事件示例 1](../assets/images/code-path-analysis/loop-event-example-while-1.svg)
 :::
 
 1. 其次，它创建了循环链路。
@@ -212,35 +244,134 @@ bar();
 
 ## 使用示例
 
-### 检查能否执行
+### 跟踪当前代码段位置
+
+要跟踪当前代码路径段的位置，你可以定义一个规则，如下所示：
 
 ```js
-function isReachable(segment) {
-    return segment.reachable;
+module.exports = {
+    meta: {
+        // ...
+    },
+    create(context) {
+
+        // tracks the code path we are currently in
+        let currentCodePath;
+
+        // tracks the segments we've traversed in the current code path
+        let currentSegments;
+
+        // tracks all current segments for all open paths
+        const allCurrentSegments = [];
+
+        return {
+
+            onCodePathStart(codePath) {
+                currentCodePath = codePath;
+                allCurrentSegments.push(currentSegments);
+                currentSegments = new Set();
+            },
+
+            onCodePathEnd(codePath) {
+                currentCodePath = codePath.upper;
+                currentSegments = allCurrentSegments.pop();
+            },
+
+            onCodePathSegmentStart(segment) {
+                currentSegments.add(segment);
+            },
+
+            onCodePathSegmentEnd(segment) {
+                currentSegments.delete(segment);
+            },
+
+            onUnreachableCodePathSegmentStart(segment) {
+                currentSegments.add(segment);
+            },
+
+            onUnreachableCodePathSegmentEnd(segment) {
+                currentSegments.delete(segment);
+            }
+        };
+
+    }
+};
+```
+
+在这个例子中，`currentCodePath` 变量用于访问当前正在遍历的代码路径，而 `currentSegments` 变量则跟踪到目前为止已经遍历的该代码路径中的段。请注意，`currentSegments` 既开始时为空集，也在遍历进行时不断更新。
+
+跟踪当前代码路径段的位置有助于分析导致特定节点的代码路径，就像在下一个例子中所示。
+
+### 寻找不可达的节点
+
+要找到不可达的节点，跟踪当前代码路径段的位置，然后使用节点访问器检查是否有任何可达的段。例如，以下代码查找任何不可达的 `ExpressionStatement`。
+
+```js
+function areAnySegmentsReachable(segments) {
+    for (const segment of segments) {
+        if (segment.reachable) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
-module.exports = function(context) {
-    var codePathStack = [];
+module.exports = {
+    meta: {
+        // ...
+    },
+    create(context) {
 
-    return {
-        // 存储 CodePath 对象
-        "onCodePathStart": function(codePath) {
-            codePathStack.push(codePath);
-        },
-        "onCodePathEnd": function(codePath) {
-            codePathStack.pop();
-        },
+        // tracks the code path we are currently in
+        let currentCodePath;
 
-        // 检查能否执行
-        "ExpressionStatement": function(node) {
-            var codePath = codePathStack[codePathStack.length - 1];
+        // tracks the segments we've traversed in the current code path
+        let currentSegments;
 
-            // 检查当前的代码链路段
-            if (!codePath.currentSegments.some(isReachable)) {
-                context.report({message: "Unreachable!", node: node});
+        // tracks all current segments for all open paths
+        const allCurrentSegments = [];
+
+        return {
+
+            onCodePathStart(codePath) {
+                currentCodePath = codePath;
+                allCurrentSegments.push(currentSegments);
+                currentSegments = new Set();
+            },
+
+            onCodePathEnd(codePath) {
+                currentCodePath = codePath.upper;
+                currentSegments = allCurrentSegments.pop();
+            },
+
+            onCodePathSegmentStart(segment) {
+                currentSegments.add(segment);
+            },
+
+            onCodePathSegmentEnd(segment) {
+                currentSegments.delete(segment);
+            },
+
+            onUnreachableCodePathSegmentStart(segment) {
+                currentSegments.add(segment);
+            },
+
+            onUnreachableCodePathSegmentEnd(segment) {
+                currentSegments.delete(segment);
+            },
+
+            ExpressionStatement(node) {
+
+                // check all the code path segments that led to this node
+                if (!areAnySegmentsReachable(currentSegments)) {
+                    context.report({ message: "Unreachable!", node });
+                }
             }
-        }
-    };
+
+        };
+
+    }
 };
 ```
 
@@ -249,7 +380,7 @@ module.exports = function(context) {
 [no-fallthrough](https://github.com/eslint/eslint/blob/HEAD/lib/rules/no-fallthrough.js),
 [consistent-return](https://github.com/eslint/eslint/blob/HEAD/lib/rules/consistent-return.js)
 
-### 要想检查代码链路状态
+### 检查是否每个路径都调用了函数
 
 此示例检查每个链路中是否调用了 `cb` 参数。
 `CodePath` 和 `CodePathSegment` 的实例被共享给每个规则。
@@ -271,75 +402,101 @@ function isCbCalled(info) {
     return info.cbCalled;
 }
 
-module.exports = function(context) {
-    var funcInfoStack = [];
-    var segmentInfoMap = Object.create(null);
+module.exports = {
+    meta: {
+        // ...
+    },
+    create(context) {
 
-    return {
-        // 检查 `cb`.
-        "onCodePathStart": function(codePath, node) {
-            funcInfoStack.push({
-                codePath: codePath,
-                hasCb: hasCb(node, context)
-            });
-        },
-        "onCodePathEnd": function(codePath, node) {
-            funcInfoStack.pop();
+        let funcInfo;
+        const funcInfoStack = [];
+        const segmentInfoMap = Object.create(null);
 
-            // 检查每个链路是否调用了 `cb`
-            var cbCalled = codePath.finalSegments.every(function(segment) {
-                var info = segmentInfoMap[segment.id];
-                return info.cbCalled;
-            });
+        return {
+            // Checks `cb`.
+            onCodePathStart(codePath, node) {
+                funcInfoStack.push(funcInfo);
 
-            if (!cbCalled) {
-                context.report({
-                    message: "`cb` should be called in every path.",
-                    node: node
+                funcInfo = {
+                    codePath: codePath,
+                    hasCb: hasCb(node, context),
+                    currentSegments: new Set()
+                };
+            },
+
+            onCodePathEnd(codePath, node) {
+                funcInfo = funcInfoStack.pop();
+
+                // Checks `cb` was called in every paths.
+                const cbCalled = codePath.finalSegments.every(function(segment) {
+                    const info = segmentInfoMap[segment.id];
+                    return info.cbCalled;
                 });
+
+                if (!cbCalled) {
+                    context.report({
+                        message: "`cb` should be called in every path.",
+                        node: node
+                    });
+                }
+            },
+
+            // Manages state of code paths and tracks traversed segments
+            onCodePathSegmentStart(segment) {
+
+                funcInfo.currentSegments.add(segment);
+
+                // Ignores if `cb` doesn't exist.
+                if (!funcInfo.hasCb) {
+                    return;
+                }
+
+                // Initialize state of this path.
+                const info = segmentInfoMap[segment.id] = {
+                    cbCalled: false
+                };
+
+                // If there are the previous paths, merges state.
+                // Checks `cb` was called in every previous path.
+                if (segment.prevSegments.length > 0) {
+                    info.cbCalled = segment.prevSegments.every(isCbCalled);
+                }
+            },
+
+            // Tracks unreachable segment traversal
+            onUnreachableCodePathSegmentStart(segment) {
+                funcInfo.currentSegments.add(segment);
+            },
+
+            // Tracks reachable segment traversal
+            onCodePathSegmentEnd(segment) {
+                funcInfo.currentSegments.delete(segment);
+            },
+
+            // Tracks unreachable segment traversal
+            onUnreachableCodePathSegmentEnd(segment) {
+                funcInfo.currentSegments.delete(segment);
+            },
+
+            // Checks reachable or not.
+            CallExpression(node) {
+
+                // Ignores if `cb` doesn't exist.
+                if (!funcInfo.hasCb) {
+                    return;
+                }
+
+                // Sets marks that `cb` was called.
+                const callee = node.callee;
+                if (callee.type === "Identifier" && callee.name === "cb") {
+                    funcInfo.currentSegments.forEach(segment => {
+                        const info = segmentInfoMap[segment.id];
+                        info.cbCalled = true;
+                    });
+                }
             }
-        },
-
-        // 管理代码链路状态
-        "onCodePathSegmentStart": function(segment) {
-            var funcInfo = funcInfoStack[funcInfoStack.length - 1];
-
-            // 如果不存在 `cb`，则忽略。
-            if (!funcInfo.hasCb) {
-                return;
-            }
-
-            // 初始化这个链路的状态。
-            var info = segmentInfoMap[segment.id] = {
-                cbCalled: false
-            };
-
-            // 如果有以前的链路，则合并状态
-            // 检查每个此前的链路是否调用了 `cb`
-            if (segment.prevSegments.length > 0) {
-                info.cbCalled = segment.prevSegments.every(isCbCalled);
-            }
-        },
-
-        // 检查是否可达
-        "CallExpression": function(node) {
-            var funcInfo = funcInfoStack[funcInfoStack.length - 1];
-
-            // 如果不存在 `cb`，则忽略
-            if (!funcInfo.hasCb) {
-                return;
-            }
-
-            // 设置调用 `cb` 的标记。
-            var callee = node.callee;
-            if (callee.type === "Identifier" && callee.name === "cb") {
-                funcInfo.codePath.currentSegments.forEach(function(segment) {
-                    var info = segmentInfoMap[segment.id];
-                    info.cbCalled = true;
-                });
-            }
-        }
-    };
+        };
+    }
 };
 ```
 

@@ -4,7 +4,7 @@ eleventyNavigation:
     key: work on issues
     parent: contribute to eslint
     title: 处理议题
-    order: 8
+    order: 9
 ---
 
 我们公开的[议题追踪器](https://github.com/eslint/eslint/issues)列出了所有我们计划去做的事，以及来自社区的建议。在开始着手处理议题前，请确保读完本页面的其余部分。

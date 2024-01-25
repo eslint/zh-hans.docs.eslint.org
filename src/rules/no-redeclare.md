@@ -1,6 +1,8 @@
 ---
 title: no-redeclare
 rule_type: suggestion
+handled_by_typescript: true
+extra_typescript_info: 注意尽管 TypeScript 会捕获 `let` 和 `const` 的重新声明，但不会捕获 `var` 的重新声明。因此，如果你在 TypeScript 代码库中使用传统的 `var` 关键字，这个规则仍然会提供一些价值。
 related_rules:
 - no-shadow
 ---

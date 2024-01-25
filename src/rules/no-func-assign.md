@@ -1,6 +1,7 @@
 ---
 title: no-func-assign
 rule_type: problem
+handled_by_typescript: true
 ---
 
 JavaScript 函数可以被写成 FunctionDeclaration `function foo() { ... }` 或 FunctionExpression `var foo = function() { ... };`. 虽然 JavaScript 解释器可能会容忍它，但覆盖/重新分配一个写成 FunctionDeclaration 的函数，往往表明有错误或问题。

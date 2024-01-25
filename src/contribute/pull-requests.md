@@ -4,7 +4,7 @@ eleventyNavigation:
     key: submit pull request
     parent: contribute to eslint
     title: 提交拉取请求
-    order: 9
+    order: 10
 ---
 
 如果你想为 ESLint 仓库做贡献，请使用 GitHub pull request。这是我们评估你的代码并将其合并到代码库的最快方式。请不要用代码片断来提交问题。这样做意味着我们需要手动合并这些变化，并更新任何适当的测试。这降低了你的代码被及时纳入的可能性。请使用拉取请求。

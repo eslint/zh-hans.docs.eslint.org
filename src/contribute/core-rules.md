@@ -4,7 +4,7 @@ eleventyNavigation:
     key: contribute core rule
     parent: contribute to eslint
     title: 贡献核心规则
-    order: 10
+    order: 11
 ---
 
 ESLint 核心规则是指那些包括在 ESLint 包里的规则。

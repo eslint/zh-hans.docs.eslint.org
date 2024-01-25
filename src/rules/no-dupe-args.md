@@ -1,6 +1,7 @@
 ---
 title: no-dupe-args
 rule_type: problem
+handled_by_typescript: true
 ---
 
 如果在一个函数定义中，有一个以上的参数有相同的名称，那么最后出现的参数会“影射”前面的参数。重复的名称可能是笔误。

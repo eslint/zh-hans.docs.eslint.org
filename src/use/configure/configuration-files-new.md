@@ -57,6 +57,10 @@ module.exports = (async () => {
 })();
 ```
 
+::: warning
+ESLint 仅自动查找名为 `eslint.config.js` 的配置文件，不会查找 `eslint.config.cjs` 或 `eslint.config.mjs`。如果你想指定不同于默认的配置文件名称，请使用 `--config` 命令行选项。
+:::
+
 ## 配置对象
 
 每个配置对象都包括了 ESLint 检查一组文件所需的所有信息。配置对象由以下属性组成：
@@ -645,7 +649,7 @@ export default [
 你可以通过通过将设置 `ESLINT_USE_FLAT_CONFIG` 环境变量设置为 `true`，并在命令行中使用 `-c` 或 `--config` 选项来指定替代的配置文件，以避免检索 `eslint.config.js`。例如
 
 ```shell
-ESLINT_USE_FLAT_CONFIG=true npx eslint -c some-other-file.js **/*.js
+ESLINT_USE_FLAT_CONFIG=true npx eslint --config some-other-file.js **/*.js
 ```
 
 在这种情况下，ESLint 将不会检索 `eslint.config.js`，而会直接使用 `some-other-file.js`。
