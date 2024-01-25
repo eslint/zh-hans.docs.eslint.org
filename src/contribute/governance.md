@@ -4,7 +4,7 @@ eleventyNavigation:
     key: governance
     parent: contribute to eslint
     title: 治理
-    order: 11
+    order: 12
 ---
 
 ESLint 是一个依赖于社区贡献者的开源项目。每个人都可以随时提交代码、参与讨论、提交建议或其他合适的贡献。本文档讲述了 ESLint 项目中几种类型的贡献者。
