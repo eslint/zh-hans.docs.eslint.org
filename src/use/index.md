@@ -6,15 +6,13 @@ eleventyNavigation:
     order: 1
 ---
 
-本指南针对想要使用 ESLint 的终端用户。如果你正在寻找扩展 ESLint 或使用 ESLint 源码的方式，请查看[扩展 ESLint 文档](../extend/)
+本指南针对想要直接使用 ESLint 用户。如果你正在寻找扩展 ESLint 或使用 ESLint 源码的方式，请查看[扩展 ESLint 文档](../extend/)
 
 ## [入门](getting-started)
 
 想要跳过前期准备直接开始使用 ESLint？本章节对安装、设置和配置项进行了高水平概述。
 
 ## [核心概念](core-concepts)
-
-Understand the main components of ESLint and how to use them in your project.
 
 理解 ESLint 中的主要组件并指导如何在自己对项目中使用它们。
 

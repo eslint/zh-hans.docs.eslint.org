@@ -11,6 +11,8 @@ ESLint 自定义解析器用于扩展 ESLint，以支持检查代码中新的非
 
 ## 创建自定义解析器
 
+### 自定义解析器中的方法
+
 自定义解析器是一个 JavaScript 对象，带有 `parse` 或 `parseForESLint` 方法。`parse` 方法只返回 AST，而 `parseForESLint` 方法还会返回附加属性，让解析器能更多地自定义 ESLint 的行为。
 
 这两种方法的第一个参数都是源代码，第二个参数是可选的配置对象，配置对象在配置文件中以 [`parserOptions`](../use/configure/language-options#指定解析器选项) 的形式提供。
@@ -32,11 +34,11 @@ function parse(code, options) {
 module.exports = { parse };
 ```
 
-## `parse` 返回对象
+### `parse` 返回对象
 
 `parse` 方法应该简单地返回 [AST](#ast-规范) 对象。
 
-## `parseForESLint` 返回对象
+### `parseForESLint` 返回对象
 
 `parseForESLint` 方法应该返回一个包括所需的 `ast` 属性和可选的 `services`、`scopeManager` 和 `visitorKeys` 属性。
 
@@ -47,6 +49,22 @@ module.exports = { parse };
 * `visitorKeys` 可以是自定义 AST 遍历的对象。该对象的键是 AST 节点的类型。每个值是一个应该被遍历的属性名称的数组。默认为 [`eslint-visitor-keys` 的键](https://github.com/eslint/eslint-visitor-keys#evkkeys)。
     * 在 ESLint v4.14.0 中加入了对 `visitorKeys` 的支持。支持 `visitorKeys` 的 ESLint 版本将在 `parserOptions` 中提供 `eslintVisitorKeys: true` 属性，它可以用作特征检测。
 
+### 自定义解析器中的元数据
+
+为了更容易调试和更有效地缓存自定义解析器，建议在自定义解析器的根提供包含名称和版本的 `meta` 对象，如下所示：
+
+```js
+// preferred location of name and version
+module.exports = {
+    meta: {
+        name: "eslint-parser-custom",
+        version: "1.2.3"
+    }
+};
+```
+
+`meta.name` 属性应与你的自定义解析器的 npm 包名称匹配，而 `meta.version` 属性应与你的自定义解析器的 npm 包版本匹配。最简单的方法是从你的 `package.json` 中读取这些信息。
+
 ## AST 规范
 
 自定义解析器创建的 AST 需要基于 [ESTree](https://github.com/estree/estree)。AST 还需要包括一些关于源码细节信息的额外属性。
@@ -55,7 +73,7 @@ module.exports = { parse };
 
 所有节点必须要有 `range` 属性。
 
-* `range`（`number[]`）是一个由两个数字组成的数组。这两个数字都是基于 0 的索引，是源代码字符数组中的位置。第一个是节点的起始位置，第二个是节点的结束位置。`code.slice(node.range[0], node.range[1])` 必须是该节点的文本。这个范围不包括节点周围的空格/括号。
+* `range`（`number[]`）是一个由两个数字组成的数组。这两个数字都是基于 0 的索引，表示源代码字符数组中的位置。第一个是节点的起始位置，第二个是节点的结束位置。`code.slice(node.range[0], node.range[1])` 必须是该节点的文本。这个范围不包括节点周围的空格/括号。
 * `loc` (`SourceLocation`) 不能是 `null`。[ESTree](https://github.com/estree/estree/blob/25834f7247d44d3156030f8e8a2d07644d771fdb/es5.md#node-objects) 将 `loc` 属性定义为 nullable，但 ESLint 需要这个属性。另一方面 `SourceLocation#source` 属性也可以是 `undefined`。ESLint 不使用 `SourceLocation#source` 属性。
 
 所有节点的 `parent` 属性必须可覆写。ESLint 在遍历时会在任何规则访问 AST 前，将每个节点的 `parent` 属性设置为其父节点。

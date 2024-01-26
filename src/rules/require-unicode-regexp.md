@@ -1,11 +1,14 @@
 ---
 title: require-unicode-regexp
 rule_type: suggestion
+further_reading:
+- https://github.com/tc39/proposal-regexp-v-flag
+- https://v8.dev/features/regexp-v-flag
 ---
 
 正则 `u` 标志有两个作用。
 
-1. **使正则表达式正确处理 UTF-16 代用对**。
+1. **使正则表达式正确处理 UTF-16 代用对（surrogate pairs）**。
 
     特别是，字符范围语法得到正确的行为。
 
@@ -16,7 +19,7 @@ rule_type: suggestion
 
 2. **使正则表达式尽早抛出语法错误，因为禁用[附件 B 扩展](https://www.ecma-international.org/ecma-262/6.0/#sec-regular-expressions-patterns)**。
 
-    由于历史原因，JavaScript 正则表达式对语法错误是宽容的。例如，`/\w{1, 2/` 是一个语法错误，但是 JavaScript 并没有抛出这个错误。它匹配的是诸如 `"a{1, 2"` 这样的字符串。这样的恢复逻辑在附件 B 中进行了定义。
+    由于历史原因，JavaScript 正则表达式对语法错误非常宽容。例如 `/\w{1, 2/` 是语法错误，但 JavaScript 并不会抛出这个错误。它会匹配诸如 `"a{1, 2"` 这样的字符串。这样的恢复逻辑在附件 B 中进行了定义。
 
     `u` 标志禁用了附件 B 定义的恢复逻辑。因此，你可以提前发现错误。这类似于[严格模式](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode)。
 
@@ -48,13 +51,11 @@ rule_type: suggestion
     re.test('\u2028'); // → false
     ```
 
-请查看 <https://github.com/tc39/proposal-regexp-v-flag> 和 <https://v8.dev/features/regexp-v-flag> 以获取更多详细信息。
-
 因此，`u` 和 `v` 标志让我们更好地处理正则表达式。
 
 ## 规则细节
 
-这条规则的目的是在正则表达式上强制使用 `u` 标志。
+这条规则的目的是在正则表达式上强制使用 `u` 或 `v` 标志。
 
 使用此规则的**错误**示例：
 
@@ -98,4 +99,4 @@ function f(flags) {
 
 ## 何时不用
 
-如果你不想通知没有 `u` 标志的正则表达式，你可以安全地禁用此规则。
+如果你不想警告存在没有 `u` 或 `v` 标志的正则表达式，那么可以安全地禁用此规则。
