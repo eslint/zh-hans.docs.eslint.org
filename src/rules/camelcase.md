@@ -311,7 +311,7 @@ const foo = no_camelcased;
 ```js
 /*eslint camelcase: ["error", {allow: ["UNSAFE_componentWillMount"]}]*/
 
-function UNSAFE_componentWillMount() {
+function UNSAFE_componentWillReceiveProps() {
     // ...
 }
 ```

@@ -17,7 +17,7 @@ var foo = "Copyright \251";
 
 使用此规则的**错误**示例：
 
-::: incorrect
+::: incorrect { "sourceType": "script" }
 
 ```js
 /*eslint no-octal-escape: "error"*/
@@ -29,7 +29,7 @@ var foo = "Copyright \251";
 
 使用此规则的**正确**示例：
 
-::: correct
+::: correct { "sourceType": "script" }
 
 ```js
 /*eslint no-octal-escape: "error"*/

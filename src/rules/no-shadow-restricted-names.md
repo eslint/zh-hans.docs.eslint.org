@@ -20,7 +20,7 @@ var undefined = "foo";
 
 使用此规则的**错误**示例：
 
-::: incorrect
+::: incorrect { "sourceType": "script" }
 
 ```js
 /*eslint no-shadow-restricted-names: "error"*/
@@ -38,7 +38,7 @@ try {} catch(eval){}
 
 使用此规则的**正确**示例：
 
-::: correct
+::: correct { "sourceType": "script" }
 
 ```js
 /*eslint no-shadow-restricted-names: "error"*/

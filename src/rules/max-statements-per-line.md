@@ -11,7 +11,7 @@ related_rules:
 - max-statements
 ---
 
-一行代码包含太多语句可能会难以阅读。代码通常是自上而下阅读的，特别是在扫描时，所以限制单行允许的语句数量对可读性和可维护性非常有用。
+一行代码包含太多语句可能会难以阅读。代码通常是自上而下阅读的，特别是在扫读时，所以限制单行允许的语句数量对可读性和可维护性非常有用。
 
 ```js
 function foo () { var bar; if (condition) { bar = 1; } else { bar = 2; } return true; } // 太多语句了
@@ -19,7 +19,7 @@ function foo () { var bar; if (condition) { bar = 1; } else { bar = 2; } return 
 
 ## 规则细节
 
-这条规则执行了每行允许的最大语句数。
+此规则规定了每行允许的最大语句数。
 
 ## 选项
 
@@ -39,7 +39,7 @@ if (condition) { bar = 1; }
 for (var i = 0; i < length; ++i) { bar = 1; }
 switch (discriminant) { default: break; }
 function foo() { bar = 1; }
-var foo = function foo() { bar = 1; };
+var qux = function qux() { bar = 1; };
 (function foo() { bar = 1; })();
 ```
 
@@ -57,7 +57,7 @@ if (condition) bar = 1;
 for (var i = 0; i < length; ++i);
 switch (discriminant) { default: }
 function foo() { }
-var foo = function foo() { };
+var qux = function qux() { };
 (function foo() { })();
 ```
 
@@ -75,7 +75,7 @@ if (condition) { bar = 1; } else { baz = 2; }
 for (var i = 0; i < length; ++i) { bar = 1; baz = 2; }
 switch (discriminant) { case 'test': break; default: break; }
 function foo() { bar = 1; baz = 2; }
-var foo = function foo() { bar = 1; };
+var qux = function qux() { bar = 1; };
 (function foo() { bar = 1; baz = 2; })();
 ```
 
@@ -93,7 +93,7 @@ if (condition) bar = 1; if (condition) baz = 2;
 for (var i = 0; i < length; ++i) { bar = 1; }
 switch (discriminant) { default: break; }
 function foo() { bar = 1; }
-var foo = function foo() { bar = 1; };
+var qux = function qux() { bar = 1; };
 (function foo() { var bar = 1; })();
 ```
 

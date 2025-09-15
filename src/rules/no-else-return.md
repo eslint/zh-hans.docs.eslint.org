@@ -35,7 +35,7 @@ function foo() {
 ```js
 /*eslint no-else-return: "error"*/
 
-function foo() {
+function foo1() {
     if (x) {
         return y;
     } else {
@@ -43,7 +43,7 @@ function foo() {
     }
 }
 
-function foo() {
+function foo2() {
     if (x) {
         return y;
     } else if (z) {
@@ -53,7 +53,7 @@ function foo() {
     }
 }
 
-function foo() {
+function foo3() {
     if (x) {
         return y;
     } else {
@@ -63,7 +63,7 @@ function foo() {
     return t;
 }
 
-function foo() {
+function foo4() {
     if (error) {
         return 'It failed';
     } else {
@@ -74,7 +74,7 @@ function foo() {
 }
 
 // Two warnings for nested occurrences
-function foo() {
+function foo5() {
     if (x) {
         if (y) {
             return y;
@@ -96,7 +96,7 @@ function foo() {
 ```js
 /*eslint no-else-return: "error"*/
 
-function foo() {
+function foo1() {
     if (x) {
         return y;
     }
@@ -104,7 +104,7 @@ function foo() {
     return z;
 }
 
-function foo() {
+function foo2() {
     if (x) {
         return y;
     } else if (z) {
@@ -114,7 +114,7 @@ function foo() {
     }
 }
 
-function foo() {
+function foo3() {
     if (x) {
         if (z) {
             return y;
@@ -124,7 +124,7 @@ function foo() {
     }
 }
 
-function foo() {
+function foo4() {
     if (error) {
         return 'It failed';
     } else if (loading) {

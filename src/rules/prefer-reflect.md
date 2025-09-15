@@ -379,7 +379,7 @@ delete foo.bar; // deleting object property
 
 在没有例外情况下使用此规则的**正确**示例：
 
-::: correct
+::: correct { "sourceType": "script" }
 
 ```js
 /*eslint prefer-reflect: "error"*/
@@ -390,11 +390,11 @@ Reflect.deleteProperty(foo, 'bar');
 
 :::
 
-注意：关于防止删除变量的规则，见 [no-delete-var instead](no-delete-var)
+注意：关于防止删除变量的规则，见 [no-delete-var instead](no-delete-var)。
 
 使用此规则与 `{ "exceptions": ["delete"] }` 选项的**正确**示例：
 
-::: correct
+::: correct { "sourceType": "script" }
 
 ```js
 /*eslint prefer-reflect: ["error", { "exceptions": ["delete"] }]*/

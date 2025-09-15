@@ -13,7 +13,7 @@ rule_type: suggestion
 
 使用此规则的**错误**示例：
 
-::: incorrect
+::: incorrect { "sourceType": "script" }
 
 ```js
 /*eslint no-delete-var: "error"*/

@@ -48,7 +48,7 @@ ECMAScript 模块中的顶级 `this` 总是被认为是无效的，因为它的�
 
 在严格模式下使用此规则的**错误**示例：
 
-::: incorrect
+::: incorrect { "sourceType": "script" }
 
 ```js
 /*eslint no-invalid-this: "error"*/
@@ -96,7 +96,7 @@ foo.forEach(function() {
 
 在严格模式下，使用此规则的**正确**示例：
 
-::: correct
+::: correct { "sourceType": "script" }
 
 ```js
 /*eslint no-invalid-this: "error"*/
@@ -242,7 +242,7 @@ function foo() {
 
 使用此规则并将 `capIsConstructor` 选项设置为 `false` 时的**错误**示例：
 
-::: incorrect
+::: incorrect { "sourceType": "script" }
 
 ```js
 /*eslint no-invalid-this: ["error", { "capIsConstructor": false }]*/
@@ -270,7 +270,7 @@ Baz = function() {
 
 使用此规则并将 `"capIsConstructor"` 选项设置为 `false` 时的**正确**示例：
 
-::: correct
+::: correct { "sourceType": "script" }
 
 ```js
 /*eslint no-invalid-this: ["error", { "capIsConstructor": false }]*/

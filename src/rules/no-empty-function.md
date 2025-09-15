@@ -36,13 +36,13 @@ list.map(() => ({})); // This is an empty object.
 
 function foo() {}
 
-var foo = function() {};
+var bar = function() {};
 
-var foo = () => {};
+var bar = () => {};
 
-function* foo() {}
+function* baz() {}
 
-var foo = function*() {};
+var bar = function*() {};
 
 var obj = {
     foo: function() {},
@@ -93,19 +93,19 @@ function foo() {
    // 什么也不做。
 }
 
-var foo = function() {
+var baz = function() {
     // any clear comments.
 };
 
-var foo = () => {
+var baz = () => {
     bar();
 };
 
-function* foo() {
+function* foobar() {
    // 什么也不做。
 }
 
-var foo = function*() {
+var baz = function*() {
    // 什么也不做。
 };
 
@@ -203,7 +203,7 @@ class A {
 
 function foo() {}
 
-var foo = function() {};
+var bar = function() {};
 
 var obj = {
     foo: function() {}
@@ -239,7 +239,7 @@ var foo = () => {};
 
 function* foo() {}
 
-var foo = function*() {};
+var bar = function*() {};
 
 var obj = {
     foo: function*() {}

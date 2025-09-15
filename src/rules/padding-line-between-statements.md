@@ -115,13 +115,13 @@ function foo() {
     { blankLine: "always", prev: "*", next: "return" }
 ]*/
 
-function foo() {
+function foo1() {
     bar();
 
     return;
 }
 
-function foo() {
+function foo2() {
     return;
 }
 ```
@@ -143,17 +143,17 @@ function foo() {
     { blankLine: "any",    prev: ["const", "let", "var"], next: ["const", "let", "var"]}
 ]*/
 
-function foo() {
+function foo1() {
     var a = 0;
     bar();
 }
 
-function foo() {
+function foo2() {
     let a = 0;
     bar();
 }
 
-function foo() {
+function foo3() {
     const a = 0;
     bar();
 }
@@ -179,21 +179,21 @@ class C {
     { blankLine: "any",    prev: ["const", "let", "var"], next: ["const", "let", "var"]}
 ]*/
 
-function foo() {
+function foo1() {
     var a = 0;
     var b = 0;
 
     bar();
 }
 
-function foo() {
+function foo2() {
     let a = 0;
     const b = 0;
 
     bar();
 }
 
-function foo() {
+function foo3() {
     const a = 0;
     const b = 0;
 
@@ -254,7 +254,7 @@ foo();
 
 ----
 
-这种配置需要在 `switch` 语句中的子句之间设置空行。
+这样配置会要求在 `switch` 语句中的子句之间进行空行。
 
 使用此规则与 `[{ blankLine: "always", prev: ["case", "default"], next: "*" }]` 配置的**错误**示例：
 

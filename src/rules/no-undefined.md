@@ -53,7 +53,7 @@ if (foo === undefined) {
     // ...
 }
 
-function foo(undefined) {
+function baz(undefined) {
     // ...
 }
 

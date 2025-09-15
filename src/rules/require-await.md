@@ -62,7 +62,7 @@ bar(async () => {
     await doSomething();
 });
 
-function foo() {
+function baz() {
     doSomething();
 }
 

@@ -3,7 +3,7 @@ title: no-unsafe-optional-chaining
 rule_type: problem
 ---
 
-可选的链式（`?.`）表达式可以用 `undefined` 的返回值进行短路。因此，将一个已评估的选项链表达式作为一个函数、对象、数字等来处理，会导致 TypeError 或意外的结果。比如：
+可选的链式表达式（`?.`）可以用 `undefined` 的返回值进行短路。因此，将一个已评估的选项链表达式作为一个函数、对象、数字等来处理，会导致 TypeError 或意外的结果。比如：
 
 ```js
 var obj = undefined;
@@ -30,7 +30,7 @@ var obj = undefined;
 
 使用此规则的**错误**示例：
 
-::: incorrect
+::: incorrect { "sourceType": "script" }
 
 ```js
 /*eslint no-unsafe-optional-chaining: "error"*/

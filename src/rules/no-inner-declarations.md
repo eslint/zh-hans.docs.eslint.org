@@ -72,7 +72,7 @@ function doSomething() {
 
 使用此规则与默认的 `"functions"` 选项的**错误**示例：
 
-::: incorrect
+::: incorrect { "sourceType": "script" }
 
 ```js
 /*eslint no-inner-declarations: "error"*/
@@ -102,7 +102,7 @@ class C {
 
 使用此规则与默认的 `"functions"` 选项的**正确**示例：
 
-::: correct
+::: correct { "sourceType": "script" }
 
 ```js
 /*eslint no-inner-declarations: "error"*/
@@ -137,7 +137,7 @@ if (foo) var a;
 
 使用此规则与 `"both"` 选项的**错误**示例：
 
-::: incorrect
+::: incorrect { "sourceType": "script" }
 
 ```js
 /*eslint no-inner-declarations: ["error", "both"]*/
@@ -169,7 +169,7 @@ class C {
 
 使用此规则与 `"both"` 选项的**正确**示例：
 
-::: correct
+::: correct { "sourceType": "script" }
 
 ```js
 /*eslint no-inner-declarations: ["error", "both"]*/

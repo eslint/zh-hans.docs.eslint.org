@@ -3,7 +3,7 @@ title: no-extra-boolean-cast
 rule_type: suggestion
 ---
 
-在诸如 `if` 语句的测试中，表达式的结果已经被强制为布尔值，通过双重否定（`!!`）或 `Boolean` 调用来转换为布尔值是不必要的。例如，这些 `if` 语句是等同的。
+在诸如 `if` 语句的测试中，表达式的结果已经被强制为布尔值，通过双重否定（`!!`）或 `Boolean` 调用来转换为布尔值是非必要的。例如，这些 `if` 语句是等同的：
 
 ```js
 if (!!foo) {
@@ -21,7 +21,7 @@ if (foo) {
 
 ## 规则细节
 
-这条规则不允许不必要的布尔值转换。
+此规则不允许非必要的布尔值转换。
 
 使用此规则的**错误**示例：
 
@@ -71,7 +71,7 @@ for (; !!foo; ) {
 var foo = !!bar;
 var foo = Boolean(bar);
 
-function foo() {
+function qux() {
     return !!bar;
 }
 

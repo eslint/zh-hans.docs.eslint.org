@@ -16,14 +16,14 @@ rule_type: suggestion
 ```js
 /* eslint no-useless-return: "error" */
 
-function foo() { return; }
+var foo = function() { return; }
 
-function foo() {
+var foo = function() {
   doSomething();
   return;
 }
 
-function foo() {
+var foo = function() {
   if (condition) {
     bar();
     return;
@@ -32,7 +32,7 @@ function foo() {
   }
 }
 
-function foo() {
+var foo = function() {
   switch (bar) {
     case 1:
       doSomething();
@@ -53,13 +53,13 @@ function foo() {
 ```js
 /* eslint no-useless-return: "error" */
 
-function foo() { return 5; }
+var foo = function() { return 5; }
 
-function foo() {
+var foo = function() {
   return doSomething();
 }
 
-function foo() {
+var foo = function() {
   if (condition) {
     bar();
     return;
@@ -69,7 +69,7 @@ function foo() {
   qux();
 }
 
-function foo() {
+var foo = function() {
   switch (bar) {
     case 1:
       doSomething();
@@ -79,7 +79,7 @@ function foo() {
   }
 }
 
-function foo() {
+var foo = function() {
   for (const foo of bar) {
     return;
   }
