@@ -53,9 +53,9 @@ JSX 中大括号内的注释允许与大括号在同一行，但前提是它们�
 
 使用此规则的**错误**示例：
 
-::: incorrect
+::: incorrect { "ecmaFeatures": { "jsx": true } }
 
-```js
+```jsx
 /*eslint no-inline-comments: "error"*/
 
 var foo = <div>{ /* On the same line with other code */ }<h1>Some heading</h1></div>;
@@ -73,9 +73,9 @@ var bar = (
 
 使用此规则的**正确**示例：
 
-::: correct
+::: correct { "ecmaFeatures": { "jsx": true } }
 
-```js
+```jsx
 /*eslint no-inline-comments: "error"*/
 
 var foo = (

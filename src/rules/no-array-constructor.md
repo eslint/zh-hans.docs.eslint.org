@@ -2,15 +2,15 @@
 title: no-array-constructor
 rule_type: suggestion
 related_rules:
-- no-new-object
 - no-new-wrappers
+- no-object-constructor
 ---
 
-一般不鼓励使用 `Array` 构造函数来构造新数组，而是使用数组字面符号，因为存在单参数的隐患，而且 `Array` 全局变量可能会被重新定义。除非当 Array 构造函数被用来创建指定大小的稀疏数组时，只需给构造函数一个数字参数。
+一般不鼓励使用 `Array` 构造函数来构造新数组，而是使用数组字面量，因为存在单参数的隐患，而且 `Array` 全局变量可能会被重新定义。除非当 Array 构造函数被用来创建指定大小的稀疏数组时，只需给构造函数一个数字参数。
 
 ## 规则细节
 
-此规则不允许 `Array` 构造函数。
+此规则不允许使用 `Array` 构造函数。
 
 使用此规则的**错误**示例：
 

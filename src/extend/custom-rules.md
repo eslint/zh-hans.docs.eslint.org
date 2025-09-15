@@ -841,7 +841,7 @@ module.exports = {
 
 ### 标记变量已使用
 
-**废弃**：`context.markVariableAsUsed()` 方法已弃用，并由 `sourceCode.markVariableAsUsed()` 所取代。
+**弃用**：`context.markVariableAsUsed()` 方法已弃用，并由 `sourceCode.markVariableAsUsed()` 所取代。
 
 某些 ESLint 规则，例如 [`no-unused-vars`](../rules/no-unused-vars)，会检查变量是否已被使用ESLint 本身只知道变量访问的标准规则，因此访问变量的自定义方式可能不会注册为“已使用”。
 

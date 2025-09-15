@@ -91,10 +91,13 @@ var bar = foo.map(node => node.getAttribute("id"));
 
 ## 选项
 
-该规则接受一个有两个选项的配置对象：
+该规则的配置对象有三个选项：
 
-* 当将 `"allowImplicit": false`（默认值）设置为 `true` 是, 允许需要返回值的方法的回调隐含地返回 `undefined`，其 `return` 语句不包含表达式。
+* 当将 `"allowImplicit": false`（默认值）设置为 `true` 时, 允许需要返回值的方法的回调隐含地返回 `undefined`，其 `return` 语句不包含表达式。
 * 当将 `"checkForEach": false`（默认值）设置为 `true` 时, 规则也将报告返回一个值的 `forEach` 回调。
+* `"allowVoid": false`（默认值）设置为 `true` 时，允许 `forEach` 回调中的 `void`，所以规则不会报告返回值带有 `void` 操作符。
+
+**注意**：`{ "allowVoid": true }` 仅在 `checkForEach` 选项设置为 `true` 时可用。
 
 ### allowImplicit
 
@@ -121,7 +124,7 @@ var undefAllTheThings = myArray.map(function(item) {
 /*eslint array-callback-return: ["error", { checkForEach: true }]*/
 
 myArray.forEach(function(item) {
-    return handleItem(item)
+    return handleItem(item);
 });
 
 myArray.forEach(function(item) {
@@ -131,10 +134,23 @@ myArray.forEach(function(item) {
     handleItem(item);
 });
 
+myArray.forEach(function(item) {
+    if (item < 0) {
+        return void x;
+    }
+    handleItem(item);
+});
+
 myArray.forEach(item => handleItem(item));
+
+myArray.forEach(item => void handleItem(item));
 
 myArray.forEach(item => {
     return handleItem(item);
+});
+
+myArray.forEach(item => {
+    return void handleItem(item);
 });
 ```
 
@@ -164,6 +180,31 @@ myArray.forEach(function(item) {
 });
 
 myArray.forEach(item => {
+    handleItem(item);
+});
+```
+
+:::
+
+### allowVoid
+
+使用 `{ "allowVoid": true }` 选项的**正确**示例：
+
+:::correct
+
+```js
+/*eslint array-callback-return: ["error", { checkForEach: true, allowVoid: true }]*/
+
+myArray.forEach(item => void handleItem(item));
+
+myArray.forEach(item => {
+    return void handleItem(item);
+});
+
+myArray.forEach(item => {
+    if (item < 0) {
+        return void x;
+    }
     handleItem(item);
 });
 ```

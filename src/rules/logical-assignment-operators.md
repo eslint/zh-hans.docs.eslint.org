@@ -3,31 +3,31 @@ title: logical-assignment-operators
 rule_type: suggestion
 ---
 
-ES2021 introduces the assignment operator shorthand for the logical operators `||`, `&&` and `??`.
-Before, this was only allowed for mathematical operations such as `+` or `*` (see the rule [operator-assignment](./operator-assignment)).
-The shorthand can be used if the assignment target and the left expression of a logical expression are the same.
-For example `a = a || b` can be shortened to `a ||= b`.
+ES2021 为逻辑运算符 `||`、`&&` 和 `??` 引入赋值运算符简写。
+在此之前仅允许算术运算符如 `+` 或 `*`（参见 [operator-assignment](./operator-assignment) 规则）进行简写。
+如果赋值目标和逻辑表达式的左表达式相同，则可以使用该简写。
+比如 `a = a || b` 就可以简写为 `a ||= b`。
 
-## Rule Details
+## 规则细节
 
-This rule requires or disallows logical assignment operator shorthand.  
+此规则要求或禁止使用逻辑赋值运算符简写。
 
-### Options
+### 选项
 
-This rule has a string and an object option.
-String option:
+此规则有一个字符串和一个对象选项。
+字符串选项：
 
-* `"always"` (default)
+* `"always"`（默认值）
 * `"never"`
 
-Object option (only available if string option is set to `"always"`):
+对象选项（仅当字符串选项被设置为 `"always"` 时可用）：
 
-* `"enforceForIfStatements": false`(default) Do *not* check for equivalent `if` statements
-* `"enforceForIfStatements": true` Check for equivalent `if` statements
+* `"enforceForIfStatements": false`（默认值）**不会**检查等价的 `if` 语句
+* `"enforceForIfStatements": true` 检查等价的 `if` 语句
 
 #### always
 
-Examples of **incorrect** code for this rule with the default `"always"` option:
+使用此规则与默认的 `"always"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -44,7 +44,7 @@ a ?? (a = b)
 
 :::
 
-Examples of **correct** code for this rule with the default `"always"` option:
+使用此规则与默认的 `"always"` 选项的**正确**示例：
 
 ::: correct
 
@@ -64,7 +64,7 @@ if (a) a = b
 
 #### never
 
-Examples of **incorrect** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**错误**示例：
 
 ::: incorrect
 
@@ -78,7 +78,7 @@ a ??= b
 
 :::
 
-Examples of **correct** code for this rule with the `"never"` option:
+使用此规则与 `"never"` 选项的**正确**示例：
 
 ::: correct
 
@@ -94,11 +94,11 @@ a = a ?? b
 
 #### enforceForIfStatements
 
-This option checks for additional patterns with if statements which could be expressed with the logical assignment operator.
+此选项检查能够表达为逻辑赋值运算符的 if 语句的其他模式。
+
+使用此规则与 `["always", { enforceForIfStatements: true }]` 选项的**错误**示例：
 
 ::: incorrect
-
-Examples of **incorrect** code for this rule with the `["always", { enforceForIfStatements: true }]` option:
 
 ```js
 /*eslint logical-assignment-operators: ["error", "always", { enforceForIfStatements: true }]*/
@@ -112,7 +112,7 @@ if (a === null || a === undefined) a = b // <=> a ??= b
 
 :::
 
-Examples of **correct** code for this rule with the `["always", { enforceForIfStatements: true }]` option:
+使用此规则与 `["always", { enforceForIfStatements: true }]` 选项的**正确**示例：
 
 ::: correct
 
@@ -125,6 +125,6 @@ if (a === 0) a = b
 
 :::
 
-## When Not To Use It
+## 何时不用
 
-Use of logical operator assignment shorthand is a stylistic choice. Leaving this rule turned off would allow developers to choose which style is more readable on a case-by-case basis.
+使用逻辑操作符赋值简写是风格上的选择。将此规则关闭可以允许开发者根据具体案例选择更加易读的风格。

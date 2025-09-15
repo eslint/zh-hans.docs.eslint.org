@@ -3,10 +3,10 @@ title: keyword-spacing
 rule_type: layout
 ---
 
-关键词是 JavaScript 的语法元素，如 `try` 和 `if`。
-这些关键词对语言有特殊的意义，所以在代码编辑器中经常以不同的颜色出现。
-作为语言的一个重要部分，风格指南经常提到关键词周围应该使用的间距。
-例如，你可能有一个风格指南，说关键词应该总是由空格包围，这意味着 `if-else` 语句必须看起来像这样。
+关键字是 JavaScript 的语法元素，如 `try` 和 `if`。
+这些关键字对语言有特殊的意义，所以在代码编辑器中经常以不同的颜色出现。
+作为语言的一个重要部分，风格指南经常提到关键字周围应该使用的间距。
+例如，你可能有一个风格指南，要求关键字应该总是被空格包围，这意味着 `if-else` 语句必须看起来像这样。
 
 ```js
 if (foo) {
@@ -16,9 +16,9 @@ if (foo) {
 }
 ```
 
-当然，你也可以有一个风格指南，不允许关键词周围有空格。
+当然，你也可以在风格指南中禁止关键字周围存在空格。
 
-然而，如果你想强制执行 `function`关键词和下面的开头小括号之间的间距样式，请参考 [space-before-function-paren](space-before-function-paren)。
+然而，如果你想强制执行 `function` 关键字和下面的开头小括号之间的间距样式，请参考 [space-before-function-paren](space-before-function-paren)。
 
 ## 规则细节
 
@@ -28,11 +28,11 @@ if (foo) {
 
 此规则选项为对象：
 
-* `"before": true`（默认值）要求关键词前至少有一个空格。
-* `"before": false` 不允许关键词前有空格。
-* `"after": true`（默认值）要求关键词后面至少有一个空格。
-* `"after": false` 不允许关键词后有空格。
-* `"overrides"` 允许覆盖指定关键词的间距样式。
+* `"before": true`（默认值）要求关键字前至少有一个空格。
+* `"before": false` 不允许关键字前有空格。
+* `"after": true`（默认值）要求关键字后面至少有一个空格。
+* `"after": false` 不允许关键字后有空格。
+* `"overrides"` 允许覆盖指定关键字的间距样式。
 
 ### before
 
@@ -56,9 +56,9 @@ if (foo) {
 
 使用此规则与默认的 `{ "before": true }` 选项的**正确**示例：
 
-::: correct
+::: correct { "ecmaFeatures": { "jsx": true } }
 
-```js
+```jsx
 /*eslint keyword-spacing: ["error", { "before": true }]*/
 /*eslint-env es6*/
 
@@ -171,9 +171,9 @@ if(foo) {
 
 使用此规则与默认的 `{ "after": true }` 选项的**正确**示例：
 
-::: correct
+::: correct { "ecmaFeatures": { "jsx": true } }
 
-```js
+```jsx
 /*eslint keyword-spacing: ["error", { "after": true }]*/
 
 if (foo) {
@@ -318,4 +318,4 @@ export { C as"my class" };
 
 ## 何时不用
 
-如果你不想在关键词间距上执行一致性，你可以安全地禁用此规则。
+如果你不需要在关键字周围的空格上保持一致，你可以安全地禁用此规则。

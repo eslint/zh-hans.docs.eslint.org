@@ -17,9 +17,11 @@ further_reading:
 
 ## 规则细节
 
-这条规则定位了用作回调或函数参数的函数表达式。对于任何可以用箭头函数替换而不改变结果的，将产生一个错误。
+此规则定位了用作回调或函数参数的函数表达式。对于任何可以用箭头函数替换而不改变结果的，将提示错误。
 
 下面的例子**将会**被标记出来：
+
+::: incorrect
 
 ```js
 /* eslint prefer-arrow-callback: "error" */
@@ -31,9 +33,13 @@ foo(function() { return this.a; }.bind(this)); // ERROR
 // prefer: foo(() => this.a)
 ```
 
+:::
+
 箭头函数不会产生相同结果的情况将被忽略。
 
 以下例子**将不会**被标记：
+
+::: correct
 
 ```js
 /* eslint prefer-arrow-callback: "error" */
@@ -55,11 +61,13 @@ foo(function() { return this.a; }); // OK
 foo(function bar(n) { return n && n + bar(n - 1); }); // OK
 ```
 
+:::
+
 ## 选项
 
 通过一个选项对象来进一步控制这个规则的行为。
 
-Default: `{ allowNamedFunctions: false, allowUnboundThis: true }`
+默认：`{ allowNamedFunctions: false, allowUnboundThis: true }`
 
 ### allowNamedFunctions
 
@@ -69,11 +77,15 @@ Default: `{ allowNamedFunctions: false, allowUnboundThis: true }`
 
 `{ "allowNamedFunctions": true }` **将不会**标记下面的例子。
 
+::: correct
+
 ```js
 /* eslint prefer-arrow-callback: [ "error", { "allowNamedFunctions": true } ] */
 
 foo(function bar() {});
 ```
+
+:::
 
 ### allowUnboundThis
 
@@ -82,6 +94,8 @@ foo(function bar() {});
 当设置为 `false` 时，该选项完全禁止使用函数表达式作为回调或函数参数，没有例外。
 
 `{ "allowUnboundThis": false }` **将**标记以下例子。
+
+::: incorrect
 
 ```js
 /* eslint prefer-arrow-callback: [ "error", { "allowUnboundThis": false } ] */
@@ -93,6 +107,8 @@ foo(function() { (() => this); });
 
 someArray.map(function(item) { return this.doSomething(item); }, someObject);
 ```
+
+:::
 
 ## 何时不用
 
