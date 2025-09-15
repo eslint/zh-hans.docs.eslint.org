@@ -3,7 +3,7 @@ title: space-return-throw-case
 
 ---
 
-要求在 `return`、`throw` 和 `case` 等关键词后有空格。
+要求在 `return`、`throw` 和 `case` 等关键字后有空格。
 
 （已移除）此规则在 ESLint v2.0 中移除并被 [keyword-spacing](keyword-spacing) 所取代。
 

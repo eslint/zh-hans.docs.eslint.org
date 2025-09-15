@@ -6,6 +6,8 @@ related_rules:
 - no-new-wrappers
 ---
 
+此规则已在 ESLint v8.50.0 中**弃用**，并由 [no-object-constructor](no-object-constructor) 规则取代。新规则能识别更多可使用对象字面量语法的场景，且当 `Object` 构造函数带参数调用时不会报告问题。
+
 `Object` 构造函数用于在 JavaScript 中创建新的通用对象，例如：
 
 ```js
@@ -24,7 +26,7 @@ var myObject = {};
 
 ## 规则细节
 
-这条规则不允许 `Object` 构造函数。
+此规则禁止使用 `new` 调用 `Object` 构造函数。
 
 使用此规则的**错误**示例：
 
@@ -36,6 +38,8 @@ var myObject = {};
 var myObject = new Object();
 
 new Object();
+
+var foo = new Object("foo");
 ```
 
 :::
@@ -59,4 +63,4 @@ new Object();
 
 ## 何时不用
 
-如果你希望允许使用 `Object` 构造函数，你可以安全地关闭这个规则。
+如果你希望允许使用 `new` 创建 `Object` 构造函数，你可以安全地关闭这个规则。

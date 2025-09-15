@@ -15,8 +15,8 @@ further_reading:
 
 此规则总是忽略以下周围的额外括号：
 
-* 正则字词，如 `(/abc/).test(var)`，以避免与 [wrap-regex](wrap-regex) 规则冲突
-*立即调用的函数表达式（也称为 IIFE），如 `var x = (function () {})();` 和 `var x = (function () {}();` 以避免与 [wrap-iife](wrap-iife) 规则冲突
+* 正则表达式字面量，如 `(/abc/).test(var)`，以避免与 [wrap-regex](wrap-regex) 规则冲突
+* 立即调用的函数表达式（也称为 IIFE），如 `var x = (function () {})();` 和 `var x = (function () {}();` 以避免与 [wrap-iife](wrap-iife) 规则冲突
 * 箭头函数参数，以避免与 [arrow-parens](arrow-parens) 规则冲突
 
 ## 选项
@@ -195,9 +195,9 @@ foo ? bar : (baz || qux);
 
 使用此规则与 `all` 和 `{ "ignoreJSX": "all" }` 选项的**正确**示例：
 
-::: correct
+::: correct { "ecmaFeatures": { "jsx": true } }
 
-```js
+```jsx
 /* eslint no-extra-parens: ["error", "all", { ignoreJSX: "all" }] */
 const Component = (<div />)
 const Component = (
@@ -211,9 +211,9 @@ const Component = (
 
 使用此规则与 `all` 和 `{ "ignoreJSX": "multi-line" }` 选项的**错误**示例：
 
-::: incorrect
+::: incorrect { "ecmaFeatures": { "jsx": true } }
 
-```js
+```jsx
 /* eslint no-extra-parens: ["error", "all", { ignoreJSX: "multi-line" }] */
 const Component = (<div />)
 const Component = (<div><p /></div>)
@@ -223,9 +223,9 @@ const Component = (<div><p /></div>)
 
 使用此规则与 `all` 和 `{ "ignoreJSX": "multi-line" }` 选项的**正确**示例：
 
-::: correct
+::: correct { "ecmaFeatures": { "jsx": true } }
 
-```js
+```jsx
 /* eslint no-extra-parens: ["error", "all", { ignoreJSX: "multi-line" }] */
 const Component = (
     <div>
@@ -243,9 +243,9 @@ const Component = (
 
 使用此规则与 `all` 和 `{ "ignoreJSX": "single-line" }` 选项的**错误**示例：
 
-::: incorrect
+::: incorrect { "ecmaFeatures": { "jsx": true } }
 
-```js
+```jsx
 /* eslint no-extra-parens: ["error", "all", { ignoreJSX: "single-line" }] */
 const Component = (
     <div>
@@ -263,9 +263,9 @@ const Component = (
 
 使用此规则与 `all` 和 `{ "ignoreJSX": "single-line" }` 选项的**正确**示例：
 
-::: correct
+::: correct { "ecmaFeatures": { "jsx": true } }
 
-```js
+```jsx
 /* eslint no-extra-parens: ["error", "all", { ignoreJSX: "single-line" }] */
 const Component = (<div />)
 const Component = (<div><p /></div>)

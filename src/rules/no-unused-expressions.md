@@ -250,7 +250,7 @@ JSX 在 React 生态系统中最常使用，它被编译成 `React.createElement
 
 使用 `{ "enforceForJSX": true }` 选项的**错误**示例：
 
-::: incorrect
+::: incorrect { "ecmaFeatures": { "jsx": true } }
 
 ```jsx
 /*eslint no-unused-expressions: ["error", { "enforceForJSX": true }]*/
@@ -264,7 +264,7 @@ JSX 在 React 生态系统中最常使用，它被编译成 `React.createElement
 
 使用 `{ "enforceForJSX": true }` 选项的**正确**示例：
 
-::: correct
+::: correct { "ecmaFeatures": { "jsx": true } }
 
 ```jsx
 /*eslint no-unused-expressions: ["error", { "enforceForJSX": true }]*/

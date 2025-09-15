@@ -12,12 +12,12 @@ further_reading:
 
 解决这个问题的一个简单方法是，从头开始重写违规的一行。这也可能是文本编辑器带来的问题：如果重写该行不能解决这个问题，可以尝试使用不同的编辑器。
 
-已知这些空格引起的问题。
+已知这些空格引起的问题：
 
-* 零宽度空间
+* 零宽度空格
     * 不被认为是标记的分隔符，通常被解析为 `Unexpected token ILLEGAL`
     * 在现代浏览器中不显示，使得代码库软件有望解决可视化的问题。
-*行分隔符
+* 行分隔符
     * 在 JSON 中不是一个有效的字符，会导致解析错误
 
 ## 规则细节
@@ -55,12 +55,13 @@ further_reading:
 
 ## 选项
 
-这条规则有一个对象选项，用于处理例外情况。
+次规则有一个对象选项，用于处理例外情况：
 
 * `"skipStrings": true`（默认值）允许在字符串字面中使用任何空白字符
 * `"skipComments": true` 允许在注释中使用任何空白字符
 * `"skipRegExps": true` 允许在正则表达式中使用任何空格字符
-* `"skipTemplates": true` 允许在模板字面中使用任何空白字符
+* `"skipTemplates": true` 允许在模板字面量中使用任何空白字符
+* `"skipJSXText": true` 允许在 JSX 文本中使用任何空白字符
 
 ### skipStrings
 
@@ -185,6 +186,23 @@ function thing() {
 
 function thing() {
     return `template <NBSP>string`;
+}
+```
+
+:::
+
+### skipJSXText
+
+使用此规则与 `{ "skipJSXText": true }` 选项的其他**正确**示例：
+
+::: correct { "ecmaFeatures": { "jsx": true } }
+
+```jsx
+/*eslint no-irregular-whitespace: ["error", { "skipJSXText": true }]*/
+/*eslint-env es6*/
+
+function Thing() {
+    return <div>text in <NBSP>JSX</div>;
 }
 ```
 

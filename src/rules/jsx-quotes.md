@@ -35,9 +35,9 @@ JSX 属性值可以包含字符串字面，用单引号或双引号划定。
 
 使用此规则与默认的 `"prefer-double"` 选项的**错误**示例：
 
-:::incorrect
+:::incorrect { "ecmaFeatures": { "jsx": true } }
 
-```xml
+```jsx
 /*eslint jsx-quotes: ["error", "prefer-double"]*/
 
 <a b='c' />
@@ -47,9 +47,9 @@ JSX 属性值可以包含字符串字面，用单引号或双引号划定。
 
 使用此规则与默认的 `"prefer-double"` 选项的**正确**示例：
 
-:::correct
+:::correct { "ecmaFeatures": { "jsx": true } }
 
-```xml
+```jsx
 /*eslint jsx-quotes: ["error", "prefer-double"]*/
 
 <a b="c" />
@@ -62,9 +62,9 @@ JSX 属性值可以包含字符串字面，用单引号或双引号划定。
 
 使用此规则与 `"prefer-single"` 选项的**错误**示例：
 
-:::incorrect
+:::incorrect { "ecmaFeatures": { "jsx": true } }
 
-```xml
+```jsx
 /*eslint jsx-quotes: ["error", "prefer-single"]*/
 
 <a b="c" />
@@ -74,9 +74,9 @@ JSX 属性值可以包含字符串字面，用单引号或双引号划定。
 
 使用此规则与 `"prefer-single"` 选项的**正确**示例：
 
-:::correct
+:::correct { "ecmaFeatures": { "jsx": true } }
 
-```xml
+```jsx
 /*eslint jsx-quotes: ["error", "prefer-single"]*/
 
 <a b='c' />
@@ -87,4 +87,4 @@ JSX 属性值可以包含字符串字面，用单引号或双引号划定。
 
 ## 何时不用
 
-如果你不使用 JSX，或者你不关心 JSX 属性中引号的一致用法，你可以关闭这个规则。
+如果你不使用 JSX，或者你不在乎 JSX 属性中引号用法是否一致，你可以关闭这个规则。

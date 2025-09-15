@@ -6,7 +6,7 @@ further_reading:
 - https://mathiasbynens.be/notes/javascript-properties
 ---
 
-对象的字面属性名称可以用两种方式定义：使用字面符号或使用字符串。例如，这两个对象是等同的：
+对象的字面属性名称可以用两种方式定义：使用字面量或使用字符串。例如，这两个对象是等同的：
 
 ```js
 var object1 = {
@@ -53,8 +53,8 @@ var object = {
 
 对象选项：
 
-* `"keywords": true`要求在作为对象属性名称的语言关键词周围加引号（只在使用 `as-needed` 或 `consistent-as-needed`时适用）
-* `"unnecessary": true` （默认值）不允许在不严格要求的对象字面属性名称周围加引号（只适用于使用 `as-needed`时）
+* `"keywords": true` 要求在作为对象属性名称的语言关键字周围加引号（只在使用 `as-needed` 或 `consistent-as-needed` 时适用）
+* `"unnecessary": true`（默认值）不允许在不严格要求的对象字面属性名称周围加引号（只适用于使用 `as-needed`时）
 * `"unnecessary": false` 允许在没有严格要求的对象字面属性名称周围加引号（只适用于使用 `as-needed` 的情况下）
 * `"numbers": true` 需要在作为对象属性名称的数字周围加引号（只适用于使用 `as-needed` 时）
 
