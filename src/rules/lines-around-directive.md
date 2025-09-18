@@ -63,11 +63,6 @@ function bar() {
 ```js
 /* eslint lines-around-directive: ["error", "always"] */
 
-/* Top of file */
-"use strict";
-var foo;
-
-/* Top of file */
 // comment
 "use strict";
 "use asm";
@@ -75,7 +70,6 @@ var foo;
 
 function foo() {
   "use strict";
-  "use asm";
   var bar;
 }
 
@@ -84,6 +78,17 @@ function foo() {
   "use strict";
   var bar;
 }
+```
+
+::: incorrect { "sourceType": "script" }
+
+```js
+/* eslint lines-around-directive: ["error", "always"] */
+
+// comment
+"use strict";
+"use asm";
+var foo;
 ```
 
 :::
@@ -95,16 +100,13 @@ function foo() {
 ```js
 /* eslint lines-around-directive: ["error", "always"] */
 
-/* Top of file */
 "use strict";
 
 var foo;
 
-/* Top of file */
 // comment
 
 "use strict";
-"use asm";
 
 var foo;
 
@@ -122,6 +124,21 @@ function foo() {
 
   var bar;
 }
+```
+
+:::
+
+::: correct { "sourceType": "script" }
+
+```js
+/* eslint lines-around-directive: ["error", "always"] */
+
+// comment
+
+"use strict";
+"use asm";
+
+var foo;
 ```
 
 :::
@@ -135,13 +152,6 @@ function foo() {
 ```js
 /* eslint lines-around-directive: ["error", "never"] */
 
-/* Top of file */
-
-"use strict";
-
-var foo;
-
-/* Top of file */
 // comment
 
 "use strict";
@@ -151,7 +161,6 @@ var foo;
 
 function foo() {
   "use strict";
-  "use asm";
 
   var bar;
 }
@@ -167,6 +176,19 @@ function foo() {
 
 :::
 
+::: incorrect { "sourceType": "script" }
+
+```js
+/* eslint lines-around-directive: ["error", "never"] */
+
+// comment
+
+"use strict";
+"use asm";
+
+var foo;
+```
+
 使用此规则与 `"never"` 选项的**正确**示例：
 
 ::: correct { "sourceType": "script" }
@@ -174,19 +196,15 @@ function foo() {
 ```js
 /* eslint lines-around-directive: ["error", "never"] */
 
-/* Top of file */
 "use strict";
 var foo;
 
-/* Top of file */
 // comment
 "use strict";
-"use asm";
 var foo;
 
 function foo() {
   "use strict";
-  "use asm";
   var bar;
 }
 
@@ -195,6 +213,19 @@ function foo() {
   "use strict";
   var bar;
 }
+```
+
+:::
+
+::: correct { "sourceType": "script" }
+
+```js
+/* eslint lines-around-directive: ["error", "never"] */
+
+// comment
+"use strict";
+"use asm";
+var foo;
 ```
 
 :::
@@ -208,16 +239,9 @@ function foo() {
 ```js
 /* eslint lines-around-directive: ["error", { "before": "never", "after": "always" }] */
 
-/* Top of file */
-
-"use strict";
-var foo;
-
-/* Top of file */
 // comment
 
 "use strict";
-"use asm";
 var foo;
 
 function foo() {
@@ -232,6 +256,20 @@ function foo() {
   "use strict";
   var bar;
 }
+```
+
+:::
+
+::: incorrect { "sourceType": "script" }
+
+```js
+/* eslint lines-around-directive: ["error", { "before": "never", "after": "always" }] */
+
+// comment
+
+"use strict";
+"use asm";
+var foo;
 ```
 
 :::
@@ -243,21 +281,17 @@ function foo() {
 ```js
 /* eslint lines-around-directive: ["error", { "before": "never", "after": "always" }] */
 
-/* Top of file */
 "use strict";
 
 var foo;
 
-/* Top of file */
 // comment
 "use strict";
-"use asm";
 
 var foo;
 
 function foo() {
   "use strict";
-  "use asm";
 
   var bar;
 }
@@ -268,6 +302,20 @@ function foo() {
 
   var bar;
 }
+```
+
+:::
+
+::: correct { "sourceType": "script" }
+
+```js
+/* eslint lines-around-directive: ["error", { "before": "never", "after": "always" }] */
+
+// comment
+"use strict";
+"use asm";
+
+var foo;
 ```
 
 :::
@@ -279,15 +327,12 @@ function foo() {
 ```js
 /* eslint lines-around-directive: ["error", { "before": "always", "after": "never" }] */
 
-/* Top of file */
 "use strict";
 
 var foo;
 
-/* Top of file */
 // comment
 "use strict";
-"use asm";
 
 var foo;
 
@@ -308,6 +353,18 @@ function foo() {
 
 :::
 
+::: incorrect { "sourceType": "script" }
+
+```js
+/* eslint lines-around-directive: ["error", { "before": "always", "after": "never" }] */
+
+// comment
+"use strict";
+"use asm";
+
+var foo;
+```
+
 使用此规则与 `{ "before": "always", "after": "never" }` 选项的**正确**示例：
 
 ::: correct { "sourceType": "script" }
@@ -315,15 +372,12 @@ function foo() {
 ```js
 /* eslint lines-around-directive: ["error", { "before": "always", "after": "never" }] */
 
-/* Top of file */
 "use strict";
 var foo;
 
-/* Top of file */
 // comment
 
 "use strict";
-"use asm";
 var foo;
 
 function foo() {
@@ -338,6 +392,20 @@ function foo() {
   "use strict";
   var bar;
 }
+```
+
+:::
+
+::: correct { "sourceType": "script" }
+
+```js
+/* eslint lines-around-directive: ["error", { "before": "always", "after": "never" }] */
+
+// comment
+
+"use strict";
+"use asm";
+var foo;
 ```
 
 :::

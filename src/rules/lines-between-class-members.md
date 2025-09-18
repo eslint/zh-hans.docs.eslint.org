@@ -95,9 +95,15 @@ class Foo{
   bar(){}
   baz(){}
 }
+```
 
+:::
+
+::: incorrect
+
+```js
 /* eslint lines-between-class-members: ["error", "never"]*/
-class Foo{
+class Bar{
   x;
 
   bar(){}
@@ -121,9 +127,15 @@ class Foo{
 
   baz(){}
 }
+```
 
+:::
+
+::: correct
+
+```js
 /* eslint lines-between-class-members: ["error", "never"]*/
-class Foo{
+class Bar{
   x;
   bar(){}
   baz(){}

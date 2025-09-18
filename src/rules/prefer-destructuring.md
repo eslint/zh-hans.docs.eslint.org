@@ -34,6 +34,8 @@ further_reading:
 ::: incorrect
 
 ```javascript
+/* eslint prefer-destructuring: "error" */
+
 // With `array` enabled
 var foo = array[0];
 bar.baz = array[0];
@@ -50,6 +52,8 @@ var foo = object['foo'];
 ::: correct
 
 ```javascript
+/* eslint prefer-destructuring: "error" */
+
 // With `array` enabled
 var [ foo ] = array;
 var foo = array[someIndex];
@@ -60,8 +64,8 @@ var { foo } = object;
 
 var foo = object.bar;
 
-let foo;
-({ foo } = object);
+let bar;
+({ bar } = object);
 ```
 
 :::
@@ -71,6 +75,7 @@ let foo;
 ::: incorrect
 
 ```javascript
+/* eslint "prefer-destructuring": ["error", { "object": true }, { "enforceForRenamedProperties": true }] */
 var foo = object.bar;
 ```
 
@@ -81,6 +86,7 @@ var foo = object.bar;
 ::: correct
 
 ```javascript
+/* eslint "prefer-destructuring": ["error", { "object": true }, { "enforceForRenamedProperties": true }] */
 var { bar: foo } = object;
 ```
 
@@ -91,6 +97,7 @@ var { bar: foo } = object;
 ::: correct
 
 ```javascript
+/* eslint "prefer-destructuring": ["error", { "object": true }, { "enforceForRenamedProperties": true }] */
 class C {
     #x;
     foo() {

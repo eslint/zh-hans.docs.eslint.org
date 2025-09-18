@@ -193,8 +193,8 @@ class C {
 function foo1() {
     var bar,
         baz;
-    const bar = true,
-        baz = false;
+    const qux = true,
+        foobar = false;
 }
 
 function foo2() {
@@ -415,11 +415,15 @@ function foo() {
 
 function foo() {
     var bar,
-        baz;
-    const bar = 1; // `const` and `let` declarations are ignored if they are not specified
-    const baz = 2;
+    var baz;
+
+    // `const` and `let` declarations are ignored if they are not specified
+    const foobar = 1;
+    const foobaz = 2;
+    const barfoo = 1;
     let qux;
     let norf;
+    let fooqux, foonorf;
 }
 ```
 

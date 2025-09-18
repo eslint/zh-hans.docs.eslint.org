@@ -57,40 +57,6 @@ var bar = 3;
 ::: incorrect
 
 ```js
-/*eslint no-multiple-empty-lines: ["error", { "max": 2, "maxEOF": 0 }]*/
-
-var foo = 5;
-
-
-var bar = 3;
-
-
-```
-
-:::
-
-使用此规则与 `{ max: 2, maxEOF: 0 }` 选项的**正确**示例：
-
-::: correct
-
-```js
-/*eslint no-multiple-empty-lines: ["error", { "max": 2, "maxEOF": 0 }]*/
-
-var foo = 5;
-
-
-var bar = 3;
-```
-
-:::
-
-**注意**：尽管这样可以确保 EOF 处没有空行，但如果文件以换行方式结束，大多数编辑器仍然会在最后显示一个空行，如下图所示。在最后一个 `\n` 之后的文件末尾没有空行，尽管编辑器可能会显示一个附加行。一个真正的附加行将用 `\n\n` 表示。
-
-**错误**：
-
-::: incorrect
-
-```js
 /*eslint no-multiple-empty-lines: ["error", { "max": 2, "maxEOF": 0 }]*/⏎
 ⏎
 var foo = 5;⏎
@@ -102,6 +68,23 @@ var bar = 3;⏎
 ```
 
 :::
+
+使用此规则与 `{ max: 2, maxEOF: 0 }` 选项的**正确**示例：
+
+::: correct
+
+```js
+/*eslint no-multiple-empty-lines: ["error", { "max": 2, "maxEOF": 0 }]*/⏎
+⏎
+var foo = 5;⏎
+⏎
+⏎
+var bar = 3;
+```
+
+:::
+
+**注意**：尽管这样可以确保 EOF 处没有空行，但如果文件以换行方式结束，大多数编辑器仍然会在最后显示一个空行，如下图所示。在最后一个 `\n` 之后的文件末尾没有空行，尽管编辑器可能会显示一个附加行。一个真正的附加行将用 `\n\n` 表示。
 
 **正确**：
 
@@ -126,6 +109,8 @@ var bar = 3;⏎
 ::: incorrect
 
 ```js
+
+
 /*eslint no-multiple-empty-lines: ["error", { "max": 2, "maxBOF": 1 }]*/
 
 
@@ -152,6 +137,20 @@ var bar = 3;
 
 :::
 
+::: correct
+
+```js
+
+/*eslint no-multiple-empty-lines: ["error", { "max": 2, "maxBOF": 1}]*/
+
+var foo = 5;
+
+
+var bar = 3;
+```
+
+:::
+
 ## 何时不用
 
-如果你不关心额外的空行，就把它关掉。
+如果你不关心多余的空行，就把它关掉。

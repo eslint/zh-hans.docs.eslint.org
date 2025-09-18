@@ -7,10 +7,9 @@ rule_type: layout
 
 ## 规则细节
 
-这条规则要求在非空文件的末尾至少有一个换行（或没有换行）。
-的末尾至少有一个换行。
+此规则要求在非空文件的末尾至少有一个换行（或没有换行）。
 
-在 v0.16.0 之前，这条规则还强制要求在文件末尾只有一行 文件的结尾只有一行。如果你仍然想要这种行为，可以考虑启用 [no-multiple-empty-lines](no-multiple-empty-lines) 搭配 `maxEOF` 选项和 [no-trailing-spaces](no-trailing-spaces)。
+在 v0.16.0 前，这条规则还强制要求在文件末尾只有一行。如果你仍然想要这种行为，可以考虑启用 [no-multiple-empty-lines](no-multiple-empty-lines) 搭配 `maxEOF` 选项和 [no-trailing-spaces](no-trailing-spaces)。
 
 使用此规则的**错误**示例：
 
@@ -35,7 +34,8 @@ function doSomething() {
 
 function doSomething() {
   var foo = 2;
-}\n
+}
+
 ```
 
 :::

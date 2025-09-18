@@ -86,9 +86,9 @@ with ((doSomething(), val)) {}
 /*eslint no-sequences: "error"*/
 const foo = (val) => (console.log('bar'), val);
 
-const foo = () => ((bar = 123), 10);
+const baz = () => ((bar = 123), 10);
 
-const foo = () => { return (bar = 123), 10 }
+const qux = () => { return (bar = 123), 10 }
 ```
 
 :::
@@ -101,9 +101,9 @@ const foo = () => { return (bar = 123), 10 }
 /*eslint no-sequences: "error"*/
 const foo = (val) => ((console.log('bar'), val));
 
-const foo = () => (((bar = 123), 10));
+const baz = () => (((bar = 123), 10));
 
-const foo = () => { return ((bar = 123), 10) }
+const qux = () => { return ((bar = 123), 10) }
 ```
 
 :::

@@ -3,7 +3,7 @@ title: id-denylist
 rule_type: suggestion
 ---
 
-> “计算机科学中只有两件难事：缓存失效和命名事物。” - 菲尔-卡尔顿
+> “计算机科学中只有两件难事：缓存失效和命名。” - 菲尔·卡尔顿（Phil Karlton）
 
 通用名称可能导致难以破译的代码。这个规则允许你指定一个不允许的标识符名称的拒绝列表，以避免这种做法。
 
@@ -45,7 +45,7 @@ rule_type: suggestion
 ```js
 /*eslint id-denylist: ["error", "data", "callback"] */
 
-var data = {...};
+var data = { ...values };
 
 function callback() {
     // ...
@@ -56,22 +56,22 @@ element.callback = function() {
 };
 
 var itemSet = {
-    data: [...]
+    data: [...values]
 };
 
 class Foo {
     data = [];
 }
 
-class Foo {
+class Bar {
     #data = [];
 }
 
-class Foo {
+class Baz {
     callback( {);
 }
 
-class Foo {
+class Qux {
     #callback( {);
 }
 ```
@@ -85,7 +85,7 @@ class Foo {
 ```js
 /*eslint id-denylist: ["error", "data", "callback"] */
 
-var encodingOptions = {...};
+var encodingOptions = {...values};
 
 function processFileResult() {
     // ...
@@ -96,7 +96,7 @@ element.successHandler = function() {
 };
 
 var itemSet = {
-    entities: [...]
+    entities: [...values]
 };
 
 callback(); // all function calls are ignored
@@ -109,15 +109,15 @@ class Foo {
     items = [];
 }
 
-class Foo {
+class Bar {
     #items = [];
 }
 
-class Foo {
+class Baz {
     method( {);
 }
 
-class Foo {
+class Qux {
     #method( {);
 }
 ```

@@ -7,7 +7,7 @@ rule_type: suggestion
 
 ## 规则细节
 
-这条规则不允许指定的命名被用作出口的名称。
+这条规则不允许指定的命名被用作导出命名。
 
 ## 选项
 
@@ -142,7 +142,25 @@ export default function foo() {}
 ```js
 /*eslint no-restricted-exports: ["error", { "restrictDefaultExports": { "direct": true } }]*/
 export default foo;
+```
+
+:::
+
+::: incorrect
+
+```js
+/*eslint no-restricted-exports: ["error", { "restrictDefaultExports": { "direct": true } }]*/
+
 export default 42;
+```
+
+:::
+
+::: incorrect
+
+```js
+/*eslint no-restricted-exports: ["error", { "restrictDefaultExports": { "direct": true } }]*/
+
 export default function foo() {}
 ```
 
@@ -171,6 +189,15 @@ export { foo as default };
 ```js
 /*eslint no-restricted-exports: ["error", { "restrictDefaultExports": { "defaultFrom": true } }]*/
 export { default } from 'foo';
+```
+
+:::
+
+::: incorrect
+
+```js
+/*eslint no-restricted-exports: ["error", { "restrictDefaultExports": { "defaultFrom": true } }]*/
+
 export { default as default } from 'foo';
 ```
 

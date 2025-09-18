@@ -30,9 +30,9 @@ var a = b = c = 5;
 
 const foo = bar = "baz";
 
-let a =
-    b =
-    c;
+let d =
+    e =
+    f;
 
 class Foo {
     a = b = 10;
@@ -57,8 +57,8 @@ var c = 5;
 const foo = "baz";
 const bar = "baz";
 
-let a = c;
-let b = c;
+let d = c;
+let e = c;
 
 class Foo {
     a = 10;

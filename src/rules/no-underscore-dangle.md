@@ -46,8 +46,8 @@ var obj = _.contains(items, item);
 obj.__proto__ = {};
 var file = __filename;
 function foo(_bar) {};
-const foo = { onClick(_bar) {} };
-const foo = (_bar) => {};
+const bar = { onClick(_bar) {} };
+const baz = (_bar) => {};
 ```
 
 :::
@@ -105,8 +105,12 @@ this._bar();
 ```js
 /*eslint no-underscore-dangle: ["error", { "allowAfterSuper": true }]*/
 
-var a = super.foo_;
-super._bar();
+class Foo extends Bar {
+  doSomething() {
+    var a = super.foo_;
+    super._bar();
+  }
+}
 ```
 
 :::
@@ -139,15 +143,15 @@ class Foo {
   _bar() {}
 }
 
-class Foo {
+class Bar {
   bar_() {}
 }
 
-const o = {
+const o1 = {
   _bar() {}
 };
 
-const o = {
+const o2 = {
   bar_() = {}
 };
 ```
@@ -167,19 +171,19 @@ class Foo {
     _bar;
 }
 
-class Foo {
+class Bar {
     _bar = () => {};
 }
 
-class Foo {
+class Baz {
     bar_;
 }
 
-class Foo {
+class Qux {
     #_bar;
 }
 
-class Foo {
+class FooBar {
     #bar_;
 }
 ```
@@ -195,7 +199,7 @@ class Foo {
 ```js
 /*eslint no-underscore-dangle: ["error", { "allowInArrayDestructuring": false }]*/
 const [_foo, _bar] = list;
-const [foo_, ..._bar] = list;
+const [foo_, ..._qux] = list;
 const [foo, [bar, _baz]] = list;
 ```
 
@@ -210,7 +214,7 @@ const [foo, [bar, _baz]] = list;
 ```js
 /*eslint no-underscore-dangle: ["error", { "allowInObjectDestructuring": false }]*/
 const { foo, bar: _bar } = collection;
-const { foo, bar, _baz } = collection;
+const { qux, xyz, _baz } = collection;
 ```
 
 :::
@@ -222,48 +226,7 @@ const { foo, bar, _baz } = collection;
 ```js
 /*eslint no-underscore-dangle: ["error", { "allowInObjectDestructuring": false }]*/
 const { foo, bar, _baz: { a, b } } = collection;
-const { foo, bar, _baz: baz } = collection;
-```
-
-:::
-
-### allowInArrayDestructuring
-
-使用此规则与 `{ "allowInArrayDestructuring": false }` 选项的**错误**示例：
-
-::: incorrect
-
-```js
-/*eslint no-underscore-dangle: ["error", { "allowInArrayDestructuring": false }]*/
-const [_foo, _bar] = list;
-const [foo_, ..._bar] = list;
-const [foo, [bar, _baz]] = list;
-```
-
-:::
-
-### allowInObjectDestructuring
-
-使用此规则与 `{ "allowInObjectDestructuring": false }` 选项的**错误**示例：
-
-::: incorrect
-
-```js
-/*eslint no-underscore-dangle: ["error", { "allowInObjectDestructuring": false }]*/
-const { foo, bar: _bar } = collection;
-const { foo, bar, _baz } = collection;
-```
-
-:::
-
-使用此规则与 `{ "allowInObjectDestructuring": false }` 选项的**正确**示例：
-
-::: correct
-
-```js
-/*eslint no-underscore-dangle: ["error", { "allowInObjectDestructuring": false }]*/
-const { foo, bar, _baz: { a, b } } = collection;
-const { foo, bar, _baz: baz } = collection;
+const { qux, xyz, _baz: baz } = collection;
 ```
 
 :::
@@ -277,17 +240,17 @@ const { foo, bar, _baz: baz } = collection;
 ```js
 /*eslint no-underscore-dangle: ["error", { "allowFunctionParams": false }]*/
 
-function foo (_bar) {}
-function foo (_bar = 0) {}
-function foo (..._bar) {}
+function foo1 (_bar) {}
+function foo2 (_bar = 0) {}
+function foo3 (..._bar) {}
 
-const foo = function onClick (_bar) {}
-const foo = function onClick (_bar = 0) {}
-const foo = function onClick (..._bar) {}
+const foo4 = function onClick (_bar) {}
+const foo5 = function onClick (_bar = 0) {}
+const foo6 = function onClick (..._bar) {}
 
-const foo = (_bar) => {};
-const foo = (_bar = 0) => {};
-const foo = (..._bar) => {};
+const foo7 = (_bar) => {};
+const foo8 = (_bar = 0) => {};
+const foo9 = (..._bar) => {};
 ```
 
 :::

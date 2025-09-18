@@ -7,17 +7,17 @@ related_rules:
 
 JSX 属性值可以包含字符串字面，用单引号或双引号划定。
 
-```xml
-<a b='c' />
-<a b="c" />
+```jsx
+<a b='c' />;
+<a b="c" />;
 ```
 
 与 JavaScript 中的字符串字面量不同，JSX 属性中的字符串字面量不能包含转义引号。
 如果你想在 JSX 属性值中有一个双引号，你必须使用单引号作为字符串分隔符。
 
-```xml
-<a b="'" />
-<a b='"' />
+```jsx
+<a b="'" />;
+<a b='"' />;
 ```
 
 ## 规则细节
@@ -40,7 +40,7 @@ JSX 属性值可以包含字符串字面，用单引号或双引号划定。
 ```jsx
 /*eslint jsx-quotes: ["error", "prefer-double"]*/
 
-<a b='c' />
+<a b='c' />;
 ```
 
 :::
@@ -52,8 +52,8 @@ JSX 属性值可以包含字符串字面，用单引号或双引号划定。
 ```jsx
 /*eslint jsx-quotes: ["error", "prefer-double"]*/
 
-<a b="c" />
-<a b='"' />
+<a b="c" />;
+<a b='"' />;
 ```
 
 :::
@@ -67,7 +67,7 @@ JSX 属性值可以包含字符串字面，用单引号或双引号划定。
 ```jsx
 /*eslint jsx-quotes: ["error", "prefer-single"]*/
 
-<a b="c" />
+<a b="c" />;
 ```
 
 :::
@@ -79,8 +79,8 @@ JSX 属性值可以包含字符串字面，用单引号或双引号划定。
 ```jsx
 /*eslint jsx-quotes: ["error", "prefer-single"]*/
 
-<a b='c' />
-<a b="'" />
+<a b='c' />;
+<a b="'" />;
 ```
 
 :::
