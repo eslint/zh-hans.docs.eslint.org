@@ -19,29 +19,29 @@ rule_type: problem
 ```js
 /*eslint no-unused-private-class-members: "error"*/
 
-class Foo {
+class A {
     #unusedMember = 5;
 }
 
-class Foo {
+class B {
     #usedOnlyInWrite = 5;
     method() {
         this.#usedOnlyInWrite = 42;
     }
 }
 
-class Foo {
+class C {
     #usedOnlyToUpdateItself = 5;
     method() {
         this.#usedOnlyToUpdateItself++;
     }
 }
 
-class Foo {
+class D {
     #unusedMethod() {}
 }
 
-class Foo {
+class E {
     get #unusedAccessor() {}
     set #unusedAccessor(value) {}
 }
@@ -56,14 +56,14 @@ class Foo {
 ```js
 /*eslint no-unused-private-class-members: "error"*/
 
-class Foo {
+class A {
     #usedMember = 42;
     method() {
         return this.#usedMember;
     }
 }
 
-class Foo {
+class B {
     #usedMethod() {
         return 42;
     }
@@ -72,7 +72,7 @@ class Foo {
     }
 }
 
-class Foo {
+class C {
     get #usedAccessor() {}
     set #usedAccessor(value) {}
     

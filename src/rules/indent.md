@@ -13,9 +13,9 @@ function hello(indentSize, type) {
 }
 ```
 
-这些是不同风格指南中推荐的最常见的情况。
+这些是不同风格指南中推荐的最常见的情况：
 
-* 两个空格，非制表符：Google, npm, Node.js, Idiomatic, Felix
+* 两个空格，非制表符：Google、npm、Node.js、Idiomatic、Felix
 * 制表符：jQuery
 * 四个空格：Crockford
 
@@ -25,9 +25,9 @@ function hello(indentSize, type) {
 
 ## 选项
 
-This rule has a mixed option:
+此规则有一个混合选项：
 
-For example, for 2-space indentation:
+例如 2 个空格缩进：
 
 ```json
 {
@@ -35,7 +35,7 @@ For example, for 2-space indentation:
 }
 ```
 
-Or for tabbed indentation:
+或用于制表符缩进：
 
 ```json
 {
@@ -190,7 +190,7 @@ var a = foo
 foo();
 bar();
 
-})
+})();
 ```
 
 :::
@@ -246,12 +246,12 @@ switch(a){
 var a,
     b,
     c;
-let a,
-    b,
-    c;
-const a = 1,
-    b = 2,
-    c = 3;
+let d,
+    e,
+    f;
+const g = 1,
+    h = 2,
+    i = 3;
 ```
 
 :::
@@ -267,12 +267,12 @@ const a = 1,
 var a,
   b,
   c;
-let a,
-  b,
-  c;
-const a = 1,
-  b = 2,
-  c = 3;
+let d,
+  e,
+  f;
+const g = 1,
+  h = 2,
+  i = 3;
 ```
 
 :::
@@ -288,12 +288,12 @@ const a = 1,
 var a,
     b,
     c;
-let a,
-    b,
-    c;
-const a = 1,
-    b = 2,
-    c = 3;
+let d,
+    e,
+    f;
+const g = 1,
+    h = 2,
+    i = 3;
 ```
 
 :::
@@ -309,12 +309,12 @@ const a = 1,
 var a,
   b,
   c;
-let a,
-  b,
-  c;
-const a = 1,
-  b = 2,
-  c = 3;
+let d,
+  e,
+  f;
+const g = 1,
+  h = 2,
+  i = 3;
 ```
 
 :::
@@ -330,12 +330,12 @@ const a = 1,
 var a,
     b,
     c;
-let a,
-    b,
-    c;
-const a = 1,
-      b = 2,
-      c = 3;
+let d,
+    e,
+    f;
+const g = 1,
+      h = 2,
+      i = 3;
 ```
 
 :::
@@ -351,12 +351,12 @@ const a = 1,
 var a,
     b,
     c;
-let a,
-    b,
-    c;
-const a = 1,
-      b = 2,
-      c = 3;
+let d,
+    e,
+    f;
+const g = 1,
+      h = 2,
+      i = 3;
 ```
 
 :::
@@ -401,7 +401,7 @@ function foo(x) {
 })();
 
 if (y) {
-   console.log('foo');
+  console.log('foo');
 }
 ```
 
@@ -856,6 +856,14 @@ import { foo,
     bar,
     baz,
 } from 'qux';
+```
+
+:::
+
+::: correct
+
+```js
+/*eslint indent: ["error", 4, { "ImportDeclaration": 1 }]*/
 
 import {
     foo,

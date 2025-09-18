@@ -19,6 +19,25 @@ further_reading:
 * 立即调用的函数表达式（也称为 IIFE），如 `var x = (function () {})();` 和 `var x = (function () {}();` 以避免与 [wrap-iife](wrap-iife) 规则冲突
 * 箭头函数参数，以避免与 [arrow-parens](arrow-parens) 规则冲突
 
+此规则会报告并自动修复问题，除非移除括号会创建新的指令，因为这可以改变代码语义。
+比如下面这个脚本会在控制台中打印 `object`，但如果去除 `"use strict"` 周围的括号则会输出 `undefined`。
+
+```js
+<!--
+// this is a script
+// -->
+
+("use strict");
+
+function test() {
+    console.log(typeof this);
+}
+
+test();
+```
+
+在这个情况下，规则将不会尝试移除在 `"use strict"` 周围的括号，但仍然报告这个问题。
+
 ## 选项
 
 此规则选项为字符串：
@@ -26,7 +45,7 @@ further_reading:
 * `"all"`（默认值）不允许在**任何**表达式周围使用不必要的括号。
 * `"functions"` 只允许在函数表达式周围有不必要的括号
 
-该规则有一个对象选项，用于处理 `"all"` 选项的例外情况。
+该规则有一个对象选项，用于处理 `"all"` 选项的例外情况：
 
 * `"conditionalAssign": false` 允许在条件测试表达式中的赋值周围加上括号。
 * `"returnAssign": false` 允许在 `return` 语句中使用额外的小括号。
@@ -61,8 +80,6 @@ for (a of (b));
 typeof (a);
 
 (Object.prototype.toString.call());
-
-(function(){} ? a() : b());
 
 class A {
     [(x)] = 1;
@@ -199,8 +216,8 @@ foo ? bar : (baz || qux);
 
 ```jsx
 /* eslint no-extra-parens: ["error", "all", { ignoreJSX: "all" }] */
-const Component = (<div />)
-const Component = (
+const ThisComponent = (<div />)
+const ThatComponent = (
     <div
         prop={true}
     />
@@ -215,8 +232,8 @@ const Component = (
 
 ```jsx
 /* eslint no-extra-parens: ["error", "all", { ignoreJSX: "multi-line" }] */
-const Component = (<div />)
-const Component = (<div><p /></div>)
+const ThisComponent = (<div />)
+const ThatComponent = (<div><p /></div>)
 ```
 
 :::
@@ -227,12 +244,12 @@ const Component = (<div><p /></div>)
 
 ```jsx
 /* eslint no-extra-parens: ["error", "all", { ignoreJSX: "multi-line" }] */
-const Component = (
+const ThisComponent = (
     <div>
         <p />
     </div>
 )
-const Component = (
+const ThatComponent = (
     <div
         prop={true}
     />
@@ -247,12 +264,12 @@ const Component = (
 
 ```jsx
 /* eslint no-extra-parens: ["error", "all", { ignoreJSX: "single-line" }] */
-const Component = (
+const ThisComponent = (
     <div>
         <p />
     </div>
 )
-const Component = (
+const ThatComponent = (
     <div
         prop={true}
     />
@@ -267,8 +284,8 @@ const Component = (
 
 ```jsx
 /* eslint no-extra-parens: ["error", "all", { ignoreJSX: "single-line" }] */
-const Component = (<div />)
-const Component = (<div><p /></div>)
+const ThisComponent = (<div />)
+const ThatComponent = (<div><p /></div>)
 ```
 
 :::

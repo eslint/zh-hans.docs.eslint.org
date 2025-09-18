@@ -52,7 +52,7 @@ if (foo) {
 
 const foo = 'bar';let baz = 'qux';
 
-var foo =function bar () {}
+var qux =function bar () {}
 
 function bar() {
     if (foo) {return; }
@@ -63,7 +63,7 @@ function bar() {
 
 使用此规则与默认的 `"always"` 选项的**正确**示例：
 
-::: correct
+::: correct { "ecmaFeatures": { "jsx": true } }
 
 ```js
 /*eslint space-before-keywords: ["error", "always"]*/
@@ -73,7 +73,7 @@ if (foo) {
     // ...
 } else {}
 
-(function() {})()
+(function() {})();
 
 <Foo onClick={function bar() {}} />
 

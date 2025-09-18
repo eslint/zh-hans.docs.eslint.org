@@ -21,31 +21,31 @@ function hello(indentSize, type) {
 
 这些是不同风格指南中推荐的最常见的情况：
 
-* 两个空格，非制表符：Google, npm, Node.js, Idiomatic, Felix
+* 两个空格，非制表符：Google、npm、Node.js、Idiomatic、Felix
 * 制表符：jQuery
 * 四个空格：Crockford
 
 ## 规则细节
 
-这条规则强制执行一致的缩进风格。默认风格是 `4 spaces`。
+此规则强制要求保持一致的缩进风格。默认风格是 `4 spaces`。
 
 ## 选项
 
-这个规则有一个混合选项：
+此规则有一个混合选项：
 
 例如 2 个空格缩进：
 
 ```json
 {
-    "indent": ["error", 2]
+    "indent-legacy": ["error", 2]
 }
 ```
 
-或用于 Tab 式缩进：
+或使用制表符缩进：
 
 ```json
 {
-    "indent": ["error", "tab"]
+    "indent-legacy": ["error", "tab"]
 }
 ```
 
@@ -54,7 +54,7 @@ function hello(indentSize, type) {
 ::: incorrect
 
 ```js
-/*eslint indent: "error"*/
+/*eslint indent-legacy: "error"*/
 
 if (a) {
   b=c;
@@ -71,7 +71,7 @@ if (a) {
 ::: correct
 
 ```js
-/*eslint indent: "error"*/
+/*eslint indent-legacy: "error"*/
 
 if (a) {
     b=c;
@@ -124,7 +124,7 @@ if (a) {
 ::: incorrect
 
 ```js
-/*eslint indent: ["error", "tab"]*/
+/*eslint indent-legacy: ["error", "tab"]*/
 
 if (a) {
      b=c;
@@ -141,7 +141,7 @@ function foo(d) {
 ::: correct
 
 ```js
-/*eslint indent: ["error", "tab"]*/
+/*eslint indent-legacy: ["error", "tab"]*/
 
 if (a) {
 /*tab*/b=c;
@@ -160,7 +160,7 @@ if (a) {
 ::: incorrect
 
 ```js
-/*eslint indent: ["error", 2, { "SwitchCase": 1 }]*/
+/*eslint indent-legacy: ["error", 2, { "SwitchCase": 1 }]*/
 
 switch(a){
 case "a":
@@ -177,7 +177,7 @@ case "b":
 ::: correct
 
 ```js
-/*eslint indent: ["error", 2, { "SwitchCase": 1 }]*/
+/*eslint indent-legacy: ["error", 2, { "SwitchCase": 1 }]*/
 
 switch(a){
   case "a":
@@ -196,18 +196,18 @@ switch(a){
 ::: incorrect
 
 ```js
-/*eslint indent: ["error", 2, { "VariableDeclarator": 1 }]*/
+/*eslint indent-legacy: ["error", 2, { "VariableDeclarator": 1 }]*/
 /*eslint-env es6*/
 
 var a,
     b,
     c;
-let a,
-    b,
-    c;
-const a = 1,
-    b = 2,
-    c = 3;
+let d,
+    e,
+    f;
+const g = 1,
+    h = 2,
+    i = 3;
 ```
 
 :::
@@ -217,18 +217,18 @@ const a = 1,
 ::: correct
 
 ```js
-/*eslint indent: ["error", 2, { "VariableDeclarator": 1 }]*/
+/*eslint indent-legacy: ["error", 2, { "VariableDeclarator": 1 }]*/
 /*eslint-env es6*/
 
 var a,
   b,
   c;
-let a,
-  b,
-  c;
-const a = 1,
-  b = 2,
-  c = 3;
+let d,
+  e,
+  f;
+const g = 1,
+  h = 2,
+  i = 3;
 ```
 
 :::
@@ -238,18 +238,18 @@ const a = 1,
 ::: correct
 
 ```js
-/*eslint indent: ["error", 2, { "VariableDeclarator": 2 }]*/
+/*eslint indent-legacy: ["error", 2, { "VariableDeclarator": 2 }]*/
 /*eslint-env es6*/
 
 var a,
     b,
     c;
-let a,
-    b,
-    c;
-const a = 1,
-    b = 2,
-    c = 3;
+let d,
+    e,
+    f;
+const g = 1,
+    h = 2,
+    i = 3;
 ```
 
 :::
@@ -259,18 +259,18 @@ const a = 1,
 ::: correct
 
 ```js
-/*eslint indent: ["error", 2, { "VariableDeclarator": { "var": 2, "let": 2, "const": 3 } }]*/
+/*eslint indent-legacy: ["error", 2, { "VariableDeclarator": { "var": 2, "let": 2, "const": 3 } }]*/
 /*eslint-env es6*/
 
 var a,
     b,
     c;
-let a,
-    b,
-    c;
-const a = 1,
-      b = 2,
-      c = 3;
+let d,
+    e,
+    f;
+const g = 1,
+      h = 2,
+      i = 3;
 ```
 
 :::
@@ -282,7 +282,7 @@ const a = 1,
 ::: incorrect
 
 ```js
-/*eslint indent: ["error", 2, { "outerIIFEBody": 0 }]*/
+/*eslint indent-legacy: ["error", 2, { "outerIIFEBody": 0 }]*/
 
 (function() {
 
@@ -304,7 +304,7 @@ console.log('foo');
 ::: correct
 
 ```js
-/*eslint indent: ["error", 2, { "outerIIFEBody": 0 }]*/
+/*eslint indent-legacy: ["error", 2, { "outerIIFEBody": 0 }]*/
 
 (function() {
 
@@ -328,7 +328,7 @@ if(y) {
 ::: incorrect
 
 ```js
-/*eslint indent: ["error", 2, { "MemberExpression": 1 }]*/
+/*eslint indent-legacy: ["error", 2, { "MemberExpression": 1 }]*/
 
 foo
 .bar
@@ -342,7 +342,7 @@ foo
 ::: correct
 
 ```js
-/*eslint indent: ["error", 2, { "MemberExpression": 1 }]*/
+/*eslint indent-legacy: ["error", 2, { "MemberExpression": 1 }]*/
 
 foo
   .bar
@@ -362,7 +362,7 @@ var bip = aardvark.badger
 ::: incorrect
 
 ```js
-/*eslint indent: ["error", 2, { "FunctionDeclaration": {"body": 1, "parameters": 2} }]*/
+/*eslint indent-legacy: ["error", 2, { "FunctionDeclaration": {"body": 1, "parameters": 2} }]*/
 
 function foo(bar,
   baz,
@@ -378,7 +378,7 @@ function foo(bar,
 ::: correct
 
 ```js
-/*eslint indent: ["error", 2, { "FunctionDeclaration": {"body": 1, "parameters": 2} }]*/
+/*eslint indent-legacy: ["error", 2, { "FunctionDeclaration": {"body": 1, "parameters": 2} }]*/
 
 function foo(bar,
     baz,
@@ -394,7 +394,7 @@ function foo(bar,
 ::: incorrect
 
 ```js
-/*eslint indent: ["error", 2, {"FunctionDeclaration": {"parameters": "first"}}]*/
+/*eslint indent-legacy: ["error", 2, {"FunctionDeclaration": {"parameters": "first"}}]*/
 
 function foo(bar, baz,
   qux, boop) {
@@ -409,7 +409,7 @@ function foo(bar, baz,
 ::: correct
 
 ```js
-/*eslint indent: ["error", 2, {"FunctionDeclaration": {"parameters": "first"}}]*/
+/*eslint indent-legacy: ["error", 2, {"FunctionDeclaration": {"parameters": "first"}}]*/
 
 function foo(bar, baz,
              qux, boop) {
@@ -426,7 +426,7 @@ function foo(bar, baz,
 ::: incorrect
 
 ```js
-/*eslint indent: ["error", 2, { "FunctionExpression": {"body": 1, "parameters": 2} }]*/
+/*eslint indent-legacy: ["error", 2, { "FunctionExpression": {"body": 1, "parameters": 2} }]*/
 
 var foo = function(bar,
   baz,
@@ -442,7 +442,7 @@ var foo = function(bar,
 ::: correct
 
 ```js
-/*eslint indent: ["error", 2, { "FunctionExpression": {"body": 1, "parameters": 2} }]*/
+/*eslint indent-legacy: ["error", 2, { "FunctionExpression": {"body": 1, "parameters": 2} }]*/
 
 var foo = function(bar,
     baz,
@@ -458,7 +458,7 @@ var foo = function(bar,
 ::: incorrect
 
 ```js
-/*eslint indent: ["error", 2, {"FunctionExpression": {"parameters": "first"}}]*/
+/*eslint indent-legacy: ["error", 2, {"FunctionExpression": {"parameters": "first"}}]*/
 
 var foo = function(bar, baz,
   qux, boop) {
@@ -473,7 +473,7 @@ var foo = function(bar, baz,
 ::: correct
 
 ```js
-/*eslint indent: ["error", 2, {"FunctionExpression": {"parameters": "first"}}]*/
+/*eslint indent-legacy: ["error", 2, {"FunctionExpression": {"parameters": "first"}}]*/
 
 var foo = function(bar, baz,
                    qux, boop) {
@@ -490,7 +490,7 @@ var foo = function(bar, baz,
 ::: incorrect
 
 ```js
-/*eslint indent: ["error", 2, { "CallExpression": {"arguments": 1} }]*/
+/*eslint indent-legacy: ["error", 2, { "CallExpression": {"arguments": 1} }]*/
 
 foo(bar,
     baz,
@@ -505,7 +505,7 @@ foo(bar,
 ::: correct
 
 ```js
-/*eslint indent: ["error", 2, { "CallExpression": {"arguments": 1} }]*/
+/*eslint indent-legacy: ["error", 2, { "CallExpression": {"arguments": 1} }]*/
 
 foo(bar,
   baz,
@@ -520,7 +520,7 @@ foo(bar,
 ::: incorrect
 
 ```js
-/*eslint indent: ["error", 2, {"CallExpression": {"arguments": "first"}}]*/
+/*eslint indent-legacy: ["error", 2, {"CallExpression": {"arguments": "first"}}]*/
 
 foo(bar, baz,
   baz, boop, beep);
@@ -533,7 +533,7 @@ foo(bar, baz,
 ::: correct
 
 ```js
-/*eslint indent: ["error", 2, {"CallExpression": {"arguments": "first"}}]*/
+/*eslint indent-legacy: ["error", 2, {"CallExpression": {"arguments": "first"}}]*/
 
 foo(bar, baz,
     baz, boop, beep);
@@ -548,7 +548,7 @@ foo(bar, baz,
 ::: incorrect
 
 ```js
-/*eslint indent: ["error", 2, { "ArrayExpression": 1 }]*/
+/*eslint indent-legacy: ["error", 2, { "ArrayExpression": 1 }]*/
 
 var foo = [
     bar,
@@ -564,7 +564,7 @@ baz,
 ::: correct
 
 ```js
-/*eslint indent: ["error", 2, { "ArrayExpression": 1 }]*/
+/*eslint indent-legacy: ["error", 2, { "ArrayExpression": 1 }]*/
 
 var foo = [
   bar,
@@ -580,7 +580,7 @@ var foo = [
 ::: incorrect
 
 ```js
-/*eslint indent: ["error", 2, {"ArrayExpression": "first"}]*/
+/*eslint indent-legacy: ["error", 2, {"ArrayExpression": "first"}]*/
 
 var foo = [bar,
   baz,
@@ -595,7 +595,7 @@ var foo = [bar,
 ::: correct
 
 ```js
-/*eslint indent: ["error", 2, {"ArrayExpression": "first"}]*/
+/*eslint indent-legacy: ["error", 2, {"ArrayExpression": "first"}]*/
 
 var foo = [bar,
            baz,
@@ -612,7 +612,7 @@ var foo = [bar,
 ::: incorrect
 
 ```js
-/*eslint indent: ["error", 2, { "ObjectExpression": 1 }]*/
+/*eslint indent-legacy: ["error", 2, { "ObjectExpression": 1 }]*/
 
 var foo = {
     bar: 1,
@@ -628,7 +628,7 @@ baz: 2,
 ::: correct
 
 ```js
-/*eslint indent: ["error", 2, { "ObjectExpression": 1 }]*/
+/*eslint indent-legacy: ["error", 2, { "ObjectExpression": 1 }]*/
 
 var foo = {
   bar: 1,
@@ -644,7 +644,7 @@ var foo = {
 ::: incorrect
 
 ```js
-/*eslint indent: ["error", 2, {"ObjectExpression": "first"}]*/
+/*eslint indent-legacy: ["error", 2, {"ObjectExpression": "first"}]*/
 
 var foo = { bar: 1,
   baz: 2 };
@@ -657,7 +657,7 @@ var foo = { bar: 1,
 ::: correct
 
 ```js
-/*eslint indent: ["error", 2, {"ObjectExpression": "first"}]*/
+/*eslint indent-legacy: ["error", 2, {"ObjectExpression": "first"}]*/
 
 var foo = { bar: 1,
             baz: 2 };

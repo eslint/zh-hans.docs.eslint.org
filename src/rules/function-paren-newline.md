@@ -337,11 +337,15 @@ var barbaz = function(
   bar, baz
 ) {};
 
-var barbaz = (bar,
-  baz) => {};
+var barbaz = (
+  bar,
+  baz
+) => {};
 
-foo(bar,
-  baz);
+foo(
+  bar,
+  baz
+);
 ```
 
 :::

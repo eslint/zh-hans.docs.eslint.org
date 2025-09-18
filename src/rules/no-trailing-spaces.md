@@ -16,9 +16,9 @@ rule_type: layout
 ```js
 /*eslint no-trailing-spaces: "error"*/
 
-var foo = 0;//•••••
-var baz = 5;//••
-//•••••
+var foo = 0;/* trailing whitespace */
+var baz = 5;/* trailing whitespace */
+/* trailing whitespace */
 ```
 
 :::
@@ -56,7 +56,8 @@ var baz = 5;
 
 var foo = 0;
 var baz = 5;
-//•••••
+// ↓ a line with whitespace only ↓
+
 ```
 
 :::
@@ -70,12 +71,12 @@ var baz = 5;
 ```js
 /*eslint no-trailing-spaces: ["error", { "ignoreComments": true }]*/
 
-//foo•
-//•••••
+// ↓ these comments have trailing whitespace → 
+//     
 /**
- *•baz
- *••
- *•bar
+ * baz
+ *  
+ * bar
  */
 ```
 

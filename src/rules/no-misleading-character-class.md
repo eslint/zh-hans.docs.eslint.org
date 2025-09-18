@@ -13,36 +13,36 @@ Unicode 包括由多个码位组成的字符。
 组合字符是属于 `Mc`、`Me` 和 `Mn` 之一的字符 [Unicode 一般类别](http://www.unicode.org/L2/L1999/UnicodeData.html#General%20Category)。
 
 ```js
-/^[Á]$/u.test("Á") //→ false
-/^[❇️]$/u.test("❇️") //→ false
+/^[Á]$/u.test("Á"); //→ false
+/^[❇️]$/u.test("❇️"); //→ false
 ```
 
 **带有表情符号修饰的字符**：
 
 ```js
-/^[👶🏻]$/u.test("👶🏻") //→ false
-/^[👶🏽]$/u.test("👶🏽") //→ false
+/^[👶🏻]$/u.test("👶🏻"); //→ false
+/^[👶🏽]$/u.test("👶🏽"); //→ false
 ```
 
 **区域旗帜符号**：
 
 ```js
-/^[🇯🇵]$/u.test("🇯🇵") //→ false
+/^[🇯🇵]$/u.test("🇯🇵"); //→ false
 ```
 
 **ZWJ 合成的人物**：
 
 ```js
-/^[👨‍👩‍👦]$/u.test("👨‍👩‍👦") //→ false
+/^[👨‍👩‍👦]$/u.test("👨‍👩‍👦"); //→ false
 ```
 
 **没有 Unicode 标志的代理对”**：
 
 ```js
-/^[👍]$/.test("👍") //→ false
+/^[👍]$/.test("👍"); //→ false
 
 // Surrogate pair is OK if with u flag.
-/^[👍]$/u.test("👍") //→ true
+/^[👍]$/u.test("👍"); //→ true
 ```
 
 ## 规则细节
@@ -56,12 +56,12 @@ Unicode 包括由多个码位组成的字符。
 ```js
 /*eslint no-misleading-character-class: error */
 
-/^[Á]$/u
-/^[❇️]$/u
-/^[👶🏻]$/u
-/^[🇯🇵]$/u
-/^[👨‍👩‍👦]$/u
-/^[👍]$/
+/^[Á]$/u;
+/^[❇️]$/u;
+/^[👶🏻]$/u;
+/^[🇯🇵]$/u;
+/^[👨‍👩‍👦]$/u;
+/^[👍]$/;
 ```
 
 :::
@@ -73,9 +73,9 @@ Unicode 包括由多个码位组成的字符。
 ```js
 /*eslint no-misleading-character-class: error */
 
-/^[abc]$/
-/^[👍]$/u
-/^[\q{👶🏻}]$/v
+/^[abc]$/;
+/^[👍]$/u;
+/^[\q{👶🏻}]$/v;
 ```
 
 :::

@@ -74,8 +74,8 @@ ESLint 仅自动查找名为 `eslint.config.js` 的配置文件，不会查找 `
     * `parser` - 包含 `parse()` 方法或 `parseForESLint()` 方法的对象（默认为 [`espree`](https://github.com/eslint/espree)）
     * `parserOptions` - 指定额外选项的对象，这些选项将直接传递给解析器上的 `parse()` 或 `parseForESLint()` 方法。可用选项取决于解析器。
 * `linterOptions` - 对象，包含与提示过程有关的设置。
-    * `noInlineConfig` - 表示是否允许内联配置布尔值。
-    * `reportUnusedDisableDirectives` - 表示是否应该跟踪和报告未用的禁用指令的布尔值。
+    * `noInlineConfig` - 布尔值，表示是否允许内联配置。
+    * `reportUnusedDisableDirectives` - 布尔值，表示是否应该跟踪和报告未用的禁用或启用指令。
 * `processor` - 包含 `preprocess()` 和 `postprocess()` 方法的对象，或者表示插件内处理器名称的字符串（如 `"pluginName/processorName"`）。
 * `plugins` - 包含插件名称与对应的插件对象的名值对对象。如果指定了 `files`，则只适用于与之匹配的文件。
 * `rules` - 包含规则配置的对象。如果指定了 `files` 或 `ignores`，则规则配置只适用于与之匹配匹配的文件。
@@ -242,7 +242,7 @@ export default [
 
 #### 报告未用的禁用指令
 
-像 `/*eslint-disable*/` 和 `/*eslint-disable-next-line*/` 这样的禁用指令是用来禁用 ESLint 规则的，围绕代码的某些部分。随着代码的变化，这些指令有可能不再需要，因为代码的变化使规则不再被触发。你可以通过设置 `reportUnusedDisableDirectives` 选项为 `true` 来启用这些未用的禁用指令的报告，如本例：
+像 `/*eslint-disable*/`、`/*eslint-enable*/` 和 `/*eslint-disable-next-line*/` 这样的禁用或启用指令是用来禁用 ESLint 规则的，围绕代码的某些部分。随着代码的变化，这些指令有可能不再需要，因为代码的变化使规则不再被触发。你可以通过设置 `reportUnusedDisableDirectives` 选项为 `true` 来启用这些未用的禁用指令的报告，如本例：
 
 ```js
 export default [
@@ -255,7 +255,7 @@ export default [
 ];
 ```
 
-默认情况下，未用的禁用指令被报告为警告。你可以使用 `--report-unused-disable-directives` 命令行选项来改变这一设置。
+默认情况下，未用的禁用或启用指令被报告为警告。你可以使用 `--report-unused-disable-directives` 命令行选项来改变这一设置。
 
 ### 配置语言选项
 
