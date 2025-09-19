@@ -3,6 +3,8 @@ title: key-spacing
 rule_type: layout
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 这个规则强制执行对象字面属性中的冒号周围的间距。它可以单独验证每个属性，也可以确保一个对象字面中相邻属性的水平对齐。
 
 ## 规则细节

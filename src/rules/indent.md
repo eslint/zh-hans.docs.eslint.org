@@ -3,6 +3,8 @@ title: indent
 rule_type: layout
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 有几个常见的准则要求嵌套块和语句的具体缩进，如：
 
 ```js
@@ -139,20 +141,23 @@ function foo(d) {
 
 使用此规则与 `"tab"` 选项的**正确**示例：
 
+<!-- markdownlint-capture -->
+<!-- markdownlint-disable MD010 -->
 ::: correct
 
 ```js
 /*eslint indent: ["error", "tab"]*/
 
 if (a) {
-/*tab*/b=c;
-/*tab*/function foo(d) {
-/*tab*//*tab*/e=f;
-/*tab*/}
+  b=c;
+  function foo(d) {
+    e=f;
+  }
 }
 ```
 
 :::
+<!-- markdownlint-restore -->
 
 ### ignoredNodes
 

@@ -6,6 +6,8 @@ related_rules:
 - spaced-comment
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 许多风格指南要求在注释之前或之后有空行。这些规则的主要目的 这些规则的主要目的是使注释更容易阅读，提高代码的可读性。
 
 ## 规则细节

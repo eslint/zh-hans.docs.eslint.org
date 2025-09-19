@@ -7,6 +7,8 @@ further_reading:
 - https://gist.github.com/isaacs/357981
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 逗号样式规则强制执行逗号分隔的列表的样式。有两种主要用于 JavaScript 的逗号样式：
 
 * 标准样式，即逗号被放在当前行的末尾

@@ -3,6 +3,8 @@ title: keyword-spacing
 rule_type: layout
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 关键字是 JavaScript 的语法元素，如 `try` 和 `if`。
 这些关键字对语言有特殊的意义，所以在代码编辑器中经常以不同的颜色出现。
 作为语言的一个重要部分，风格指南经常提到关键字周围应该使用的间距。

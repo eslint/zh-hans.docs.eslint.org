@@ -3,6 +3,8 @@ title: padding-line-between-statements
 rule_type: layout
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 这条规则要求或不允许在给定的 2 种语句之间有空行。
 适当的空行有助于开发人员理解代码。
 

@@ -3,7 +3,9 @@ title: no-whitespace-before-property
 rule_type: layout
 ---
 
-JavaScript 允许在对象和它们的属性之间留出空白。然而，不一致的间距会使代码更难阅读，并可能导致错误。
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
+JavaScript 允许在对象和它们的属性之间留出空格。然而，不一致的间距会使代码更难阅读，并可能导致错误。
 
 ```js
 foo. bar .baz . quz
@@ -11,7 +13,7 @@ foo. bar .baz . quz
 
 ## 规则细节
 
-如果对象的属性在同一行，这条规则不允许在圆点周围或开头的括号前有空白。当对象和属性在不同的行上时，这条规则允许空白，因为在较长的属性链上添加新行是很常见的。
+如果对象的属性在同一行，这条规则不允许在圆点周围或开头的括号前有空格。当对象和属性在不同的行上时，这条规则允许空格，因为在较长的属性链上添加新行是很常见的。
 
 ```js
 foo

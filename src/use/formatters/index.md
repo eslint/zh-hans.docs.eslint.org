@@ -304,6 +304,8 @@ npx eslint --format <Add formatter here> fullOfProblems.js
                 }
             },
             "indent": {
+                "deprecated": true,
+                "replacedBy": [],
                 "type": "layout",
                 "docs": {
                     "description": "Enforce consistent indentation",
@@ -575,6 +577,8 @@ npx eslint --format <Add formatter here> fullOfProblems.js
                 }
             },
             "space-unary-ops": {
+                "deprecated": true,
+                "replacedBy": [],
                 "type": "layout",
                 "docs": {
                     "description": "Enforce consistent spacing before or after unary operators",
@@ -614,6 +618,8 @@ npx eslint --format <Add formatter here> fullOfProblems.js
                 }
             },
             "semi": {
+                "deprecated": true,
+                "replacedBy": [],
                 "type": "layout",
                 "docs": {
                     "description": "Require or disallow semicolons instead of ASI",

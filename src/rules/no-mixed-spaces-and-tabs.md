@@ -5,6 +5,8 @@ further_reading:
 - https://www.emacswiki.org/emacs/SmartTabs
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 大多数代码惯例要求缩进时使用制表符或空格。因此，如果一行代码同时使用制表符和空格缩进，通常是一个错误。
 
 ## 规则细节
@@ -13,42 +15,42 @@ further_reading:
 
 使用此规则的**错误**示例：
 
+<!-- markdownlint-capture -->
+<!-- markdownlint-disable MD010 -->
 ::: incorrect
 
 ```js
 /*eslint no-mixed-spaces-and-tabs: "error"*/
 
 function add(x, y) {
-// --->..return x + y;
-
       return x + y;
 }
 
 function main() {
-// --->var x = 5,
-// --->....y = 7;
-
     var x = 5,
         y = 7;
 }
 ```
 
 :::
+<!-- markdownlint-restore -->
 
 使用此规则的**正确**示例：
 
+<!-- markdownlint-capture -->
+<!-- markdownlint-disable MD010 -->
 ::: correct
 
 ```js
 /*eslint no-mixed-spaces-and-tabs: "error"*/
 
 function add(x, y) {
-// --->return x + y;
     return x + y;
 }
 ```
 
 :::
+<!-- markdownlint-restore -->
 
 ## 选项
 
@@ -60,18 +62,18 @@ function add(x, y) {
 
 使用此规则与 `"smart-tabs"` 选项的**正确**示例：
 
+<!-- markdownlint-capture -->
+<!-- markdownlint-disable MD010 -->
 ::: correct
 
 ```js
 /*eslint no-mixed-spaces-and-tabs: ["error", "smart-tabs"]*/
 
 function main() {
-// --->var x = 5,
-// --->....y = 7;
-
     var x = 5,
         y = 7;
 }
 ```
 
 :::
+<!-- markdownlint-restore -->

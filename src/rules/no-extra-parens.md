@@ -9,6 +9,8 @@ further_reading:
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 这条规则限制了括号的使用，只在有必要的地方使用。
 
 ## 规则细节

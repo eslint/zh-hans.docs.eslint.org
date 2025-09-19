@@ -7,6 +7,8 @@ related_rules:
 - computed-property-spacing
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 一些风格指南要求或不允许在数组括号和其他标记之间有空格。这条规适用于数组字面量和解构赋值（ECMAScript 6）。
 
 ```js

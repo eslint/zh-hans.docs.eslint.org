@@ -6,6 +6,8 @@ related_rules:
 - dot-notation
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 JavaScript 允许你在成员表达式中的点之前或之后放置换行。
 
 在点之前或之后放置换行的一致性可以大大增加可读性。

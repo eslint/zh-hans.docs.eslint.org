@@ -11,6 +11,8 @@ related_rules:
 - space-return-throw-case
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 同一行中存在多个空格且不是用于缩进时，通常是错误的。比如：
 
 ```js

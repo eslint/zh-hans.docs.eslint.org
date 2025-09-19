@@ -5,6 +5,8 @@ related_rules:
 - keyword-spacing
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 当格式化一个函数时，在函数名或 `function` 关键字和开头的括号之间允许有空白。命名函数也需要在 `function` 关键字和函数名之间有一个空格，但匿名函数间不需要空格。比如：
 
 ```js

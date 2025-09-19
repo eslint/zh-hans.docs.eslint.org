@@ -3,6 +3,8 @@ title: function-paren-newline
 rule_type: layout
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 许多风格指南要求或不允许在函数括号内使用换行符。
 
 ## 规则细节

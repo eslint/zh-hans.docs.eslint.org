@@ -3,6 +3,8 @@ title: space-unary-ops
 rule_type: layout
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 一些风格指南要求或不允许在单数运算符之前或之后有空格。这主要是一个风格问题，然而，一些 JavaScript 表达式可以不使用空格，这使得阅读和维护更加困难。
 
 ## 规则细节

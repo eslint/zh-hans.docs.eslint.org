@@ -10,6 +10,8 @@ further_reading:
 - https://web.archive.org/web/20200420230322/http://inimino.org/~inimino/blog/javascript_semicolons
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 JavaScript 并不要求在每个语句的结尾处都有分号。在许多情况下，JavaScript 引擎可以确定分号应该在某个位置，并会自动添加分号。这个功能被称为**自动分号插入（ASI）**，被认为是 JavaScript 中比较有争议的功能之一。例如，下面这几行都是有效的。
 
 ```js

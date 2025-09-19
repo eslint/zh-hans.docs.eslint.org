@@ -5,6 +5,8 @@ further_reading:
 - https://leanpub.com/understandinges6/read/#leanpub-auto-generators
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 生成器是 ECMAScript 6 中一种新的函数类型，可以同时返回多个值。
 这些特殊的函数是通过在 `function` 关键字后面加上 `*` 来表示的。
 

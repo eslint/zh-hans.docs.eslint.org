@@ -6,6 +6,8 @@ related_rules:
 - semi-spacing
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 错别字和对哪里需要分号的误解会导致不必要的分号的出现。虽然在技术上不是一个错误，但额外的分号会在阅读代码时造成混乱。
 
 ## 规则细节

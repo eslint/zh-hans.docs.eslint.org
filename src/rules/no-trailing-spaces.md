@@ -3,6 +3,8 @@ title: no-trailing-spaces
 rule_type: layout
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 有时在编辑文件的过程中，你可能会在行尾出现额外的空格。这些空格的差异可能会被源码控制系统发现，并被标记为差异，给开发者带来挫折感。虽然这些额外的空格不会引起任何功能问题，但许多代码惯例要求在签入前删除尾随空格。
 
 ## 规则细节

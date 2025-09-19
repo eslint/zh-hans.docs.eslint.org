@@ -11,6 +11,8 @@ related_rules:
 - max-statements
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 一行代码包含太多语句可能会难以阅读。代码通常是自上而下阅读的，特别是在扫读时，所以限制单行允许的语句数量对可读性和可维护性非常有用。
 
 ```js

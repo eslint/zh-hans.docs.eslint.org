@@ -8,6 +8,8 @@ further_reading:
 - https://en.wikipedia.org/wiki/Indent_style
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 大括号风格与编程中的[缩进风格](https://en.wikipedia.org/wiki/Indent_style)密切相关，描述了大括号相对于其控制语句和正文的位置。世界上可能有十几种，甚至更多的大括号样式。
 
 *one true brace style* 是 JavaScript 中最常见的大括号风格之一，在这种风格中，一个块的开头大括号与它对应的语句或声明放在同一行中。比如说：

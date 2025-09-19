@@ -5,6 +5,8 @@ related_rules:
 - no-spaced-func
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 当调用函数时，开发者可以在函数名和调用它的括号之间插入可选的空格。下面这对函数的调用是等价的：
 
 ```js

@@ -5,6 +5,8 @@ further_reading:
 - https://jscs-dev.github.io/rule/requireNewlineBeforeSingleStatementsInIf
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 当编写 `if`、`else`、`while`、`do-while` 和 `for` 语句时，主体可以是单个语句，而不是一个块。为这些单一的语句执行一个一致的位置可能是很有用的。
 
 例如，一些开发人员避免写这样的代码：

@@ -3,6 +3,8 @@ title: quotes
 rule_type: layout
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 JavaScript 允许你用三种方式之一来定义字符串：双引号、单引号和反斜线（从 ECMAScript 6 开始）。比如：
 
 ```js

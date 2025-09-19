@@ -9,6 +9,8 @@ related_rules:
 - brace-style
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 一致性是任何风格指南的一个重要部分。
 虽然将块的开头括号放在哪里是个人的偏好，但它应该在整个项目中保持一致。
 不一致的风格会分散读者的注意力，使其无法看到代码的重要部分。

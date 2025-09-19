@@ -9,6 +9,8 @@ related_rules:
 - space-in-parens
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 JavaScript 允许你在分号之前或之后放置不必要的空格。
 
 不允许或强制执行分号周围的空格可以提高程序的可读性。

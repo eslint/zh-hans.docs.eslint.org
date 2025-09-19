@@ -3,6 +3,8 @@ title: linebreak-style
 rule_type: layout
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 当与很多人一起开发时，他们都有不同的编辑器、VCS 应用程序和操作系统，可能会出现以下情况 不同的行结尾被上述任何一个人写入（特别是在一起使用 SourceTree 的 windows 和 mac 版本时可能会发生）。
 
 在 windows 操作系统中使用的断行符（新行）通常是**回车**（CR），然后是**换行**（LF），使其成为_回车换行_（CRLF）。而 Linux 和 Unix 则使用简单的**换行**（LF）。相应的_控制序列_是 `"\n"`（用于 LF）和 `"\r\n"`（用于 CRLF）。

@@ -7,6 +7,8 @@ related_rules:
 - space-in-parens
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 虽然格式化的偏好是非常个人化的，但一些风格指南要求或不允许在以下情况下在计算属性之间有空格：
 
 ```js

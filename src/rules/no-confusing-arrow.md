@@ -6,6 +6,9 @@ related_rules:
 - arrow-parens
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
+
 箭头函数（`=>`）在语法上与一些比较运算符（`>`、`<`、`<=` 和 `>=`）相似。这条规则将在可能与比较运算符相混淆的地方使用箭头函数语法时发出不要这样做的警告。
 
 这里有一个可能会引起混淆的 `=>` 的用法示例：

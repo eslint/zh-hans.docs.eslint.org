@@ -5,6 +5,8 @@ related_rules:
 - no-extra-parens
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 用小括号将复杂的表达式括起来，可以澄清开发者的意图，从而使代码更易读。
 当在一个表达式中连续使用不同的运算符而没有括号时，这条规则会发出警告。
 

@@ -6,6 +6,8 @@ related_rules:
 - brace-style
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 ## 规则细节
 
 这条规则使开放区块标记和同一行的下一个标记之间的间距一致。这条规则也使同一行的封闭块标记和前一标记的间距一致。

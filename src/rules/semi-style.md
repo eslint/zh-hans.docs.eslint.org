@@ -7,6 +7,8 @@ related_rules:
 - semi-spacing
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 一般来说，分号是在行尾的。然而，在无分号风格中，分号是在行的开头。这条规则强制规定分号在配置的位置。
 
 ## 规则细节

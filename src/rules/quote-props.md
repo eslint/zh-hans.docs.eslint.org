@@ -6,6 +6,8 @@ further_reading:
 - https://mathiasbynens.be/notes/javascript-properties
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 对象的字面属性名称可以用两种方式定义：使用字面量或使用字符串。例如，这两个对象是等同的：
 
 ```js

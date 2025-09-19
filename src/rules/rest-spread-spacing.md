@@ -5,6 +5,8 @@ further_reading:
 - https://github.com/tc39/proposal-object-rest-spread
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 ES2015 引入了剩余运算符和扩展运算符，它们将一个可迭代的结构扩展为其各个部分。它们的一些使用例子如下：
 
 ```js

@@ -8,6 +8,8 @@ related_rules:
 - array-element-newline
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 一些风格指南要求或不允许在函数调用的参数之间换行。
 
 ## 规则细节

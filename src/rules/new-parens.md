@@ -3,6 +3,8 @@ title: new-parens
 rule_type: layout
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 当通 过`new` 关键字调用一个函数并且构造函数没有参数时，JavaScript 允许省略括号。然而，一些程序员认为，省略小括号与语言的其他部分不一致，从而使代码不那么清晰。
 
 ```js

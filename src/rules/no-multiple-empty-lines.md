@@ -3,6 +3,8 @@ title: no-multiple-empty-lines
 rule_type: layout
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 有些开发者喜欢删除多个空白行，而另一些开发者则认为这有助于提高可读性。留白对于分隔代码的逻辑部分很有用，但多余的留白会占用更多的屏幕。
 
 ## 规则细节

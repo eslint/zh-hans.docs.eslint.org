@@ -3,6 +3,8 @@ title: wrap-iife
 rule_type: layout
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 你可以立即调用函数表达式，但不能调用函数声明。创建立即调用的函数表达式（IIFE）的常用技术是用圆括号包裹函数声明。开头的括号使包含的函数被解析为一个表达式，而不是一个声明。
 
 ```js

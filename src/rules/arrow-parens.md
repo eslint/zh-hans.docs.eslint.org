@@ -5,6 +5,8 @@ further_reading:
 - https://github.com/airbnb/javascript#arrows--one-arg-parens
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 当箭头函数正好有一个参数时可以省略括号。在所有其他情况下，参数必须都必须用括号包起来。这条规则加强了箭头函数中括号的一致使用。
 
 ## 规则细节

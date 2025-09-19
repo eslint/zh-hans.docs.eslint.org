@@ -6,6 +6,8 @@ further_reading:
 - https://exploringjs.com/es6/ch_template-literals.html#_examples-of-using-tagged-template-literals
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 在 ES6 中，可以创建名为[标签模板字面量](#further-reading)的函数，其中函数参数由模板字面的字符串和表达式组成。
 
 当使用标记的模板字面时，有可能在标记函数和模板字面之间插入空白。由于这个空白是可选的，下面几行是等价的。

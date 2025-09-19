@@ -9,6 +9,8 @@ related_rules:
 - max-statements
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 在任何语言中，很长的代码行都很难阅读。为了提高可读性和可维护性，许多程序员已经形成了一种惯例，将代码行限制在 X 个字符（一般是 80 个字符）。
 
 ```js
@@ -68,30 +70,36 @@ var foo = {
 
 使用此规则与默认的 `{ "tabWidth": 4 }` 选项的**错误**示例：
 
+<!-- markdownlint-capture -->
+<!-- markdownlint-disable MD010 -->
 ::: incorrect
 
 ```js
 /*eslint max-len: ["error", { "code": 80, "tabWidth": 4 }]*/
 
-\t  \t  var foo = { "bar": "This is a bar.", "baz": { "qux": "This is a qux" } };
+    var foo = { "bar": "This is a bar.", "baz": { "qux": "This is a qux" } };
 ```
 
 :::
+<!-- markdownlint-restore -->
 
 使用此规则与默认的 `{ "tabWidth": 4 }` 选项的**正确**示例：
 
+<!-- markdownlint-capture -->
+<!-- markdownlint-disable MD010 -->
 ::: correct
 
 ```js
 /*eslint max-len: ["error", { "code": 80, "tabWidth": 4 }]*/
 
-\t  \t  var foo = {
-\t  \t  \t  \t  "bar": "This is a bar.",
-\t  \t  \t  \t  "baz": { "qux": "This is a qux" }
-\t  \t  };
+    var foo = {
+        "bar": "This is a bar.",
+        "baz": { "qux": "This is a qux" }
+    };
 ```
 
 :::
+<!-- markdownlint-restore -->
 
 ### comments
 
@@ -202,7 +210,8 @@ var longRegExpLiteral = /this is a really really really really really long regul
 ::: correct
 
 ```js
-/*eslint max-len: ["error", { "ignorePattern": "^\\s*var\\s.+=\\s*require\\s*\\(" }]*/
+/*eslint max-len:
+["error", { "ignorePattern": "^\\s*var\\s.+=\\s*require\\s*\\(" }]*/
 
 var dep = require('really/really/really/really/really/really/really/really/long/module');
 ```

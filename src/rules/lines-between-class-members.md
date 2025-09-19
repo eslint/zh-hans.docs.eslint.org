@@ -6,6 +6,8 @@ related_rules:
 - padding-line-between-statements
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 这条规则通过在类成员之间强制执行行来提高可读性。它不会检查第一个成员之前和最后一个成员之后的空行，因为上下块已经考虑到了这一点。
 
 ## 规则细节

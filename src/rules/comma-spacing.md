@@ -16,6 +16,8 @@ further_reading:
 - https://dojotoolkit.org/reference-guide/1.9/developer/styleguide.html
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 逗号周围的空格可以提高项目列表的可读性。尽管大多数语言的风格指南都规定在逗号后而不是在逗号前添加空格，但这是由项目的偏好所决定的。
 
 ```js

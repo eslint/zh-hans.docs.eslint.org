@@ -3,6 +3,8 @@ title: no-tabs
 rule_type: layout
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 有些风格指南根本不允许使用制表符，包括在注释中。
 
 ## 规则细节

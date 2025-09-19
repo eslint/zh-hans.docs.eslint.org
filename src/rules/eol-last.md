@@ -3,6 +3,8 @@ title: eol-last
 rule_type: layout
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 在非空文件中拖动换行是一个常见的 UNIX 习惯做法。拖动新行的好处是 的好处包括能够连接或追加到文件以及 以及在不影响 shell 提示的情况下向终端输出文件。
 
 ## 规则细节

@@ -6,6 +6,8 @@ related_rules:
 - padding-line-between-statements
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 一些风格指南要求块状语句以空行开始和结束。其目的是
 以提高可读性，从视觉上将块内容和周围的代码分开。
 

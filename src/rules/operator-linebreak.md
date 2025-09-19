@@ -5,6 +5,8 @@ related_rules:
 - comma-style
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 当一个语句太长而不能放在一行中时，一般会在分隔表达式的运算符旁边插入换行符。我想到的第一个样式是将运算符放在行尾，遵循英文标点符号规则。
 
 ```js

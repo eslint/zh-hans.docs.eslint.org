@@ -3,6 +3,8 @@ title: newline-per-chained-call
 rule_type: layout
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 单行的链式方法调用如果没有换行，就很难读懂，所以有些开发者在链式方法调用的每一个后面都放一个换行符，以使其更易读，更容易维护。
 
 让我们来看看下面这段完全有效的（但却是单行的）代码。

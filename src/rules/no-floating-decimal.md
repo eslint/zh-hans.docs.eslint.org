@@ -3,6 +3,8 @@ title: no-floating-decimal
 rule_type: suggestion
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 JavaScript 中的浮点数包含一个小数点，而且没有要求小数点之前或之后必须有一个数字。例如，下面这些都是有效的 JavaScript 数字：
 
 ```js

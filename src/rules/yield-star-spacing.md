@@ -5,6 +5,8 @@ further_reading:
 - https://leanpub.com/understandinges6/read/#leanpub-auto-generators
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 ## 规则细节
 
 这条规则强制要求在 `yield*` 表达式中的 `*` 周围有间距。

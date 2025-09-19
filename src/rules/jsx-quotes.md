@@ -5,6 +5,8 @@ related_rules:
 - quotes
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 JSX 属性值可以包含字符串字面，用单引号或双引号划定。
 
 ```jsx

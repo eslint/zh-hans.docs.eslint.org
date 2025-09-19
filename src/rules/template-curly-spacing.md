@@ -3,6 +3,8 @@ title: template-curly-spacing
 rule_type: layout
 ---
 
+此规则在此规则在 ESLint v8.53.0 中被**废弃**。请使用 [`@stylistic/eslint-plugin-js`](https://eslint.style/packages/js) 中对应的规则。
+
 我们可以通过使用一对 `${` 和 `}` 在模板字符串中嵌入表达式。
 
 这个规则可以根据风格指南强制使用大括号内的间距。
