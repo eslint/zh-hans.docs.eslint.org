@@ -7,11 +7,11 @@ rule_type: layout
 
 ## 规则细节
 
-这条规则使函数参数或参数的括号内的换行符一致。
+此规则使函数参数或参数的括号内的换行符一致。
 
 ### 选项
 
-这条规则有一个选项，可以是一个字符串，也可以是一个对象。
+此规则有一个选项，可以是一个字符串，也可以是一个对象。
 
 * `"always"` 要求在所有函数的括号内换行。
 * `"never"` 不允许在所有函数括号内换行。
@@ -47,9 +47,9 @@ rule_type: layout
 
 function foo(bar, baz) {}
 
-var foo = function(bar, baz) {};
+var qux = function(bar, baz) {};
 
-var foo = (bar, baz) => {};
+var qux = (bar, baz) => {};
 
 foo(bar, baz);
 ```
@@ -68,11 +68,11 @@ function foo(
   baz
 ) {}
 
-var foo = function(
+var qux = function(
   bar, baz
 ) {};
 
-var foo = (
+var qux = (
   bar,
   baz
 ) => {};
@@ -97,11 +97,11 @@ function foo(
   baz
 ) {}
 
-var foo = function(
+var qux = function(
   bar, baz
 ) {};
 
-var foo = (
+var qux = (
   bar,
   baz
 ) => {};
@@ -123,12 +123,12 @@ foo(
 
 function foo(bar, baz) {}
 
-function foo(bar,
+function qux(bar,
              baz) {}
 
-var foo = function(bar, baz) {};
+var foobar = function(bar, baz) {};
 
-var foo = (bar, baz) => {};
+var foobar = (bar, baz) => {};
 
 foo(bar, baz);
 
@@ -149,11 +149,11 @@ function foo(bar,
   baz
 ) {}
 
-var foo = function(
+var qux = function(
   bar, baz
 ) {};
 
-var foo = (
+var qux = (
   bar,
   baz) => {};
 
@@ -178,12 +178,12 @@ foo(
 
 function foo(bar, baz) {}
 
-var foo = function(
+var foobar = function(
   bar,
   baz
 ) {};
 
-var foo = (bar, baz) => {};
+var foobar = (bar, baz) => {};
 
 foo(bar, baz, qux);
 
@@ -211,11 +211,11 @@ function foo(bar,
   baz
 ) {}
 
-var foo = function(bar,
+var qux = function(bar,
   baz
 ) {};
 
-var foo = (
+var qux = (
   bar,
   baz) => {};
 
@@ -241,9 +241,9 @@ foo(
 function foo(bar,
   baz) {}
 
-var foo = function(bar, baz) {};
+var qux = function(bar, baz) {};
 
-var foo = (
+var qux = (
   bar,
   baz
 ) => {};
@@ -272,11 +272,11 @@ function foo(bar,
   baz
 ) {}
 
-var foo = function(bar,
+var foobar = function(bar,
   baz
 ) {};
 
-var foo = (
+var foobar = (
   bar,
   baz) => {};
 
@@ -304,9 +304,9 @@ function foo(
   baz
 ) {}
 
-var foo = function(bar, baz) {};
+var qux = function(bar, baz) {};
 
-var foo = (
+var qux = (
   bar
 ) => {};
 
@@ -331,13 +331,13 @@ function foo(
   baz
 ) {}
 
-function foo(bar, baz, qux) {}
+function foobar(bar, baz, qux) {}
 
-var foo = function(
+var barbaz = function(
   bar, baz
 ) {};
 
-var foo = (bar,
+var barbaz = (bar,
   baz) => {};
 
 foo(bar,
@@ -355,13 +355,13 @@ foo(bar,
 
 function foo(bar, baz) {}
 
-var foo = function(
+var foobar = function(
   bar,
   baz,
   qux
 ) {};
 
-var foo = (
+var foobar = (
   bar, baz, qux
 ) => {};
 

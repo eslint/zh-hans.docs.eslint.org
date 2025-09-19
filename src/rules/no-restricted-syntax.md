@@ -56,7 +56,7 @@ JavaScript 有很多语言特性，而不是每个人都喜欢所有的特性。
 
 使用此规则与 `"FunctionExpression", "WithStatement", BinaryExpression[operator='in']` 选项的**错误**示例：
 
-::: incorrect
+::: incorrect { "sourceType": "script" }
 
 ```js
 /* eslint no-restricted-syntax: ["error", "FunctionExpression", "WithStatement", "BinaryExpression[operator='in']"] */
@@ -74,7 +74,7 @@ foo in bar;
 
 使用此规则与 `"FunctionExpression", "WithStatement", BinaryExpression[operator='in']` 选项的**正确**示例：
 
-::: correct
+::: correct { "sourceType": "script" }
 
 ```js
 /* eslint no-restricted-syntax: ["error", "FunctionExpression", "WithStatement", "BinaryExpression[operator='in']"] */

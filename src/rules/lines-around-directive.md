@@ -8,7 +8,7 @@ related_rules:
 
 此规则在 ESLint v4.0.0 中被 [padding-line-between-statements](padding-line-between-statements) 规则所取代，并被**废弃**。
 
-在 JavaScript 中，指令被用来向执行环境表明一个脚本希望选择 `"strict mode"` 这样的特性。指令被分组在文件或函数块顶部的 [directive prologue](https://www.ecma-international.org/ecma-262/7.0/#directive-prologue) 中，并被应用到它们出现的范围中。
+在 JavaScript 中，指令被用来向执行环境表明一个脚本希望选择 `"strict mode"` 这样的特性。指令被分组在文件或函数块顶部的[指令序言（directive prologue）](https://www.ecma-international.org/ecma-262/7.0/#directive-prologue)中，并被应用到它们出现的范围中。
 
 ```js
 // Strict mode is invoked for the entire script
@@ -34,7 +34,7 @@ function bar() {
 
 ## 规则细节
 
-这条规则要求或不允许在指令的序言部分使用空白换行。这条规则并不强制执行关于各个指令之间的空白换行的任何约定。此外，它也不要求指令序言前的空白换行，除非它们前面有注释。如果你想执行这种风格，请使用 [padded-blocks](padded-blocks) 规则。
+此规则要求或禁止在指令序言部分使用空白换行。这条规则并不强制执行关于各个指令之间的空白换行的任何约定。此外，它也不要求指令序言前的空白换行，除非它们前面有注释。如果你想执行这种风格，请使用 [padded-blocks](padded-blocks) 规则。
 
 ## 选项
 
@@ -58,7 +58,7 @@ function bar() {
 
 使用此规则与 `"always"` 选项的**错误**示例：
 
-::: incorrect
+::: incorrect { "sourceType": "script" }
 
 ```js
 /* eslint lines-around-directive: ["error", "always"] */
@@ -90,7 +90,7 @@ function foo() {
 
 使用此规则与 `"always"` 选项的**正确**示例：
 
-::: correct
+::: correct { "sourceType": "script" }
 
 ```js
 /* eslint lines-around-directive: ["error", "always"] */
@@ -130,7 +130,7 @@ function foo() {
 
 使用此规则与 `"never"` 选项的**错误**示例：
 
-::: incorrect
+::: incorrect { "sourceType": "script" }
 
 ```js
 /* eslint lines-around-directive: ["error", "never"] */
@@ -169,7 +169,7 @@ function foo() {
 
 使用此规则与 `"never"` 选项的**正确**示例：
 
-::: correct
+::: correct { "sourceType": "script" }
 
 ```js
 /* eslint lines-around-directive: ["error", "never"] */
@@ -203,7 +203,7 @@ function foo() {
 
 使用此规则与 `{ "before": "never", "after": "always" }` 选项的**错误**示例：
 
-::: incorrect
+::: incorrect { "sourceType": "script" }
 
 ```js
 /* eslint lines-around-directive: ["error", { "before": "never", "after": "always" }] */
@@ -238,7 +238,7 @@ function foo() {
 
 使用此规则与 `{ "before": "never", "after": "always" }` 选项的**正确**示例：
 
-::: correct
+::: correct { "sourceType": "script" }
 
 ```js
 /* eslint lines-around-directive: ["error", { "before": "never", "after": "always" }] */
@@ -274,7 +274,7 @@ function foo() {
 
 使用此规则与 `{ "before": "always", "after": "never" }` 选项的**错误**示例：
 
-::: incorrect
+::: incorrect { "sourceType": "script" }
 
 ```js
 /* eslint lines-around-directive: ["error", { "before": "always", "after": "never" }] */
@@ -310,7 +310,7 @@ function foo() {
 
 使用此规则与 `{ "before": "always", "after": "never" }` 选项的**正确**示例：
 
-::: correct
+::: correct { "sourceType": "script" }
 
 ```js
 /* eslint lines-around-directive: ["error", { "before": "always", "after": "never" }] */
@@ -344,7 +344,7 @@ function foo() {
 
 ## 何时不用
 
-如果你对指令性序言前后是否应该有空白换行没有任何严格的约定，你可以安全地禁用这一规则。
+如果你对指令序言前后是否应该有空白换行没有任何严格的约定，你可以安全地禁用这一规则。
 
 ## 兼容
 

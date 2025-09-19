@@ -16,7 +16,7 @@ further_reading:
 - https://dojotoolkit.org/reference-guide/1.9/developer/styleguide.html
 ---
 
-逗号周围的间距可以提高项目列表的可读性。尽管大多数语言的风格指南都规定在逗号后而不是在逗号前添加空格，但这是由项目的偏好所决定的。
+逗号周围的空格可以提高项目列表的可读性。尽管大多数语言的风格指南都规定在逗号后而不是在逗号前添加空格，但这是由项目的偏好所决定的。
 
 ```js
 var foo = 1, bar = 2;
@@ -25,7 +25,7 @@ var foo = 1 ,bar = 2;
 
 ## 规则细节
 
-这条规则使变量声明、数组字面、对象字面、函数参数和序列中逗号前后的间距一致。
+此规则使变量声明、数组字面、对象字面、函数参数和序列中逗号前后的间距一致。
 
 此规则不适用于以下情况：
 
@@ -58,7 +58,7 @@ var arr = [1 , 2];
 var obj = {"foo": "bar" ,"baz": "qur"};
 foo(a ,b);
 new Foo(a ,b);
-function foo(a ,b){}
+function baz(a ,b){}
 a ,b
 ```
 
@@ -78,13 +78,13 @@ var arr = [1,, 3]
 var obj = {"foo": "bar", "baz": "qur"};
 foo(a, b);
 new Foo(a, b);
-function foo(a, b){}
+function qur(a, b){}
 a, b
 ```
 
 :::
 
-Additional 使用此规则与默认的 `{ "before": false, "after": true }` 选项的**正确**示例：
+使用此规则与默认的 `{ "before": false, "after": true }` 选项的额外**正确**示例：
 
 :::correct
 
@@ -129,7 +129,7 @@ var foo = 1, bar = 2;
 var arr = [1 , 2];
 var obj = {"foo": "bar", "baz": "qur"};
 new Foo(a,b);
-function foo(a,b){}
+function baz(a,b){}
 a, b
 ```
 
@@ -149,7 +149,7 @@ var arr = [1 ,,3]
 var obj = {"foo": "bar" ,"baz": "qur"};
 foo(a ,b);
 new Foo(a ,b);
-function foo(a ,b){}
+function qur(a ,b){}
 a ,b
 ```
 
@@ -157,4 +157,4 @@ a ,b
 
 ## 何时不用
 
-如果你的项目将不遵循一致的逗号间距模式，请关闭此规则。
+如果你的项目不要求逗号周围空格保持一致，则关闭此规则。

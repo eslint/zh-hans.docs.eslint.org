@@ -7,7 +7,7 @@ further_reading:
 - https://gist.github.com/isaacs/357981
 ---
 
-逗号样式规则强制执行逗号分隔的列表的样式。有两种主要用于 JavaScript 的逗号样式。
+逗号样式规则强制执行逗号分隔的列表的样式。有两种主要用于 JavaScript 的逗号样式：
 
 * 标准样式，即逗号被放在当前行的末尾
 * 逗号优先风格，在这种风格中，逗号被放置在下一行的开始
@@ -67,7 +67,7 @@ var foo = 1
 var foo = ["apples"
            , "oranges"];
 
-function bar() {
+function baz() {
     return {
         "a": 1
         ,"b:": 2
@@ -92,7 +92,7 @@ var foo = 1,
 var foo = ["apples",
            "oranges"];
 
-function bar() {
+function baz() {
     return {
         "a": 1,
         "b:": 2
@@ -117,7 +117,7 @@ var foo = 1,
 var foo = ["apples",
            "oranges"];
 
-function bar() {
+function baz() {
     return {
         "a": 1,
         "b:": 2
@@ -142,7 +142,7 @@ var foo = 1
 var foo = ["apples"
           ,"oranges"];
 
-function bar() {
+function baz() {
     return {
         "a": 1
         ,"b:": 2

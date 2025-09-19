@@ -42,9 +42,9 @@ var [] = foo;
 var {a: {}} = foo;
 var {a: []} = foo;
 function foo({}) {}
-function foo([]) {}
-function foo({a: {}}) {}
-function foo({a: []}) {}
+function bar([]) {}
+function baz({a: {}}) {}
+function qux({a: []}) {}
 ```
 
 :::
@@ -59,7 +59,7 @@ function foo({a: []}) {}
 var {a = {}} = foo;
 var {a = []} = foo;
 function foo({a = {}}) {}
-function foo({a = []}) {}
+function bar({a = []}) {}
 ```
 
 :::
@@ -82,12 +82,12 @@ function foo({a = []}) {}
 /*eslint no-empty-pattern: ["error", { "allowObjectPatternsAsParameters": true }]*/
 
 function foo({a: {}}) {}
-var foo = function({a: {}}) {};
-var foo = ({a: {}}) => {};
-var foo = ({} = bar) => {};
-var foo = ({} = { bar: 1 }) => {};
+var bar = function({a: {}}) {};
+var bar = ({a: {}}) => {};
+var bar = ({} = bar) => {};
+var bar = ({} = { bar: 1 }) => {};
 
-function foo([]) {}
+function baz([]) {}
 ```
 
 :::
@@ -100,10 +100,10 @@ function foo([]) {}
 /*eslint no-empty-pattern: ["error", { "allowObjectPatternsAsParameters": true }]*/
 
 function foo({}) {}
-var foo = function({}) {};
-var foo = ({}) => {};
+var bar = function({}) {};
+var bar = ({}) => {};
 
-function foo({} = {}) {}
+function baz({} = {}) {}
 ```
 
 :::

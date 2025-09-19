@@ -25,7 +25,7 @@ foo = bar;
 function foo() {}
 foo = bar;
 
-function foo() {
+function baz() {
     foo = bar;
 }
 
@@ -59,12 +59,12 @@ function foo() {}
 var foo = function () {}
 foo = bar;
 
-function foo(foo) { // `foo` is shadowed.
-    foo = bar;
+function baz(baz) { // `baz` is shadowed.
+    baz = bar;
 }
 
-function foo() {
-    var foo = bar;  // `foo` is shadowed.
+function qux() {
+    var qux = bar;  // `qux` is shadowed.
 }
 ```
 

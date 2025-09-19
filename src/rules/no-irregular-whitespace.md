@@ -72,31 +72,31 @@ further_reading:
 ```js
 /*eslint no-irregular-whitespace: "error"*/
 
-function thing() /*<NBSP>*/{
+var thing = function() /*<NBSP>*/{
     return 'test';
 }
 
-function thing( /*<NBSP>*/){
+var thing = function( /*<NBSP>*/){
     return 'test';
 }
 
-function thing /*<NBSP>*/(){
+var thing = function /*<NBSP>*/(){
     return 'test';
 }
 
-function thing᠎/*<MVS>*/(){
+var thing = function᠎/*<MVS>*/(){
     return 'test';
 }
 
-function thing() {
+var thing = function() {
     return 'test'; /*<ENSP>*/
 }
 
-function thing() {
+var thing = function() {
     return 'test'; /*<NBSP>*/
 }
 
-function thing() {
+var thing = function() {
     // Description <NBSP>: some descriptive text
 }
 
@@ -104,12 +104,12 @@ function thing() {
 Description <NBSP>: some descriptive text
 */
 
-function thing() {
+var thing = function() {
     return / <NBSP>regexp/;
 }
 
 /*eslint-env es6*/
-function thing() {
+var thing = function() {
     return `template <NBSP>string`;
 }
 ```
@@ -123,15 +123,15 @@ function thing() {
 ```js
 /*eslint no-irregular-whitespace: "error"*/
 
-function thing() {
+var thing = function() {
     return ' <NBSP>thing';
 }
 
-function thing() {
+var thing = function() {
     return '​<ZWSP>thing';
 }
 
-function thing() {
+var thing = function() {
     return 'th <NBSP>ing';
 }
 ```

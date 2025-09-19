@@ -83,10 +83,10 @@ throw foo("error");
 
 throw new String("error");
 
-var foo = {
+var baz = {
     bar: "error"
 };
-throw foo.bar;
+throw baz.bar;
 ```
 
 :::

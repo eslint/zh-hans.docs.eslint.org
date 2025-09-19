@@ -24,7 +24,7 @@ while (a = next(), a && a.length);
 
 使用此规则的**错误**示例：
 
-::: incorrect
+::: incorrect { "sourceType": "script" }
 
 ```js
 /*eslint no-sequences: "error"*/
@@ -50,7 +50,7 @@ with (doSomething(), val) {}
 
 使用此规则的**正确**示例：
 
-::: correct
+::: correct { "sourceType": "script" }
 
 ```js
 /*eslint no-sequences: "error"*/
@@ -118,7 +118,7 @@ const foo = () => { return ((bar = 123), 10) }
 
 使用此规则与 `{ "allowInParentheses": false }` 选项的**错误**示例：
 
-::: incorrect
+::: incorrect { "sourceType": "script" }
 
 ```js
 /*eslint no-sequences: ["error", { "allowInParentheses": false }]*/

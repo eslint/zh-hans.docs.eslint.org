@@ -80,7 +80,7 @@ function foo2() {
 
 使用此规则与 `"global"` 选项的**错误**示例：
 
-::: incorrect
+::: incorrect { "sourceType": "script" }
 
 ```js
 /*eslint strict: ["error", "global"]*/
@@ -91,7 +91,7 @@ function foo() {
 
 :::
 
-::: incorrect
+::: incorrect { "sourceType": "script" }
 
 ```js
 /*eslint strict: ["error", "global"]*/
@@ -103,7 +103,7 @@ function foo() {
 
 :::
 
-::: incorrect
+::: incorrect { "sourceType": "script" }
 
 ```js
 /*eslint strict: ["error", "global"]*/
@@ -119,7 +119,7 @@ function foo() {
 
 使用此规则与 `"global"` 选项的**正确**示例：
 
-::: correct
+::: correct { "sourceType": "script" }
 
 ```js
 /*eslint strict: ["error", "global"]*/
@@ -138,7 +138,7 @@ function foo() {
 
 使用此规则与 `"function"` 选项的**错误**示例：
 
-::: incorrect
+::: incorrect { "sourceType": "script" }
 
 ```js
 /*eslint strict: ["error", "function"]*/
@@ -151,7 +151,7 @@ function foo() {
 
 :::
 
-::: incorrect
+::: incorrect { "sourceType": "script" }
 
 ```js
 /*eslint strict: ["error", "function"]*/
@@ -168,7 +168,7 @@ function foo() {
 
 :::
 
-::: incorrect
+::: incorrect { "sourceType": "script" }
 
 ```js
 /*eslint strict: ["error", "function"]*/
@@ -190,7 +190,7 @@ function foo(a = 1) {
 
 使用此规则与 `"function"` 选项的**正确**示例：
 
-::: correct
+::: correct { "sourceType": "script" }
 
 ```js
 /*eslint strict: ["error", "function"]*/
@@ -223,7 +223,7 @@ var foo = (function() {
 
 使用此规则与 `"never"` 选项的**错误**示例：
 
-::: incorrect
+::: incorrect { "sourceType": "script" }
 
 ```js
 /*eslint strict: ["error", "never"]*/
@@ -236,7 +236,7 @@ function foo() {
 
 :::
 
-::: incorrect
+::: incorrect { "sourceType": "script" }
 
 ```js
 /*eslint strict: ["error", "never"]*/
@@ -250,7 +250,7 @@ function foo() {
 
 使用此规则与 `"never"` 选项的**正确**示例：
 
-::: correct
+::: correct { "sourceType": "script" }
 
 ```js
 /*eslint strict: ["error", "never"]*/
@@ -269,7 +269,7 @@ function foo() {
 
 使用此规则与早期已删除的默认选项的**错误**示例：
 
-::: incorrect
+::: incorrect { "sourceType": "script" }
 
 ```js
 // "strict": "error"
@@ -280,7 +280,7 @@ function foo() {
 
 :::
 
-::: incorrect
+::: incorrect { "sourceType": "script" }
 
 ```js
 // "strict": "error"
@@ -296,7 +296,7 @@ function foo() {
 
 使用此规则与早期已删除的默认选项的**正确**示例：
 
-::: correct
+::: correct { "sourceType": "script" }
 
 ```js
 // "strict": "error"
@@ -309,7 +309,7 @@ function foo() {
 
 :::
 
-::: correct
+::: correct { "sourceType": "script" }
 
 ```js
 // "strict": "error"
@@ -321,7 +321,7 @@ function foo() {
 
 :::
 
-::: correct
+::: correct { "sourceType": "script" }
 
 ```js
 // "strict": "error"

@@ -6,11 +6,11 @@ rule_type: suggestion
 将默认参数放在最后，允许函数调用省略可选的尾部参数。
 
 ```js
-// Correct: optional argument can be omitted
+// 正确：可选参数可以省略
 function createUser(id, isAdmin = false) {}
 createUser("tabby")
 
-// Incorrect: optional argument can **not** be omitted
+// 错误：可选参数**不能**省略
 function createUser(isAdmin = false, id) {}
 createUser(undefined, "tabby")
 ```
@@ -28,7 +28,7 @@ createUser(undefined, "tabby")
 
 function f(a = 0, b) {}
 
-function f(a, b = 0, c) {}
+function g(a, b = 0, c) {}
 ```
 
 :::

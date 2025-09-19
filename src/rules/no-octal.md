@@ -19,7 +19,7 @@ var num = 071;      // 57
 
 使用此规则的**错误**示例：
 
-::: incorrect
+::: incorrect { "sourceType": "script" }
 
 ```js
 /*eslint no-octal: "error"*/
@@ -32,7 +32,7 @@ var result = 5 + 07;
 
 使用此规则的**正确**示例：
 
-::: correct
+::: correct { "sourceType": "script" }
 
 ```js
 /*eslint no-octal: "error"*/

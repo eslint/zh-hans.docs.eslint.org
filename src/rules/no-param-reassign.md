@@ -20,19 +20,19 @@ further_reading:
 ```js
 /*eslint no-param-reassign: "error"*/
 
-function foo(bar) {
+var foo = function(bar) {
     bar = 13;
 }
 
-function foo(bar) {
+var foo = function(bar) {
     bar++;
 }
 
-function foo(bar) {
+var foo = function(bar) {
     for (bar in baz) {}
 }
 
-function foo(bar) {
+var foo = function(bar) {
     for (bar of baz) {}
 }
 ```
@@ -46,7 +46,7 @@ function foo(bar) {
 ```js
 /*eslint no-param-reassign: "error"*/
 
-function foo(bar) {
+var foo = function(bar) {
     var baz = bar;
 }
 ```
@@ -55,7 +55,7 @@ function foo(bar) {
 
 ## 选项
 
-这个规则有一个选项，是一个对象，有一个布尔属性 `"props"` 和数组 `"ignorePropertyModificationsFor"` 和 `"ignorePropertyModificationsForRegex"`。`"props"` 默认为 `false`。如果 `"props"` 设置为 `true`，本规则警告不要修改参数属性，除非它们被包含在 `"ignorePropertyModificationsFor"` 或 `"ignorePropertyModificationsForRegex"` 中，默认为空数组。
+此规则有一个选项，是对象，其中包括有一个布尔属性 `"props"` 和数组属性 `"ignorePropertyModificationsFor"` 和 `"ignorePropertyModificationsForRegex"`。`"props"` 默认为 `false`。如果 `"props"` 设置为 `true`，本规则警告不要修改参数属性，除非它们被包含在 `"ignorePropertyModificationsFor"` 或 `"ignorePropertyModificationsForRegex"` 中，默认为空数组。
 
 ### props
 
@@ -66,23 +66,23 @@ function foo(bar) {
 ```js
 /*eslint no-param-reassign: ["error", { "props": false }]*/
 
-function foo(bar) {
+var foo = function(bar) {
     bar.prop = "value";
 }
 
-function foo(bar) {
+var foo = function(bar) {
     delete bar.aaa;
 }
 
-function foo(bar) {
+var foo = function(bar) {
     bar.aaa++;
 }
 
-function foo(bar) {
+var foo = function(bar) {
     for (bar.aaa in baz) {}
 }
 
-function foo(bar) {
+var foo = function(bar) {
     for (bar.aaa of baz) {}
 }
 ```
@@ -96,83 +96,83 @@ function foo(bar) {
 ```js
 /*eslint no-param-reassign: ["error", { "props": true }]*/
 
-function foo(bar) {
+var foo = function(bar) {
     bar.prop = "value";
 }
 
-function foo(bar) {
+var foo = function(bar) {
     delete bar.aaa;
 }
 
-function foo(bar) {
+var foo = function(bar) {
     bar.aaa++;
 }
 
-function foo(bar) {
+var foo = function(bar) {
     for (bar.aaa in baz) {}
 }
 
-function foo(bar) {
+var foo = function(bar) {
     for (bar.aaa of baz) {}
 }
 ```
 
 :::
 
-设置了 `"ignorePropertyModificationsFor"` 的 `{ "props": true }` 选项的**正确的代码示例：
+使用此规则与带有 `"ignorePropertyModificationsFor"` 集合的 `{ "props": true }` 选项的**正确的**示例：
 
 ::: correct
 
 ```js
 /*eslint no-param-reassign: ["error", { "props": true, "ignorePropertyModificationsFor": ["bar"] }]*/
 
-function foo(bar) {
+var foo = function(bar) {
     bar.prop = "value";
 }
 
-function foo(bar) {
+var foo = function(bar) {
     delete bar.aaa;
 }
 
-function foo(bar) {
+var foo = function(bar) {
     bar.aaa++;
 }
 
-function foo(bar) {
+var foo = function(bar) {
     for (bar.aaa in baz) {}
 }
 
-function foo(bar) {
+var foo = function(bar) {
     for (bar.aaa of baz) {}
 }
 ```
 
 :::
 
-设置了 `"ignorePropertyModificationsForRegex"` 的 `{ "props": true }` 选项的**正确的代码示例：
+使用此规则与带有 `"ignorePropertyModificationsForRegex"` 集合的 `{ "props": true }` 选项的**正确**示例：
 
 ::: correct
 
 ```js
 /*eslint no-param-reassign: ["error", { "props": true, "ignorePropertyModificationsForRegex": ["^bar"] }]*/
 
-function foo(barVar) {
+var foo = function(barVar) {
     barVar.prop = "value";
 }
 
-function foo(barrito) {
+var foo = function(barrito) {
     delete barrito.aaa;
 }
 
-function foo(bar_) {
+var foo = function(bar_) {
     bar_.aaa++;
 }
 
-function foo(barBaz) {
+var foo = function(barBaz) {
     for (barBaz.aaa in baz) {}
 }
 
-function foo(barBaz) {
+var foo = function(barBaz) {
     for (barBaz.aaa of baz) {}
 }
 ```

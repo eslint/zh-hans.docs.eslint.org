@@ -109,6 +109,7 @@ Miscellaneous:
   --env-info                      Output execution environment information - default: false
   --no-error-on-unmatched-pattern  Prevent errors when pattern is unmatched
   --exit-on-fatal-error           Exit with exit code 2 in case of fatal error - default: false
+  --no-warn-ignored               Suppress warnings when the file list includes ignored files. *Flat Config Mode Only*
   --debug                         Output debugging information
   -h, --help                      Show help
   -v, --version                   Output the version number
@@ -386,7 +387,7 @@ npx eslint --fix --fix-type suggestion,layout .
 * **多个参数**：不支持
 * **默认值**：ESLint 默认在当前工作目录下寻找 `.eslintignore`。
 
-**注意**：在使用[扁平配置](./configure/configuration-files-new)（`eslint.config.js`）时，不支持使用 `--ignore-path`。
+**注意**：在使用[平面配置](./configure/configuration-files-new)（`eslint.config.js`）时，不支持使用 `--ignore-path`。
 
 ##### `--ignore-path` 示例
 
@@ -712,6 +713,18 @@ npx eslint --no-error-on-unmatched-pattern --ext .ts "lib/*"
 
 ```shell
 npx eslint --exit-on-fatal-error file.js
+```
+
+#### `--no-warn-ignored`
+
+**仅限平面配置模式**。当显式传递忽略的文件名时，此选项会同时抑制“默认忽略文件”和“由于匹配的忽略模式而忽略文件”警告。此选项与 `--max-warnings 0` 搭配使用时非常有用，因为它可以避免因上述警告而导致的退出代码 1。
+
+* **参数类型**支持参数。
+
+##### `--no-warn-ignored` 示例
+
+```shell
+npx eslint --no-warn-ignored --max-warnings 0 ignored-file.js
 ```
 
 #### `--debug`

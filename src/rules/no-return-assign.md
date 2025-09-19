@@ -42,7 +42,7 @@ function doSomething() {
     return foo = bar + 2;
 }
 
-function doSomething() {
+function doSomethingElse() {
     return foo += 2;
 }
 
@@ -50,7 +50,7 @@ const foo = (a, b) => a = b
 
 const bar = (a, b, c) => (a = b, c == b)
 
-function doSomething() {
+function doSomethingMore() {
     return foo = bar && foo > 0;
 }
 ```
@@ -68,11 +68,11 @@ function doSomething() {
     return foo == bar + 2;
 }
 
-function doSomething() {
+function doSomethingElse() {
     return foo === bar + 2;
 }
 
-function doSomething() {
+function doSomethingMore() {
     return (foo = bar + 2);
 }
 
@@ -80,7 +80,7 @@ const foo = (a, b) => (a = b)
 
 const bar = (a, b, c) => ((a = b), c == b)
 
-function doSomething() {
+function doAnotherThing() {
     return (foo = bar) && foo > 0;
 }
 ```
@@ -103,11 +103,11 @@ function doSomething() {
     return foo = bar + 2;
 }
 
-function doSomething() {
+function doSomethingElse() {
     return foo += 2;
 }
 
-function doSomething() {
+function doSomethingMore() {
     return (foo = bar + 2);
 }
 ```
@@ -125,7 +125,7 @@ function doSomething() {
     return foo == bar + 2;
 }
 
-function doSomething() {
+function doSomethingElse() {
     return foo === bar + 2;
 }
 ```

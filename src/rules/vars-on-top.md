@@ -33,7 +33,7 @@ function doSomething() {
 }
 
 // Variable declaration in for initializer:
-function doSomething() {
+function doSomethingElse() {
     for (var i=0; i<10; i++) {}
 }
 ```
@@ -94,7 +94,7 @@ function doSomething() {
     }
 }
 
-function doSomething() {
+function doSomethingElse() {
     var i;
     for (i=0; i<10; i++) {}
 }

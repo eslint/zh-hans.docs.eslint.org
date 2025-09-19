@@ -118,7 +118,7 @@ export default [
 
 在 eslintrc 文件中，处理器必须在插件中定义，然后通过名称在配置中引用。以点号开头的处理器表示 [以文件扩展名命名的处理器](../../extend/custom-processors#文件扩展名处理器)，ESLint 将自动为该文件扩展名配置。
 
-在扁平的配置文件中，处理器仍然可以通过它们的名称从插件中引用，但现在也可以直接插入到配置中。处理器将**永远不会**被自动配置，必须在配置中明确设置。
+在平面配置文件中，处理器仍然可以通过它们的名称从插件中引用，但现在也可以直接插入到配置中。处理器将**永远不会**被自动配置，必须在配置中明确设置。
 
 以下是具有自定义插件和处理器的示例：
 
@@ -182,7 +182,7 @@ export default [
 ];
 ```
 
-请注意，由于在扁平配置中**不会**自动添加 `.md` 处理器，因此你还需要指定额外的配置元素：
+请注意，由于在平面配置中**不会**自动添加 `.md` 处理器，因此你还需要指定额外的配置元素：
 
 ```javascript
 {
@@ -492,7 +492,7 @@ export default [
 ];
 ```
 
-这个例子使用了 `FlatCompat#extends()` 方法将 `eslint-config-my-config` 插入到扁平配置数组中。有关 `FlatCompat` 类的更多信息，请参阅[包的 README](https://github.com/eslint/eslintrc#usage)。
+这个例子使用了 `FlatCompat#extends()` 方法将 `eslint-config-my-config` 插入到平面配置数组中。有关 `FlatCompat` 类的更多信息，请参阅[包的 README](https://github.com/eslint/eslintrc#usage)。
 
 ### 忽略文件
 

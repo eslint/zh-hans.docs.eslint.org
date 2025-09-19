@@ -5,7 +5,7 @@ rule_type: suggestion
 
 此规则在 ESLint v5.1.0 中被**废弃**。
 
-在 IE 8 和更早的版本中，如果外层作用域中的变量与 catch clause 参数的名称相同，catch clause 参数可以覆盖该变量的值。
+在 IE 8 和更早的版本中，如果外层作用域中的变量与 catch 子句参数的名称相同，catch 子句参数可以覆盖该变量的值。
 
 ```js
 var err = "x";
@@ -38,13 +38,13 @@ try {
 
 }
 
-function err() {
+function error() {
     // ...
 };
 
 try {
     throw "problem";
-} catch (err) {
+} catch (error) {
 
 }
 ```
@@ -66,7 +66,7 @@ try {
 
 }
 
-function err() {
+function error() {
     // ...
 };
 

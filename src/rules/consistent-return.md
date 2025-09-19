@@ -5,7 +5,7 @@ rule_type: suggestion
 
 与静态类型语言不同的是，静态类型语言强制要求一个函数返回指定类型的值，而 JavaScript 允许一个函数中的不同代码路径返回不同类型的值。
 
-JavaScript 又一个令人困惑的地方，如果以下情况中的任何一项为真，函数就会返回 `undefined`。
+JavaScript 又一个令人困惑的地方，如果以下情况中的任何一项为真，函数就会返回 `undefined`：
 
 * 它在退出前没有执行 `return` 语句
 * 它执行的 `return` 没有明确指定一个值
@@ -47,7 +47,7 @@ function doSomething(condition) {
     }
 }
 
-function doSomething(condition) {
+function doSomethingElse(condition) {
     if (condition) {
         return true;
     }

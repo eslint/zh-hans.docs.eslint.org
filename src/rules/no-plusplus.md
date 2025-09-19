@@ -42,7 +42,7 @@ var bar = 42;
 bar--;
 
 for (i = 0; i < l; i++) {
-    return;
+    doSomething(i);
 }
 ```
 
@@ -62,7 +62,7 @@ var bar = 42;
 bar -= 1;
 
 for (i = 0; i < l; i += 1) {
-    return;
+    doSomething(i);
 }
 ```
 

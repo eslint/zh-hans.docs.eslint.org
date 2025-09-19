@@ -8,7 +8,7 @@ related_rules:
 - camelcase
 ---
 
-像 `e`, `x`, `_t` 这样非常短的标识符名称或像 `hashGeneratorResultOutputContainerObject` 这样非常长的标识符名称会使代码更难读，并可能降低可维护性。为了防止这种情况，我们可以强制执行一个最小和/或最大的标识符长度。
+像 `e`、`x`、`_t` 这样非常短的标识符名称或像 `hashGeneratorResultOutputContainerObject` 这样非常长的标识符名称会使代码更难读，并可能降低可维护性。为了防止这种情况，我们可以强制执行一个最小和/或最大的标识符长度。
 
 ```js
 var x = 5; // too short; difficult to understand its purpose without context
@@ -159,10 +159,10 @@ try {
 }
 var myObj = { apple: 1 };
 (value) => { value * value };
-function foobar(value = 0) { }
+function foobaz(value = 0) { }
 class MyClass { }
 class Foobar { method() {} }
-function foobar(...args) { }
+function barbaz(...args) { }
 var { prop } = {};
 var [longName] = foo;
 var { a: [prop] } = {};

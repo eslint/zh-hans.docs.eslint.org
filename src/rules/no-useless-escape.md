@@ -39,7 +39,7 @@ let baz = /\:/ // same functionality with /:/
 
 使用此规则的**正确**示例：
 
-::: correct
+::: correct { "sourceType": "script" }
 
 ```js
 /*eslint no-useless-escape: "error"*/
