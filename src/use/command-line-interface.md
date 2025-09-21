@@ -96,7 +96,7 @@ Output:
 
 Inline configuration comments:
   --no-inline-config              Prevent comments from changing config or rules
-  --report-unused-disable-directives  Adds reported errors for unused eslint-disable directives
+  --report-unused-disable-directives  Adds reported errors for unused eslint-disable and eslint-enable directives
 
 Caching:
   --cache                         Only check changed files - default: false
@@ -120,7 +120,7 @@ Miscellaneous:
 
 #### `--no-eslintrc`
 
-不使用 `.eslintrc.*` 和 `package.json` 文件中的配置。
+**仅限 eslintrc 模式**。不使用 `.eslintrc.*` 和 `package.json` 文件中的配置。在平面配置中，使用 `--no-config-lookup` 代替。
 
 * **参数类型**：没有参数
 
@@ -149,7 +149,7 @@ npx eslint -c ~/my-eslint.json file.js
 
 #### `--env`
 
-此项可用于启用特定的环境。
+**仅限 eslintrc 模式**。此项可用于启用特定的环境。
 
 * **参数类型**：字符串。某一可用环境。
 * **多个参数**：支持
@@ -165,7 +165,7 @@ npx eslint --env browser --env node file.js
 
 #### `--ext`
 
-此选项用于指定 ESLint 在目录中匹配目标文件所用扩展。
+**仅限 eslintrc 模式**。此选项用于指定 ESLint 在目录中匹配目标文件所用扩展。
 
 * **参数类型**：字符串。文件扩展名。
 * **多个参数**：支持
@@ -235,7 +235,7 @@ echo '3 ** 4' | npx eslint --stdin --parser-options ecmaVersion:7 # 耶！成功
 
 #### `--resolve-plugins-relative-to`
 
-修改解析插件的文件夹位置。
+**仅限 eslintrc 模式**。修改解析插件的文件夹位置。
 
 * **参数类型**：字符串。目录路径。
 * **多个参数**：不支持
@@ -381,7 +381,7 @@ npx eslint --fix --fix-type suggestion,layout .
 
 #### `--ignore-path`
 
-此选项用于指定文件作为你的 `.eslintignore` 使用。
+**仅限 eslintrc 模式**。此选项用于指定文件作为你的 `.eslintignore` 使用。
 
 * **参数类型**：字符串。文件路径。
 * **多个参数**：不支持
@@ -583,7 +583,7 @@ npx eslint --no-inline-config file.js
 
 #### `--report-unused-disable-directives`
 
-此选项会 ESLint 让报告使用像 `// eslint-disable-line` 这样的本来就没有报错的指令性注释。通过清理不再适用的 `eslint-disable` 注释，有助于避免未来的错误被抑制。
+此选项会 ESLint 让报告使用像 `// eslint-disable-line` 这样的本来就没有报错的指令性注释。通过清理不再适用的 `eslint-disable` 和 `eslint-enable`注释，有助于避免未来的错误被抑制。
 
 * **参数类型**：不支持参数。
 

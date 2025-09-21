@@ -5,13 +5,23 @@ rule_type: problem
 
 派生类的构造者必须调用 `super()`。
 非派生类的构造器不得调用 `super()`。
-如果不遵守这一点，JavaScript 引擎将引起运行时错误。
+如果不遵守这一点，JavaScript 引擎将抛出运行时错误。
 
-这条规则检查是否有是有效的 `super()` 调用。
+此规则检查 `super()` 调用是否有效。
 
 ## 规则细节
 
-这条规则旨在标记无效的/缺失的 `super()` 调用。
+此规则旨在标记无效/缺失的 `super()` 调用。
+
+以下代码存在语法错误，因为它所在的类没有 `extends` 子句。
+
+```js
+class A {
+    constructor() {
+        super();
+    }
+}
+```
 
 使用此规则的**错误**示例：
 
@@ -21,24 +31,18 @@ rule_type: problem
 /*eslint constructor-super: "error"*/
 /*eslint-env es6*/
 
-class A {
-    constructor() {
-        super();  // This is a SyntaxError.
-    }
-}
-
 class A extends B {
     constructor() { }  // Would throw a ReferenceError.
 }
 
 // Classes which inherits from a non constructor are always problems.
-class A extends null {
+class C extends null {
     constructor() {
         super();  // Would throw a TypeError.
     }
 }
 
-class A extends null {
+class D extends null {
     constructor() { }  // Would throw a ReferenceError.
 }
 ```
@@ -57,7 +61,7 @@ class A {
     constructor() { }
 }
 
-class A extends B {
+class B extends C {
     constructor() {
         super();
     }

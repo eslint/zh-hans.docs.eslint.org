@@ -41,11 +41,11 @@ function foo (bar, baz, qux, qxx) { // 四个参数可能太多了点
 /*eslint max-params: ["error", 3]*/
 /*eslint-env es6*/
 
-function foo (bar, baz, qux, qxx) {
+function foo1 (bar, baz, qux, qxx) {
     doSomething();
 }
 
-let foo = (bar, baz, qux, qxx) => {
+let foo2 = (bar, baz, qux, qxx) => {
     doSomething();
 };
 ```
@@ -60,11 +60,11 @@ let foo = (bar, baz, qux, qxx) => {
 /*eslint max-params: ["error", 3]*/
 /*eslint-env es6*/
 
-function foo (bar, baz, qux) {
+function foo1 (bar, baz, qux) {
     doSomething();
 }
 
-let foo = (bar, baz, qux) => {
+let foo2 = (bar, baz, qux) => {
     doSomething();
 };
 ```

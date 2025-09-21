@@ -32,6 +32,7 @@ rule_type: suggestion
 ```js
 /*eslint arrow-body-style: ["error", "always"]*/
 /*eslint-env es6*/
+
 let foo = () => 0;
 ```
 
@@ -42,10 +43,13 @@ let foo = () => 0;
 :::correct
 
 ```js
+/*eslint arrow-body-style: ["error", "always"]*/
+/*eslint-env es6*/
+
 let foo = () => {
     return 0;
 };
-let foo = (retv, name) => {
+let bar = (retv, name) => {
     retv[name] = true;
     return retv;
 };
@@ -66,7 +70,7 @@ let foo = (retv, name) => {
 let foo = () => {
     return 0;
 };
-let foo = () => {
+let bar = () => {
     return {
        bar: {
             foo: 1,
@@ -86,24 +90,24 @@ let foo = () => {
 /*eslint arrow-body-style: ["error", "as-needed"]*/
 /*eslint-env es6*/
 
-let foo = () => 0;
-let foo = (retv, name) => {
+let foo1 = () => 0;
+let foo2 = (retv, name) => {
     retv[name] = true;
     return retv;
 };
-let foo = () => ({
+let foo3 = () => ({
     bar: {
         foo: 1,
         bar: 2,
     }
 });
-let foo = () => { bar(); };
-let foo = () => {};
-let foo = () => { /* do nothing */ };
-let foo = () => {
+let foo4 = () => { bar(); };
+let foo5 = () => {};
+let foo6 = () => { /* do nothing */ };
+let foo7 = () => {
     // 什么也不做
 };
-let foo = () => ({ bar: 0 });
+let foo8 = () => ({ bar: 0 });
 ```
 
 :::
@@ -120,7 +124,7 @@ let foo = () => ({ bar: 0 });
 /*eslint arrow-body-style: ["error", "as-needed", { "requireReturnForObjectLiteral": true }]*/
 /*eslint-env es6*/
 let foo = () => ({});
-let foo = () => ({ bar: 0 });
+let bar = () => ({ bar: 0 });
 ```
 
 :::
@@ -134,7 +138,7 @@ let foo = () => ({ bar: 0 });
 /*eslint-env es6*/
 
 let foo = () => {};
-let foo = () => { return { bar: 0 }; };
+let bar = () => { return { bar: 0 }; };
 ```
 
 :::
@@ -152,7 +156,7 @@ let foo = () => { return { bar: 0 }; };
 let foo = () => {
     return 0;
 };
-let foo = (retv, name) => {
+let bar = (retv, name) => {
     retv[name] = true;
     return retv;
 };
@@ -169,7 +173,7 @@ let foo = (retv, name) => {
 /*eslint-env es6*/
 
 let foo = () => 0;
-let foo = () => ({ foo: 0 });
+let bar = () => ({ foo: 0 });
 ```
 
 :::

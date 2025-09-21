@@ -32,27 +32,27 @@ foo.bar(); // goodbye
 ```js
 /*eslint no-dupe-class-members: "error"*/
 
-class Foo {
+class A {
   bar() { }
   bar() { }
 }
 
-class Foo {
+class B {
   bar() { }
   get bar() { }
 }
 
-class Foo {
+class C {
   bar;
   bar;
 }
 
-class Foo {
+class D {
   bar;
   bar() { }
 }
 
-class Foo {
+class E {
   static bar() { }
   static bar() { }
 }
@@ -67,27 +67,27 @@ class Foo {
 ```js
 /*eslint no-dupe-class-members: "error"*/
 
-class Foo {
+class A {
   bar() { }
   qux() { }
 }
 
-class Foo {
+class B {
   get bar() { }
   set bar(value) { }
 }
 
-class Foo {
+class C {
   bar;
   qux;
 }
 
-class Foo {
+class D {
   bar;
   qux() { }
 }
 
-class Foo {
+class E {
   static bar() { }
   bar() { }
 }

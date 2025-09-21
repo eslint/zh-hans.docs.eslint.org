@@ -4,6 +4,7 @@ rule_type: problem
 further_reading:
 - https://es5.github.io/#x7.2
 - https://web.archive.org/web/20200414142829/http://timelessrepo.com/json-isnt-a-javascript-subset
+- https://codepoints.net/U+1680
 ---
 
 无效或不规则的空白会导致 ECMAScript 5 解析器出现问题，也会使代码更难调试，其性质与混合制表符和空格相似。
@@ -14,11 +15,17 @@ further_reading:
 
 已知这些空格引起的问题：
 
+* 欧甘空格（Ogham Space Mark）
+    * 作为有效的标记分隔符，但在多数字体中会显示为可见字形，这在源代码中可能造成误导。
+* 蒙古语元音分隔符
+    * 自 Unicode 6.3 起不再被视为空格分隔符。若将其替代常规标记分隔符使用，当前解析器将报语法错误。
+* 行分隔符与段落分隔符
+    * 这些字符始终是有效的空白字符和行终止符，但在 ECMAScript 2019 之前被视为字符串字面量中的非法字符。
 * 零宽度空格
     * 不被认为是标记的分隔符，通常被解析为 `Unexpected token ILLEGAL`
     * 在现代浏览器中不显示，使得代码库软件有望解决可视化的问题。
-* 行分隔符
-    * 在 JSON 中不是一个有效的字符，会导致解析错误
+
+在 JSON 中，本规则所列为非标准空格的字符均不得出现在字符串之外。
 
 ## 规则细节
 
@@ -84,7 +91,7 @@ var thing = function /*<NBSP>*/(){
     return 'test';
 }
 
-var thing = function᠎/*<MVS>*/(){
+var thing = function ᠎/*<Ogham Space Mark>*/(){
     return 'test';
 }
 
@@ -202,7 +209,7 @@ function thing() {
 /*eslint-env es6*/
 
 function Thing() {
-    return <div>text in <NBSP>JSX</div>;
+    return <div>text in JSX</div>; // <NBSP> before `JSX`
 }
 ```
 

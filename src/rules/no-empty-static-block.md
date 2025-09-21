@@ -41,7 +41,7 @@ class Foo {
     }
 }
 
-class Foo {
+class Bar {
     static {
         // comment
     }

@@ -44,8 +44,8 @@ var foo,
 
 var a, b, c = 0;
 
-let a,
-    b = 0, c;
+let d,
+    e = 0, f;
 ```
 
 :::
@@ -60,11 +60,11 @@ let a,
 
 var a, b;
 
-let a,
-    b;
+let c,
+    d;
 
-let a,
-    b = 0;
+let e,
+    f = 0;
 ```
 
 :::
@@ -81,9 +81,9 @@ let a,
 
 var a, b;
 
-let a, b = 0;
+let c, d = 0;
 
-const a = 0, b = 0;
+const e = 0, f = 0;
 ```
 
 :::
@@ -99,8 +99,8 @@ const a = 0, b = 0;
 var a,
     b;
 
-let a,
-    b = 0;
+let d,
+    d = 0;
 ```
 
 :::

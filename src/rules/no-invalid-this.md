@@ -113,7 +113,7 @@ function Foo() {
     baz(() => this);
 }
 
-class Foo {
+class Bar {
     constructor() {
         // OK, this is in a constructor.
         this.a = 0;
@@ -181,7 +181,7 @@ Foo.prototype.foo = function foo() {
     this.a = 0;
 };
 
-class Foo {
+class Baz {
 
     // OK, this is in a class field initializer.
     a = this.b;

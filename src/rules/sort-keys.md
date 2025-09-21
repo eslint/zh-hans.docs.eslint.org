@@ -20,20 +20,20 @@ related_rules:
 /*eslint sort-keys: "error"*/
 /*eslint-env es6*/
 
-let obj = {a: 1, c: 3, b: 2};
-let obj = {a: 1, "c": 3, b: 2};
+let obj1 = {a: 1, c: 3, b: 2};
+let obj2 = {a: 1, "c": 3, b: 2};
 
 // Case-sensitive by default.
-let obj = {a: 1, b: 2, C: 3};
+let obj3 = {a: 1, b: 2, C: 3};
 
 // Non-natural order by default.
-let obj = {1: a, 2: c, 10: b};
+let obj4 = {1: a, 2: c, 10: b};
 
 // This rule checks computed properties which have a simple name as well.
 // Simple names are names which are expressed by an Identifier node or a Literal node.
 const S = Symbol("s")
-let obj = {a: 1, ["c"]: 3, b: 2};
-let obj = {a: 1, [S]: 3, b: 2};
+let obj5 = {a: 1, ["c"]: 3, b: 2};
+let obj6 = {a: 1, [S]: 3, b: 2};
 ```
 
 :::
@@ -46,27 +46,27 @@ let obj = {a: 1, [S]: 3, b: 2};
 /*eslint sort-keys: "error"*/
 /*eslint-env es6*/
 
-let obj = {a: 1, b: 2, c: 3};
-let obj = {a: 1, "b": 2, c: 3};
+let obj1 = {a: 1, b: 2, c: 3};
+let obj2 = {a: 1, "b": 2, c: 3};
 
 // Case-sensitive by default.
-let obj = {C: 3, a: 1, b: 2};
+let obj3 = {C: 3, a: 1, b: 2};
 
 // Non-natural order by default.
-let obj = {1: a, 10: b, 2: c};
+let obj4 = {1: a, 10: b, 2: c};
 
 // This rule checks computed properties which have a simple name as well.
-let obj = {a: 1, ["b"]: 2, c: 3};
-let obj = {a: 1, [b]: 2, c: 3};
+let obj5 = {a: 1, ["b"]: 2, c: 3};
+let obj6 = {a: 1, [b]: 2, c: 3};
 
 // This rule ignores computed properties which have a non-simple name.
-let obj = {a: 1, [c + d]: 3, b: 2};
-let obj = {a: 1, ["c" + "d"]: 3, b: 2};
-let obj = {a: 1, [`${c}`]: 3, b: 2};
-let obj = {a: 1, [tag`c`]: 3, b: 2};
+let obj7 = {a: 1, [c + d]: 3, b: 2};
+let obj8 = {a: 1, ["c" + "d"]: 3, b: 2};
+let obj9 = {a: 1, [`${c}`]: 3, b: 2};
+let obj10 = {a: 1, [tag`c`]: 3, b: 2};
 
 // This rule does not report unsorted properties that are separated by a spread property.
-let obj = {b: 1, ...c, a: 2};
+let obj11 = {b: 1, ...c, a: 2};
 ```
 
 :::
@@ -117,14 +117,14 @@ let obj = {b: 1, ...c, a: 2};
 /*eslint sort-keys: ["error", "desc"]*/
 /*eslint-env es6*/
 
-let obj = {b: 2, c: 3, a: 1};
-let obj = {"b": 2, c: 3, a: 1};
+let obj1 = {b: 2, c: 3, a: 1};
+let obj2 = {"b": 2, c: 3, a: 1};
 
 // Case-sensitive by default.
-let obj = {C: 1, b: 3, a: 2};
+let obj3 = {C: 1, b: 3, a: 2};
 
 // Non-natural order by default.
-let obj = {10: b, 2: c, 1: a};
+let obj4 = {10: b, 2: c, 1: a};
 ```
 
 :::
@@ -137,14 +137,14 @@ let obj = {10: b, 2: c, 1: a};
 /*eslint sort-keys: ["error", "desc"]*/
 /*eslint-env es6*/
 
-let obj = {c: 3, b: 2, a: 1};
-let obj = {c: 3, "b": 2, a: 1};
+let obj1 = {c: 3, b: 2, a: 1};
+let obj2 = {c: 3, "b": 2, a: 1};
 
 // Case-sensitive by default.
-let obj = {b: 3, a: 2, C: 1};
+let obj3 = {b: 3, a: 2, C: 1};
 
 // Non-natural order by default.
-let obj = {2: c, 10: b, 1: a};
+let obj4 = {2: c, 10: b, 1: a};
 ```
 
 :::
@@ -159,8 +159,8 @@ let obj = {2: c, 10: b, 1: a};
 /*eslint sort-keys: ["error", "asc", {caseSensitive: false}]*/
 /*eslint-env es6*/
 
-let obj = {a: 1, c: 3, C: 4, b: 2};
-let obj = {a: 1, C: 3, c: 4, b: 2};
+let obj1 = {a: 1, c: 3, C: 4, b: 2};
+let obj2 = {a: 1, C: 3, c: 4, b: 2};
 ```
 
 :::
@@ -173,8 +173,8 @@ let obj = {a: 1, C: 3, c: 4, b: 2};
 /*eslint sort-keys: ["error", "asc", {caseSensitive: false}]*/
 /*eslint-env es6*/
 
-let obj = {a: 1, b: 2, c: 3, C: 4};
-let obj = {a: 1, b: 2, C: 3, c: 4};
+let obj1 = {a: 1, b: 2, c: 3, C: 4};
+let obj2 = {a: 1, b: 2, C: 3, c: 4};
 ```
 
 :::
@@ -218,7 +218,7 @@ let obj = {1: a, 2: b, 10: c};
 /*eslint-env es6*/
 
 // 4 keys
-let obj = {
+let obj1 = {
     b: 2,
     a: 1, // not sorted correctly (should be 1st key)
     c: 3,
@@ -226,7 +226,7 @@ let obj = {
 };
 
 // 5 keys
-let obj = {
+let obj2 = {
     2: 'a',
     1: 'b', // not sorted correctly (should be 1st key)
     3: 'c',
@@ -246,14 +246,14 @@ let obj = {
 /*eslint-env es6*/
 
 // 3 keys
-let obj = {
+let obj1 = {
     b: 2,
     a: 1,
     c: 3,
 };
 
 // 2 keys
-let obj = {
+let obj2 = {
     2: 'b',
     1: 'a',
 };
@@ -317,7 +317,7 @@ let obj4 = {
 /*eslint sort-keys: ["error", "asc", {allowLineSeparatedGroups: true}]*/
 /*eslint-env es6*/
 
-let obj = {
+let obj1 = {
     e: 1,
     f: 2,
     g: 3,
@@ -327,7 +327,7 @@ let obj = {
     c: 6
 }
 
-let obj = {
+let obj2 = {
     b: 1,
 
     // comment
@@ -335,7 +335,7 @@ let obj = {
     c: 5,
 }
 
-let obj = {
+let obj3 = {
     c: 1,
     d: 2,
 
@@ -345,7 +345,7 @@ let obj = {
     e: 3,
 }
 
-let obj = {
+let obj4 = {
     c: 1,
     d: 2,
     // comment
@@ -357,14 +357,14 @@ let obj = {
     e: 4
 }
 
-let obj = {
+let obj5 = {
     b,
 
     [foo + bar]: 1,
     a
 }
 
-let obj = {
+let obj6 = {
     b: 1
     // comment before comma
 
@@ -372,7 +372,7 @@ let obj = {
     a: 2
 };
 
-var obj = {
+var obj7 = {
     b: 1,
 
     a: 2,

@@ -90,7 +90,7 @@ const c = new RegExp("ccc", "u")
 const d = new RegExp("ddd", "giu")
 
 // This rule ignores RegExp calls if the flags could not be evaluated to a static value.
-function f(flags) {
+function i(flags) {
     return new RegExp("eee", flags)
 }
 ```

@@ -24,9 +24,10 @@ Unicode 字节顺序标记（Unicode Byte Order Mark, BOM）用于指定代码�
 ::: correct
 
 ```js
+// U+FEFF at the beginning
+
 /*eslint unicode-bom: ["error", "always"]*/
 
-U+FEFF
 var abc;
 ```
 
@@ -63,9 +64,10 @@ var abc;
 ::: incorrect
 
 ```js
+// U+FEFF at the beginning
+
 /*eslint unicode-bom: ["error", "never"]*/
 
-U+FEFF
 var abc;
 ```
 

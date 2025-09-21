@@ -147,7 +147,7 @@ const eslint = new ESLint(options);
 * `options.plugins`（`Record<string, Plugin> | null`）<br>
   默认为 `null`。ESLint 用于配置的 `plugins` 设置的插件实现。这是一个类似地图的对象。这些键是插件 ID，每个值都是实现。
 * `options.reportUnusedDisableDirectives`（`"error" | "warn" | "off" | null`）<br>
-  默认为 `null`。报告未使用的 eslint-disable 指令的严重性。如果此选项是一个严重性，它会覆盖配置中的 `reportUnusedDisableDirectives` 设置。
+  默认为 `null`。报告未使用的 eslint-disable 和 eslint-enable 指令的严重性。如果此选项被设置为严重性，它会覆盖配置中的 `reportUnusedDisableDirectives` 设置。
 * `options.resolvePluginsRelativeTo`（`string` | `null`）<br>
   默认为 `null`。应该从中解析插件的目录的路径。如果 `null` 存在，ESLint 从包含插件设置的配置文件的位置加载插件。如果存在路径，ESLint 会从那里加载所有插件。
 * `options.rulePaths`（`string[]`）<br>
@@ -531,7 +531,7 @@ const linter2 = new Linter();
     * `filterCodeBlock` -（可选）一个函数，决定 interlet 应该采用哪些代码块。该函数接收两个参数。第一个参数是一个代码块的虚拟文件名。第二个参数是代码块的文本。如果该函数返回 `true`，那么检查器就采用该代码块。如果该函数被省略，则检查器只采用 `*.js` 的代码块。如果你提供了一个 `filterCodeBlock` 函数，它将覆盖这个默认行为，所以检查器不会自动采用 `*.js` 代码块。
     * `disableFixes` -（可选）当设置为 `true` 时，检查器不对检查结果的 `fix` 或 `suggestions` 属性进行处理。
     * `allowInlineConfig` -（可选）设置为 `false`，禁止内联注释改变 ESLint 规则。
-    * `reportUnusedDisableDirectives` -（可选）当设置为 `true` 时，为未使用的 `eslint-disable` 指令添加报告错误，无论如何在禁用区不会有问题被报告。
+    * `reportUnusedDisableDirectives` -（可选）当设置为 `true` 时，为未使用的 `eslint-disable` 和 `eslint-enable` 指令添加报告错误，无论如何在禁用区不会有问题被报告。
 
 如果第三个参数是一个字符串，它被解释为 `filename`。
 
